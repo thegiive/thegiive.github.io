@@ -1,0 +1,64 @@
+# Jekyll 配置檔案 - AI Coding Blog
+
+# 網站基本資訊
+title: "AI for everyone"
+description: "AI Coding, ATPM, Vibe Coding 實戰分享"
+author: "Wisely Chen"
+email: "your-email@example.com"
+baseurl: "" # 子目錄名稱（例如 /blog），留空表示根目錄
+url: "https://your-username.github.io" # 完整網站 URL
+
+# 建置設定
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/ # URL 格式：保持與 Ghost 一致的 /<slug>/ 格式
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# 排除的檔案
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .git
+  - .github
+  - README.md
+  - LICENSE
+
+# Markdown 處理器設定
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# 分頁設定
+paginate: 10
+paginate_path: "/page:num/"
+
+# 時區與語言
+timezone: Asia/Taipei
+lang: zh-TW
+
+# 主題（可選）
+# theme: minima
+
+# 自訂變數（可在模板中使用）
+social:
+  github: thegiive
+  linkedin: wisely-chen-38033a5b
+  website: https://www.wiselychen.com/
+
+# Google Analytics（可選）
+# google_analytics: UA-XXXXXXXXX-X
+
+# Disqus 評論（可選）
+# disqus:
+#   shortname: your-disqus-shortname

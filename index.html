@@ -1,0 +1,60 @@
+---
+layout: default
+title: AI for everyone - AI Coding 實戰分享
+---
+
+<div class="home">
+  <h2>最新文章</h2>
+
+  <div class="post-list">
+    {% for post in site.posts %}
+    <article class="post-item">
+      {% if post.image %}
+      <div class="post-thumbnail">
+        <a href="{{ post.url | relative_url }}">
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+        </a>
+      </div>
+      {% endif %}
+
+      <div class="post-info">
+        <h3>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%Y年%m月%d日" }}
+          </time>
+        </div>
+
+        {% if post.description %}
+        <div class="post-excerpt">
+          {{ post.description }}
+        </div>
+        {% elsif post.excerpt %}
+        <div class="post-excerpt">
+          {{ post.excerpt | strip_html | truncatewords: 50 }}
+        </div>
+        {% endif %}
+
+        <a href="{{ post.url | relative_url }}" class="read-more">繼續閱讀 →</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; 上一頁</a>
+    {% endif %}
+
+    <span class="page-number">第 {{ paginator.page }} 頁，共 {{ paginator.total_pages }} 頁</span>
+
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">下一頁 &raquo;</a>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>

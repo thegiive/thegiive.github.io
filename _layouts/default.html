@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'zh-TW' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+
+  <!-- SEO -->
+  {% seo %}
+
+  <!-- Feed -->
+  {% feed_meta %}
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      <p>{{ site.description }}</p>
+      <nav>
+        <a href="{{ '/' | relative_url }}">首頁</a>
+        <a href="{{ '/about.html' | relative_url }}">關於</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {{ content }}
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}. All rights reserved.</p>
+      {% if site.social.github %}
+      <p>
+        <a href="https://github.com/{{ site.social.github }}" target="_blank">GitHub</a> |
+        <a href="https://www.linkedin.com/in/{{ site.social.linkedin }}" target="_blank">LinkedIn</a>
+      </p>
+      {% endif %}
+    </div>
+  </footer>
+</body>
+</html>
