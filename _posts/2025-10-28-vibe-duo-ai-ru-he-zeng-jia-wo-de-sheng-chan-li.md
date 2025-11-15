@@ -7,15 +7,6 @@ image: /assets/images/-------2025-10-26-------6.58.28-1-1.png
 description: "大家都說 AI可以增加生產力，那到底啥是真正的生產力？..."
 ---
 
-[vibelife](https://ai-coding.wiselychen.com/tag/vibelife/)
-
-# 超慢跑也能 Coding：Claude Code 帶來的真正生產力
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-28 Oct 2025 — 5 min read
 
 ![超慢跑也能 Coding：Claude Code 帶來的真正生產力](/assets/images/-------2025-10-26-------6.58.28-1-1.png)
 

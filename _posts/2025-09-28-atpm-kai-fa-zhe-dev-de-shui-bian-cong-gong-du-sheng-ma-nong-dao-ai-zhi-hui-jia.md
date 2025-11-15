@@ -7,15 +7,6 @@ image: /assets/images/Generated-Image-September-28--2025---10_17PM-1-1.png
 description: "三種層次的人跟AI協作模式..."
 ---
 
-[ATPM](https://ai-coding.wiselychen.com/tag/atpm/)
-
-# [ATPM] 開發者 (Dev) 的蛻變—從embed , copilot 到 agent
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-28 Sep 2025 — 11 min read
 
 ![\[ATPM\] 開發者 \(Dev\) 的蛻變—從embed , copilot 到 agent](/assets/images/Generated-Image-September-28--2025---10_17PM-1-1.png)
 

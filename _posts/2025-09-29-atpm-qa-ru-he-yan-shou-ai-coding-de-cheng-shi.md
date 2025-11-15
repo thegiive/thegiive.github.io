@@ -7,15 +7,6 @@ image: /assets/images/ChatGPT-Image-2025---9---29----------09_52_27-1-1.png
 description: "AI 會寫 Code 了，但誰來為結果負責？..."
 ---
 
-[ai-coding](https://ai-coding.wiselychen.com/tag/ai-coding/)
-
-# [ATPM] QA：如何驗收 AI Coding 的程式
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-29 Sep 2025 — 9 min read
 
 ![\[ATPM\] QA：如何驗收 AI Coding 的程式](/assets/images/ChatGPT-Image-2025---9---29----------09_52_27-1-1.png)
 

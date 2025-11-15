@@ -7,15 +7,6 @@ image: /assets/images/ChatGPT-Image-2025---11---7----------06_28_19.png
 description: "當我還在物流業的時候，某個週一下午，PM 在 email 上丟出上周五會議的AI自動紀要。 ..."
 ---
 
-[agent](https://ai-coding.wiselychen.com/tag/agent/)
-
-# 為什麼 AI 會議記錄工具 99% 都需要人工修正——用企業知識庫來救
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-07 Nov 2025 — 7 min read
 
 ![為什麼 AI 會議記錄工具 99% 都需要人工修正——用企業知識庫來救](/assets/images/ChatGPT-Image-2025---11---7----------06_28_19.png)
 

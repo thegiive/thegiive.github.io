@@ -7,15 +7,6 @@ image: /assets/images/-------2025-09-23-------10.35.03.png
 description: "AI Coding , Spec Driven Development , Vibe Coding..."
 ---
 
-[pm](https://ai-coding.wiselychen.com/tag/pm/)
-
-# ATPM : AI 對 PM 的加速
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-23 Sep 2025 — 8 min read
 
 ![ATPM : AI 對 PM 的加速](/assets/images/-------2025-09-23-------10.35.03.png)
 

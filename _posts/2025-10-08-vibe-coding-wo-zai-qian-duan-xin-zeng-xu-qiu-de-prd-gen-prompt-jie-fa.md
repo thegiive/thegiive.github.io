@@ -7,15 +7,6 @@ image: /assets/images/Gemini_Generated_Image_6zdw0k6zdw0k6zdw-1.png
 description: "上次提到我在前端這邊做AI Coding 很適合 0% -> 70% , 或是 99 -> 100%的做法，但是在 90% -> 100% 遇到了蠻多的小問題，經過幾天的討論修正之後，我已經大概列出了比較適合的方式。根據這一週來改了十幾個 Feature的經驗，這個流程對我這樣非前端的人來說，感覺 90% -> 100% 除了後續檢核需要前端幫忙以外，幾乎都是我可以自己處理。..."
 ---
 
-[ai-coding](https://ai-coding.wiselychen.com/tag/ai-coding/)
-
-# [VIBE Coding] 我在前端新增需求的 PRD 跟 Prompt 解法
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-08 Oct 2025 — 4 min read
 
 ![\[VIBE Coding\] 我在前端新增需求的 PRD 跟 Prompt 解法](/assets/images/Gemini_Generated_Image_6zdw0k6zdw0k6zdw-1.png)
 

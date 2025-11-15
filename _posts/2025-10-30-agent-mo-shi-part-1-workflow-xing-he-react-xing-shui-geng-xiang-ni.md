@@ -7,15 +7,11 @@ image: /assets/images/ChatGPT-Image-2025---10---30----------10_36_55.png
 description: "你有沒有發現，自己工作中也分裂成兩個人，有時按規則做事，有時根據現實應變。其實AI Agent 也一樣。想像一下下面的場景..."
 ---
 
-[agent](https://ai-coding.wiselychen.com/tag/agent/)
 
 # [Agent 模式 part 1] - Workflow 型和 ReAct 型，誰更像你？
 
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
 
-#### [Wisely Chen](/author/wisely/)
 
-30 Oct 2025 — 8 min read
 
 ![\[Agent 模式 part 1\]  - Workflow 型和 ReAct 型，誰更像你？](/assets/images/ChatGPT-Image-2025---10---30----------10_36_55.png)
 

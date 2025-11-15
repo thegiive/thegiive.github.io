@@ -7,15 +7,6 @@ image: /assets/images/Generated-Image-October-18--2025---8_14AM-1.png
 description: "以前大概是電腦遊戲（印象最深刻: 中華職棒二）的時代為了防遊戲盜版，會有一個被混淆過密碼本，裡面是多種顏色混淆的文字，但是原廠會附上一個紅色或是藍色濾光片，你就拿濾光片去對應的位置，就會呈現正確的密碼排序。這樣防止電腦遊戲亂 copy , 要輸入正確的密碼才能看到正確的資訊。這個機制已經不用很久了，現在遊戲都是網路遊戲也不需要防盜版了。但是這個體驗還是很有趣..."
 ---
 
-[ai-tranformation](https://ai-coding.wiselychen.com/tag/ai-tranformation/)
-
-# [FDE] 流程是一個濾光片 , 幫忙把數據的 inisght filter 出來
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-17 Oct 2025 — 7 min read
 
 ![\[FDE\] 流程是一個濾光片 , 幫忙把數據的 inisght filter 出來](/assets/images/Generated-Image-October-18--2025---8_14AM-1.png) 網路上完全找不到中華職棒二的密碼本，我只好叫 Nano Banana 畫一個
 

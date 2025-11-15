@@ -7,15 +7,11 @@ image: /assets/images/Generated-Image-October-22--2025---5_52AM-1.png
 description: "既然跟同事交接很困難，那就直接複製一下你的交接同事成為 Agent 吧.... XD..."
 ---
 
-[pm](https://ai-coding.wiselychen.com/tag/pm/)
 
 # [AI PM] 複製一下你的交接人成為AI Agent
 
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
 
-#### [Wisely Chen](/author/wisely/)
 
-22 Oct 2025 — 5 min read
 
 ![\[AI PM\]  複製一下你的交接人成為AI Agent](/assets/images/Generated-Image-October-22--2025---5_52AM-1.png)
 

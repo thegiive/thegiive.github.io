@@ -7,15 +7,11 @@ image: /assets/images/-------2025-09-21-------6.56.22.png
 description: "如果說 ATPM / Spec driven Development ， 跟一般軟體開發流程最大的不同，就是..."
 ---
 
-[ATPM](https://ai-coding.wiselychen.com/tag/atpm/)
 
 # ATPM : PRD的重要性
 
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
 
-#### [Wisely Chen](/author/wisely/)
 
-21 Sep 2025 — 10 min read
 
 ![ATPM :  PRD的重要性](/assets/images/-------2025-09-21-------6.56.22.png)
 

@@ -7,15 +7,6 @@ image: /assets/images/ChatGPT-Image-2025---11---8----------08_01_49.png
 description: "大家都知道我用 AI 來 enable 很多intern 來當作很多正職的事情，當然他們雖然都很年輕跟熱情，但是我管理團隊時發現一個規律：..."
 ---
 
-[agent](https://ai-coding.wiselychen.com/tag/agent/)
-
-# [Agent part 3] Interleaved Thinking 呈現的穩定性是現在Agent落地的重要關鍵
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-08 Nov 2025 — 7 min read
 
 ![\[Agent part 3\] Interleaved Thinking 呈現的穩定性是現在Agent落地的重要關鍵](/assets/images/ChatGPT-Image-2025---11---8----------08_01_49.png)
 

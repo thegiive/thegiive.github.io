@@ -7,15 +7,6 @@ image: /assets/images/ChatGPT-Image-2025---11---10----------09_24_03.png
 description: "根據《Harvard Business Review》近期發表的〈Workers Don’t Trust AI. Here’s How Companies Can Change That〉，美國基層員工對公司提供的 AI 工具信任度在短短數月內暴跌：對生成式 AI 的信任下降 31%，對自主決策型 AI 更下滑 89%。近半數員工反而更信任非官方AI 工具。另外無獨有偶MIT 的研究《The Ge..."
 ---
 
-[ai-tranformation](https://ai-coding.wiselychen.com/tag/ai-tranformation/)
-
-# AI 信任崩塌的真正原因：勞資零和賽局的再現
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-10 Nov 2025 — 4 min read
 
 ![AI 信任崩塌的真正原因：勞資零和賽局的再現](/assets/images/ChatGPT-Image-2025---11---10----------09_24_03.png)
 

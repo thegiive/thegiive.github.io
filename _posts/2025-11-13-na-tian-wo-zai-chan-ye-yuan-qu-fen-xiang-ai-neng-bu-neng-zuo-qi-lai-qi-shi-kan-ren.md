@@ -7,13 +7,6 @@ image: /assets/images/S__88875042.jpg
 description: "今天我在新北產業園區，在我們公司的 AI 轉型的活動..."
 ---
 
-# 那天我在產業園區分享：AI 能不能做起來，其實看人
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-13 Nov 2025 — 2 min read
 
 ![那天我在產業園區分享：AI 能不能做起來，其實看人](/assets/images/S__88875042.jpg)
 

@@ -7,13 +7,6 @@ image: /assets/images/-------2025-10-08-------9.42.00-1.png
 description: "人總是有一個第二故鄉，不過我的第二故鄉蠻有趣的，上海跟香港都算是很有緣的地方。..."
 ---
 
-# [Life] 香港AI 的不一樣的樣貌
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-08 Oct 2025 — 3 min read
 
 ![\[Life\] 香港AI 的不一樣的樣貌](/assets/images/-------2025-10-08-------9.42.00-1.png) 灣仔的榕哥脆皮燒鵝，相對便宜又好吃
 

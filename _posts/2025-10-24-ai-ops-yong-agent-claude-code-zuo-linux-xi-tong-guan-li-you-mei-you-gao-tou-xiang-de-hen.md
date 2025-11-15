@@ -7,15 +7,6 @@ image: /assets/images/ChatGPT-Image-2025---10---24----------08_31_52.png
 description: "今天突然發現用 Claude Code 做 Linux 系統管理超香的。不只可以幫你寫 code，還順便幫你考古系統程式，挖出系統裡不為人知的秘密，最棒的是能讓你找到之前同事寫好的 code 提早下班，享受當老闆的樂趣。..."
 ---
 
-[agent](https://ai-coding.wiselychen.com/tag/agent/)
-
-# [AI Ops] 用 Agent(Claude Code) 做 Linux 系統管理有沒有搞頭？香得很！
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-24 Oct 2025 — 5 min read
 
 ![\[AI Ops\] 用 Agent\(Claude Code\) 做 Linux 系統管理有沒有搞頭？香得很！](/assets/images/ChatGPT-Image-2025---10---24----------08_31_52.png)
 

@@ -7,13 +7,6 @@ image: /assets/images/-------2025-09-17-------4.31.54-1.png
 description: "章節..."
 ---
 
-# ATPM : A real production Vibe Coding process
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-17 Sep 2025 — 8 min read
 
 ![ATPM : A real production Vibe Coding process](/assets/images/-------2025-09-17-------4.31.54-1.png)
 

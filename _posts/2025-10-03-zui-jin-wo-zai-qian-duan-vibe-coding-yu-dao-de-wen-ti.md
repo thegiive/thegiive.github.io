@@ -7,15 +7,6 @@ image: /assets/images/Generated-Image-October-03--2025---10_51PM.png
 description: "我這幾天因為一個重要的案子，決定也來 VIBE Coding 一下，寫寫frontend feature（我從來沒寫過 frontend Vue 的程式）..."
 ---
 
-[ai-coding](https://ai-coding.wiselychen.com/tag/ai-coding/)
-
-# 最近我在前端 Vibe Coding 遇到的問題
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-03 Oct 2025 — 3 min read
 
 ![最近我在前端 Vibe Coding 遇到的問題](/assets/images/Generated-Image-October-03--2025---10_51PM.png)
 

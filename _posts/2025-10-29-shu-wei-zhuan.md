@@ -7,15 +7,6 @@ image: /assets/images/-------2025-10-28-------10.13.48.png
 description: "今天刷到一張照片，泰山樓梯上，一個白髮蒼蒼的挑水工用扁擔挑著水，一步步往上爬。除了心疼他的辛苦，還看到評論區飄出一條大橫幅..."
 ---
 
-[ai-tranformation](https://ai-coding.wiselychen.com/tag/ai-tranformation/)
-
-# 为什麼 AI Agent 无法企業落地？看泰山的挑水工就懂了
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-29 Oct 2025 — 4 min read
 
 ![为什麼 AI Agent 无法企業落地？看泰山的挑水工就懂了](/assets/images/-------2025-10-28-------10.13.48.png)
 

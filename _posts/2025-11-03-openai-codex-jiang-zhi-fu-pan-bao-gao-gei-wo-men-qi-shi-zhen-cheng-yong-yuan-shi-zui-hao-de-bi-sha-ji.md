@@ -7,15 +7,6 @@ image: /assets/images/HuM7-Ljf25IoSJfNXs7Py.png
 description: "問題：當系統開始出現幽靈..."
 ---
 
-[News](https://ai-coding.wiselychen.com/tag/news/)
-
-# OpenAI Codex 降智復盤報告給我們啟示：真誠永遠是最好的必殺技
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-04 Nov 2025 — 5 min read
 
 ![OpenAI Codex 降智復盤報告給我們啟示：真誠永遠是最好的必殺技](/assets/images/HuM7-Ljf25IoSJfNXs7Py.png)
 

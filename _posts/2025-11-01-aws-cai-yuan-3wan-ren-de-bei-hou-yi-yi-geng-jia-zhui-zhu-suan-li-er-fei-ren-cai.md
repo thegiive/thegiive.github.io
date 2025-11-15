@@ -7,13 +7,11 @@ image: /assets/images/-------2025-11-01-------10.44.47.png
 description: "我們都看到 AWS 近期內裁員 3萬人，但是最有趣的是，近期 AWS 財報不論是 Q2 , 或是 Q3，都有相當不錯的獲利，並且Q3也擊敗分析師預期。在這個情況下，AWS 依舊啟動這次 2020年以來最大的裁員。..."
 ---
 
+
 # AWS 裁員 3萬人的背後意義 ：更加追逐算力而非人才
 
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
 
-#### [Wisely Chen](/author/wisely/)
 
-01 Nov 2025 — 2 min read
 
 ![AWS 裁員 3萬人的背後意義  ：更加追逐算力而非人才](/assets/images/-------2025-11-01-------10.44.47.png) 圖片來源: Flickr/Web Summit CC BY 2.0
 

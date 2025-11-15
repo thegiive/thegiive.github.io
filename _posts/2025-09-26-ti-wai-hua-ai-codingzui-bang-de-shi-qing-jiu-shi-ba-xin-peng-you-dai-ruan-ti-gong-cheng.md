@@ -7,13 +7,11 @@ image: /assets/images/OHUFc_3kQtKONOdt6oSbZ.png
 description: "昨天看到 VIBE Coding / Google AI Studio 某篇文章瘋傳，看到社群朋友們給予相關的「指導」。心裡想說啥，又不知道要怎講。..."
 ---
 
+
 # VIBE Coding最棒的事情就是把新朋友帶軟體開發的世界
 
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
 
-#### [Wisely Chen](/author/wisely/)
 
-27 Sep 2025 — 6 min read
 
 ![VIBE  Coding最棒的事情就是把新朋友帶軟體開發的世界](/assets/images/OHUFc_3kQtKONOdt6oSbZ.png) Prompt : 工程師跟麻瓜手牽手
 

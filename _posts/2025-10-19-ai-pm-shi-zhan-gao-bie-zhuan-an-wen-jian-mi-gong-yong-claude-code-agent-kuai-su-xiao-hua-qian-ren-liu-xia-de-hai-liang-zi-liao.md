@@ -7,15 +7,6 @@ image: /assets/images/Generated-Image-October-19--2025---5_19PM.png
 description: "身為 PM，你是不是也遇過這種狀況：你得在極短時間內看完前任PM所有東西？ 這時候除了認命加班看文章，有沒有更好的方式？試試看 AI Agent 吧..."
 ---
 
-[pm](https://ai-coding.wiselychen.com/tag/pm/)
-
-# 【AI PM 實戰】告別專案文件迷宮！用 Claude Code Agent 快速消化前任留下的海量資料
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-19 Oct 2025 — 7 min read
 
 ![【AI PM 實戰】告別專案文件迷宮！用 Claude Code Agent 快速消化前任留下的海量資料](/assets/images/Generated-Image-October-19--2025---5_19PM.png)
 

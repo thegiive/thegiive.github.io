@@ -7,13 +7,6 @@ image: /assets/images/Generated-Image-October-13--2025---5_33AM.png
 description: "現在有了 AI ，Coding 的東西可以又快又完整，但是我們怎麼知道 AI 做的Code 裡面會不會有更多的地雷(多收費，寫出有資安議題, 實現很糟糕) 呢？..."
 ---
 
-# [ATPM] 來看看矽谷公司怎麼用 AI 來把關 Vibe Coding 的成果
-
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-13 Oct 2025 — 6 min read
 
 ![\[ATPM\] 來看看矽谷公司怎麼用 AI 來把關 Vibe Coding 的成果](/assets/images/Generated-Image-October-13--2025---5_33AM.png)
 
