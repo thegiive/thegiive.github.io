@@ -3,7 +3,7 @@ layout: post
 title: "ATPM : A real production Vibe Coding process"
 date: 2025-09-16 21:41:01 +0000
 permalink: /atpm-a-real-production-vibe-coding-process/
-image: /assets/images/-------2025-09-17-------4.31.54-1.png
+image: /assets/images/-------2025-09-17-------4.31.54.png
 description: "章節..."
 ---
 
