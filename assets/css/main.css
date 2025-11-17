@@ -68,6 +68,19 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
+nav a.contact-btn {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+nav a.contact-btn:hover {
+  background: #fff;
+  color: #667eea;
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
 /* Main Content */
 main {
   background-color: #fff;
