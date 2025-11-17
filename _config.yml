@@ -5,8 +5,8 @@ title: "AI for everyone"
 description: "AI Coding, ATPM, Vibe Coding 實戰分享"
 author: "Wisely Chen"
 email: "your-email@example.com"
-baseurl: "" # 留空表示根目錄（因為使用 username.github.io）
-url: "https://thegiive.github.io" # 完整網站 URL
+baseurl: "" # 留空表示根目錄（使用自定義域名）
+url: "https://ai-coding.wiselychen.com" # 完整網站 URL
 
 # 建置設定
 markdown: kramdown
