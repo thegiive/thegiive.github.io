@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "FDE：一個持續下去的實驗"
-date: 2025-11-19 04:50:00 +0000
+date: 2025-11-19 07:30:00 +0800
 permalink: /fde-continuous-experiment/
 image: /assets/images/fde-ai-meetup-sharing.jpg
 description: "上週三，很榮幸回到台灣最大的 AI 社團「生成式 AI 小聚」，分享我在 FDE 的成功跟失敗經驗。因為這個內容勾動我的情緒有點多，所以等到平靜下來才在這分享。"
