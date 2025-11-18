@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "用 AI 把餅做大：為什麼老闆看不到「增效」？"
-date: 2025-11-18 14:30:00 +0800
+date: 2025-11-18 10:00:00 +0800
 permalink: /ai-scale-not-cut-grow-the-pie/
 image: /assets/images/ai-scale-office-meeting-2025-11-18.jpg
 description: "AI 降本增效？大部分團隊只做到「降本」。真正的增效是降低 CAC、擴大漏斗，讓同樣團隊服務 5 倍客戶。從 VP 親身經歷分享，如何用 AI 把餅做大，而不是縮小戰場。"
