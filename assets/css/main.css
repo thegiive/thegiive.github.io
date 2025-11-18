@@ -156,6 +156,9 @@ main {
 
 .post-header {
   margin-bottom: 40px;
+  background: #fff;
+  padding: 0;
+  box-shadow: none;
 }
 
 .post-title {
