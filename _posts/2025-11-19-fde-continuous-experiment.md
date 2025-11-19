@@ -7,17 +7,8 @@ image: /assets/images/fde-ai-meetup-sharing.jpg
 description: "上週三，很榮幸回到台灣最大的 AI 社團「生成式 AI 小聚」，分享我在 FDE 的成功跟失敗經驗。因為這個內容勾動我的情緒有點多，所以等到平靜下來才在這分享。"
 ---
 
-[fde](https://ai-coding.wiselychen.com/tag/fde/) [ai-agent](https://ai-coding.wiselychen.com/tag/ai-agent/) [vibe-coding](https://ai-coding.wiselychen.com/tag/vibe-coding/)
 
-# FDE：一個持續下去的實驗
 
-[ ![Wisely Chen](/assets/images/6672228-F20250919----02-----------SN------10945w-1.jpg) ](/author/wisely/)
-
-#### [Wisely Chen](/author/wisely/)
-
-19 Nov 2025 — 12 min read
-
-![FDE：一個持續下去的實驗](/assets/images/fde-ai-meetup-sharing.jpg)
 
 上週三，很榮幸回到台灣最大的AI社團生成式 AI 小聚，分享我在 FDE 的成功跟失敗經驗。因為這個內容勾動我的情緒有點多，所以等到平靜下來才在這分享。
 
