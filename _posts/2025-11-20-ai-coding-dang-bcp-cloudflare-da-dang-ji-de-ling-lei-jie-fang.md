@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "用 AI Coding 當 BCP 另外一個方案有沒有搞頭？"
-date: 2025-11-20 16:00:00 +0800
-permalink: /ai-coding-dang-bcp-cloudflare-da-dang-ji-de-ling-lei-jie-fang/
+date: 2025-11-20 10:00:00 +0800
+permalink: /ai-coding-dang-bcp-cloudflare-da-dang-ji-de-ling-lei-jie-fang
 image: /assets/images/ai-scale-office-meeting-2025-11-18.jpg
 description: "Cloudflare 大當機時 20% Internet 都掛了，ChatGPT、X、Uber、Spotify 全方位賽博人生被搞死。Andrew Ng 的工程師用 AI Coding 快速搭建備援組件挺過危機。這個概念倒是非常有趣 - 用 AI Coding 快速搭建關鍵 infra 組件當作另一種 BCP 手段，降低平時備援成本。唯一的問題是：當遇到史詩級 outage 要 AI Coding 解救你的時候，你的 AI Service 打不打得開 XD"
 ---
