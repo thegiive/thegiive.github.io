@@ -15,6 +15,8 @@ ChatGPT, X , Canva , Uber , Spotify , LoL 綜觀上班、吐槽、出行、音�
 
 在這個時間點，Andrew Ng 說他的網站工程師利用 AI Coding 很快速的搭建一個 CloudFlare bare minimal 的備援組件，讓他挺過了這個 outage。
 
+![](/assets/images/cdn-2.png)
+
 雖然說他們短時間能 AI Coding 的組件不外乎：
 
 - FRP 做轉發
