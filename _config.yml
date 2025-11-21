@@ -47,6 +47,9 @@ paginate_path: "/page:num/"
 timezone: Asia/Taipei
 lang: zh-TW
 
+# 顯示未來的文章（避免時間設定問題）
+future: true
+
 # 主題（可選）
 # theme: minima
 
