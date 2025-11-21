@@ -3,7 +3,6 @@ layout: post
 title: "AI創收的最佳案例之一"
 date: 2025-11-21 08:00:00 +0800
 permalink: /ai-chuang-shou-de-zui-jia-an-li-zhi-yi
-image: /assets/images/ai-scalp-detection-award.jpg
 description: "創智動能與美科實業合作的 AI 頭皮檢測系統獲得經濟部2025創新研究獎。這套系統將軟硬體整合加上 AI 技術，為美業帶來巨大的 UpSell 創收，是「把餅做大」而非「降本增效」的最佳 AI 創收範例。"
 ---
 
