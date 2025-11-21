@@ -40,7 +40,7 @@ kramdown:
       line_numbers: true
 
 # 分頁設定
-paginate: 10
+paginate: 3
 paginate_path: "/page:num/"
 
 # 時區與語言

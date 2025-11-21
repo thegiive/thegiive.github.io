@@ -662,6 +662,116 @@ footer a:hover {
   text-decoration: none !important;
 }
 
+/* View All Posts Button */
+.view-all-posts {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #e1e1e1;
+}
+
+.btn-view-all {
+  display: inline-block;
+  padding: 15px 35px;
+  background: #fff;
+  color: #667eea;
+  text-decoration: none;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-view-all:hover {
+  background: #667eea;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Archive Page */
+.archive-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.archive-page h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.archive-intro {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e1e1e1;
+}
+
+.archive-list {
+  margin: 30px 0;
+}
+
+.archive-item {
+  display: flex;
+  gap: 25px;
+  padding: 25px 0;
+  border-bottom: 1px solid #e1e1e1;
+  transition: all 0.3s ease;
+}
+
+.archive-item:hover {
+  padding-left: 10px;
+  background: #f9f9f9;
+}
+
+.archive-date {
+  flex-shrink: 0;
+  width: 110px;
+}
+
+.archive-date time {
+  display: inline-block;
+  font-size: 14px;
+  color: #999;
+  font-family: monospace;
+}
+
+.archive-content {
+  flex: 1;
+}
+
+.archive-content h3 {
+  font-size: 20px;
+  margin: 0 0 10px 0;
+}
+
+.archive-content h3 a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.archive-content h3 a:hover {
+  color: #667eea;
+}
+
+.archive-excerpt {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.archive-footer {
+  text-align: center;
+  margin: 50px 0;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   header h1 {
@@ -723,5 +833,18 @@ footer a:hover {
 
   .faq-page .faq-item {
     padding: 20px;
+  }
+
+  .archive-page h1 {
+    font-size: 28px;
+  }
+
+  .archive-item {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .archive-date {
+    width: auto;
   }
 }

@@ -60,7 +60,7 @@ description: 專注於 AI Coding 實戰，包括 Vibe Coding、ATPM、AI PM、Ag
     <h2>最新文章</h2>
 
     <div class="post-list">
-      {% for post in site.posts %}
+      {% for post in site.posts limit:3 %}
       <article class="post-item">
         {% if post.image %}
         <div class="post-thumbnail">
@@ -97,19 +97,9 @@ description: 專注於 AI Coding 實戰，包括 Vibe Coding、ATPM、AI PM、Ag
       {% endfor %}
     </div>
 
-    {% if paginator.total_pages > 1 %}
-    <div class="pagination">
-      {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | relative_url }}" rel="prev">&laquo; 上一頁</a>
-      {% endif %}
-
-      <span class="page-number">第 {{ paginator.page }} 頁，共 {{ paginator.total_pages }} 頁</span>
-
-      {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | relative_url }}" rel="next">下一頁 &raquo;</a>
-      {% endif %}
+    <div class="view-all-posts">
+      <a href="{{ '/archive/' | relative_url }}" class="btn-view-all">查看所有文章 →</a>
     </div>
-    {% endif %}
   </section>
 
   <!-- FAQ 快速區塊 -->
