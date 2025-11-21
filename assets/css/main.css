@@ -332,10 +332,161 @@ footer a:hover {
   margin: 0 15px;
 }
 
+/* Homepage Sections */
+.home h1 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.home h2 {
+  font-size: 26px;
+  color: #333;
+  margin: 50px 0 25px 0;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #667eea;
+}
+
+/* Site Intro (TL;DR) */
+.site-intro {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  border-left: 4px solid #667eea;
+  padding: 25px 30px;
+  margin: 30px 0;
+  border-radius: 8px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.site-intro p {
+  margin: 0;
+}
+
+/* Topic Clusters */
+.topic-clusters {
+  margin: 50px 0;
+}
+
+.clusters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.cluster-item {
+  background: #fff;
+  border: 2px solid #e1e1e1;
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.cluster-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+  transform: translateY(-5px);
+}
+
+.cluster-item h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.cluster-item p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* FAQ Section */
+.faq-section {
+  margin: 50px 0;
+  background: #f9f9f9;
+  padding: 40px 30px;
+  border-radius: 12px;
+}
+
+.faq-item {
+  background: #fff;
+  padding: 25px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateX(5px);
+}
+
+.faq-item h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.faq-item p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Author Section */
+.author-section {
+  margin: 50px 0 30px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 35px;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.author-section h2 {
+  color: #fff;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+  margin-top: 0;
+}
+
+.author-bio p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.author-bio a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.author-bio a:hover {
+  opacity: 0.8;
+}
+
+/* Recent Posts Section */
+.recent-posts {
+  margin: 50px 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   header h1 {
     font-size: 24px;
+  }
+
+  .home h1 {
+    font-size: 24px;
+  }
+
+  .home h2 {
+    font-size: 22px;
   }
 
   .post-title {
@@ -348,5 +499,22 @@ footer a:hover {
 
   main {
     padding: 20px 15px;
+  }
+
+  .clusters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-intro {
+    padding: 20px;
+    font-size: 15px;
+  }
+
+  .faq-section {
+    padding: 25px 20px;
+  }
+
+  .author-section {
+    padding: 30px 20px;
   }
 }
