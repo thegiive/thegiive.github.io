@@ -20,3 +20,5 @@ description: "創智動能與美科實業合作的 AI 頭皮檢測系統獲得�
 我們都在嘗試如何做到「把餅做大」而非將「降本增效」
 
 這真的是一個最佳的AI創收範例!
+
+![經濟部2025創新研究獎](/assets/images/ai-scalp-detection-award.jpg)
