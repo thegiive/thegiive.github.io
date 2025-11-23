@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "從 Simple RAG 到 Autonomous Agent 之間的「恐怖谷」"
+title: "[Agent part 3] 我們如何用 System 2 思維突破瓶頸"
 date: 2025-11-23
 categories: AI Agent
 tags: [AIAgent, DeepResearch, LLM, ArchitecturalDesign, System2Thinking, ProductionAI]
