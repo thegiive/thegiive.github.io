@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Agent part 3] 我們如何用 System 2 思維突破瓶頸"
+title: "[Agent part 3] Plan, Exec, Critic 我們如何用 System 2 思維突破瓶頸"
 date: 2025-11-23
 categories: AI Agent
 tags: [AIAgent, DeepResearch, LLM, ArchitecturalDesign, System2Thinking, ProductionAI]
@@ -49,6 +49,8 @@ excerpt: "探討如何用 System 2 思維為 Agent 加入自我檢查能力，�
 ---
 
 ## 架構
+
+我們今天介紹新的架構 " Plan & Exec & Critic "
 
 Deep Research 架構的核心洞察:
 
