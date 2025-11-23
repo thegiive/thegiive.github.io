@@ -63,6 +63,8 @@ Deep Research 架構的核心洞察:
 - Critic/Reflector Node: 一致性檢查、完整性檢查、幻覺檢測
 - 使用強推理模型
 
+![Deep Research 控制流架構](/assets/images/deep-research-control-flow.png)
+
 這個解耦帶來兩個關鍵好處:
 1. **成本效率**: 不需要用昂貴的模型做所有事情
 2. **角色明確**: 規劃-執行 vs 審查-修正,各司其職
@@ -70,8 +72,6 @@ Deep Research 架構的核心洞察:
 ---
 
 ## 關鍵節點與控制流
-
-![Deep Research 控制流架構](/assets/images/deep-research-control-flow.png)
 
 傳統 Agent 是線性的 DAG（有向無環圖）：Planner 規劃任務，Executor 執行檢索，Reporter 生成報告。一路到底，沒有回頭路。
 
@@ -115,6 +115,10 @@ Deep Research 則是循環圖（Cyclic Graph）：在 Executor 之後，加入�
 所以這個 Agent Model 明顯的代價：**響應時間變慢，成本顯著增加。**
 
 每次 Critic 調用都需要使用強推理模型，而且如果平均迭代 2-3 次，整體的 token 消耗和響應時間都會是傳統單次執行的數倍。
+
+---
+
+## 使用場景
 
 什麼時候該用呢？人類在處理複雜事物，或是思考錯誤成本很高的時候（像是審閱文件，商業決策）， 人的大腦也是會進入系統2的慢思考。你會排除掉大量的干擾只專心在決策上，所以「複雜事物」，「錯誤代價很高」的任務就應該走這個模式。
 
