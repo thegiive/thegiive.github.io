@@ -10,8 +10,6 @@ description: "傳統 Agent 易陷入線性執行的死胡同。Deep Research 架
 excerpt: "探討如何用 System 2 思維為 Agent 加入自我檢查能力，解決傳統架構的根本問題。包括架構解耦、Critic 節點設計、強推理模型的必要性，以及使用場景決策樹。"
 ---
 
-![Deep Research 標題圖](/assets/images/deep-research-title-logo.png)
-
 ## 我們需要自主的 Agent
 
 當前的 GenAI 浪潮中，我們處於一個尷尬的階段：RAG（檢索增強生成）已普及，但我們需要的是能夠在生產環境下自主活動的 Agent。
