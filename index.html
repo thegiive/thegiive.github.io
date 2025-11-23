@@ -1,0 +1,211 @@
+---
+layout: default
+title: AI Coding 實戰分享｜AI Transformation、AI Agent、Vibe Coding、AI Eval
+description: 專注於 AI Coding 實戰，包括 Vibe Coding、ATPM、AI PM、Agent 協作模式、企業 AI 落地案例與日常生產力技巧。以工程師視角分享如何用 AI 真正提升產能、降低成本並擴大企業漏斗。
+---
+
+<div class="home">
+  <!-- H1 主標題 -->
+  <h1>AI Coding 實戰分享｜AI Transformation、AI Agent、Vibe Coding、AI Eval</h1>
+
+  <!-- TL;DR 摘要區塊 (AEO 必備) -->
+  <div class="site-intro">
+    <p><strong>本網站專注於 AI Coding 實戰，包括 Vibe Coding、ATPM、AI PM、Agent 協作模式、企業 AI 落地案例與日常生產力技巧。以工程師視角分享如何用 AI 真正提升產能、降低成本並擴大企業漏斗。</strong></p>
+  </div>
+
+  <!-- 主題集群 (Topic Clusters) -->
+  <section class="topic-clusters">
+    <h2>核心主題</h2>
+
+    <div class="clusters-grid">
+      <div class="cluster-item">
+        <h3>🚀 Vibe Coding 實戰</h3>
+        <p>Spec Driven Dev、ATPM 框架、PRD 驅動開發、前後端案例、40% 開發加速實證、AI Coding as BCP</p>
+      </div>
+
+      <div class="cluster-item">
+        <h3>🤖 AI Agent 協作</h3>
+        <p>Multi-Agent、Plan & Execute、Interleaved Thinking、Agent 模式對比</p>
+      </div>
+
+      <div class="cluster-item">
+        <h3>💼 企業 AI 轉型</h3>
+        <p>FDE 模式、Up-Sell 創收、流程優化、知識庫建立、降本增效案例</p>
+      </div>
+
+      <div class="cluster-item">
+        <h3>⚡ 個人生產力</h3>
+        <p>AI IDE (Cursor/Claude Code)、AI 會議記錄、AI Ops、Daily Review</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 關於作者 (E-E-A-T) -->
+  <section class="author-section">
+    <h2>關於作者</h2>
+    <div class="author-bio">
+      <p><strong>Wisely Chen</strong></p>
+      <p>企業 AI 轉型顧問、創智動能 Data & AI Leader、NeuroBrain Dynamics Inc. 首席研究官。12+ 年大數據與 AI 經驗，曾任職 Google、Yahoo。</p>
+      <p>擅長 AI Coding、ATPM 框架、AI Agent 落地、企業數位化與流程優化。以數據驅動的誠實風格分享真實戰場的試錯經驗，不美化成果，提供可量化的實戰方法論。</p>
+      <p>
+        <a href="https://www.linkedin.com/in/wisely-chen-38033a5b/" target="_blank">LinkedIn</a> |
+        <a href="https://www.wiselychen.com/" target="_blank">個人網站</a> |
+        <a href="https://github.com/thegiive" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 最新文章列表 -->
+  <section class="recent-posts">
+    <h2>最新文章</h2>
+
+    <div class="post-list">
+      {% for post in site.posts limit:3 %}
+      <article class="post-item">
+        {% if post.image %}
+        <div class="post-thumbnail">
+          <a href="{{ post.url | relative_url }}">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          </a>
+        </div>
+        {% endif %}
+
+        <div class="post-info">
+          <h3>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+
+          <div class="post-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%Y年%m月%d日" }}
+            </time>
+          </div>
+
+          {% if post.description %}
+          <div class="post-excerpt">
+            {{ post.description }}
+          </div>
+          {% elsif post.excerpt %}
+          <div class="post-excerpt">
+            {{ post.excerpt | strip_html | truncatewords: 50 }}
+          </div>
+          {% endif %}
+
+          <a href="{{ post.url | relative_url }}" class="read-more">繼續閱讀 →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="view-all-posts">
+      <a href="{{ '/archive/' | relative_url }}" class="btn-view-all">查看所有文章 →</a>
+    </div>
+  </section>
+
+  <!-- FAQ 快速區塊 -->
+  <section class="faq-quick">
+    <h2>常見問題</h2>
+    <p class="faq-summary">快速了解 AI Coding、Vibe Coding、ATPM 框架與企業 AI 轉型的關鍵問題。</p>
+
+    <div class="faq-grid">
+      <div class="faq-quick-item">
+        <h3>🚀 什麼是 AI Coding？</h3>
+        <p>使用 LLM 協作開發，透過 Vibe Coding、ATPM 等框架，可達 40% 開發加速。</p>
+      </div>
+
+      <div class="faq-quick-item">
+        <h3>📋 ATPM 框架是什麼？</h3>
+        <p>AI Coding 生產流程，強調 PRD 為 Single Source of Truth，已實證加速 40% 開發時間。</p>
+      </div>
+
+      <div class="faq-quick-item">
+        <h3>🤖 AI Agent 導入常失敗？</h3>
+        <p>流程不清、資料混亂、缺乏 FDE 支援。關鍵：先解決人的問題，再談技術落地。</p>
+      </div>
+
+      <div class="faq-quick-item">
+        <h3>💼 如何用 AI 創收？</h3>
+        <p>透過 Up-Sell、個人化推薦等策略「把餅做大」，而非只是降本增效。</p>
+      </div>
+    </div>
+
+    <div class="faq-more">
+      <a href="{{ '/faq/' | relative_url }}" class="btn-faq">查看完整 FAQ（18 個問題詳解） →</a>
+    </div>
+  </section>
+</div>
+
+<!-- Schema.org JSON-LD 結構化資料 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI Coding 實戰分享",
+  "url": "https://ai-coding.wiselychen.com",
+  "description": "AI Coding、ATPM、Vibe Coding、AI Agent 落地與企業 AI 轉型案例分享。",
+  "author": {
+    "@type": "Person",
+    "name": "Wisely Chen",
+    "url": "https://www.wiselychen.com",
+    "jobTitle": "企業 AI 轉型顧問",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "創智動能"
+    }
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Wisely Chen"
+  }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "什麼是 AI Coding？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI Coding 是使用大語言模型（LLM）協作開發的方法，包括 Vibe Coding、Spec Driven Development、ATPM 等實戰框架。透過 AI 輔助撰寫程式碼、測試、文檔，可顯著提升開發效率。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AI Coding 可以用在生產環境嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。只要搭配完整的 PRD（產品需求文件）、測試流程與知識庫，AI Coding 已在多個生產專案中驗證，實測可達 40% 開發時間加速。關鍵在於建立正確的協作流程與品質把關機制。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "什麼是 ATPM 框架？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ATPM（Assessment, Testing, Program, Management）是一套 AI Coding 生產流程，強調 PRD 為 Single Source of Truth、測試驗收機制、AI-人類協作模式，以及進度追蹤。已在實際專案中證明可加速 40% 開發時間。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "企業導入 AI Agent 常失敗的原因？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "常見失敗原因包括：流程不清晰、資料混亂、落地場景選擇錯誤、缺乏 FDE（Forward Deployed Engineer）實作支援、過度期待自動化而忽略人的因素。成功關鍵在於「先把人的問題解決，再談技術落地」。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如何開始學習 AI Coding？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "建議從實際專案開始，使用 Cursor 或 Claude Code 等 AI IDE，搭配完整的 PRD 撰寫。先從小型功能開始練習，逐步建立 AI-人類協作的節奏感。本站提供多篇實戰案例可參考。"
+      }
+    }
+  ]
+}
+</script>
