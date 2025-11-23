@@ -55,7 +55,7 @@ excerpt: "探討如何用 System 2 思維為 Agent 加入自我檢查能力，�
 
 我們今天介紹新的架構 " Plan & Exec & Critic "
 
-Deep Research 架構的核心洞察:
+Plan, Exec, Critic 架構的核心洞察:
 
 **不要強迫球員兼裁判，一個模型同時扮演兩個角色。**
 
@@ -70,7 +70,7 @@ Deep Research 架構的核心洞察:
 - Critic/Reflector Node: 一致性檢查、完整性檢查、幻覺檢測
 - 使用強推理模型
 
-![Deep Research 控制流架構](/assets/images/deep-research-control-flow.png)
+![Plan, Exec, Critic 控制流架構](/assets/images/deep-research-control-flow.png)
 
 這個解耦帶來兩個關鍵好處:
 1. **成本效率**: 不需要用昂貴的模型做所有事情
@@ -82,7 +82,7 @@ Deep Research 架構的核心洞察:
 
 傳統 Agent 是線性的 DAG（有向無環圖）：Planner 規劃任務，Executor 執行檢索，Reporter 生成報告。一路到底，沒有回頭路。
 
-Deep Research 則是循環圖（Cyclic Graph）：在 Executor 之後，加入了 **Critic 節點**進行批判性審查。如果 Critic 發現問題（FAIL），就回到 Planner 重新規劃；只有當 Critic 確認 OK（PASS），才進入 Reporter 生成最終報告。
+Plan, Exec, Critic 則是循環圖（Cyclic Graph）：在 Executor 之後，加入了 **Critic 節點**進行批判性審查。如果 Critic 發現問題（FAIL），就回到 Planner 重新規劃；只有當 Critic 確認 OK（PASS），才進入 Reporter 生成最終報告。
 
 **Critic 節點是整個架構的靈魂。**
 
@@ -106,7 +106,7 @@ Deep Research 則是循環圖（Cyclic Graph）：在 Executor 之後，加入�
 
 當時主流的模型（如 GPT-3.5、早期的 Gemini）在擔任 Critic 角色時，會表現出「橡皮圖章」特性——無論檢索結果多麼不相關，都傾向於「通過」，完全沒有起到審查作用。
 
-直到 2024 年，GPT-4o、Claude 3.5 Sonnet、Gemini 2.0 Pro 等強推理模型出現，Deep Research 架構才真正變得可行。
+直到 2024 年，GPT-4o、Claude 3.5 Sonnet、Gemini 2.0 Pro 等強推理模型出現，Plan, Exec, Critic 架構才真正變得可行。
 
 **為什麼弱模型不行？**
 
@@ -130,11 +130,11 @@ Deep Research 則是循環圖（Cyclic Graph）：在 Executor 之後，加入�
 什麼時候該用呢？人類在處理複雜事物，或是思考錯誤成本很高的時候（像是審閱文件，商業決策）， 人的大腦也是會進入系統2的慢思考。你會排除掉大量的干擾只專心在決策上，所以「複雜事物」，「錯誤代價很高」的任務就應該走這個模式。
 
 所以決策樹很像是
-- 高風險問題(法律、醫療) → Deep Research
+- 高風險問題(法律、醫療) → Plan, Exec, Critic
 - 一般問題 → 傳統 Plan-Execute
 - 簡單問題 → 直接 RAG
 
-用一個問題分類器在前端做判斷,只對真正需要的場景啟用 Deep Research。
+用一個問題分類器在前端做判斷,只對真正需要的場景啟用 Plan, Exec, Critic。
 
 ---
 
