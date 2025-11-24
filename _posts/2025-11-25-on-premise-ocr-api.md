@@ -5,9 +5,15 @@ date: 2025-11-25 04:15:00 +0800
 permalink: /on-premise-ocr-api/
 image: /assets/images/ocr-system-architecture.png
 description: "在 AI Agent 時代，沒人想聊無聊的基礎建設。但 60-70% 的企業資料躺在 PDF 裡，地端 OCR API 是繞不過去的關鍵。"
+author: "Wisely Chen"
+categories: ["AI Agent", "Infrastructure", "OCR", "Enterprise AI"]
+tags: ["OCR", "On-Premise", "PDF Processing", "AI Infrastructure", "Enterprise Architecture", "Dead Letter Queue", "System Design", "Docker", "技術品味"]
+excerpt: "當 60-70% 的企業資料躺在 PDF 裡，地端 OCR API 成為 AI Agent 落地的關鍵基礎建設。本文分享實戰經驗：好架構的判斷標準、五個常見的坑，以及為什麼技術品味比技術本身更重要。"
+canonical_url: "https://thegiive.github.io/on-premise-ocr-api/"
+og_image: "/assets/images/ocr-system-architecture.png"
+og_type: "article"
+twitter_card: "summary_large_image"
 ---
-
-![OCR System Architecture](/assets/images/ocr-system-architecture.png)
 
 大家都在講 AI Agent，講 Multi-Agent，講 Agentic Workflow。
 
