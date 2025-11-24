@@ -21,7 +21,7 @@ twitter_card: "summary_large_image"
 
 就像蓋房子，所有人都在討論室內設計要多漂亮，但沒人想聊地基怎麼打。
 
-## 現實問題
+## 無聊但重要的基礎建設
 
 地端 OCR API 就是這種東西。無聊嗎？超無聊。重要嗎？非常重要。
 
@@ -29,7 +29,7 @@ twitter_card: "summary_large_image"
 
 雲的 AI Agent 當然沒這個問題，但是 enterprise  AI Agent 再聰明，面對一堆 PDF 就是個瞎子。
 
-## 技術已經不值錢了
+## 技術跟品味的差距
 
 老實說，現在任何一個會 Vibe Coding 的人，兩小時就能搭出一個「能動」的 OCR 服務。但是你的服務真的「好嗎？」
 
@@ -67,6 +67,6 @@ API Gateway → Message Queue → OCR Worker → Database
 
 5. **Log Sanitization** - OCR 處理很多機敏資料（信用卡拍照），金融企業要特別注意
 
-## 核心洞察
+## 在 AI可以做每一件事情的時候，我們需要啥？
 
 當產生「系統」的能力已經很廉價的年代，鑒賞「系統」的能力反而變成稀缺。地端 OCR API 很無聊，但這種無聊的基礎建設，才是 AI Agent 真正落地的關鍵。
