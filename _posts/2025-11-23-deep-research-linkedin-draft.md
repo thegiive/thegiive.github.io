@@ -123,6 +123,21 @@ Plan, Exec, Critic 則是循環圖（Cyclic Graph）：在 Executor 之後，加
 
 每次 Critic 調用都需要使用強推理模型，而且如果平均迭代 2-3 次，整體的 token 消耗和響應時間都會是傳統單次執行的數倍。
 
+--- 
+
+## Demo 一下效力
+
+我問了一下 AI 哪種範例最容易觸發 Plan, Exec, Critic 的 Critic ,  AI 告訴我問一些 "Model訓練之初就有的訊息"，但是"最近已經更新 " ，像是某些模型的最新版是幾版，這樣如果沒有一個厲害的 Critic, 很容易直接拿模型裡面的知識就回覆了。
+
+我的問題是：市面上最好的 Cot 模型是啥? 
+然後我用 AI Studio 刻了一個 Deep Research Agent (Plan, Exec, Critic-> Gemini 3.0 ) , 然後對比今天的 ChatGPT 5.1 , 
+結果很明顯, 有Critic 的 model 就可以判斷模型內的資訊這可能不是最新的資訊，趕快去網上抓最新的(OpenAI 5.1...etc )
+
+但是 ChatGPT 5.1 就不觸發 web search ，直接拿模型內的資料回覆（回了 OpenAI-4o ，Sonnet 3.7) 
+
+![深度研究 Demo 1](/assets/images/deep-research-demo-1.png)
+
+![深度研究 Demo 2](/assets/images/deep-research-demo-2.png)
 ---
 
 ## 使用場景
@@ -135,6 +150,8 @@ Plan, Exec, Critic 則是循環圖（Cyclic Graph）：在 Executor 之後，加
 - 簡單問題 → 直接 RAG
 
 用一個問題分類器在前端做判斷,只對真正需要的場景啟用 Plan, Exec, Critic。
+
+
 
 ---
 
