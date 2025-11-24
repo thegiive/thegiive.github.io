@@ -121,7 +121,13 @@ Plan, Exec, Critic 則是循環圖（Cyclic Graph）：在 Executor 之後，加
 
 所以這個 Agent Model 明顯的代價：**響應時間變慢，成本顯著增加。**
 
-每次 Critic 調用都需要使用強推理模型，而且如果平均迭代 2-3 次，整體的 token 消耗和響應時間都會是傳統單次執行的數倍。
+
+** Gemini 3 Pro Deep Think 讓這一切更厲害 ** 
+
+2025/11的現在，Gemini 3 Pro 這次上版加入 Deep Think ，裡面包含 " 推理優先解碼和思維鏈內化 "  , 更大的推理範圍（工具+模擬）以及 更高的運算能力/延遲權衡。 
+
+為了實現更深入的推理，Deep Think 的推理成本和延遲都高於 Pro 版本。谷歌歷來在其模型中提供此類權衡，例如提供高級「專家」模式；Deep Think 也遵循此模式，優先考慮品質和可靠性。讓這個 Plan & Exec & Critic 這個 Agent Model 更加可行
+
 --- 
 
 ## Demo 一下效力
