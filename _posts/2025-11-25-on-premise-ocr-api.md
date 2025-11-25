@@ -3,14 +3,14 @@ layout: post
 title: "AI Agent 時代的無聊基礎建設：地端 OCR API"
 date: 2025-11-25 04:15:00 +0800
 permalink: /on-premise-ocr-api/
-image: /assets/images/ocr-system-architecture.png
+image: /assets/images/warehouse-infrastructure-experience.jpg
 description: "在 AI Agent 時代，沒人想聊無聊的基礎建設。但 60-70% 的企業資料躺在 PDF 裡，地端 OCR API 是繞不過去的關鍵。"
 author: "Wisely Chen"
 categories: ["AI Agent", "Infrastructure", "OCR", "Enterprise AI"]
-tags: ["OCR", "On-Premise", "PDF Processing", "AI Infrastructure", "Enterprise Architecture", "Dead Letter Queue", "System Design", "Docker", "技術品味"]
-excerpt: "當 60-70% 的企業資料躺在 PDF 裡，地端 OCR API 成為 AI Agent 落地的關鍵基礎建設。本文分享實戰經驗：好架構的判斷標準、五個常見的坑，以及為什麼技術品味比技術本身更重要。"
+tags: ["OCR", "On-Premise", "PDF Processing", "AI Infrastructure", "Enterprise Architecture", "Dead Letter Queue", "System Design", "Docker", "技術品味", "基礎建設優化"]
+excerpt: "我這個人還滿享受『基礎建設優化』這件事情的，就像雙十一，我是真的會跑去倉庫現場檢貨，體驗電商的基礎建設。當 60-70% 的企業資料躺在 PDF 裡，地端 OCR API 成為 AI Agent 落地的關鍵基礎建設。"
 canonical_url: "https://thegiive.github.io/on-premise-ocr-api/"
-og_image: "/assets/images/ocr-system-architecture.png"
+og_image: "/assets/images/warehouse-infrastructure-experience.jpg"
 og_type: "article"
 twitter_card: "summary_large_image"
 ---
@@ -23,27 +23,19 @@ twitter_card: "summary_large_image"
 
 ## 無聊但重要的基礎建設
 
-地端 OCR API 就是這種東西。無聊嗎？超無聊。重要嗎？非常重要。
+我這個人還滿享受「基礎建設優化」這件事情的，就像雙十一，大家都想到電商如何行銷策略，但是我一個 IT 人，我是真的雙十一會跑去倉庫現場檢貨，體驗電商的基礎建設。
 
-為什麼？因為 Enterprise 的現實是 60-70% 的資料躺在 PDF 裡（合約、發票、技術規格書、會議紀錄掃描檔），LLM 讀不懂這些 PDF，資安考量，不能上雲
+![在倉庫現場體驗基礎建設](/assets/images/warehouse-infrastructure-experience.jpg)
 
-雲的 AI Agent 當然沒這個問題，但是 enterprise  AI Agent 再聰明，面對一堆 PDF 就是個瞎子。
-
-## 技術跟品味的差距
-
-老實說，現在任何一個會 Vibe Coding 的人，兩小時就能搭出一個「能動」的 OCR 服務。但是你的服務真的「好嗎？」
-
-有幸，看得懂技術架構好壞的品味，我應該還在。
+這幾天大家談 AI Agent、Gemini 3.0 Pro、Nano Banana Pro，但很少人談地端 OCR API 這個「無聊的基礎建設」。沒有它，企業的 AI Agent 根本看不見 60–70% 躺在 PDF 裡的資料（合約、發票、規格書、掃描檔）。因為很多 enterprise 又不能上雲，地端 Agent 沒用。
 
 ## 什麼是好架構
 
-最近看到這個：https://github.com/markuskuehnle/credit-ocr-system
+當然關於 OCR API，現在任何會 Vibe Coding 的人幾分鐘就能做出一個能跑的 OCR，但設計的人的「架構品味」好不好真的是另一回事。
 
-這個架構挺 solid：
+最近看到一個挺 solid 的 "Bare Metal" 架構：https://github.com/markuskuehnle/credit-ocr-system
 
-```
-API Gateway → Message Queue → OCR Worker → Database
-```
+![OCR System Architecture](/assets/images/ocr-system-architecture.png)
 
 為什麼好？
 
@@ -53,7 +45,9 @@ API Gateway → Message Queue → OCR Worker → Database
 
 3. **水平擴展** - 可以根據 SLA 動態調整 worker 數量
 
-既然是地端，有一些成本，像是硬體層面擁抱 CPU 非 GPU  。OCR 使用 RapidOCR + ONNX Runtime , 可以降低 infra 成本
+當然這個東西跟 Paperless-ngx 這樣的生產級別的系統，還是弱了點。但是賣點是 source 量是 paperless-ngx 的 1/20，可發展空間好多了。加上在 Vibe Coding 的大時代，有一個很漂亮的架構 Bare Metal 骨架，可以很輕鬆地 Vibe Coding 擴充功能。
+
+既然是地端，有一些成本，像是硬體層面擁抱 CPU 非 GPU。OCR 使用 RapidOCR + ONNX Runtime，可以降低 infra 成本
 
 ## 但魯棒性還有五個坑要注意，不然還是會掛：
 
