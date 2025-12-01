@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Anthropic 官方解密：為什麼 Claude Code 這麼好用？"
+title: "[Agent Part 5] 雙 Agent 架構: Anthropic 官方解密為什麼 Claude Code 這麼好用的內部工程架構"
 date: 2025-12-01 08:40:00 +0800
 permalink: /anthropic-dual-agent-architecture/
 image: /assets/images/dual-agent-architecture-logo.png
