@@ -39,6 +39,51 @@ Anthropic 的解法是把長時任務拆成兩種角色。
 
 這種節奏雖然慢，但極其可靠。把「無人監督的長時任務」變成「每輪可驗證的開發迭代」。這個很像之前說的 Plan, Exec, Critic
 
+## 實作細節：JSON Manifest 結構
+
+功能清單使用 JSON 格式，每個功能都有明確的驗收步驟：
+
+```json
+{
+  "category": "functional",
+  "description": "New chat button creates a fresh conversation",
+  "steps": [
+    "Navigate to main interface",
+    "Click the 'New Chat' button",
+    "Verify a new conversation is created",
+    "Check that chat area shows welcome state",
+    "Verify conversation appears in sidebar"
+  ],
+  "passes": false
+}
+```
+
+關鍵設計：**Agent 只能修改 `passes` 欄位**，不能刪除或編輯測試本身。這確保了驗收標準的一致性。
+
+## Coding Agent 的典型會話開始
+
+每次新會話，Coding Agent 會先「Onboarding」自己：
+
+```
+[Assistant] 我將開始了解項目當前狀態
+[Tool Use] <bash - pwd>
+[Tool Use] <read - claude-progress.txt>
+[Tool Use] <read - feature_list.json>
+```
+
+這就是為什麼 Claude Code 開始時會先讀 CLAUDE.md、檢查 git log、理解專案結構——**它在重建上下文**。
+
+## 常見失敗模式與解決方案
+
+| 問題 | 解決方案 |
+|------|--------|
+| Agent 過早宣布完成 | 設置 200+ 個功能的清單，強制逐一驗證 |
+| 環境留有未記錄的 bug | 強制寫入 git + progress file |
+| 功能被過早標記完成 | 必須用 Puppeteer 自我驗證後才能標記 |
+| Agent 花時間搞清楚如何啟動應用 | 提供 init.sh 腳本，一鍵啟動 |
+
+文章特別提到：即使用最強的 **Claude Opus 4.5**，「開箱即用」也無法在多個上下文窗口中構建生產級 web 應用——**除非採用這套結構化方法**。
+
 ## 不再是模型，一切都是工程 workflow
 
 看到這架構，我第一反應是：**這不就是 SDD 一直強調的嗎？**
