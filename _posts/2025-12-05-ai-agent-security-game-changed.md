@@ -92,6 +92,8 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 
 只需要一個精心設計的 prompt，等 AI 自己把資料送出去。
 
+![EchoLeak Attack Diagram](/assets/images/echoleak-attack-diagram.png)
+
 ---
 
 這讓我開始思考一個問題：**我們是不是還在用 Chatbot 時代的安全思維，來處理 Agent 時代的風險？**
