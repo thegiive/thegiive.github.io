@@ -9,7 +9,7 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 
 ![AI Agent Security](/assets/images/ai-agent-security-logo.png)
 
-上週五，我在香港迪士尼酒店 **玩得很開心(Delete)** 做很棒的技術演講，分享了在大 Agent 時代的資安威脅 , 跟許多同業跟客戶交流，聽到一些有趣的故事
+上週五，我在香港迪士尼酒店 ~~玩得很開心~~ 做很棒的技術演講，分享了在大 Agent 時代的資安威脅 , 跟許多同業跟客戶交流，聽到一些有趣的故事
 
 2025 年 7 月，資安公司 Noma Security 揭露了一個讓企業冷汗直流的漏洞 — **Salesforce "ForcedLeak"**。這不是一個傳統的系統漏洞，而是針對 Salesforce 新推出的 **Agentforce 平台** — 一個讓 AI 自主操作 CRM 數據的企業級 Agent 系統。
 
