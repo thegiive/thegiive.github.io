@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AI 不只關乎生產力，更關乎人在狀況不佳時的韌性"
+title: "昨天雖然精神不好，但是 AI 還是幫了我一個小忙"
 date: 2025-12-06 18:00:00 +0800
 permalink: /ai-resilience-when-unwell/
 image: /assets/images/ai-resilience-logo.png
