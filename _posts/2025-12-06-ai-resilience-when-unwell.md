@@ -3,6 +3,7 @@ layout: post
 title: "昨天雖然精神不好，但是 AI 還是幫了我一個小忙"
 date: 2025-12-06 18:00:00 +0800
 permalink: /ai-resilience-when-unwell/
+image: /assets/images/logo3.png
 description: "最近感冒了，有點沒睡好。這已經不是AI是否可以增加生產力的議題。這是AI可以輔佐人在狀況不佳的時候，還是可以產出一定程度的成品。"
 ---
 
