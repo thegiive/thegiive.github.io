@@ -7,8 +7,6 @@ image: /assets/images/xiaolaoban-part2-ai-agent-cover.png
 description: "AI Agent 的四個條件：智能、記憶、工具調用、除錯能力。探討企業如何整合 AI 工具、資安考量，以及 AI 對企業的三大應用方向：降本、增效、拓展新商機。"
 ---
 
-![什麼是 AI Agent？](/assets/images/xiaolaoban-part2-ai-agent-cover.png)
-
 **來源：** [小老闆充電站 YouTube](https://www.youtube.com/watch?v=bIn2NKCY4SE)
 **系列：** 小老闆充電站訪談第二篇
 **第一篇：** [企業 AI 轉型：從數位轉型到 AI 轉型](/enterprise-ai-transformation/)
