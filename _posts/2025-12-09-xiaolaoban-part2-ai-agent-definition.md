@@ -15,6 +15,8 @@ description: "AI Agent 的四個條件：智能、記憶、工具調用、除錯
 
 ---
 
+{% include youtube.html id="bIn2NKCY4SE" %}
+
 ## 什麼叫 AI Agent？
 
 這個詞有點被濫用了。基本上它就是一個智能體，能夠做有點像有智能的工作。聊天機器人算 agent 嗎？也算。自動化掃描上傳的東西也算，因為它做人做的事情。
