@@ -71,6 +71,8 @@ description: "這三年來真正改變我生活軌跡的 AI 工具就三個：�
 
 新人或主管要了解專案？**5 分鐘看完這份簡報就夠了。**以前我要花 30 分鐘口頭 brief，現在直接丟連結。
 
+![NotebookLM 生成的簡報範例](/assets/images/notebooklm-briefing-example.png)
+
 ### 第二步：有問題直接問
 
 這是日常使用最頻繁的功能。
