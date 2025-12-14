@@ -4,7 +4,7 @@ title: "[ATPM] QA：如何驗收 AI Coding 的程式"
 date: 2025-09-29 13:57:40 +0000
 permalink: /atpm-qa-ru-he-yan-shou-ai-coding-de-cheng-shi/
 image: /assets/images/ChatGPT-Image-2025---9---29----------09_52_27-1-1.png
-description: "AI 會寫 Code 了，但誰來為結果負責？..."
+description: "AI Agent 寫的程式，最終還是人要扛責。本文分享三大策略：略懂 AI 在寫什麼、用 AI 做 QA 驗證、設計最壞情況控管機制。以帳務系統為例，展示如何用 PRD 驅動 AI 自動生成比人更嚴謹的測試腳本。"
 ---
 
 

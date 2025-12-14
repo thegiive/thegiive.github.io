@@ -4,7 +4,7 @@ title: "[ATPM] 開發者 (Dev) 的蛻變—從embed , copilot 到 agent"
 date: 2025-09-28 14:19:39 +0000
 permalink: /atpm-kai-fa-zhe-dev-de-shui-bian-cong-gong-du-sheng-ma-nong-dao-ai-zhi-hui-jia/
 image: /assets/images/Generated-Image-September-28--2025---10_17PM-1-1.png
-description: "三種層次的人跟AI協作模式..."
+description: "從 Embed（ChatGPT 當 Google）到 Copilot（Cursor + Claude）再到 Agent（Claude Code）的三層演進。分享團隊如何從 0→1 建立 AI 協作模式，以及每個階段的好處、問題與切換時機。"
 ---
 
 

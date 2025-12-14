@@ -4,7 +4,7 @@ title: "ATPM : A real production Vibe Coding process"
 date: 2025-09-16 21:41:01 +0000
 permalink: /atpm-a-real-production-vibe-coding-process/
 image: /assets/images/-------2025-09-17-------4.31.54.png
-description: "章節..."
+description: "ATPM 是經過生產環境驗證的 Vibe Coding 流程框架，以 PRD 為核心實現 40% 開發加速。本系列分享如何用 AI 協作解決幻覺、測試困難等 AI Coding 痛點，成功上線帳務系統的完整經驗。"
 ---
 
 

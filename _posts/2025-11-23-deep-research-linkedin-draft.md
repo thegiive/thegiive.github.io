@@ -6,7 +6,7 @@ categories: AI Agent
 tags: [AIAgent, DeepResearch, LLM, ArchitecturalDesign, System2Thinking, ProductionAI]
 author: Wisely Chen
 image: /assets/images/deep-research-title-logo.png
-description: ""
+description: "傳統 Agent 缺乏自我檢查能力，容易「一本正經地胡說八道」。Plan, Exec, Critic 架構引入 System 2 慢思維，透過 Critic 節點實現循環改進。本文詳解架構設計、強推理模型必要性，以及何時該用這個模式。"
 excerpt: "探討如何用 System 2 思維為 Agent 加入自我檢查能力，解決傳統架構的根本問題。包括架構解耦、Critic 節點設計、強推理模型的必要性，以及使用場景決策樹。"
 ---
 

@@ -4,7 +4,7 @@ title: "OpenAI Codex 降智復盤報告給我們啟示：真誠永遠是最好�
 date: 2025-11-03 21:35:56 +0000
 permalink: /openai-codex-jiang-zhi-fu-pan-bao-gao-gei-wo-men-qi-shi-zhen-cheng-yong-yuan-shi-zui-hao-de-bi-sha-ji/
 image: /assets/images/HuM7-Ljf25IoSJfNXs7Py.png
-description: "問題：當系統開始出現幽靈..."
+description: "OpenAI Codex 降智事件復盤：從「內外版本不一致」到移除 60+ feature flags 的調查過程。真正的問題是上下文壓縮、API 層抽象疊加。透明公開調查過程，反而贏得用戶信任。"
 ---
 
 
