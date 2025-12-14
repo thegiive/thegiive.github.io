@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Agent模式 Part 2 ] 臨機應變 vs 讀著路書跑 — 為什麼 AI Agent 需要 Plan & Exec 模式"
+title: "[Agent Part 2] Plan & Exec 臨機應變 vs 讀著路書跑"
 date: 2025-11-01 03:59:36 +0000
 permalink: /mang-mu-jia-su-vs-du-zhu-lu-shu-pao-wei-shi-mo-ai-agent-xu-yao-plan-exec-mo-shi/
 image: /assets/images/ChatGPT-Image-2025---11---1----------11_27_12.png

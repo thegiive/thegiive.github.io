@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Agent Part 5] 在你的文章上，撒上你的鹽吧！"
+title: "[Agent Part 6] Storm：駕馭整個文章編輯團隊"
 image: /assets/images/storm-ai-agent-diagram-20251207.png
 tags: [AI, Agent, Storm, Stanford, Human-in-the-loop]
 categories: [AI Agent]
