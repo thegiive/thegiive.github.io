@@ -4,7 +4,7 @@ title: "那天我在產業園區分享：AI 能不能做起來，其實看人"
 date: 2025-11-13 06:46:49 +0000
 permalink: /na-tian-wo-zai-chan-ye-yuan-qu-fen-xiang-ai-neng-bu-neng-zuo-qi-lai-qi-shi-kan-ren/
 image: /assets/images/S__88875042.jpg
-description: "今天我在新北產業園區，在我們公司的 AI 轉型的活動..."
+description: "AI 在傳產落地，先解決的永遠不是模型，而是人、流程與文化。三步驟：現況分析（老前輩+Intern 種子團隊）→ 快速勝利（AI+RPA+OCR 小範圍試點）→ 全面升級（種子團隊散布全公司）。這就是 FDE 模式。"
 ---
 
 

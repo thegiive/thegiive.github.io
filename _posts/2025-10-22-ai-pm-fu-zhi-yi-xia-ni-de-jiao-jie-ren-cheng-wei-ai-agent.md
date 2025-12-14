@@ -4,7 +4,7 @@ title: "[AI PM]  複製一下你的交接人成為AI Agent"
 date: 2025-10-22 01:13:09 +0000
 permalink: /ai-pm-fu-zhi-yi-xia-ni-de-jiao-jie-ren-cheng-wei-ai-agent/
 image: /assets/images/Generated-Image-October-22--2025---5_52AM-1.png
-description: "既然跟同事交接很困難，那就直接複製一下你的交接同事成為 Agent 吧.... XD..."
+description: "把 50+ 專案 insights 轉成 237 組 QA 對，建立 RAG 知識庫。Claude Code 的三層架構：低層 Bash、中層 Grep/Read、高層 Task/Todo。從 2-3 週 onboarding 縮短到 3 天基本掌握。"
 ---
 
 

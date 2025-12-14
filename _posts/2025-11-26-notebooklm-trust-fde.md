@@ -4,7 +4,7 @@ title: "NotebookLM 時代，還需要數據分析的人嗎？"
 date: 2025-11-26 08:30:00 +0800
 permalink: /notebooklm-trust-fde/
 image: /assets/images/trust-fde-logo.png
-description: "AI 能加速 99% 的分析工作，但那 1% 讓人願意行動的信任，還是要人去建立。"
+description: "用 Claude Code 30 分鐘產出十大建議，總經理說要驗算邏輯。於是我們花了一百天每天早上 8-9 點站會，讓現場信任這些數據。AI 能產生海量 insight，但讓人願意「改變行為」的信任，還是要人去建立。"
 ---
 
 ![trust-fde-logo](/assets/images/trust-fde-logo.png)

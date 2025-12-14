@@ -4,7 +4,7 @@ title: "ATPM :  PRD的重要性"
 date: 2025-09-21 10:42:40 +0000
 permalink: /atpm-prdde-zhong-yao-xing/
 image: /assets/images/-------2025-09-21-------6.56.22.png
-description: "如果說 ATPM / Spec driven Development ， 跟一般軟體開發流程最大的不同，就是..."
+description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭代每天都在發生，某業務計價 PRD 開發期間改了 24 次。透過瘋狂輪替讓每個人都是 PM+Engineer+QA，確保 PRD 成為唯一可信任的資訊中心。"
 ---
 
 

@@ -4,7 +4,7 @@ title: "VIBE  Coding最棒的事情就是把新朋友帶軟體開發的世界"
 date: 2025-09-26 23:15:21 +0000
 permalink: /ti-wai-hua-ai-codingzui-bang-de-shi-qing-jiu-shi-ba-xin-peng-you-dai-ruan-ti-gong-cheng/
 image: /assets/images/OHUFc_3kQtKONOdt6oSbZ.png
-description: "昨天看到 VIBE Coding / Google AI Studio 某篇文章瘋傳，看到社群朋友們給予相關的「指導」。心裡想說啥，又不知道要怎講。..."
+description: "Vibe Coding 帶來大量「新朋友」進入軟體開發世界。API Key 外洩？教就是了，我們也整天 commit security key。這些非資訊科系的夥伴帶來不同 DNA，成本下降、產能提升，是技術主管的寶藏。"
 ---
 
 

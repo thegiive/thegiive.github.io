@@ -4,7 +4,7 @@ title: "昨天雖然精神不好，但是 AI 還是幫了我一個小忙"
 date: 2025-12-06 18:00:00 +0800
 permalink: /ai-resilience-when-unwell/
 image: /assets/images/logo3.png
-description: "最近感冒了，有點沒睡好。這已經不是AI是否可以增加生產力的議題。這是AI可以輔佐人在狀況不佳的時候，還是可以產出一定程度的成品。"
+description: "感冒沒睡好，但 12:00 要教育訓練 10 個 PM。11:30 用 ChatGPT 語音問答抓重點、11:46 丟進 NotebookLM 產簡報、12:00 上線分享。AI 永遠不累，讓我在狀況不佳時還能即時為團隊服務。"
 ---
 
 最近感冒了，有點沒睡好。

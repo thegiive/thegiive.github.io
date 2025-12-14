@@ -4,7 +4,7 @@ title: "超慢跑也能 Coding：Claude Code 帶來的真正生產力"
 date: 2025-10-28 05:57:09 +0000
 permalink: /vibe-duo-ai-ru-he-zeng-jia-wo-de-sheng-chan-li/
 image: /assets/images/-------2025-10-26-------6.58.28-1-1.png
-description: "大家都說 AI可以增加生產力，那到底啥是真正的生產力？..."
+description: "超慢跑 + Claude Code 是天作之合：95% 時間不用顧，5% 停下來 debug。通勤開車等紅燈下指令、健身房組間休息看進度、走路時用 ChatGPT Live Chat 整理思維。Claude Code for Web 解鎖多工健康模式。"
 ---
 
 

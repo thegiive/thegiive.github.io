@@ -4,7 +4,7 @@ title: "AI Agent 時代的無聊基礎建設：地端 OCR API"
 date: 2025-11-25 04:15:00 +0800
 permalink: /on-premise-ocr-api/
 image: /assets/images/warehouse-infrastructure-experience.jpg
-description: "在 AI Agent 時代，沒人想聊無聊的基礎建設。但 60-70% 的企業資料躺在 PDF 裡，地端 OCR API 是繞不過去的關鍵。"
+description: "所有人都在討論 AI Agent，但沒人想聊「地基怎麼打」。60-70% 企業資料躺在 PDF 裡，地端 OCR API 是關鍵。好架構要有 MQ 緩衝、故障隔離、水平擴展。RapidOCR + ONNX Runtime 讓 CPU 也能跑。"
 author: "Wisely Chen"
 categories: ["AI Agent", "Infrastructure", "OCR", "Enterprise AI"]
 tags: ["OCR", "On-Premise", "PDF Processing", "AI Infrastructure", "Enterprise Architecture", "Dead Letter Queue", "System Design", "Docker", "技術品味", "基礎建設優化"]

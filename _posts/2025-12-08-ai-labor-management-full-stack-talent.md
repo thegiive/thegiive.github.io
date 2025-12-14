@@ -4,6 +4,7 @@ title: "AI 勞資雙方破局：全端能力是基本要求"
 image: /assets/images/ai-labor-management-full-stack-talent-cover.png
 tags: [AI, 全端, 勞資關係]
 categories: [AI]
+description: "AI 時代勞資雙方要破局，關鍵在「全端能力」。工程師要能獨立交付整個 Feature；PM/AM 要能用 AI 做 POC 驗證需求。當溝通層級減少，產品迭代加速，勞資才能站在同一陣線。"
 ---
 上次說的勞資雙方在 AI 這件事情上，本身就處於不對的生態位。所以導致很多 AI 是無法落地的。我們需要一個新的合作模式。我認為要破AI勞資雙方不對盤這一局，勞資雙方都要專注在「全端能力」這件事情。
 

@@ -4,6 +4,7 @@ title: "[Agent Part 6] Storm：駕馭整個文章編輯團隊"
 image: /assets/images/storm-ai-agent-diagram-20251207.png
 tags: [AI, Agent, Storm, Stanford, Human-in-the-loop]
 categories: [AI Agent]
+description: "Stanford 的 Storm 模型把 AI 變成「多專家開會」模式：多個 AI 人格分工研究、互相挑戰查證，而人類站在總編輯位置做最後裁決。不是自動生成一切，而是 AI × Human 協作的最佳化版本。"
 ---
 
 ### **讓 AI 不再「想到哪寫到哪」，而是像一個專家編輯部一起寫深度報告（而且人類還能站在總編輯的位置上）**

@@ -4,7 +4,7 @@ title: "【AI PM 實戰】告別專案文件迷宮！用 Claude Code Agent 快�
 date: 2025-10-19 10:01:44 +0000
 permalink: /ai-pm-shi-zhan-gao-bie-zhuan-an-wen-jian-mi-gong-yong-claude-code-agent-kuai-su-xiao-hua-qian-ren-liu-xia-de-hai-liang-zi-liao/
 image: /assets/images/Generated-Image-October-19--2025---5_19PM.png
-description: "身為 PM，你是不是也遇過這種狀況：你得在極短時間內看完前任PM所有東西？ 這時候除了認命加班看文章，有沒有更好的方式？試試看 AI Agent 吧..."
+description: "前任 PM 留下 50+ 專案文件、數百個檔案。用 Claude Code + GDrive MCP 一天內完成全專案 Summary、時間線、技術線分析。原本要幾週的交接，現在放著跑，自己去開會。"
 ---
 
 

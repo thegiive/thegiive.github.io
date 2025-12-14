@@ -4,7 +4,7 @@ title: "AI 時代的面試：我不考 coding，只問為什麼"
 date: 2025-11-29 19:00:00 +0800
 permalink: /ai-era-interview-why-not-coding/
 image: /assets/images/ai-interview-headset-logo.png
-description: "AI 時代，Coding 速度不重要、會不會寫演算法不重要。重要的是：你怎麼思考？你會不會為你的技術選擇負責？"
+description: "AI 時代面試不考 HackerRank。我問：為什麼用這個？比較過哪些選項？答案不重要，產生答案的邏輯最重要。AI 不會失敗、永遠有答案，所以我要找有失敗經驗並且能吸取教訓的人。"
 ---
 
 ![機場面試裝備：全罩式耳機](/assets/images/ai-interview-headset-logo.png)

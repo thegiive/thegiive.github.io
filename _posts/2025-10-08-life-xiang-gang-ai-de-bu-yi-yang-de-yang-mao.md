@@ -4,7 +4,7 @@ title: "[Life] 香港AI 的不一樣的樣貌"
 date: 2025-10-08 13:34:28 +0000
 permalink: /life-xiang-gang-ai-de-bu-yi-yang-de-yang-mao/
 image: /assets/images/-------2025-10-08-------9.42.00-1.png
-description: "人總是有一個第二故鄉，不過我的第二故鄉蠻有趣的，上海跟香港都算是很有緣的地方。..."
+description: "香港可以上 Google，但不能用 ChatGPT、Claude、Gemini。沒有 Claude Code 像斷了一隻手，大家改用 POE 選 GPT model 或 DeepSeek。被 GenAI 廠商反向封鎖的市場，AI Coding 技術門檻反而更高。"
 ---
 
 

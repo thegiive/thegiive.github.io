@@ -4,7 +4,7 @@ title: "[Agent 模式 part 1]  - Workflow 型和 ReAct 型，誰更像你？"
 date: 2025-10-30 14:41:57 +0000
 permalink: /agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/
 image: /assets/images/ChatGPT-Image-2025---10---30----------10_36_55.png
-description: "你有沒有發現，自己工作中也分裂成兩個人，有時按規則做事，有時根據現實應變。其實AI Agent 也一樣。想像一下下面的場景..."
+description: "AI Workflow 按固定流程走，遇到資料庫掛掉就停住；真正的 AI Agent 會自己找備份系統解決問題。Agent 需具備三條件：知識庫提取、工具調用、容錯除錯能力。Workflow 適合穩定場景，Agent 適合複雜多變環境。"
 ---
 
 
