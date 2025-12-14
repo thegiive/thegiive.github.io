@@ -59,6 +59,27 @@ social:
   linkedin: wisely-chen-38033a5b
   website: https://www.wiselychen.com/
 
+# Open Graph / SEO Tag 設定
+twitter:
+  username: wiselychen
+  card: summary_large_image
+
+# Facebook Open Graph (選填)
+facebook:
+  publisher: https://www.facebook.com/wisely.chen
+
+# 預設 OG 圖片（當文章沒有設定 image 時使用）
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      image: /assets/images/default-og.png
+      author: "Wisely Chen"
+
+# Logo 設定 (用於 Schema.org)
+logo: /assets/images/logo.png
+
 # Google Analytics
 google_analytics: G-29FP7PE7GK
 
