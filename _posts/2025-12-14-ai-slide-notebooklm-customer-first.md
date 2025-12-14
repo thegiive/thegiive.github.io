@@ -15,6 +15,8 @@ description: "用 NotebookLM + Gemini 做簡報，追求的不是加速，而是
 
 後來在 Threads 上看到一些被點名的「問題簡報」，老實說也能理解為什麼會被罵：文字有 NotebookLM 的渲染錯誤、背景一看就知道是 NotebookLM 預設淡棕色風格。
 
+![NotebookLM 預設風格範例](/assets/images/notebooklm-default-style-example.png)
+
 這兩年，從 Gamma.app 到現在的 NotebookLM，我大概用 AI 做過 100+ 場簡報（約 90% 內部、10% 對外）。
 
 內部簡報我幾乎都是「我寫大綱 → AI 直出 → 就直接用」，因為錯了也沒差，省力。
