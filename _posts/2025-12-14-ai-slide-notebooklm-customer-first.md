@@ -62,3 +62,37 @@ description: "用 NotebookLM + Gemini 做簡報，追求的不是加速，而是
 ![O'Reilly 風格簡報範例 - 複製模型](/assets/images/ai-slide-oreilly-example-2.png)
 
 ![O'Reilly 風格簡報範例 - 三大核心目標](/assets/images/ai-slide-oreilly-example-3.png)
+
+---
+
+## 產生這個投影片的 Prompt
+
+```
+【角色設定】
+你現在是一位頂尖的視覺設計師與技術傳播專家，擅長將複雜的技術概念轉化為 O'Reilly 經典書籍封面風格（Classic O'Reilly Media Style）的專業簡報。
+
+【風格指南：O'Reilly 技術經典風】
+請根據《Designing Data-Intensive Applications》這本書的封面視覺語言，為我規劃簡報的視覺與內容風格。請嚴格遵守以下設計規範：
+
+1. 核心視覺主題 (Visual Theme)：
+   - 關鍵詞：學術權威、復古科學、極簡主義、工程美學。
+   - 圖像風格：所有插圖必須採用「19 世紀銅版畫/木刻風格 (Vintage Woodcut/Engraving)」的黑白線條圖。避免使用任何現代 3D 圖標、扁平化插圖或彩色照片。
+   - 隱喻手法：用古老的動物或機械結構來隱喻現代分散式系統的複雜性（例如：用「螞蟻群體」代表分散式節點，用「大象」代表持久化存儲）。
+
+2. 色彩計畫 (Color Palette)：
+   - 背景：大量純白 (#FFFFFF) 留白，強調乾淨與閱讀性。
+   - 主色：深紅色 (#870A24) 或磚紅色，僅用於標題色塊或強調重點。
+   - 文字與線條：純黑 (#000000) 或深灰，用於內文與插圖。
+
+3. 字體排印 (Typography)：
+   - 標題：請指定使用經典襯線體 (Serif，如 Garamond 或 Caslon)，傳達經典與嚴謹感。
+   - 內文：使用乾淨的無襯線體 (Sans-Serif，如 Helvetica 或 Arial)，確保技術細節的清晰度。
+
+【輸出任務】
+請根據上述風格，為我生成一份簡報大綱。在每一頁投影片的規劃中，除了內容重點外，請務必包含一個 [視覺設計建議] 的欄位，具體描述該頁面應該放什麼樣的「黑白版畫動物」或「圖表樣式」。
+
+範例格式：
+- 投影片 1：標題頁
+  - 標題：Designing Data-Intensive Applications (白字紅底色塊)
+  - 視覺設計建議：畫面中央放置一隻精細的「黑白蝕刻風格的印度野豬」插圖，背景純白，不加裝飾。
+```
