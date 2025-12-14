@@ -7,17 +7,7 @@ image: /assets/images/ai-slide-notebooklm-customer-first-cover.png
 description: "用 NotebookLM + Gemini 做簡報，追求的不是加速，而是「千人千色」的客製化。當色調、用字遣詞都符合客戶的企業語言，把客戶放在最中心，這才是 Customer First。"
 ---
 
-## 文章摘要
-
-| 項目 | 內容 |
-|------|------|
-| **核心觀點** | 用 AI 做簡報不是為了省時間，而是追求「千人千色」的客製化 |
-| **關鍵工具** | NotebookLM + Gemini 2.5 Pro + ChatGPT Atlas + Canva |
-| **實際成果** | 100+ 場簡報經驗，對外簡報 NotebookLM 使用率 100% |
-| **核心價值** | Customer First — 把客戶放在最中心，追求聽眾滿意度 |
-| **適用對象** | 需要對外提案、客戶簡報的專業人士 |
-
----
+> **用 NotebookLM + Gemini 做簡報，追求的不是加速，而是「千人千色」的客製化。當色調、用字遣詞都符合客戶的企業語言，把客戶放在最中心，這才是 Customer First。**
 
 昨天某知名 Conf 結束後，看到一些討論在說：
 「有講者明顯直接用 NotebookLM 生的簡報就上台，是不是不尊重聽眾？」
