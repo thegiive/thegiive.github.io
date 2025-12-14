@@ -10,11 +10,7 @@ description: "當我還在物流業的時候，某個週一下午，PM 在 email
 
 
 
-當我還在物流業的時候，某個週一下午，PM 在 email 上丟出上周五會議的AI自動紀要。 
-
-![](/assets/images/image-10-1.png)
-
-我看了兩眼就懵了：「我們物流業什麼時候決定投資英鎊了？」後來看一下會議轉寫稿。我看到這個才恍然大悟，原來 AI 把 物流的 InBound(入庫) 聽成英鎊了。
+當我還在物流業的時候，某個週一下午，PM 在 email 上丟出上周五會議的AI自動紀要。 我看了兩眼就懵了：「我們物流業什麼時候決定投資英鎊了？」後來看一下會議轉寫稿。我看到這個才恍然大悟，原來 AI 把 物流的 InBound(入庫) 聽成英鎊了。
 
 ### AI 轉寫工具的極限
 
@@ -39,9 +35,6 @@ Layer 1：多語言同音混淆
 ![](/assets/images/image-9.png)
 
 「奧拉雅」→ 實際是「Outliner」
-
-![](/assets/images/image-14-1.png)
-
 「留一些 Rick」→ 實際是「留一些 Record」。
 
 在香港開會時「英粵語夾雜」，連我自己瞬間都會愣住。這類錯誤是 ASR 的「同音優先級」問題。純靠通用語言模型很難修正，因為它不知道你公司用的是哪個詞。
@@ -52,7 +45,7 @@ Layer 1：多語言同音混淆
 每間公司都有相關技術，內部黑話。客戶代號、Project Code Name。  
 像是我之前工作整天在物流業 , 行業詞彙超級多的，例如ASRS，棧板，全拖，回單....etc。我在講一些 data project 時，GCP 相關技術常常是重災區
 
-![](/assets/images/image-11.png)
+![BigQuery 轉寫錯誤範例](/assets/images/ai-meeting-notes-knowledge-base.png)
 
   
 「手動按 BQR ROM」→ 實際應該是「手動按 BigQuery Run」  
