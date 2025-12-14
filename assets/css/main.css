@@ -174,6 +174,19 @@ main {
   margin: 20px 0;
 }
 
+/* Post Description (摘要色塊) */
+.post-description {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  border-left: 4px solid #667eea;
+  padding: 20px 25px;
+  margin: 30px 0 40px 0;
+  border-radius: 8px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #444;
+  font-weight: 500;
+}
+
 .post-content {
   font-size: 18px;
   line-height: 1.8;
