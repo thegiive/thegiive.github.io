@@ -56,3 +56,9 @@ description: "用 NotebookLM + Gemini 做簡報，追求的不是加速，而是
 ---
 
 *附圖為：因為網路上無法展現我的千人千色的成品簡報，我用技術文章當例子吧。我請 NotebookLM 去把 O'Reilly 的某本我的 Data 書轉成 O'Reilly 風的簡報（黑白風、動物截圖、紅色字）。想想這樣等級的簡報居然可以在 5 分鐘完成，真的很 amazing。*
+
+![O'Reilly 風格簡報範例 - 封面](/assets/images/ai-slide-notebooklm-customer-first-cover.png)
+
+![O'Reilly 風格簡報範例 - 複製模型](/assets/images/ai-slide-oreilly-example-2.png)
+
+![O'Reilly 風格簡報範例 - 三大核心目標](/assets/images/ai-slide-oreilly-example-3.png)
