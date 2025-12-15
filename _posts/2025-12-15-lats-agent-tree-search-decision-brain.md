@@ -117,7 +117,7 @@ LATS 的缺點其實非常明確，不需要遮掩：
 
 ## 與 Deep Research 架構的關係
 
-在上一篇 Agent 模式 Part 3 中，我們討論了 Deep Research 架構。有人可能會問：這兩者有什麼關係？
+在[上一篇 Agent 模式 Part 3](/deep-research-linkedin-draft/)，我們討論了 Deep Research 架構。有人可能會問：這兩者有什麼關係？
 
 兩者都引入了「自我修正」的能力，但切入角度不同：
 
