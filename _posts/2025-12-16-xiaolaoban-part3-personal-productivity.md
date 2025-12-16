@@ -94,7 +94,7 @@ Note. 請看我之前寫的[超慢跑也能 Coding：Claude Code 帶來的真正
 
 我突然覺得我的人生提升很多。
 
-同樣的，因為我在公司是 CTO，進去就是一天從九點一直到大概八九點，基本上都在會議當中。會議中有時候不是每一刻都在開會，這時候 Claude Code 就會幫我做一些事情，看一下看一下。
+同樣的，因為我在公司是研發長，進去就是一天從九點一直到大概八九點，基本上都在會議當中。會議中有時候不是每一刻都在開會，這時候 Claude Code 就會幫我做一些事情，看一下看一下。
 
 **它確實改變我人生很多。我們 C-Level 的大家知道 Claude Code 出來之後，大家的戰力突然提升，大家又都會寫 code 了，產出力變強了。**
 
@@ -131,7 +131,6 @@ Note. 請看我之前寫的[超慢跑也能 Coding：Claude Code 帶來的真正
 
 Note. 請看我之前說的 [[Agent 模式 part 1] - Workflow 型和 ReAct 型，誰更像你？](https://ai-coding.wiselychen.com/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/)，裡面寫到 React 的除錯能力
 
-Note1. 請看我之前說的 []
 
 
 我定義「能做事」為：能夠調用工具，因為你要能夠 access 有意義的資料，以及能夠除錯。
@@ -143,6 +142,7 @@ Note1. 請看我之前說的 []
 所以這個時候人在裡面扮演的就是幫你導正、或是真的不行的時候幫你除錯的角色。
 
 **如果你帶領一群很年輕很有衝勁的人，每個人都配給他 agent，這樣效率是奇高無比的。**
+![年輕很有衝勁的FDE團隊](/assets/images/dify-open-source-agent.png)
 
 Note. 請看我寫的 [FDE：一個持續下去的實驗](https://ai-coding.wiselychen.com/fde-continuous-experiment/)
 
@@ -178,8 +178,6 @@ Note. 請看我之前說的 [[Agent Part 6] Storm：駕馭整個文章編輯團�
 
 **開源有很多不錯的像 Dify 這樣子的工具，可以很快速搭建出一個不錯的 agent。**
 
-![Dify：開源 Agent 搭建工具](/assets/images/dify-open-source-agent.png)
-
 如果要自己用 GPT 做得到嗎？做得到啊。像現在的 GPT 它其實只有一些系統提示，或像之前的 GPTs。Claude 最近出了叫做 Claude Skill 這樣子的東西，基本上就是把一堆提示、一堆文件 upload 上去，它就變成相關人設和知識，然後再用像 MCP 這樣子的東西去 access 相關的資料，它就可以做到相關的 agent 的東西。而且效果還不錯，真的還不錯。
 
 ---
@@ -199,6 +197,8 @@ Note. 請看我之前說的 [[Agent Part 6] Storm：駕馭整個文章編輯團�
 ### 寫 Code
 - **Claude Code** — 就不用說了。我自己的感覺，它是一個很積極幫你處理問題的人，但有些時候它會處理太多、做過頭。
 - **GPT Codex / o3** — 如果你覺得做太多之後要修 bug，就回去找它。它是一個犀利、跨不多，但是能夠快速幫你把 bug 解決的人。
+
+Note. 請看我之前寫的[[Agent Part 5] 雙 Agent 架構: Anthropic 官方解密為什麼 Claude Code 這麼好用的內部工程架構](https://ai-coding.wiselychen.com/anthropic-dual-agent-architecture/)
 
 所以當你要寫程式、要一個比較積極的 engineer，或是一個 junior 到 middle 來說很好的 engineer，你就找 Claude Code。但是你要一個很犀利、不這麼有趣、但能夠解決問題的話，就找 GPT。
 
@@ -223,6 +223,8 @@ Note. 請看我之前說的 [[Agent Part 6] Storm：駕馭整個文章編輯團�
 我的做法比較工程面。我自己曾經試過就是把這些東西全部丟到 NotebookLM，效果不錯。加上 Gemini 它能夠吃的 context 蠻大的，這是它之前的賣點。
 
 所以一開始的話，你先看 NotebookLM 跟 Gemini 能不能承受你這東西，或者效果好不好。如果效果好的話，你就不用知道我教的，因為就夠了。而且我相信 Gemini 或這些大廠他們會進步，所以我現在要跟你講的任何技巧，幾個月後可能就是 anti-pattern 了。
+
+Note. 請看我之前寫的 [NotebookLM：當 AI 工具終於具備「知識保真度」](https://ai-coding.wiselychen.com/notebooklm-digital-project-manager/)
 
 ### Claude Code 分層摘要法
 
@@ -286,6 +288,8 @@ Note. 請看我之前說的 [[Agent Part 6] Storm：駕馭整個文章編輯團�
 
 不要被自己設限，因為我們之前被限制住的原身條件，其實在 AI 時代很多東西都被打開了。
 
+Note. 請看我寫的[那天我在產業園區分享：AI 能不能做起來，其實看人](https://ai-coding.wiselychen.com/na-tian-wo-zai-chan-ye-yuan-qu-fen-xiang-ai-neng-bu-neng-zuo-qi-lai-qi-shi-kan-ren/)
+
 ---
 
 ## 台灣軟體公司為什麼起不來？
@@ -319,11 +323,14 @@ Note. 請看我之前說的 [[Agent Part 6] Storm：駕馭整個文章編輯團�
 
 **我真的覺得一開始的時候還是想說：我要解決什麼問題？**
 
-你必須要對 AI 了解，你知道它能夠擅長做什麼、不擅長做什麼。但你還是要回推說你做這件事情，你真正能夠達到的目的是什麼？
+你必須要對 AI 了解，你知道它能夠擅長做什麼、不擅長做什麼。但你還是要回推說你做這件事情，你真正能夠達到的目的是什麼？是降本還是增效
+
+Note. 請看我之前寫的[AI 降本增效？大部分團隊只做到「降本」](https://ai-coding.wiselychen.com/ai-scale-not-cut-grow-the-pie/)
 
 在企業就說我的 business goal 是什麼、我能達到的 outcome 是什麼。在個人就說我能夠在 AI 這邊達到什麼樣的東西。然後再適時的把它倒進去某幾個環節。
 
 **這樣子的話就比較不容易為了 AI 而 AI，而是真的拿 AI 來做有實效的事情。**
+
 
 ---
 
