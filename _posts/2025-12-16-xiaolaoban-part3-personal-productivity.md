@@ -368,3 +368,4 @@ GPT 跟 Claude 都有一個 credit 模式，你要先充錢，然後只要不要
 - **第一篇：** [企業 AI 轉型：從數位轉型到 AI 轉型](https://ai-coding.wiselychen.com/enterprise-ai-transformation/)
 - **第二篇：** [什麼是 AI Agent？企業 AI 導入的真實觀察](https://ai-coding.wiselychen.com/xiaolaoban-part2-ai-agent-definition/)
 - **部落格：** [ai-coding.wiselychen.com](https://ai-coding.wiselychen.com)
+
