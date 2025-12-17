@@ -4,15 +4,17 @@ date: 2025-12-16
 author: Wisely Chen
 series: 小老闆充電站訪談系列
 part: 3
-layout: post
-permalink: /xiaolaoban-part3-personal-productivity/
 image: /assets/images/xiaolaoban-charging-station-part3.png
+permalink: /xiaolaoban-part3-personal-productivity/
+layout: post
 description: "AI 提升生產力最有效的方式不是強化專長，而是填補短板。當你的弱項被補齊，整個人的能力圈瞬間擴大。這篇分享我如何用 AI 把不會的事情變成「勉強能做」，以及一邊超慢跑一邊寫 Code 的真實體驗。"
 ---
 
 # AI 生產力實戰：從填補短板到一邊超慢跑一邊寫 Code
 
 **來源：** [小老闆充電站 YouTube](https://www.youtube.com/@littlebossfr)
+
+**影片連結：** [https://www.youtube.com/watch?v=6nFJW7ly_6E](https://www.youtube.com/watch?v=6nFJW7ly_6E)
 
 **系列：** 小老闆充電站訪談第三篇
 
@@ -368,4 +370,3 @@ GPT 跟 Claude 都有一個 credit 模式，你要先充錢，然後只要不要
 - **第一篇：** [企業 AI 轉型：從數位轉型到 AI 轉型](https://ai-coding.wiselychen.com/enterprise-ai-transformation/)
 - **第二篇：** [什麼是 AI Agent？企業 AI 導入的真實觀察](https://ai-coding.wiselychen.com/xiaolaoban-part2-ai-agent-definition/)
 - **部落格：** [ai-coding.wiselychen.com](https://ai-coding.wiselychen.com)
-
