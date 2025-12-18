@@ -91,10 +91,6 @@ Scale n8n 的正確姿勢，跟很多人想的不一樣。
 
 n8n 因為 Core / Worker 分離，很自然成為 Hybrid 架構的中樞。
 
-### 架構設計
-
-![n8n Hybrid Architecture](/assets/images/n8n-hybrid-architecture.png)
-
 ### 各層職責
 
 **雲端負責：**
