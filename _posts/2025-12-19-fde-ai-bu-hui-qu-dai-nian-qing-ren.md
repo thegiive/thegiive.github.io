@@ -7,8 +7,6 @@ image: /assets/images/fde-team-growth.png
 description: "很多年輕人不是被 AI 取代，而是還沒被給機會。AWS 執行長 Matt Garman 說：AI 會取代初階軟體工程師，是我聽過最愚蠢的想法之一。"
 ---
 
-![FDE 團隊成長](/assets/images/fde-team-growth.png)
-
 這週收到兩個好消息，讓我忍不住回頭想起之前帶的 FDE 團隊。
 
 在我離開、大家各奔東西之後——
