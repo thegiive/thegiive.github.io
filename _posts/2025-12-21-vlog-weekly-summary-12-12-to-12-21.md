@@ -7,8 +7,6 @@ image: /assets/images/vlog-weekly-summary-12-12-to-12-21.png
 description: "這兩週 NotebookLM 席捲了我的生活和團隊。GPT-5.2 體感變化、LATS 與 Storm Agent 架構、以及 AI 不會取代年輕人的觀察。"
 ---
 
-![Vlog 週報封面](/assets/images/vlog-weekly-summary-12-12-to-12-21.png)
-
 **YouTube：** [https://youtu.be/ZRR9x5G4-0g](https://youtu.be/ZRR9x5G4-0g)
 
 ---
