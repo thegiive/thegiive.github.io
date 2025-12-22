@@ -7,8 +7,6 @@ image: /assets/images/excel-ai-obfuscate-cover.png
 description: "小孩子才做選擇，資安跟 AI 效率我都要。與其改變工具，不如改變我們對「資料」的看法——把資料混淆到連製表人都認不出來，那是不是就可以傳上去了？"
 ---
 
-![與其改變工具，不如改變我們對「資料」的看法](/assets/images/excel-ai-obfuscate-cover.png)
-
 ## 前言：企業 Excel 場景，AI 還是很難用
 
 昨天跟一個朋友聊 , 他跟我說「AI時代其實對我沒有任何的幫助，因為網路上都是一堆AI寫 email ，文生圖，文生影片的，但是我需要的 AI 做 Excel 分析，我所有同事都需要這個，但問題是：**企業不允許上傳有內部資料的 Excel 檔案到 ChatGPT 或 Gemini**。」
