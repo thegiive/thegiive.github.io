@@ -154,6 +154,18 @@ permalink: /faq/
         <li><strong>Interleaved：</strong>需要靈活調整計畫 → 適合不確定性高的任務</li>
       </ul>
     </div>
+
+    <div class="faq-item">
+      <h3>Q10.5：為什麼 AI Agent 記不住上週的對話？</h3>
+      <p>因為 LLM 的長期記憶永遠停在「出廠」那一刻。它跟你對話時用的是 context window（短期記憶），關掉視窗就沒了。這也是為什麼我們需要 RAG、CLAUDE.md 等 workaround。</p>
+      <p><strong>LLM 記憶的本質：</strong></p>
+      <ul>
+        <li><strong>長期記憶：</strong>訓練時學到的權重（出廠後不更新）</li>
+        <li><strong>短期記憶：</strong>context window（關掉視窗就沒了）</li>
+        <li><strong>擴大 context window：</strong>只是「用更大的短期記憶」解決問題</li>
+      </ul>
+      <p><strong>Google 的 Nested Learning 嘗試解決這個問題：</strong>讓模型像大腦一樣擁有多層記憶系統，自動判斷什麼值得寫入長期記憶。詳見 <a href="/nested-learning-ai-memory/">[Agent Part 8] Nested Learning 深度解析</a>。</p>
+    </div>
   </section>
 
   <!-- 企業 AI 轉型 -->
