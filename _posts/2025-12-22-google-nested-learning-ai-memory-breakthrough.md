@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "告別「金魚腦」AI？Google 重磅發表 Nested Learning：讓模型擁有大腦般的長期記憶"
+title: "[Agent 模式 Part 8] 告別「金魚腦」AI？Google 重磅發表 Nested Learning：讓模型擁有大腦般的長期記憶"
 date: 2025-12-22 08:00:00 +0800
 author: Wisely Chen
 series: AI 前沿技術
