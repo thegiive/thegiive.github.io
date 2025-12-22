@@ -71,7 +71,7 @@ Fine-tuning 呢？可以讓模型學習新知識，但代價是「災難性遺�
 
 ## Google 的反直覺發現
 
-Google Research 在 NeurIPS 2025 發表了一篇論文，叫做 **Nested Learning: The Illusion of Deep Learning Architecture**。
+Google Research 在 NeurIPS 2025 發表了一篇論文，叫做 **[Nested Learning: The Illusion of Deep Learning Architecture](https://abehrouz.github.io/files/NL.pdf)**。
 
 標題就很挑釁：深度學習架構是一種「幻覺」？
 
