@@ -92,6 +92,8 @@ description: "小孩子才做選擇，資安跟 AI 效率我都要。與其改�
 
 程式非常簡單，是用 Python 寫的。當然也可以隨著不同情況改成 PowerShell 或其他語言，不過 Python 已經可以同時跑在 Windows 和 Mac 上了。
 
+**GitHub：** [https://github.com/thegiive/excel-obfuscator](https://github.com/thegiive/excel-obfuscator)
+
 ---
 
 ## 這個方法的限制
