@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2025 年了，企業 AI Excel 還是這麼難搞"
+title: "都要 2026 年了，企業 AI Excel 還是這麼難搞"
 date: 2025-12-23 06:45:00 +0800
 permalink: /excel-ai-obfuscation/
 image: /assets/images/excel-ai-obfuscate-cover.png
