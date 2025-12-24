@@ -35,6 +35,8 @@ Gemini : .... 全息介面漂浮在他周圍，顯示著建築藍圖和 AI 演�
 
 NanoBanana : 出來一個幾乎全對，但是風格像是中二的電腦遊戲的畫面....
 
+![中二電腦遊戲風格版本](/assets/images/christmas-card-2025-game-style.png)
+
 我：風格不能太銳利，請根據我 FDE / AI Transformation 文章（附上去) ，然後給予一點「人味」或是「溫馨味」, 給我新的提示詞
 
 Gemini : ....一張吉卜力工作室風格的溫馨數位插畫....
