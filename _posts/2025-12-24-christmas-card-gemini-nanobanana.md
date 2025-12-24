@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "聖誕賀卡 AI 產圖實錄：Gemini + NanoBanana 十分鐘完成"
+title: "祝大家聖誕快樂"
 date: 2025-12-24 08:00:00 +0800
 permalink: /christmas-card-gemini-nanobanana-2025/
 image: /assets/images/christmas-card-2025-final.png
