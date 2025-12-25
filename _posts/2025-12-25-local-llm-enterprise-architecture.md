@@ -360,7 +360,6 @@ LLM Router 的核心價值是**讓對的模型做對的事**。
 
 ## 延伸閱讀
 
-- [本地 LLM 處理 Excel 的正確姿勢](/local-llm-excel-code-interpreter/) - 核心 Code Interpreter 實作
 - [LiteLLM 官方文檔](https://docs.litellm.ai/) - 統一 LLM API 閘道
 - [Langfuse 官方文檔](https://langfuse.com/docs) - 開源 LLM 觀測平台
 - [Langfuse 自建指南](https://langfuse.com/self-hosting) - 5 分鐘 Docker 部署
