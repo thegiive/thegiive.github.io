@@ -7,8 +7,6 @@ image: /assets/images/n8n-hybrid-architecture.png
 description: "n8n 的底層是 DAG + 狀態機，Core/Worker 分離架構讓它天生適合雲地混合部署。企業可以把彈性放雲端、敏感資料留地端，Workflow 成為兩者的協調層。"
 ---
 
-![n8n Hybrid Architecture](/assets/images/n8n-hybrid-architecture.png)
-
 上次寫了「[非AI，保證內容很無聊的技術架構系列](https://ai-coding.wiselychen.com/on-premise-ocr-api/)」還寫得蠻開心，觸及率也還好，這次再來寫 n8n 的雲地混合架構。
 
 很多人看 n8n，第一眼看到的是那個 UI 介面。然後就覺得：這是一個 low-code 自動化工具。
