@@ -98,6 +98,8 @@ Auth Gateway 就是解決這些問題的第一道防線。
 
 ## Orchestrator 設計
 
+![Orchestrator 架構圖](/assets/images/orchestrator-diagram.png)
+
 ### 為什麼需要 Orchestrator？
 
 當 LLM 應用從「單一問答」進化到「多步驟任務」，你會發現光靠 LLM 本身不夠用了。
