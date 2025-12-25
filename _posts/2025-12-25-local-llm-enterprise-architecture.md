@@ -64,6 +64,8 @@ description: "從權限控制、Log 設計到 Python 沙盒，一次搞懂企業
 
 ## Auth Gateway 設計
 
+![Auth Gateway 架構圖](/assets/images/auth-gateway-diagram.png)
+
 ### 為什麼需要 Auth Gateway？
 
 很多人第一次架 LLM 服務，直接把 Ollama 開放給內網所有人用——反正都是自己人嘛。但當使用者從 5 個變成 50 個，問題就來了：
