@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "企業 LLM 架構選型：地端 vs Web 的完整設計指南"
+title: "企業級地端 LLM 系統架構藍圖"
 date: 2025-12-25 12:00:00 +0800
 permalink: /local-llm-enterprise-architecture/
 image: /assets/images/local-llm-enterprise-architecture.png
