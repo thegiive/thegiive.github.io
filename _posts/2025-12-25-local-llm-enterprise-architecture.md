@@ -313,6 +313,8 @@ LLM Router 的核心價值是**讓對的模型做對的事**。
 
 但 Langfuse 看不到完整的業務流程。一個「分析銷售報表」的任務，在 Orchestrator 裡會經過多個步驟：讀檔案 → 生成程式碼 → 執行 Python → 呼叫 LLM 生成建議 → 組裝報告。
 
+![PostgreSQL RLS 架構圖](/assets/images/postgresql-rls-diagram.png)
+
 這種 end-to-end 的日誌，建議放在 PostgreSQL，跟 Orchestrator 整合在一起。原因是：
 
 - **完整流程追蹤** — 知道每個步驟花了多少時間、在哪裡失敗
