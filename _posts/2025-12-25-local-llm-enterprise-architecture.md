@@ -28,6 +28,14 @@ description: "從權限控制、Log 設計到 Python 沙盒，一次搞懂企業
 
 ![企業 LLM 架構圖](/assets/images/local-llm-enterprise-architecture.png)
 
+這張藍圖是我們接下來的導覽地圖。我們將逐一深入每個關鍵元件，解析其設計理念與核心功能：
+
+1. **Auth Gateway（認證閘道）** — 第一道防線，控制誰能用、用多少、查什麼資料
+2. **Orchestrator（任務協調器）** — 系統的大腦，把複雜任務拆解成多個步驟並協調執行
+3. **LLM Router（模型路由器）** — 智慧交通警察，根據任務複雜度選擇合適的模型
+4. **Python Sandbox（沙盒）** — 安全執行環境，讓 LLM 生成的程式碼跑在隔離空間
+5. **Log 系統（日誌與觀測）** — 雙層記錄，Langfuse 追蹤 LLM 效能，PostgreSQL 審計業務流程
+
 ---
 
 ## 地端架構（On-Premise）
