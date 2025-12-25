@@ -295,6 +295,8 @@ LLM Router 的核心價值是**讓對的模型做對的事**。
 
 ## Log 系統設計
 
+![Log 系統架構圖](/assets/images/log-system-diagram.png)
+
 企業 LLM 系統需要兩層 Log：
 
 ### LLM 層級觀測：Langfuse
