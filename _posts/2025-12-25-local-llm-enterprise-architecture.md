@@ -246,6 +246,8 @@ RLS 可以在資料庫層面實現：
 
 ## LLM Router 設計
 
+![LLM Router 架構圖](/assets/images/llm-router-diagram.png)
+
 ### 為什麼需要 LLM Router？
 
 一個常見的誤解是：「我們公司只需要一個模型就夠了。」
