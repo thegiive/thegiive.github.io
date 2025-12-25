@@ -5,6 +5,7 @@ date: 2025-12-25 12:00:00 +0800
 permalink: /local-llm-enterprise-architecture/
 image: /assets/images/local-llm-enterprise-architecture.png
 description: "從權限控制、Log 設計到 Python 沙盒，一次搞懂企業級 LLM 部署的所有細節"
+categories: ["保證很無聊的 IT 架構系列"]
 ---
 
 
