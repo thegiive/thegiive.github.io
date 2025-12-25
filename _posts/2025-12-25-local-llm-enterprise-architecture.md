@@ -124,6 +124,8 @@ Auth Gateway 就是解決這些問題的第一道防線。
 
 ## Python 沙盒設計
 
+![Python 沙盒架構圖](/assets/images/python-sandbox-diagram.png)
+
 ### 為什麼用 Python 而不是直接讓 LLM 分析？
 
 很多人第一直覺是：「直接把 Excel 丟給 LLM 分析不就好了？」
