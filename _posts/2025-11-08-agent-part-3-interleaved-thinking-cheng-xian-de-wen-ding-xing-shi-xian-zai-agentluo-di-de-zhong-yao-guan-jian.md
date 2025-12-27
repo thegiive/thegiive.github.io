@@ -3,7 +3,7 @@ layout: post
 title: "[Agent part 3] Interleaved Thinking 呈現的穩定性是現在Agent落地的重要關鍵"
 date: 2025-11-08 12:18:37 +0000
 permalink: /agent-part-3-interleaved-thinking-cheng-xian-de-wen-ding-xing-shi-xian-zai-agentluo-di-de-zhong-yao-guan-jian/
-image: /assets/images/ChatGPT-Image-2025---11---8----------08_01_49.png
+image: /assets/images/interleaved-thinking-cover.png
 description: "Claude 4.5 的 Interleaved Thinking 讓 Agent 能持續專注工作超過 30 小時。關鍵是「邊做邊想邊驗證」：思考→行動→驗證→調整→保存檢查點→重複。像 Senior PM 一樣，每一步自我驗證、遇到大問題主動舉手。"
 ---
 
