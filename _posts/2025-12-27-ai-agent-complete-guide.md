@@ -21,6 +21,8 @@ description: "AI Agent 不是「比較聰明的 Chatbot」，而是能自主執�
 
 ## 什麼是 AI Agent？
 
+![AI Agent vs Chatbot](/assets/images/ai-agent-vs-chatbot-comparison.png)
+
 AI Agent 和 Chatbot 是完全不同的物種。
 
 **Chatbot**：只能「說話」，沒有執行權限。最壞情況是回答錯誤（如[加航案例](https://canlii.ca/t/k3d4k)的 800 加幣賠償）。
@@ -42,6 +44,8 @@ AI Agent 和 Chatbot 是完全不同的物種。
 ## Agent 架構模式
 
 ### Workflow vs ReAct：兩種基本思維
+
+![Workflow vs ReAct](/assets/images/ChatGPT-Image-2025---10---30----------10_36_55.png)
 
 想像一下這個場景：
 
@@ -65,6 +69,8 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ### Plan & Execute：讀著路書跑
 
+![Plan & Execute](/assets/images/ChatGPT-Image-2025---11---1----------11_27_12.png)
+
 如果 ReAct 是「摸著石頭過河」，Plan & Execute 就是「先畫好地圖再出發」。
 
 核心思想：
@@ -77,6 +83,8 @@ AI Agent 和 Chatbot 是完全不同的物種。
 > 詳細解析：[[Agent Part 2] Plan & Exec 臨機應變 vs 讀著路書跑](/mang-mu-jia-su-vs-du-zhu-lu-shu-pao-wei-shi-mo-ai-agent-xu-yao-plan-exec-mo-shi/)
 
 ### Dual-Agent 架構：Claude Code 的秘密
+
+![Dual-Agent Architecture](/assets/images/dual-agent-architecture-logo.png)
 
 Anthropic 官方揭露了 Claude Code 為什麼這麼好用的內部架構——Dual-Agent 設計：
 
@@ -124,6 +132,8 @@ Agent 落地最大的挑戰是「穩定性」。Interleaved Thinking 讓 Agent �
 
 ### LATS：讓 Agent 學會「三思而後行」
 
+![LATS Tree Search](/assets/images/lats-tree-search-diagram.png)
+
 LATS（Language Agent Tree Search）是終極決策大腦，結合了：
 
 - **蒙地卡羅樹搜索**：探索多種可能路徑
@@ -135,6 +145,8 @@ LATS（Language Agent Tree Search）是終極決策大腦，結合了：
 > 完整解析：[[Agent Part 7] LATS 詳解：讓 AI Agent 學會「三思而後行」的終極決策大腦](/lats-agent-tree-search-decision-brain/)
 
 ### Storm：駕馭整個編輯團隊
+
+![Storm AI Agent](/assets/images/storm-ai-agent-diagram-20251207.png)
 
 Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架構是真正的「編輯團隊」：
 
@@ -151,6 +163,8 @@ Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架
 
 ### Nested Learning：告別「金魚腦」AI
 
+![Nested Learning](/assets/images/nested-learning-brain-memory.png)
+
 2025 年 Google 發表的 Nested Learning，讓模型擁有大腦般的長期記憶：
 
 - **短期工作記憶**：當前任務的上下文
@@ -164,6 +178,8 @@ Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架
 ---
 
 ## 企業 Agent 安全
+
+![AI Agent Security](/assets/images/ai-agent-security-logo.png)
 
 ### 為什麼 Agent 比 Chatbot 危險 100 倍？
 
@@ -195,6 +211,8 @@ Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架
 ---
 
 ## 企業落地實戰
+
+![企業 AI Agent 落地](/assets/images/xiaolaoban-part2-ai-agent-cover.png)
 
 ### AI Agent 能不能落地？看人
 
