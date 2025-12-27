@@ -48,11 +48,6 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ![Workflow vs ReAct](/assets/images/workflow-vs-react-comparison.png)
 
-客戶問：「我想查詢上個月的訂單」，資料庫剛好掛掉。
-
-**Workflow 型**：按流程走，資料庫掛就回「請稍後再試」。
-
-**ReAct 型**：目標是「找到訂單」，資料庫掛就自動查備份系統。
 
 **Workflow** 的假設是「我能預測所有情況」，但現實世界不是預定好的。
 
@@ -62,7 +57,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ### Plan & Execute：讀著路書跑
 
-![Plan & Execute](/assets/images/ChatGPT-Image-2025---11---1----------11_27_12.png)
+![Plan & Execute](/assets/images/plan-execute-architecture.png)
 
 如果 ReAct 是「摸著石頭過河」，Plan & Execute 就是「先畫好地圖再出發」。
 
