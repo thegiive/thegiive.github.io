@@ -4,6 +4,7 @@ title: "台灣《人工智慧基本法》：IT 人該知道的事"
 date: 2025-12-27 08:00:00 +0800
 permalink: /taiwan-ai-basic-act-engineering-perspective/
 image: /assets/images/ai-governance-seven-pillars.png
+categories: ["AI 安全與架構"]
 description: "2025/12/23 台灣三讀通過《人工智慧基本法》。這是框架法，不是執行細則——法律不告訴你怎麼做，但出事時你要能交代。本文精簡解讀對 IT 人的實務影響。"
 ---
 
