@@ -220,7 +220,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 
 ### AI Agent 能不能落地？看人
 
-技術從來不是最大的障礙。Agent 能不能落地，關鍵在於：
+技術從來不是最大的障礙。Agent 能不能落地，關鍵在於（[小老闆充電站訪談](https://www.youtube.com/watch?v=bIn2NKCY4SE)）：
 
 1. **有沒有人願意負責**
 2. **流程有沒有配合調整**
