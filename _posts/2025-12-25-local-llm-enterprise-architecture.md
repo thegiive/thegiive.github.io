@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "企業級地端 LLM 架構：從 Auth Gateway 到 Python 沙盒的完整藍圖"
+title: "On-Premise Enterprise LLM Deployment：企業級地端 LLM 架構完整藍圖"
 date: 2025-12-25 12:00:00 +0800
 permalink: /local-llm-enterprise-architecture/
 image: /assets/images/local-llm-enterprise-architecture.png
-description: "企業級地端 LLM 不只是跑模型這麼簡單。本文完整解析 Auth Gateway 權限控管、Orchestrator 任務協調、Python 沙盒安全執行、LLM Router 智慧路由、雙層 Log 審計架構。附 Ollama + LiteLLM + Langfuse 實作建議，符合台灣 AI 基本法合規要求。"
+description: "企業地端 LLM 架構實作與最佳部署實踐。完整解析 Auth Gateway 權限控管、Orchestrator 任務協調、Python 沙盒安全執行、LLM Router 智慧路由、雙層 Log 審計架構。附 Ollama + LiteLLM + Langfuse 實例，符合台灣 AI 基本法合規要求。"
 categories: ["保證很無聊的 IT 架構系列"]
 ---
 
