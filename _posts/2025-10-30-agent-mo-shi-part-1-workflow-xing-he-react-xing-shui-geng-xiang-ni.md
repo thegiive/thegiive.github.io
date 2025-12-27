@@ -140,3 +140,19 @@ Claude Code 在小任務上通常可以自我除錯，不需要人來介入。�
 想想 Claude Code 要在「自主性」和「人類對齊」上找平衡
 
 > 我們人也不就是一直在 ReAct 跟 Workflow 上追求一個 tradeoff ？
+
+---
+
+## AI Agent 系列導航
+
+本文是 **[AI Agent 完整指南](/ai-agent/)** 的一部分。
+
+**下一篇：** [[Part 2] Plan & Exec 臨機應變 vs 讀著路書跑](/mang-mu-jia-su-vs-du-zhu-lu-shu-pao-wei-shi-mo-ai-agent-xu-yao-plan-exec-mo-shi/) — 為什麼需要把規劃和執行分開？
+
+**系列文章：**
+- [Part 1] Workflow vs ReAct（本文）
+- [[Part 2] Plan & Execute](/mang-mu-jia-su-vs-du-zhu-lu-shu-pao-wei-shi-mo-ai-agent-xu-yao-plan-exec-mo-shi/)
+- [[Part 3] Interleaved Thinking](/agent-part-3-interleaved-thinking-cheng-xian-de-wen-ding-xing-shi-xian-zai-agentluo-di-de-zhong-yao-guan-jian/)
+- [[Part 5] Dual-Agent 架構](/anthropic-dual-agent-architecture/)
+- [[Part 7] LATS 決策大腦](/lats-agent-tree-search-decision-brain/)
+- [Agent Security](/ai-agent-security-game-changed/)

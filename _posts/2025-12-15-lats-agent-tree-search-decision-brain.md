@@ -179,3 +179,15 @@ LATS 的反思機制其實借鑑了 Reflexion 的概念。Reflexion 是讓 Agent
 
 - LATS 原始論文：[Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models](https://arxiv.org/abs/2310.04406)
 - MCTS 入門：[Monte Carlo Tree Search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search)
+
+---
+
+## AI Agent 系列導航
+
+本文是 **[AI Agent 完整指南](/ai-agent/)** 的一部分。
+
+**相關文章：**
+- [[Part 1] Workflow vs ReAct](/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/) — 基礎架構比較
+- [[Part 2] Plan & Execute](/mang-mu-jia-su-vs-du-zhu-lu-shu-pao-wei-shi-mo-ai-agent-xu-yao-plan-exec-mo-shi/) — 執行模式選擇
+- [[Part 5] Dual-Agent 架構](/anthropic-dual-agent-architecture/) — Claude Code 內部設計
+- [Agent Security](/ai-agent-security-game-changed/) — 94.4% 攻擊成功率的真相

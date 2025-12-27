@@ -71,5 +71,23 @@ ChatGpt：思考 → 搜尋多個來源（新聞、技術論壇、官方公告�
 
 ## 你的 Agent 是盲目加速還是讀著路書跑？
 
-  
+
 之前說到如果環境多變化，你需要 ReAct 來保證魯棒性，但是如果環境多變化，任務又很複雜——你需要 Plan-and-Execute。 整體用 Plan 保證不亂走，局部用 ReAct 靈活應對。就像真實的 WRC：副駕手寫好路書，永遠看著整個賽道全局最優，但主駕手在每個彎道仍然要靠直覺微調。這才是 WRC 的勝利方程式，兼顧全局跟細節的微調。
+
+---
+
+## AI Agent 系列導航
+
+本文是 **[AI Agent 完整指南](/ai-agent/)** 的一部分。
+
+**上一篇：** [[Part 1] Workflow 型和 ReAct 型，誰更像你？](/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/)
+
+**下一篇：** [[Part 3] Interleaved Thinking](/agent-part-3-interleaved-thinking-cheng-xian-de-wen-ding-xing-shi-xian-zai-agentluo-di-de-zhong-yao-guan-jian/) — 穩定性是現在 Agent 落地的重要關鍵
+
+**系列文章：**
+- [[Part 1] Workflow vs ReAct](/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/)
+- [Part 2] Plan & Execute（本文）
+- [[Part 3] Interleaved Thinking](/agent-part-3-interleaved-thinking-cheng-xian-de-wen-ding-xing-shi-xian-zai-agentluo-di-de-zhong-yao-guan-jian/)
+- [[Part 5] Dual-Agent 架構](/anthropic-dual-agent-architecture/)
+- [[Part 7] LATS 決策大腦](/lats-agent-tree-search-decision-brain/)
+- [Agent Security](/ai-agent-security-game-changed/)
