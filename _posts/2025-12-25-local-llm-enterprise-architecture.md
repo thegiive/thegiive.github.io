@@ -60,8 +60,8 @@ categories: ["保證很無聊的 IT 架構系列"]
 ### 核心元件
 
 **GPU 伺服器**
-- 角色：執行 [Ollama](https://ollama.com/) + gemma3:12b
-- 建議規格：RTX 4090 / A100，VRAM ≥ 16GB
+- 角色：執行 [Ollama](https://ollama.com/) + Open Source Model List 
+- 建議規格：Nvidia 顯示卡
 
 **應用伺服器**
 - 角色：Python 程式碼執行、API 服務
