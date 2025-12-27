@@ -18,7 +18,7 @@ categories: ["保證很無聊的 IT 架構系列"]
 - Python 執行環境怎麼防止惡意程式碼？
 - 有多個 LLM 模型，怎麼智慧選擇和切換？
 
-這篇文章就是在講這些「無聊但必要」的基礎建設。
+這篇文章就是在講這些「無聊但必要」的基礎建設。正如 [SaM Solutions 的定義](https://www.sam-solutions.com/blog/enterprise-llm/)：企業級 LLM 架構是「讓大公司以安全、高效且符合業務目標的方式使用、管理和擴展大型語言模型的結構化框架」——重點不在模型本身，而在圍繞模型的完整技術堆疊。
 
 ![企業 LLM 架構圖](/assets/images/local-llm-enterprise-architecture.png)
 
@@ -40,7 +40,7 @@ categories: ["保證很無聊的 IT 架構系列"]
 
 ## 地端 LLM 架構總覽（On-Premise）
 
-地端 LLM 部署的核心價值是資料主權。每個客戶都在說地端，因為適合企業內部部署，資料完全不出內網。根據實際接觸的客戶經驗，金融、製造、醫療等產業對資料主權的要求非常嚴格——即使雲端廠商提供再多的合規認證，IT 部門和法務還是會說：「資料不出公司網路，我們才安心。」這不是技術問題，是信任問題。
+地端 LLM 部署的核心價值是資料主權。每個客戶都在說地端，因為適合企業內部部署，資料完全不出內網。根據 [Allganize 的企業部署指南](https://www.allganize.ai/en/blog/enterprise-guide-choosing-between-on-premise-and-cloud-llm-and-agentic-ai-deployment-models)，選擇地端部署的關鍵考量包括：安全性、可用性、客製化程度與長期成本。根據實際接觸的客戶經驗，金融、製造、醫療等產業對資料主權的要求非常嚴格——即使雲端廠商提供再多的合規認證，IT 部門和法務還是會說：「資料不出公司網路，我們才安心。」這不是技術問題，是信任問題。
 
 ### 核心元件
 
