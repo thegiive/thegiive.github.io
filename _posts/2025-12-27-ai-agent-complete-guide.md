@@ -110,6 +110,8 @@ Agent 落地最大的挑戰是「穩定性」。Interleaved Thinking 讓 Agent �
 
 ### Plan, Exec, Critic：System 2 思維
 
+![Plan Exec Critic](/assets/images/plan-exec-critic-system2.png)
+
 加入 Critic 角色讓 Agent 具備「自我反思」能力：
 
 1. **Plan**：規劃行動
