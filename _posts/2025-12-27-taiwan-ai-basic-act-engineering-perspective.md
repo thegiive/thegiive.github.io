@@ -141,10 +141,7 @@ IT 實務上要做到：
 - 定期做 AI 風險評估，不是一次性合規檢查
 - 鼓勵團隊主動回報 AI 使用中的問題與風險
 
-如果你需要一個有機會合規Agent IT架構的草圖跟方向，歡迎使用我之前的作品[企業級地端 LLM 系統架構](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/) 的架構圖
-
-![企業級地端 LLM 系統架構藍圖](/assets/images/local-llm-enterprise-architecture.png)
-
+如果你需要一個有機會合規 Agent IT 架構的草圖跟方向，歡迎參考我之前的作品[企業級地端 LLM 系統架構](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)。
 
 ---
 
