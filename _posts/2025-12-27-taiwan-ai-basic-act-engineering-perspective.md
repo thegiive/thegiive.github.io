@@ -12,6 +12,21 @@ author: "Wisely Chen"
 canonical_url: "https://ai-coding.wiselychen.com/taiwan-ai-basic-act-engineering-perspective/"
 ---
 
+## 目錄
+
+- [七大核心原則](#七大核心原則)
+- [對 IT 人的影響](#對-it-人的影響)
+  - [資訊安全：AI 不能成為新的資安破口](#資訊安全ai-不能成為新的資安破口)
+  - [問責制：AI 不能背鍋](#問責制ai-不能背鍋)
+  - [隱私保護：資料最小化原則](#隱私保護資料最小化原則)
+  - [透明性：不能用「AI 很複雜」拒絕解釋](#透明性不能用ai-很複雜拒絕解釋)
+- [IT 主管現在該做什麼？](#it-主管現在該做什麼)
+- [常見問題 Q&A](#常見問題-qa)
+- [附錄：法條原文](#附錄法條原文)
+- [附錄：台灣、歐盟、美國 AI 法規比較](#附錄台灣歐盟美國-ai-法規比較)
+- [延伸閱讀](#延伸閱讀)
+
+---
 
 2025 年 12 月 23 日，台灣立法院三讀通過[《人工智慧基本法》](https://www.ey.gov.tw/Page/9277F759E41CCD91/5d673d1e-f418-47dc-ab35-a06600f77f07)。在我的朋友圈內，幾乎沒有任何的火花，但是我個人覺得很重要，所以花了一點時間來看看這個法律對我們 IT 主要影響有啥？
 
@@ -25,7 +40,6 @@ canonical_url: "https://ai-coding.wiselychen.com/taiwan-ai-basic-act-engineering
 
 根據 [數發部對《人工智慧基本法》的政策說明](https://moda.gov.tw/press/press-releases/18316)裡面講到七大核心原則：
 
-![AI 治理的七根支柱](/assets/images/ai-governance-seven-pillars.png)
 
 1. 永續性
 2. 人類自主性
