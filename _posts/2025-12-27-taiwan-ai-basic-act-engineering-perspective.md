@@ -143,6 +143,8 @@ IT 實務上要做到：
 
 如果你需要一個有機會合規 Agent IT 架構的草圖跟方向，歡迎參考我之前的作品[企業級地端 LLM 系統架構](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)。
 
+![企業級地端 LLM 系統架構藍圖](/assets/images/local-llm-enterprise-architecture.png)
+
 ---
 
 > **「AI 可以是黑箱，但『責任鏈』不能是黑箱。」**
