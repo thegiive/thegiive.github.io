@@ -11,8 +11,8 @@ categories: ["保證很無聊的 IT 架構系列"]
 ## 目錄
 
 - [為什麼企業需要地端 LLM 架構？](#為什麼企業需要地端-llm-架構)
-- [地端 LLM 架構總覽（On-Premise）](#地端-llm-架構總覽on-premise)
-- [Auth Gateway：企業級 LLM 的權限控制](#auth-gateway企業級-llm-的權限控制)
+- [On-Prem vs Cloud：企業該怎麼選？](#on-prem-vs-cloud企業該怎麼選)
+- [Auth Gateway：企業地端 LLM 為什麼一定要做？](#auth-gateway企業地端-llm-為什麼一定要做)
 - [Orchestrator：多步驟任務的協調中心](#orchestrator多步驟任務的協調中心)
 - [Python 沙盒：LLM 生成程式碼的安全執行環境](#python-沙盒llm-生成程式碼的安全執行環境)
 - [檔案版本管理](#檔案版本管理)
@@ -53,7 +53,7 @@ categories: ["保證很無聊的 IT 架構系列"]
 
 ---
 
-## 地端 LLM 架構總覽（On-Premise）
+## On-Prem vs Cloud：企業該怎麼選？
 
 地端 LLM 部署的核心價值是資料主權。每個客戶都在說地端，因為適合企業內部部署，資料完全不出內網。根據 [Allganize 的企業部署指南](https://www.allganize.ai/en/blog/enterprise-guide-choosing-between-on-premise-and-cloud-llm-and-agentic-ai-deployment-models)，選擇地端部署的關鍵考量包括：安全性、可用性、客製化程度與長期成本。根據實際接觸的客戶經驗，金融、製造、醫療等產業對資料主權的要求非常嚴格——即使雲端廠商提供再多的合規認證，IT 部門和法務還是會說：「資料不出公司網路，我們才安心。」這不是技術問題，是信任問題。
 
@@ -85,7 +85,7 @@ categories: ["保證很無聊的 IT 架構系列"]
 
 ---
 
-## Auth Gateway：企業級 LLM 的權限控制
+## Auth Gateway：企業地端 LLM 為什麼一定要做？
 
 企業 LLM 系統的第一道防線就是 Auth Gateway。
 
