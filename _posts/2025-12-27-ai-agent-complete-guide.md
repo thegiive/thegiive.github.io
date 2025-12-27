@@ -99,7 +99,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ![Multi-Agent 協作](/assets/images/multi-agent-collaboration.png)
 
-單一 Agent 有其極限。Multi-Agent 系統讓多個專業 Agent 協作：
+單一 Agent 有其極限。[Multi-Agent 系統](https://langchain-ai.github.io/langgraph/concepts/multi_agent/)讓多個專業 Agent 協作：
 
 - **Supervisor 模式**：一個 Agent 指揮調度其他 Agent
 - **Peer 協作模式**：Agent 之間平等協商
