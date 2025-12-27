@@ -26,7 +26,7 @@ categories: ["保證很無聊的 IT 架構系列"]
 
 ## 為什麼企業需要地端 LLM 架構？
 
-企業級地端 LLM 部署不只是「把模型跑起來」這麼簡單。這又一篇"無聊 IT 架構" 系列文。講到地端 LLM，大家都在討論怎麼榨出更好的 performance：用什麼量化、跑什麼模型、GPU 要買哪張。但真正要上生產環境，其實有一堆東西要顧：
+Enterprise local LLM architecture（企業級地端 LLM 架構）不只是「把模型跑起來」這麼簡單。這又一篇"無聊 IT 架構" 系列文。講到地端 LLM，大家都在討論怎麼榨出更好的 performance：用什麼量化、跑什麼模型、GPU 要買哪張。但真正要上生產環境，其實有一堆東西要顧：
 
 - 多人同時使用，怎麼管理權限？
 - 使用者問了什麼、LLM 回了什麼，怎麼記錄和審計？
@@ -55,7 +55,7 @@ categories: ["保證很無聊的 IT 架構系列"]
 
 ## On-Prem vs Cloud：企業該怎麼選？
 
-地端 LLM 部署的核心價值是資料主權。每個客戶都在說地端，因為適合企業內部部署，資料完全不出內網。根據 [Allganize 的企業部署指南](https://www.allganize.ai/en/blog/enterprise-guide-choosing-between-on-premise-and-cloud-llm-and-agentic-ai-deployment-models)，選擇地端部署的關鍵考量包括：安全性、可用性、客製化程度與長期成本。根據實際接觸的客戶經驗，金融、製造、醫療等產業對資料主權的要求非常嚴格——即使雲端廠商提供再多的合規認證，IT 部門和法務還是會說：「資料不出公司網路，我們才安心。」這不是技術問題，是信任問題。
+On-premise LLM architecture 的核心價值是資料主權。每個客戶都在說地端，因為適合企業內部部署，資料完全不出內網。根據 [Allganize 的企業部署指南](https://www.allganize.ai/en/blog/enterprise-guide-choosing-between-on-premise-and-cloud-llm-and-agentic-ai-deployment-models)，選擇地端部署的關鍵考量包括：安全性、可用性、客製化程度與長期成本。根據實際接觸的客戶經驗，金融、製造、醫療等產業對資料主權的要求非常嚴格——即使雲端廠商提供再多的合規認證，IT 部門和法務還是會說：「資料不出公司網路，我們才安心。」這不是技術問題，是信任問題。
 
 ### 核心元件
 
@@ -335,7 +335,7 @@ RLS 可以在資料庫層面實現：
 
 ## 結論
 
-企業級 LLM 部署不只是「把模型跑起來」這麼簡單。你需要考慮：
+Enterprise LLM deployment 不只是「把模型跑起來」這麼簡單。你需要考慮：
 
 1. **Auth Gateway：** 誰能用什麼模型、查什麼資料
 2. **LLM Router：** 根據任務複雜度選擇模型，節省資源
