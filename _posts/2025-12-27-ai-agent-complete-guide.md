@@ -46,7 +46,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ### Workflow vs ReAct：兩種基本思維
 
-![Workflow vs ReAct](/assets/images/ChatGPT-Image-2025---10---30----------10_36_55.png)
+![Workflow vs ReAct](/assets/images/workflow-vs-react-comparison.png)
 
 想像一下這個場景：
 
