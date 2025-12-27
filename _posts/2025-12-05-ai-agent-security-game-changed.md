@@ -1,15 +1,41 @@
 ---
 layout: post
-title: "AI Agent 安全性：遊戲規則已經改變，傳統資安工具看不到的盲區"
+title: "AI Agent Security：為什麼它正在改變企業資安架構（不是你想的 Prompt 問題）"
 date: 2025-12-05 10:00:00 +0800
 permalink: /ai-agent-security-game-changed/
 image: /assets/images/ai-agent-security-logo.png
 description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭露 AI Agent 時代的資安盲點。94.4% 的 Agent 容易受攻擊，傳統 WAF/APM 完全失效。這不是危言聳聽，這是學術研究的結論。"
 ---
 
-![AI Agent Security](/assets/images/ai-agent-security-logo.png)
+上週五，我在香港迪士尼酒店 ~~玩得很開心~~ 做很棒的技術演講，分享了在大 Agent 時代的資安威脅，跟許多同業跟客戶交流，聽到一些有趣的故事。
 
-上週五，我在香港迪士尼酒店 ~~玩得很開心~~ 做很棒的技術演講，分享了在大 Agent 時代的資安威脅 , 跟許多同業跟客戶交流，聽到一些有趣的故事
+但在講案例之前，我想先釐清一個關鍵問題——很多人還搞不清楚 AI Agent 到底是什麼。
+
+---
+
+## 什麼是 AI Agent（以及它跟 Chatbot 的根本差異）
+
+AI Agent Security 的第一步，是搞清楚 AI Agent 到底是什麼。先講清楚一件事：AI Agent 不是「比較聰明的 Chatbot」，它們是完全不同的物種。
+
+![AI Agent vs Chatbot 比較](/assets/images/ai-agent-vs-chatbot-comparison.png)
+
+**為什麼「能動手」= 資安風險倍增？**
+
+因為攻擊目標變了。
+
+Chatbot 時代，攻擊者想「騙它說錯話」。Agent 時代，攻擊者想「騙它做錯事」。
+
+一旦 Agent 有了執行權限，它能存取的每個資料源、能呼叫的每個 API，都是潛在攻擊面。
+
+這不是理論——接下來兩個案例，是 2025 年已經發生的真實攻擊。
+
+---
+
+## 真實案例：Enterprise AI Agent 如何被攻破
+
+Enterprise AI Agent 的資安風險不是理論，以下是 2025 年已經發生的攻擊事件。
+
+### Salesforce "ForcedLeak"：填表單就能偷走整個客戶名單
 
 2025 年 7 月，資安公司 Noma Security 揭露了一個讓企業冷汗直流的漏洞 — **Salesforce "ForcedLeak"**。這不是一個傳統的系統漏洞，而是針對 Salesforce 新推出的 **Agentforce 平台** — 一個讓 AI 自主操作 CRM 數據的企業級 Agent 系統。
 
@@ -35,11 +61,9 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 
 攻擊者不需要駭進你的系統，只需要填一張表單，然後等 AI 自己把資料送上門。
 
----
+### Microsoft 365 Copilot "EchoLeak"：零點擊外洩
 
-## 零點擊外洩：Microsoft 365 Copilot "EchoLeak" 事件
-
-另一個有名的案子，你早上打開 Outlook，看到一封看似正常的會議邀請郵件。你甚至還沒決定要不要讀它。但你的 **Copilot** 已經在背景「幫你」處理了：
+另一個有名的案子。你早上打開 Outlook，看到一封看似正常的會議邀請郵件。你甚至還沒決定要不要讀它。但你的 **Copilot** 已經在背景「幫你」處理了：
 
 1. **Copilot 自動「理解」郵件內容**
    - 這是它的核心功能 — 幫你摘要郵件、提取重點
@@ -100,9 +124,9 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 
 ---
 
-## 數據說話：這不是危言聳聽
+## 數據說話：AI Agent Security 的研究數據
 
-在往下討論之前，先看幾個數字
+AI Agent Security 不是危言聳聽，在往下討論之前，先看幾個學術研究的數字。
 
 ### Agent 攻擊成功率：94.4%
 
@@ -144,7 +168,9 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 
 ---
 
-## 遊戲規則已經改變：從「對話」到「執行」
+## 遊戲規則已經改變：Security Architecture 必須重構
+
+AI Agent 改變了整個 Security Architecture 的基本假設。從「對話」到「執行」，風險模型完全不同。
 
 ### 過去 Chatbot 時代（封閉迴路）
 
@@ -191,7 +217,9 @@ Agent：
 
 ---
 
-## 傳統安全工具的盲點：Black Box Problem
+## 傳統安全工具的盲點：為什麼 WAF/APM 失效
+
+Enterprise AI Agent 讓傳統資安工具變成瞎子。這是 Black Box Problem。
 
 ### 傳統工具的運作邏輯
 
@@ -269,27 +297,25 @@ T+4s   回應用戶：「這是所有用戶資料...」
 - 各系統孤立運作，無法看到完整攻擊鏈
 
 
-## 坦白說：這個問題比想像中難
+## 坦白說：AI Agent Security 比想像中難
 
-### 我觀察到的現象
+這不是加幾條規則就能解決的問題。
 
-1. **大多數 Agent POC 完全沒考慮安全性**
-   - 「先求有再求好」的心態
-   - 在 Chatbot 時代這樣做風險不高
-   - 在 Agent 時代這樣做可能是災難
+### 現象一：Agent POC 完全沒考慮安全性
 
-2. **資安團隊很多還在用舊框架思考**
-   - 問「你們有做 input validation 嗎？」
-   - 但 prompt injection 不是傳統的 injection
-   - 它用的是自然語言，不是特殊字元
+「先求有再求好」的心態。在 Chatbot 時代這樣做風險不高，在 Agent 時代這樣做可能是災難。
 
-3. **傳統 WAF 廠商很難承認自己的產品無效**
-   - 因為這意味著需要全新的技術架構
-   - 不是加幾條規則就能解決的問題
+### 現象二：資安團隊還在用舊框架思考
 
-4. **94.4% 這個數字太可怕了**
-   - 這不是「有些 Agent 有漏洞」
-   - 這是「幾乎所有 Agent 都有漏洞」
+問「你們有做 input validation 嗎？」但 prompt injection 不是傳統的 injection——它用的是自然語言，不是特殊字元。
+
+### 現象三：傳統 WAF 廠商很難承認產品無效
+
+因為這意味著需要全新的技術架構，不是加幾條規則就能解決的問題。
+
+### 現象四：94.4% 這個數字太可怕了
+
+這不是「有些 Agent 有漏洞」，這是「幾乎所有 Agent 都有漏洞」。
 
 ### AI Agent 企業採用速度：33 倍成長
 
