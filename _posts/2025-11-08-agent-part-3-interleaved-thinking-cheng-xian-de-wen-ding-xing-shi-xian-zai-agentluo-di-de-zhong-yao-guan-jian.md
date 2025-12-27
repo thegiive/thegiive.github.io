@@ -12,7 +12,7 @@ description: "Claude 4.5 的 Interleaved Thinking 讓 Agent 能持續專注工�
 
 大家都知道我用 AI 來 enable 很多intern 來當作很多正職的事情，當然他們雖然都很年輕跟熱情，但是我管理團隊時發現一個規律：
 
-![](/assets/images/image-26.png)有 Sr 的經驗，跟有 Jr 熱情的 Data&AI; Team 
+有 Sr 的經驗，跟有 Jr 熱情的 Data&AI; Team
 
 當我派給幾個 Senior 的同事 ，我通常只需要 weekly 跟他開會，給他幾個任務，一週後檢查一次就好。他可以獨立工作，中間遇到問題會自己判斷、調整，如果有大問題他們會舉手跟我講，不容易走偏。
 
@@ -27,8 +27,6 @@ description: "Claude 4.5 的 Interleaved Thinking 讓 Agent 能持續專注工�
 
 在 Agent 界有一個很重要的考核指標叫做 METR。Claude 3.7 Sonnet 2025 初METR 可以獨立工作約 1小時，之後就需要人類確認方向。2025 年五月 Opus 已經可以到 7小時，到了 2025 年 9 月，Claude Sonnet 4.5 已經可以持續專注工作超過 30 小時，無需人工干預自主構建完整的聊天應用，生成 11,000 行代碼。
 
-![](/assets/images/image-25.png)
-
 為什麼進步這麼快？關鍵就是 Claude 4.5 加入了 interleaved thinking（交錯思考）這樣的機制——讓 Agent 像 Senior PM一樣，每一步都自我驗證、發現問題立即調整、遇到大問題主動舉手。當這種 Agent 獨立作業的能力到臨界值，Agent 就可以像 Sr PM 一樣，在半夜或是不需要介入的情況下，直接做事，等早上人類起床驗收。
 
 ### Interleaved Thinking 
@@ -37,16 +35,12 @@ description: "Claude 4.5 的 Interleaved Thinking 讓 Agent 能持續專注工�
 
 具體來說： 思考 → 行動 → 驗證 → 調整 → 保存檢查點 → 重複
 
-![](/assets/images/image-23.png)
-
 這就像不是「做完再想」，而是「邊做邊想邊驗證」。實作來說
 
 > Plan & Exec 只要支援一次呼叫（像 `run_agent()`），  
 > Interleaved Thinking 需要支援「連續多次 API 呼叫 + 狀態回饋」
 
 從實作上，Interleaved Thinking 通常需要一個 **中控 loop** 來管理「思考 ↔ 行動 ↔ 反思」的循環：
-
-![](/assets/images/image-24.png)
 
 所以系統要能：
 
