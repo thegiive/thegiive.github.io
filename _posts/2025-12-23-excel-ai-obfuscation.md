@@ -69,11 +69,11 @@ description: "小孩子才做選擇，資安跟 AI 效率我都要。與其改�
 
 **混淆前：**
 
-![混淆前的 Excel 資料](/assets/images/excel-obfuscate-before.png)
+![混淆前的 Excel 資料](/assets/images/excel-obfuscate-after.png)
 
 **混淆後：**
 
-![混淆後的 Excel 資料](/assets/images/excel-obfuscate-after.png)
+![混淆後的 Excel 資料](/assets/images/excel-obfuscate-before.png)
 
 你看，日期和營收數字完全沒動，但部門名稱都變成認不出來的亂碼中文了。
 
