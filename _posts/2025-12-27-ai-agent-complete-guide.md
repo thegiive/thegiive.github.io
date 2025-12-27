@@ -8,6 +8,8 @@ description: "AI Agent 不是「比較聰明的 Chatbot」，而是能自主執�
 keywords: "AI Agent, AI Agent 架構, 企業 AI Agent, AI Agent 安全, Workflow, ReAct, Plan Execute, Dual-Agent, LATS, Multi-Agent"
 ---
 
+*最近更新：2025 Q1（補充 Agent Security、Nested Learning、Multi-Agent 風險）*
+
 **如果你正在思考：**
 
 - Chatbot 為什麼一落地就失控
