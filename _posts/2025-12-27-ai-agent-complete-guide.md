@@ -71,7 +71,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ![Plan & Execute](/assets/images/plan-execute-architecture.png)
 
-如果 ReAct 是「摸著石頭過河」，Plan & Execute 就是「先畫好地圖再出發」。
+如果 ReAct 是「摸著石頭過河」，[Plan & Execute](https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/#planning) 就是「先畫好地圖再出發」。
 
 核心思想：
 1. **Planner**：根據目標規劃完整步驟
