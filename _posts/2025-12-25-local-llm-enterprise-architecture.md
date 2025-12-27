@@ -175,7 +175,7 @@ Python 沙盒是企業 LLM 系統的安全關鍵——讓 AI 生成的程式碼�
 - 禁止網路存取
 - 執行超時（如 30 秒）
 
-這種隔離策略也符合 [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) 中對 LLM08: Excessive Agency 的防護建議——限制 LLM 生成程式碼的執行權限。
+這種隔離策略也符合 [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) 中對 LLM08: Excessive Agency 的防護建議——限制 LLM 生成程式碼的執行權限。關於 AI Agent 時代的資安威脅，可參考 [AI Agent Security：為什麼它正在改變企業資安架構](/ai-agent-security-game-changed/)。
 
 ---
 
@@ -360,6 +360,7 @@ RLS 可以在資料庫層面實現：
 - [Langfuse 自建指南](https://langfuse.com/self-hosting) - 5 分鐘 Docker 部署
 
 ### 安全與治理
+- [AI Agent Security：為什麼它正在改變企業資安架構](/ai-agent-security-game-changed/) - 從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak 的真實案例分析
 - [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) - LLM 應用的十大安全風險
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) - AI 風險管理的國際標準
 - [Docker Security Best Practices](https://docs.docker.com/engine/security/) - 容器安全配置指南
