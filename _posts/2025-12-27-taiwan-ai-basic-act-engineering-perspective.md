@@ -12,6 +12,85 @@ author: "Wisely Chen"
 canonical_url: "https://ai-coding.wiselychen.com/taiwan-ai-basic-act-engineering-perspective/"
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "台灣人工智慧基本法｜IT 主管必讀的資安合規建議",
+  "description": "2025/12/23 台灣三讀通過《人工智慧基本法》完整解讀。從 IT 資安角度分析七大原則。",
+  "image": "https://ai-coding.wiselychen.com/assets/images/ai-governance-seven-pillars.png",
+  "datePublished": "2025-12-27",
+  "dateModified": "2025-12-27",
+  "author": {
+    "@type": "Person",
+    "name": "Wisely Chen",
+    "url": "https://www.wiselychen.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI Coding Blog",
+    "url": "https://ai-coding.wiselychen.com"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "台灣人工智慧基本法什麼時候生效？現在就要合規嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "法律已於 2025/12/23 三讀通過，但這是「基本法」，不是執行細則。目前沒有具體罰則，也沒有強制合規時程。但建議現在就開始準備——等專法出來再動手，通常會來不及。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "公司只是使用 AI，不是開發 AI，也需要遵守人工智慧基本法嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "是的。法條中的「應用」包含使用第三方 AI 服務。你用 ChatGPT 處理客戶資料、用 AI 做信用評估、用 Copilot 寫程式——這些都算「應用」，都在法律涵蓋範圍內。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "用 ChatGPT 或 Claude 這類雲端 API 會違反人工智慧基本法嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不會自動違法，但你要能交代：資料流向哪裡、有沒有機敏資料外流、出事時誰負責。重點不是「用不用雲端」，而是「你有沒有管控機制」。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "中小企業沒有資源做完整的 AI 治理，怎麼辦？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "從最小可行方案開始：(1) 盤點目前用了哪些 AI、(2) 指定每個 AI 應用的負責人、(3) 加上基本的使用 log。這三件事不需要花大錢，但出事時能讓你有東西可以交代。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AI 產出的內容出錯，責任在誰？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "在「決定使用這個 AI 產出」的人。法律不接受「AI 算錯不是我的錯」這種說法。所以高風險決策要有人工審核，不能全自動。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "人工智慧基本法跟 GDPR 或個資法有什麼關係？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI 基本法的「隱私保護及資料治理」原則，跟既有的《個人資料保護法》是互補關係。AI 基本法提供原則框架，具體的個資處理規範還是要看個資法。兩者都要遵守。"
+      }
+    }
+  ]
+}
+</script>
+
 ## 目錄
 
 - [七大核心原則](#七大核心原則)
