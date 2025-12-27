@@ -99,7 +99,7 @@ On-premise LLM architecture 的核心價值是資料主權。每個客戶都在�
 - **用多少？** 有人狂刷 API，GPU 被吃光，其他人沒得用
 - **出事誰負責？** 資料外洩時，連是誰查的都不知道
 
-Auth Gateway 就是解決這些問題的第一道防線。
+Auth Gateway 就是解決這些問題的第一道防線。為什麼我們需要這麼嚴格的權限控制？因為 AI Agent 面臨著傳統 WAF 無法防禦的威脅——詳細攻擊案例請見：[AI Agent 安全性：揭露傳統資安工具看不到的盲區](/ai-agent-security-game-changed/)。
 
 ### 核心功能
 
