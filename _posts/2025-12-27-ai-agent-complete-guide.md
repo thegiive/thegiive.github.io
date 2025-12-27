@@ -130,7 +130,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 2. **Execute**：執行任務
 3. **Critic**：評估結果、提出改進
 
-這是用 System 2（慢思考）來突破瓶頸。
+這是用 [System 2（慢思考）](https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/#reflection)來突破瓶頸。
 
 > 思維模式詳解：[[Agent Part 4] Plan, Exec, Critic 我們如何用 System 2 思維突破瓶頸](/deep-research-linkedin-draft/)
 
