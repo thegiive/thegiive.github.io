@@ -63,7 +63,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 **Workflow** 的假設是「我能預測所有情況」，但現實世界不是預定好的。
 
-**ReAct** 的優點是對環境感知極強，適合知識問答和高密度交互場景。缺點是每步都需要 LLM 推理，速度慢、token 容易爆炸、容易陷入局部最優解。
+**[ReAct](https://arxiv.org/abs/2210.03629)** 的優點是對環境感知極強，適合知識問答和高密度交互場景。缺點是每步都需要 LLM 推理，速度慢、token 容易爆炸、容易陷入局部最優解。
 
 > 完整比較：[[Agent Part 1] Workflow 型和 ReAct 型，誰更像你？](/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/)
 
