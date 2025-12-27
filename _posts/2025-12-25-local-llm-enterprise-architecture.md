@@ -24,7 +24,7 @@ categories: ["保證很無聊的 IT 架構系列"]
 
 這張藍圖是我們接下來的導覽地圖。先看整體流程：
 
-**Step 1：使用者登入上傳** — 使用者透過瀏覽器或 CLI 發送請求，上傳 Excel/CSV 檔案
+**Step 1：使用者登入上傳** — 使用者透過瀏覽器或 CLI 發送請求，上傳 Excel/CSV 檔案（若是 PDF 則需經過 [地端 OCR API](/on-premise-ocr-api/) 先行解析）
 
 **Step 2：Auth Gateway 驗證權限** — 檢查身份、角色、配額，決定能用哪個模型、查哪些資料
 
