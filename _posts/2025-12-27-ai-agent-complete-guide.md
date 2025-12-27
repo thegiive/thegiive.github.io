@@ -8,6 +8,16 @@ description: "AI Agent 不是「比較聰明的 Chatbot」，而是能自主執�
 keywords: "AI Agent, AI Agent 架構, 企業 AI Agent, AI Agent 安全, Workflow, ReAct, Plan Execute, Dual-Agent, LATS, Multi-Agent"
 ---
 
+**如果你正在思考：**
+
+- Chatbot 為什麼一落地就失控
+- Agent 架構該怎麼設計才不會炸
+- 為什麼資安、審計、責任鏈突然變得重要
+
+這一頁是給你的。
+
+---
+
 ## 目錄
 
 - [什麼是 AI Agent？](#什麼是-ai-agent)
@@ -252,6 +262,34 @@ Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架
 
 - **推薦信** [10 分鐘完成 10 封信](/shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan) — 效率提升
 - **系統管理** [Claude Code 做 Linux 管理](/ai-ops-yong-agent-claude-code-zuo-linux-xi-tong-guan-li-you-mei-you-gao-tou-xiang-de-hen/) — AI Ops 實戰
+
+---
+
+## 常見問題 FAQ
+
+**Q: AI Agent 跟 Chatbot 差在哪？**
+
+Chatbot 只能「說話」，最壞情況是回答錯誤。Agent 能「動手做事」，有資料庫存取、API 呼叫權限，攻擊目標從「騙它說錯話」變成「騙它做錯事」。風險等級完全不同。
+
+**Q: 企業什麼時候「不該」用 Agent？**
+
+當你沒有人願意負責、流程沒有配合調整、或期望值不合理時。技術從來不是最大障礙，人和流程才是。如果連基本的 SOP 都沒有，先別急著上 Agent。
+
+**Q: Agent 一定要上 Multi-Agent 嗎？**
+
+不一定。單一 Agent 配合 Plan & Execute 模式，在大部分場景已經夠用。Multi-Agent 適合需要「不同專業角色協作」的複雜任務，但架構複雜度和除錯難度會大幅提升。
+
+**Q: AI Agent 最大的安全風險是什麼？**
+
+Prompt Injection。研究顯示攻擊成功率高達 94.4%，而傳統 WAF/APM 完全失效，因為它們看不懂自然語言。企業需要專門的 Agent 安全架構：Auth Gateway、沙盒執行、LLM Router。
+
+**Q: Agent 為什麼需要審計 log？**
+
+因為 Agent 的決策過程是黑箱。當出事時，你需要知道「它為什麼這樣做」。雙層 Log（應用層 + LLM 層）是企業級 Agent 的基本要求，也是合規審計的必要條件。
+
+**Q: Workflow 和 ReAct 該選哪個？**
+
+看你的場景。Workflow 適合「可預測的標準流程」，速度快、成本低。ReAct 適合「需要環境感知的複雜任務」，但 token 消耗高、容易陷入局部最優。實務上常混用：外層 Workflow 控制流程，內層 ReAct 處理不確定性。
 
 ---
 
