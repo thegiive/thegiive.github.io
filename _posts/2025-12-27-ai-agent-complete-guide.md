@@ -171,7 +171,7 @@ Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架
 
 ## 企業 Agent 安全
 
-![AI Agent Security](/assets/images/ai-agent-security-logo.png)
+![AI Agent Security](/assets/images/ai-agent-security-threat.png)
 
 ### 為什麼 Agent 比 Chatbot 危險 100 倍？
 
