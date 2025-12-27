@@ -114,7 +114,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ### Interleaved Thinking：穩定性的關鍵
 
-Agent 落地最大的挑戰是「穩定性」。Interleaved Thinking 讓 Agent 在執行過程中持續思考和調整，而不是一次性規劃完畢。
+Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking#interleaved-thinking-with-tool-use) 讓 Agent 在執行過程中持續思考和調整，而不是一次性規劃完畢。
 
 這是現在 Agent 能夠真正落地的重要關鍵。
 
