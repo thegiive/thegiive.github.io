@@ -32,6 +32,8 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 我認為真正的 Agent 需要滿足三個條件：
 
+![構成真正 Agent 的三個基石](/assets/images/ai-agent-three-pillars.png)
+
 1. **知識庫提取能力**
 2. **工具調用能力**
 3. **一定的容錯或除錯能力**
