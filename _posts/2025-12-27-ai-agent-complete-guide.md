@@ -124,7 +124,7 @@ Agent 落地最大的挑戰是「穩定性」。Interleaved Thinking 讓 Agent �
 
 ### LATS：讓 Agent 學會「三思而後行」
 
-![LATS Tree Search](/assets/images/lats-tree-search-diagram.png)
+![LATS Tree Search](/assets/images/lats-decision-brain.png)
 
 LATS（Language Agent Tree Search）是終極決策大腦，結合了：
 
