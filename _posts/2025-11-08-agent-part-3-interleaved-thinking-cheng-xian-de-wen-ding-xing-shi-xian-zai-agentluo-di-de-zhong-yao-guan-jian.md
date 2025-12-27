@@ -33,6 +33,8 @@ description: "Claude 4.5 的 Interleaved Thinking 讓 Agent 能持續專注工�
 
 傳統的 Agent 架構（如 ReAct 和 Plan & Execute）有個共同做法：思考和執行是分離的，Interleaved Thinking 不一樣， 它讓「思考」貫穿整個執行過程——不只是在工具調用之間思考，而是在每個行動的前、中、後都持續思考。規劃與行動交錯進行
 
+![Interleaved Thinking 流程圖](/assets/images/interleaved-thinking-diagram.png)
+
 具體來說： 思考 → 行動 → 驗證 → 調整 → 保存檢查點 → 重複
 
 這就像不是「做完再想」，而是「邊做邊想邊驗證」。實作來說
