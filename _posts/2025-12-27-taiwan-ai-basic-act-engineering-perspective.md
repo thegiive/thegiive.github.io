@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "台灣《人工智慧基本法》：IT 人該知道的事"
+title: "台灣《人工智慧基本法》資安合規指南：IT 主管必讀的 AI 治理實務"
 date: 2025-12-27 08:00:00 +0800
 permalink: /taiwan-ai-basic-act-engineering-perspective/
 image: /assets/images/ai-governance-seven-pillars.png
 categories: ["AI 安全與架構"]
-description: "2025/12/23 台灣三讀通過《人工智慧基本法》。這是框架法，不是執行細則——法律不告訴你怎麼做，但出事時你要能交代。本文精簡解讀對 IT 人的實務影響。"
+description: "2025/12/23 台灣三讀通過《人工智慧基本法》。本文從資安角度解讀七大原則對企業的影響：AI 系統權限控管、Prompt Injection 防護、資料最小化、Audit Trail 建置、問責機制設計。附實務 Quick Win 清單與 Q&A。"
 ---
 
 2025 年 12 月 23 日，台灣立法院三讀通過《人工智慧基本法》。在我的朋友圈內，幾乎沒有任何的火花，但是我個人覺得很重要，所以花了一點時間來看看這個法律對我們 IT 主要影響有啥？
