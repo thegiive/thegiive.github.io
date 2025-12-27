@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "AI Agent 完整指南：從架構設計到企業安全落地"
+title: "AI Agent 完整指南｜架構、Workflow、安全與企業落地"
 date: 2025-12-27 12:00:00 +0800
 permalink: /ai-agent/
 image: /assets/images/ai-agent-guide-cover.png
-description: "AI Agent 不是「比較聰明的 Chatbot」，而是能自主執行任務的系統。本指南涵蓋 Workflow vs ReAct、Plan & Execute、Dual-Agent 架構、LATS 決策、企業安全等核心主題，以 IT 架構師視角分享真實戰場經驗。"
+description: "AI Agent 不是「比較聰明的 Chatbot」，而是能自主執行任務的系統。本指南涵蓋 AI Agent 架構（Workflow vs ReAct、Plan & Execute、Dual-Agent）、企業 AI Agent 落地、AI Agent 安全（94.4% 攻擊成功率）等核心主題。"
+keywords: "AI Agent, AI Agent 架構, 企業 AI Agent, AI Agent 安全, Workflow, ReAct, Plan Execute, Dual-Agent, LATS, Multi-Agent"
 ---
 
 ## 目錄
