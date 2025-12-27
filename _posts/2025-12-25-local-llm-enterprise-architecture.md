@@ -360,6 +360,7 @@ RLS 可以在資料庫層面實現：
 - [Langfuse 自建指南](https://langfuse.com/self-hosting) - 5 分鐘 Docker 部署
 
 ### 安全與治理
+- [台灣《人工智慧基本法》：IT 主管必讀的 AI 資安治理建議](/taiwan-ai-basic-act-engineering-perspective/) - 七大原則解讀、Quick Win 清單與企業合規方向
 - [AI Agent Security：為什麼它正在改變企業資安架構](/ai-agent-security-game-changed/) - 從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak 的真實案例分析
 - [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) - LLM 應用的十大安全風險
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) - AI 風險管理的國際標準
