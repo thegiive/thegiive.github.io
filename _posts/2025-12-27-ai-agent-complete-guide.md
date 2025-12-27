@@ -86,7 +86,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ![Dual-Agent Architecture](/assets/images/dual-agent-architecture-logo.png)
 
-Anthropic 官方揭露了 Claude Code 為什麼這麼好用的內部架構——Dual-Agent 設計：
+[Anthropic 官方](https://www.anthropic.com/engineering/claude-code-best-practices)揭露了 Claude Code 為什麼這麼好用的內部架構——Dual-Agent 設計：
 
 - **Outer Agent**：處理用戶對話、維持上下文
 - **Inner Agent**：專注執行具體任務
@@ -138,7 +138,7 @@ Agent 落地最大的挑戰是「穩定性」。Interleaved Thinking 讓 Agent �
 
 ![LATS Tree Search](/assets/images/lats-decision-brain.png)
 
-LATS（Language Agent Tree Search）是終極決策大腦，結合了：
+[LATS（Language Agent Tree Search）](https://arxiv.org/abs/2310.04406)是終極決策大腦，結合了：
 
 - **蒙地卡羅樹搜索**：探索多種可能路徑
 - **自我反思**：從失敗中學習
@@ -152,7 +152,7 @@ LATS（Language Agent Tree Search）是終極決策大腦，結合了：
 
 ![Storm AI Agent](/assets/images/storm-ai-agent-diagram-20251207.png)
 
-Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架構是真正的「編輯團隊」：
+[Storm](https://github.com/stanford-oval/storm) 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架構是真正的「編輯團隊」：
 
 - **主編 Agent**：統籌全局
 - **研究員 Agent**：蒐集資料
@@ -169,7 +169,7 @@ Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架
 
 ![Nested Learning](/assets/images/nested-learning-brain-memory.png)
 
-2025 年 Google 發表的 Nested Learning，讓模型擁有大腦般的長期記憶：
+2025 年 [Google 發表的 Nested Learning](https://arxiv.org/abs/2506.08071)，讓模型擁有大腦般的長期記憶：
 
 - **短期工作記憶**：當前任務的上下文
 - **長期語義記憶**：跨任務的知識累積
@@ -187,7 +187,7 @@ Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架
 
 ### 為什麼 Agent 比 Chatbot 危險 100 倍？
 
-根據 2025 年學術研究：
+根據 [2025 年學術研究](https://arxiv.org/abs/2406.12784)：
 
 > **94.4% 的 SOTA LLM Agent 容易受到 Prompt Injection 攻擊**
 >
