@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "台灣《人工智慧基本法》資安合規指南：IT 主管必讀的 AI 治理實務"
+title: "台灣《人工智慧基本法》：IT 主管必讀的 AI 資安治理建議"
 date: 2025-12-27 08:00:00 +0800
 permalink: /taiwan-ai-basic-act-engineering-perspective/
 image: /assets/images/ai-governance-seven-pillars.png
