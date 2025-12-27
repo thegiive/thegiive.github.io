@@ -85,6 +85,8 @@ Anthropic 官方揭露了 Claude Code 為什麼這麼好用的內部架構——
 
 ### Multi-Agent 協作：當 AI 學會「會診」
 
+![Multi-Agent 協作](/assets/images/multi-agent-collaboration.png)
+
 單一 Agent 有其極限。Multi-Agent 系統讓多個專業 Agent 協作：
 
 - **Supervisor 模式**：一個 Agent 指揮調度其他 Agent
