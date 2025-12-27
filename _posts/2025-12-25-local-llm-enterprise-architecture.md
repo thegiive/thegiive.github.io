@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "企業級地端 LLM 系統架構藍圖"
+title: "企業級地端 LLM 架構：從 Auth Gateway 到 Python 沙盒的完整藍圖"
 date: 2025-12-25 12:00:00 +0800
 permalink: /local-llm-enterprise-architecture/
 image: /assets/images/local-llm-enterprise-architecture.png
@@ -9,9 +9,9 @@ categories: ["保證很無聊的 IT 架構系列"]
 ---
 
 
-## 為什麼需要這篇文章？
+## 為什麼企業需要地端 LLM 架構？
 
-這又一篇"無聊 IT 架構" 系列文。講到地端 LLM，大家都在討論怎麼榨出更好的 performance：用什麼量化、跑什麼模型、GPU 要買哪張。但真正要上生產環境，其實有一堆東西要顧：
+企業級地端 LLM 部署不只是「把模型跑起來」這麼簡單。這又一篇"無聊 IT 架構" 系列文。講到地端 LLM，大家都在討論怎麼榨出更好的 performance：用什麼量化、跑什麼模型、GPU 要買哪張。但真正要上生產環境，其實有一堆東西要顧：
 
 - 多人同時使用，怎麼管理權限？
 - 使用者問了什麼、LLM 回了什麼，怎麼記錄和審計？
@@ -38,9 +38,9 @@ categories: ["保證很無聊的 IT 架構系列"]
 
 ---
 
-## 地端架構（On-Premise）
+## 地端 LLM 架構總覽（On-Premise）
 
-每個客戶都在說地端，因為適合企業內部部署，資料完全不出內網。根據實際接觸的客戶經驗，金融、製造、醫療等產業對資料主權的要求非常嚴格——即使雲端廠商提供再多的合規認證，IT 部門和法務還是會說：「資料不出公司網路，我們才安心。」這不是技術問題，是信任問題。
+地端 LLM 部署的核心價值是資料主權。每個客戶都在說地端，因為適合企業內部部署，資料完全不出內網。根據實際接觸的客戶經驗，金融、製造、醫療等產業對資料主權的要求非常嚴格——即使雲端廠商提供再多的合規認證，IT 部門和法務還是會說：「資料不出公司網路，我們才安心。」這不是技術問題，是信任問題。
 
 ### 核心元件
 
@@ -70,7 +70,9 @@ categories: ["保證很無聊的 IT 架構系列"]
 
 ---
 
-## Auth Gateway 設計
+## Auth Gateway：企業級 LLM 的權限控制
+
+企業 LLM 系統的第一道防線就是 Auth Gateway。
 
 ![Auth Gateway 架構圖](/assets/images/auth-gateway-diagram.png)
 
@@ -104,7 +106,9 @@ Auth Gateway 就是解決這些問題的第一道防線。
 
 ---
 
-## Orchestrator 設計
+## Orchestrator：多步驟任務的協調中心
+
+當 LLM 從「單一問答」進化到「多步驟任務」，就需要 Orchestrator 來協調。
 
 ![Orchestrator 架構圖](/assets/images/orchestrator-diagram.png)
 
@@ -130,7 +134,9 @@ Auth Gateway 就是解決這些問題的第一道防線。
 
 ---
 
-## Python 沙盒設計
+## Python 沙盒：LLM 生成程式碼的安全執行環境
+
+Python 沙盒是企業 LLM 系統的安全關鍵——讓 AI 生成的程式碼跑得動，又不會搞壞系統。
 
 ![Python 沙盒架構圖](/assets/images/python-sandbox-diagram.png)
 
@@ -213,7 +219,9 @@ Auth Gateway 就是解決這些問題的第一道防線。
 
 ---
 
-## LLM Router 設計
+## LLM Router：智慧模型選擇與負載平衡
+
+LLM Router 的核心價值是讓對的模型做對的事，同時節省 GPU 資源。
 
 ![LLM Router 架構圖](/assets/images/llm-router-diagram.png)
 
@@ -258,7 +266,9 @@ LLM Router 的核心價值是**讓對的模型做對的事**。
 
 ---
 
-## Log 系統設計
+## Log 系統：企業 LLM 的雙層觀測架構
+
+企業 LLM 系統需要兩層 Log 架構，一層看模型效能，一層做業務審計。
 
 ![Log 系統架構圖](/assets/images/log-system-diagram.png)
 
