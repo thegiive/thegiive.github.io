@@ -191,7 +191,7 @@ AI Agent 改變了整個 Security Architecture 的基本假設。從「對話」
 - **操作範圍：** 高度整合 — 讀取 DB、呼叫 API、觸發 Lambda、操作雲端資源
 - **風險等級：** 高 — 可造成真實系統變更（94.4% 攻擊成功率）
 - **角色本質：** 有代理權的操作系統（Operational System with Agency）
-- **失敗後果：** 資料外洩、未授權操作、財務損失、合規違規
+- **失敗後果：** 資料外洩、未授權操作、財務損失、合規違規（台灣已於 2025/12 通過[《人工智慧基本法》](/taiwan-ai-basic-act-engineering-perspective/)，明確要求 AI 系統的可問責性與透明性）
 
 典型場景：
 
@@ -360,8 +360,9 @@ T+4s   回應用戶：「這是所有用戶資料...」
 
 ## 延伸閱讀
 
+- [台灣《人工智慧基本法》：IT 人該知道的事](/taiwan-ai-basic-act-engineering-perspective/) — 七大原則解讀與企業合規方向
+- [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/) — 從權限控制到沙盒防禦的完整實作
 - [Agent 模式 Part 3] - 从线性执行到自主循环：Deep Research 架構
-- [生產級 AI 代理的 10 個後端架構基石](https://ai-coding.wiselychen.com)
 - OWASP Top 10 for LLM Applications
 
 ---
