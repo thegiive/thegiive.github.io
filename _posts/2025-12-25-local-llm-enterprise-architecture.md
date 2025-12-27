@@ -45,7 +45,7 @@ categories: ["保證很無聊的 IT 架構系列"]
 ### 核心元件
 
 **GPU 伺服器**
-- 角色：執行 Ollama + gemma3:12b
+- 角色：執行 [Ollama](https://ollama.com/) + gemma3:12b
 - 建議規格：RTX 4090 / A100，VRAM ≥ 16GB
 
 **應用伺服器**
@@ -169,11 +169,13 @@ Python 沙盒是企業 LLM 系統的安全關鍵——讓 AI 生成的程式碼�
 | **Docker 容器** | ⭐⭐⭐ 高 | 中等 | 生產環境推薦 |
 | **gVisor / Firecracker** | ⭐⭐⭐⭐ 極高 | 複雜 | 多租戶、公開服務 |
 
-**生產環境建議使用 Docker 容器**，可設定：
+**生產環境建議使用 [Docker](https://docs.docker.com/engine/security/) 容器**，可設定：
 - 記憶體限制（如 512MB）
 - CPU 限制（如 50%）
 - 禁止網路存取
 - 執行超時（如 30 秒）
+
+這種隔離策略也符合 [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) 中對 LLM08: Excessive Agency 的防護建議——限制 LLM 生成程式碼的執行權限。
 
 ---
 
@@ -351,7 +353,13 @@ RLS 可以在資料庫層面實現：
 
 ## 延伸閱讀
 
+### 工具與平台
+- [Ollama](https://ollama.com/) - 地端 LLM 部署的瑞士刀
 - [LiteLLM 官方文檔](https://docs.litellm.ai/) - 統一 LLM API 閘道
 - [Langfuse 官方文檔](https://langfuse.com/docs) - 開源 LLM 觀測平台
 - [Langfuse 自建指南](https://langfuse.com/self-hosting) - 5 分鐘 Docker 部署
-- [Langfuse + LiteLLM 整合](https://langfuse.com/docs/integrations/litellm) - 一行設定串接
+
+### 安全與治理
+- [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) - LLM 應用的十大安全風險
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) - AI 風險管理的國際標準
+- [Docker Security Best Practices](https://docs.docker.com/engine/security/) - 容器安全配置指南
