@@ -8,6 +8,21 @@ description: "企業地端 LLM 架構實作與最佳部署實踐。完整解析 
 categories: ["保證很無聊的 IT 架構系列"]
 ---
 
+## 目錄
+
+- [為什麼企業需要地端 LLM 架構？](#為什麼企業需要地端-llm-架構)
+- [地端 LLM 架構總覽（On-Premise）](#地端-llm-架構總覽on-premise)
+- [Auth Gateway：企業級 LLM 的權限控制](#auth-gateway企業級-llm-的權限控制)
+- [Orchestrator：多步驟任務的協調中心](#orchestrator多步驟任務的協調中心)
+- [Python 沙盒：LLM 生成程式碼的安全執行環境](#python-沙盒llm-生成程式碼的安全執行環境)
+- [檔案版本管理](#檔案版本管理)
+- [LLM Router：智慧模型選擇與負載平衡](#llm-router智慧模型選擇與負載平衡)
+- [Log 系統：企業 LLM 的雙層觀測架構](#log-系統企業-llm-的雙層觀測架構)
+- [結論](#結論)
+- [常見問題 Q&A](#常見問題-qa)
+- [延伸閱讀](#延伸閱讀)
+
+---
 
 ## 為什麼企業需要地端 LLM 架構？
 
