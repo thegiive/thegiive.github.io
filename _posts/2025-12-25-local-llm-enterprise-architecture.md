@@ -4,7 +4,7 @@ title: "企業級地端 LLM 架構：從 Auth Gateway 到 Python 沙盒的完整
 date: 2025-12-25 12:00:00 +0800
 permalink: /local-llm-enterprise-architecture/
 image: /assets/images/local-llm-enterprise-architecture.png
-description: "從權限控制、Log 設計到 Python 沙盒，一次搞懂企業級 LLM 部署的所有細節"
+description: "企業級地端 LLM 不只是跑模型這麼簡單。本文完整解析 Auth Gateway 權限控管、Orchestrator 任務協調、Python 沙盒安全執行、LLM Router 智慧路由、雙層 Log 審計架構。附 Ollama + LiteLLM + Langfuse 實作建議，符合台灣 AI 基本法合規要求。"
 categories: ["保證很無聊的 IT 架構系列"]
 ---
 
