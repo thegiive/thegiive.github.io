@@ -239,32 +239,26 @@ Storm 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架
 
 ### Agent 架構系列
 
-| 編號 | 標題 | 核心主題 |
-|------|------|----------|
-| Part 1 | [Workflow 型和 ReAct 型，誰更像你？](/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/) | 基礎架構比較 |
-| Part 2 | [Plan & Exec 臨機應變 vs 讀著路書跑](/mang-mu-jia-su-vs-du-zhu-lu-shu-pao-wei-shi-mo-ai-agent-xu-yao-plan-exec-mo-shi/) | 執行模式選擇 |
-| Part 3 | [Interleaved Thinking 呈現的穩定性](/agent-part-3-interleaved-thinking-cheng-xian-de-wen-ding-xing-shi-xian-zai-agentluo-di-de-zhong-yao-guan-jian/) | 落地穩定性 |
-| Part 4 | [Plan, Exec, Critic：System 2 思維](/deep-research-linkedin-draft/) | 自我反思機制 |
-| Part 5 | [Anthropic Dual-Agent 架構](/anthropic-dual-agent-architecture/) | Claude Code 內部設計 |
-| Part 6 | [Storm：駕馭整個文章編輯團隊](/storm-ai-agent-as-expert-editor-team/) | Multi-Agent 寫作 |
-| Part 7 | [LATS：三思而後行的決策大腦](/lats-agent-tree-search-decision-brain/) | 樹搜索決策 |
-| Part 8 | [Nested Learning：長期記憶](/nested-learning-ai-memory/) | Agent 記憶系統 |
+- **Part 1** [Workflow 型和 ReAct 型，誰更像你？](/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/) — 基礎架構比較
+- **Part 2** [Plan & Exec 臨機應變 vs 讀著路書跑](/mang-mu-jia-su-vs-du-zhu-lu-shu-pao-wei-shi-mo-ai-agent-xu-yao-plan-exec-mo-shi/) — 執行模式選擇
+- **Part 3** [Interleaved Thinking 呈現的穩定性](/agent-part-3-interleaved-thinking-cheng-xian-de-wen-ding-xing-shi-xian-zai-agentluo-di-de-zhong-yao-guan-jian/) — 落地穩定性
+- **Part 4** [Plan, Exec, Critic：System 2 思維](/deep-research-linkedin-draft/) — 自我反思機制
+- **Part 5** [Anthropic Dual-Agent 架構](/anthropic-dual-agent-architecture/) — Claude Code 內部設計
+- **Part 6** [Storm：駕馭整個文章編輯團隊](/storm-ai-agent-as-expert-editor-team/) — Multi-Agent 寫作
+- **Part 7** [LATS：三思而後行的決策大腦](/lats-agent-tree-search-decision-brain/) — 樹搜索決策
+- **Part 8** [Nested Learning：長期記憶](/nested-learning-ai-memory/) — Agent 記憶系統
 
 ### Agent 安全與企業落地
 
-| 主題 | 文章 | 重點 |
-|------|------|------|
-| 企業安全 | [AI Agent Security](/ai-agent-security-game-changed/) | 94.4% 攻擊成功率 |
-| 架構藍圖 | [地端 LLM 架構](/local-llm-enterprise-architecture/) | Auth + 沙盒 + 雙層 Log |
-| 企業定義 | [什麼是 AI Agent？](/xiaolaoban-part2-ai-agent-definition/) | 企業導入觀察 |
-| 協作模式 | [Multi-Agent 協作](/multi-agent-xie-zuo-mo-shi-dang-ai-xue-hui-hui-zhen-zhe-jian-shi/) | 會診機制 |
+- **企業安全** [AI Agent Security](/ai-agent-security-game-changed/) — 94.4% 攻擊成功率
+- **架構藍圖** [地端 LLM 架構](/local-llm-enterprise-architecture/) — Auth + 沙盒 + 雙層 Log
+- **企業定義** [什麼是 AI Agent？](/xiaolaoban-part2-ai-agent-definition/) — 企業導入觀察
+- **協作模式** [Multi-Agent 協作](/multi-agent-xie-zuo-mo-shi-dang-ai-xue-hui-hui-zhen-zhe-jian-shi/) — 會診機制
 
 ### 實戰案例
 
-| 案例 | 文章 | 成果 |
-|------|------|------|
-| 推薦信 | [10 分鐘完成 10 封信](/shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan) | 效率提升 |
-| 系統管理 | [Claude Code 做 Linux 管理](/ai-ops-yong-agent-claude-code-zuo-linux-xi-tong-guan-li-you-mei-you-gao-tou-xiang-de-hen/) | AI Ops 實戰 |
+- **推薦信** [10 分鐘完成 10 封信](/shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan) — 效率提升
+- **系統管理** [Claude Code 做 Linux 管理](/ai-ops-yong-agent-claude-code-zuo-linux-xi-tong-guan-li-you-mei-you-gao-tou-xiang-de-hen/) — AI Ops 實戰
 
 ---
 
