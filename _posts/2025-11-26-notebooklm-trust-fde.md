@@ -17,7 +17,7 @@ AI 可以在 30 分鐘內產出大量分析結果，但讓現場「願意照數�
 
 ## 為什麼 AI 分析工具（NotebookLM、Claude Code）還無法取代數據分析師？
 
-NotebookLM 與 Claude Code 已經能完成 90% 以上的資料整理與分析工作，但在企業場景中，數據分析師真正不可取代的，是「讓決策者相信這些數字，並願意承擔行動後果」。
+NotebookLM 與 Claude Code 已經能完成 90% 以上的資料整理與分析工作，但在企業場景中，數據分析師真正不可取代的，是「讓決策者相信這些數字，並願意承擔行動後果」。這也是為什麼 [AI 時代的面試，我不考 coding，只問為什麼](/ai-era-interview-why-not-coding/)——因為工作角色正在根本性地轉變。
 
 ---
 
@@ -44,7 +44,7 @@ NotebookLM 與 Claude Code 已經能完成 90% 以上的資料整理與分析工
 
 期間我們用 AI 生出上百個監測指標。國際級客戶也派了好幾組印度人物流團隊，用他們的經驗告訴我們該看什麼。百日後，我們淘汰掉 99%，只留下幾個 key index 去優化營運。
 
-結果？P&L 報表有超級明顯的改進。AI 在裡面扮演很巨大的功用，主要是數據清洗，整理，data exploration ...etc 。
+結果？P&L 報表有超級明顯的改進。AI 在裡面扮演很巨大的功用，主要是數據清洗，整理，data exploration ...etc 。（想了解 AI 如何加速 Debug 流程？可以參考 [ChatGPT Atlas + Grafana 實戰](/chatgpt-atlas-grafana-debug/)）
 
 但這 1% 的 key insight，不是「客戶的國際級分析師」產生的，也不是「AI」產生的。是現場，管理層，FDR團隊這一百天的站會磨出來的。因為我們產生的 insight，不只是AI 工具輸出——而是現場人員「信任」這些 insight，願意跟著「做相應的行動改進」。
 
@@ -64,3 +64,11 @@ AI 的誕生及大幅度地讓前三步幾乎 0 成本就可以產生。
 ---
 
 **Key Insight：** AI 能加速 99% 的分析工作，但那 1% 讓人願意行動的信任，還是要人去建立。
+
+---
+
+## 延伸閱讀
+
+- [AI Agent 完整指南：從架構設計到企業安全落地](/ai-agent/) — 想深入了解 AI Agent 如何在企業場景落地
+- [ChatGPT Atlas + Grafana：30 分鐘 Debug 變 1 分鐘的實戰](/chatgpt-atlas-grafana-debug/) — AI 加速技術 Debug 的真實案例
+- [AI 時代的面試：我不考 coding，只問為什麼](/ai-era-interview-why-not-coding/) — 工作角色轉變下的人才觀
