@@ -7,8 +7,6 @@ image: /assets/images/notebooklm-trust-fde-cover.png
 description: "AI 工具讓數據分析成本趨近於零，但企業真的因此不需要數據分析師了嗎？本文用真實物流專案，拆解 NotebookLM、Claude Code 與「信任建立」之間的關鍵落差。"
 ---
 
-![notebooklm-trust-fde-cover](/assets/images/notebooklm-trust-fde-cover.png)
-
 # NotebookLM 時代，還需要數據分析師嗎？
 
 ## 結論先講：需要，但角色完全不同
@@ -59,7 +57,7 @@ AI 的誕生及大幅度地讓前三步幾乎 0 成本就可以產生。
 我們誕生在一個有海量的 insight 跟報表的年代
 但是 AI 用黑盒子產生的 insight , 到底能拿到多少客戶的信任
 
-但到底哪一個，能讓現場真的動起來？
+*** 但到底哪一個，能讓現場真的動起來？ ***
 
 ---
 
