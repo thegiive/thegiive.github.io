@@ -9,6 +9,14 @@ description: "AI 工具讓數據分析成本趨近於零，但企業真的因此
 
 ![notebooklm-trust-fde-cover](/assets/images/notebooklm-trust-fde-cover.png)
 
+# NotebookLM 時代，還需要數據分析師嗎？
+
+## 結論先講：需要，但角色完全不同
+
+AI 可以在 30 分鐘內產出大量分析結果，但讓現場「願意照數據行動」，仍然需要人去建立信任與責任鏈。
+
+---
+
 今年我帶 FDE 團隊進了一個物流優化專案，客戶是國際級客戶（這家你一定用過）。
 第一次會議，我很興奮地用 Claude Code 分析一堆 Excel，30 分鐘內產出十大建議。結果總經理說：「你的公式給我看一下，我要驗算邏輯。」
 
