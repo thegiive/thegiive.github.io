@@ -107,7 +107,7 @@ Agent 帶來的是：
 
 ### 四個核心風險
 
-我在 2025 年 11 月的香港演講中，整理了 Agent 時代的四大威脅：
+我認為 Agent 時代有四大威脅：
 
 **1. Prompt Injection（提示注入）**
 
@@ -136,8 +136,6 @@ Microsoft 365 Copilot 的 EchoLeak 攻擊就是典型案例。攻擊者發一封
 ---
 
 ## 企業真正害怕的不是 AI，而是「不能解釋」
-
-這一段是我跟一般轉型文最大的差異點。
 
 很多人以為企業不敢用 AI 是因為「怕出錯」。
 
@@ -192,15 +190,15 @@ Agent 的「解釋」也是一樣。它只是在事後合理化，不是真的�
 
 ## 沒有 Agent Security，就沒有 AI 企業轉型
 
-這是我這篇文章的核心主張。
-
-你可能覺得我危言聳聽。讓我用數據說話：
+我在 2025 年 11 月的香港 AWS跟ECV合辦的資訊安全論壇演講中，整理了目前歷歷在目的 Agent 威脅
 
 **根據 2025 年 10 月的研究，94.4% 的 SOTA LLM Agent 容易受到 Prompt Injection 攻擊。**
 
 這不是「有些 Agent 有漏洞」。
 
 這是「幾乎所有 Agent 都有漏洞」。
+
+![Agent 攻擊：偽裝成對話的攻擊與資料外洩](/assets/images/agent-attack-conversation-data-spills.png)
 
 而根據 Gartner 預測，到 2028 年，33% 的企業軟體將包含 Agentic AI。相比 2024 年的 <1%，這是 **33 倍的成長**。
 
