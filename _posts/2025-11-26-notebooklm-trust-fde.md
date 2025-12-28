@@ -5,17 +5,6 @@ date: 2025-11-26 08:30:00 +0800
 permalink: /notebooklm-trust-fde/
 image: /assets/images/notebooklm-trust-fde-cover.png
 description: "AI 工具讓數據分析成本趨近於零，但企業真的因此不需要數據分析師了嗎？本文用真實物流專案，拆解 NotebookLM、Claude Code 與「信任建立」之間的關鍵落差。"
----
-
-# NotebookLM 時代，還需要數據分析師嗎？
-
-## 結論先講：需要，但角色完全不同
-
-AI 可以在 30 分鐘內產出大量分析結果，但讓現場「願意照數據行動」，仍然需要人去建立信任與責任鏈。
-
-## 為什麼 AI 分析工具（NotebookLM、Claude Code）還無法取代數據分析師？
-
-NotebookLM 與 Claude Code 已經能完成 90% 以上的資料整理與分析工作，但在企業場景中，數據分析師真正不可取代的，是「讓決策者相信這些數字，並願意承擔行動後果」。這也是為什麼 [AI 時代的面試，我不考 coding，只問為什麼](/ai-era-interview-why-not-coding/)——因為工作角色正在根本性地轉變。
 
 ---
 
@@ -42,7 +31,7 @@ NotebookLM 與 Claude Code 已經能完成 90% 以上的資料整理與分析工
 
 期間我們用 AI 生出上百個監測指標。國際級客戶也派了好幾組印度人物流團隊，用他們的經驗告訴我們該看什麼。百日後，我們淘汰掉 99%，只留下幾個 key index 去優化營運。
 
-結果？P&L 報表有超級明顯的改進。AI 在裡面扮演很巨大的功用，主要是數據清洗，整理，data exploration ...etc 。（想了解 AI 如何加速 Debug 流程？可以參考 [ChatGPT Atlas + Grafana 實戰](/chatgpt-atlas-grafana-debug/)）
+結果？P&L 報表有超級明顯的改進。AI 在裡面扮演很巨大的功用，主要是數據清洗，[整理，data exploration ...etc ](/chatgpt-atlas-grafana-debug/)）
 
 但這 1% 的 key insight，不是「客戶的國際級分析師」產生的，也不是「AI」產生的。是現場，管理層，FDR團隊這一百天的站會磨出來的。因為我們產生的 insight，不只是AI 工具輸出——而是現場人員「信任」這些 insight，願意跟著「做相應的行動改進」。
 
@@ -61,13 +50,9 @@ AI 的誕生及大幅度地讓前三步幾乎 0 成本就可以產生。
 
 ---
 
-**Key Insight：** AI 能加速 99% 的分析工作，但那 1% 讓人願意行動的信任，還是要人去建立。
+## FAQ：AI 與數據分析師
 
----
-
-## FAQ：NotebookLM 與數據分析師
-
-**Q：NotebookLM 可以完全取代數據分析師嗎？**
+**Q：NotebookLM 這類AI工具 可以完全取代數據分析師嗎？**
 
 不行。NotebookLM 能快速整理資料、產生摘要與 insight，但無法建立「讓決策者願意承擔風險並行動」的信任關係。企業場景中，數據分析師的核心價值在於責任鏈的建立，而非報表產出。
 
