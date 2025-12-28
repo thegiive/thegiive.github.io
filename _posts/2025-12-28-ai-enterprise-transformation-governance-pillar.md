@@ -34,7 +34,7 @@ description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），
 
 我在艾立運能跟台灣家樂福，導入的企業AI跟數位轉型，大致可以分成三個階段。每個階段有不同的目標和風險。
 
-![AI 企業轉型三階段](/assets/images/ai-transformation-three-phases.png)
+![艾立運能與家樂福 AI 轉型：對齊高層目標是成敗關鍵](/assets/images/ai-transformation-three-phases.png)
 
 ### 階段一：對齊高層目標，建立種子團隊
 
