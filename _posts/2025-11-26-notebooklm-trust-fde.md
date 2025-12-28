@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "NotebookLM 時代，還需要數據分析的人嗎？"
+title: "AI 時代，還需要數據分析師嗎？AI 分析 vs 人類決策的關鍵差異"
 date: 2025-11-26 08:30:00 +0800
 permalink: /notebooklm-trust-fde/
 image: /assets/images/notebooklm-trust-fde-cover.png
