@@ -12,7 +12,7 @@ description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），
 ## 為什麼 AI 企業轉型卡關的不是 PPT，而是治理
 
 
-我在過去一年接觸了不下 30 個企業 AI 專案，發現一個很有趣的現象：
+我在過去一年接觸了不下數十個企業 AI 專案落地，發現一個很有趣的現象：
 
 **Demo 都超厲害，上線都超困難。**
 
@@ -32,15 +32,12 @@ description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），
 
 ## AI 企業轉型的三個階段
 
-我在艾立運能跟台灣家樂福，導入的企業AI跟數位轉型，大致可以分成三個階段。每個階段有不同的目標和風險。
-
-![艾立運能與家樂福 AI 轉型：對齊高層目標是成敗關鍵](/assets/images/ai-transformation-three-phases.png)
+企業AI跟數位轉型，大致可以分成三個階段。每個階段有不同的目標和風險。
 
 ### 階段一：對齊高層目標，建立種子團隊
 
-這是最關鍵但最常被跳過的階段。
+這是最關鍵但最常被跳過的階段。很多企業一開始就想「買工具」、「導入系統」，結果三個月後發現：老闆要的跟 IT 做的完全不一樣。
 
-很多企業一開始就想「買工具」、「導入系統」，結果三個月後發現：老闆要的跟 IT 做的完全不一樣。
 
 這個階段的重點：
 
@@ -54,7 +51,11 @@ description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），
 
 很多企業在這個階段只談「AI 能幫我們做什麼」，沒人問「AI 不能做什麼」、「資料能不能出去」、「出事誰負責」。等到第三階段要規模化時，資安團隊才跳出來說「這個不能上線」，前面的投資全部白費。
 
-如果跳過這個階段，後面所有投資都可能打水漂。
+如果跳過這個階段，後面所有投資都可能打水漂。這幾乎是成敗的關鍵，我在艾立運能跟台灣家樂福，都有非常詳細的跟高層對焦，才有後面數位轉型的成功。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xdX1w_IwMMQ" title="艾立運能與家樂福 AI 轉型案例" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 
 ### 階段二：快速建立第一個 Agent Quick Win
 
@@ -76,9 +77,7 @@ description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），
 
 ### 階段三：Agent 化
 
-當 Quick Win 成功，企業開始想「規模化」。
-
-這是關鍵轉折。AI 從「小實驗」變成「核心流程」：
+當 Quick Win 成功，企業開始想「規模化」。這是關鍵轉折。AI 從「小實驗」變成「核心流程」：
 
 - **AI 有目標**：不是等你下指令，是主動完成任務
 - **AI 會規劃**：自己決定要做什麼、怎麼做
@@ -86,11 +85,13 @@ description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），
 
 **企業真正的風險點從這裡開始。**
 
-當 AI 有了「代理權」，你授權它做的事情，和它實際做的事情，可能完全不同。
+當 AI 有了「代理權」，你授權它做的事情，和它實際做的事情，可能完全不同。這不是理論，這是已經發生的事。
 
-這不是理論。這是已經發生的事情。
+這也是為什麼我認為，AI 企業轉型真正的關鍵不在模型，而在「AI Agent 能不能被安全地治理」。
 
-👉 這也是為什麼我認為，AI 企業轉型真正的關鍵，不在模型，而在「AI Agent 能不能被安全地治理」。
+我在國內數家商業銀行，就做過 Governance 專案和 Security Health Check，才深刻體會：沒有治理框架，Agent 根本不可能進入核心業務流程。
+
+![AI 企業轉型三階段：對齊目標、Quick Win、Agent 化](/assets/images/ai-transformation-three-phases.png)
 
 ---
 
