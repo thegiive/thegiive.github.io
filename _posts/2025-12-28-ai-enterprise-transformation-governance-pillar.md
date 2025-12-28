@@ -3,8 +3,11 @@ layout: post
 title: "AI 企業轉型不是導入工具，而是治理問題"
 date: 2025-12-28 10:00:00 +0800
 permalink: /ai-enterprise-transformation-governance/
+image: /assets/images/ai-governance-pillar-cover.png
 description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），但在 Agent 時代，真正卡關的是治理能力、責任歸屬與安全可控性。為什麼 90% 的 AI 專案卡在上線前？"
 ---
+
+![AI 企業轉型治理](/assets/images/ai-governance-pillar-cover.png)
 
 ## 為什麼 AI 企業轉型卡關的不是 PPT，而是治理
 
