@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "週報 Vlog 總結（12/12 - 12/21）"
+title: "AI 週報｜VLog EP1（12/12–12/21）：NotebookLM 席捲、GPT-5.2 體感與 Agent 架構"
 date: 2025-12-21 12:30:00 +0800
 permalink: /vlog-weekly-summary-12-12-to-12-21/
 image: /assets/images/vlog-weekly-summary-12-12-to-12-21.png
