@@ -3,11 +3,11 @@ layout: post
 title: "NotebookLM 時代，還需要數據分析的人嗎？"
 date: 2025-11-26 08:30:00 +0800
 permalink: /notebooklm-trust-fde/
-image: /assets/images/trust-fde-logo.png
+image: /assets/images/notebooklm-trust-fde-cover.png
 description: "用 Claude Code 30 分鐘產出十大建議，總經理說要驗算邏輯。於是我們花了一百天每天早上 8-9 點站會，讓現場信任這些數據。AI 能產生海量 insight，但讓人願意「改變行為」的信任，還是要人去建立。"
 ---
 
-![trust-fde-logo](/assets/images/trust-fde-logo.png)
+![notebooklm-trust-fde-cover](/assets/images/notebooklm-trust-fde-cover.png)
 
 今年我帶 FDE 團隊進了一個物流優化專案，客戶是國際級客戶（這家你一定用過）。
 第一次會議，我很興奮地用 Claude Code 分析一堆 Excel，30 分鐘內產出十大建議。結果總經理說：「你的公式給我看一下，我要驗算邏輯。」
