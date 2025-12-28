@@ -4,7 +4,7 @@ title: "AI 時代，還需要數據分析師嗎？AI 分析 vs 人類決策的�
 date: 2025-11-26 08:30:00 +0800
 permalink: /notebooklm-trust-fde/
 image: /assets/images/notebooklm-trust-fde-cover.png
-description: "用 Claude Code 30 分鐘產出十大建議，總經理說要驗算邏輯。於是我們花了一百天每天早上 8-9 點站會，讓現場信任這些數據。AI 能產生海量 insight，但讓人願意「改變行為」的信任，還是要人去建立。"
+description: "AI 工具讓數據分析成本趨近於零，但企業真的因此不需要數據分析師了嗎？本文用真實物流專案，拆解 NotebookLM、Claude Code 與「信任建立」之間的關鍵落差。"
 ---
 
 ![notebooklm-trust-fde-cover](/assets/images/notebooklm-trust-fde-cover.png)
