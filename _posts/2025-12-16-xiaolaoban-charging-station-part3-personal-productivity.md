@@ -1,5 +1,5 @@
 ---
-title: "AI 生產力實戰：從填補短板到一邊超慢跑一邊寫 Code"
+title: "[小老闆充電站訪談] AI 生產力實戰：從填補短板到一邊超慢跑一邊寫 Code"
 date: 2025-12-16
 author: Wisely Chen
 series: 小老闆充電站訪談系列
