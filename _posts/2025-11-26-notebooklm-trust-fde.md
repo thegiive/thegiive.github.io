@@ -46,7 +46,7 @@ description: "AI 工具讓數據分析成本趨近於零，但企業真的因此
 
 但這 1% 的 key insight，不是「客戶的國際級分析師」產生的，也不是「AI」產生的。是現場，管理層，FDR團隊這一百天的站會磨出來的。因為我們產生的 insight，不只是AI 工具輸出——而是現場人員「信任」這些 insight，願意跟著「做相應的行動改進」。
 
-![現場團隊站會 - 信任是在倉庫裡磨出來的](/assets/images/warehouse-team-standup.png)
+![現場團隊站會 - 信任是在倉庫裡磨出來的](/assets/images/warehouse-team-standup.jpg)
 
 ---
 
@@ -64,7 +64,7 @@ AI 的誕生及大幅度地讓前三步幾乎 0 成本就可以產生。
 
 ** 但到底哪一個，能讓現場真的動起來？ **
 
-![現場動起來 - 堆高機在高架層作業](/assets/images/warehouse-forklift-action.png)
+![現場動起來 - 堆高機在高架層作業](/assets/images/warehouse-forklift-action.jpg)
 
 ---
 
