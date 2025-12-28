@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "VLog EP2｜12/22-12/27 週報：AI 記憶突破、企業落地、法規合規"
+title: "AI 週報｜VLog EP2（12/22–12/27）：AI 記憶、企業落地與法規碎念"
 date: 2025-12-28 10:00:00 +0800
 permalink: /vlog-ep2-weekly-summary/
 image: /assets/images/vlog-ep2-cover.jpg
@@ -10,6 +10,8 @@ description: "VLog 第二期週報。這週發佈 6 篇文章：Google Nested Le
 ## VLog EP2｜本週文章總結（12/22-12/27）
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XnwRcF5FqYY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+這篇不是新聞整理，而是我每週寫給自己、也寫給同行看的 AI 工作筆記，記錄這週我在技術、企業導入與法規之間卡關與想通的地方。
 
 這週我發佈了 6 篇文章，主題涵蓋 AI 記憶突破、企業落地實戰、法規合規，以及一張聖誕卡。
 
