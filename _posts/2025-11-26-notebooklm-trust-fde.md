@@ -57,7 +57,7 @@ description: "AI 工具讓數據分析成本趨近於零，但企業真的因此
 AI 的誕生及大幅度地讓前三步幾乎 0 成本就可以產生。
 但如果沒有 Real Action，前面三步做得再好都是無意義。
 
-看到現在社群網路上，瞬間許多專家產生大量商業簡報跟insight，我又想起那一百天。
+看到現在社群網路上，自從 [NotebookLM](https://notebooklm.google.com) + Gemini 3 Pro 出現，瞬間許多專家產生大量商業簡報跟insight，我又想起那一百天。
 
 我們誕生在一個有海量的 insight 跟報表的年代
 但是 AI 用黑盒子產生的 insight , 到底能拿到多少客戶的信任
