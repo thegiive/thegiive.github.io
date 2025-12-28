@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "什麼是 AI Agent？企業 AI 導入的真實觀察"
+title: "[小老闆充電站訪談] 什麼是 AI Agent？企業 AI 導入的真實觀察"
 date: 2025-12-09 10:00:00 +0800
 permalink: /xiaolaoban-part2-ai-agent-definition/
 image: /assets/images/xiaolaoban-part2-ai-agent-cover.png
