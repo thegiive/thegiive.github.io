@@ -3,7 +3,7 @@ layout: post
 title: "VLog EP2｜12/22-12/27 週報：AI 記憶突破、企業落地、法規合規"
 date: 2025-12-28 10:00:00 +0800
 permalink: /vlog-ep2-weekly-summary/
-image: /assets/images/vlog-ep2-cover.png
+image: /assets/images/vlog-ep2-cover.jpg
 description: "VLog 第二期週報。這週發佈 6 篇文章：Google Nested Learning 記憶突破、Gemini Flash 霸榜真相、企業地端 LLM 架構、Excel AI 混淆方案、台灣 AI 基本法解讀、AI Agent 完整指南。"
 ---
 
