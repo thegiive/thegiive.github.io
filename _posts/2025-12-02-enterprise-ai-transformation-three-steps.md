@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "企業AI轉型三步驟：從概念到落地"
+title: "[小老闆充電站訪談] 企業AI轉型三步驟：從概念到落地"
 date: 2025-12-02 10:00:00 +0800
 permalink: /enterprise-ai-transformation/
 image: https://img.youtube.com/vi/bIn2NKCY4SE/maxresdefault.jpg
