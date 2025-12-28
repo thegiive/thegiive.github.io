@@ -7,6 +7,18 @@ image: /assets/images/ai-governance-pillar-cover.png
 description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），但在 Agent 時代，真正卡關的是治理能力、責任歸屬與安全可控性。為什麼 90% 的 AI 專案卡在上線前？"
 ---
 
+## 目錄
+
+1. [為什麼 AI 企業轉型卡關的不是 PPT，而是治理](#為什麼-ai-企業轉型卡關的不是-ppt而是治理)
+2. [AI 企業轉型的三個階段](#ai-企業轉型的三個階段)
+3. [AI Agent 的四大治理與資安風險](#ai-agent-的四大治理與資安風險)
+4. [企業真正害怕的不是 AI，而是「不能解釋」](#企業真正害怕的不是-ai而是不能解釋)
+5. [沒有 Agent Security，就沒有 AI 企業轉型](#沒有-agent-security就沒有-ai-企業轉型)
+6. [Agent Security 該從哪裡開始？](#agent-security-該從哪裡開始)
+7. [結語](#結語ai-企業轉型不是快慢而是能不能承擔後果)
+
+---
+
 ## 為什麼 AI 企業轉型卡關的不是 PPT，而是治理
 
 
@@ -93,7 +105,7 @@ description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），
 
 ---
 
-## 為什麼「Agent」會讓 AI 風險指數爆炸？
+## AI Agent 的四大治理與資安風險
 
 Agent 帶來的不是「更聰明」。
 
