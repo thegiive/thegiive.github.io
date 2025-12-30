@@ -59,6 +59,8 @@ description: "三個月，63 萬行程式碼。這篇文章不是要炫耀產量
 **生活**
 當然每天早上的[超慢跑+Claude Code](/vibe-duo-ai-ru-he-zeng-jia-wo-de-sheng-chan-li/) 也讓我多出很多時間一邊顧健康一邊做事情。
 
+![超慢跑配 Claude Code：健康與生產力兼得](/assets/images/claude-code-slow-jogging.png)
+
 ### 階段四：AI 部落格博主
 
 當然，身為一個 AI 部落格博主，這三個月我也不斷使用 Claude Code 來幫我做文案發想、收集資料。
