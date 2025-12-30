@@ -56,6 +56,9 @@ description: "三個月，63 萬行程式碼。這篇文章不是要炫耀產量
 **Code Review**
 每天中間有任何要交付給客戶的程式，我都會用 Claude Code 來做 code review。
 
+**生活**
+當然每天早上的[超慢跑+Claude Code](/vibe-duo-ai-ru-he-zeng-jia-wo-de-sheng-chan-li/) 也讓我多出很多時間一邊顧健康一邊做事情。
+
 ### 階段四：AI 部落格博主
 
 當然，身為一個 AI 部落格博主，這三個月我也不斷使用 Claude Code 來幫我做文案發想、收集資料。
