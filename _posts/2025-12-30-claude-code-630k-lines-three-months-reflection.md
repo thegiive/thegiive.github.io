@@ -25,7 +25,7 @@ description: "三個月，63 萬行程式碼。這篇文章不是要炫耀產量
 
 ### 階段一：AI Coding 審核者
 
-一開始在永聯物流，團隊大多用 Cursor，我是拿 Claude Code 來做 AI Coding 的審核工作。
+一開始在永聯物流，團隊大多用 Cursor，我是拿 Claude Code 來做 [AI Coding](/atpm-a-real-production-vibe-coding-process/) 的審核工作。
 
 具體怎麼做？
 
