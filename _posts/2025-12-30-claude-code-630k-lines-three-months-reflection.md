@@ -59,8 +59,6 @@ description: "三個月，63 萬行程式碼。這篇文章不是要炫耀產量
 **生活**
 當然每天早上的[超慢跑+Claude Code](/vibe-duo-ai-ru-he-zeng-jia-wo-de-sheng-chan-li/) 也讓我多出很多時間一邊顧健康一邊做事情。
 
-![超慢跑配 Claude Code：健康與生產力兼得](/assets/images/claude-code-slow-jogging.png)
-
 ### 階段四：AI 部落格博主
 
 當然，身為一個 AI 部落格博主，這三個月我也不斷使用 Claude Code 來幫我做文案發想、收集資料。
@@ -169,4 +167,14 @@ AI 的產出品質，80% 取決於你給它的 input: [PRD](/atpm-prdde-zhong-ya
 
 Claude Code 已經不只是一個工具了。老實說，它已經很像是我的編程夥伴，或者是我管理工作中一個很好的副手。它就是有一點點呆板，不像以前(5.2以前) 的 ChatGPT 那麼會「Chatty」，但是它真的能做好我賦予它 70% 到 80% 的工作。老實說，就算換一個人來，也不見得那麼靠譜。
 
+![超慢跑配 Claude Code：健康與生產力兼得](/assets/images/claude-code-slow-jogging.png)
+
+
 親愛的 Claude Code，新的一年也請你多多指教。
+
+
+=====
+
+PS. 照片拍攝於今早香港沙田酒店，我跟 Claude Code 的一個年末總結後的合影
+
+一般外商開完 Annual Review ，不是都要大合照一下 XD
