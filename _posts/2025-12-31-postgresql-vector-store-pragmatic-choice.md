@@ -337,11 +337,7 @@ AI 治理的核心是：**「誰？在什麼時候？問了什麼？系統讀了
 | SIEM 整合 | 需自己做 | 直接送到 Splunk / ELK |
 | 合規稽核 | 需額外開發 | 原生支援 ISO 27001 / GDPR / SOC 2 |
 
-這對於通過企業稽核是必備的。
-
-> 💡 **延伸思考：** 企業級 AI 架構中，Memory Store 只是其中一層。完整的系統還需要 Auth Gateway、Python 沙盒、LLM Router 等元件來接住這個記憶層。這些元件如何協作、如何建立雙層 Log 架構（LLM 觀測 + 業務審計），可參考：[企業級地端 LLM 架構藍圖：Auth + 沙盒 + 雙層 Log](/local-llm-enterprise-architecture/)
->
-> 這些稽核能力也是[台灣《人工智慧基本法》](/taiwan-ai-basic-act-engineering-perspective/)中「透明及可解釋性」與「可問責性」原則的技術實踐——法律要求的不是公開模型參數，而是「出事時能拿出 Audit Trail 說明當時發生什麼事」。
+這對於通過企業稽核是必備的——也是[台灣《人工智慧基本法》](/taiwan-ai-basic-act-engineering-perspective/)中「透明及可解釋性」與「可問責性」原則的技術實踐。完整的企業級架構還需要 Auth Gateway、沙盒、雙層 Log 等元件，可參考：[企業級地端 LLM 架構藍圖](/local-llm-enterprise-architecture/)。
 
 ### 資料加密
 
