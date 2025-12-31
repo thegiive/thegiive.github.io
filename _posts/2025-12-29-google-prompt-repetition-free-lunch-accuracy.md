@@ -33,6 +33,7 @@ description: "重複 Prompt 就能提升 LLM 準確率？本篇解讀 Google Res
 
 論文的做法是：把 `<QUERY>` 變成 `<QUERY><QUERY>`，讓模型讀兩次。
 
+
 實驗結論很簡單：
 
 - 在不開啟推理模式（non-reasoning）

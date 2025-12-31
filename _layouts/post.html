@@ -63,3 +63,36 @@ var disqus_config = function () {
 })();
 </script>
 {% endif %}
+
+<script>
+// Collapsible code blocks - collapse if more than 10 lines
+document.addEventListener('DOMContentLoaded', function() {
+  const codeBlocks = document.querySelectorAll('.post-content pre');
+  const LINE_THRESHOLD = 10;
+
+  codeBlocks.forEach(function(pre) {
+    const code = pre.querySelector('code');
+    const text = code ? code.textContent : pre.textContent;
+    const lineCount = text.split('\n').length;
+
+    if (lineCount > LINE_THRESHOLD) {
+      pre.classList.add('collapsible');
+
+      const toggle = document.createElement('button');
+      toggle.className = 'code-toggle';
+      toggle.textContent = '▼ 展開完整程式碼 (' + lineCount + ' 行)';
+
+      toggle.addEventListener('click', function() {
+        pre.classList.toggle('expanded');
+        if (pre.classList.contains('expanded')) {
+          toggle.textContent = '▲ 收合程式碼';
+        } else {
+          toggle.textContent = '▼ 展開完整程式碼 (' + lineCount + ' 行)';
+        }
+      });
+
+      pre.parentNode.insertBefore(toggle, pre.nextSibling);
+    }
+  });
+});
+</script>

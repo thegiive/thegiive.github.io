@@ -7,7 +7,7 @@ image: /assets/images/postgresql-ai-memory-store-cover.png
 description: "很多人談到 Vector Store，第一個想到的是 RAG。但在實際把 AI 系統導入企業後，我越來越清楚一件事：RAG 解決的是「找資料」，但 AI 系統真正缺的是「記憶」。這篇文章分享我為什麼選擇 PostgreSQL 作為 AI 的記憶底座，而不是追逐最新的專用 Vector DB。"
 ---
 
-## 開場：RAG 只回答了一半的問題
+## RAG 只是 AI Agent 可用的第一步，不是最後一步
 
 很多人談到 Vector Store，第一個想到的是 RAG。
 
@@ -17,7 +17,7 @@ description: "很多人談到 Vector Store，第一個想到的是 RAG。但在�
 
 > RAG 解決的是「找資料」，但 AI 系統真正缺的是「記憶」。
 
-## 一、RAG 很強，但它只回答了一半的問題
+## 一、RAG 很強，但它只回答企業了 10% 的問題
 
 RAG 很擅長處理這類需求：
 
@@ -54,15 +54,6 @@ RAG 很擅長處理這類需求：
 它不只是 embedding 的存放地，而是要同時保存：
 
 ![AI Memory Store 資料類型](/assets/images/ai-memory-store-data-types.png)
-
-| 資料類型 | 用途 |
-|----------|------|
-| 原始內容（text / artifact） | 可讀、可審計 |
-| embedding vector | 語意搜尋 |
-| metadata（任務、來源、版本） | 條件過濾 |
-| decision trace | 為什麼這樣選 |
-| 時間軸 | 先後順序、版本回溯 |
-| 可追溯性 | audit / rollback |
 
 一句話總結：
 
@@ -187,12 +178,10 @@ LIMIT 5;
 
 ![AI Memory 操作模式](/assets/images/ai-memory-operation-patterns.png)
 
-| 操作模式 | 記憶類型 | 說明 |
-|----------|----------|------|
-| RAG | 讀取記憶 | 查詢相關的歷史資訊 |
-| Agent Reflection | 寫入記憶 | 記錄決策過程與理由 |
-| Feedback Loop | 更新記憶 | 根據結果修正記憶 |
-| Failure Analysis | 重放記憶 | 回溯錯誤發生的脈絡 |
+- **RAG（讀取記憶）**：查詢相關的歷史資訊
+- **Agent Reflection（寫入記憶）**：記錄決策過程與理由
+- **Feedback Loop（更新記憶）**：根據結果修正記憶
+- **Failure Analysis（重放記憶）**：回溯錯誤發生的脈絡
 
 換句話說：
 
