@@ -49,6 +49,8 @@ description: "從永聯物流的ATPM實驗、FDE模式的挑戰，到創智動�
 
 我做了一個統計，[三個月寫了**63萬行**的程式碼](https://ai-coding.wiselychen.com/claude-code-630k-lines-three-months-reflection/)，用Claude Code來做。裡面絕大多數不是Production的程式碼，而是很多一次性的展示、跟客戶的討論，甚至一些管理分析的報表。這說明AI Coding對一個職場人到底有多大的變化和影響。
 
+![Claude Code 統計：實質自己寫的代碼大約是 63 萬行，不含 venv 的代碼行數 628,918 行](/assets/images/2025-claude-code-630k-stats.png)
+
 ## FDE實驗還沒結束：看年輕人的成長
 
 AI改變這些FDE的過程，在AI 跟我的教導之下，[他們越來越進步](https://ai-coding.wiselychen.com/fde-ai-bu-hui-qu-dai-nian-qing-ren/)。
