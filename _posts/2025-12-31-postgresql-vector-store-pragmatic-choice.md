@@ -75,7 +75,7 @@ LLM 的 Context Window 是有限的（即使是 Claude 的 200K，面對大量�
 
 在這個階段，我反而沒有選專用 Vector DB。
 
-我選的是 **PostgreSQL + pgvector**。
+我選的是 **PostgreSQL + [pgvector](https://github.com/pgvector/pgvector)**。
 
 理由其實非常工程師、也非常現實。
 
@@ -183,6 +183,8 @@ LIMIT 5;
 - **Feedback Loop（更新記憶）**：根據結果修正記憶
 - **Failure Analysis（重放記憶）**：回溯錯誤發生的脈絡
 
+這個分類不是我發明的。主流框架如 [LangChain 的 Memory 模組](https://python.langchain.com/docs/concepts/memory/)就把 Memory 和 RAG 分開處理——Memory 負責對話狀態與長期記憶，RAG 負責外部知識檢索。而 [Anthropic 的 Agent 研究](https://www.anthropic.com/research)更進一步探討 Agent 如何透過反思（Reflection）與回饋迴圈來改善決策品質。
+
 換句話說：
 
 > RAG 不是架構核心，它只是其中一個使用模式。
@@ -261,7 +263,7 @@ LIMIT 5;
 
 ## 六、這件事最後會回到一個問題：治理
 
-當 AI 開始有「可累積的記憶」，接下來就一定會遇到這些問題：
+當 AI Agent 如同 Google Research 在 [Nested Learning](https://abehrouz.github.io/files/NL.pdf) 論文說的需要有「[可累積的記憶](/nested-learning-ai-memory/)」，接下來就一定會遇到這些問題：
 
 - 哪些記憶可以長期保存？
 - 哪些應該被淘汰？
@@ -277,13 +279,13 @@ LIMIT 5;
 | 治理需求 | PostgreSQL 解法 |
 |----------|-----------------|
 | 記憶過期 | expires_at + 定期清理 job |
-| 刪除權 | is_deleted soft delete + GDPR compliant |
+| 刪除權 | is_deleted soft delete + [GDPR Article 17](https://gdpr-info.eu/art-17-gdpr/) compliant |
 | 審計追蹤 | pg_audit extension |
 | 版本回溯 | parent_id + version 欄位 |
 | 權限控制 | Row Level Security |
 | 備份還原 | 標準 pg_dump / WAL |
 
-這些在專用 Vector DB 裡，每一個都要自己補。
+這些在專用 Vector DB 裡，每一個都要自己補。特別是「刪除權」——GDPR 的 Right to be Forgotten 不是可選項，而是法律要求。當使用者要求刪除他的資料時，你的 AI 記憶庫必須能做到。
 
 ### 核武級功能：Row Level Security (RLS)
 
@@ -336,6 +338,10 @@ AI 治理的核心是：**「誰？在什麼時候？問了什麼？系統讀了
 | 合規稽核 | 需額外開發 | 原生支援 ISO 27001 / GDPR / SOC 2 |
 
 這對於通過企業稽核是必備的。
+
+> 💡 **延伸思考：** 企業級 AI 架構中，Memory Store 只是其中一層。完整的系統還需要 Auth Gateway、Python 沙盒、LLM Router 等元件來接住這個記憶層。這些元件如何協作、如何建立雙層 Log 架構（LLM 觀測 + 業務審計），可參考：[企業級地端 LLM 架構藍圖：Auth + 沙盒 + 雙層 Log](/local-llm-enterprise-architecture/)
+>
+> 這些稽核能力也是[台灣《人工智慧基本法》](/taiwan-ai-basic-act-engineering-perspective/)中「透明及可解釋性」與「可問責性」原則的技術實踐——法律要求的不是公開模型參數，而是「出事時能拿出 Audit Trail 說明當時發生什麼事」。
 
 ### 資料加密
 
@@ -400,6 +406,17 @@ FROM ai_memory;
 
 ## 延伸閱讀
 
-- [pgvector GitHub](https://github.com/pgvector/pgvector)
+### 技術資源
+- [pgvector GitHub](https://github.com/pgvector/pgvector) — PostgreSQL 向量擴充的官方 repo
+- [LangChain Memory 官方文件](https://python.langchain.com/docs/concepts/memory/) — 主流框架如何區分 Memory 與 RAG
+- [Anthropic Research](https://www.anthropic.com/research) — Agent 行為、反思與長期安全的研究
+
+### 治理與合規
+- [GDPR Article 17 — Right to Erasure](https://gdpr-info.eu/art-17-gdpr/) — 「被遺忘權」的法律條文
+- [台灣《人工智慧基本法》：IT 主管必讀](/taiwan-ai-basic-act-engineering-perspective/) — 七大原則與 Audit Trail 實務
+- [企業級地端 LLM 架構藍圖](/local-llm-enterprise-architecture/) — Auth Gateway、沙盒、雙層 Log 的完整設計
+
+### 相關文章
+- [Google Nested Learning：讓模型擁有大腦般的長期記憶](/nested-learning-ai-memory/)
 - [AI 企業轉型：治理支柱](/ai-enterprise-transformation-governance-pillar/)
 - [我的 ATPM 框架：AI Coding 的生產實踐](/atpm-a-real-production-vibe-coding-process/)
