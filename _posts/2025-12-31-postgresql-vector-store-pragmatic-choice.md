@@ -15,7 +15,7 @@ description: "很多人談到 Vector Store，第一個想到的是 RAG。但在�
 
 但在實際把 AI 系統導入企業後，我越來越清楚一件事：
 
-> RAG 解決的是「找資料」，但 AI 系統真正缺的是「記憶」。
+> RAG 解決的是「找資料」，但 AI 系統真正缺的是「[記憶](https://arxiv.org/abs/2304.03442)」。
 
 ## 一、RAG 很強，但它只回答企業了 10% 的問題
 
@@ -287,9 +287,9 @@ LIMIT 5;
 
 這些在專用 Vector DB 裡，每一個都要自己補。特別是「刪除權」——GDPR 的 Right to be Forgotten 不是可選項，而是法律要求。當使用者要求刪除他的資料時，你的 AI 記憶庫必須能做到。
 
-### 核武級功能：Row Level Security (RLS)
+### 核武級功能：[Row Level Security (RLS)](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)
 
-這是 PostgreSQL 對比專用 Vector DB 的**最大殺手鐧**。
+這是 PostgreSQL 對比專用 Vector DB 的**最大殺手鐧**，能從資料庫引擎層級直接控管 AI Agent 的存取權限。
 
 **場景：** 你做了一個企業知識庫，裡面有「人資規章（全公司可見）」和「薪資條（僅本人可見）」。
 
