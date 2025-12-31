@@ -23,6 +23,8 @@ description: "從永聯物流的ATPM實驗、FDE模式的挑戰，到創智動�
 
 我發現它的潛力非常強，於是開始改進並設計一套流程，有點像現在講的SDD（SPEC Driven Development）。我們把它取名叫做**[ATPM](/atpm-a-real-production-vibe-coding-process/)**。
 
+![ATPM 流程：User → PM+AI → PRD → Dev+AI / QA+AI，Supervisor 監督，Feedback 回饋](/assets/images/2025-atpm-workflow.png)
+
 一開始推的時候很Struggle。因為團隊成員不全是資訊工程學系的人，有時候他們不知道這東西代表什麼。
 
 我印象很深刻，某一天禮拜三下午5點，我在會議室裡跟大家說：
