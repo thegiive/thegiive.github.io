@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」，而不只是 RAG Vector Store"
+title: "PostgreSQL AI Memory Store：為什麼 RAG Vector Store 只是 AI Agent 的一種記憶使用方式"
 date: 2025-12-31 14:00:00 +0800
 permalink: /postgresql-ai-memory-store/
 image: /assets/images/postgresql-ai-memory-store-cover.png
