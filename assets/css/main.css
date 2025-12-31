@@ -254,11 +254,11 @@ main {
 .post-content pre.collapsible {
   max-height: 280px;
   overflow: hidden;
-  transition: max-height 0.3s ease;
 }
 
 .post-content pre.collapsible.expanded {
-  max-height: none;
+  max-height: 10000px;
+  overflow: auto;
 }
 
 .post-content pre.collapsible::after {
