@@ -99,6 +99,8 @@ Claude Code不只能幫助我的performance，也能幫助我的生活。像健�
 
 自從Gemini 2.0 Flash出來後，它的簡報模式真的非常棒，讓我非常驚艷。[最大重點是能幫我把大量知識](https://ai-coding.wiselychen.com/notebooklm-digital-project-manager/)，快速用5-10頁圖表整理好。讓我在理解專案狀況時，能非常快速進入狀況。
 
+![NotebookLM 簡報模式：快速將大量知識整理成圖表](/assets/images/2025-notebooklm-slides.png)
+
 這些工具讓我的**生產力提升了3到4倍**。就算非常忙，我每天都能做到日更。
 
 ## 所以，智慧才是AI時代的稀缺能力
