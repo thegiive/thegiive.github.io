@@ -69,7 +69,7 @@ LLM 的 Context Window 是有限的（即使是 Claude 的 200K，面對大量�
 - 需要結合 metadata（時間、任務、Agent ID）做過濾
 - 需要在有限的 token 內，塞入最相關的「記憶片段」
 
-這正是 SQL 篩選能力重要的原因。純 Vector DB 的 metadata filter 功能有限，但 PostgreSQL 的 WHERE clause 可以做任意複雜的條件組合。
+這正是 SQL 篩選能力重要的原因。純 Vector DB 的 metadata filter 功能有限，但 [PostgreSQL](https://www.postgresql.org/) 的 WHERE clause 可以做任意複雜的條件組合。
 
 ## 三、為什麼我選擇 PostgreSQL 當這個「記憶底座」
 
