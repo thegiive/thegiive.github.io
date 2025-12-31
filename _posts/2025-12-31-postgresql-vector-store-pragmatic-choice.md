@@ -150,7 +150,7 @@ CREATE INDEX ON ai_memory (task_id, decision_type);
 CREATE INDEX ON ai_memory USING gin (metadata);
 ```
 
-**為什麼加 JSONB？** Agent 的行為很難預測，有時候需要存一些非結構化的 context（例如 API call 的 raw response、tool 參數）。JSONB 配合 PostgreSQL 的 JSON 查詢功能，讓這個 Memory Store 更靈活。這也是專用 Vector DB 的 JSON 處理通常比不上 PostgreSQL 的地方。
+**為什麼加 JSONB？** Agent 的行為很難預測，有時候需要存一些非結構化的 context（例如 API call 的 raw response、tool 參數）。PostgreSQL 的 [JSONB 類型](https://www.postgresql.org/docs/current/datatype-json.html)本身就被設計成可索引、可查詢的半結構化資料，配合 [GIN 索引](https://www.postgresql.org/docs/current/datatype-json.html#JSON-INDEXING)和豐富的 [JSON 操作函式](https://www.postgresql.org/docs/current/functions-json.html)（`@>`、`->`、`->>`），讓 AI Memory 在保留彈性的同時，仍然具備可治理性。這也是專用 Vector DB 的 JSON 處理通常比不上 PostgreSQL 的地方。
 
 一個 SQL 就能回答複雜的記憶查詢：
 
@@ -408,6 +408,7 @@ FROM ai_memory;
 
 ### 技術資源
 - [pgvector GitHub](https://github.com/pgvector/pgvector) — PostgreSQL 向量擴充的官方 repo
+- [PostgreSQL JSONB 官方文件](https://www.postgresql.org/docs/current/datatype-json.html) — JSON vs JSONB、索引、查詢操作
 - [LangChain Memory 官方文件](https://python.langchain.com/docs/concepts/memory/) — 主流框架如何區分 Memory 與 RAG
 - [Anthropic Research](https://www.anthropic.com/research) — Agent 行為、反思與長期安全的研究
 
