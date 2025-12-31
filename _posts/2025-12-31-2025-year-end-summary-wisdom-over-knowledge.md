@@ -75,6 +75,8 @@ AI對年輕人的教育非常有幫助。有些人說AI時代只會絞殺年輕�
 
 ### Claude Code
 
+![用 Claude Code 工作的日常](/assets/images/2025-claude-code-workspace.png)
+
 Claude Code對我來說遠超過一個AI Coding的tool。
 
 我一開始用它是因為能很快速幫我看AI Coding同事們每天寫的CODE的Quality。並且能用MCP接上JIRA做專案管理，接上BigQuery做快速的數據分析。
@@ -85,7 +87,9 @@ Claude Code對我來說遠超過一個AI Coding的tool。
 
 今年10月後，我開始用**Aqua Voice**。基本上大量使用「用嘴寫部落格」或「用嘴寫程式」，快速填寫我的東西，然後告訴Claude Code請幫我做事情。
 
-Claude Code不只能幫助我的performance，也能幫助我的生活。像健康方面，我發現Claude Code非常適合**超慢跑**。所以我現在每天都有超慢跑的習慣。
+Claude Code不只能幫助我的performance，也能幫助我的生活。像健康方面，我發現[Claude Code非常適合**超慢跑**](https://ai-coding.wiselychen.com/vibe-duo-ai-ru-he-zeng-jia-wo-de-sheng-chan-li/)。所以我現在每天都有超慢跑的習慣。
+
+
 
 ### ChatGPT 語音模式
 
