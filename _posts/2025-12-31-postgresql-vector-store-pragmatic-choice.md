@@ -285,7 +285,7 @@ LIMIT 5;
 | 權限控制 | Row Level Security |
 | 備份還原 | 標準 pg_dump / WAL |
 
-這些在專用 Vector DB 裡，每一個都要自己補。特別是「刪除權」——GDPR 的 Right to be Forgotten 不是可選項，而是法律要求。當使用者要求刪除他的資料時，你的 AI 記憶庫必須能做到。
+這些在專用 Vector DB 裡，每一個都要自己補。特別是「刪除權」——GDPR 的 [Right to be Forgotten](https://gdpr-info.eu/art-17-gdpr/) 不是可選項，而是法律要求。當使用者要求刪除他的資料時，你的 AI 記憶庫必須能做到。
 
 ### 核武級功能：[Row Level Security (RLS)](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)
 
