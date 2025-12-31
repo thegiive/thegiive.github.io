@@ -67,10 +67,48 @@ var disqus_config = function () {
 <script>
 // Collapsible code blocks - collapse if more than 10 lines
 document.addEventListener('DOMContentLoaded', function() {
-  const codeBlocks = document.querySelectorAll('.post-content pre');
   const LINE_THRESHOLD = 10;
+  const processed = new Set();
 
-  codeBlocks.forEach(function(pre) {
+  // Handle highlight.js wrapper (div.highlight > pre)
+  document.querySelectorAll('.post-content div.highlight').forEach(function(wrapper) {
+    const pres = wrapper.querySelectorAll('pre');
+    if (pres.length === 0) return;
+
+    // Get line count from any pre with code
+    let lineCount = 0;
+    pres.forEach(function(pre) {
+      const code = pre.querySelector('code');
+      const text = code ? code.textContent : pre.textContent;
+      const count = text.split('\n').length;
+      if (count > lineCount) lineCount = count;
+      processed.add(pre);
+    });
+
+    if (lineCount > LINE_THRESHOLD) {
+      wrapper.classList.add('collapsible');
+
+      const toggle = document.createElement('button');
+      toggle.className = 'code-toggle';
+      toggle.textContent = '▼ 展開完整程式碼 (' + lineCount + ' 行)';
+
+      toggle.addEventListener('click', function() {
+        wrapper.classList.toggle('expanded');
+        if (wrapper.classList.contains('expanded')) {
+          toggle.textContent = '▲ 收合程式碼';
+        } else {
+          toggle.textContent = '▼ 展開完整程式碼 (' + lineCount + ' 行)';
+        }
+      });
+
+      wrapper.parentNode.insertBefore(toggle, wrapper.nextSibling);
+    }
+  });
+
+  // Handle standalone pre (not inside div.highlight)
+  document.querySelectorAll('.post-content pre').forEach(function(pre) {
+    if (processed.has(pre)) return;
+
     const code = pre.querySelector('code');
     const text = code ? code.textContent : pre.textContent;
     const lineCount = text.split('\n').length;

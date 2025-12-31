@@ -251,17 +251,21 @@ main {
 }
 
 /* Collapsible Code Block */
-.post-content pre.collapsible {
+.post-content pre.collapsible,
+.post-content div.highlight.collapsible {
   max-height: 280px;
   overflow: hidden;
+  position: relative;
 }
 
-.post-content pre.collapsible.expanded {
+.post-content pre.collapsible.expanded,
+.post-content div.highlight.collapsible.expanded {
   max-height: 10000px;
   overflow: auto;
 }
 
-.post-content pre.collapsible::after {
+.post-content pre.collapsible::after,
+.post-content div.highlight.collapsible::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -272,7 +276,8 @@ main {
   pointer-events: none;
 }
 
-.post-content pre.collapsible.expanded::after {
+.post-content pre.collapsible.expanded::after,
+.post-content div.highlight.collapsible.expanded::after {
   display: none;
 }
 
