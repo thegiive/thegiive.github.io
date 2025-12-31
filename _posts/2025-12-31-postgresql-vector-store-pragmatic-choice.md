@@ -279,7 +279,7 @@ LIMIT 5;
 | 治理需求 | PostgreSQL 解法 |
 |----------|-----------------|
 | 記憶過期 | expires_at + 定期清理 job |
-| 刪除權 | is_deleted soft delete + [GDPR Article 17](https://gdpr-info.eu/art-17-gdpr/) compliant |
+| 刪除權 | is_deleted soft delete + [GDPR](https://gdpr-info.eu/art-17-gdpr/) compliant |
 | 審計追蹤 | pg_audit extension |
 | 版本回溯 | parent_id + version 欄位 |
 | 權限控制 | Row Level Security |
