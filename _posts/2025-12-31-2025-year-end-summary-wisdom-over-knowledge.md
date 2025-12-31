@@ -37,7 +37,7 @@ description: "從永聯物流的ATPM實驗、FDE模式的挑戰，到創智動�
 
 最後我們在9月帶著這個團隊去生成式AI小聚進行分享。這是我人生中一個很重要的里程碑。
 
-後來遇到一些狀況，我決定離開物流。11月的AI小聚，我講了類似的原因——FDE模式不容易推起來的一些原因。
+後來遇到一些狀況，我決定離開物流。[11月的AI小聚，我講了類似的原因——FDE模式不容易推起來的一些原因](https://ai-coding.wiselychen.com/fde-continuous-experiment/)。
 
 ## 創智動能：從FDE到AI Coding的深化
 
@@ -45,11 +45,11 @@ description: "從永聯物流的ATPM實驗、FDE模式的挑戰，到創智動�
 
 我也做了一些嘗試，回到我原本的筆桿子，做了Blog和LinkedIn的嘗試。到目前為止，LinkedIn有大概**2,200多人**在訂閱。
 
-我做了一個統計，三個月寫了**63萬行**的程式碼，用Claude Code來做。裡面絕大多數不是Production的程式碼，而是很多一次性的展示、跟客戶的討論，甚至一些管理分析的報表。這說明AI Coding對一個職場人到底有多大的變化和影響。
+我做了一個統計，[三個月寫了**63萬行**的程式碼](https://ai-coding.wiselychen.com/claude-code-630k-lines-three-months-reflection/)，用Claude Code來做。裡面絕大多數不是Production的程式碼，而是很多一次性的展示、跟客戶的討論，甚至一些管理分析的報表。這說明AI Coding對一個職場人到底有多大的變化和影響。
 
 ## FDE實驗還沒結束：看年輕人的成長
 
-AI改變這些FDE的過程，在AI Coding的教導之下，他們越來越進步。
+AI改變這些FDE的過程，在AI 跟我的教導之下，[他們越來越進步](https://ai-coding.wiselychen.com/fde-ai-bu-hui-qu-dai-nian-qing-ren/)。
 
 其中有一位，現在已經是我們公司最大的香港客戶的PM。他之前英文不好，但靠AI工具的幫忙，現在每天都跟香港客戶用英文溝通（因為不會講廣東話）。
 
@@ -83,11 +83,11 @@ Claude Code不只能幫助我的performance，也能幫助我的生活。像健�
 
 ### ChatGPT 語音模式
 
-在我開車的時候、上下班接小孩的時候，ChatGPT能很好協助我做討論。狀況不好的時候，我會說：「請你扮演一個顧問，用訪談的方式直接一直問我問題，然後我能輸出一些東西。」就算狀況不是很好，有ChatGPT幫忙還能產出。
+在我開車的時候、上下班接小孩的時候，ChatGPT能很好協助我做討論。[狀況不好的時候](https://ai-coding.wiselychen.com/ai-resilience-when-unwell/)，我會說：「請你扮演一個顧問，用訪談的方式直接一直問我問題，然後我能輸出一些東西。」就算狀況不是很好，有ChatGPT幫忙還能產出。
 
 ### NotebookLM
 
-自從Gemini 2.0 Flash出來後，它的簡報模式真的非常棒，讓我非常驚艷。最大重點是能幫我把大量知識，快速用5-10頁圖表整理好。讓我在理解專案狀況時，能非常快速進入狀況。
+自從Gemini 2.0 Flash出來後，它的簡報模式真的非常棒，讓我非常驚艷。[最大重點是能幫我把大量知識](https://ai-coding.wiselychen.com/notebooklm-digital-project-manager/)，快速用5-10頁圖表整理好。讓我在理解專案狀況時，能非常快速進入狀況。
 
 這些工具讓我的**生產力提升了3到4倍**。就算非常忙，我每天都能做到日更。
 
