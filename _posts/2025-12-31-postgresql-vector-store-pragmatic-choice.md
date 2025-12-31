@@ -7,6 +7,20 @@ image: /assets/images/postgresql-ai-memory-store-cover.png
 description: "很多人談到 Vector Store，第一個想到的是 RAG。但在實際把 AI 系統導入企業後，我越來越清楚一件事：RAG 解決的是「找資料」，但 AI 系統真正缺的是「記憶」。這篇文章分享我為什麼選擇 PostgreSQL 作為 AI 的記憶底座，而不是追逐最新的專用 Vector DB。"
 ---
 
+## 目錄
+
+- [一、RAG 很強，但它只回答企業了 10% 的問題](#一rag-很強但它只回答企業了-10-的問題)
+- [二、我開始建立的是「AI Memory Store」，不是 RAG](#二我開始建立的是ai-memory-store不是-rag)
+- [三、為什麼我選擇 PostgreSQL 當這個「記憶底座」](#三為什麼我選擇-postgresql-當這個記憶底座)
+- [四、RAG，只是 Memory Read Pattern 的其中一種](#四rag只是-memory-read-pattern-的其中一種)
+- [五、市場上有沒有更適合的方案？](#五市場上有沒有更適合的方案)
+- [六、這件事最後會回到一個問題：治理](#六這件事最後會回到一個問題治理)
+- [七、實際數據：我在專案中的經驗](#七實際數據我在專案中的經驗)
+- [結語：這是對長期可維運系統的選擇](#結語這是對長期可維運系統的選擇)
+- [常見問題 Q&A](#常見問題-qa)
+
+---
+
 ## RAG 只是 AI Agent 可用的第一步，不是最後一步
 
 很多人談到 Vector Store，第一個想到的是 RAG。
