@@ -18,6 +18,7 @@ categories: ["保證很無聊的 IT 架構系列"]
 - [檔案版本管理](#檔案版本管理)
 - [LLM Router：智慧模型選擇與負載平衡](#llm-router智慧模型選擇與負載平衡)
 - [Log 系統：企業 LLM 的雙層觀測架構](#log-系統企業-llm-的雙層觀測架構)
+- [AI 記憶層：讓 Agent 從經驗中學習](#ai-記憶層讓-agent-從經驗中學習)
 - [結論](#結論)
 - [常見問題 Q&A](#常見問題-qa)
 - [延伸閱讀](#延伸閱讀)
@@ -333,14 +334,63 @@ RLS 可以在資料庫層面實現：
 
 ---
 
+## AI 記憶層：讓 Agent 從經驗中學習
+
+當 AI Agent 開始處理複雜的多步驟任務，光有 Log 系統是不夠的。
+
+### 為什麼需要 AI 記憶層？
+
+很多人把 LLM 當成「問一次、答一次」的工具。但當系統開始處理複雜任務，問題就來了：
+
+- 這個 Agent 之前試過哪些方案？
+- 為什麼上次會做出那個判斷？
+- 三週前的錯誤，是不是又被重複犯了一次？
+
+對話日誌記錄的是「發生了什麼」，但 AI 記憶層記錄的是「為什麼這樣做」。
+
+### 記憶層 vs 日誌系統
+
+| 系統 | 記錄內容 | 用途 |
+|------|----------|------|
+| **對話日誌** | 問了什麼、答了什麼、花多少時間 | 審計、除錯、合規 |
+| **AI 記憶層** | 決策理由、嘗試過的方案、學到的教訓 | 持續學習、錯誤避免、行為追溯 |
+
+簡單講：日誌是給人看的，記憶是給 AI 用的。
+
+### 記憶層要存什麼？
+
+一個完整的 AI 記憶層，至少要包含：
+
+- **原始內容** — 可讀、可審計的文字
+- **Embedding 向量** — 語意搜尋用
+- **決策追蹤** — 為什麼這樣選、信心度多少
+- **時間軸** — 先後順序、版本回溯
+- **Metadata** — 任務 ID、Agent ID、來源
+
+這不只是 RAG 的 Vector Store，而是 AI 的「行為歷史資料庫」。
+
+### 為什麼我選 PostgreSQL？
+
+在評估過專用 Vector DB（Pinecone、Qdrant、Milvus）後，我選擇 PostgreSQL + pgvector 作為記憶底座。核心原因：
+
+1. **向量 + 結構化查詢** — 一個 SQL 搞定「過去一週這個 Agent 犯過的類似錯誤」
+2. **Row-Level Security** — 記憶內容可能含機密，資料庫層級的權限隔離更安全
+3. **ACID 保證** — 記憶的寫入、更新、刪除是原子操作
+4. **與日誌同庫** — 方便做關聯查詢，不需要跨系統同步
+
+> 詳細的 Schema 設計、查詢範例、與專用 Vector DB 的比較，請參考：[PostgreSQL 作為 AI 記憶庫](/postgresql-ai-memory-store/)
+
+---
+
 ## 結論
 
 Enterprise LLM deployment 不只是「把模型跑起來」這麼簡單。你需要考慮：
 
 1. **Auth Gateway：** 誰能用什麼模型、查什麼資料
 2. **LLM Router：** 根據任務複雜度選擇模型，節省資源
-3. **Langfuse 觀測：** 審計追蹤、除錯排查、用量分析（開源可自建）
-4. **Python 沙盒：** 防止惡意程式碼破壞系統
+3. **Python 沙盒：** 防止惡意程式碼破壞系統
+4. **Langfuse 觀測：** 審計追蹤、除錯排查、用量分析（開源可自建）
+5. **AI 記憶層：** 讓 Agent 從過去經驗學習，避免重複錯誤
 
 這些基礎建設看起來繁瑣，但一旦建好，後續的開發和維護會輕鬆很多。
 
@@ -373,6 +423,7 @@ Enterprise LLM deployment 不只是「把模型跑起來」這麼簡單。你需
 - [LiteLLM 官方文檔](https://docs.litellm.ai/) - 統一 LLM API 閘道
 - [Langfuse 官方文檔](https://langfuse.com/docs) - 開源 LLM 觀測平台
 - [Langfuse 自建指南](https://langfuse.com/self-hosting) - 5 分鐘 Docker 部署
+- [PostgreSQL 作為 AI 記憶庫](/postgresql-ai-memory-store/) - 為什麼選 PostgreSQL 而不是專用 Vector DB
 
 ### 安全與治理
 - [台灣《人工智慧基本法》：IT 主管必讀的 AI 資安治理建議](/taiwan-ai-basic-act-engineering-perspective/) - 七大原則解讀、Quick Win 清單與企業合規方向
