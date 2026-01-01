@@ -1100,6 +1100,146 @@ footer a:hover {
   padding-left: 10px;
 }
 
+/* Role Navigation */
+.role-navigation {
+  margin: 40px 0;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.role-card {
+  display: block;
+  background: #fff;
+  border: 2px solid #e1e1e1;
+  border-radius: 12px;
+  padding: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.role-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+  transform: translateY(-5px);
+}
+
+.role-icon {
+  display: block;
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.role-card h3 {
+  font-size: 18px;
+  color: #333;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+
+.role-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.role-card-multi {
+  cursor: default;
+}
+
+.role-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.role-links a {
+  display: inline-block;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.role-links a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Featured Posts (SEO 主力文章) */
+.featured-posts {
+  margin: 50px 0;
+}
+
+.featured-list {
+  display: grid;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.featured-item {
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.featured-item:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transform: translateX(5px);
+}
+
+.featured-tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  color: #667eea;
+  border-radius: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.featured-item h3 {
+  font-size: 20px;
+  margin: 0 0 12px 0;
+}
+
+.featured-item h3 a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.featured-item h3 a:hover {
+  color: #667eea;
+}
+
+.featured-item p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.featured-more {
+  text-align: center;
+  margin-top: 30px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   header h1 {
@@ -1174,5 +1314,40 @@ footer a:hover {
 
   .archive-date {
     width: auto;
+  }
+
+  .role-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .role-card {
+    padding: 20px 15px;
+  }
+
+  .role-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .role-card h3 {
+    font-size: 15px;
+  }
+
+  .role-card p {
+    font-size: 12px;
+  }
+
+  .role-links a {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .featured-item {
+    padding: 20px;
+  }
+
+  .featured-item h3 {
+    font-size: 17px;
   }
 }
