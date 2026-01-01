@@ -4,7 +4,25 @@ title: "PostgreSQL AI Memory Store：為什麼 RAG Vector Store 只是 AI Agent 
 date: 2025-12-31 14:00:00 +0800
 permalink: /postgresql-ai-memory-store/
 image: /assets/images/postgresql-ai-memory-store-cover.png
+category: it-arch
 description: "很多人談到 Vector Store，第一個想到的是 RAG。但在實際把 AI 系統導入企業後，我越來越清楚一件事：RAG 解決的是「找資料」，但 AI 系統真正缺的是「記憶」。這篇文章分享我為什麼選擇 PostgreSQL 作為 AI 的記憶底座，而不是追逐最新的專用 Vector DB。"
+faq:
+  - question: "PostgreSQL 的向量搜尋效能比得上專用 Vector DB 嗎？"
+    answer: "在百萬級以下的記憶數量，PostgreSQL + pgvector 的效能完全夠用。實際專案經驗是 50 萬筆記憶、查詢延遲 < 150ms。如果你的場景是億級向量、純語意搜尋，專用 Vector DB（Pinecone、Milvus）確實更適合。但 80% 的企業 AI 專案，瓶頸不在向量搜尋速度，而在於「出事時能不能解釋」。"
+  - question: "pgvector 支援哪些索引類型？該怎麼選？"
+    answer: "pgvector 主要支援 IVFFlat 和 HNSW 兩種。IVFFlat 建索引快、適合資料常變動的場景；HNSW 查詢更快、但索引維護成本較高。建議：如果記憶會頻繁寫入，用 IVFFlat；如果主要是讀取（像 RAG），用 HNSW。"
+  - question: "為什麼不用 Pinecone 或 Weaviate 這類專用 Vector DB？"
+    answer: "專用 Vector DB 很強，但在 AI Agent 場景，你需要的不只是「查向量」。還需要：向量結果 JOIN 原始資料、依時間版本回溯、權限控管（RLS）、ACID 交易保證。這些在 PostgreSQL 是原生支援，在專用 Vector DB 通常要自己在應用層補。"
+  - question: "RAG 和 AI Memory Store 有什麼不同？"
+    answer: "RAG 是「讀取記憶」的一種模式——用向量相似度找相關文件。但 AI Memory Store 還包括：寫入記憶（Agent 決策紀錄）、更新記憶（Feedback Loop）、重放記憶（錯誤分析）。簡單說，RAG 是 Memory 的 Read Pattern 之一，不是全部。"
+  - question: "PostgreSQL 怎麼處理 GDPR 的「被遺忘權」？"
+    answer: "PostgreSQL 的 soft delete（is_deleted 欄位）加上 pg_audit 稽核追蹤，可以完整記錄「誰在什麼時候刪除了什麼」。配合 Row Level Security，確保刪除操作只影響該使用者的資料。這是專用 Vector DB 很難做到的——它們通常沒有關聯完整性，刪除時容易漏掉相關資料。"
+  - question: "多租戶（Multi-tenant）場景，PostgreSQL 怎麼隔離資料？"
+    answer: "用 Row Level Security (RLS)。設定好 Policy 後，無論應用程式怎麼查詢，資料庫引擎自動只回傳該租戶的資料。這比在 Python/Node.js 寫 filter 安全多了——程式碼寫錯一行就可能洩漏資料，但 RLS 是資料庫層級的保證。"
+  - question: "pgvector 需要額外付費嗎？"
+    answer: "不用。pgvector 是開源的，Apache 2.0 授權。只要你的 PostgreSQL 版本 >= 11，就可以安裝。主流雲端服務（AWS RDS、GCP Cloud SQL、Azure）也都開始支援。"
+  - question: "這套架構適合什麼規模的團隊？"
+    answer: "適合 2-20 人的 AI 開發團隊。太小的團隊可能不需要這麼完整的治理；太大的企業可能需要更複雜的分層架構（Redis 做 cache、專用 Vector DB 做 offload）。但 PostgreSQL 作為「記憶主權層」的概念，在任何規模都適用。"
 ---
 
 ## 目錄
