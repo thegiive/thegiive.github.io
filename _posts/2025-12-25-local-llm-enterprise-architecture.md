@@ -307,6 +307,8 @@ LLM Router 的核心價值是**讓對的模型做對的事**。
 
 當 AI Agent 開始處理複雜的多步驟任務，光有 Log 系統是不夠的。
 
+![AI 記憶層操作模式](/assets/images/ai-memory-operation-patterns.png)
+
 ### Log vs 記憶：給人看 vs 給 AI 用
 
 | 系統 | 記錄內容 | 用途 |
@@ -326,6 +328,31 @@ Langfuse 回答的是「這次呼叫花了多少 token」，但 AI 記憶層回�
 
 這些問題，Log 系統回答不了。你需要的是一個「AI 的行為歷史資料庫」。
 
+### 記憶層的四種操作模式
+
+AI 記憶層不只是 RAG 的 Vector Store，它支援四種不同的操作模式：
+
+| 操作模式 | 說明 | 應用場景 |
+|----------|------|----------|
+| **RAG（讀取記憶）** | 查詢相關的歷史資訊 | 回答問題時參考過去經驗 |
+| **Agent Reflection（寫入記憶）** | 記錄決策過程與理由 | 每次任務完成後的自我反思 |
+| **Feedback Loop（更新記憶）** | 根據結果修正記憶 | 使用者回饋後調整判斷 |
+| **Failure Analysis（重放記憶）** | 回溯錯誤發生的脈絡 | 除錯、審計、持續改進 |
+
+簡單講：**RAG 只是記憶的「讀取」模式，完整的記憶系統還需要寫入、更新、重放**。
+
+### 記憶層要存什麼？
+
+一個完整的 AI 記憶層，至少要包含：
+
+- **原始內容** — 可讀、可審計的文字
+- **Embedding 向量** — 語意搜尋用
+- **決策追蹤** — 為什麼這樣選、信心度多少
+- **時間軸** — 先後順序、版本回溯
+- **Metadata** — 任務 ID、Agent ID、來源
+
+這不只是存向量，而是存 AI 的「行為歷史」。
+
 ### 為什麼我選 PostgreSQL + pgvector？
 
 在評估過專用 Vector DB（Pinecone、Qdrant、Milvus）後，我選擇 PostgreSQL 作為記憶底座。核心原因：
@@ -335,7 +362,19 @@ Langfuse 回答的是「這次呼叫花了多少 token」，但 AI 記憶層回�
 3. **ACID 保證** — 記憶的寫入、更新、刪除是原子操作
 4. **治理能力** — 審計追蹤、版本回溯、GDPR 刪除權
 
-> 詳細的 Schema 設計、查詢範例、RLS 權限控制、與專用 Vector DB 的完整比較，請參考：[PostgreSQL 作為 AI 記憶庫](/postgresql-ai-memory-store/)
+### PostgreSQL vs 專用 Vector DB
+
+| 面向 | PostgreSQL + pgvector | 專用 Vector DB |
+|------|----------------------|----------------|
+| 向量搜尋 | ✅ 支援（百萬級夠用） | ✅ 更強（億級） |
+| 結構化查詢 | ✅ 原生 SQL | ⚠️ 有限 |
+| ACID 交易 | ✅ 原生支援 | ❌ 通常不支援 |
+| Row-Level Security | ✅ 資料庫層級 | ❌ 需應用層補 |
+| 與業務資料 JOIN | ✅ 直接 JOIN | ❌ 需同步資料 |
+
+**結論：** 80% 的企業 AI 專案，瓶頸不在向量搜尋速度，而在於「出事時能不能解釋」。PostgreSQL 的治理能力是專用 Vector DB 很難比的。
+
+> 詳細的 Schema 設計、查詢範例、RLS 權限控制實作，請參考：[PostgreSQL 作為 AI 記憶庫](/postgresql-ai-memory-store/)
 
 ---
 
