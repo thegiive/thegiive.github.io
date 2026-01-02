@@ -7,10 +7,6 @@ image: /assets/images/unnamed-1.png
 description: "最近在矽谷，有一場關於創業模式的討論比 AI 本身還要火熱，叫做 FDE : Forward Deployed Engineer，這個模式很有效的幫助 Palantir 解決了現在 AI Agent 落地難的問題，但是縱觀FDE 的方法論，居然跟傳統的駐廠技術人員(FAE) 很相似。我在看完之後，我也立刻驚覺，這就是我的 Data Team 在艾立的模式呀..."
 ---
 
-
-
-![FDE : AI Agent 落地新模式，居然是傳統的駐廠工程師 - Part. 1](/assets/images/unnamed-1.png) Nano Banana 直接下提示詞 forward deploy engineer : AI Agent 的結果
-
 最近在矽谷，有一場關於創業模式的討論比 AI 本身還要火熱，叫做 FDE : Forward Deployed Engineer，這個模式很有效的幫助 **Palantir** 解決了現在 AI Agent 落地難的問題，但是縱觀FDE 的方法論，居然跟傳統的駐廠技術人員(FAE) 很相似。我在看完之後，我也立刻驚覺，這就是我的 Data Team 在艾立的模式呀 
 
 > 看來有「真的」在做 AI 轉型的人，看到的痛點，以及問題的解法都類似
