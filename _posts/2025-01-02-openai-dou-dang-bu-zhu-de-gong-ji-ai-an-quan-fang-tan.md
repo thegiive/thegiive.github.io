@@ -197,7 +197,9 @@ Agent A (低權限) → Agent B (中權限) → Agent C (高權限) → 資料�
 
 ### 核心原則
 
-1. **資料存取（Data Access）：** AI 能夠存取的任何資料，都等同於使用者能夠存取。確保資料權限被嚴格控制。實作上，[PostgreSQL 的 Row Level Security（RLS）](/postgresql-ai-memory-store/) 是利器——即使 AI 被誘導執行惡意查詢，也只能存取該用戶被授權的資料列，這種「資料庫層級的權限圍堵」比應用層過濾更可靠。
+1. **資料存取（Data Access）：** AI 能夠存取的任何資料，都等同於使用者能夠存取。確保資料權限被嚴格控制。
+
+> **延伸閱讀：** PostgreSQL 的 Row Level Security（RLS）是實現 Least Privilege 的利器——即使 AI 被誘導執行惡意查詢，也只能存取該用戶被授權的資料列。詳見 [為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」](/postgresql-ai-memory-store/)。
 
 2. **行動能力（Action Capability）：** AI 能夠執行的任何動作序列，使用者都能夠觸發。確保行動的組合不會產生災難性後果。實作上，[Auth Gateway](/local-llm-enterprise-architecture/) 是關鍵元件——透過身份驗證、角色權限、模型配額，在入口處就限制 AI 能做什麼、能存取什麼。
 
