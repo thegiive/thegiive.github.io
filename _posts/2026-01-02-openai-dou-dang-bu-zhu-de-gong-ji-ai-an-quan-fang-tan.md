@@ -238,10 +238,10 @@ Google DeepMind 在 2025 年發表的 [CaMeL](https://arxiv.org/abs/2503.18813)�
 
 ## 訪談來源
 
-**節目：** Lenny's Podcast
-**標題：** The coming AI security crisis (and what to do about it)
-**來賓：** Sander Schulhoff
-**完整影片：** [YouTube](https://www.youtube.com/watch?v=J9982NLmTXg)
+- **節目：** Lenny's Podcast
+- **標題：** The coming AI security crisis (and what to do about it)
+- **來賓：** Sander Schulhoff
+- **完整影片：** [YouTube](https://www.youtube.com/watch?v=J9982NLmTXg)
 
 ---
 
