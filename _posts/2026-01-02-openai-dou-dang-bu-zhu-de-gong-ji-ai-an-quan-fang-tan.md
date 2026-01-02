@@ -9,8 +9,6 @@ image: /assets/images/ai-guardrails-podcast-cover.png
 description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulhoff 的訪談。從 AI Agent 架構出發，解析為何 Guardrails 擋不住 Prompt Injection——stateless 防禦的結構性失敗，以及為何最小權限與架構性圍堵才是真正可行的 AI Security 解法。"
 ---
 
-![Lenny's Podcast 訪談 Sander Schulhoff](/assets/images/ai-guardrails-podcast-cover.png)
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/J9982NLmTXg?start=696" title="Lenny's Podcast - The coming AI security crisis" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
