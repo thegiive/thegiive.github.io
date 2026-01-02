@@ -1,15 +1,12 @@
----
-layout: post
-title: "AI Guardrails 為什麼註定失敗？從 Prompt Injection 到 Agent 架構安全"
-date: 2026-01-02 22:00:00 +0800
-permalink: /openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/
-image: /assets/images/ai-guardrails-podcast-cover.png
-description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulhoff 的訪談。從 AI Agent 架構出發，解析為何 Guardrails 擋不住 Prompt Injection——stateless 防禦的結構性失敗，以及為何最小權限與架構性圍堵才是真正可行的 AI Security 解法。"
----
+# AI Guardrails 為什麼註定失敗？從 Prompt Injection 到 Agent 架構安全
 
 **整理：** Wisely Chen
 **日期：** 2025年1月
 **系列：** AI Agent 實戰觀察
+
+> 本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulhoff 的訪談。從 AI Agent 架構出發，解析為何 Guardrails 擋不住 Prompt Injection——stateless 防禦的結構性失敗，以及為何最小權限與架構性圍堵才是真正可行的 AI Security 解法。
+
+![Lenny's Podcast 訪談 Sander Schulhoff](images/ai-guardrails-podcast-cover.png)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/J9982NLmTXg?start=696" title="Lenny's Podcast - The coming AI security crisis" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -74,7 +71,7 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ## 三、AI Guardrails 為何是脆弱的防線？
 
-![業界的標準答案：脆弱的防線](/assets/images/ai-guardrails-weak-defense.png)
+![業界的標準答案：脆弱的防線](images/ai-guardrails-weak-defense.png)
 
 ### AI Guardrails 的運作機制
 
@@ -104,6 +101,8 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ## 五、適應性評估：人類攻擊者總能找到出路
 
+
+
 在包含 OpenAI、Google DeepMind 和 Anthropic 的聯合研究中，所有最先進的防禦措施都面臨了考驗。
 
 | 攻擊類型 | 成功率 | 嘗試次數 |
@@ -117,7 +116,7 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ## 六、你可以修補程式錯誤，但你無法修補一個大腦
 
-![傳統網路安全 vs AI 安全](/assets/images/ai-security-vs-traditional.png)
+![傳統網路安全 vs AI 安全](images/ai-security-vs-traditional.png)
 
 | 傳統網路安全 | AI 安全 |
 |--------------|---------|
@@ -149,7 +148,7 @@ Stage 1: 嵌入指令 → Stage 2: 正常請求 → Stage 3: 讀取與執行 →
 
 ### 案例二：Agent 權限鏈的權限提升
 
-**案例：ServiceNow 企業 AI Agent (2024，研究案例)**
+**案例：[ServiceNow Now Assist 企業 AI Agent](https://appomni.com/ao-labs/ai-agent-to-agent-discovery-prompt-injection/) (2025，AppOmni 研究)**
 
 ```
 Agent A (低權限) → Agent B (中權限) → Agent C (高權限) → 資料外洩
