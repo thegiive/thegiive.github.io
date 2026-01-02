@@ -1,17 +1,19 @@
 ---
 layout: post
-title: "FDE : AI Agent 落地新模式，居然是傳統的駐廠工程師 - Part. 1"
+title: "FDE 模式：Palantir 如何用駐廠工程師解決 AI Agent 落地難題"
 date: 2025-09-24 14:08:31 +0000
 permalink: /fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/
 image: /assets/images/unnamed-1.png
-description: "最近在矽谷，有一場關於創業模式的討論比 AI 本身還要火熱，叫做 FDE : Forward Deployed Engineer，這個模式很有效的幫助 Palantir 解決了現在 AI Agent 落地難的問題，但是縱觀FDE 的方法論，居然跟傳統的駐廠技術人員(FAE) 很相似。我在看完之後，我也立刻驚覺，這就是我的 Data Team 在艾立的模式呀..."
+description: "FDE（Forward Deployed Engineer）是 Palantir 首創的駐廠工程師模式，2025 年成為 AI Agent 落地的主流策略。本文解析 FDE 運作機制、Echo/Delta 團隊分工，以及為何 95% 企業 AI 導入失敗後，這個「不可規模化」的方法反而成功。"
+tags: [AI Agent, FDE, Palantir, 企業AI轉型, 2B SaaS]
+keywords: FDE, Forward Deployed Engineer, AI Agent 落地, Palantir, 駐廠工程師, 企業AI轉型
 ---
 
 最近在矽谷，有一場關於創業模式的討論比 AI 本身還要火熱，叫做 FDE : Forward Deployed Engineer，這個模式很有效的幫助 **Palantir** 解決了現在 AI Agent 落地難的問題，但是縱觀FDE 的方法論，居然跟傳統的駐廠技術人員(FAE) 很相似。我在看完之後，我也立刻驚覺，這就是我的 Data Team 在艾立的模式呀 
 
 > 看來有「真的」在做 AI 轉型的人，看到的痛點，以及問題的解法都類似
 
-##  FDE 是啥
+## FDE 是什麼？Forward Deployed Engineer 完整解析
 
 我們先來看看一個 Youtube : Bob McGrew在 YC的 Podcast 的談話
 
@@ -71,7 +73,7 @@ FDE 模式與傳統 SaaS 商業模式有本質區別
 
 如果沒有做成更大規模的合約的可能性，只是固定的合約，FDE 這樣針對某個 Key Account 昂貴的人力投資就不值得。
 
-## AI Agent 時代的全面復興  
+## 為什麼 2025 年 FDE 模式全面復興？  
 
 2010 年代，FDE 模式曾被視為 Palantir 針對政府市場 toG 的「個例」**和** 「非主流」，而且以美國這樣高昂的人力成本，本來不應該發揚光大，但 2025 突然文藝復興起來，這個方法論在 AI Agent 創業公司中迅速普及，主要是 AI Agent 普遍性的無法落地 (請看 [MIT ​報告 :](https://www.artificialintelligence-news.com/wp-content/uploads/2025/08/ai_report_2025.pdf?utm_source=chatgpt.com) 95％企業導入AI都失敗，誰活在平行時空？)
 
@@ -80,7 +82,7 @@ FDE 模式與傳統 SaaS 商業模式有本質區別
   1. **2B AI Agent 缺乏現有的主導產品：** 傳統的 SaaS 產品通常是一個最強的PMF(Product Market Fit) ，馬太效應直接取代現有所有的同類產品。AI Agent 太新了，而且面對 **2B AI Agent** ，挑戰與 Palantir 當年創造間諜情報分析軟體品類的挑戰一模一樣。由於沒有現成的標準和參照物，這些探索必須深入企業內部完成，市場上存在**巨大的產品需求未知**
   2. **2B 市場的高度異質性：** Palantir 的政府市場內部差異巨大（例如反擴散與反恐的工作流程不同），2B AI Agent 市場同樣充滿了異質性，不存在一個「萬金油」產品。每個細分市場都需要不斷的技術開發和定制化，迫使公司持續地「在規模上做不擴展的事情」
 
-## FDE 模式的問題
+## FDE 模式的常見陷阱：不是顧問，也不是外包
 
 ### FDE 不是顧問
 
@@ -92,7 +94,7 @@ FDE 模式與傳統 SaaS 商業模式有本質區別
 
 FDE 成功部署的關鍵在於解決客戶「領導層」的**優先問題，** 不是客戶 contact window的問題。如果不是解決高層的痛點，公司將難以獲得授權和支持，無法應對企業 IT 團隊等內部障礙，到最後只是大量根據 working level 的客製化，淪為外包
 
-## 如何確定 FDE 走在正確的路上
+## 如何評估 FDE 模式是否成功？兩個關鍵指標
 
 要衡量 FDE 是否是對的，有幾個重要的指標
 
@@ -109,7 +111,7 @@ FDE 成功部署的關鍵在於解決客戶「領導層」的**優先問題，**
 
 這個如果產品開發就自己開發自己的，FDE 只是做好自己一畝三分田，那這就是一個外包生意。
 
-## FDE : 矽谷的當紅炸子雞
+## 我的 FDE 實戰經驗：從物流業 AI 轉型學到的事
 
 矽谷最近新創諮詢公司 Distyl AI 最近剛剛宣布B輪募到 175M , 他們也是來自於Palantir ，並且也是標榜用 FDE 模式來做諮詢顧問的落地了。代表 AI Agent 落地問題已經嚴重到，大家已經開始反思 SaaS 模式在 AI 時代的可執行性，而且VC已經會用落地成功率去考核公司，而非你的模型可以幾B 參數
 
@@ -124,3 +126,16 @@ FDE 成功部署的關鍵在於解決客戶「領導層」的**優先問題，**
 3\. 如果不能在中期(6m ~ 1Y) 有效率的擴大戰果（水平擴展到其他客戶，或是將這個客戶多拉一些案子），那這個模式很可能賠錢
 
 在下一個 part ，我也會試著回想那時候的組建 FDE 遇到的問題，以及一點點的經驗分享。
+
+---
+
+## 重點整理
+
+| 項目 | FDE 模式 | 傳統 SaaS |
+|------|---------|----------|
+| **收費方式** | 按成果計價 | 按功能訂閱 |
+| **團隊配置** | Echo（分析）+ Delta（工程） | 產品 + 銷售 |
+| **擴展策略** | 先深耕再複製 | 先產品化再推廣 |
+| **適合場景** | 2B 高異質性市場 | 2C 或標準化需求 |
+
+**延伸閱讀：** 想了解更多 AI Agent 落地實戰經驗，可以參考我的 [ATPM 框架系列文章](/atpm-a-real-production-vibe-coding-process/)。
