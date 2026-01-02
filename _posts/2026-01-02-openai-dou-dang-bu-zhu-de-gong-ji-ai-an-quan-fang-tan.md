@@ -1,12 +1,15 @@
-# AI Guardrails 為什麼註定失敗？從 Prompt Injection 到 Agent 架構安全
+---
+layout: post
+title: "AI Guardrails 為什麼註定失敗？從 Prompt Injection 到 Agent 架構安全"
+date: 2026-01-02 10:00:00 +0800
+categories: [AI安全]
+tags: [AI-Agent, Prompt-Injection, Guardrails, 安全架構]
+permalink: /openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/
+image: /assets/images/ai-guardrails-podcast-cover.png
+description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulhoff 的訪談。從 AI Agent 架構出發，解析為何 Guardrails 擋不住 Prompt Injection——stateless 防禦的結構性失敗，以及為何最小權限與架構性圍堵才是真正可行的 AI Security 解法。"
+---
 
-**整理：** Wisely Chen
-**日期：** 2025年1月
-**系列：** AI Agent 實戰觀察
-
-> 本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulhoff 的訪談。從 AI Agent 架構出發，解析為何 Guardrails 擋不住 Prompt Injection——stateless 防禦的結構性失敗，以及為何最小權限與架構性圍堵才是真正可行的 AI Security 解法。
-
-![Lenny's Podcast 訪談 Sander Schulhoff](images/ai-guardrails-podcast-cover.png)
+![Lenny's Podcast 訪談 Sander Schulhoff](/assets/images/ai-guardrails-podcast-cover.png)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/J9982NLmTXg?start=696" title="Lenny's Podcast - The coming AI security crisis" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -71,7 +74,7 @@
 
 ## 三、AI Guardrails 為何是脆弱的防線？
 
-![業界的標準答案：脆弱的防線](images/ai-guardrails-weak-defense.png)
+![業界的標準答案：脆弱的防線](/assets/images/ai-guardrails-weak-defense.png)
 
 ### AI Guardrails 的運作機制
 
@@ -116,7 +119,7 @@
 
 ## 六、你可以修補程式錯誤，但你無法修補一個大腦
 
-![傳統網路安全 vs AI 安全](images/ai-security-vs-traditional.png)
+![傳統網路安全 vs AI 安全](/assets/images/ai-security-vs-traditional.png)
 
 | 傳統網路安全 | AI 安全 |
 |--------------|---------|
