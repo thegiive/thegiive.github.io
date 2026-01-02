@@ -18,6 +18,14 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 這篇文章整理自 Sander Schulhoff 在 Lenny's Podcast 的訪談。Schulhoff 是 [Learn Prompting](https://learnprompting.org/) 創辦人，與 OpenAI 合作舉辦過史上最大的 AI 紅隊競賽 HackAPrompt，他花在研究「如何攻破 AI 系統」的時間，可能比地球上任何人都多。
 
+PS. 我不喜歡寫訪談逐字稿的文章，這不是大家來看我 blog 的原因——如果需要原文，直接去 [YouTube Link](https://www.youtube.com/watch?v=J9982NLmTXg) 看即可。這篇是我整理過、重新編排的 Summary。
+
+**閱讀格式說明：**
+> 這種格式是訪談原話翻譯
+
+其他內容是我的摘要或總結，配圖由 NotebookLM 協助生成。
+
+
 ---
 
 
@@ -48,14 +56,6 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 - **在 AI Agent 架構下，這變成「行為風險」：** 不再只是說錯話，而是做了不該做的事
 - **唯一可行解：限制權限與行動空間，而不是過濾語言：** 假設 AI 會被騙，但讓它「即使被騙也無能為力」
 
---- 
-
-我不喜歡寫逐字稿，這不是大家來看我 blog 的原因——如果需要原文，直接去 YouTube 看即可。這篇是我整理過、重新編排的 Summary。
-
-**閱讀格式說明：**
-> 這種格式是訪談原話翻譯
-
-其他內容是我的摘要或總結，配圖由 NotebookLM 協助生成。
 
 ---
 
