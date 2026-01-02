@@ -179,6 +179,8 @@ Prompt injection 不是漏洞，而是語言模型的結構性結果。模型的
 
 Google DeepMind 在 2025 年發表的 [CaMeL](https://arxiv.org/abs/2503.18813)（Communicative Agents for Machine-learning-based Language Execution）正是這個思路的具體實現。
 
+![CaMeL Intent Analyzer 流程：根據使用者意圖預先限制權限](/assets/images/camel-intent-analyzer-flow.png)
+
 ### 核心思想
 
 在執行任務前，根據使用者的初始提示，預先限制 Agent 可能採取的行動集合。
