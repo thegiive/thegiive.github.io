@@ -67,10 +67,10 @@ Manus 它不是 ChatBot 升級版，而是讓 AI 開始真的「做事」：
 
 從工程角度看，Manus 厲害的不是模型，而是上下文工程：
 
-- **嚴格的 Agent Loop**：每一輪只做一件事，可 debug、可回溯、可自我修正
-- **對成本極度敏感的 KV Cache**：輸入輸出比約 100:1，cache 命中後成本降 10 倍、速度快 5 倍
-- **把 Context 當 RAM、File system 當 Disk** 的長任務設計
-- **刻意保留錯誤**：讓 Agent 不再重踩同一個坑
+- **嚴格的 Agent Loop**：每一輪只做一件事，可 debug、可回溯、可自我修正。這不是什麼新概念，但 Manus 把它做到工程紀律的程度——每個步驟都有明確的 Analysis → Plan → Execute → Observe 流程，而不是讓 LLM 自己亂跑。
+- **對成本極度敏感的 KV Cache**：輸入輸出比約 100:1，cache 命中後成本降 10 倍、速度快 5 倍。這代表他們不是在燒錢跑 Demo，而是真的在算帳，思考如何讓 Agent 變成可持續的商業模式。
+- **把 Context 當 RAM、File system 當 Disk** 的長任務設計：當任務太長，Context Window 塞不下時，Manus 會把中間結果寫到檔案系統，需要時再讀回來。這讓 Agent 可以處理真正複雜的任務，而不是只能做一次性的問答。
+- **刻意保留錯誤**：讓 Agent 不再重踩同一個坑。大多數人會想把錯誤清掉讓 context 更乾淨，但 Manus 反其道而行——保留錯誤紀錄，讓 Agent 學會避開已知的死路。
 
 這些設計都在回答同一個問題：
 
