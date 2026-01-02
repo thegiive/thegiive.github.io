@@ -13,9 +13,6 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ---
 
-> 「AI 監管機制沒有用。我再說一次：監管機制沒有用。如果有人決心要欺騙 GPT-5，他們處理那些監管機制將毫無問題。」
-> — Sander Schulhoff, HackAPrompt CEO
-
 這篇文章整理自 Sander Schulhoff 在 Lenny's Podcast 的訪談。Schulhoff 是 [Learn Prompting](https://learnprompting.org/) 創辦人，與 OpenAI 合作舉辦過史上最大的 AI 紅隊競賽 HackAPrompt，他花在研究「如何攻破 AI 系統」的時間，可能比地球上任何人都多。
 
 他的核心論點很直接：**安全護欄（guardrails）根本擋不住真正的攻擊，唯一有效的策略是從一開始就限制 AI 能做什麼。**
@@ -71,6 +68,9 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 ---
 
 ## 三、AI Guardrails 為何是脆弱的防線？
+
+> 「AI 監管機制沒有用。我再說一次：監管機制沒有用。如果有人決心要欺騙 GPT-5，他們處理那些監管機制將毫無問題。」
+> — Sander Schulhoff, HackAPrompt CEO
 
 ![業界的標準答案：脆弱的防線](/assets/images/ai-guardrails-weak-defense.png)
 
