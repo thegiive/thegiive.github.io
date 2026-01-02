@@ -3,7 +3,7 @@ layout: post
 title: "FDE 模式：Palantir 如何用駐廠工程師解決 AI Agent 落地難題"
 date: 2025-09-24 14:08:31 +0000
 permalink: /fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/
-image: /assets/images/unnamed-1.png
+image: /assets/images/fde-palantir-cover.png
 description: "FDE（Forward Deployed Engineer）是 Palantir 首創的駐廠工程師模式，2025 年成為 AI Agent 落地的主流策略。本文解析 FDE 運作機制、Echo/Delta 團隊分工，以及為何 95% 企業 AI 導入失敗後，這個「不可規模化」的方法反而成功。"
 tags: [AI Agent, FDE, Palantir, 企業AI轉型, 2B SaaS]
 keywords: FDE, Forward Deployed Engineer, AI Agent 落地, Palantir, 駐廠工程師, 企業AI轉型
