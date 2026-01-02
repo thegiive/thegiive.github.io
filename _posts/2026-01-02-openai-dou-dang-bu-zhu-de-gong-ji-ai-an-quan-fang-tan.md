@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI Guardrails 為什麼註定失敗？從 Prompt Injection 到 Agent 架構安全"
-date: 2025-01-02 22:00:00 +0800
+date: 2026-01-02 22:00:00 +0800
 permalink: /openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/
 image: /assets/images/ai-guardrails-podcast-cover.png
 description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulhoff 的訪談。從 AI Agent 架構出發，解析為何 Guardrails 擋不住 Prompt Injection——stateless 防禦的結構性失敗，以及為何最小權限與架構性圍堵才是真正可行的 AI Security 解法。"

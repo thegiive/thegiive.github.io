@@ -473,7 +473,7 @@ PostgreSQL 的 soft delete（`is_deleted` 欄位）加上 `pg_audit` 稽核追�
 ### 技術資源
 - [pgvector GitHub](https://github.com/pgvector/pgvector) — PostgreSQL 向量擴充的官方 repo
 - [PostgreSQL JSONB 官方文件](https://www.postgresql.org/docs/current/datatype-json.html) — JSON vs JSONB、索引、查詢操作
-- [LangChain Memory 官方文件](https://python.langchain.com/docs/concepts/memory/) — 主流框架如何區分 Memory 與 RAG
+- [LangChain Memory 官方文件](https://python.langchain.com/docs/concepts/memory/) — 主流框架如何區分 Memory 與 RAG     
 - [Anthropic Research](https://www.anthropic.com/research) — Agent 行為、反思與長期安全的研究
 
 ### 治理與合規
