@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[FDE] 流程是一個濾光片 , 幫忙把數據的 inisght filter 出來"
+title: "FDE：沒有流程知識，再多數據也是噪音"
 date: 2025-10-17 10:48:51 +0000
 permalink: /aizhuan-xing-ai-agent-ru-he-luo-di/
 image: /assets/images/Generated-Image-October-18--2025---8_14AM-1.png
