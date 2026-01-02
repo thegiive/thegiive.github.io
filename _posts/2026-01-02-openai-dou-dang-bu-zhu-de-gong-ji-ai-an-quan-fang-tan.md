@@ -13,7 +13,12 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ---
 
-這篇文章整理自 Sander Schulhoff 在 Lenny's Podcast 的訪談。
+我在另一篇文章 [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/) 已經講了許多 AI Agent 案例，但是很多人私訊我說到底怎麼防禦。但是在講防禦前，我想要先講為何 AI Agent 本質上幾乎絕大多數「Guardrails 本質上沒用」。
+
+在我草擬的過程中，這幾天發現 Schulhoff這位大神的採訪，我認為這個採訪講的比我寫的更高層次，又更有說服力一百倍。在此分享給大家。這篇文章整理自 Sander Schulhoff 在 Lenny's Podcast 的訪談。Schulhoff 是 [Learn Prompting](https://learnprompting.org/) 創辦人，與 OpenAI 合作舉辦過史上最大的 AI 紅隊競賽 HackAPrompt，他花在研究「如何攻破 AI 系統」的時間，可能比地球上任何人都多。
+
+---
+
 
 ## 目錄
 
@@ -32,7 +37,6 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 13. [Stateless vs Stateful 案例](#stateless-vs-stateful-案例)（真實攻擊案例分享）
 14. [Wisely Comment](#wisely-comment)（延伸閱讀：AI Agent 安全實證案例）
 
-Schulhoff 是 [Learn Prompting](https://learnprompting.org/) 創辦人，與 OpenAI 合作舉辦過史上最大的 AI 紅隊競賽 HackAPrompt，他花在研究「如何攻破 AI 系統」的時間，可能比地球上任何人都多。
 
 他的核心論點很直接：**安全護欄（guardrails）根本擋不住真正的攻擊，唯一有效的策略是從一開始就限制 AI 能做什麼。**
 
@@ -308,17 +312,6 @@ Agent A (低權限) → Agent B (中權限) → Agent C (高權限) → 資料�
 
 ---
 
-## Wisely Comment
-
-**這篇訪談談的是「為什麼 Guardrails 擋不住」，但真正可怕的是：擋不住之後會發生什麼事？**
-
-我在另一篇文章 [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/) 整理了兩個已經被學術界實證的攻擊案例——**EchoLeak（Microsoft 365 Copilot）** 和 **ForcedLeak（Salesforce AgentForce）**。這兩個案例的共同點是：攻擊者不需要用戶點擊任何東西，只要在郵件或網頁表單裡埋入隱藏指令，Agent 自己就會把敏感資料「合法地」傳出去。
-
-更令人不安的是數據：**94.4% 的 AI Agent 容易受攻擊**，而傳統的 WAF、APM、SIEM 這些資安工具完全失效——它們看不懂自然語言威脅，也無法把一個 prompt 跟實際的雲端操作關聯起來。
-
-這就是為什麼 Schulhoff 說的「Guardrails 沒用」不只是理論推演。企業正在用 **33 倍的速度** 部署 Agent，但資安防禦還停在 Chatbot 時代。這個落差，才是真正的風險所在。
-
----
 
 ## 常見問題 FAQ
 
