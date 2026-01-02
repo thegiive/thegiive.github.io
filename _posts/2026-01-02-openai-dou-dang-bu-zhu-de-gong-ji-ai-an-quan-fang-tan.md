@@ -131,7 +131,9 @@ Prompt injection 不是漏洞，而是語言模型的結構性結果。模型的
 
 ![攻擊者視角 (Stateful) vs 防禦者視角 (Stateless)](/assets/images/stateless-vs-stateful-security.png)
 
-**這就是為什麼安全護欄注定失敗的結構性原因：[防禦是 stateless，攻擊是 stateful](#stateless-vs-stateful-案例)。**
+**這就是為什麼安全護欄注定失敗的結構性原因：防禦是 stateless，攻擊是 stateful。**
+
+> **延伸案例：** 如果你暫時無法理解這裡說的「防禦是 stateless，攻擊是 stateful」，或是「無法理解請求之間的上下文關聯，看不到組合後的意圖」這類組合攻擊，[這裡補充幾個真實案例幫助理解](#stateless-vs-stateful-案例)。
 
 > **延伸閱讀：** 這也解釋了為什麼傳統 WAF 在 AI Agent 時代逐漸失效——它們只看單一請求的 log，不看整個 session 的行為序列。要做到 stateful 的防禦，AI 記憶層才是記錄跨請求上下文的關鍵基礎設施。詳見 [為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」](/postgresql-ai-memory-store/)。
 
@@ -255,7 +257,7 @@ Google DeepMind 在 2025 年發表的 [CaMeL](https://arxiv.org/abs/2503.18813)�
 
 ## Stateless vs Stateful 案例 {#stateless-vs-stateful-案例}
 
-**Wisely 補充：** 上面訪談提到「無法理解請求之間的上下文關聯，看不到組合後的意圖」這類組合攻擊，這裡補充幾個真實案例幫助理解。
+**Wisely 補充：** 上面訪談提到「防禦是 stateless，攻擊是 stateful」以及「無法理解請求之間的上下文關聯，看不到組合後的意圖」這類組合攻擊，這裡補充幾個真實案例幫助理解。
 
 ### 案例一：透過外部內容的資料外洩
 
