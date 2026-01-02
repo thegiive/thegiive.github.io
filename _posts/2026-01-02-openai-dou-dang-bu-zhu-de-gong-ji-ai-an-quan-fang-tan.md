@@ -13,6 +13,8 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ---
 
+## 緣起
+
 我在另一篇文章 [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/) 已經講了許多 AI Agent 案例，但是很多人私訊我說到底怎麼防禦。但是在講防禦前，我想要先講為何 AI Agent 本質上幾乎絕大多數「Guardrails 本質上沒用」。
 
 在我草擬的過程中，這幾天發現 Schulhoff這位大神的採訪，我認為這個採訪講的比我寫的更高層次，又更有說服力一百倍。在此分享給大家。題外話，我在最後也附上 [Wisely Comment](#wisely-comment)（延伸閱讀：AI Agent 安全實證案例）幾個精彩的 AI Agent 攻擊案例供大家理解裡面的幾個概念。
