@@ -29,6 +29,7 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 10. [對策二：基於意圖的主動約束（CaMeL 框架）](#十對策二基於意圖的主動約束camel-框架)
 11. [新一代專家的崛起：融合 AI 與傳統安全的思維](#十一新一代專家的崛起融合-ai-與傳統安全的思維)
 12. [最終警告：你盒子裡的神，是個惡意的神](#十二最終警告你盒子裡的神是個惡意的神)
+13. Wisely 補充資料 :[Stateless vs Stateful 案例](#stateless-vs-stateful-案例)（真實攻擊案例分享）
 
 Schulhoff 是 [Learn Prompting](https://learnprompting.org/) 創辦人，與 OpenAI 合作舉辦過史上最大的 AI 紅隊競賽 HackAPrompt，他花在研究「如何攻破 AI 系統」的時間，可能比地球上任何人都多。
 
