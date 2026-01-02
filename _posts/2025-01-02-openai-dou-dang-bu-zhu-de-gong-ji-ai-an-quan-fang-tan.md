@@ -74,6 +74,8 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ## 三、AI Guardrails 為何是脆弱的防線？
 
+![業界的標準答案：脆弱的防線](/assets/images/ai-guardrails-weak-defense.png)
+
 ### AI Guardrails 的運作機制
 
 在模型的輸入和輸出端部署另一個 LLM，用以分類和攔截惡意請求或回應。
@@ -115,6 +117,8 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ## 六、你可以修補程式錯誤，但你無法修補一個大腦
 
+![傳統網路安全 vs AI 安全](/assets/images/ai-security-vs-traditional.png)
+
 | 傳統網路安全 | AI 安全 |
 |--------------|---------|
 | 流程：發現漏洞 → 編寫補丁 → 部署修復 | 流程：發現一個攻擊提示 → 試圖透過微調或過濾來「修復」|
@@ -130,7 +134,7 @@ Prompt injection 不是漏洞，而是語言模型的結構性結果。模型的
 
 ### 案例一：透過外部內容的資料外洩
 
-**案例：ChatGPT Plugins / Comet Browser (2023-2024)**
+**案例：[ChatGPT Plugins](https://embracethered.com/blog/posts/2023/chatgpt-cross-plugin-request-forgery-and-prompt-injection./) / [Comet Browser](https://brave.com/blog/comet-prompt-injection/) (2023-2024)**
 
 ```
 Stage 1: 嵌入指令 → Stage 2: 正常請求 → Stage 3: 讀取與執行 → Stage 4: 資料外洩
@@ -142,8 +146,6 @@ Stage 1: 嵌入指令 → Stage 2: 正常請求 → Stage 3: 讀取與執行 →
 4. AI 將使用者的帳號資料傳送到攻擊者的端點
 
 **關鍵：沒有任何一步是直接的攻擊請求。攻擊發生在「資料」被誤解為「指令」的瞬間。**
-
-> 這也是為什麼 RAG（Retrieval-Augmented Generation）架構需要特別注意資料來源的可信度。當 AI 從外部知識庫檢索內容時，這些內容可能被植入惡意指令。關於 RAG 的實作考量，可參考 [從文件庫到 Agent 知識庫：臨門一腳的 RAG 轉換實戰](/cong-wen-jian-ku-dao-agent-zhi-shi-ku/)。
 
 ### 案例二：Agent 權限鏈的權限提升
 
@@ -174,7 +176,7 @@ Agent A (低權限) → Agent B (中權限) → Agent C (高權限) → 資料�
 
 **這就是為什麼安全護欄注定失敗的結構性原因：防禦是 stateless，攻擊是 stateful。**
 
-這也解釋了為什麼傳統 WAF（Web Application Firewall）在 AI Agent 時代逐漸失效——它們只看單一請求的 log，不看整個 session 的行為序列。要做到 stateful 的防禦，[AI 記憶層](/postgresql-ai-memory-store/)才是記錄跨請求上下文的關鍵基礎設施。沒有記憶層，你永遠只能事後分析，無法即時攔截「合法請求組合成的非法意圖」。
+> **延伸閱讀：** 這也解釋了為什麼傳統 WAF 在 AI Agent 時代逐漸失效——它們只看單一請求的 log，不看整個 session 的行為序列。要做到 stateful 的防禦，AI 記憶層才是記錄跨請求上下文的關鍵基礎設施。詳見 [為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」](/postgresql-ai-memory-store/)。
 
 ---
 
@@ -201,13 +203,12 @@ Agent A (低權限) → Agent B (中權限) → Agent C (高權限) → 資料�
 
 > **延伸閱讀：** PostgreSQL 的 Row Level Security（RLS）是實現 Least Privilege 的利器——即使 AI 被誘導執行惡意查詢，也只能存取該用戶被授權的資料列。詳見 [為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」](/postgresql-ai-memory-store/)。
 
+> **延伸閱讀：** Network Boundary 也是多一層「物理性」的圍堵，讓 AI 即使被誘導也無法將資訊傳送到外部 , 雲端的 VPC、Private Link、防火牆規則都是網路層級的隔離手段；而地端 LLM 部署則是更極致的選擇——資料完全不出內網。詳見 [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)。
+
+
 2. **行動能力（Action Capability）：** AI 能夠執行的任何動作序列，使用者都能夠觸發。確保行動的組合不會產生災難性後果。
 
 > **延伸閱讀：** Auth Gateway 是實現行動能力管控的關鍵元件——透過身份驗證、角色權限、模型配額，在入口處就限制 AI 能做什麼、能存取什麼。詳見 [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)。
-
-3. **網路邊界（Network Boundary）：** 多一層「物理性」的圍堵，讓 AI 即使被誘導也無法將資訊傳送到外部。
-
-> **延伸閱讀：** 雲端的 VPC、Private Link、防火牆規則都是網路層級的隔離手段；而地端 LLM 部署則是更極致的選擇——資料完全不出內網。詳見 [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)。
 
 
 ---
