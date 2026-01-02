@@ -201,7 +201,9 @@ Agent A (低權限) → Agent B (中權限) → Agent C (高權限) → 資料�
 
 > **延伸閱讀：** PostgreSQL 的 Row Level Security（RLS）是實現 Least Privilege 的利器——即使 AI 被誘導執行惡意查詢，也只能存取該用戶被授權的資料列。詳見 [為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」](/postgresql-ai-memory-store/)。
 
-2. **行動能力（Action Capability）：** AI 能夠執行的任何動作序列，使用者都能夠觸發。確保行動的組合不會產生災難性後果。實作上，[Auth Gateway](/local-llm-enterprise-architecture/) 是關鍵元件——透過身份驗證、角色權限、模型配額，在入口處就限制 AI 能做什麼、能存取什麼。
+2. **行動能力（Action Capability）：** AI 能夠執行的任何動作序列，使用者都能夠觸發。確保行動的組合不會產生災難性後果。
+
+> **延伸閱讀：** Auth Gateway 是實現行動能力管控的關鍵元件——透過身份驗證、角色權限、模型配額，在入口處就限制 AI 能做什麼、能存取什麼。詳見 [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)。
 
 3. **網路邊界（Network Boundary）：** 雲端的 VPC、Private Link、防火牆規則都是網路層級的隔離手段；而[地端 LLM 部署](/local-llm-enterprise-architecture/)則是更極致的選擇——資料完全不出內網，即使 AI 被誘導外洩，也無法將敏感資訊傳送到外部端點。無論雲端或地端，核心思維都是：多一層「物理性」的圍堵。
 
