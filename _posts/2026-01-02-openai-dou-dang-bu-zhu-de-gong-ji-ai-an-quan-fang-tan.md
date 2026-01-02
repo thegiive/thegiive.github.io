@@ -127,7 +127,7 @@ Prompt injection 不是漏洞，而是語言模型的結構性結果。模型的
 
 ---
 
-## 八、Stateless vs Stateful Security：攻防視野的根本不對稱
+## 七、Stateless vs Stateful Security：攻防視野的根本不對稱
 
 | 攻擊者視角 (Stateful) | 防禦者視角 (Stateless) |
 |----------------------|----------------------|
@@ -141,7 +141,7 @@ Prompt injection 不是漏洞，而是語言模型的結構性結果。模型的
 
 ---
 
-## 九、AI Agent Security 戰略轉向：從邊界防禦到架構性圍堵
+## 八、AI Agent Security 戰略轉向：從邊界防禦到架構性圍堵
 
 ### 舊思維：試圖淨化輸入/輸出（Perimeter Defense）
 
@@ -156,7 +156,7 @@ Prompt injection 不是漏洞，而是語言模型的結構性結果。模型的
 
 ---
 
-## 十、對策一：Least Privilege for AI Agents——徹底的權限劃分
+## 九、對策一：Least Privilege for AI Agents——徹底的權限劃分
 
 ### 核心原則
 
@@ -175,7 +175,7 @@ Prompt injection 不是漏洞，而是語言模型的結構性結果。模型的
 
 ---
 
-## 十一、對策二：基於意圖的主動約束（CaMeL 框架）
+## 十、對策二：基於意圖的主動約束（CaMeL 框架）
 
 Google DeepMind 在 2025 年發表的 [CaMeL](https://arxiv.org/abs/2503.18813)（Communicative Agents for Machine-learning-based Language Execution）正是這個思路的具體實現。
 
@@ -203,7 +203,7 @@ Google DeepMind 在 2025 年發表的 [CaMeL](https://arxiv.org/abs/2503.18813)�
 
 ---
 
-## 十二、新一代專家的崛起：融合 AI 與傳統安全的思維
+## 十一、新一代專家的崛起：融合 AI 與傳統安全的思維
 
 ### 為何需要融合專家
 
@@ -223,7 +223,7 @@ Google DeepMind 在 2025 年發表的 [CaMeL](https://arxiv.org/abs/2503.18813)�
 
 ---
 
-## 十三、最終警告：你盒子裡的神，是個惡意的神
+## 十二、最終警告：你盒子裡的神，是個惡意的神
 
 ### The Paradigm Shift
 
