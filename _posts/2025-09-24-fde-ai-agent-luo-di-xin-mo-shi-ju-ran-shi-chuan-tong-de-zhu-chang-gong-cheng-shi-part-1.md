@@ -13,7 +13,11 @@ description: "最近在矽谷，有一場關於創業模式的討論比 AI 本�
 
 ##  FDE 是啥
 
-我們先來看看一個 Youtube : Bob McGrew在 YC的 Podcast 的談話 
+我們先來看看一個 Youtube : Bob McGrew在 YC的 Podcast 的談話
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/Zyw-YA0k3xo?start=22" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 **Bob McGrew,** 這位曾是 PayPal 早期工程師、Palantir 早期高管，最近還擔任了 OpenAI 首席研究官（領導了 ChatGPT、GPT-4 等模型開發），在 Y Combinator (YC) 組織的一場 AI 大會上，大家預期 YC Founder 創始人們會向他請教關於 AGI 的未來。然而，Bob 卻意外地發現，所有 AI 創業公司創始人都對一件事充滿了極大的興趣和好奇
 
