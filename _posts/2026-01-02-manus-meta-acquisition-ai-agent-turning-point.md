@@ -31,7 +31,7 @@ faq:
 
 ---
 
-最近 Manus 被 Meta 收購，中文圈吵得很兇。
+最近 [Manus 被 Meta 收購](https://techcrunch.com/2025/12/29/meta-just-bought-manus-an-ai-startup-everyone-has-been-talking-about/)，中文圈吵得很兇。
 
 有人說這是創業勝利、財富自由；也有人嘲諷這只是包裝精美的失敗。
 
@@ -45,9 +45,9 @@ Manus 的結局，與「技術是否做到極致」相比，和商業路線的�
 
 ## 一、Manus 真正做對的事
 
-我其實也買了 Manus 的月會員，除了貴了點，真的蠻好用的。
+我其實也買了 [Manus](https://manus.im/) 的月會員，除了貴了點，真的蠻好用的。
 
-Manus 它不是 ChatBot 升級版，而是讓 AI 開始真的「做事」：
+Manus 它不是 ChatBot 升級版，而是讓 AI Agent 開始真的「做事」：
 
 - 拆任務
 - 跑流程
@@ -55,17 +55,19 @@ Manus 它不是 ChatBot 升級版，而是讓 AI 開始真的「做事」：
 - 背景運行
 - 失敗再修正
 
-這一步很關鍵，因為它把 AI 從展示型產品，推進到可被普通人實際使用的工具。
+這一步很關鍵，因為它把 AI 從展示型產品，推進到可被普通人實際使用的工具。這就是我之前說的 [Agent 模式](/ai-agent/)，比較像是 [Plan, Execute and Criticize](/mang-mu-jia-su-vs-du-zhu-lu-shu-pao-wei-shi-mo-ai-agent-xu-yao-plan-exec-mo-shi/)。
 
 ## 二、我對 Manus 的印象
 
-我對他最大的印象，除了我真的買了一年的 Monica（他的前產品），就是今年上半年出走中國，總部轉移到新加坡，一夜之間刪光了微博、小紅書等社群平台上的內容，並且裁掉三分之二的員工的事件了。
+我對他最大的印象，除了我真的買了一年的 [Monica](https://monica.im/)（他的前產品），就是今年上半年[出走中國，總部轉移到新加坡](https://www.blocktempo.com/manus-china-singapore-layoff-analysis/)，一夜之間刪光了微博、小紅書等社群平台上的內容，並且裁掉三分之二的員工的事件了。
 
 那時我就開始判斷，他們更可能走海外募資或 buyout 路線。
 
 ## 三、從工程角度看，Manus 厲害在哪？
 
-從工程角度看，Manus 厲害的不是模型，而是上下文工程：
+從工程角度看，Manus 厲害的不是模型，而是[上下文工程](https://manus.im/zh-tw/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)：
+
+![Manus Context Engineering](/assets/images/manus-context-engineering.png)
 
 - **嚴格的 Agent Loop**：每一輪只做一件事，可 debug、可回溯、可自我修正。這不是什麼新概念，但 Manus 把它做到工程紀律的程度——每個步驟都有明確的 Analysis → Plan → Execute → Observe 流程，而不是讓 LLM 自己亂跑。
 - **對成本極度敏感的 KV Cache**：輸入輸出比約 100:1，cache 命中後成本降 10 倍、速度快 5 倍。這代表他們不是在燒錢跑 Demo，而是真的在算帳，思考如何讓 Agent 變成可持續的商業模式。
@@ -94,11 +96,17 @@ Manus 它不是 ChatBot 升級版，而是讓 AI 開始真的「做事」：
 
 這也解釋了為什麼 Manus 會選新加坡、為什麼會被 Meta 收購。
 
-這不是創業走歪，而是他們一開始路線選擇本來就很清楚：
+收購後，Meta 明確表示 Manus 將[完全切斷中國擁有權並停止在中國的所有營運](https://www.cnbc.com/2025/12/30/meta-acquires-singapore-ai-agent-firm-manus-china-butterfly-effect-monicai.html)，所有中國投資人也被全數買斷。這不是道德問題，而是地緣政治與合規現實——Meta 從一開始就必須把這些風險規避掉。
 
-> **走向被巨頭吸收，而不是與巨頭對打。**
+> 💡 **延伸閱讀**：在台灣的團隊也要注意，[台灣的 AI 基本法](/taiwan-ai-basic-act-engineering-perspective/)已經三讀通過，未來在 AI 治理上也會有更多合規要求。
+
 
 ## 六、所以這是不是失敗？
+
+
+Manus 這不是創業走歪，而是他們一開始路線選擇本來就很清楚：
+
+> **走向被巨頭吸收，而不是與巨頭對打。**
 
 如果你的成功定義是建立一家獨立帝國，那是失敗。
 
