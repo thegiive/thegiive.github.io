@@ -119,10 +119,6 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ![傳統網路安全 vs AI 安全](/assets/images/ai-security-vs-traditional.png)
 
-| 傳統網路安全 | AI 安全 |
-|--------------|---------|
-| 流程：發現漏洞 → 編寫補丁 → 部署修復 | 流程：發現一個攻擊提示 → 試圖透過微調或過濾來「修復」|
-| 確定性：99.99% 確定問題已解決 | 確定性：99.99% 確定問題依然存在，只是換了一種形式 |
 
 **AI 的漏洞源於其運作的根本邏輯，而非程式碼中的單一缺陷。**
 
@@ -201,12 +197,13 @@ Agent A (低權限) → Agent B (中權限) → Agent C (高權限) → 資料�
 
 1. **資料存取（Data Access）：** AI 能夠存取的任何資料，都等同於使用者能夠存取。確保資料權限被嚴格控制。
 
+
+2. **行動能力（Action Capability）：** AI 能夠執行的任何動作序列，使用者都能夠觸發。確保行動的組合不會產生災難性後果。
+
+
 > **延伸閱讀：** PostgreSQL 的 Row Level Security（RLS）是實現 Least Privilege 的利器——即使 AI 被誘導執行惡意查詢，也只能存取該用戶被授權的資料列。詳見 [為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」](/postgresql-ai-memory-store/)。
 
 > **延伸閱讀：** Network Boundary 也是多一層「物理性」的圍堵，讓 AI 即使被誘導也無法將資訊傳送到外部 , 雲端的 VPC、Private Link、防火牆規則都是網路層級的隔離手段；而地端 LLM 部署則是更極致的選擇——資料完全不出內網。詳見 [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)。
-
-
-2. **行動能力（Action Capability）：** AI 能夠執行的任何動作序列，使用者都能夠觸發。確保行動的組合不會產生災難性後果。
 
 > **延伸閱讀：** Auth Gateway 是實現行動能力管控的關鍵元件——透過身份驗證、角色權限、模型配額，在入口處就限制 AI 能做什麼、能存取什麼。詳見 [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)。
 
