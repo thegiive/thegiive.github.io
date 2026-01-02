@@ -13,7 +13,24 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 ---
 
-這篇文章整理自 Sander Schulhoff 在 Lenny's Podcast 的訪談。Schulhoff 是 [Learn Prompting](https://learnprompting.org/) 創辦人，與 OpenAI 合作舉辦過史上最大的 AI 紅隊競賽 HackAPrompt，他花在研究「如何攻破 AI 系統」的時間，可能比地球上任何人都多。
+這篇文章整理自 Sander Schulhoff 在 Lenny's Podcast 的訪談。
+
+## 目錄
+
+1. [威脅已至，而非未來](#一威脅已至而非未來)
+2. [剖析攻擊向量：兩種核心威脅](#二剖析攻擊向量兩種核心威脅)
+3. [AI Guardrails 為何是脆弱的防線？](#三ai-guardrails-為何是脆弱的防線)
+4. [為何「99% 防禦率」是統計學上的謊言](#四為何99-防禦率是一個統計學上的謊言)
+5. [適應性評估：人類攻擊者總能找到出路](#五適應性評估人類攻擊者總能找到出路)
+6. [你可以修補程式錯誤，但你無法修補一個大腦](#六你可以修補程式錯誤但你無法修補一個大腦)
+7. [Stateless vs Stateful Security：攻防視野的根本不對稱](#七stateless-vs-stateful-security攻防視野的根本不對稱)
+8. [AI Agent Security 戰略轉向：從邊界防禦到架構性圍堵](#八ai-agent-security-戰略轉向從邊界防禦到架構性圍堵)
+9. [對策一：Least Privilege for AI Agents](#九對策一least-privilege-for-ai-agents徹底的權限劃分)
+10. [對策二：基於意圖的主動約束（CaMeL 框架）](#十對策二基於意圖的主動約束camel-框架)
+11. [新一代專家的崛起：融合 AI 與傳統安全的思維](#十一新一代專家的崛起融合-ai-與傳統安全的思維)
+12. [最終警告：你盒子裡的神，是個惡意的神](#十二最終警告你盒子裡的神是個惡意的神)
+
+Schulhoff 是 [Learn Prompting](https://learnprompting.org/) 創辦人，與 OpenAI 合作舉辦過史上最大的 AI 紅隊競賽 HackAPrompt，他花在研究「如何攻破 AI 系統」的時間，可能比地球上任何人都多。
 
 他的核心論點很直接：**安全護欄（guardrails）根本擋不住真正的攻擊，唯一有效的策略是從一開始就限制 AI 能做什麼。**
 
