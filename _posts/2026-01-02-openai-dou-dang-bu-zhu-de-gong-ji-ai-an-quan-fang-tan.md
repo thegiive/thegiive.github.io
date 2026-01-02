@@ -129,6 +129,8 @@ Prompt injection 不是漏洞，而是語言模型的結構性結果。模型的
 
 ## 七、Stateless vs Stateful Security：攻防視野的根本不對稱
 
+
+
 | 攻擊者視角 (Stateful) | 防禦者視角 (Stateless) |
 |----------------------|----------------------|
 | **思維：** 多步驟的行為如何累積，形成最終效果？ | **思維：** 單一請求本身是否包含惡意關鍵字？ |
@@ -157,6 +159,8 @@ Prompt injection 不是漏洞，而是語言模型的結構性結果。模型的
 ---
 
 ## 九、對策一：Least Privilege for AI Agents——徹底的權限劃分
+
+![AI Agent 最小權限原則：核心原則與實踐清單](/assets/images/least-privilege-ai-agent.png)
 
 ### 核心原則
 
