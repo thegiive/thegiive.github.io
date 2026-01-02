@@ -11,8 +11,6 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 **日期：** 2025年1月
 **系列：** AI Agent 實戰觀察
 
-![Lenny's Podcast 訪談 Sander Schulhoff](/assets/images/ai-guardrails-podcast-cover.png)
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/J9982NLmTXg?start=696" title="Lenny's Podcast - The coming AI security crisis" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
