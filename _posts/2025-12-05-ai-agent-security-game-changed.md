@@ -12,8 +12,8 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 - [什麼是 AI Agent（以及它跟 Chatbot 的根本差異）](#什麼是-ai-agent以及它跟-chatbot-的根本差異)
 - [真實案例：Enterprise AI Agent 如何被攻破（Prompt Injection 攻擊實例）](#真實案例enterprise-ai-agent-如何被攻破prompt-injection-攻擊實例)
 - [數據說話：AI Agent Security 的研究數據](#數據說話ai-agent-security-的研究數據)
-- [遊戲規則已經改變：Security Architecture 必須重構（AI Agent 資安架構）](#遊戲規則已經改變security-architecture-必須重構ai-agent-資安架構)
-- [為什麼 Guardrails 擋不住 AI Agent 攻擊？（WAF/APM 失效原因）](#為什麼-guardrails-擋不住-ai-agent-攻擊wafapm-失效原因)
+- [遊戲規則已經改變：Security Architecture 必須重構（AI Agent Security Architecture）](#遊戲規則已經改變security-architecture-必須重構ai-agent-security-architecture)
+- [為什麼 Guardrails 擋不住 AI Agent 攻擊？（AI Agent Guardrails Failure）](#為什麼-guardrails-擋不住-ai-agent-攻擊ai-agent-guardrails-failure)
 - [AI Agent Security 的核心結論（給企業決策者的 3 個重點）](#ai-agent-security-的核心結論給企業決策者的-3-個重點)
 - [參考資料](#參考資料)
 - [延伸閱讀](#延伸閱讀)
@@ -27,6 +27,11 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 3. **為什麼傳統 WAF / APM 甚至最新 LLM GuardRails 看不到問題？**
 
 這篇文章，會用 2024–2025 已發生的真實案例，直接回答這三個問題。
+
+> **TL;DR**
+> - AI Agent 的風險不在 Prompt，而在 Execution + Permission
+> - 傳統 WAF / Guardrails 在 Agent 架構下天然失效
+> - 防禦核心是最小權限 + 行為可觀測性
 
 ---
 
@@ -93,7 +98,6 @@ Enterprise AI Agent 的資安風險不是理論，以下是 2024-2025 年已經�
 
 不需要駭進系統、不需要竊取密碼、不需要用戶點擊連結。只需要一個精心設計的 prompt，等 AI 自己把資料送出去。
 
----
 
 這讓我開始思考一個問題：**我們是不是還在用 Chatbot 時代的安全思維，來處理 Agent 時代的風險？**
 
@@ -131,7 +135,7 @@ AI Agent Security 不是危言聳聽，在往下討論之前，先看幾個學�
 
 ---
 
-## 遊戲規則已經改變：Security Architecture 必須重構（AI Agent 資安架構）
+## 遊戲規則已經改變：Security Architecture 必須重構（AI Agent Security Architecture）
 
 AI Agent 改變了整個 Security Architecture 的基本假設。從「對話」到「執行」，風險模型完全不同。
 
@@ -160,7 +164,7 @@ AI Agent 改變了整個 Security Architecture 的基本假設。從「對話」
 
 ---
 
-## 為什麼 Guardrails 擋不住 AI Agent 攻擊？（WAF/APM 失效原因）
+## 為什麼 Guardrails 擋不住 AI Agent 攻擊？（AI Agent Guardrails Failure）
 
 很多資安大神看完上面的案例會問：「那加 Guardrails 不就好了？」
 
