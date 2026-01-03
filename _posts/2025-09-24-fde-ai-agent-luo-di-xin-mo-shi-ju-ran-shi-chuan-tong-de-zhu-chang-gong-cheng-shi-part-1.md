@@ -292,6 +292,15 @@ FDE 在客戶現場的工作，就像在現有產品與用戶需求之間鋪設�
 
 經過大量復盤後，我認為當下這套模式並沒有把 FDE 做到完美，還有大量的改進實踐可以實作。
 
+**核心教訓：FDE 就是要想辦法把現場知識 update 回產品的 best practice，不然根本不可能 scale。** 如果每個客戶都重新造輪子，你就只是在做高級外包，不是 FDE。
+
+我們的問題出在兩個地方：
+
+1. **Update to headquarter 的速度不夠快**——現場累積的知識沒有即時回饋到總部產品團隊
+2. **沒有一套彈性化的產品可以快速適配到不同場景**——每次都要從零開始客製化
+
+復盤後，我們採用大量 AI Coding（我們稱之為 [ATPM 方法論](/atpm-a-real-production-vibe-coding-process/)）來進行快速的 deploy customized solution。透過 AI 加速，FDE 可以在現場快速產出 workaround，同時保持足夠的品質回饋到產品。
+
 > 想了解完整的成功與失敗經驗，請參考 [FDE：一個持續下去的實驗](/fde-continuous-experiment/)
 
 ---
