@@ -16,6 +16,7 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 - [為什麼 Guardrails 擋不住 AI Agent 攻擊？（AI Agent Guardrails Failure）](#為什麼-guardrails-擋不住-ai-agent-攻擊ai-agent-guardrails-failure)
 - [AI Agent Security 的核心結論（給企業決策者的 3 個重點）](#ai-agent-security-的核心結論給企業決策者的-3-個重點)
 - [參考資料](#參考資料)
+- [常見問題 FAQ](#常見問題-faq)
 - [延伸閱讀](#延伸閱讀)
 
 ---
@@ -246,6 +247,79 @@ AI Agent 的 Prompt Injection，本質上也是一樣的事情。不是靠一句
 6. **OpenAI-Anthropic Joint Safety Evaluation**
    - https://openai.com/index/openai-anthropic-safety-evaluation/
    - 2025 年 8 月，OpenAI 與 Anthropic 互測模型安全性的研究報告
+
+---
+
+## 常見問題 FAQ
+
+**Q: AI Agent 和 Chatbot 的資安風險有什麼不同？**
+
+Chatbot 只能「說話」，最壞情況是說錯話（如加航案例賠 800 加幣）。AI Agent 能「動手」——讀資料庫、呼叫 API、執行操作。一旦被攻破，造成的是資料外洩、系統被操控、合規違規，代價完全不同等級。
+
+**Q: 為什麼傳統 WAF 和 APM 對 AI Agent 攻擊無效？**
+
+因為 AI Agent 攻擊是 stateful（多步驟累積），但 WAF/APM 是 stateless（只看單次請求）。攻擊者把意圖拆散：讀郵件（合法）+ 轉寄郵件（合法）= 資料外洩（非法結果）。每個請求都返回 HTTP 200 OK，看不出異常。
+
+**Q: Guardrails 不是可以擋住 Prompt Injection 嗎？**
+
+根據 HackAPrompt 研究，人類攻擊者在 10-30 次嘗試內，100% 突破所有現有 Guardrails。核心問題是 Guardrails 只檢查「這句話有沒有問題」，但攻擊者會用多個無害請求組合成攻擊鏈。
+
+**Q: 企業導入 AI Agent 該如何降低資安風險？**
+
+三個重點：(1) 最小權限原則——只給 Agent 完成任務必要的權限；(2) 採用 CaMeL 框架——根據使用者意圖預先限制可執行動作；(3) 行為可觀測性——記錄 Agent 的完整決策鏈，不只是最終結果。核心策略：假設 AI 會被騙，但讓它「即使被騙也無能為力」。
+
+**Q: 多 Agent 架構的安全風險為什麼特別高？**
+
+研究顯示多 Agent 互信場景下攻擊成功率達 100%。因為攻擊者只要滲透其中一個 Agent，就能透過信任鏈攻破整個系統。每個 Agent 單獨看都沒違規，但組合起來就是致命攻擊鏈。
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "AI Agent 和 Chatbot 的資安風險有什麼不同？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chatbot 只能「說話」，最壞情況是說錯話（如加航案例賠 800 加幣）。AI Agent 能「動手」——讀資料庫、呼叫 API、執行操作。一旦被攻破，造成的是資料外洩、系統被操控、合規違規，代價完全不同等級。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "為什麼傳統 WAF 和 APM 對 AI Agent 攻擊無效？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "因為 AI Agent 攻擊是 stateful（多步驟累積），但 WAF/APM 是 stateless（只看單次請求）。攻擊者把意圖拆散：讀郵件（合法）+ 轉寄郵件（合法）= 資料外洩（非法結果）。每個請求都返回 HTTP 200 OK，看不出異常。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Guardrails 不是可以擋住 Prompt Injection 嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "根據 HackAPrompt 研究，人類攻擊者在 10-30 次嘗試內，100% 突破所有現有 Guardrails。核心問題是 Guardrails 只檢查「這句話有沒有問題」，但攻擊者會用多個無害請求組合成攻擊鏈。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "企業導入 AI Agent 該如何降低資安風險？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "三個重點：(1) 最小權限原則——只給 Agent 完成任務必要的權限；(2) 採用 CaMeL 框架——根據使用者意圖預先限制可執行動作；(3) 行為可觀測性——記錄 Agent 的完整決策鏈，不只是最終結果。核心策略：假設 AI 會被騙，但讓它「即使被騙也無能為力」。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "多 Agent 架構的安全風險為什麼特別高？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "研究顯示多 Agent 互信場景下攻擊成功率達 100%。因為攻擊者只要滲透其中一個 Agent，就能透過信任鏈攻破整個系統。每個 Agent 單獨看都沒違規，但組合起來就是致命攻擊鏈。"
+      }
+    }
+  ]
+}
+</script>
 
 ---
 
