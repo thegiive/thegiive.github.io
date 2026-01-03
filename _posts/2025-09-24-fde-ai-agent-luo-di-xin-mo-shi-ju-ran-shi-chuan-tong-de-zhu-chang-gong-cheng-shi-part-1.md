@@ -296,8 +296,8 @@ FDE 在客戶現場的工作，就像在現有產品與用戶需求之間鋪設�
 
 我們的問題出在兩個地方：
 
-1. **Update to headquarter 的速度不夠快**——現場累積的知識沒有即時回饋到總部產品團隊
-2. **沒有一套彈性化的產品可以快速適配到不同場景**——每次都要從零開始客製化
+1. **回饋回產品的速度很快，但是不夠快到瞬間3~5倍**——瞬間擴大太快
+2. **沒有一套彈性化的產品可以快速適配到不同場景**——如果瞬間擴大太快，又不及時，手邊也沒有一套像 Palantir 的彈性 [AIP 產品](https://www.palantir.com/platforms/aip/)做服務
 
 復盤後，我們採用大量 AI Coding（我們稱之為 [ATPM 方法論](/atpm-a-real-production-vibe-coding-process/)）來進行快速的 deploy customized solution。透過 AI 加速，FDE 可以在現場快速產出 workaround，同時保持足夠的品質回饋到產品。
 
