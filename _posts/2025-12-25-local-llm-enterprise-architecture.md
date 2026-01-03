@@ -40,7 +40,7 @@ Enterprise local LLM architecture（企業級地端 LLM 架構）不只是「把
 
 這張藍圖是我們接下來的導覽地圖。先看整體流程：
 
-**Step 1：使用者登入上傳** — 使用者透過瀏覽器或 CLI 發送請求，上傳 Excel/CSV 檔案（若是 PDF 則需經過 [地端 OCR API](/on-premise-ocr-api/) 先行解析）
+**Step 1：使用者登入上傳** — 使用者透過瀏覽器或 CLI 發送請求，上傳 Excel/CSV 檔案（若是 PDF/圖片，則需整合[地端 OCR API](/on-premise-ocr-api/) 進行視覺辨識與解析）
 
 **Step 2：Auth Gateway 驗證權限** — 檢查身份、角色、配額，決定能用哪個模型、查哪些資料
 
@@ -120,6 +120,8 @@ Auth Gateway 就是解決這些問題的第一道防線。為什麼我們需要�
 - 記錄每位使用者的 API 呼叫次數
 - 異常用量自動告警
 
+> 💡 **延伸閱讀：** 為什麼傳統防火牆擋不住 AI？想了解 Prompt Injection 等新型態攻擊手法，請參考：[AI Agent Security：為什麼它正在改變企業資安架構](/ai-agent-security-game-changed/)
+
 ---
 
 ## Orchestrator：多步驟任務的協調中心
@@ -147,6 +149,10 @@ Auth Gateway 就是解決這些問題的第一道防線。為什麼我們需要�
 - **工具調用** — 協調 LLM、Python 執行器、資料庫等工具
 - **狀態管理** — 追蹤執行狀態，失敗時可從中斷點重試
 - **流程控制** — 支援條件分支和迴圈
+
+實作上，我們不需要從頭寫一個 Orchestrator。透過 Low-Code 自動化工具，可以快速實現上述的任務拆解與流程控制。
+
+> 💡 **實作範例：** [n8n 雲地混合架構：為什麼它不只是一個 Low-Code 工具](/n8n-hybrid-cloud-on-premise-architecture/)
 
 ---
 
@@ -374,7 +380,7 @@ AI 記憶層不只是 RAG 的 Vector Store，它支援四種不同的操作模�
 
 **結論：** 80% 的企業 AI 專案，瓶頸不在向量搜尋速度，而在於「出事時能不能解釋」。PostgreSQL 的治理能力是專用 Vector DB 很難比的。
 
-> 詳細的 Schema 設計、查詢範例、RLS 權限控制實作，請參考：[PostgreSQL 作為 AI 記憶庫](/postgresql-ai-memory-store/)
+> 💡 **延伸閱讀：** 詳細的 Schema 設計、查詢範例、RLS 權限控制實作，請參考：[PostgreSQL 作為 AI 記憶庫：為什麼我選它而不是專用 Vector DB](/postgresql-ai-memory-store/)
 
 ---
 
