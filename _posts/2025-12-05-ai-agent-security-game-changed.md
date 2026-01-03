@@ -225,27 +225,25 @@ AI Agent 的 Prompt Injection，本質上也是一樣的事情。不是靠一句
 
 ## 參考資料
 
-1. **Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges**
+1. **[Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges](https://arxiv.org/abs/2510.23883)**
    - arXiv:2510.23883, October 2025
    - 94.4% Agent 攻擊成功率、100% 多 Agent 信任鏈攻擊的數據來源
 
-2. **Indirect Prompt Injection attacks on LLM-based Autonomous Web Navigation Agents**
+2. **[Indirect Prompt Injection attacks on LLM-based Autonomous Web Navigation Agents](https://aclanthology.org/2025.acl-long.456/)**
    - ACL Anthology 2025
    - 網頁間接注入攻擊研究
 
-3. **Moffatt v. Air Canada, 2024 BCCRT 149**
+3. **[Moffatt v. Air Canada, 2024 BCCRT 149](https://www.bccourts.ca/jdb-txt/rt/24/01/2024BCCRT0149.htm)**
    - 加拿大民事調解法庭判決
    - Chatbot 虛構政策的法律責任案例
 
-4. **OWASP Top 10 for LLM Applications**
+4. **[OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)**
    - LLM08: Excessive Agency（過度代理）
-   - https://owasp.org/www-project-top-10-for-large-language-model-applications/
 
-5. **Gartner Top Strategic Technology Trends for 2025: Agentic AI**
+5. **[Gartner Top Strategic Technology Trends for 2025: Agentic AI](https://www.gartner.com/en/articles/top-technology-trends-2025)**
    - 2028 年 33% 企業軟體將包含 Agentic AI 的預測來源
 
-6. **OpenAI-Anthropic Joint Safety Evaluation**
-   - https://openai.com/index/openai-anthropic-safety-evaluation/
+6. **[OpenAI-Anthropic Joint Safety Evaluation](https://openai.com/index/openai-anthropic-safety-evaluation/)**
    - 2025 年 8 月，OpenAI 與 Anthropic 互測模型安全性的研究報告
 
 ---
