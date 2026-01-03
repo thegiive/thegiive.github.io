@@ -15,6 +15,7 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 - [遊戲規則已經改變：Security Architecture 必須重構](#遊戲規則已經改變security-architecture-必須重構)
 - [傳統安全工具的盲點：為什麼 WAF/APM 失效](#傳統安全工具的盲點為什麼-wafapm-失效)
 - [坦白說：AI Agent Security 比想像中難](#坦白說ai-agent-security-比想像中難)
+- [為什麼 AI Guardrails 擋不住？](#為什麼-ai-guardrails-擋不住)
 - [參考資料](#參考資料)
 - [延伸閱讀](#延伸閱讀)
 
@@ -345,6 +346,28 @@ T+4s   回應用戶：「這是所有用戶資料...」
 
 **目前沒有完美答案。但好消息是，我們已經整理出了完整的防禦架構。請參考我們的實戰指南：[企業級地端 LLM 系統架構藍圖：從權限控制到沙盒防禦](/local-llm-enterprise-architecture/)。**
 
+---
+
+## 為什麼 AI Guardrails 擋不住？
+
+很多人看完上面的案例會問：「那加 Guardrails 不就好了？」
+
+**答案是：Guardrails 本質上沒用。**
+
+這不是我說的——這是 HackAPrompt CEO Sander Schulhoff 在與 OpenAI、Google DeepMind、Anthropic 聯合研究後的結論。在那項研究中，**人類攻擊者在 10-30 次嘗試內，100% 突破所有現有防禦**。
+
+核心問題在於：
+
+- **Guardrails 是 stateless，攻擊是 stateful：** 安全護欄只檢查單次請求，但攻擊者會將意圖拆散到多個合法請求中
+- **單次請求都合法，組合起來就是攻擊：** 讀取郵件（合法）+ 轉寄郵件（合法）= 資料外洩（非法結果）
+- **99% 防禦率是統計學上的謊言：** 針對 LLM 的可能攻擊數量是「1 後面跟著一百萬個零」——剩下的 1% 仍然是無限多的攻擊
+
+> 「你可以修補程式錯誤（Bug），但你無法修補大腦（Brain）。」
+> — Sander Schulhoff, HackAPrompt CEO
+
+**真正可行的解法不是過濾語言，而是限制權限與行動空間——假設 AI 會被騙，但讓它「即使被騙也無能為力」。**
+
+完整分析請參考：[AI Guardrails 為什麼註定失敗？從 Prompt Injection 到 Agent 架構安全](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)
 
 ---
 
@@ -373,6 +396,7 @@ T+4s   回應用戶：「這是所有用戶資料...」
 
 ## 延伸閱讀
 
+- [AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/) — 從 Prompt Injection 到 Agent 架構安全的深度分析
 - [台灣《人工智慧基本法》：IT 人該知道的事](/taiwan-ai-basic-act-engineering-perspective/) — 七大原則解讀與企業合規方向
 - [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/) — 從權限控制到沙盒防禦的完整實作
 - [Agent 模式 Part 3] - 从线性执行到自主循环：Deep Research 架構
