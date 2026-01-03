@@ -3,6 +3,9 @@ layout: post
 title: "FDE 模式全解析：為何 95% 企業 AI Agent 導入失敗？駐場工程師才是落地關鍵"
 date: 2025-09-24 14:08:31 +0000
 permalink: /fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/
+redirect_from:
+  - /what-is-fde-palantir-mode/
+  - /fde-guide/
 image: /assets/images/fde-palantir-cover.png
 description: "95% 企業 AI 導入失敗，不是技術問題，是信任與流程問題。FDE（Forward Deployed Engineer）是 Palantir 首創的駐場工程師模式，2025 年成為 AI Agent 落地的主流策略。本指南涵蓋 FDE 運作機制、Echo/Delta 團隊分工、信任建立、持續實驗方法論，以及為何這個「不可規模化」的方法反而成功。"
 keywords: "FDE, Forward Deployed Engineer, AI Agent 落地, Palantir, 駐場工程師, 企業AI轉型, Echo Team, Delta Team"
