@@ -21,6 +21,11 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 
 ---
 
+> **TL;DR**
+> - AI Agent 的風險不在 Prompt，而在 Execution + Permission
+> - 傳統 WAF / Guardrails 在 Agent 架構下天然失效
+> - 防禦核心是最小權限 + 行為可觀測性
+
 很多企業在導入 AI Agent 時，最常問的不是「模型夠不夠強」，而是三個問題：
 
 1. **AI Agent 安全嗎？**
@@ -28,11 +33,6 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 3. **為什麼傳統 WAF / APM 甚至最新 LLM GuardRails 看不到問題？**
 
 這篇文章，會用 2024–2025 已發生的真實案例，直接回答這三個問題。
-
-> **TL;DR**
-> - AI Agent 的風險不在 Prompt，而在 Execution + Permission
-> - 傳統 WAF / Guardrails 在 Agent 架構下天然失效
-> - 防禦核心是最小權限 + 行為可觀測性
 
 ---
 
