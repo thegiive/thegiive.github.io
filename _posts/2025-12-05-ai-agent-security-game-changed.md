@@ -10,12 +10,11 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 ## 目錄
 
 - [什麼是 AI Agent（以及它跟 Chatbot 的根本差異）](#什麼是-ai-agent以及它跟-chatbot-的根本差異)
-- [真實案例：Enterprise AI Agent 如何被攻破](#真實案例enterprise-ai-agent-如何被攻破)
+- [真實案例：Enterprise AI Agent 如何被攻破（Prompt Injection 攻擊實例）](#真實案例enterprise-ai-agent-如何被攻破prompt-injection-攻擊實例)
 - [數據說話：AI Agent Security 的研究數據](#數據說話ai-agent-security-的研究數據)
-- [遊戲規則已經改變：Security Architecture 必須重構](#遊戲規則已經改變security-architecture-必須重構)
-- [傳統安全工具的盲點：為什麼 WAF/APM 失效](#傳統安全工具的盲點為什麼-wafapm-失效)
-- [坦白說：AI Agent Security 比想像中難](#坦白說ai-agent-security-比想像中難)
-- [為什麼 AI Guardrails 擋不住？](#為什麼-ai-guardrails-擋不住)
+- [遊戲規則已經改變：Security Architecture 必須重構（AI Agent 資安架構）](#遊戲規則已經改變security-architecture-必須重構ai-agent-資安架構)
+- [為什麼 Guardrails 擋不住 AI Agent 攻擊？（WAF/APM 失效原因）](#為什麼-guardrails-擋不住-ai-agent-攻擊wafapm-失效原因)
+- [AI Agent Security 的核心結論（給企業決策者的 3 個重點）](#ai-agent-security-的核心結論給企業決策者的-3-個重點)
 - [參考資料](#參考資料)
 - [延伸閱讀](#延伸閱讀)
 
@@ -43,7 +42,7 @@ AI Agent Security 的第一步，是搞清楚 AI Agent 到底是什麼。先講�
 
 ![AI Agent vs Chatbot 比較](/assets/images/ai-agent-vs-chatbot-comparison.png)
 
-**為什麼「能動手」= 資安風險倍增？**
+### 為什麼「能動手」= 資安風險倍增？（AI Agent vs Chatbot Security）
 
 因為攻擊目標變了。
 
@@ -55,7 +54,7 @@ Chatbot 時代，攻擊者想「騙它說錯話」。Agent 時代，攻擊者想
 
 ---
 
-## 真實案例：Enterprise AI Agent 如何被攻破
+## 真實案例：Enterprise AI Agent 如何被攻破（Prompt Injection 攻擊實例）
 
 Enterprise AI Agent 的資安風險不是理論，以下是 2024-2025 年已經發生的攻擊事件。
 
@@ -134,7 +133,7 @@ AI Agent Security 不是危言聳聽，在往下討論之前，先看幾個學�
 
 ---
 
-## 遊戲規則已經改變：Security Architecture 必須重構
+## 遊戲規則已經改變：Security Architecture 必須重構（AI Agent 資安架構）
 
 AI Agent 改變了整個 Security Architecture 的基本假設。從「對話」到「執行」，風險模型完全不同。
 
@@ -163,7 +162,7 @@ AI Agent 改變了整個 Security Architecture 的基本假設。從「對話」
 
 ---
 
-## 為什麼 Guardrails 擋不住 AI Agent 攻擊？
+## 為什麼 Guardrails 擋不住 AI Agent 攻擊？（WAF/APM 失效原因）
 
 很多資安大神看完上面的案例會問：「那加 Guardrails 不就好了？」
 
@@ -197,6 +196,19 @@ AI Agent 的 Prompt Injection，本質上也是一樣的事情。不是靠一句
 
 > ** 完整分析請參考：[AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)**
 
+---
+
+## AI Agent Security 的核心結論（給企業決策者的 3 個重點）
+
+如果你只有 30 秒，記住這三點：
+
+1. **AI Agent 的風險不是 Prompt，而是 Execution + Permission。** Chatbot 說錯話頂多賠 800 加幣；Agent 做錯事可能導致資料外洩、系統被操控、合規違規。
+
+2. **傳統 WAF / Guardrails 在 Agent 架構下天然失效。** 因為 Guardrails 是 stateless，攻擊是 stateful。每個請求單獨看都合法，組合起來就是攻擊鏈。
+
+3. **防禦重點必須放在「最小權限」+「行為可觀測性」。** 假設 AI 會被騙，但讓它「即使被騙也無能為力」。CaMeL 框架在實測中擋下近 100% 攻擊，同時保留 77% 任務完成率。
+
+**一句話總結：** 不要問「AI Agent 安全嗎」，要問「我給了它多少權限、它能造成多大傷害」。
 
 ---
 
