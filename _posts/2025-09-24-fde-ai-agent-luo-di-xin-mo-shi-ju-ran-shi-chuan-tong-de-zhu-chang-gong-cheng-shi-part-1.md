@@ -353,6 +353,25 @@ Palantir 自身就是 FDE 模式最成功的例子。FDE 過去多年直接派�
 
 矽谷最近新創 Distyl AI 剛剛宣布 B 輪募到 175M，他們也是來自 Palantir，標榜用 FDE 模式來做諮詢顧問的落地。代表 AI Agent 落地問題已經嚴重到，VC 開始用**落地成功率**去考核公司，而非你的模型可以幾 B 參數。
 
+### 諮詢巨頭也在擁抱 FDE 模式
+
+不只是科技公司，傳統諮詢巨頭也在 2025 年報告中明確提倡 FDE 或類似概念：
+
+**直接使用 "FDE" 術語的公司：**
+
+- **Deloitte（德勤）**：2025 年底推出 "Deloitte Forward Deployed Engineering" 服務模式，將 FDE 定義為「以業務問題為導向（Business-issue led）」，強調工程師是 "Client-embedded"（嵌入客戶端）的，與傳統後台開發不同。他們認為 FDE 是解決「AI 轉型複雜度」的關鍵，能打破業務與技術的隔閡。
+
+**描述相同概念但用詞不同的公司：**
+
+| 公司 | 2025 報告使用的術語 | 具體描述 |
+|------|---------------------|----------|
+| **Gartner** | Fusion Teams（融合團隊） | 業務人員與技術人員混合編組，共同對產品結果負責。本質上就是 FDE 模式的敏捷化版本 |
+| **BCG** | Multidisciplinary Squads（跨學科小組） | BCG X 強調建立包含數據科學家、工程師和業務專家的「小組」，實現 Build-Operate-Transfer 模式 |
+| **Bain** | Agentic AI Deployment Teams | 聚焦於 Agentic AI，強調技術團隊不能只做後台支援，必須「前線部署」以管理 AI 代理在實際業務流程中的行為 |
+| **Accenture** | Engineering-Business Integration | 強調「工程與業務的整合」，技術人員需深入理解人類行為與業務脈絡 |
+
+> 當 Deloitte、BCG、Bain、Accenture 這些傳統諮詢巨頭都在講同一件事，代表 FDE 已經不是「矽谷新創的玩法」，而是 **AI 時代企業落地的標準配備**。
+
 ---
 
 ## FDE 系列文章索引
