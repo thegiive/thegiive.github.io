@@ -9,21 +9,33 @@ permalink: /categories/
 <div class="category-toc">
   <p><strong>快速跳轉：</strong></p>
   <ul class="toc-list">
-    <li><a href="#enterprise">企業 AI 轉型</a></li>
-    <li><a href="#ai-agent">🤖 AI Agent 完整指南</a></li>
+    <li><a href="#fde-enterprise">🏭 FDE 模式與企業 AI 轉型</a></li>
     <li><a href="#ai-security">🔐 AI 資訊安全</a></li>
-    <li><a href="#fde">🏭 FDE 模式完整指南</a></li>
+    <li><a href="#it-arch">💾 IT 架構系列</a></li>
+    <li><a href="#ai-agent">🤖 AI Agent 完整指南</a></li>
     <li><a href="#new-talent">AI 世代的新人才</a></li>
     <li><a href="#vibe-coding">Vibe Coding 系列</a></li>
     <li><a href="#industry">產業觀察與趨勢</a></li>
     <li><a href="#tools">AI 工具與實戰</a></li>
-    <li><a href="#it-arch">IT 架構系列</a></li>
     <li><a href="#others">其他</a></li>
   </ul>
 </div>
 
-<div id="enterprise" class="category-section">
-  <h3>企業 AI 轉型</h3>
+<!-- 1️⃣ FDE + 企業 AI 轉型 合併 Topic Cluster -->
+<div id="fde-enterprise" class="category-section topic-cluster-highlight">
+  <h3>🏭 FDE 模式與企業 AI 轉型 <span class="pillar-badge">Topic Cluster</span></h3>
+  <p class="cluster-intro">95% 企業 AI 導入失敗，不是技術問題，是信任與流程問題。FDE（Forward Deployed Engineer）是 Palantir 首創的駐場工程師模式，2025 年成為 AI Agent 落地的主流策略。</p>
+  <p class="pillar-link"><strong>📖 Pillar Page：</strong><a href="/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/">FDE 模式全解析：為何「駐場工程師」才是企業 AI Agent 真正落地的關鍵？</a></p>
+
+  <h4>FDE 核心方法論</h4>
+  <ul>
+    <li><a href="/aizhuan-xing-ai-agent-ru-he-luo-di/">流程濾光片：沒有流程知識，再多數據也是噪音</a></li>
+    <li><a href="/fde-continuous-experiment/">持續實驗：FDE 的成功與失敗復盤</a></li>
+    <li><a href="/notebooklm-trust-fde/">信任建立：100 天站會換取信任的故事</a></li>
+    <li><a href="/fde-ai-bu-hui-qu-dai-nian-qing-ren/">人才培養：AI 不會取代年輕人，是還沒給機會</a></li>
+  </ul>
+
+  <h4>企業 AI 轉型實戰</h4>
   <ul>
     <li><a href="/enterprise-ai-transformation/">[小老闆充電站訪談] 企業AI轉型三步驟：從概念到落地</a></li>
     <li><a href="/shu-wei-zhuan/">為什麼 AI Agent 無法企業落地？看泰山的挑水工就懂了</a></li>
@@ -35,7 +47,38 @@ permalink: /categories/
   </ul>
 </div>
 
-<!-- AI Agent Topic Cluster -->
+<!-- 2️⃣ AI Security Topic Cluster -->
+<div id="ai-security" class="category-section topic-cluster-highlight">
+  <h3>🔐 AI 資訊安全 <span class="pillar-badge">Topic Cluster</span></h3>
+  <p class="cluster-intro">AI Agent 帶來全新的資安挑戰。傳統 Guardrails 為什麼擋不住？企業該如何從架構層面重新設計安全防線？</p>
+  <p class="pillar-link"><strong>📖 Pillar Page：</strong><a href="/ai-agent-security-game-changed/">AI Agent Security：遊戲規則已經改變</a></p>
+
+  <h4>攻擊案例與威脅</h4>
+  <ul>
+    <li><a href="/ai-agent-attack-cases-collection/">AI Agent 攻擊案例全集：4 個真實事件告訴你企業 AI 怎麼被攻破</a></li>
+    <li><a href="/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/">AI Guardrails 為什麼註定失敗？從 Prompt Injection 到 Agent 架構安全</a></li>
+  </ul>
+
+  <h4>架構與合規</h4>
+  <ul>
+    <li><a href="/local-llm-enterprise-architecture/">企業級地端 LLM 架構藍圖：Auth + 沙盒 + 雙層 Log</a></li>
+    <li><a href="/taiwan-ai-basic-act-engineering-perspective/">台灣人工智慧基本法｜IT 主管必讀的資安合規建議</a></li>
+  </ul>
+</div>
+
+<!-- 3️⃣ IT 架構系列 -->
+<div id="it-arch" class="category-section topic-cluster-highlight">
+  <h3>💾 保證很無聊的 IT 架構系列 <span class="pillar-badge">Topic Cluster</span></h3>
+  <p class="cluster-intro">企業 AI 落地不只是「把模型跑起來」。這系列講的是那些無聊但必要的基礎建設：權限管理、日誌審計、沙盒隔離、雲地混合架構。</p>
+  <ul>
+    <li><a href="/local-llm-enterprise-architecture/">企業級地端 LLM 系統架構藍圖</a></li>
+    <li><a href="/postgresql-ai-memory-store/">PostgreSQL AI Memory Store：為什麼 RAG Vector Store 只是 AI Agent 的一種記憶使用方式</a></li>
+    <li><a href="/on-premise-ocr-api/">AI Agent 時代的無聊基礎建設：地端 OCR API</a></li>
+    <li><a href="/n8n-hybrid-cloud-on-premise-architecture/">n8n 雲地混合架構：為什麼它不只是一個 Low-Code 工具</a></li>
+  </ul>
+</div>
+
+<!-- 4️⃣ AI Agent Topic Cluster -->
 <div id="ai-agent" class="category-section topic-cluster-highlight">
   <h3>🤖 AI Agent 完整指南 <span class="pillar-badge">Topic Cluster</span></h3>
   <p class="cluster-intro">AI Agent 已經不是 AI 的子題，而是一個獨立技術領域。本系列涵蓋架構、執行、決策、記憶、安全五大核心主題。</p>
@@ -61,41 +104,6 @@ permalink: /categories/
   <h4>記憶與學習</h4>
   <ul>
     <li><a href="/nested-learning-ai-memory/">[Part 8] Nested Learning</a></li>
-  </ul>
-
-</div>
-
-<!-- AI Security Topic Cluster -->
-<div id="ai-security" class="category-section topic-cluster-highlight">
-  <h3>🔐 AI 資訊安全 <span class="pillar-badge">Topic Cluster</span></h3>
-  <p class="cluster-intro">AI Agent 帶來全新的資安挑戰。傳統 Guardrails 為什麼擋不住？企業該如何從架構層面重新設計安全防線？</p>
-  <p class="pillar-link"><strong>📖 Pillar Page：</strong><a href="/ai-agent-security-game-changed/">AI Agent Security：遊戲規則已經改變</a></p>
-
-  <h4>攻擊案例與威脅</h4>
-  <ul>
-    <li><a href="/ai-agent-attack-cases-collection/">AI Agent 攻擊案例全集：4 個真實事件告訴你企業 AI 怎麼被攻破</a></li>
-    <li><a href="/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/">AI Guardrails 為什麼註定失敗？從 Prompt Injection 到 Agent 架構安全</a></li>
-  </ul>
-
-  <h4>架構與合規</h4>
-  <ul>
-    <li><a href="/local-llm-enterprise-architecture/">企業級地端 LLM 架構藍圖：Auth + 沙盒 + 雙層 Log</a></li>
-    <li><a href="/taiwan-ai-basic-act-engineering-perspective/">台灣人工智慧基本法｜IT 主管必讀的資安合規建議</a></li>
-  </ul>
-</div>
-
-<!-- FDE Topic Cluster -->
-<div id="fde" class="category-section topic-cluster-highlight">
-  <h3>🏭 FDE 模式完整指南 <span class="pillar-badge">Topic Cluster</span></h3>
-  <p class="cluster-intro">95% 企業 AI 導入失敗，不是技術問題，是信任與流程問題。FDE（Forward Deployed Engineer）是 Palantir 首創的駐場工程師模式，2025 年成為 AI Agent 落地的主流策略。</p>
-  <p class="pillar-link"><strong>📖 Pillar Page：</strong><a href="/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/">FDE 模式全解析：為何「駐場工程師」才是企業 AI Agent 真正落地的關鍵？</a></p>
-
-  <h4>核心方法論</h4>
-  <ul>
-    <li><a href="/aizhuan-xing-ai-agent-ru-he-luo-di/">流程濾光片：沒有流程知識，再多數據也是噪音</a></li>
-    <li><a href="/fde-continuous-experiment/">持續實驗：FDE 的成功與失敗復盤</a></li>
-    <li><a href="/notebooklm-trust-fde/">信任建立：100 天站會換取信任的故事</a></li>
-    <li><a href="/fde-ai-bu-hui-qu-dai-nian-qing-ren/">人才培養：AI 不會取代年輕人，是還沒給機會</a></li>
   </ul>
 </div>
 
@@ -160,16 +168,6 @@ permalink: /categories/
     <li><a href="/chatgpt-atlas-grafana-debug/">ChatGPT Atlas + Grafana：30 分鐘 Debug 變 1 分鐘的實戰</a></li>
     <li><a href="/ai-slide-notebooklm-customer-first/">用 AI 做簡報，跟人手刻的差別是什麼？</a></li>
     <li><a href="/wei-shi-mo-ai-hui-yi-ji-lu-gong-ju-99-du-xu-yao-ren-gong-xiu-zheng-yong-qi-ye-zhi-shi-ku-lai-jiu/">為什麼 AI 會議記錄工具 99% 都需要人工修正</a></li>
-  </ul>
-</div>
-
-<div id="it-arch" class="category-section">
-  <h3>保證很無聊的 IT 架構系列</h3>
-  <ul>
-    <li><a href="/local-llm-enterprise-architecture/">企業級地端 LLM 系統架構藍圖</a></li>
-    <li><a href="/postgresql-ai-memory-store/">PostgreSQL AI Memory Store：為什麼 RAG Vector Store 只是 AI Agent 的一種記憶使用方式</a></li>
-    <li><a href="/on-premise-ocr-api/">AI Agent 時代的無聊基礎建設：地端 OCR API</a></li>
-    <li><a href="/n8n-hybrid-architecture/">n8n 雲地混合架構：為什麼它不只是一個 Low-Code 工具</a></li>
   </ul>
 </div>
 
