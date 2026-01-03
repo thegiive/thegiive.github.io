@@ -119,6 +119,14 @@ AI Agent Security 不是危言聳聽，在往下討論之前，先看幾個學�
 
 這不是我在危言聳聽——資安業界權威 OWASP 在《Top 10 for LLM Applications》中，已將 **LLM08: Excessive Agency（過度代理）** 列為核心風險：「當 LLM 被賦予了過多的功能、權限或自主權時，它可能在非預期的狀況下執行破壞性操作。」風險來源已經從「Prompt Injection（騙它說話）」轉移到「Excessive Functionality（讓它執行 Function Call）」。
 
+### OpenAI + Anthropic 聯合安全評估：連頂尖模型都有漏洞
+
+2025 年 8 月，OpenAI 和 Anthropic 做了一件史無前例的事：[互相測試對方的模型安全性](https://openai.com/index/openai-anthropic-safety-evaluation/)。OpenAI 測試 Claude Opus 4 和 Sonnet 4，Anthropic 測試 GPT-4o、o3、o4-mini。
+
+結果顯示：**即使是最頂尖的模型，面對 Jailbreak、Instruction Hierarchy、Scheming 等測試，仍有明顯弱點。** Claude 模型在不確定時會拒絕回答（高達 70% 拒絕率），但 OpenAI 模型傾向硬答——代價是更高的幻覺率。
+
+這說明什麼？**安全不是「用哪個模型」的問題，而是「怎麼部署」的問題。** 即使你用最強的模型，如果給它過多權限，它一樣會被攻破。
+
 ### 作為對比：Chatbot 的「最壞情況」
 
 說到這裡，可能有人會問：「Chatbot 不也有問題嗎？」
@@ -234,6 +242,10 @@ AI Agent 的 Prompt Injection，本質上也是一樣的事情。不是靠一句
 
 5. **Gartner Top Strategic Technology Trends for 2025: Agentic AI**
    - 2028 年 33% 企業軟體將包含 Agentic AI 的預測來源
+
+6. **OpenAI-Anthropic Joint Safety Evaluation**
+   - https://openai.com/index/openai-anthropic-safety-evaluation/
+   - 2025 年 8 月，OpenAI 與 Anthropic 互測模型安全性的研究報告
 
 ---
 
