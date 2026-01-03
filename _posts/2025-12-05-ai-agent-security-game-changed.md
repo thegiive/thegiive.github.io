@@ -114,7 +114,7 @@ AI Agent Security 不是危言聳聽，在往下討論之前，先看幾個學�
 
 對，但 Chatbot 的問題是可控的。
 
-2024 年 2 月，加拿大法院判決了一個經典案例（Moffatt v. Air Canada, 2024 BCCRT 149）：
+2024 年 2 月，加拿大法院判決了一個經典案例（[Moffatt v. Air Canada, 2024 BCCRT 149](https://www.bccourts.ca/jdb-txt/rt/24/01/2024BCCRT0149.htm)）：
 
 加拿大航空的 Chatbot 虛構了退款政策，告訴乘客可以在親人去世後申請機票退款——但這個政策根本不存在。法院判決航空公司必須對 Chatbot 的言論負責，賠償乘客約 **800 加幣**。800 加幣。這是 Chatbot「封閉迴路」最壞情況的代價——財務損失，但可控、可賠償、有上限。如果是上市櫃公司，有名譽損失，或是可能法務風險。
 
@@ -177,7 +177,7 @@ AI Agent 的 Prompt Injection，本質上也是一樣的事情。不是靠一句
 
 既然 Guardrails 擋不住，那能做什麼？根據 Schulhoff 與 Google DeepMind 的研究，目前最可行的兩個方向：
 
-1. **Least Privilege for AI Agents（最小權限原則）：** AI 能存取的任何資料，都等同於使用者能存取；AI 能執行的任何動作序列，使用者都能觸發。透過 RLS（資料列級權限）、Network Boundary（網路隔離）、Auth Gateway（入口權限限制），把 Agent 的能力範圍縮到最小。
+1. **Least Privilege for AI Agents（最小權限原則）：** AI 能存取的任何資料，都等同於使用者能存取；AI 能執行的任何動作序列，使用者都能觸發。透過 RLS（資料列級權限）、Network Boundary（網路隔離）、Auth Gateway（入口權限限制），把 Agent 的能力範圍縮到最小。細節請看防禦架構實戰指南：[企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)
 
 2. **CaMeL 框架（基於意圖的主動約束）：** Google DeepMind 2025 年發表的 [CaMeL](https://arxiv.org/abs/2503.18813) 框架——在執行任務前，根據使用者的初始提示預先限制 Agent 可採取的行動集合。例如使用者說「幫我總結今天的郵件」，系統只授予「讀取」權限，禁用「發送」、「刪除」等所有其他權限。即使郵件中包含惡意注入指令（如「轉寄此郵件」），攻擊也會因 Agent 缺乏必要權限而失敗。**在 AgentDojo 基準測試中，CaMeL 擋下了近 100% 的攻擊，同時保留 77% 的任務完成率。**
 
@@ -185,9 +185,8 @@ AI Agent 的 Prompt Injection，本質上也是一樣的事情。不是靠一句
 
 核心策略是：**假設 AI 會被騙，但讓它「即使被騙也無能為力」。**
 
-> **👉 完整分析請參考：[AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)**
->
-> **👉 防禦架構實戰指南：[企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)**
+> ** 完整分析請參考：[AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)**
+
 
 ---
 
