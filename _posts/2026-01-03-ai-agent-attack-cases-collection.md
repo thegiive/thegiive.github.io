@@ -42,8 +42,10 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 EchoLeak，從 ChatGPT
 ## 案例一：Salesforce ForcedLeak — 填表單就能偷走整個客戶名單
 
 **時間：** 2025 年 7 月
-**揭露者：** Noma Security
+**揭露者：** [Noma Security](https://noma.security/noma-labs/forcedleak/)
 **受影響產品：** Salesforce Agentforce Platform
+**CVSS 評分：** 9.4（Critical）
+**原始研究：** [ForcedLeak: AI Agent risks exposed in Salesforce AgentForce](https://noma.security/blog/forcedleak-agent-risks-exposed-in-salesforce-agentforce/)
 
 ### 攻擊流程
 
@@ -98,8 +100,12 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 EchoLeak，從 ChatGPT
 
 ## 案例二：Microsoft 365 Copilot EchoLeak — 零點擊外洩
 
-**時間：** 2024-2025 年
+**時間：** 2024 年 1 月發現，2025 年 6 月修補
+**揭露者：** [Aim Security](https://www.aim.security/)
 **受影響產品：** Microsoft 365 Copilot
+**CVE 編號：** [CVE-2025-32711](https://socprime.com/blog/cve-2025-32711-zero-click-ai-vulnerability/)
+**CVSS 評分：** 9.3（Critical）
+**原始研究：** [EchoLeak: The First Real-World Zero-Click Prompt Injection Exploit](https://arxiv.org/abs/2509.10540)
 
 ### 攻擊流程
 
