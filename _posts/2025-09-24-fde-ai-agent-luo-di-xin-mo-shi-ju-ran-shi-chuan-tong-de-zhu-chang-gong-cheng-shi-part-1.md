@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FDE 模式全解析：為何「駐場工程師」才是企業 AI Agent 真正落地的關鍵？"
+title: "FDE 模式全解析：為何 95% 企業 AI Agent 導入失敗？駐場工程師才是落地關鍵"
 date: 2025-09-24 14:08:31 +0000
 permalink: /fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/
 image: /assets/images/fde-palantir-cover.png
@@ -104,7 +104,7 @@ keywords: "FDE, Forward Deployed Engineer, AI Agent 落地, Palantir, 駐場工�
 - [前言：AI Agent 落地的真正障礙](#前言ai-agent-落地的真正障礙)
 - [什麼是 FDE 模式？](#什麼是-fde-模式)
 - [落地挑戰：為什麼你的 AI Agent 總是「水土不服」？](#落地挑戰為什麼你的-ai-agent-總是水土不服) → 深入理解「[流程濾光片](/aizhuan-xing-ai-agent-ru-he-luo-di/)」
-- [信任機制：讓 AI 從「玩具」變「工具」的核心貨幣](#信任機制讓-ai-從玩具變工具的核心貨幣) → 深入理解「[信任建立](/notebooklm-trust-fde/)」
+- [信任機制：有信任，現場才願意執行](#信任機制有信任現場才願意執行) → 深入理解「[信任建立](/notebooklm-trust-fde/)」
 - [FDE 的運作心法：持續實驗與迭代](#fde-的運作心法持續實驗與迭代) → 深入理解「[持續實驗](/fde-continuous-experiment/)」
 - [人才培養：AI 時代的全端視野](#人才培養ai-時代的全端視野)
 - [如何評估 FDE 模式是否成功？](#如何評估-fde-模式是否成功)
@@ -194,6 +194,8 @@ Bob 提到，這種 FDE 訓練與**新創公司創始人**的訓練非常相似�
 
 ### 流程是數據的濾光片：沒有領域知識，Data Insight 只是雜訊
 
+講了這麼多 FDE，為什麼說它是 AI 落地的解藥？因為「流程領域知識」才是 AI 落地的關鍵——而這個知識只有駐場FDE可以做到高效萃取。
+
 ![流程是濾光片](/assets/images/Generated-Image-October-18--2025---8_14AM-1.png)
 
 還記得小時候玩的盜版防護嗎？中華職棒二會附一個混淆過的密碼本，你必須用紅色或藍色濾光片才能看到正確的密碼。
@@ -222,7 +224,7 @@ Bob 提到，這種 FDE 訓練與**新創公司創始人**的訓練非常相似�
 
 ---
 
-## 信任機制：讓 AI 從「玩具」變「工具」的核心貨幣
+## 信任機制：有信任，現場才願意執行
 
 ### 數據正確不代表被採納：打破「黑盒子」恐懼
 
@@ -237,6 +239,8 @@ Bob 提到，這種 FDE 訓練與**新創公司創始人**的訓練非常相似�
 他回：「我不在意是不是 Python 或是 AI，我在意每一個參數的意義。對我來說，人力配置錯誤就是錢——人太多明天損失一筆，人太少客戶馬上罵。」
 
 > 「我寧願你用慢的工具，但讓我打開公式一個一個驗算。我要對結論負責任。」
+
+![Excel 公式驗算：客戶要求每個參數都可追蹤](/assets/images/excel-formula-verification.png)
 
 ### 實戰案例：100 天的站會換取信任
 
