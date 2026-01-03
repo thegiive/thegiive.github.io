@@ -85,6 +85,9 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 EchoLeak，從 ChatGPT
 
 **這證明了：企業最核心的客戶數據庫（CRM），因為接上了「開放迴路」的 Agent，變成了一個巨大的外洩破口。**
 
+> 這類攻擊之所以成立，原因不是 prompt，而是 Agent 被設計成「可以理解 + 可以行動 + 可以外傳」。
+> 👉 架構層的完整分析，請見：[AI Agent Security：遊戲規則已經改變](/ai-agent-security-game-changed/)
+
 ---
 
 ## 案例二：Microsoft 365 Copilot EchoLeak — 零點擊外洩
@@ -143,6 +146,9 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 EchoLeak，從 ChatGPT
 
 ![EchoLeak Attack Flow](/assets/images/echoleak-attack-flow.jpg)
 
+> 這類攻擊之所以成立，原因不是 prompt，而是 Agent 被設計成「可以理解 + 可以行動 + 可以外傳」。
+> 👉 架構層的完整分析，請見：[AI Agent Security：遊戲規則已經改變](/ai-agent-security-game-changed/)
+
 ---
 
 ## 案例三：ChatGPT Plugins — 透過外部內容的資料外洩
@@ -177,6 +183,9 @@ Stage 1          Stage 2           Stage 3           Stage 4
 ### 核心問題
 
 **沒有任何一步是直接的攻擊請求。攻擊發生在「資料」被誤解為「指令」的瞬間。**
+
+> 這類攻擊之所以成立，原因不是 prompt，而是 Agent 被設計成「可以理解 + 可以行動 + 可以外傳」。
+> 👉 架構層的完整分析，請見：[AI Agent Security：遊戲規則已經改變](/ai-agent-security-game-changed/)
 
 ---
 
@@ -213,6 +222,9 @@ Agent A (低權限)  →  Agent B (中權限)  →  Agent C (高權限)  →  �
 > **100% 的 Agent 在「多 Agent 互信（Inter-agent trust）」場景下被成功攻破。**
 
 這意味著：如果你的架構是「Agent A 呼叫 Agent B 來完成任務」，攻擊者只要滲透其中一個 Agent，就能透過信任鏈攻破整個系統。
+
+> 這類攻擊之所以成立，原因不是 prompt，而是 Agent 被設計成「可以理解 + 可以行動 + 可以外傳」。
+> 👉 架構層的完整分析，請見：[AI Agent Security：遊戲規則已經改變](/ai-agent-security-game-changed/)
 
 ---
 
