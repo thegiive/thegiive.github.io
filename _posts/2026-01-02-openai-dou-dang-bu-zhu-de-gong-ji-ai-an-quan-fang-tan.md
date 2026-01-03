@@ -14,7 +14,7 @@ description: "本文整理自 Lenny's Podcast 對 HackAPrompt CEO Sander Schulho
 
 我在另一篇文章 [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/) 已經講了許多 AI Agent 案例，但是很多人私訊我說到底怎麼防禦。但是在講防禦前，我想要先講為何 AI Agent 本質上幾乎絕大多數「Guardrails 本質上沒用」。
 
-在我草擬的過程中，這幾天發現 Schulhoff這位大神的採訪，我認為這個採訪講的比我寫的更高層次，又更有說服力一百倍。在此分享給大家。題外話，我在最後也附上 [Wisely Comment](#wisely-comment)（延伸閱讀：AI Agent 安全實證案例）幾個精彩的 AI Agent 攻擊案例供大家理解裡面的幾個概念。
+在我草擬的過程中，這幾天發現 Schulhoff這位大神的採訪，我認為這個採訪講的比我寫的更高層次，又更有說服力一百倍。在此分享給大家。題外話，我在最後也附上 [Stateless vs Stateful 案例](#stateless-vs-stateful-案例) 幾個精彩的 AI Agent 攻擊案例供大家理解裡面的幾個概念。
 
 這篇文章整理自 Sander Schulhoff 在 Lenny's Podcast 的訪談。Schulhoff 是 [Learn Prompting](https://learnprompting.org/) 創辦人，與 OpenAI 合作舉辦過史上最大的 AI 紅隊競賽 HackAPrompt，他花在研究「如何攻破 AI 系統」的時間，可能比地球上任何人都多。
 
@@ -44,7 +44,6 @@ PS. 我不喜歡寫訪談逐字稿的文章，這不是大家來看我 blog 的�
 11. [新一代專家的崛起：融合 AI 與傳統安全的思維](#十一新一代專家的崛起融合-ai-與傳統安全的思維)
 12. [最終警告：你盒子裡的神，是個惡意的神](#十二最終警告你盒子裡的神是個惡意的神)
 13. [Stateless vs Stateful 案例](#stateless-vs-stateful-案例)（真實攻擊案例分享）
-14. [Wisely Comment](#wisely-comment)（延伸閱讀：AI Agent 安全實證案例）
 
 
 ---
