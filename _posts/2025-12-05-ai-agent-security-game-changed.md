@@ -21,6 +21,16 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 
 ---
 
+很多企業在導入 AI Agent 時，最常問的不是「模型夠不夠強」，而是三個問題：
+
+1. **AI Agent 安全嗎？**
+2. **Prompt Injection 到底算不算真正風險？**
+3. **為什麼傳統 WAF / APM 完全看不到問題？**
+
+這篇文章，會用 2024–2025 已發生的真實案例，直接回答這三個問題。
+
+---
+
 上週五，我在香港迪士尼酒店 ~~玩得很開心~~ 跟[AWS/ECV/Palo Alto/Fortinet一眾資安大神](https://www.ecloudvalley.com/en/event/ecvolution-day-sponsor?secret=049819d709fd986a0d1251ae27585dc8)，一起分享AI資訊安全技術演講，分享了在大 Agent 時代的資安威脅，跟許多同業跟客戶交流，聽到一些有趣的故事。
 
 但在講案例之前，我想先釐清一個關鍵問題——很多人還搞不清楚 AI Agent 到底是什麼。
