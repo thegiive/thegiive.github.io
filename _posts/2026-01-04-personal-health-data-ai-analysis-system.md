@@ -35,7 +35,7 @@ AI 做健康是一個大家都想做的賽道。因為很多錢，而且大家�
 
 但大家都想做，就代表一件事：**永遠不可能整合起來**。
 
-每個玩家都想當平台，都想把資料鎖在自己的生態系裡。所以你會發現：小米的體重計不能完整進 Apple 健康、Garmin 的資料不能進 Google Fit、醫院的健檢報告還是 PDF 或紙本。
+每個玩家都想當平台，都想把資料鎖在自己的生態系裡。所以你會發現：小米的體重計不能完整進 [Apple 健康](https://www.apple.com/tw/ios/health/)、Garmin 的資料不能進 Google Fit、醫院的健檢報告還是 PDF 或紙本。
 
 這就是為什麼我的策略是「不追求整合」——因為等整合，你會等到死。
 
@@ -62,7 +62,7 @@ AI 做健康是一個大家都想做的賽道。因為很多錢，而且大家�
 
 ### 2️⃣ 非 Apple 裝置（無法整合？那就截圖）
 
-像是小米體重計、體脂計、跑步機，幾乎都不能完整進 Apple 健康。即使有部分資料可以同步，也常常掉資料或格式不對。
+像是[小米體重計](https://www.mi.com/tw/product/mi-body-composition-scale-2/)、體脂計、跑步機，幾乎都不能完整進 Apple 健康。即使有部分資料可以同步，也常常掉資料或格式不對。
 
 但這些裝置一定有自己的 App。
 
@@ -102,13 +102,13 @@ AI 現在的視覺理解能力已經很強了。截一張體重計的畫面，�
 
 問題是：怎麼把它們批次抓出來？
 
-我用 AppleScript 從 Apple Photos 抓：
+我用 [AppleScript](https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html) 從 Apple Photos 抓：
 
 1. 指定相簿（例如「健康資料」）
 2. 指定時間區間（例如「2025 全年」）
 3. 自動輸出成一個資料夾
 
-然後整個資料夾丟給 Claude Code。
+然後整個資料夾丟給 [Claude Code](/claude-code-630k-lines-three-months-reflection/)。
 
 重點不是 Script 多漂亮，重點是：**圖片變成 AI 的輸入**。
 
@@ -178,13 +178,6 @@ AppleScript 只是讓我少做重複勞動，不用一張一張手動拖。你�
 
 > 「你的 VO2 Max 從 28 下降到 24.5，這是心肺耐力下降的訊號。雖然還在正常範圍內，但趨勢不好。」
 
-是的，Gemini 每一次 Live 語音會一直提醒「我不是醫生，以上不是醫療建議....」。連問個「黑木耳有什麼營養」都要跳這段，真的太扯了。
-
-![Gemini 的醫療免責聲明提醒](/assets/images/gemini-health-disclaimer.jpg)
-
-所以我會改用 ChatGPT 語音模式，不會那麼煩。
-我把它當作：**一個永遠不累、會看大量資料的健康助理**。
-
 ---
 
 ## 五、輸出格式：不是給 AI 看，是給「我自己未來用」
@@ -215,7 +208,7 @@ AI 分析完之後，我會請它輸出成 Excel：
 
 ## 六、日常使用：我真的「邊運動邊跟 AI 聊健康」
 
-這整套系統最後不是放著好看，而是真的在用。
+這整套系統最後不是放著好看，而是真的在用。之前我寫過[用 Vibe Duo AI 增加生產力](/vibe-duo-ai-ru-he-zeng-jia-wo-de-sheng-chan-li/)，運動時聽 Podcast 或跟 AI 對話已經變成我的習慣。
 
 運動時我會用語音問：
 
@@ -226,6 +219,16 @@ AI 分析完之後，我會請它輸出成 Excel：
 這個問題看起來簡單，但其實橫跨了三個完全不同的數據來源：運動紀錄（體能訓練 App）和健康紀錄（健康 App / 手動輸入），健康檢查資料。傳統做法要自己串起來看，但 AI 可以直接幫你對照分析。AI 是基於我自己的歷史資料回答，不是泛泛而談。
 
 這才是我心中最棒的 AI 健康助手。
+
+## 七: 語音助手的選擇
+
+我當初選擇時，本來想用 [Gemini](/gemini-flash-evolution-path/) ，後來發現 Gemini 每一次 Live 語音會一直提醒「我不是醫生，以上不是醫療建議....」。連問個「黑木耳有什麼營養」都要跳這段，真的太扯了。
+
+![Gemini 的醫療免責聲明提醒](/assets/images/gemini-health-disclaimer.jpg)
+
+所以我會改用 ChatGPT 語音模式，不會那麼煩。
+我把它當作：**一個永遠不累、會看大量資料的健康助理**。
+
 
 ---
 
@@ -261,7 +264,7 @@ AI 分析完之後，我會請它輸出成 Excel：
 
 ### 什麼時候不適合？
 
-- ❌ 你需要即時告警（例如心律不整監測）
+- ❌ 你需要即時告警（例如心律不整監測）— 這種場景更適合用 [AI Agent](/ai-agent-complete-guide/) 架構
 - ❌ 你完全不想碰技術細節
 - ❌ 你的資料量很小（只有幾個月的資料）
 
