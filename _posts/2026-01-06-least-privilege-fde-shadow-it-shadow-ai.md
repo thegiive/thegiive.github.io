@@ -3,7 +3,7 @@ layout: post
 title: "最小權限原則真的可行嗎？FDE 視角下的資安與企業效率衝突"
 date: 2026-01-06 07:00:00 +0800
 permalink: /least-privilege-fde-shadow-it-shadow-ai/
-image: /assets/images/least-privilege-org-chart-real-vs-official.png
+image: /assets/images/least-privilege-fde-shadow-ai-cover.png
 category: fde
 description: "最小權限是資安原則，卻常成為企業效率的阻力。從金融業、政府雲到 Pixar 真實案例，解析影子 IT、影子 AI，以及 FDE 如何畫出真正可用的權限邊界。"
 faq:
