@@ -482,6 +482,7 @@ PostgreSQL 的 soft delete（`is_deleted` 欄位）加上 `pg_audit` 稽核追�
 - [企業級地端 LLM 架構藍圖](/local-llm-enterprise-architecture/) — Auth Gateway、沙盒、雙層 Log 的完整設計
 
 ### 相關文章
+- [CaMeL Agent 架構落地 PostgreSQL：用 RLS 設計不可繞過的 AI Memory 與權限隔離](/camel-postgresql-implementation-memory-permission-db-layer/) - 將 Google DeepMind 的 CaMeL 架構實作到資料庫層
 - [Google Nested Learning：讓模型擁有大腦般的長期記憶](/nested-learning-ai-memory/)
 - [AI 企業轉型：治理支柱](/ai-enterprise-transformation-governance-pillar/)
 - [我的 ATPM 框架：AI Coding 的生產實踐](/atpm-a-real-production-vibe-coding-process/)

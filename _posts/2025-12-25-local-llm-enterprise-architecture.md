@@ -428,6 +428,7 @@ Enterprise LLM deployment 不只是「把模型跑起來」這麼簡單。你需
 - [PostgreSQL 作為 AI 記憶庫](/postgresql-ai-memory-store/) - 為什麼選 PostgreSQL 而不是專用 Vector DB
 
 ### 安全與治理
+- [CaMeL Agent 架構落地 PostgreSQL：用 RLS 設計不可繞過的 AI Memory 與權限隔離](/camel-postgresql-implementation-memory-permission-db-layer/) - 將 Google DeepMind 的 CaMeL 架構實作到資料庫層
 - [台灣《人工智慧基本法》：IT 主管必讀的 AI 資安治理建議](/taiwan-ai-basic-act-engineering-perspective/) - 七大原則解讀、Quick Win 清單與企業合規方向
 - [AI Agent Security：為什麼它正在改變企業資安架構](/ai-agent-security-game-changed/) - 從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak 的真實案例分析
 - [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) - LLM 應用的十大安全風險
