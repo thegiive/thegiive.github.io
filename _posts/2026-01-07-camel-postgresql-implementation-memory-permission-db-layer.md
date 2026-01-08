@@ -17,7 +17,7 @@ description: "本文示範如何將 Google DeepMind 提出的 CaMeL 雙層 Agent
 
 ## 一、CaMeL 的精髓，不是「兩個模型」
 
-上一篇講 [CaMeL 的雙層 Agent 架構](/camel-privileged-vs-quarantined-agent-which-needs-stronger-llm/)，這是基於 Google DeepMind 發表的 [CaMeL 論文](https://arxiv.org/abs/2503.18813)。核心概念是把「讀資料」和「做動作」分開——Quarantined LLM 只能讀不可信資料，Privileged LLM 只能接收已結構化的乾淨資訊。
+上一篇講 [CaMeL 的雙層 Agent 架構](/camel-privileged-quarantined-agent/)，這是基於 Google DeepMind 發表的 [CaMeL 論文](https://arxiv.org/abs/2503.18813)。核心概念是把「讀資料」和「做動作」分開——Quarantined LLM 只能讀不可信資料，Privileged LLM 只能接收已結構化的乾淨資訊。
 
 ![CaMeL 的真正核心：建立兩個不可跨越的權限域](/assets/images/camel-core-two-domains.png)
 
@@ -68,6 +68,8 @@ def access_data(agent):
 不是請求模型自己守規矩，而是讓系統在設計上就不允許違規。
 
 即使 Python code 寫錯、即使 Privileged Agent 被 prompt injection 騙了，資料庫引擎本身會擋住——因為那個角色根本沒有權限存取那個 schema。
+
+如果你已經有[企業級地端 LLM 架構](/local-llm-enterprise-architecture/)，有 Auth Gateway 做身分驗證、有 LLM Router 做模型調度，那這套 DB 層的權限隔離就是下一步該補的「最後一道防線」。
 
 ---
 
@@ -444,8 +446,9 @@ CREATE POLICY privileged_read_sanitized ON memory.sanitized_memory
 
 ## 延伸閱讀
 
-- [CaMeL：Google DeepMind 提出的 Prompt Injection 防禦架構](/camel-privileged-vs-quarantined-agent-which-needs-stronger-llm/)
+- [CaMeL：Google DeepMind 提出的 Prompt Injection 防禦架構](/camel-privileged-quarantined-agent/)
 - [為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」](/postgresql-ai-memory-store/)
+- [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)
 - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)
 - [AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)
 - [CaMeL 論文原文 (arXiv)](https://arxiv.org/abs/2503.18813)

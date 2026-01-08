@@ -454,6 +454,8 @@ CaMeL 給了一個很清楚的答案：
 > 不要再把希望寄託在「模型會變乖」，
 > 而是讓系統本身，在設計上就不需要信任模型。
 
+如果你想把這套概念實際落地，下一步就是思考：這個「不可跨越的權限邊界」要建在哪裡？我的答案是資料庫層——詳見 [CaMeL 架構落地 PostgreSQL](/camel-postgresql-implementation-memory-permission-db-layer/)。
+
 ---
 
 ## 延伸閱讀
