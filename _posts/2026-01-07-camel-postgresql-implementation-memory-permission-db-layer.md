@@ -1,98 +1,146 @@
 ---
 layout: post
-title: "CaMeL 落地 PostgreSQL：讓 AI 記憶與權限都下沉到資料庫層"
+title: "CaMeL Agent 架構落地 PostgreSQL：用 RLS 設計不可繞過的 AI Memory 與權限隔離"
 date: 2026-01-07 14:00:00 +0800
 permalink: /camel-postgresql-implementation-memory-permission-db-layer/
 image: /assets/images/camel-postgresql-three-layer-memory.png
-description: "CaMeL 的重點不是「用兩個模型」，而是「建立兩個不可跨越的權限域」。這篇文章分享如何把 CaMeL 概念落地到 PostgreSQL——讓「權限」跟「記憶」都下沉到 DB 層，讓高權限 Agent 只能看「被淨化過」的資料；低權限 Agent 可以接觸外部，但永遠寫不進核心權威層。"
+description: "本文示範如何將 Google DeepMind 提出的 CaMeL 雙層 Agent 架構，實際落地到 PostgreSQL，利用資料庫原生的 Role 與 Row-Level Security（RLS），設計一套不可繞過的 AI Memory 隔離機制，用來防禦 prompt injection 與高權限 Agent 失控風險。"
 ---
 
-## 開場：CaMeL 的精髓不是「兩個模型」
+## 本文解決什麼問題？
 
-上一篇講 [CaMeL 的雙層 Agent 架構](/camel-privileged-vs-quarantined-agent-which-needs-stronger-llm/)，核心概念是把「讀資料」和「做動作」分開——Quarantined LLM 只能讀不可信資料，Privileged LLM 只能接收已結構化的乾淨資訊。
+- CaMeL 架構在實務上要把「隔離」做在哪一層？
+- AI Agent 的記憶與權限，如何避免只靠應用層 if-else？
+- 如何用 PostgreSQL 設計一個 LLM 無法繞過的安全邊界？
+
+---
+
+## 一、CaMeL 的精髓，不是「兩個模型」
+
+上一篇講 [CaMeL 的雙層 Agent 架構](/camel-privileged-vs-quarantined-agent-which-needs-stronger-llm/)，這是基於 Google DeepMind 發表的 [CaMeL 論文](https://arxiv.org/abs/2503.18813)。核心概念是把「讀資料」和「做動作」分開——Quarantined LLM 只能讀不可信資料，Privileged LLM 只能接收已結構化的乾淨資訊。
+
+![CaMeL 的真正核心：建立兩個不可跨越的權限域](/assets/images/camel-core-two-domains.png)
 
 但讀完論文後，我發現很多人只理解到一半。
 
 **CaMeL 的重點不是「用兩個模型」，而是「建立兩個不可跨越的權限域」。**
 
-問題來了：
+一邊是隔離域（Quarantined Domain），存放所有未經處理的外部輸入；另一邊是權限域（Privileged Domain），只能存取經過淨化的可信資料。中間有一道牆，資料必須經過審核才能跨越。
 
-> 如果這兩個權限域只存在於應用層的 if-else 邏輯，那只要工程師寫錯一行 code，整套隔離就崩潰。
+問題來了：這道牆該建在哪裡？
+
+---
+
+## 二、應用層的 `if-else`，一碰就碎
+
+大部分團隊的第一直覺是在應用層做權限判斷：
+
+```python
+def access_data(agent):
+    if agent.role == 'privileged':
+        # Access sensitive data
+        return agent.get_sensitive_info()
+    else:
+        # Access public data
+        return agent.get_public_info()
+```
+
+這種做法的問題是：
+
+> 如果你的安全邊界只存在於應用層的 `if-else` 邏輯，那只要工程師寫錯一行 code，整套隔離就崩潰。
+
+新人接手不知道這個規則、code review 沒看到、unit test 沒覆蓋到——任何一個環節出錯，高權限 Agent 就可能直接讀到未淨化的外部資料。
 
 這讓我想起之前寫 [PostgreSQL AI Memory Store](/postgresql-ai-memory-store/) 時的一個結論：
 
 > 真正的安全邊界，不能只存在於應用層，必須下沉到資料庫層。
 
-於是我開始把 CaMeL 的概念落地到 PostgreSQL，核心就是一句話：
+---
 
-> **把「權限」跟「記憶」都下沉到 DB 層，讓高權限 Agent 只能看「被淨化過」的資料；低權限 Agent 可以接觸外部，但永遠寫不進核心權威層。**
+## 三、真正的安全邊界，必須下沉到資料庫
+
+於是我開始把 CaMeL 的概念落地到 PostgreSQL。
+
+核心思路是：
+
+> **把「記憶」(Memory) 與「權限」(Permissions) 都下沉到資料庫層，創造一個應用層程式碼*無法*繞過的邊界。**
+
+不是請求模型自己守規矩，而是讓系統在設計上就不允許違規。
+
+即使 Python code 寫錯、即使 Privileged Agent 被 prompt injection 騙了，資料庫引擎本身會擋住——因為那個角色根本沒有權限存取那個 schema。
 
 ---
 
-## 一、CaMeL 對應的三層記憶架構
+## 四、CaMeL 的三層記憶架構
 
-### 從 CaMeL 分層到 PostgreSQL 分層
+CaMeL 原始論文講的是 Quarantined vs Privileged 兩層，但實際落地時我發現，中間必須有一個**顯式的 Sanitize 層**。
 
-| CaMeL 概念 | PostgreSQL 實作 |
-|-----------|-----------------|
-| Quarantined Agent（低權限）：讀外部、高風險輸入 | `quarantine.raw_memory` |
-| Sanitize 過程：淨化、審核 | `memory.sanitized_memory` |
-| Privileged Agent（高權限）：做決策、執行動作 | `memory.policy_memory` |
+![CaMeL 的三層記憶架構](/assets/images/camel-three-layer-memory-architecture.png)
 
-### 三層記憶設計
+原因很簡單：
 
-![三層記憶隔離架構](/assets/images/camel-postgresql-memory-layers.png)
+> 你不可能讓 Quarantined Agent 直接產生「乾淨」的輸出，因此中間必須有一個顯式的 Sanitize 層。
 
-**第一層：raw_memory（隔離區）**
+於是設計成三層：
+
+### 第一層：隔離區 (Quarantine)
+
+**Table:** `quarantine.raw_memory`
+
+存放所有未經處理的外部輸入——Email、OCR 結果、API 回應、網頁內容。
+
 - 只有 Quarantined Agent 能寫入
-- 存放所有外部輸入：Email、OCR、API 回應、網頁內容
 - 標記 `taint_level = 'external'`
 - TTL 短（7-14 天）
 
-**第二層：sanitized_memory（淨化區）**
+### 第二層：淨化區 (Sanitized)
+
+**Table:** `memory.sanitized_memory`
+
+存放經過淨化流程、可信任的結構化資料。
+
 - 經過 Sanitize 流程後才能進入
 - `taint_level` 必須降級為 `'internal'`
 - Privileged Agent 只能讀這層
 - 保留追溯連結到原始 raw
 
-**第三層：policy_memory（權威區）**
-- 存放經過驗證的結論、規則、playbook
-- 長期有效
-- 用於 Agent 決策的依據
+### 第三層：權威區 (Policy)
 
-### 為什麼是三層不是兩層？
+**Table:** `memory.policy_memory`
 
-CaMeL 原始論文講的是 Quarantined vs Privileged 兩層，但實際落地時我發現，中間必須有一個**顯式的 Sanitize 層**。
+存放經過驗證的規則、結論與行動手冊。
 
-原因很簡單：
-
-> 你不可能讓 Quarantined Agent 直接產生「乾淨」的輸出，因為它本身就在處理高風險資料。
-
-所以：
-- Quarantined Agent 的輸出先進 raw_memory
-- 經過 Sanitizer（可以是 rule-based、LLM、或人工審核）處理後
-- 才能「升級」到 sanitized_memory
-- Privileged Agent 永遠只看 sanitized_memory
+- 長期有效的決策依據
+- 存放 guardrails、playbooks、heuristics
+- 用於 Agent 決策的最高權威來源
 
 ---
 
-## 二、DB Roles：把 Agent 權限變成資料庫角色
+## 五、DB Roles：將 Agent 權限變成資料庫原生角色
 
 這是整套架構最關鍵的設計——**不要在應用層做權限判斷，讓資料庫引擎強制執行**。
+
+### 為什麼 DB Role 比 Application Role 更安全？
+
+Application Role 的權限檢查發生在應用程式碼中，只要工程師寫錯一行、code review 沒抓到、或 unit test 沒覆蓋，整個隔離就崩潰。
+
+DB Role 則是在資料庫引擎層強制執行——不管你的 Python 或 SQL 怎麼寫，引擎本身就會擋住越權存取。這是「系統強制」vs「請求自律」的根本差異。
 
 ### 角色定義
 
 ```sql
--- 角色：對應 CaMeL 的權限分層
-CREATE ROLE agent_quarantined NOINHERIT;  -- 低權限 Agent
-CREATE ROLE agent_privileged  NOINHERIT;  -- 高權限 Agent
-CREATE ROLE memory_reviewer   NOINHERIT;  -- 審核者（人或服務）
-CREATE ROLE memory_maintainer NOINHERIT;  -- 定期清理 job
+-- Create the role
+CREATE ROLE agent_quarantined;
 
--- App 連線用的 login role
-CREATE ROLE app_login LOGIN PASSWORD '...';
-GRANT agent_quarantined TO app_login;  -- 預設低權限
+-- Set the role after connection
+SET ROLE agent_quarantined;
 ```
+
+三個核心角色：
+
+- **`agent_quarantined`：** 低權限 Agent，只能讀寫自己的隔離區
+- **`agent_privileged`：** 高權限 Agent，只能讀淨化區與權威區
+- **`memory_reviewer`：** 審核者，負責將資料從隔離區升級到淨化區
 
 ### 連線時切換角色
 
@@ -102,7 +150,6 @@ GRANT agent_quarantined TO app_login;  -- 預設低權限
 -- Quarantined Agent 連線後
 SET ROLE agent_quarantined;
 SET app.agent_id = 'agent_123';
-SET app.tenant_id = 'tenant_a';
 
 -- Privileged Agent 連線後
 SET ROLE agent_privileged;
@@ -111,472 +158,154 @@ SET app.agent_id = 'agent_456';
 
 這樣做的好處是：**權限檢查發生在 DB 引擎層，不是應用層**。
 
-即使你的 Python code 寫錯（例如忘了加 user_id filter），資料庫也會擋住。
+---
+
+## 六、RLS：不可繞過的系統級安全閘門
+
+Row-Level Security (RLS) 是整個架構的「安全閘門」。
+
+![RLS：不可繞過的系統級安全閘門](/assets/images/camel-rls-security-gate.png)
+
+RLS 在資料庫引擎層面強制執行存取規則，使應用層程式碼完全無法規避。
+
+不管你的 SQL 怎麼寫，資料庫引擎會在每一次查詢時自動加上權限過濾條件。
 
 ---
 
-## 三、Schema 設計：讓 Taint 與 Permission 變成可查詢的欄位
+## 七、`agent_quarantined` 的視角：只能讀寫自己的隔離區
 
-### 3.1 raw_memory（隔離區）
+這個 Agent 只能向 `quarantine.raw_memory` 寫入屬於自己的資料，且只能讀取自己寫入的內容。
 
-```sql
-CREATE SCHEMA IF NOT EXISTS quarantine;
+![agent_quarantined 的權限視角](/assets/images/camel-agent-quarantined-view.png)
 
-CREATE TABLE quarantine.raw_memory (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  content text NOT NULL,
-  embedding vector(1536),
-
-  -- CaMeL taint 標籤：標記資料來源風險
-  taint_level text NOT NULL CHECK (taint_level IN ('external', 'user', 'tool', 'internal')),
-
-  -- 外部來源追蹤
-  source_type text,   -- 'email', 'ocr', 'api', 'web'
-  source_ref  text,   -- URL, email ID, document ID
-
-  -- Agent 追蹤
-  agent_id text,
-  task_id text,
-  session_id text,
-
-  -- 時間管理
-  created_at timestamptz DEFAULT now(),
-  expires_at timestamptz DEFAULT (now() + interval '14 days'),
-  is_deleted boolean DEFAULT false,
-
-  -- 彈性欄位
-  metadata jsonb DEFAULT '{}'::jsonb
-);
-
--- 索引設計
-CREATE INDEX ON quarantine.raw_memory (agent_id, created_at DESC);
-CREATE INDEX ON quarantine.raw_memory USING hnsw (embedding vector_cosine_ops);
-CREATE INDEX ON quarantine.raw_memory USING gin (metadata);
-```
-
-### 3.2 sanitized_memory（淨化區）
-
-```sql
-CREATE SCHEMA IF NOT EXISTS memory;
-
-CREATE TABLE memory.sanitized_memory (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  raw_id uuid REFERENCES quarantine.raw_memory(id),  -- 追溯連結
-
-  content text NOT NULL,
-  embedding vector(1536),
-
-  -- 淨化後的 taint 必須是 internal
-  taint_level text NOT NULL CHECK (taint_level IN ('internal')) DEFAULT 'internal',
-
-  -- Sanitize 追蹤（可審計）
-  sanitized_by text NOT NULL,          -- 誰淨化的
-  sanitizer_version text,               -- 淨化器版本
-  sanitizer_reason text,                -- 為什麼這樣淨化
-
-  -- 風險評估
-  risk_score int NOT NULL DEFAULT 0,   -- 0-100
-
-  -- 結構化淨化結果
-  sanitized jsonb NOT NULL DEFAULT '{}'::jsonb,
-
-  -- 時間管理
-  created_at timestamptz DEFAULT now(),
-  expires_at timestamptz DEFAULT (now() + interval '90 days'),
-  is_deleted boolean DEFAULT false,
-
-  metadata jsonb DEFAULT '{}'::jsonb
-);
-
-CREATE INDEX ON memory.sanitized_memory USING hnsw (embedding vector_cosine_ops);
-CREATE INDEX ON memory.sanitized_memory (created_at DESC);
-CREATE INDEX ON memory.sanitized_memory USING gin (sanitized);
-```
-
-### 3.3 policy_memory（權威區）
-
-```sql
-CREATE TABLE memory.policy_memory (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  parent_id uuid REFERENCES memory.policy_memory(id),  -- 支援版本演進
-
-  -- 只存「結論/規則」，不存 raw
-  policy_type text NOT NULL CHECK (policy_type IN ('reflection','heuristic','guardrail','playbook')),
-  content text NOT NULL,
-
-  -- 可執行條件（用 JSON 表達）
-  apply_if jsonb DEFAULT '{}'::jsonb,
-
-  -- 版本控制
-  version int DEFAULT 1,
-  created_at timestamptz DEFAULT now(),
-  is_deleted boolean DEFAULT false
-);
-
-CREATE INDEX ON memory.policy_memory USING gin (apply_if);
-CREATE INDEX ON memory.policy_memory (policy_type, created_at DESC);
-```
+關鍵限制：
+- ✅ 可讀寫：`quarantine.raw_memory`（僅自己的）
+- ❌ 不可讀：`memory.sanitized_memory`
+- ❌ 不可讀：`memory.policy_memory`
 
 ---
 
-## 四、RLS：用資料庫直接保證 CaMeL 隔離
+## 八、`agent_privileged` 的視角：完全禁止接觸污染源
 
-這是整套架構的「安全閘門」——Row Level Security 讓隔離變成**不可繞過的系統邊界**。
-
-### 4.1 Quarantined：只能寫 raw，只能讀自己的 raw
+高權限 Agent 被*完全禁止*存取 `quarantine` schema，連看的權限都沒有。它只能讀取 `sanitized_memory` 和 `policy_memory` 中的乾淨資料。
 
 ```sql
-ALTER TABLE quarantine.raw_memory ENABLE ROW LEVEL SECURITY;
-
--- 低權限 Agent 只能讀自己寫入的 raw
-CREATE POLICY q_read_own_raw
-ON quarantine.raw_memory
-FOR SELECT
-TO agent_quarantined
-USING (agent_id = current_setting('app.agent_id', true));
-
--- 低權限 Agent 可以寫入 raw（但只能寫自己的）
-CREATE POLICY q_write_raw
-ON quarantine.raw_memory
-FOR INSERT
-TO agent_quarantined
-WITH CHECK (agent_id = current_setting('app.agent_id', true));
+-- Forbid access to the entire schema
+REVOKE ALL ON SCHEMA quarantine
+FROM agent_privileged;
 ```
 
-### 4.2 Privileged：完全禁止讀 raw，只能讀 sanitized + policy
+![agent_privileged 的權限視角：完全禁止接觸污染源](/assets/images/camel-agent-privileged-view.png)
 
-```sql
--- 關鍵：Privileged Agent 完全不能碰 quarantine schema
-REVOKE ALL ON SCHEMA quarantine FROM agent_privileged;
-REVOKE ALL ON ALL TABLES IN SCHEMA quarantine FROM agent_privileged;
+關鍵限制：
+- ❌ 完全禁止：`quarantine.raw_memory`（連 schema 都不能碰）
+- ✅ 可讀：`memory.sanitized_memory`
+- ✅ 可讀：`memory.policy_memory`
 
--- Privileged 可以讀 sanitized
-ALTER TABLE memory.sanitized_memory ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY p_read_sanitized
-ON memory.sanitized_memory
-FOR SELECT
-TO agent_privileged
-USING (is_deleted = false);  -- 或加 tenant/user 篩選
-
--- Privileged 可以讀 policy
-ALTER TABLE memory.policy_memory ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY p_read_policy
-ON memory.policy_memory
-FOR SELECT
-TO agent_privileged
-USING (is_deleted = false);
-```
-
-### 4.3 Reviewer：唯一能執行「升級」的角色
-
-```sql
--- 只有 reviewer 能把 raw -> sanitized
-GRANT USAGE ON SCHEMA quarantine, memory TO memory_reviewer;
-GRANT SELECT ON quarantine.raw_memory TO memory_reviewer;
-GRANT INSERT, UPDATE ON memory.sanitized_memory TO memory_reviewer;
-```
-
-### 這個設計為什麼重要？
+這意味著：
 
 > **即使 Privileged Agent 被 prompt injection 騙了，它也讀不到 raw。**
 
-傳統的應用層 filter：
-```python
-# 這很容易寫錯
-if agent.role == 'privileged':
-    data = db.query("SELECT * FROM raw_memory")  # 漏了 filter！
-```
-
-PostgreSQL RLS：
 ```sql
--- 即使 code 寫 SELECT * FROM quarantine.raw_memory
--- 資料庫會直接返回 permission denied
-```
-
----
-
-## 五、Sanitize 流程：把「高污染 raw」變成「可用的內部事實」
-
-Sanitize 不是「把文字修漂亮」，而是：
-
-> 把外部輸入轉成可治理的內部事實層，只有這層才有資格被高權限 Agent 拿去做決策。
-
-### Sanitize 的三個硬目標
-
-1. **去風險**：移除 prompt injection / 指令 / 外部可執行內容
-2. **去敏感**：PII / secret / token / internal link / 客戶資料
-3. **保可用**：保留「能支撐決策」的 facts + evidence refs
-
-### Sanitize Pipeline（四階段）
-
-![Sanitize Pipeline](/assets/images/camel-postgresql-sanitize-pipeline.png)
-
-**Stage A — Ingest（入 quarantine）**
-- Quarantined Agent 原封不動寫入
-- 一律標 `taint_level = 'external'`
-- TTL 短
-
-**Stage B — Detect（風險評估）**
-- 計算 risk_score：
-  - Injection pattern（ignore previous / system prompt / tool call）
-  - Links / forms / payment actions
-  - Secrets（api key, token, ssh key）
-  - PII（email/phone/id/address）
-- risk_score > 80 → 直接進人工審核，不自動 sanitize
-
-**Stage C — Transform（產出 sanitized）**
-- 輸出結構化 JSON：
-
-```json
-{
-  "summary": "一句話摘要",
-  "facts": [
-    {"f": "發票金額 120,000", "evidence": ["raw#L120-L140"], "confidence": 0.8}
-  ],
-  "claims": [
-    {"c": "聲稱來自 CEO", "speaker": "external", "confidence": 0.3}
-  ],
-  "risks": [
-    {"type": "prompt_injection", "severity": "high"},
-    {"type": "authority_claim", "severity": "medium"}
-  ],
-  "redactions": [
-    {"type": "api_key", "count": 2},
-    {"type": "email", "count": 1}
-  ],
-  "allowlist_actions": ["read_only_answer", "summarize_only"],
-  "blocklist_actions": ["execute_payment", "send_email", "delete_data"]
-}
-```
-
-**重點：evidence 不存 raw 內容，只存 reference id / line range**
-
-**Stage D — Approve（寫入 sanitized_memory）**
-- 只有 memory_reviewer 能寫入
-- 必填：sanitizer_version, reason, raw_id
-
-### Sanitize 函數（安全界線）
-
-```sql
-CREATE OR REPLACE FUNCTION memory.promote_to_sanitized(
-  p_raw_id uuid,
-  p_content text,
-  p_sanitized jsonb,
-  p_risk_score int,
-  p_reason text
-)
-RETURNS uuid
-LANGUAGE plpgsql
-SECURITY DEFINER
-AS $$
-DECLARE
-  new_id uuid;
-BEGIN
-  -- 驗證：只有低風險才能自動升級
-  IF p_risk_score > 80 THEN
-    RAISE EXCEPTION 'Risk score too high (%), requires manual review', p_risk_score;
-  END IF;
-
-  INSERT INTO memory.sanitized_memory(
-    raw_id, content, sanitized, risk_score,
-    sanitized_by, sanitizer_reason
-  )
-  VALUES (
-    p_raw_id, p_content, p_sanitized, p_risk_score,
-    current_user, p_reason
-  )
-  RETURNING id INTO new_id;
-
-  RETURN new_id;
-END $$;
-
--- 權限控制：只有 reviewer 能呼叫
-REVOKE ALL ON FUNCTION memory.promote_to_sanitized FROM PUBLIC;
-GRANT EXECUTE ON FUNCTION memory.promote_to_sanitized TO memory_reviewer;
-```
-
----
-
-## 六、實際查詢模式
-
-### Quarantined Agent：讀自己的 raw，找候選內容
-
-```sql
--- 低權限 Agent 找最近的 raw 內容
-SELECT id, content, taint_level, created_at
-FROM quarantine.raw_memory
-WHERE agent_id = current_setting('app.agent_id', true)
-  AND is_deleted = false
-  AND expires_at > now()
-ORDER BY created_at DESC
-LIMIT 50;
-```
-
-### Privileged Agent：只讀 sanitized + policy
-
-```sql
--- 高權限 Agent 查詢相關記憶
-SELECT
-  s.content,
-  s.sanitized->>'summary' as summary,
-  s.sanitized->'facts' as facts,
-  s.sanitized->'allowlist_actions' as allowed,
-  s.risk_score,
-  s.created_at
-FROM memory.sanitized_memory s
-WHERE s.is_deleted = false
-  AND s.risk_score < 50  -- 只要低風險的
-ORDER BY s.embedding <=> $1  -- 向量相似度
-LIMIT 10;
-
--- 查詢適用的 policy
-SELECT content, policy_type, apply_if
-FROM memory.policy_memory
-WHERE is_deleted = false
-  AND policy_type IN ('guardrail', 'playbook')
-ORDER BY created_at DESC;
-```
-
-### 跨層資料流（只有 Reviewer 能做）
-
-```sql
--- Reviewer 把 raw 升級到 sanitized
-SELECT memory.promote_to_sanitized(
-  'raw_uuid'::uuid,
-  '淨化後的摘要內容',
-  '{"summary": "...", "facts": [...], "risks": [...]}'::jsonb,
-  35,  -- risk_score
-  'Rule-based sanitizer v2.1'
-);
-```
-
----
-
-## 七、為什麼這比應用層 Filter 更安全？
-
-### 應用層 Filter 的問題
-
-```python
-# 典型的應用層做法
-def get_memory_for_privileged_agent(agent_id: str):
-    # 問題 1：很容易忘了加 filter
-    raw = db.query("SELECT * FROM raw_memory")
-
-    # 問題 2：filter 邏輯散落在各處
-    if is_sanitized(raw):
-        return raw
-
-    # 問題 3：新人接手可能不知道這個規則
-    # 問題 4：unit test 很難覆蓋所有邊界條件
-```
-
-### PostgreSQL RLS 的優勢
-
-| 面向 | 應用層 Filter | PostgreSQL RLS |
-|------|--------------|----------------|
-| 執行層級 | Application code | Database engine |
-| 可繞過性 | 工程師寫錯就漏 | 無法繞過 |
-| 集中管理 | 散落各處 | 在 DB 定義一次 |
-| 審計 | 需自己實作 | pg_audit 原生支援 |
-| 新人風險 | 不知道規則會出事 | 規則在 DB，不需要知道 |
-
-### 關鍵差異
-
-> **應用層 Filter 是「請求模型自己守規矩」，PostgreSQL RLS 是「系統強制執行」。**
-
-即使 Privileged Agent 被 prompt injection 騙了，想要讀 raw_memory：
-
-```sql
--- Privileged Agent 執行
+-- Privileged Agent 嘗試執行
 SET ROLE agent_privileged;
 SELECT * FROM quarantine.raw_memory;
 
 -- 結果：ERROR: permission denied for schema quarantine
 ```
 
-這就是 CaMeL 精髓的落地：**就算模型被騙，系統邊界不會被突破**。
+---
+
+## 九、Sanitize 流程：從「高污染」到「可信任」
+
+Sanitize 不是「把文字修漂亮」，而是：
+
+> 把外部輸入轉成可治理的內部事實層，只有這層才有資格被高權限 Agent 拿去做決策。
+
+### 三大目標
+
+1. **去風險**：移除 prompt injection / 指令 / 外部可執行內容
+2. **去敏感**：PII / secret / token / internal link / 客戶資料
+3. **保可用**：保留「能支撐決策」的 facts + evidence refs
+
+### 四階段 Pipeline
+
+**接收 (Ingest)** → **偵測 (Detect)** → **轉換 (Transform)** → **批准 (Approve)**
+
+![Sanitize 四階段 Pipeline](/assets/images/camel-sanitize-pipeline.png)
+
+1. **接收：** 原始資料寫入隔離區
+2. **偵測：** 評估風險，計算 risk_score
+3. **轉換：** 產出結構化的內部事實
+4. **批准：** 由 `memory_reviewer` 角色寫入淨化區
 
 ---
 
-## 八、完整架構圖
+## 十、淨化產出：可治理的內部事實
 
+淨化後的輸出是結構化 JSON，包含：
+
+```json
+{
+  "facts": [
+    {"f": "發票金額 120,000", "confidence": 0.8}
+  ],
+  "risks": [
+    {"type": "prompt_injection", "severity": "high"}
+  ],
+  "allowlist_actions": [
+    "read_only_answer", "summarize_only"
+  ],
+  "evidence": "raw_memory_id: '...'"
+}
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        外部輸入層                                │
-│    Email / OCR / API / Web / User Input                        │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  Quarantined Agent (agent_quarantined)                         │
-│  - 可讀：自己的 raw_memory                                      │
-│  - 可寫：quarantine.raw_memory                                  │
-│  - 不可：呼叫 tool、觸發 action                                  │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                 quarantine.raw_memory                           │
-│  - taint_level: 'external'                                      │
-│  - TTL: 14 days                                                 │
-│  - RLS: 只有 quarantined agent 能寫/讀自己的                    │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │
-                           │ memory_reviewer ONLY
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    Sanitize Pipeline                            │
-│  Detect → Transform → Approve                                   │
-│  - Rule-based + LLM + 人工審核                                  │
-│  - risk_score > 80 → 人工審核                                   │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                 memory.sanitized_memory                         │
-│  - taint_level: 'internal'                                      │
-│  - 結構化 JSON（facts, claims, risks, allowlist_actions）        │
-│  - TTL: 90 days                                                 │
-│  - RLS: privileged agent 可讀                                   │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  Privileged Agent (agent_privileged)                           │
-│  - 可讀：sanitized_memory, policy_memory                        │
-│  - 不可：讀 raw_memory（RLS 擋住）                               │
-│  - 可做：tool call、workflow、action                            │
-└─────────────────────────────────────────────────────────────────┘
-```
+
+**關鍵設計：`evidence` 欄位只儲存對原始資料的引用 (reference id)，而非複製原始內容，以確保隔離。**
+
+Privileged Agent 可以知道「這個結論來自哪裡」，但無法直接讀取原始的高風險內容。
 
 ---
 
-## 九、坦白說：這套的 Trade-off
+## 十一、系統強制，勝於請求自律
 
-這套架構當然不是免費的午餐。
+這是整套架構的核心哲學。
 
-### 複雜度增加
+| 面向 | 應用層 Filter | PostgreSQL RLS |
+|------|:------------:|:--------------:|
+| 執行層級 | ❌ Application | ✅ Database Engine |
+| 可繞過性 | ❌ 工程師寫錯就漏 | ✅ 無法繞過 |
+| 集中管理 | ❌ 散落各處 | ✅ 在 DB 定義一次 |
+| 可審計性 | ❌ 需自己實作 | ✅ pg_audit 原生支援 |
 
-- 需要維護三層記憶 + 四個 DB Role
-- Sanitize pipeline 需要設計與調整
-- 開發者需要理解「為什麼不能直接查 raw」
+當 Privileged Agent 嘗試越權時：
 
-### 延遲增加
+```
+ERROR: permission denied for schema quarantine
+```
 
-- 從 raw → sanitized 需要一個 pipeline
-- 不適合需要即時回應的場景
+這就是差別：**應用層 Filter 是「請求模型自己守規矩」，PostgreSQL RLS 是「系統強制執行」。**
 
-### Sanitize 可能漏洞
+---
 
-- Rule-based sanitizer 可能漏掉新型攻擊
-- LLM-based sanitizer 本身也可能被騙
-- 需要持續更新 detection 規則
+## 十二、完整架構：一個縱深防禦體系
 
-### 但這些 Trade-off 是值得的
+![CaMeL PostgreSQL 完整架構：一個縱深防禦體系](/assets/images/camel-postgresql-complete-architecture.png)
 
-對於企業級 AI Agent——尤其是有權限操作資料庫、API、金流的場景——這些代價換來的是：
+---
+
+## 十三、這不是免費的午餐：複雜度與延遲的權衡
+
+這套架構當然不是免費的。
+
+### 代價
+
+- **複雜度增加：** 需要維護三層記憶和多個 DB Role
+- **延遲增加：** 從 raw 到 sanitized 需要時間，不適合即時場景
+- **Sanitize 可能漏洞：** 淨化規則需要持續維護
+
+### 換來的是
+
+對於操作資料庫、API、金流的企業級 Agent，這些代價換來的是：
 
 > **即使 LLM 被騙，系統邊界不會被突破。**
 
@@ -584,7 +313,7 @@ SELECT * FROM quarantine.raw_memory;
 
 ---
 
-## 十、結語
+## 十四、核心價值：建立一個不需要信任模型的系統
 
 CaMeL 的精髓從來不是「用兩個模型」，而是「建立兩個不可跨越的權限域」。
 
@@ -595,10 +324,27 @@ PostgreSQL 能把這個權限域做成**系統級的安全邊界**：
 - Sanitize pipeline 讓「高污染」變「可治理」
 - 三層記憶架構讓每一層的責任清晰可見
 
-對正在打造企業級 Agent 的團隊來說，這套架構的核心價值是：
+這種架構將 AI 安全的基礎，從「希望模型會變乖」，轉變為「設計一個讓模型的行為失控也能被有效控制的系統」。
 
 > 不要把希望寄託在「模型會變乖」，
 > 而是讓系統本身，在設計上就不需要信任模型。
+
+---
+
+## 這套架構適合哪些場景？
+
+### 適合
+
+- **企業內部 AI Agent**：需要存取內部資料庫、ERP、CRM 的自動化流程
+- **涉及資料庫操作**：Agent 會執行 SELECT/INSERT/UPDATE 的場景
+- **高風險 prompt injection 場景**：處理 Email、OCR、外部 API 回應等不可信輸入
+- **金流與敏感操作**：需要嚴格審計與權限隔離的企業應用
+
+### 不適合
+
+- **即時聊天型 Bot**：純對話、不涉及資料庫操作的 chatbot
+- **單一 LLM 應用**：沒有行為權限分層需求的簡單問答系統
+- **Latency 敏感場景**：Sanitize pipeline 會增加延遲，不適合毫秒級回應需求
 
 ---
 
