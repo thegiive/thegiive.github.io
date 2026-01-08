@@ -348,9 +348,104 @@ PostgreSQL 能把這個權限域做成**系統級的安全邊界**：
 
 ---
 
+## 附錄：完整 SQL 參考
+
+以下是本文架構的完整 SQL 實作，可直接在 PostgreSQL 執行：
+
+```sql
+-- ============================================================
+-- CaMeL Agent 架構 PostgreSQL 實作
+-- 三層記憶隔離 + DB Role + RLS
+-- ============================================================
+
+-- 1. 建立 Schema
+CREATE SCHEMA IF NOT EXISTS quarantine;  -- 隔離區
+CREATE SCHEMA IF NOT EXISTS memory;      -- 淨化區 + 權威區
+
+-- 2. 建立三個核心角色
+CREATE ROLE agent_quarantined;   -- 低權限 Agent
+CREATE ROLE agent_privileged;    -- 高權限 Agent
+CREATE ROLE memory_reviewer;     -- 審核者
+
+-- 3. 建立隔離區表格 (Quarantine Layer)
+CREATE TABLE quarantine.raw_memory (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    agent_id TEXT NOT NULL,
+    content JSONB NOT NULL,
+    taint_level TEXT DEFAULT 'external',
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    expires_at TIMESTAMPTZ DEFAULT NOW() + INTERVAL '14 days'
+);
+
+-- 4. 建立淨化區表格 (Sanitized Layer)
+CREATE TABLE memory.sanitized_memory (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    agent_id TEXT NOT NULL,
+    facts JSONB NOT NULL,
+    risks JSONB,
+    allowlist_actions TEXT[],
+    evidence_ref UUID REFERENCES quarantine.raw_memory(id),
+    taint_level TEXT DEFAULT 'internal',
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 5. 建立權威區表格 (Policy Layer)
+CREATE TABLE memory.policy_memory (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    policy_type TEXT NOT NULL,  -- 'guardrail', 'playbook', 'heuristic'
+    content JSONB NOT NULL,
+    version INT DEFAULT 1,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 6. 設定 Schema 權限
+-- agent_quarantined: 只能存取 quarantine schema
+GRANT USAGE ON SCHEMA quarantine TO agent_quarantined;
+GRANT SELECT, INSERT ON quarantine.raw_memory TO agent_quarantined;
+
+-- agent_privileged: 完全禁止存取 quarantine，只能讀 memory
+REVOKE ALL ON SCHEMA quarantine FROM agent_privileged;
+GRANT USAGE ON SCHEMA memory TO agent_privileged;
+GRANT SELECT ON memory.sanitized_memory TO agent_privileged;
+GRANT SELECT ON memory.policy_memory TO agent_privileged;
+
+-- memory_reviewer: 可以讀 quarantine，寫入 memory
+GRANT USAGE ON SCHEMA quarantine TO memory_reviewer;
+GRANT SELECT ON quarantine.raw_memory TO memory_reviewer;
+GRANT USAGE ON SCHEMA memory TO memory_reviewer;
+GRANT INSERT ON memory.sanitized_memory TO memory_reviewer;
+
+-- 7. 啟用 RLS (Row-Level Security)
+ALTER TABLE quarantine.raw_memory ENABLE ROW LEVEL SECURITY;
+ALTER TABLE memory.sanitized_memory ENABLE ROW LEVEL SECURITY;
+
+-- 8. RLS Policy: agent_quarantined 只能存取自己的資料
+CREATE POLICY quarantined_own_data ON quarantine.raw_memory
+    FOR ALL TO agent_quarantined
+    USING (agent_id = current_setting('app.agent_id', true))
+    WITH CHECK (agent_id = current_setting('app.agent_id', true));
+
+-- 9. RLS Policy: agent_privileged 只能讀取淨化後的資料
+CREATE POLICY privileged_read_sanitized ON memory.sanitized_memory
+    FOR SELECT TO agent_privileged
+    USING (taint_level = 'internal');
+
+-- 10. 使用範例：連線後切換角色
+-- Quarantined Agent 連線
+-- SET ROLE agent_quarantined;
+-- SET app.agent_id = 'agent_123';
+
+-- Privileged Agent 連線
+-- SET ROLE agent_privileged;
+-- SET app.agent_id = 'agent_456';
+```
+
+---
+
 ## 延伸閱讀
 
 - [CaMeL：Google DeepMind 提出的 Prompt Injection 防禦架構](/camel-privileged-vs-quarantined-agent-which-needs-stronger-llm/)
 - [為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」](/postgresql-ai-memory-store/)
 - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)
 - [AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)
+- [CaMeL 論文原文 (arXiv)](https://arxiv.org/abs/2503.18813)
