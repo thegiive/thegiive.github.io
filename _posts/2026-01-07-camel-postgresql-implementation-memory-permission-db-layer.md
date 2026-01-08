@@ -335,7 +335,7 @@ PostgreSQL 能把這個權限域做成**系統級的安全邊界**：
 
 ### 適合
 
-- **企業內部 AI Agent**：需要存取內部資料庫、ERP、CRM 的自動化流程
+- **[企業內部 AI Agent](/local-llm-enterprise-architecture/)**：需要存取內部資料庫、ERP、CRM 的自動化流程，特別是已經有 Auth Gateway 和 LLM Router 的地端架構
 - **涉及資料庫操作**：Agent 會執行 SELECT/INSERT/UPDATE 的場景
 - **高風險 prompt injection 場景**：處理 Email、OCR、外部 API 回應等不可信輸入
 - **金流與敏感操作**：需要嚴格審計與權限隔離的企業應用
