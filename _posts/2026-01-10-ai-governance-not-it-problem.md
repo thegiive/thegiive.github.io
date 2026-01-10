@@ -3,6 +3,7 @@ layout: post
 title: "AI 資安治理：從工具防禦到組織當責"
 date: 2026-01-10
 permalink: /ai-governance-not-it-problem/
+image: /assets/images/ai-security-governance-cover.png
 description: "AI 資安，不是 IT 問題，而是數位員工的治理問題。當 AI 會讀資料、做判斷、執行行為，責任歸屬不再是技術問題，而是組織治理的核心挑戰。"
 categories: [AI資訊安全]
 tags: [AI治理, 資安, 企業轉型, CaMeL, 影子AI]
@@ -11,12 +12,6 @@ tags: [AI治理, 資安, 企業轉型, CaMeL, 影子AI]
 # AI 資安治理：從工具防禦到組織當責
 
 ## 當「數位員工」出事時，這不是 IT 問題，而是治理問題
-
----
-
-> AI 資安，不是 IT 問題，而是數位員工的治理問題。
-
-![AI 資安治理](/assets/images/ai-security-governance-cover.png)
 
 這一週，我連續寫了好幾篇關於 AI 資安的文章。有人私下問我：「是不是最近特別在意資安？」
 
