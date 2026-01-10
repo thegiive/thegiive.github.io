@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AI 資安治理：從工具防禦到組織當責"
+title: "AI 治理是什麼？當 AI 不再只是工具，企業責任該怎麼設計"
 date: 2026-01-10
 permalink: /ai-governance-not-it-problem/
 image: /assets/images/ai-security-governance-cover.png
