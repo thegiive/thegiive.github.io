@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "當 AI 出事時，誰該負責？這才是企業資安真正的問題"
+title: "AI 資安治理：從工具防禦到組織當責"
 date: 2026-01-10 10:00:00 +0800
 categories: [AI Security, Governance]
 tags: [AI治理, 數位員工, 企業資安, AI風險管理, 董事會]
