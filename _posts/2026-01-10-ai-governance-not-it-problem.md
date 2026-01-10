@@ -58,12 +58,12 @@ AI 會讀資料、會做判斷、會執行行為。而任何被授權行動的�
 以下每一個議題，我都另外寫成一篇實務文章：
 
 - **AI 治理下的技術失效案例：**[為什麼 Guardrails 擋不住 AI 攻擊？](/ai-agent-security-game-changed/)
-- **AI 資安的防禦極限：**[連 OpenAI 都擋不住的攻擊，你的防護能擋住嗎？](/openai-guardrails-failure/)
-- **AI 治理的技術實作：**[用 CaMeL 架構把「讀資料」與「做動作」徹底分開](/camel-postgresql-implementation/)
-- **AI 治理與現場落差：**[為什麼政策永遠被繞過？影子 AI 的必然出現](/least-privilege-shadow-ai/)
-- **AI 失控的真實案例：**[數字人主播在直播中突然學貓叫](/ai-anchor-prompt-injection-meow/)
-- **AI 治理的法規壓力：**[AI 基本法正式把「問責」寫進條文](/taiwan-ai-basic-act/)
-- **AI 資安的本質思考：**[效率、成本、風險之間的永恆取捨](/ai-security-balance/)
+- **AI 資安的防禦極限：**[連 OpenAI 都擋不住的攻擊，你的防護能擋住嗎？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)
+- **AI 治理的技術實作：**[用 CaMeL 架構把「讀資料」與「做動作」徹底分開](/camel-postgresql-implementation-memory-permission-db-layer/)
+- **AI 治理與現場落差：**[為什麼政策永遠被繞過？影子 AI 的必然出現](/least-privilege-fde-shadow-it-shadow-ai/)
+- **AI 失控的真實案例：**[數字人主播在直播中突然學貓叫](/ai-agent-attack-cases-collection/#案例五中國數字人主播--開發者模式學貓叫一百次)
+- **AI 治理的法規壓力：**[AI 基本法正式把「問責」寫進條文](/taiwan-ai-basic-act-engineering-perspective/)
+- **AI 資安的本質思考：**[效率、成本、風險之間的永恆取捨](/ai-security-balance-not-absolute/)
 
 從工具失效（Guardrails 擋不住）、到架構設計（CaMeL 讀寫分離）、到現場實務（影子 AI 為什麼一定會出現）、到真實案例（數字人主播學貓叫）、再到法規壓力（AI 基本法問責條款）——每一篇文章都在處理一個具體的面向。
 
@@ -121,7 +121,7 @@ AI 治理和 AI 資安常被混為一談，但本質完全不同。如果把視�
 
 AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被允許執行？
 
-這就是為什麼 [CaMeL 架構](/camel-postgresql-implementation/) 要把「讀資料」和「做動作」徹底分開——因為有些事情，AI 可以建議，但不能執行。
+這就是為什麼 [CaMeL 架構](/camel-postgresql-implementation-memory-permission-db-layer/) 要把「讀資料」和「做動作」徹底分開——因為有些事情，AI 可以建議，但不能執行。
 
 ![CaMeL 架構讀寫分離：AI 可以讀資料但不能直接執行動作](/assets/images/ai-camel-read-write-separation.png)
 
@@ -129,7 +129,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 **（Risk Appetite / Accountability）**
 
-如果風險從來沒有被治理層承認，它就一定會以 [影子 AI](/least-privilege-shadow-ai/) 或失控的形式出現。
+如果風險從來沒有被治理層承認，它就一定會以 [影子 AI](/least-privilege-fde-shadow-it-shadow-ai/) 或失控的形式出現。
 
 ![影子 AI 風險：員工未經授權使用 AI 工具的治理挑戰](/assets/images/ai-shadow-ai-risk.png)
 
@@ -141,7 +141,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 如果某件事在治理上被認定「不能發生」，那它就不該只靠 SOP，而是要在技術上做不到。
 
-[CaMeL](/camel-postgresql-implementation/)、PostgresSQL RLS、權限分層、審計設計，其實都不是在「防 AI」，而是在**具體化這三個治理決策**。
+[CaMeL](/camel-postgresql-implementation-memory-permission-db-layer/)、PostgresSQL RLS、權限分層、審計設計，其實都不是在「防 AI」，而是在**具體化這三個治理決策**。
 
 ![AI 控制與審計設計：PostgreSQL RLS 權限分層實作](/assets/images/ai-controls-rls-audit.png)
 
@@ -149,7 +149,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 ## 企業該如何開始做 AI 治理？
 
-AI 治理不需要從零開始建立完整框架。AI 不會等待治理成熟；[法律](/taiwan-ai-basic-act/)也不會接受「我們還在研究」作為理由。
+AI 治理不需要從零開始建立完整框架。AI 不會等待治理成熟；[法律](/taiwan-ai-basic-act-engineering-perspective/)也不會接受「我們還在研究」作為理由。
 
 真正的風險，從來不是 AI 太快，而是組織遲遲不願意定義責任邊界。
 
@@ -202,13 +202,12 @@ AI 治理不需要從零開始建立完整框架。AI 不會等待治理成熟�
 | 主題 | 核心問題 |
 |------|---------|
 | [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/) | 為什麼 Guardrails 註定擋不住？ |
-| [AI Guardrails 為什麼註定失敗？](/openai-guardrails-failure/) | 連 OpenAI 都擋不住的攻擊 |
-| [CaMeL + PostgreSQL：當記憶與權限都在資料庫層實現](/camel-postgresql-implementation/) | 如何讓某些事「技術上做不到」？ |
-| [最小權限的現實：為什麼現場總是長出影子 AI](/least-privilege-shadow-ai/) | 為什麼政策永遠被繞過？ |
-| [數字人主播學貓叫：一場 Prompt Injection 的現場直播](/ai-anchor-prompt-injection-meow/) | AI 失控可以有多荒謬？ |
-| [台灣 AI 基本法：工程師視角的解讀](/taiwan-ai-basic-act/) | 法律如何定義 AI 的責任？ |
-| [AI Coding 工具的資安風險](/ai-coding-security-risk/) | 開發工具本身的風險在哪？ |
-| [AI 時代的資安平衡](/ai-security-balance/) | 資安的本質是什麼？ |
+| [AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/) | 連 OpenAI 都擋不住的攻擊 |
+| [CaMeL + PostgreSQL：當記憶與權限都在資料庫層實現](/camel-postgresql-implementation-memory-permission-db-layer/) | 如何讓某些事「技術上做不到」？ |
+| [最小權限的現實：為什麼現場總是長出影子 AI](/least-privilege-fde-shadow-it-shadow-ai/) | 為什麼政策永遠被繞過？ |
+| [數字人主播學貓叫：一場 Prompt Injection 的現場直播](/ai-agent-attack-cases-collection/#案例五中國數字人主播--開發者模式學貓叫一百次) | AI 失控可以有多荒謬？ |
+| [台灣 AI 基本法：工程師視角的解讀](/taiwan-ai-basic-act-engineering-perspective/) | 法律如何定義 AI 的責任？ |
+| [AI 時代的資安平衡](/ai-security-balance-not-absolute/) | 資安的本質是什麼？ |
 
 ---
 
