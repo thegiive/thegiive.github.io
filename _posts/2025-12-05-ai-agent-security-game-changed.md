@@ -206,6 +206,14 @@ AI Agent 改變了整個 Security Architecture 的基本假設。從「對話」
 
 ## 延伸閱讀
 
+### 🔥 本週新文章
+
+- [AI 治理是什麼？企業在 AI 時代必須回答的 3 個責任問題](/ai-governance-not-it-problem/) — AI 出事時，誰授權、誰負責、誰承擔
+- [EU AI Act vs 台灣人工智慧基本法：企業 AI 合規差異](/eu-ai-act-vs-taiwan-ai-basic-law/) — 歐盟告訴你怎麼做，台灣要你自己證明有負責
+- [AI 時代的資安平衡：從來不是絕對安全](/ai-security-balance-not-absolute/) — 效率、成本、風險之間的永恆取捨
+
+### 資安系列
+
 - [AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/) — 從 Prompt Injection 到 Agent 架構安全的深度分析
 - [台灣《人工智慧基本法》：IT 人該知道的事](/taiwan-ai-basic-act-engineering-perspective/) — 七大原則解讀與企業合規方向
 - [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/) — 從權限控制到沙盒防禦的完整實作
