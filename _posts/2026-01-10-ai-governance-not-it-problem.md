@@ -4,6 +4,7 @@ title: "AI 治理是什麼？企業在 AI 時代必須回答的 3 個責任問�
 date: 2026-01-10
 permalink: /ai-governance-not-it-problem/
 description: "AI 治理不是模型或資安工具的問題，而是企業如何設計責任、決策權與問責機制。本文從 AI Agent、資安失控案例與台灣 AI 基本法，解析企業 AI 治理的 3 個核心問題。"
+image: /assets/images/ai-security-governance-cover.png
 categories: [AI治理]
 tags: [AI治理, AI資安, 企業治理, 數位員工, AI問責]
 ---
