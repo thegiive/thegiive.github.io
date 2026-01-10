@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "EU AI Act vs 台灣人工智慧基本法：兩套治理邏輯，一個企業合規目標"
 date: 2026-01-10
 description: "EU AI Act 與台灣人工智慧基本法有何差異？本文從企業 IT 與 AI 合規實務出發，比較風險分級、罰則、域外效力與實際導入策略，協助企業判斷該如何準備。"
@@ -49,12 +48,12 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 歐盟把 AI 系統分成四個等級，每個等級有明確的合規要求：
 
-| 風險等級 | 定義 | 合規要求 | 範例 |
-|---------|------|---------|------|
-| **Unacceptable（禁止）** | 對人權有重大威脅 | 禁止使用 | 社會信用評分、操控性 AI、未經同意的生物辨識 |
-| **High（高風險）** | 影響重大生活領域 | 強制認證、風險評估、人工監督、[Audit Trail](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/) | 求職篩選 AI、信用評估、醫療診斷 |
-| **Limited（有限風險）** | 與使用者互動 | 透明度義務（告知使用者這是 AI） | Chatbot、AI 生成內容 |
-| **Minimal（最低風險）** | 影響極小 | 幾乎不管 | 垃圾郵件過濾、遊戲 AI |
+![歐盟 AI Act 與台灣 AI 基本法風險分類比較](/assets/images/eu-ai-act-risk-classification-comparison.png)
+
+- **Unacceptable（禁止）**：社會信用評分、操控性 AI、未經同意的生物辨識 → 直接禁止
+- **High（高風險）**：求職篩選、信用評估、醫療診斷 → 強制認證、風險評估、人工監督、[Audit Trail](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)
+- **Limited（有限風險）**：Chatbot、AI 生成內容 → 透明度義務（告知使用者這是 AI）
+- **Minimal（最低風險）**：垃圾郵件過濾、遊戲 AI → 幾乎不管
 
 **關鍵：** 歐盟已經發布具體指引，告訴你哪些應用屬於哪個等級。2025 年 2 月起，禁止類別已經生效；2026 年 8 月，高風險系統的完整規範生效。
 
@@ -76,15 +75,15 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## EU AI Act 罰則有多重？台灣人工智慧基本法會罰款嗎？
 
+![歐盟與台灣 AI 法規罰則比較](/assets/images/eu-ai-act-penalties-comparison.png)
+
 ### EU AI Act 的罰則結構
 
 歐盟的罰則是真的會痛：
 
-| 違規類型 | 最高罰款 |
-|---------|---------|
-| 使用禁止類 AI | €35M 或全球營收 7%（取高者） |
-| 違反高風險 AI 規定 | €15M 或全球營收 3% |
-| 提供不正確資訊 | €7.5M 或全球營收 1% |
+- **使用禁止類 AI**：€35M 或全球營收 7%（取高者）
+- **違反高風險 AI 規定**：€15M 或全球營收 3%
+- **提供不正確資訊**：€7.5M 或全球營收 1%
 
 對大公司來說，7% 全球營收可能是數十億歐元。這不是開玩笑的數字。
 
@@ -95,9 +94,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ### 台灣的罰則現況
 
-《人工智慧基本法》本身沒有規定罰則。
-
-這不代表沒有法律責任——如果你的 AI 系統造成損害，還是會適用現有的民法、刑法、個資法等規定。但沒有像歐盟那樣針對 AI 的專門罰則。
+《人工智慧基本法》本身沒有規定罰則。這不代表沒有法律責任——如果你的 AI 系統造成損害，還是會適用現有的民法、刑法、個資法等規定。但沒有像歐盟那樣針對 AI 的專門罰則。
 
 **一句話：** 歐盟是「做錯就罰」，台灣是「出事再說」。
 
@@ -173,6 +170,8 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## AI 監管機構比較：誰負責執法？
 
+![歐盟與台灣 AI 監管機構比較](/assets/images/eu-taiwan-ai-regulatory-bodies.png)
+
 ### EU AI Act 的雙層架構
 
 **歐盟層級：**
@@ -196,29 +195,15 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## EU AI Act 什麼時候生效？台灣 AI 基本法時程表
 
-### EU AI Act
-
-| 時間 | 里程碑 |
-|------|--------|
-| 2024/8/1 | 法案生效 |
-| 2025/2/2 | 禁止類 AI 規範生效 |
-| 2025/8/2 | GPAI 規範 + 罰則生效 |
-| 2026/8/2 | 高風險 AI（Annex III）完整規範生效 |
-| 2027/8/2 | 高風險 AI（Annex I，嵌入式產品）規範生效 |
-
-### 台灣 AI 基本法
-
-| 時間 | 里程碑 |
-|------|--------|
-| 2025/12/23 | 法案三讀通過 |
-| 2026 Q1-Q2（預估） | 數位部風險分級框架草案 |
-| 2026-2027（預估） | 各部會配套子法陸續出台 |
+![歐盟 AI Act 與台灣 AI 基本法時程比較](/assets/images/eu-ai-act-taiwan-timeline-comparison.png)
 
 **關鍵差異：** 歐盟已經在執行，台灣還在建構。
 
 ---
 
 ## 企業 AI 合規實務：IT 人現在該做什麼？
+
+![AI 合規三大核心要素](/assets/images/ai-compliance-convergence.png)
 
 ### 如果你的產品/服務會進入歐盟市場
 
