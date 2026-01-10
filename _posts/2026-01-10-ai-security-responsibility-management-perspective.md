@@ -52,7 +52,7 @@ AI 會讀資料、會做判斷、會執行行為。而任何被授權行動的�
 - [AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)——連 OpenAI 都擋不住的攻擊，你的防護能擋住嗎？
 - [最新 Google 研究的 AI 資安解法：權限必須良好分層](/camel-postgresql-implementation-memory-permission-db-layer/)——CaMeL 把「讀資料」與「做動作」徹底分開
 - [用 PostgreSQL 實作 CaMeL 架構](/camel-postgresql-implementation-memory-permission-db-layer/)——不需要重建系統，RLS 就能讓某些事「技術上做不到」
-- [最小權限在現場總是被繞過，最後長出影子 AI](/least-privilege-fde-shadow-it-shadow-ai/)——政策與現實的永恆落差
+- [FDE 模式能幫你看見真實的流程與組織圖](/least-privilege-fde-shadow-it-shadow-ai/)——政策與現實的永恆落差
 - [失控不是假設，是已經發生的事](/ai-digital-anchor-prompt-injection-meow/)——數字人主播在直播中突然學貓叫
 - [法律已經到門口](/taiwan-ai-basic-act-engineering-perspective/)——AI 基本法正式把「問責」寫進條文
 - [資安從來不是絕對安全，而是平衡](/ai-security-balance-not-absolute/)——效率、成本、風險之間的永恆取捨
