@@ -4,12 +4,12 @@ title: "AI 治理是什麼？當 AI 不再只是工具，企業責任該怎麼�
 date: 2026-01-10
 permalink: /ai-governance-not-it-problem/
 image: /assets/images/ai-security-governance-cover.png
-description: "AI 資安，不是 IT 問題，而是數位員工的治理問題。當 AI 會讀資料、做判斷、執行行為，責任歸屬不再是技術問題，而是組織治理的核心挑戰。"
-categories: [AI資訊安全]
-tags: [AI治理, 資安, 企業轉型, CaMeL, 影子AI]
+description: "AI 治理不是模型或資安工具問題，而是企業責任與決策權的設計。當 AI 成為數位員工，誰授權、誰負責、如何問責，成為治理的核心挑戰。"
+categories: [AI治理]
+tags: [AI治理, AI資安, 企業治理, 數位員工, AI問責]
 ---
 
-# AI 資安治理：從工具防禦到組織當責
+# AI 治理是什麼？當 AI 不再只是工具，企業責任該怎麼設計
 
 ## 當「數位員工」出事時，這不是 IT 問題，而是治理問題
 
