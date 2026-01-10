@@ -8,8 +8,6 @@ description: "AI 資安，不是 IT 問題，而是數位員工的治理問題�
 image: /assets/images/ai-security-governance-cover.png
 ---
 
-![AI 資安治理](/assets/images/ai-security-governance-cover.png)
-
 這一週，我連續寫了好幾篇關於 AI 資安的文章。有人私下問我：「是不是最近特別在意資安？」
 
 其實不是。
