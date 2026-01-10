@@ -14,6 +14,8 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 > **核心觀點：** [AI 治理不是 IT 問題](https://ai-coding.wiselychen.com/ai-governance-not-it-problem/)，但 IT 人必須理解法規對技術架構的影響——因為最後要實作的是你。
 
+![EU AI Act vs 台灣 AI 基本法比較](/assets/images/eu-ai-act-vs-taiwan-comparison.png)
+
 ---
 
 ## TL;DR：給決策者的 60 秒重點
