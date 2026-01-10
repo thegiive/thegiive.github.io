@@ -11,7 +11,7 @@ tags: ["AI法規", "台灣", "人工智慧基本法", "AI治理", "合規"]
 
 ## 七大核心原則
 
-![AI 治理的七根支柱](images/ai-governance-seven-pillars.png)
+![AI 治理的七根支柱](/assets/images/ai-governance-seven-pillars.png)
 
 1. 永續性
 2. 人類自主性
@@ -43,7 +43,7 @@ tags: ["AI法規", "台灣", "人工智慧基本法", "AI治理", "合規"]
 
 
 
-![EchoLeak 攻擊流程](images/echoleak-attack-flow.jpg)
+![EchoLeak 攻擊流程](/assets/images/echoleak-attack-flow.jpg)
 
 舉例 Microsoft 365 Copilot "EchoLeak"，你早上打開 Outlook，看到一封看似正常的會議邀請郵件。你甚至還沒決定要不要讀它。但你的 Copilot 已經被劫持，在背景「幫你」洩漏資訊，詳見：[AI Agent 資安：遊戲規則已經改變](https://ai-coding.wiselychen.com/ai-agent-security-game-changed/)
 
@@ -56,7 +56,7 @@ AI Agent 最大的問題就是：「那是 AI 算的，不是我決定的。」�
 
 IT 實務上要做到：
 
-![AI 決策流程：Human in the Loop](images/ai-human-in-the-loop.png)
+![AI 決策流程：Human in the Loop](/assets/images/ai-human-in-the-loop.png)
 
 
 - **指定 AI 系統負責人**：每個 AI 功能都要有明確的 owner，這個人是法律實體，出事時由他負責。你可以設計自動化的「AI 員工」，但必須有真人管控
@@ -104,13 +104,13 @@ IT 實務上要做到：
 
 這也是為什麼我在[企業級地端 LLM 系統架構](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)裡花了很多篇幅設計兩層式的 Log 機制——Gateway 層記錄所有請求，Application 層記錄業務邏輯決策。
 
-![雙層日誌與觀測系統](images/dual-layer-logging-system.png)
+![雙層日誌與觀測系統](/assets/images/dual-layer-logging-system.png)
 
 ---
 
 ## 身為企業或是IT主管，現在該做什麼？
 
-![核心戰略：從合規到文化](images/ai-governance-core-strategy.png)
+![核心戰略：從合規到文化](/assets/images/ai-governance-core-strategy.png)
 
 ### 1. 法律的核心不是限制，而是要求「清晰的責任歸屬」
 
@@ -141,7 +141,7 @@ IT 實務上要做到：
 
 如果你需要一個有機會合規Agent IT架構的草圖跟方向，歡迎使用我之前的作品[企業級地端 LLM 系統架構](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/) 的架構圖
 
-![企業級地端 LLM 系統架構藍圖](images/local-llm-enterprise-architecture.png)
+![企業級地端 LLM 系統架構藍圖](/assets/images/local-llm-enterprise-architecture.png)
 
 
 ---
