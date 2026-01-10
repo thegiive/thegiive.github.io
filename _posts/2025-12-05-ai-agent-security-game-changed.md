@@ -6,7 +6,7 @@
 
 ---
 
-![AI Agent Security](images/ai-agent-security-logo.png)
+![AI Agent Security](/assets/images/ai-agent-security-logo.png)
 
 上週五，我在香港迪士尼酒店 ~~玩得很開心~~ 做很棒的技術演講，分享了在大 Agent 時代的資安威脅 , 跟許多同業跟客戶交流，聽到一些有趣的故事
 
@@ -91,7 +91,7 @@
 
 只需要一個精心設計的 prompt，等 AI 自己把資料送出去。
 
-![EchoLeak Attack Diagram](images/echoleak-attack-diagram.png)
+![EchoLeak Attack Diagram](/assets/images/echoleak-attack-diagram.png)
 
 
 這讓我開始思考一個問題：**我們是不是還在用 Chatbot 時代的安全思維，來處理 Agent 時代的風險？**
