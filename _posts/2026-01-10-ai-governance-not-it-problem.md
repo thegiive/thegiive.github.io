@@ -207,6 +207,7 @@ AI 治理不需要從零開始建立完整框架。AI 不會等待治理成熟�
 | [最小權限的現實：為什麼現場總是長出影子 AI](/least-privilege-fde-shadow-it-shadow-ai/) | 為什麼政策永遠被繞過？ |
 | [數字人主播學貓叫：一場 Prompt Injection 的現場直播](/ai-agent-attack-cases-collection/#案例五中國數字人主播--開發者模式學貓叫一百次) | AI 失控可以有多荒謬？ |
 | [台灣 AI 基本法：工程師視角的解讀](/taiwan-ai-basic-act-engineering-perspective/) | 法律如何定義 AI 的責任？ |
+| [AI Coding 工具的資安風險](/ai-security-balance-not-absolute/) | 開發工具本身的風險在哪？ |
 | [AI 時代的資安平衡](/ai-security-balance-not-absolute/) | 資安的本質是什麼？ |
 
 ---
