@@ -1,9 +1,11 @@
-# AI Agent 安全性：遊戲規則已經改變，傳統資安工具看不到的盲區
-
-**作者：** Wisely Chen
-**日期：** 2025年12月
-**系列：** AI Agent 實戰觀察
-
+---
+title: "AI Agent 安全性：遊戲規則已經改變，傳統資安工具看不到的盲區"
+date: 2025-12-05
+description: "Salesforce ForcedLeak、Microsoft 365 Copilot EchoLeak 事件揭露 AI Agent 的資安盲區。傳統 WAF/APM 看不到的威脅，企業該如何應對？"
+image: /assets/images/ai-agent-security-logo.png
+tags: ["AI Agent", "資安", "Prompt Injection", "企業安全"]
+categories: ["AI治理"]
+permalink: /ai-agent-security-game-changed/
 ---
 
 ![AI Agent Security](/assets/images/ai-agent-security-logo.png)
