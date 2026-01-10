@@ -11,7 +11,15 @@ tags: [AI治理, AI資安, 企業治理, 數位員工, AI問責]
 
 # AI 治理是什麼？企業在 AI 時代必須回答的 3 個責任問題
 
+AI 治理（AI Governance）是指企業在使用 AI 系統時，如何設計責任歸屬、決策權與問責機制，而不只是資安或技術控制。
+
 ## 什麼是 AI 治理？為什麼它不是 IT 或資安問題
+
+---
+
+> AI 資安，不是 IT 問題，而是數位員工的治理問題。
+
+![AI 治理框架（AI Governance）：企業如何設計 AI 責任、決策權與問責機制](/assets/images/ai-security-governance-cover.png)
 
 這一週，我連續寫了好幾篇關於 AI 資安的文章。有人私下問我：「是不是最近特別在意資安？」
 
@@ -50,12 +58,12 @@ AI 會讀資料、會做判斷、會執行行為。而任何被授權行動的�
 以下每一個議題，我都另外寫成一篇實務文章：
 
 - **AI 治理下的技術失效案例：**[為什麼 Guardrails 擋不住 AI 攻擊？](/ai-agent-security-game-changed/)
-- **AI 資安的防禦極限：**[連 OpenAI 都擋不住的攻擊，你的防護能擋住嗎？](/openai-cant-block-attack-ai-security/)
-- **AI 治理的技術實作：**[用 CaMeL 架構把「讀資料」與「做動作」徹底分開](/camel-postgresql-memory-permission/)
-- **AI 治理與現場落差：**[為什麼政策永遠被繞過？影子 AI 的必然出現](/least-privilege-fde-shadow-ai/)
-- **AI 失控的真實案例：**[數字人主播在直播中突然學貓叫](/ai-digital-anchor-prompt-injection/)
-- **AI 治理的法規壓力：**[AI 基本法正式把「問責」寫進條文](/taiwan-ai-basic-act-engineering/)
-- **AI 資安的本質思考：**[效率、成本、風險之間的永恆取捨](/ai-security-balance-not-absolute/)
+- **AI 資安的防禦極限：**[連 OpenAI 都擋不住的攻擊，你的防護能擋住嗎？](/openai-guardrails-failure/)
+- **AI 治理的技術實作：**[用 CaMeL 架構把「讀資料」與「做動作」徹底分開](/camel-postgresql-implementation/)
+- **AI 治理與現場落差：**[為什麼政策永遠被繞過？影子 AI 的必然出現](/least-privilege-shadow-ai/)
+- **AI 失控的真實案例：**[數字人主播在直播中突然學貓叫](/ai-anchor-prompt-injection-meow/)
+- **AI 治理的法規壓力：**[AI 基本法正式把「問責」寫進條文](/taiwan-ai-basic-act/)
+- **AI 資安的本質思考：**[效率、成本、風險之間的永恆取捨](/ai-security-balance/)
 
 從工具失效（Guardrails 擋不住）、到架構設計（CaMeL 讀寫分離）、到現場實務（影子 AI 為什麼一定會出現）、到真實案例（數字人主播學貓叫）、再到法規壓力（AI 基本法問責條款）——每一篇文章都在處理一個具體的面向。
 
@@ -77,7 +85,7 @@ AI 會讀資料、會做判斷、會執行行為。而任何被授權行動的�
 
 ## AI 治理與 AI 資安有什麼不同？
 
-如果把視角拉到組織治理的語言，其實不管是企業治理、IT 治理，還是近年開始成形的 AI 治理，外部成熟框架大多都圍繞幾個核心面向在運作：
+AI 治理和 AI 資安常被混為一談，但本質完全不同。如果把視角拉到組織治理的語言，其實不管是企業治理、IT 治理，還是近年開始成形的 AI 治理，外部成熟框架大多都圍繞幾個核心面向在運作：
 
 - **責任歸屬（Accountability）**
 - **決策權配置（Decision Rights）**
@@ -101,6 +109,10 @@ AI 會讀資料、會做判斷、會執行行為。而任何被授權行動的�
 
 ## AI 治理一定要回答的 3 個核心問題
 
+> **一句話理解 AI 治理：**
+>
+> AI 治理不是防止 AI 出錯，而是當 AI 合法行動卻造成影響時，企業能否清楚說明：誰授權、誰負責、誰承擔。
+
 ![AI 治理三個核心問題：決策權、風險承擔、系統控制](/assets/images/ai-governance-three-questions.png)
 
 ### 哪些 AI 行為必須保留在人類決策層？
@@ -109,7 +121,7 @@ AI 會讀資料、會做判斷、會執行行為。而任何被授權行動的�
 
 AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被允許執行？
 
-這就是為什麼 [CaMeL 架構](/camel-postgresql-memory-permission/) 要把「讀資料」和「做動作」徹底分開——因為有些事情，AI 可以建議，但不能執行。
+這就是為什麼 [CaMeL 架構](/camel-postgresql-implementation/) 要把「讀資料」和「做動作」徹底分開——因為有些事情，AI 可以建議，但不能執行。
 
 ![CaMeL 架構讀寫分離：AI 可以讀資料但不能直接執行動作](/assets/images/ai-camel-read-write-separation.png)
 
@@ -117,7 +129,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 **（Risk Appetite / Accountability）**
 
-如果風險從來沒有被治理層承認，它就一定會以 [影子 AI](/least-privilege-fde-shadow-ai/) 或失控的形式出現。
+如果風險從來沒有被治理層承認，它就一定會以 [影子 AI](/least-privilege-shadow-ai/) 或失控的形式出現。
 
 ![影子 AI 風險：員工未經授權使用 AI 工具的治理挑戰](/assets/images/ai-shadow-ai-risk.png)
 
@@ -129,7 +141,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 如果某件事在治理上被認定「不能發生」，那它就不該只靠 SOP，而是要在技術上做不到。
 
-[CaMeL](/camel-postgresql-memory-permission/)、PostgresSQL RLS、權限分層、審計設計，其實都不是在「防 AI」，而是在**具體化這三個治理決策**。
+[CaMeL](/camel-postgresql-implementation/)、PostgresSQL RLS、權限分層、審計設計，其實都不是在「防 AI」，而是在**具體化這三個治理決策**。
 
 ![AI 控制與審計設計：PostgreSQL RLS 權限分層實作](/assets/images/ai-controls-rls-audit.png)
 
@@ -137,9 +149,49 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 ## 企業該如何開始做 AI 治理？
 
-AI 不會等待治理成熟；[法律](/taiwan-ai-basic-act-engineering/)也不會接受「我們還在研究」作為理由。
+AI 治理不需要從零開始建立完整框架。AI 不會等待治理成熟；[法律](/taiwan-ai-basic-act/)也不會接受「我們還在研究」作為理由。
 
 真正的風險，從來不是 AI 太快，而是組織遲遲不願意定義責任邊界。
+
+---
+
+## 給 CTO / CISO / 董事會：如何用這三個問題檢查現況
+
+如果你是技術主管或董事會成員，以下是一個 15 分鐘的快速診斷方法：
+
+### Step 1：召集一場跨部門會議
+
+邀請 IT、法務、業務單位主管，**只問這三個問題**：
+
+1. **「我們公司有哪些 AI 應用，是可以自己執行動作的？」**
+   - 如果沒人能完整回答，代表連盤點都沒做。
+   - 如果答案是「只有 ChatGPT」，那你可能低估了現場的使用狀況。
+
+2. **「如果這些 AI 出事，誰要負責？」**
+   - 如果答案是「IT」或「供應商」，這就是治理的缺口。
+   - AI 的行為授權者，才是責任歸屬的起點。
+
+3. **「這些 AI 被禁止做的事，是靠制度還是技術？」**
+   - 如果答案是「有寫 SOP」，追問：「有人繞過 SOP 的話，系統會擋住嗎？」
+   - 如果系統不會擋，那這個「禁止」只是一個願望。
+
+### Step 2：根據答案，判斷治理成熟度
+
+| 答案類型 | 治理成熟度 | 下一步行動 |
+|---------|-----------|-----------|
+| 三題都答得出來，且有具體機制 | ⭐⭐⭐ 基本成熟 | 定期覆盤，準備外部審計 |
+| 能答出一兩題，但沒有落實機制 | ⭐⭐ 有意識但有缺口 | 優先補齊責任歸屬與技術控制 |
+| 大部分答不出來，或答案模糊 | ⭐ 尚未啟動 | 從盤點開始，先搞清楚現況 |
+
+### Step 3：把結論帶回董事會
+
+不需要完整的治理框架，但至少要能說：
+
+- **我們知道 AI 在公司裡做什麼**
+- **我們知道誰有權授權這些行為**
+- **我們知道哪些事是技術上做不到的，不是只靠制度**
+
+如果這三句話都說不出來，那「AI 治理」這件事，就還沒有真正開始。
 
 ---
 
@@ -150,17 +202,17 @@ AI 不會等待治理成熟；[法律](/taiwan-ai-basic-act-engineering/)也不�
 | 主題 | 核心問題 |
 |------|---------|
 | [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/) | 為什麼 Guardrails 註定擋不住？ |
-| [AI Guardrails 為什麼註定失敗？](/openai-cant-block-attack-ai-security/) | 連 OpenAI 都擋不住的攻擊 |
-| [CaMeL + PostgreSQL：當記憶與權限都在資料庫層實現](/camel-postgresql-memory-permission/) | 如何讓某些事「技術上做不到」？ |
-| [最小權限的現實：為什麼現場總是長出影子 AI](/least-privilege-fde-shadow-ai/) | 為什麼政策永遠被繞過？ |
-| [數字人主播學貓叫：一場 Prompt Injection 的現場直播](/ai-digital-anchor-prompt-injection/) | AI 失控可以有多荒謬？ |
-| [台灣 AI 基本法：工程師視角的解讀](/taiwan-ai-basic-act-engineering/) | 法律如何定義 AI 的責任？ |
-| [AI Coding 工具的資安風險](/ai-coding-tool-security-risk/) | 開發工具本身的風險在哪？ |
-| [AI 時代的資安平衡](/ai-security-balance-not-absolute/) | 資安的本質是什麼？ |
+| [AI Guardrails 為什麼註定失敗？](/openai-guardrails-failure/) | 連 OpenAI 都擋不住的攻擊 |
+| [CaMeL + PostgreSQL：當記憶與權限都在資料庫層實現](/camel-postgresql-implementation/) | 如何讓某些事「技術上做不到」？ |
+| [最小權限的現實：為什麼現場總是長出影子 AI](/least-privilege-shadow-ai/) | 為什麼政策永遠被繞過？ |
+| [數字人主播學貓叫：一場 Prompt Injection 的現場直播](/ai-anchor-prompt-injection-meow/) | AI 失控可以有多荒謬？ |
+| [台灣 AI 基本法：工程師視角的解讀](/taiwan-ai-basic-act/) | 法律如何定義 AI 的責任？ |
+| [AI Coding 工具的資安風險](/ai-coding-security-risk/) | 開發工具本身的風險在哪？ |
+| [AI 時代的資安平衡](/ai-security-balance/) | 資安的本質是什麼？ |
 
 ---
 
-## Appendix：給董事會 / 風控的 AI 治理檢核清單
+## Appendix：AI 治理給董事會 / 風控的檢核清單
 
 以下不是技術清單，而是一份**治理成熟度的自我檢查**。
 
