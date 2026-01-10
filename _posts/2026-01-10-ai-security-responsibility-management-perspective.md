@@ -50,8 +50,7 @@ AI 會讀資料、會做判斷、會執行行為。而任何被授權行動的�
 
 - [AI Agent 的行為模式已經改變](/ai-agent-security-game-changed/)——Guardrails 註定擋不住語言層面的攻擊
 - [AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)——連 OpenAI 都擋不住的攻擊，你的防護能擋住嗎？
-- [最新 Google 研究的 AI 資安解法：權限必須良好分層](/camel-postgresql-implementation-memory-permission-db-layer/)——CaMeL 把「讀資料」與「做動作」徹底分開
-- [用 PostgreSQL 實作 CaMeL 架構](/camel-postgresql-implementation-memory-permission-db-layer/)——不需要重建系統，RLS 就能讓某些事「技術上做不到」
+- [用 PostgreSQL 實作 CaMeL 架構](/camel-postgresql-implementation-memory-permission-db-layer/)——CaMeL 把「讀資料」與「做動作」徹底分開，用 RLS 讓某些事「技術上做不到」
 - [FDE 模式能幫你看見真實的流程與組織圖](/least-privilege-fde-shadow-it-shadow-ai/)——政策與現實的永恆落差
 - [失控不是假設，是已經發生的事](/ai-digital-anchor-prompt-injection-meow/)——數字人主播在直播中突然學貓叫
 - [法律已經到門口](/taiwan-ai-basic-act-engineering-perspective/)——AI 基本法正式把「問責」寫進條文
@@ -113,7 +112,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 ![CaMeL 讀寫分離](/assets/images/ai-camel-read-write-separation.png)
 
-### 第二，哪些錯誤是組織選擇承擔的？
+### 第二，哪些AI可能錯誤是組織選擇承擔的？
 
 **（Risk Appetite / Accountability）**
 
@@ -123,7 +122,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 如果連實驗都不允許，影子 AI 一定會出現；如果什麼都放行，那失控只是時間問題。
 
-### 第三，哪些行為必須在系統結構上被禁止？
+### 第三，哪些AI行為必須在流程系統上被禁止？
 
 **（Controls / Auditability）**
 
