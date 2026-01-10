@@ -144,7 +144,7 @@ AI Agent Security 不是危言聳聽，在往下討論之前，先看幾個學�
 
 ---
 
-## 遊戲規則已經改變：Security Architecture 必須重構
+## 遊戲規則已經改變：Security Architecture 必須重構（AI Agent Security Architecture）
 
 AI Agent 改變了整個 Security Architecture 的基本假設。從「對話」到「執行」，風險模型完全不同。
 
@@ -173,7 +173,7 @@ AI Agent 改變了整個 Security Architecture 的基本假設。從「對話」
 
 ---
 
-## 為什麼 Guardrails 擋不住 AI Agent 攻擊？
+## 為什麼 Guardrails 擋不住 AI Agent 攻擊？（AI Agent Guardrails Failure）
 
 很多資安大神看完上面的案例會問：「那加 Guardrails 不就好了？」
 
