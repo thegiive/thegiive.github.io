@@ -234,15 +234,3 @@ Wisely Chen，NeuroBrain Dynamics Inc. 研發長，20+ 年 IT 產業經驗。曾
 
 ---
 
-## AI Agent 系列導航
-
-本文是 **[AI Agent 完整指南](/ai-agent/)** 的一部分。
-
-**架構系列：**
-- [[Part 1] Workflow vs ReAct](/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/) — 基礎架構比較
-- [[Part 2] Plan & Execute](/mang-mu-jia-su-vs-du-zhu-lu-shu-pao-wei-shi-mo-ai-agent-xu-yao-plan-exec-mo-shi/) — 執行模式選擇
-- [[Part 5] Dual-Agent 架構](/anthropic-dual-agent-architecture/) — Claude Code 內部設計
-- [[Part 7] LATS 決策大腦](/lats-agent-tree-search-decision-brain/) — 三思而後行的終極決策
-
-**安全實作：**
-- [企業級地端 LLM 架構藍圖](/local-llm-enterprise-architecture/) — Auth + 沙盒 + 雙層 Log
