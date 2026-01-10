@@ -2,7 +2,7 @@
 title: "EU AI Act vs 台灣人工智慧基本法：兩套治理邏輯，一個企業合規目標"
 date: 2026-01-10
 description: "EU AI Act 與台灣人工智慧基本法有何差異？本文從企業 IT 與 AI 合規實務出發，比較風險分級、罰則、域外效力與實際導入策略，協助企業判斷該如何準備。"
-image: /assets/images/eu-ai-act-vs-taiwan-comparison.png
+image: images/eu-ai-act-vs-taiwan-comparison.png
 tags: ["AI法規", "EU AI Act", "台灣人工智慧基本法", "AI治理", "合規", "風險分級"]
 categories: ["AI治理"]
 permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
@@ -14,7 +14,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 > **核心觀點：** [AI 治理不是 IT 問題](https://ai-coding.wiselychen.com/ai-governance-not-it-problem/)，但 IT 人必須理解法規對技術架構的影響——因為最後要實作的是你。
 
-![EU AI Act vs 台灣 AI 基本法比較](/assets/images/eu-ai-act-vs-taiwan-comparison.png)
+![EU AI Act vs 台灣 AI 基本法比較](images/eu-ai-act-vs-taiwan-comparison.png)
 
 ---
 
@@ -49,7 +49,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 歐盟把 AI 系統分成四個等級，每個等級有明確的合規要求：
 
-![歐盟 AI Act 與台灣 AI 基本法風險分類比較](/assets/images/eu-ai-act-risk-classification-comparison.png)
+![歐盟 AI Act 與台灣 AI 基本法風險分類比較](images/eu-ai-act-risk-classification-comparison.png)
 
 - **Unacceptable（禁止）**：社會信用評分、操控性 AI、未經同意的生物辨識 → 直接禁止
 - **High（高風險）**：求職篩選、信用評估、醫療診斷 → 強制認證、風險評估、人工監督、[Audit Trail](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)
@@ -76,7 +76,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## EU AI Act 罰則有多重？台灣人工智慧基本法會罰款嗎？
 
-![歐盟與台灣 AI 法規罰則比較](/assets/images/eu-ai-act-penalties-comparison.png)
+![歐盟與台灣 AI 法規罰則比較](images/eu-ai-act-penalties-comparison.png)
 
 ### EU AI Act 的罰則結構
 
@@ -171,7 +171,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## AI 監管機構比較：誰負責執法？
 
-![歐盟與台灣 AI 監管機構比較](/assets/images/eu-taiwan-ai-regulatory-bodies.png)
+![歐盟與台灣 AI 監管機構比較](images/eu-taiwan-ai-regulatory-bodies.png)
 
 ### EU AI Act 的雙層架構
 
@@ -196,7 +196,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## EU AI Act 什麼時候生效？台灣 AI 基本法時程表
 
-![歐盟 AI Act 與台灣 AI 基本法時程比較](/assets/images/eu-ai-act-taiwan-timeline-comparison.png)
+![歐盟 AI Act 與台灣 AI 基本法時程比較](images/eu-ai-act-taiwan-timeline-comparison.png)
 
 **關鍵差異：** 歐盟已經在執行，台灣還在建構。
 
@@ -204,7 +204,9 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## 企業 AI 合規實務：IT 人現在該做什麼？
 
-![AI 合規三大核心要素](/assets/images/ai-compliance-convergence.png)
+不論是歐盟還是台灣的法規，企業 AI 治理的核心都是相同的。在開始實務工作前，建議先用[這三個問題檢查現況](https://ai-coding.wiselychen.com/ai-governance-not-it-problem/#給-cto--ciso--董事會如何用這三個問題檢查現況)。
+
+![AI 合規三大核心要素](images/ai-compliance-convergence.png)
 
 ### 如果你的產品/服務會進入歐盟市場
 
@@ -235,7 +237,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 |--------|---------|------|
 | **立即** | 盤點現有 AI 應用 | 你要先知道自己在用什麼 |
 | **立即** | 建立 [Audit Trail](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/) | 兩邊法規都要求可追溯性 |
-| **短期** | 指定 AI 系統負責人 | 問責制的基礎 |
+| **短期** | 指定[每個 AI 系統的負責人](https://ai-coding.wiselychen.com/ai-governance-not-it-problem/) | 問責制的基礎 |
 | **短期** | 制定內部 AI 使用規範 | 在法規細則出來前先有基本框架 |
 | **中期** | 風險評估流程 | 等風險分級框架明確後執行 |
 | **中期** | 供應商合規確認 | 你用的第三方 AI 是否符合規範 |
@@ -290,7 +292,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 對 IT 人來說，不管法規怎麼寫，有幾件事是不變的：
 
-1. **AI 不能成為新的資安破口**
+1. **[AI 不能成為新的資安破口](https://ai-coding.wiselychen.com/ai-agent-security-game-changed/)**
 2. **AI 的決策要可追溯**
 3. **出事時要有人負責，而且要能交代當時發生什麼**
 
