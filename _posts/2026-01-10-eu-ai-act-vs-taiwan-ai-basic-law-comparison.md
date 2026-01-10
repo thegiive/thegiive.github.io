@@ -2,6 +2,7 @@
 title: "EU AI Act vs 台灣人工智慧基本法：兩套治理邏輯，一個企業合規目標"
 date: 2026-01-10
 description: "EU AI Act 與台灣人工智慧基本法有何差異？本文從企業 IT 與 AI 合規實務出發，比較風險分級、罰則、域外效力與實際導入策略，協助企業判斷該如何準備。"
+image: /assets/images/eu-ai-act-vs-taiwan-comparison.png
 tags: ["AI法規", "EU AI Act", "台灣人工智慧基本法", "AI治理", "合規", "風險分級"]
 categories: ["AI治理"]
 permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
