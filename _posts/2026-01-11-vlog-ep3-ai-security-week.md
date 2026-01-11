@@ -3,6 +3,7 @@ layout: post
 title: "Vlog EP3：AI 資安週 — Guardrail 是假的，CaMeL 才是真的？"
 date: 2026-01-11
 description: "這週我深入研究了 AI Agent 資安議題。從 OpenAI Red Team 專家的訪談開始，到 Google 的 CaMeL 架構，再到企業導入 AI 時的資安平衡問題。結論是：AI 資安已經不是 IT 問題，而是企業治理問題。"
+image: /assets/images/vlog-ep3-ai-security-week-cover.png
 categories: [AI 資訊安全, AI Agent, Vlog]
 tags: [Prompt Injection, CaMeL, Guardrail, 最小權限原則, Shadow AI, 企業治理]
 permalink: /vlog-ep3-ai-security-week/
