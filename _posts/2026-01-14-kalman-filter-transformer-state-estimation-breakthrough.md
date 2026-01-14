@@ -53,13 +53,13 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 
 ### Kalman Filter 每次做兩件事
 
-**1️⃣ 預測（Predict）**
+**1. 預測（Predict）**
 
 根據「上一刻的狀態 + 系統模型」，先猜現在會變成什麼樣。
 
 > 例如：昨天在這裡、速度是 10 m/s → 今天大概在那裡
 
-**2️⃣ 校正（Update）**
+**2. 校正（Update）**
 
 用「實際量測」來修正剛剛的猜測。
 
@@ -113,21 +113,21 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 
 你其實同時在用兩種能力：
 
-### 1️⃣ 直覺派（Transformer）
+### 1. 直覺派（Transformer）
 
 - 看地圖
 - 記得剛剛怎麼走
 - 推測接下來會不會塞車
 
-👉 很聰明，但有時會腦補過頭
+很聰明，但有時會腦補過頭
 
-### 2️⃣ 理性派（Kalman）
+### 2. 理性派（Kalman）
 
 - 車不可能瞬間移動
 - 速度變化有極限
 - GPS 會飄，要修正
 
-👉 很保守，但很可靠
+很保守，但很可靠
 
 **現在學界做的事，就是把這兩個人放在同一台車上。**
 
@@ -137,7 +137,7 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 
 從最近的論文來看，Transformer 在這個組合裡有三種角色：
 
-### 🟢 路線 A：學 Kalman Gain（最主流）
+### 路線 A：學 Kalman Gain（最主流）
 
 代表作：**KalmanFormer**（2024, Frontiers in Neurorobotics）
 
@@ -159,7 +159,7 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 
 在模型不匹配、非線性、多感測器的場景，它明顯贏 EKF / UKF。
 
-### 🟡 路線 B：學 Dynamics / Noise（A-KIT）
+### 路線 B：學 Dynamics / Noise（A-KIT）
 
 代表作：**A-KIT: Adaptive Kalman-Informed Transformer**（2024, arXiv）
 
@@ -178,7 +178,7 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 
 實驗上，在自主水下載具導航的真實資料上，比傳統 EKF 提升了約 **49.5% 的位置精度**。
 
-### 🔵 路線 C：工程應用派
+### 路線 C：工程應用派
 
 應用場景包括：
 
@@ -212,7 +212,7 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 
 資料來源很亂：GPS（會飄）、車速感測器（會壞）、路況 API（延遲）、人為操作（司機亂停）
 
-### ❌ 只用 Transformer（很多公司真的這樣做）
+### 只用 Transformer（很多公司真的這樣做）
 
 把歷史 GPS、速度、時間、路況全丟進 Transformer，直接 end-to-end 預測 ETA。
 
@@ -225,14 +225,14 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 - 車實際停著 → 模型還以為在移動
 - 系統信模型 → 調度亂插單
 
-### ❌ 只用 Kalman（傳統派）
+### 只用 Kalman（傳統派）
 
 用 Kalman Filter，假設固定速度模型 + 噪聲。
 
 **優點：** 穩、不會亂跳、解釋得出來
 **缺點：** 遇到塞車、事故、非典型路段 → 反應慢、太保守
 
-### ✅ Transformer + Kalman
+### Transformer + Kalman（推薦做法）
 
 **分工非常清楚：**
 
@@ -246,14 +246,14 @@ Transformer 學的是：
 - 這個司機的行為模式
 - GPS 在這區域通常多爛
 
-👉 輸出不是 ETA，而是：「這筆資料可信嗎？接下來變化可能多大？」
+輸出不是 ETA，而是：「這筆資料可信嗎？接下來變化可能多大？」
 
 Kalman 永遠堅守幾件事：
 - 車不可能瞬移
 - 速度變化有物理上限
 - 不確定性要被記錄
 
-👉 最後 ETA 由 Kalman 算，Transformer 只影響「要信資料多少」
+最後 ETA 由 Kalman 算，Transformer 只影響「要信資料多少」
 
 ---
 
