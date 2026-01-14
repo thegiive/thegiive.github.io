@@ -274,6 +274,8 @@ Kalman 永遠堅守幾件事：
 
 ## 工程觀點：為什麼這是「安全」的技術投資？
 
+![工程觀點：可審計性、可解釋性、安全性](/assets/images/kalman-engineering-safety-perspective.png)
+
 這個組合的價值，不是讓 AI 更強，而是讓 AI 更可控。
 
 ### 可審計性（Auditable）
