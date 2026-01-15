@@ -71,6 +71,8 @@ PostgreSQL 是 **row-based storage**，對於 OLTP（交易處理）場景非常
 
 Langfuse v3 的架構變成：
 
+![Langfuse v3 Hybrid Architecture](/assets/images/langfuse-v3-hybrid-architecture.png)
+
 | 元件 | 用途 |
 |------|------|
 | **ClickHouse** | OLAP 儲存（traces, observations, scores） |
