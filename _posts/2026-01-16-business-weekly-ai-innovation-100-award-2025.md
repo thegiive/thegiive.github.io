@@ -42,7 +42,7 @@ description: "創智動能以 AI Coding 流程導入與 AI Pocket 語音助手�
 感謝商業周刊的對我們 AI Coding 治理能力的肯定
 
 最後，還有一個很重要的角色——
-Argon Pocket 硬體，讓我能隨時以語音掌握專案進度，把決策與行動的時間差壓到最低
+[Argon Pocket 硬體](https://news.taiwannet.com.tw/c2/168484/%E8%88%87%E8%B6%A8%E5%8B%A2%E5%85%B1%E6%8C%AF%EF%BC%9AArgon-Pocket-%E7%9C%8B%E8%A6%8B%E4%BC%81%E6%A5%AD-AI-%E8%A3%9D%E7%BD%AE%E7%9A%84%E6%9C%AA%E4%BE%86%E5%AE%9A%E4%BD%8D.html)，讓我能隨時以語音掌握專案進度，把決策與行動的時間差壓到最低
 
 ![Argon Pocket 語音助手](/assets/images/business-weekly-ai-innovation-100-award-2025-4.png)
 
