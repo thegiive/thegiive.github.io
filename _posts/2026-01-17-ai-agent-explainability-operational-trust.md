@@ -1,7 +1,8 @@
 ---
-title: "AI Agent 可解釋性：不只是資安，更是營運信任的入場券"
+title: "AI Agent 可解釋性：從資安合規到營運信任的關鍵工程設計"
 date: 2026-01-17
 description: "我們一直被告知可解釋性是為了資安和法規，但在維運層面，Agent 可解釋性才是獲得營運團隊信任的關鍵——三層工程鏈路的實務設計。"
+image: /assets/images/ai-agent-explainability-trust-bridge.png
 tags: ["AI Agent", "可解釋性", "Observability", "Langfuse", "AI治理"]
 categories: ["AI治理"]
 permalink: /ai-agent-explainability-operational-trust/
@@ -53,7 +54,9 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 
 這一層解決的是：**Agent 做了什麼。**
 
-工具面上，可以用 Agent Framework 來記錄（例如 N8N 的 execution log）。
+具體來說，你要能回答這些問題：這個任務總共跑了幾個步驟？每一步呼叫了哪個工具？輸入是什麼、輸出是什麼？哪一步失敗了、失敗的原因是什麼？這些資訊必須是即時可查的，而不是事後去翻 log 才能拼湊出來。
+
+工具面上，可以用 Agent Framework 來記錄（例如 N8N 的 execution log）。這類工具的好處是，流程本身就是視覺化的 DAG，每個節點的執行狀態、耗時、錯誤訊息都一目瞭然。對於營運團隊來說，這是最直覺的「發生了什麼事」的答案。
 
 ![第一層：流程層 Workflow](/assets/images/ai-agent-explainability-layer1-workflow.png)
 
@@ -67,7 +70,9 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 
 這一層解決的是：**Agent 為什麼這樣做。**
 
-工具面上，這是 Langfuse 的範疇。
+舉個例子：Agent 收到一個客戶查詢，它決定先查 CRM 再查知識庫，最後生成回覆。第一層只會告訴你「查了 CRM、查了知識庫」，但第二層要回答的是：為什麼先查 CRM？為什麼知識庫回傳了 5 筆資料，Agent 只採用了 2 筆？被捨棄的 3 筆是什麼理由？這些決策邏輯如果沒有被記錄下來，當結果出錯時，你根本無從追溯問題出在哪裡。
+
+工具面上，這是 Langfuse 的範疇。它可以記錄每一次 LLM 呼叫的 prompt、completion、token 用量，更重要的是可以把多次呼叫串成一條完整的 trace，讓你看到 Agent 的思考脈絡。
 
 ![第二層：Agent Log 層 Decision Log](/assets/images/ai-agent-explainability-layer2-decision.png)
 
@@ -81,7 +86,9 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 
 透過 trace、品質評分與回饋迴圈，把可解釋性升級為持續優化與治理能力。
 
-工具面上，是傳統 BI 範疇。
+這一層要回答的問題是時間軸上的：過去一個月，這個 Agent 的成功率是上升還是下降？哪些類型的任務失敗率特別高？使用者的滿意度有沒有提升？成本是否在可控範圍內？這些問題需要把前兩層的資料彙整起來，做長期趨勢分析。沒有這一層，你就無法判斷一個 Agent 是「剛好這次成功」還是「持續可靠」。
+
+工具面上，是傳統 BI 範疇。你可以把 Langfuse 的資料匯出到 Data Warehouse，用 Metabase 或 Looker 做 dashboard，追蹤 KPI 如成功率、平均回應時間、token 成本、使用者回饋分數等。這些指標才是營運團隊決定「要不要繼續用這個 Agent」的依據。
 
 ![第三層：記錄與觀測層 Tracing](/assets/images/ai-agent-explainability-layer3-tracing.png)
 
