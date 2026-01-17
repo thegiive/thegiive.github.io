@@ -22,7 +22,7 @@ permalink: /ai-agent-explainability-operational-trust/
 
 ## 可解釋性的誤區
 
-我們一直被要求「可解釋性」是因為資安、GDPR、或是 AI 法規。
+我們一直被要求「可解釋性」是因為[資安](/ai-agent-security-game-changed/)、GDPR、或是 [AI 法規](/eu-ai-act-vs-taiwan-ai-basic-law/)。
 
 但其實在維運層面，我們更需要 Agent 可解釋性。
 
