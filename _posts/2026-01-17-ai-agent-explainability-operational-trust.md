@@ -55,6 +55,8 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 
 工具面上，可以用 Agent Framework 來記錄（例如 N8N 的 execution log）。
 
+![第一層：流程層 Workflow](/assets/images/ai-agent-explainability-layer1-workflow.png)
+
 ### 第二層：決策可解釋性
 
 真正困難的不是流程，而是 Agent 為什麼這樣想。
@@ -67,6 +69,8 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 
 工具面上，這是 Langfuse 的範疇。
 
+![第二層：Agent Log 層 Decision Log](/assets/images/ai-agent-explainability-layer2-decision.png)
+
 ### 第三層：長期記錄與觀測
 
 這一層的目的，不是理解一次決策，而是長期回答：
@@ -78,6 +82,8 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 透過 trace、品質評分與回饋迴圈，把可解釋性升級為持續優化與治理能力。
 
 工具面上，是傳統 BI 範疇。
+
+![第三層：記錄與觀測層 Tracing](/assets/images/ai-agent-explainability-layer3-tracing.png)
 
 ---
 
