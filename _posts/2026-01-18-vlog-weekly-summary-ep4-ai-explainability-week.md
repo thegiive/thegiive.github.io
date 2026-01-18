@@ -29,6 +29,8 @@ description: "可解釋性不只是治理需求，更是建立現場信任的關
 
 ## 披薩指數：FDE 落地的最佳詮釋
 
+> 📖 延伸閱讀：[披薩指數：為什麼 FDE 模式 50 年後依然有效](/fde-pizza-index-2026-update/)
+
 在 2026 年剛開始，美國五角大廈有兩次軍事活動——一次對葉門、一次對伊朗。
 
 那在這兩次的軍事活動的前一天晚上，那個五角大廈的著名的數據分析指數「**披薩指數**」，依舊如約而至的亮起。
@@ -56,6 +58,8 @@ description: "可解釋性不只是治理需求，更是建立現場信任的關
 ---
 
 ## 學界趨勢：Kalman Filter × Transformer
+
+> 📖 延伸閱讀：[Kalman Filter × Transformer：可解釋 AI 的工程突破](/kalman-filter-transformer-state-estimation-breakthrough/)
 
 那在這週在講一些可解釋性部分的時候，我注意到的目前學界的一些趨勢。
 
@@ -96,6 +100,8 @@ description: "可解釋性不只是治理需求，更是建立現場信任的關
 
 ## IT 架構：Langfuse V3 的治理困境
 
+> 📖 延伸閱讀：[Langfuse V3 架構分析：PostgreSQL 與 RLS 的治理取捨](/langfuse-architecture-postgresql-rls-tradeoff/)
+
 然後再來就是講到了，就是相關的那個保證很無聊的 IT 架構。
 
 那這週講到的，其實也是跟可解釋性有關的。我們就是深入去講那 **Langfuse** 這樣子這個這個一個架構。
@@ -133,6 +139,8 @@ description: "可解釋性不只是治理需求，更是建立現場信任的關
 ---
 
 ## 可解釋性的核心價值：從合規到信任
+
+> 📖 延伸閱讀：[AI Agent 可解釋性：三層工程鏈路設計](/ai-agent-explainability-operational-trust/)
 
 然後在週六的時候，在治理的議題的時候，我們總結到這週的一些相關的可解釋性的相關的議題。
 
