@@ -1,10 +1,12 @@
 ---
 layout: post
 title: "MIT 新論文 RLM：讓 AI 不再「忘記」，但真正的瓶頸依然不是 Coding"
-date: 2026-01-19 08:00:00 +0800
-permalink: /recursive-language-models-rlm-context-rot-solution/
+date: 2026-01-19 10:00:00 +0800
 description: "MIT CSAIL 發布 Recursive Language Models (RLMs)，解決了長文本的「Context Rot」與高成本問題。但作為資深工程師，我認為 RLM 的真正價值不在寫 Code，而在於對 Legacy 系統的「考古」與 Spec 逆向工程。"
+permalink: /recursive-language-models-rlm-context-rot-solution/
 image: /assets/images/rlm-llm-vs-rlm-comparison.png
+author: Wisely Chen
+categories: [AI Agent, IT 架構, 論文解讀]
 ---
 
 ![RLM vs 傳統 LLM：從死背百科全書到像研究員一樣查資料](/assets/images/rlm-llm-vs-rlm-comparison.png)
@@ -66,11 +68,11 @@ RLM 不一樣——它靠對超長上下文的遞歸式理解，同時對程式�
 1. 讀舊文件，得知「理論上」系統該做什麼
 2. 掃描實際 codebase（Ground Truth）
 3. 遞歸追蹤函數調用鏈，深入到 database schema、甚至 10 年前的 SQL migration
-4. 生成**差異報告**：「文件說 `calculate_tax` 用 5% 稅率，但 `patch_2023.py` 的裝飾器已經覆寫成動態稅率了。」
+4. 生成**差異報告**：「文件說 \`calculate_tax\` 用 5% 稅率，但 \`patch_2023.py\` 的裝飾器已經覆寫成動態稅率了。」
 
 ![自動化 Spec 驗證：理論文件與程式碼真相的交叉比對](/assets/images/rlm-spec-verification-diff-report.png)
 
-連 magic number 也能挖出來——`if (type == 7)` 是什麼意思？RLM 會去翻 commit log 告訴你：「7 代表『已凍結帳戶』，建議重構為常數。」人類工程師要做這件事，得花幾週翻遍整個 codebase；RLM 幾分鐘就能交出差異報告。
+連 magic number 也能挖出來——\`if (type == 7)\` 是什麼意思？RLM 會去翻 commit log 告訴你：「7 代表『已凍結帳戶』，建議重構為常數。」人類工程師要做這件事，得花幾週翻遍整個 codebase；RLM 幾分鐘就能交出差異報告。
 
 如果說理解 Spec 是「通靈」，那 RLM 做的就是幫你通靈前的準備工作，焚香沐浴、吃齋念佛——讓真正的通靈者（PM）可以直接起乩決策，而不是先花三週考古。人在Spec的取捨上，這方面的功用還是難以取代，但 RLM 已經讓整件事變得順暢太多了。
 
@@ -84,12 +86,12 @@ RLM 對 QA 的幫助很大——它可以靠超長上下文的遞歸讀取能力
 
 ![QA 革命：跨檔案依賴追蹤與 Call Graph 分析](/assets/images/rlm-qa-call-graph-dependency.png)
 
-```
+\`\`\`
 RLM: 我發現 login() 被 50 個檔案呼叫。
 其中 49 個沒問題，但 PaymentController
 依賴這個函數的特定回傳格式。
 如果你改了回傳型別，計費系統會崩潰。
-```
+\`\`\`
 
 ### Debug Stack Trace
 
@@ -105,14 +107,14 @@ RLM: 我發現 login() 被 50 個檔案呼叫。
 
 RLM 的思考過程：
 
-```
+\`\`\`
 Root: 閱讀 API Controller
 ├─ Recursion 1: InventoryService（找出「庫存不足」邊界條件）
 ├─ Recursion 2: PaymentGateway（分析支付失敗回傳碼）
 └─ 生成 Test Case:
    「當庫存剩 1 且支付網關回傳 Timeout 時，
     系統應該回滾庫存並鎖定訂單。」
-```
+\`\`\`
 
 這種跨模組的複雜測試案例，傳統 AI 寫不出來，因為它看不到全局。人可以做到，但需要非常資深的 QA 工程師，加上對 Spec 非常熟的 PM 一起配合才行——這組合在現實中可遇不可求。
 
@@ -120,11 +122,11 @@ Root: 閱讀 API Controller
 
 人類 QA 測試時憑經驗（輸入 -1 或 null），但容易漏掉特定邏輯的邊界。
 
-RLM 掃描程式碼中的 `if` 判斷式：
+RLM 掃描程式碼中的 \`if\` 判斷式：
 
-```python
+\`\`\`python
 if (total_amount > 10000 && user.is_vip):
-```
+\`\`\`
 
 自動生成測試案例：「金額剛好 10000 且是 VIP」的情況。
 
@@ -188,6 +190,30 @@ AI 的進化方向，正在從「幫你寫 code」轉向「幫你理解系統、
 但 RLM 至少給了一個方向：讓 AI 變成那個「最懂系統的資深工程師」，幫你檢查盲點、挖掘邊界案例、追蹤依賴鏈。
 
 剩下的「通靈」工作——理解客戶真正想要什麼——還是得靠人。
+
+---
+
+## 常見問題 Q&A
+
+**Q: RLM 跟 RAG 有什麼不同？不都是「不把全部資料塞進去」嗎？**
+
+表面上很像，但核心差異在於「誰在控制檢索」。RAG 是先用 embedding 找到「可能相關」的片段，再餵給 LLM；問題是 embedding 不懂邏輯，常常撈到表面相似但語意不對的內容。RLM 是讓 LLM 自己決定要讀什麼、怎麼讀，而且可以遞歸深入——讀完 A 發現需要 B，再去讀 B。這就像 RAG 是讓圖書館員幫你找書，RLM 是讓研究員自己翻。
+
+**Q: RLM 現在能用了嗎？有現成的工具嗎？**
+
+論文剛發布（2025/12/31），目前還沒有成熟的商用工具。但這個概念已經在一些 Agent 框架中看到雛形，像是 Claude 的 Computer Use 讓 AI 可以操作外部環境，其實就是類似的思路。我預期 2026 年會有更多基於 RLM 架構的工具出現，到時候再來更新實測心得。
+
+**Q: 延遲是串行的，那 RLM 適合什麼場景？**
+
+不適合即時對話（chatbot），但非常適合「批次分析」任務：Legacy 系統考古、Spec 逆向工程、大規模 Code Review、整合測試生成。這些任務本來就不是秒級回應，跑個幾分鐘換來準確率跟成本優勢，完全划算。
+
+**Q: 你說 RLM 對 Coding 本身幫助有限，那它到底解決什麼問題？**
+
+解決的是「理解」問題，不是「生成」問題。現在 AI 寫 code 已經夠快了，瓶頸在於它不知道該寫什麼、寫完對不對。RLM 讓 AI 可以真正「讀懂」一個複雜系統的全貌，這對 Spec 理解跟 QA 驗收是降維打擊。打個比方：傳統 LLM 是會打字的秘書，RLM 是會做研究的分析師。
+
+**Q: 成本省 10-100 倍是真的嗎？**
+
+論文的測試場景是「500 頁技術手冊」，從 100k tokens 降到 5k tokens。但這是理想情況——如果問題需要掃描整份文件才能回答，省不了多少。實際省多少取決於問題的「局部性」：問題越聚焦，省越多；問題越發散，優勢越小。
 
 ---
 
