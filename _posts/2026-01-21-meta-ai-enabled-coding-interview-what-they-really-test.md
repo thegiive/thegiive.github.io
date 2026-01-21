@@ -37,17 +37,17 @@ image: /assets/images/meta-ai-coding-interview-cover.png
 
 根據多位候選人回報，題目會是以下三種之一：
 
-### 1. 從頭建立功能（Build Features）
+### 1. 從頭建立功能
 給你一個現有的 codebase 結構，要求你新增一個功能。例如：
 - 現有一個卡牌遊戲系統
 - 需要實作「抽 N 張牌，找出總和為 15 的三張牌組合」
 
-### 2. 擴充半完成的程式碼（Extend Code）
+### 2. 擴充半完成的程式碼
 程式碼框架已經有了，但核心邏輯是空的或錯的：
 - `main.py`、`solve.py`、`utils.py`、`test.py` + data 資料夾
 - 你需要理解整體架構，然後補完或修正
 
-### 3. Debug 壞掉的實作（Fix Bugs）
+### 3. Debug 壞掉的實作
 測試會失敗，你需要：
 - 看懂錯誤訊息
 - 追蹤程式碼流程
@@ -59,22 +59,22 @@ image: /assets/images/meta-ai-coding-interview-cover.png
 
 這是最關鍵的部分。Meta 官方說明評估四個維度：
 
-### 1. Problem Solving（問題解決）
+### 1. Problem Solving
 - 你怎麼釐清需求？
 - 遇到模糊的地方會不會主動問？
 - 能不能把開放式問題拆解成可執行的步驟？
 
-### 2. Code Development & Understanding（程式開發與理解）
+### 2. Code Development & Understanding
 - 你能不能快速看懂別人寫的程式碼？
 - 你能不能在現有架構下寫出符合風格的新程式碼？
 - **就算是 AI 幫你寫的，你能不能解釋每一行？**
 
-### 3. Verification & Debugging（驗證與除錯）
+### 3. Verification & Debugging
 - 你會不會先跑測試？
 - 你怎麼追蹤 bug？
 - 你修完之後會不會檢查有沒有 regression？
 
-### 4. Technical Communication（技術溝通）
+### 4. Technical Communication
 - 你在做什麼，面試官聽得懂嗎？
 - 你能不能在「講太多」和「講太少」之間找到平衡？
 
