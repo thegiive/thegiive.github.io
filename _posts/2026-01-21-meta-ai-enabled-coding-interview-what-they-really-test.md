@@ -8,8 +8,6 @@ description: "Meta 2025 年開始試行 AI-Enabled Coding Interview，跟傳統 
 image: /assets/images/meta-ai-coding-interview-cover.png
 ---
 
-![Meta AI Coding Interview](/assets/images/meta-ai-coding-interview-cover.png)
-
 前陣子寫了一篇「AI 時代的面試：我不考 coding，只問為什麼」，講我自己面試團隊成員的邏輯。結果收到不少讀者問：「那如果是我要去面試大廠呢？Meta、Google 這些公司現在怎麼考？」
 
 剛好 Meta 在 2025 年 10 月開始大規模試行 **AI-Enabled Coding Interview**，到 2026 年已經變成標準流程。這跟傳統 LeetCode 刷題完全不一樣。
@@ -195,8 +193,8 @@ Meta 有提供官方的 CoderPad 練習環境，主動要求試用。熟悉介�
 
 **正確順序（90% 人做錯）：**
 
-1. ❌ 不要先看 source code
-2. ✅ 先看：
+1. 不要先看 source code
+2. 先看：
    - failing tests
    - input / output 定義
    - README / 題目敘述
@@ -214,7 +212,7 @@ Meta 有提供官方的 CoderPad 練習環境，主動要求試用。熟悉介�
 - 「幫我 summary 這個 function 的責任」
 - 「資料流從哪到哪？」
 
-⚠️ 不要說：「幫我修好」
+不要說：「幫我修好」
 
 #### Phase B：方案比較（加分）
 
