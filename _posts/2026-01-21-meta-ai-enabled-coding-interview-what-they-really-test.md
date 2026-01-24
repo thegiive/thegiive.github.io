@@ -5,7 +5,8 @@ date: 2026-01-21 07:00:00 +0800
 categories: [AI面試, 職涯發展]
 tags: [Meta, AI面試, Coding Interview, AI協作, 技術面試]
 description: "Meta 從 2025 年全面導入 AI-Enabled Coding Interview。本文整理 2026 最新面試流程、真實考題型態、評分標準與準備 SOP，帶你搞懂 AI coding 面試真正測的是「判斷力」，而不是 LeetCode。"
-image: /assets/images/meta-ai-coding-interview-cover.png
+image: /assets/images/meta-ai-enabled-coding-interview-2026.png
+image_alt: "Meta AI-Enabled Coding Interview 2026 面試流程與準備重點示意圖"
 ---
 
 Meta AI-Enabled Coding Interview 在 2025 年正式上線，並於 2026 年成為 Meta Software Engineer 面試的標準流程。這不是 LeetCode 刷題，而是一場「AI 協作＋真實 codebase」的實戰面試。本文整理最新面試流程、評分重點與準備 SOP。
@@ -30,6 +31,8 @@ Meta AI-Enabled Coding Interview 在 2025 年正式上線，並於 2026 年成�
 | **題目** | 獨立演算法題 | 多檔案 Codebase + 連續任務 |
 | **工具** | 純手寫（無 IDE） | CoderPad + AI 助手 |
 | **目標** | 證明你會寫演算法 | 證明你會用 AI 解決問題 |
+
+![Meta Coding Interview 傳統格式 vs AI-Enabled 格式比較表 2026](/assets/images/meta-interview-traditional-vs-ai-enabled-comparison-2026.png)
 
 環境是 CoderPad，旁邊有個 AI chat sidebar，候選人可以選擇用 **mini、Haiku、Gemini Flash** 這幾個模型系列。注意：都不是 SOTA，清一色是小模型。這是故意的——他們不想讓你靠 AI 硬解，而是看你怎麼跟「不那麼聰明」的 AI 協作。(PS. 當然有可能是因為 GPT5 or Opus 一下子就做完也很尷尬)
 
