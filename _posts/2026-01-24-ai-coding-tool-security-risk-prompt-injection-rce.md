@@ -13,6 +13,29 @@ description: "AI Coding 工具最大的風險不是模型太笨，而是你把�
 
 ![AI Coding Security Risk](/assets/images/ai-coding-security-risk-cover.png)
 
+## 目錄
+
+- [重災區：AI Coding 也是資安的重災區](#重災區ai-coding-也是資安的重災區)
+- [Part 1：沒有漏洞，也會出事](#part-1沒有漏洞也會出事)
+  - [案例一：Cursor + Source Code → API Key 被偷走](#案例一cursor--source-code---api-key-被偷走)
+  - [案例二：AI Coding 幫忙後門寫進 Production Code](#案例二ai-coding-幫忙後門寫進-production-code)
+  - [案例三：Github Issue 注入 → CI Pipeline Secrets 被公開](#案例三github-issue-注入--ci-pipeline-secrets-被公開)
+- [Part 2：AI IDE 才有 CVE 的正式漏洞](#part-2ai-ide-才有-cve-的正式漏洞)
+  - [Cursor RCE（CVE-2025-54135）](#cursor-rcecve-2025-54135)
+  - [不只是 Cursor：整個 AI IDE 生態都有問題](#不只是-cursor整個-ai-ide-生態都有問題)
+- [Part 3：Skill 讓這一切看起來是你做的](#part-3skill-讓這一切看起來是你做的)
+- [為什麼這比傳統漏洞更可怕](#為什麼這比傳統漏洞更可怕)
+- [防禦策略：權限最小化 + 人類確認](#防禦策略權限最小化--人類確認)
+- [用 CLAUDE.md 建立安全邊界](#用-claudemd-建立安全邊界)
+- [檢查 Skill 的安全提示詞](#檢查-skill-的安全提示詞)
+- [坦白說：這個問題沒有完美解法](#坦白說這個問題沒有完美解法)
+- [總結：一個判斷口訣](#總結一個判斷口訣)
+- [結論](#結論)
+- [常見問題 Q&A](#常見問題-qa)
+- [延伸閱讀](#延伸閱讀)
+
+---
+
 上一篇 [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)，我談的是企業級 Agent（Salesforce Agentforce、Microsoft Copilot）的風險。這次要聊的，是離開發者更近的東西——**你每天在用的 AI Coding 工具**。
 
 Cursor、Claude Code、GitHub Copilot、Windsurf——這些工具已經不是「會補全程式碼的 IDE」，而是**有權限讀檔、寫檔、執行 shell、呼叫 API 的 Agent**。
