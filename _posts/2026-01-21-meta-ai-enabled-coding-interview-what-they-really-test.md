@@ -1,14 +1,18 @@
 ---
 layout: post
-title: "Meta AI-Enabled Coding 面試：他們到底在測什麼？"
+title: "Meta AI-Enabled Coding Interview 解析：2026 面試流程、考什麼、怎麼準備"
 date: 2026-01-21 07:00:00 +0800
 categories: [AI面試, 職涯發展]
 tags: [Meta, AI面試, Coding Interview, AI協作, 技術面試]
-description: "Meta 2025 年開始試行 AI-Enabled Coding Interview，跟傳統 LeetCode 刷題完全不同。60 分鐘內在多檔案 codebase 中完成任務，AI 是你的 junior engineer——會給答案但可能是錯的。真正測的是你的判斷力：知道為什麼這樣寫，才是 AI 時代的核心價值。"
+description: "Meta 從 2025 年全面導入 AI-Enabled Coding Interview。本文整理 2026 最新面試流程、真實考題型態、評分標準與準備 SOP，帶你搞懂 AI coding 面試真正測的是「判斷力」，而不是 LeetCode。"
 image: /assets/images/meta-ai-coding-interview-cover.png
 ---
 
-前陣子寫了一篇「AI 時代的面試：我不考 coding，只問為什麼」，講我自己面試團隊成員的邏輯。結果收到不少讀者問：「那如果是我要去面試大廠呢？Meta、Google 這些公司現在怎麼考？」
+Meta AI-Enabled Coding Interview 在 2025 年正式上線，並於 2026 年成為 Meta Software Engineer 面試的標準流程。這不是 LeetCode 刷題，而是一場「AI 協作＋真實 codebase」的實戰面試。本文整理最新面試流程、評分重點與準備 SOP。
+
+---
+
+前陣子寫了一篇[《AI 時代的面試：我不考 coding，只問為什麼》](https://ai-coding.wiselychen.com/ai-era-interview-why-not-coding/)，講我自己面試團隊成員的邏輯。結果收到不少讀者問：「那如果是我要去面試大廠呢？Meta、Google 這些公司現在怎麼考？」
 
 剛好 Meta 在 2025 年 10 月開始大規模試行 **AI-Enabled Coding Interview**，到 2026 年已經變成標準流程。這跟傳統 LeetCode 刷題完全不一樣。
 
@@ -16,7 +20,7 @@ image: /assets/images/meta-ai-coding-interview-cover.png
 
 ---
 
-## 面試格式：60 分鐘的真實世界模擬
+## Meta AI-Enabled Coding Interview 面試格式（60 分鐘真實世界模擬）
 
 傳統 Meta 面試是兩輪獨立的演算法題（45 分鐘各解一題）。新的 AI-Enabled 格式改成：
 
@@ -31,7 +35,7 @@ image: /assets/images/meta-ai-coding-interview-cover.png
 
 ---
 
-## 三種考題情境
+## Meta AI Coding Interview 的三種常見考題類型
 
 根據多位候選人回報，題目會是以下三種之一：
 
@@ -53,7 +57,7 @@ image: /assets/images/meta-ai-coding-interview-cover.png
 
 ---
 
-## 他們真正在測什麼？
+## Meta AI-Enabled Coding Interview 評分標準：真正看重的 4 個能力
 
 這是最關鍵的部分。Meta 官方說明評估四個維度：
 
@@ -121,7 +125,7 @@ Clone 一個中小型 open source 專案，給自己 15 分鐘理解架構，然
 - 寫一個新的測試
 
 ### 2. 練習跟 AI 協作
-在 Cursor 或任何有 AI 的 IDE 裡：
+在 Cursor 或[任何有 AI 的 IDE](https://ai-coding.wiselychen.com/claude-code-630k-lines-three-months-reflection/) 裡：
 - 練習寫精準的 prompt（「只實作 X 和 Y 函數」比「幫我解這題」好）
 - 練習審查 AI 生成的 code
 - 練習在 AI 給錯答案時自己修正
@@ -141,7 +145,7 @@ Meta 有提供官方的 CoderPad 練習環境，主動要求試用。熟悉介�
 
 ## 這跟我的面試哲學有什麼關係？
 
-回到我之前寫的「我不考 coding，只問為什麼」——Meta 這個新面試其實在測同一件事：**你的判斷力**。
+回到我之前寫的[「我不考 coding，只問為什麼」](https://ai-coding.wiselychen.com/ai-era-interview-why-not-coding/)——Meta 這個新面試其實在測同一件事：**你的判斷力**。
 
 我自己面試的時候，第一階段會直接問「為什麼」——為什麼用這個技術？比較過哪些選項？背後的原因是什麼？
 
@@ -155,11 +159,11 @@ Meta 有提供官方的 CoderPad 練習環境，主動要求試用。熟悉介�
 當 AI 的答案有 bug，你怎麼發現的？怎麼修的？
 當時間不夠，你決定放棄優化先求功能完整，這個 trade-off 你怎麼想的？
 
-**AI 時代，能寫 code 不稀奇，知道為什麼這樣寫才是你的價值。**
+**AI 時代，能寫 code 不稀奇，[知道為什麼這樣寫才是你的價值](https://ai-coding.wiselychen.com/ai-era-interview-why-not-coding/)。**
 
 ---
 
-## AI-Enhanced Interview 準備 SOP（可照表操課版）
+## Meta AI-Enabled Coding Interview 準備 SOP（2026 實戰版）
 
 我問了我的朋友：「你錄取了嗎？」
 
@@ -200,7 +204,7 @@ Meta 有提供官方的 CoderPad 練習環境，主動要求試用。熟悉介�
    - README / 題目敘述
 3. 用一句話講出：「現在壞在哪」、「修好要長怎樣」
 
-面試官此時就在判斷：**你是不是 PRD 型工程師**
+面試官此時就在判斷：**你是不是 [PRD 型工程師](https://ai-coding.wiselychen.com/atpm-prdde-zhong-yao-xing/)**
 
 ---
 
@@ -285,13 +289,13 @@ Meta 有提供官方的 CoderPad 練習環境，主動要求試用。熟悉介�
 
 > **AI-enhanced interview 不在比你用什麼模型，而是在比：你有沒有一套「AI 來了也不會亂」的 SOP。**
 
-有沒有看到？其實就連大廠的 interview 都在比 **PRD 能力**跟**驗收能力**。
+有沒有看到？其實就連大廠的 interview 都在比 **PRD 能力**跟**[驗收能力](https://ai-coding.wiselychen.com/atpm-qa-ru-he-yan-shou-ai-coding-de-cheng-shi/)**。
 
 這邊特別強調三件事：
 
-1. **PRD 能力**——規格與需求的描述能力。你能不能把模糊的問題轉化成明確的 spec？
+1. **[PRD 能力](https://ai-coding.wiselychen.com/atpm-prdde-zhong-yao-xing/)**——規格與需求的描述能力。你能不能把模糊的問題轉化成明確的 spec？
 2. **溝通能力**——你的思考過程能不能讓別人（包括 AI 和面試官）聽懂？
-3. **驗收能力**——也就是 QA 的能力。你能不能發現 AI 的問題、驗證它的輸出、確保最終成果符合預期？
+3. **[驗收能力](https://ai-coding.wiselychen.com/ai-coding-half-year-review-demand-transformation-tool-evolution/)**——也就是 QA 的能力。你能不能發現 AI 的問題、驗證它的輸出、確保最終成果符合預期？
 
 這三個能力加起來，就是 AI 時代工程師的核心競爭力。
 
