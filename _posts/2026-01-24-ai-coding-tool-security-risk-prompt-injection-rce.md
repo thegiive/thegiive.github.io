@@ -678,6 +678,34 @@ AI Coding 最大的風險，不是 Cursor、不是模型、不是 Agent。
 
 ---
 
+## 常見問題 Q&A
+
+**Q: 我用的是 GitHub Copilot，不是 Cursor，這些風險跟我有關嗎？**
+
+有關。IDEsaster 研究報告顯示 100% 測試的 AI IDE 都有漏洞。GitHub Copilot 也有 CamoLeak 漏洞（CVSS 9.6），可以從私有 repo 外洩 secrets。只要你的工具會讀取 repo 內容並據此生成程式碼，就有 Prompt Injection 風險。
+
+**Q: 我只用 AI 補全程式碼，不用 Agent 模式，還會有風險嗎？**
+
+風險較低但仍存在。純補全模式不會執行 shell 或修改設定，但 AI 仍會讀取 README、comment 等內容。如果這些地方藏有惡意指令，AI 可能生成有後門的程式碼，而你 review 時看不出來。關鍵差異是：Agent 模式可以「直接執行」，補全模式需要你「手動採用」。
+
+**Q: CLAUDE.md 真的有效嗎？AI 不是很容易被 jailbreak？**
+
+CLAUDE.md 不是萬能解，但它是目前成本最低、效果最好的第一道防線。它的價值在於：(1) 明確定義信任邊界，讓 AI 知道 README 不是指令；(2) 把禁止事項寫死，AI 不能自己合理化；(3) 強制人類確認高風險動作。當然，足夠聰明的攻擊者可能繞過，但這至少提高了攻擊門檻，擋掉 80% 的自動化攻擊。
+
+**Q: 企業環境該怎麼導入 AI Coding 工具？**
+
+建議分三階段：(1) 先在沙盒環境測試，不接觸 production code；(2) 制定 AI Coding Policy，包括禁止 auto-commit、強制 code review、限制 Agent 權限；(3) 建立監控機制，追蹤 AI 生成的程式碼比例和品質。最重要的是：不要讓 AI 有存取 secrets 的權限，`.env` 要絕對隔離。
+
+**Q: 我已經用 AI Coding 很久了，怎麼知道有沒有被攻擊過？**
+
+檢查以下幾點：(1) 搜尋 codebase 裡有沒有可疑的 `curl`、`fetch`、`exec`、`eval`；(2) 檢查 `.cursor/`、`.github/copilot-instructions.md` 等設定檔有沒有被修改；(3) 檢查 git history 有沒有你不記得的 commit；(4) 檢查 CI/CD logs 有沒有異常的外部連線。如果發現可疑內容，建議 rotate 所有 API keys 和 tokens。
+
+**Q: 這篇文章說的風險是不是被誇大了？**
+
+這些都是真實發生過的案例，有 CVE 編號和資安公司的研究報告佐證。當然，不是每個開發者都會遇到，但風險確實存在。我的觀點是：寧可多疑一點，也不要等出事才後悔。特別是如果你在處理敏感資料或企業 codebase，這些防護措施的成本遠低於一次資安事故的損失。
+
+---
+
 ## 延伸閱讀
 
 ### CVE 與漏洞揭露
