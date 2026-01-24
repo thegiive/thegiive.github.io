@@ -13,11 +13,28 @@ Meta AI-Enabled Coding Interview 在 2025 年正式上線，並於 2026 年成�
 
 ---
 
+## 目錄
+
+- [Meta AI-Enabled Coding Interview 面試格式](#meta-ai-enabled-coding-interview-面試格式60-分鐘真實世界模擬)
+- [三種常見考題類型](#meta-ai-coding-interview-的三種常見考題類型)
+- [評分標準：真正看重的 4 個能力](#meta-ai-enabled-coding-interview-評分標準真正看重的-4-個能力)
+- [候選人真實經驗：AI 不是答案機](#候選人真實經驗ai-不是答案機)
+- [Checkpoint 邏輯：至少過 3 個](#checkpoint-邏輯至少過-3-個)
+- [準備策略：不是刷 LeetCode](#準備策略不是刷-leetcode)
+- [這跟我的面試哲學有什麼關係？](#這跟我的面試哲學有什麼關係)
+- [準備 SOP（2026 實戰版）](#meta-ai-enabled-coding-interview-準備-sop2026-實戰版)
+- [給準備面試的人的最後建議](#給準備面試的人的最後建議)
+- [參考資料](#參考資料)
+
+---
+
 前陣子寫了一篇[《AI 時代的面試：我不考 coding，只問為什麼》](https://ai-coding.wiselychen.com/ai-era-interview-why-not-coding/)，講我自己面試團隊成員的邏輯。結果收到不少讀者問：「那如果是我要去面試大廠呢？Meta、Google 這些公司現在怎麼考？」
 
 剛好 Meta 在 2025 年 10 月開始大規模試行 **AI-Enabled Coding Interview**，到 2026 年已經變成標準流程。這跟傳統 LeetCode 刷題完全不一樣。
 
 這兩週我跟幾個真的去大廠面試過 AI Coding 的朋友聊了不少，問他們當時的感受和細節。同時我自己也在面試 candidate，一直在調整 format——因為之前那套 tech interview 根本不貼近現實工作了。再加上 Reddit、Blind 上網友的分享，還有幾份面試指南，整理出這篇拆解：這個新面試到底在測什麼。
+
+![Meta AI-Enabled Coding Interview：從語法到判斷力的轉變](/assets/images/meta-ai-interview-playbook-cover.png)
 
 ---
 
@@ -32,7 +49,7 @@ Meta AI-Enabled Coding Interview 在 2025 年正式上線，並於 2026 年成�
 | **工具** | 純手寫（無 IDE） | CoderPad + AI 助手 |
 | **目標** | 證明你會寫演算法 | 證明你會用 AI 解決問題 |
 
-![Meta Coding Interview 傳統格式 vs AI-Enabled 格式比較表 2026](/assets/images/meta-interview-traditional-vs-ai-enabled-comparison-2026.png)
+![Meta Coding Interview 傳統格式 vs AI-Enabled 格式比較表 2026](/assets/images/meta-ai-interview-playbook-format.png)
 
 環境是 CoderPad，旁邊有個 AI chat sidebar，候選人可以選擇用 **mini、Haiku、Gemini Flash** 這幾個模型系列。注意：都不是 SOTA，清一色是小模型。這是故意的——他們不想讓你靠 AI 硬解，而是看你怎麼跟「不那麼聰明」的 AI 協作。(PS. 當然有可能是因為 GPT5 or Opus 一下子就做完也很尷尬)
 
@@ -118,6 +135,8 @@ Meta AI-Enabled Coding Interview 在 2025 年正式上線，並於 2026 年成�
 ---
 
 ## 準備策略：不是刷 LeetCode
+
+![Meta AI Coding Interview 準備策略：別只刷 LeetCode](/assets/images/meta-ai-interview-playbook-sop.png)
 
 這個面試跟傳統準備方式完全不同：
 
