@@ -9,8 +9,6 @@ image: /assets/images/vlog-ep6-ai-coding-deep-water-cover.jpg
 description: "AI Coding 真的沒有想像中那麼簡單。這週深入探討效率真相（頂多提升 30%）、Meta AI-Enabled 面試、企業地端部署三條路、以及資安重災區。每個議題都有真實案例佐證。"
 ---
 
-![AI Coding 深水區](/assets/images/vlog-ep6-ai-coding-deep-water-cover.jpg)
-
 {% include youtube.html id="_A575dn-ckc" %}
 
 **發佈日期：** 2026-01-25
