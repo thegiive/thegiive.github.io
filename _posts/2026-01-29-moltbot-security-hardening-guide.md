@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Moltbot 安全加固實戰"
+title: "Moltbot 安全加固實戰：AI Agent 四層防禦架構完整指南"
 date: 2026-01-29 08:00:00 +0800
 permalink: /moltbot-security-hardening-guide/
 image: /assets/images/moltbot-security-hardening-cover.png
@@ -137,7 +137,7 @@ mkdir ~/.secrets && chmod 700 ~/.secrets
 
 **核心問題：外部輸入能做什麼？**
 
-這是大多數人會跳過的步驟，但可能是**最重要的一層**。
+這是大多數人會跳過的步驟，但可能是**最重要的一層**。這一層的理論基礎來自 Google DeepMind 提出的 [CaMeL 雙層 Agent 架構](https://ai-coding.wiselychen.com/camel-privileged-quarantined-agent/)——核心概念是「讀資料」和「做動作」永遠分開。
 
 ### 2.1 信任等級設定
 
@@ -383,6 +383,8 @@ brew install --cask lulu
 - [500 台 AI 助理裸奔公網：Moltbot 0.0.0.0 配置災難](/moltbot-security-disaster/)
 - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)
 - [AI Coding 的第一個風險：你一直按 Yes](/ai-coding-security-risk/)
+- [CaMeL：Google DeepMind 提出的 Prompt Injection 防禦架構](/camel-privileged-quarantined-agent/) — 本文第二層「內容隔離」的理論基礎
+- [CaMeL Agent 架構落地 PostgreSQL：用 RLS 設計不可繞過的 AI Memory](/camel-postgresql-implementation/) — 把隔離層建在資料庫的實作方案
 
 ---
 
