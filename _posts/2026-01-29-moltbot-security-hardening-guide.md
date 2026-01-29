@@ -2,13 +2,16 @@
 layout: post
 title: "Moltbot 安全加固實戰：一個下午從 C- 升級到 B+"
 date: 2026-01-29 08:00:00 +0800
-categories: [AI Agent, Security]
-tags: [moltbot, ai-agent, security, hardening]
-description: "不需要是資安專家，只需要願意花一個下午認真讀文件。從四層縱深防禦框架學習如何加固 AI Agent 安全：Isolation、Quarantine、Rollback、Transparency。"
+permalink: /moltbot-security-hardening-guide/
 image: /assets/images/moltbot-security-hardening-cover.png
+description: "不需要是資安專家，只需要願意花一個下午認真讀文件。這篇整理 Moltbot 社群的四層縱深防禦實戰經驗：Isolation、Quarantine、Rollback、Transparency。"
 ---
 
 ![Moltbot 安全加固封面](/assets/images/moltbot-security-hardening-cover.png)
+
+**作者：** Wisely Chen
+**日期：** 2026 年 1 月
+**系列：** AI Agent 實戰觀察
 
 ---
 
@@ -325,34 +328,6 @@ brew install --cask lulu
 
 需要權限的地方請詢問。需要使用者輸入的步驟請逐步引導。
 ```
-
----
-
-## 要達到 A 級還缺什麼？
-
-目前是 B+。以下是已知缺口，按四層框架分類：
-
-### Isolation 層缺口
-
-| 缺口 | 說明 | 修復方式 |
-|------|------|---------|
-| 磁碟加密未驗證 | 實體機器被偷時可能被讀取 | `fdesetup status` 檢查，未開啟則開啟 |
-| Session 檔案在磁碟上 | `~/.secrets/bitwarden_session.sh` 機器被入侵時可讀 | 考慮用 1Password `op run` 注入而不寫檔 |
-| Telegram 非端對端加密 | 訊息經過 Telegram 伺服器 | 敏感操作考慮自架 Matrix 或 Signal |
-
-### Quarantine 層缺口
-
-| 缺口 | 說明 | 修復方式 |
-|------|------|---------|
-| 只有政策沒有技術強制 | 內容隔離和軟性限制是規則不是沙盒 | 實施真正的技術沙盒 |
-| 提權工具權限未審查 | `tools.elevated: enabled` 的爆炸半徑不明 | 完整審查允許的操作 |
-
-### Rollback 層缺口
-
-| 缺口 | 說明 | 修復方式 |
-|------|------|---------|
-| Git 只在本地 | 機器掛掉就失去回滾能力 | 推送到私有 GitHub/GitLab |
-| 無主動憑證輪換 | 只在事件發生時輪換 | 設定定期輪換排程 |
 
 ---
 
