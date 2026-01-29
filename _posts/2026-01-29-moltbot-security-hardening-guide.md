@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Moltbot 安全加固實戰：一個下午從 C- 升級到 B+"
+title: "Moltbot 安全加固實戰"
 date: 2026-01-29 08:00:00 +0800
 permalink: /moltbot-security-hardening-guide/
 image: /assets/images/moltbot-security-hardening-cover.png
