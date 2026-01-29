@@ -7,8 +7,6 @@ image: /assets/images/moltbot-security-hardening-cover.png
 description: "不需要是資安專家，只需要願意花一個下午認真讀文件。這篇整理 Moltbot 社群的四層縱深防禦實戰經驗：Isolation、Quarantine、Rollback、Transparency。"
 ---
 
-![Moltbot 安全加固封面](/assets/images/moltbot-security-hardening-cover.png)
-
 **作者：** Wisely Chen
 **日期：** 2026 年 1 月
 **系列：** AI Agent 實戰觀察
