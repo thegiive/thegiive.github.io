@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic"
-date: 2026-01-30 07:00:00 +0800
+date: 2026-01-30 08:00:00 +0800
 permalink: /shell-wrapper-2-anthropic-real-threat/
 image: /assets/images/shell-wrapper-2-slide-ecosystem.png
-description: "套殼 2.0 不是在威脅 Claude Code，而是在重新定義「AI Agent 應該怎麼被使用」。這不是關於模型能力的競賽，而是一場關於「Agent 應該如何被使用」的定義權之爭。從持續性、狀態管理到可治理性，Moltbot、Happy、opcode 這一整批工具正在系統性地重寫使用者對 Agent 的預期。"
-keywords: "Claude Code, Moltbot, AI Agent Wrapper, Agentic Workflow, AI Tool Ecosystem, Shell Wrapper"
+description: "套殼 2.0 不是在威脅 Claude Code，而是在重新定義「AI Agent 應該怎麼被使用」。從 Moltbot、Happy、opcode 到 Ralph Wiggum，整個生態正在補完 Claude Code 刻意不做的事：持續性、可觀測性、跨設備控制。"
+keywords: "Claude Code, Moltbot, AI Agent Wrapper, Agentic Workflow, AI Tool Ecosystem, Ralph Wiggum"
 ---
 
 **AI Agent Wrapper · Agentic Workflow · Claude Code Ecosystem**
@@ -161,7 +161,7 @@ Moltbot 真正厲害的地方，不在模型，而在架構。
 
 這不是 UI，這是**長期狀態管理**。
 
-這也是為什麼我在 [Moltbot 安全加固文章](/moltbot-security-hardening-guide/) 裡強調它的風險——Moltbot 的能力越強，暴露在公網上的後果就越嚴重。它不是一個「聊天機器人」，它是一個「有記憶、能執行、能跨平台操控」的數位代理人。
+這也是為什麼我在 [Moltbot 安全加固文章](/moltbot-security-hardening/) 裡強調它的風險——Moltbot 的能力越強，暴露在公網上的後果就越嚴重。它不是一個「聊天機器人」，它是一個「有記憶、能執行、能跨平台操控」的數位代理人。
 
 **這或許也解釋了 Claude Code 為什麼這麼克制。**
 
@@ -198,13 +198,29 @@ Anthropic 是一間準備 IPO 的公司，不能像開源專案那樣沒有負�
 - **claude-code-webui**：即時狀態監控
 - **claude-run**：事後完整分析
 
-### 4. 讓 Agent「可治理」
+### 4. 讓 Agent「可自主」
+
+**[Ralph Wiggum](https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum)** 是最有趣的例子——一個源自澳洲牧羊人的 5 行 Bash 腳本，現在已經被 Anthropic 官方收編為 [claude-code plugin](https://github.com/anthropics/claude-code/blob/main/plugins/ralph-wiggum/README.md)：
+- 用 Stop hook 攔截 Claude 的退出嘗試
+- 自動重新餵入同樣的 prompt
+- 讓 Agent 持續執行直到任務真正完成
+- 適合 migration、refactor、dependency update 這類「定義清楚但步驟繁瑣」的任務
+
+社群還長出了進階版本：
+- **[ralph-claude-code](https://github.com/frankbria/ralph-claude-code)**（463 stars）：加入智慧退出偵測與 dashboard 監控
+- **ralph-orchestrator**（253 stars）：多 AI 支援、錯誤恢復、花費上限
+
+這個工具的精神很簡單：**與其讓人一直按「繼續」，不如讓 Agent 自己決定什麼時候該停。**
+
+但原作者 Geoffrey Huntley 也[坦白說過](https://www.humanlayer.dev/blog/brief-history-of-ralph)：「如果你只是按下去然後跑掉，結果不會太好。你還是要 babysit 這東西。」
+
+### 5. 讓 Agent「可治理」
 
 - **ccundo**：文件級版本控制
 - **ccmanager**：多 Agent 並行與隔離
 - **otel / sniffly**：成本、異常、token 消耗可觀測
 
-### 5. 讓模型「可替換」
+### 6. 讓模型「可替換」
 
 - **proxy / router / agentapi**
 - 任務導向選模型
@@ -305,8 +321,8 @@ Claude Code 依然是一個非常優秀的執行核心。
 
 ## 延伸閱讀
 
-- [Moltbot 安全加固實戰：AI Agent 四層縱深防禦完整指南](/moltbot-security-hardening-guide/) —— 為什麼 Moltbot 的能力越強，安全風險越高
-- [500 台 AI 助理裸奔公網：Moltbot 0.0.0.0 配置災難](/clawdbot-exposed-500-servers-security-disaster/) —— 套殼 2.0 的安全代價
+- [Moltbot 安全加固實戰：AI Agent 四層縱深防禦完整指南](/moltbot-security-hardening/) —— 為什麼 Moltbot 的能力越強，安全風險越高
+- [500 台 AI 助理裸奔公網：Moltbot 0.0.0.0 配置災難](/moltbot-security-disaster/) —— 套殼 2.0 的安全代價
 - [當 Unix 哲學遇上 AI：Command Line 的文藝復興](/unix-philosophy-command-line-renaissance/) —— Claude Code 為什麼選擇 command line
 - [OneFlow 演算法：重新思考 Multi-Agent 的價值](/oneflow-single-agent-rethinking/) —— 單一強 Agent + 結構化工作流 = 最佳解
 - [Anthropic 官方解密：為什麼 Claude Code 這麼好用？](/anthropic-dual-agent-architecture/) —— 雙 Agent 架構如何解決長時任務問題
