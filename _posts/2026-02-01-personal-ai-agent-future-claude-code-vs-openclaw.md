@@ -7,8 +7,6 @@ image: /assets/images/vlog-ep7-claude-code-vs-openclaw-cover.png
 description: "20 年前 Unix Power Tools 說「Command Line 是最好的 GUI」，當時我不理解。20 年後，大語言模型證明了這句話的先見之明。這週 Claude Code 持續領跑，OpenClaw 橫空出世，兩條路線正殊途同歸，逼近 Agent 2.0 的甜蜜點。"
 ---
 
-![Claude Code vs OpenClaw](/assets/images/vlog-ep7-claude-code-vs-openclaw-cover.png)
-
 {% include youtube.html id="vm0XguXy0aQ" %}
 
 **發佈日期：** 2026-02-01
@@ -211,4 +209,6 @@ OpenClaw 也在做一模一樣的事情，甚至更極端——把大量上下�
 **延伸閱讀：**
 - [OpenClaw 四層縱深防禦加固指南](/moltbot-security-hardening-guide/)
 - [Unix 哲學在 Claude Code 的復興](/unix-philosophy-claude-code-command-line-renaissance/)
-- [OneFlow Paper：Single Agent vs Multi-Agent](/oneflow-single-agent-vs-multi-agent-rethinking/)
+- [OneFlow：Single Agent vs Multi-Agent 重新思考](/oneflow-single-agent-vs-multi-agent-rethinking/)
+- [從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic](/shell-wrapper-2-anthropic-real-threat/)
+- [Cursor 前 0.01% 大神倒戈 Claude Code：Agentic Coding 五大支柱完整解析](/cursor-top-user-switch-claude-code-agentic-coding/)
