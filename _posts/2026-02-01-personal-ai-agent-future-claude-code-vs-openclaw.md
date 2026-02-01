@@ -37,7 +37,7 @@ description: "20 年前 Unix Power Tools 說「Command Line 是最好的 GUI」�
 
 如果大語言模型對外界的溝通跟感知，都能透過命令行相關的文字來進行交互的話，基本上他就可以做任何事情。
 
-**這就是 Claude Code 跟原本 ChatGPT 最大的不同。** 它不是簡單的套殼大語言模型，而是把大語言模型最好的交互界面放進去，並且遵循它。這是 Claude Code 那麼有魅力、那麼有威力的原因。
+**這就是 Claude Code 跟原本 ChatGPT 最大的不同。** 它不是簡單的套殼大語言模型，而是把大語言模型最好的交互界面放進去，並且遵循它。這是 Claude Code 那麼有魅力、那麼有威力的原因。（延伸閱讀：[Unix 哲學在 Claude Code 的復興](/unix-philosophy-claude-code-command-line-renaissance/)）
 
 ## Agent 演進：從 1.0 到 2.0
 
@@ -114,7 +114,7 @@ OpenClaw 是非常新的 Open Source Project，程式還是非常不穩定。
 - 設一些反向 Firewall
 - 第一時間通知你
 
-有了這樣的防禦，我們就可以去探索個人 AI 助理的邊界。
+有了這樣的防禦，我們就可以去探索個人 AI 助理的邊界。（完整指南請看：[OpenClaw 四層縱深防禦加固指南](/moltbot-security-hardening-guide/)）
 
 ## 兩條路線的殊途同歸
 
@@ -129,7 +129,7 @@ OpenClaw 是非常新的 Open Source Project，程式還是非常不穩定。
 
 **問題：** 推進過程有時候不夠快。有些是因為 IPO 他們選擇性不做。
 
-**解決方案：** 開源社群透過不同的 Plugin（Hapy、Ruff、Weekend 這樣的 Task 機制）來幫助 Claude Code 貼近甜蜜點。
+**解決方案：** 開源社群透過不同的 Plugin（Hapy、Ruff、Weekend 這樣的 Task 機制）來幫助 Claude Code 貼近甜蜜點。（延伸閱讀：[從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic](/shell-wrapper-2-anthropic-real-threat/)）
 
 ### 右邊：OpenClaw 開源游擊隊
 
@@ -154,7 +154,7 @@ OpenClaw 是非常新的 Open Source Project，程式還是非常不穩定。
 
 OpenClaw 也在做一模一樣的事情，甚至更極端——把大量上下文放在幾個重要的 MD 檔裡面，每天的記憶用日期來做擺放，放在 Folder Structure 裡面。
 
-就這麼簡單，但可以發揮非常好用的效果。
+就這麼簡單，但可以發揮非常好用的效果。（延伸閱讀：[OneFlow：Single Agent vs Multi-Agent 重新思考](/oneflow-single-agent-vs-multi-agent-rethinking/)）
 
 ## 坦白說
 
@@ -194,7 +194,7 @@ OpenClaw 也在做一模一樣的事情，甚至更極端——把大量上下�
 
 **Q: 企業應該選 Claude Code 還是 OpenClaw？**
 
-企業走 Claude Code 這條線比較穩妥——有官方支援、合規性有保障、安全性優先。OpenClaw 比較適合個人探索或願意承擔風險的進階用戶。
+企業走 Claude Code 這條線比較穩妥——有官方支援、合規性有保障、安全性優先。OpenClaw 比較適合個人探索或願意承擔風險的進階用戶。（延伸閱讀：[Cursor 前 0.01% 大神倒戈 Claude Code：Agentic Coding 五大支柱完整解析](/cursor-top-user-switch-claude-code-agentic-coding/)）
 
 **Q: 為什麼大家在買 Mac mini？**
 
