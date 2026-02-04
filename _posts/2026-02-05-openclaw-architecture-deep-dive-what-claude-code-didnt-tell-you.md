@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Moltbot 架構全拆解：Agent 工程師必學的六層設計"
+title: "OpenClaw 架構全拆解：Agent 工程師必學的六層設計"
 date: 2026-02-05 08:00:00 +0800
-permalink: /moltbot-architecture-deep-dive-what-claude-code-didnt-tell-you/
+permalink: /openclaw-architecture-deep-dive-what-claude-code-didnt-tell-you/
 image: /assets/images/moltbot-architecture-complete-flow.png
 description: "從訊息進來到回應出去，中間經過六個關鍵元件。搞懂這條鏈路，你就知道為什麼它比 Claude Code 更像一個「員工」。"
 ---
 
 ## 目錄
 
-- [為什麼要拆解 Moltbot 的架構？](#為什麼要拆解-moltbot-的架構)
-- [Moltbot 到底是什麼？](#moltbot-到底是什麼)
+- [為什麼要拆解 OpenClaw 的架構？](#為什麼要拆解-openclaw-的架構)
+- [OpenClaw 到底是什麼？](#openclaw-到底是什麼)
 - [六層架構：從訊息到回應的完整路徑](#六層架構從訊息到回應的完整路徑)
 - [Channel Adapter：多通道歸一](#channel-adapter多通道歸一)
 - [Gateway Server：任務協調的心臟](#gateway-server任務協調的心臟)
@@ -27,11 +27,11 @@ description: "從訊息進來到回應出去，中間經過六個關鍵元件。
 
 ---
 
-## 為什麼要拆解 Moltbot 的架構？
+## 為什麼要拆解 OpenClaw 的架構？
 
 我最近在 Discord 看到一個問題：
 
-> 「Moltbot 跟 Claude Code 到底差在哪？不都是讓 LLM 執行命令嗎？」
+> 「OpenClaw 跟 Claude Code 到底差在哪？不都是讓 LLM 執行命令嗎？」
 
 這問題問得好。
 
@@ -39,19 +39,19 @@ description: "從訊息進來到回應出去，中間經過六個關鍵元件。
 
 Claude Code 是一個 CLI 工具，你跟它互動的方式是在 Terminal 裡打字。
 
-Moltbot 是一個 Gateway Server，它可以同時接收來自 Telegram、Discord、Slack、WhatsApp 的訊息，然後在你的機器上執行任務。
+OpenClaw 是一個 Gateway Server，它可以同時接收來自 Telegram、Discord、Slack、WhatsApp 的訊息，然後在你的機器上執行任務。
 
 這個差異決定了整個架構的複雜度。
 
-今天這篇文章，我要把 Moltbot 的架構從頭到尾拆解一遍。搞懂這條鏈路，你會更清楚它擅長什麼、不擅長什麼，以及為什麼它比 Claude Code 更像一個「員工」。
+今天這篇文章，我要把 OpenClaw 的架構從頭到尾拆解一遍。搞懂這條鏈路，你會更清楚它擅長什麼、不擅長什麼，以及為什麼它比 Claude Code 更像一個「員工」。
 
 ---
 
-## Moltbot 到底是什麼？
+## OpenClaw 到底是什麼？
 
 先說結論：
 
-**Moltbot（也叫 Clawdbot）是一個 TypeScript CLI 應用程式。**
+**OpenClaw（也叫 Clawdbot）是一個 TypeScript CLI 應用程式。**
 
 不是 Python。不是 Next.js。不是 Web App。
 
@@ -63,7 +63,7 @@ Moltbot 是一個 Gateway Server，它可以同時接收來自 Telegram、Discor
 
 這跟 Claude Code 最大的差異是什麼？
 
-**Claude Code 是單一互動介面（Terminal），Moltbot 是多通道協調器。**
+**Claude Code 是單一互動介面（Terminal），OpenClaw 是多通道協調器。**
 
 你可以同時在 Telegram 問它問題、在 Discord 叫它跑任務、用 Cron Job 讓它定期檢查信箱——這些請求都會進入同一個協調系統，排隊處理。
 
@@ -73,7 +73,7 @@ Moltbot 是一個 Gateway Server，它可以同時接收來自 Telegram、Discor
 
 ## 六層架構：從訊息到回應的完整路徑
 
-當你在 Telegram 發一則訊息給 Moltbot，中間會經過六個元件：
+當你在 Telegram 發一則訊息給 OpenClaw，中間會經過六個元件：
 
 ```
 1. **You** — 從 Telegram / Discord / WhatsApp 發訊息
@@ -112,7 +112,7 @@ Channel Adapter 的工作是：
 
 ## Gateway Server：任務協調的心臟
 
-第二層是 **Gateway Server**，這是 Moltbot 的心臟。
+第二層是 **Gateway Server**，這是 OpenClaw 的心臟。
 
 它做兩件事：
 
@@ -122,7 +122,7 @@ Channel Adapter 的工作是：
 
 什麼是 Session？每一個「對話情境」就是一個 Session。
 
-- 你跟 Moltbot 的私聊是一個 Session
+- 你跟 OpenClaw 的私聊是一個 Session
 - 某個 Discord 頻道是另一個 Session
 - 某個 WhatsApp 群組是又一個 Session
 
@@ -132,7 +132,7 @@ Session Router 根據訊息來源，決定要分配到哪個 Session。
 
 這是最關鍵的設計。
 
-Moltbot 用 **Lane-based Command Queue** 來序列化操作。
+OpenClaw 用 **Lane-based Command Queue** 來序列化操作。
 
 每個 Session 有自己專屬的 Lane（通道），同一 Lane 內的任務必須**嚴格序列執行**。
 
@@ -156,7 +156,7 @@ Moltbot 用 **Lane-based Command Queue** 來序列化操作。
 
 傳統做法是加鎖（Lock）。但加鎖容易漏，而且心智負擔很重——你要一直想「這裡要不要鎖？」
 
-**Moltbot 的做法是反過來：預設序列化，只有明確安全的才並行。**
+**OpenClaw 的做法是反過來：預設序列化，只有明確安全的才並行。**
 
 這跟 Cognition（Devin 的公司）在「Don't Build Multi-Agents」那篇文章的觀點一致：
 
@@ -186,11 +186,11 @@ Lane Queue 把序列化變成預設架構，而不是事後補救。
 
 **動態組裝系統提示詞。**
 
-這是 Moltbot 跟 Claude Code 的關鍵差異。
+這是 OpenClaw 跟 Claude Code 的關鍵差異。
 
 Claude Code 的 CLAUDE.md 是靜態注入的——你寫好什麼，它就讀什麼。
 
-Moltbot 的 System Prompt 是動態組裝的：
+OpenClaw 的 System Prompt 是動態組裝的：
 
 - 當前可用的 Tools
 - 已安裝的 Skills
@@ -211,7 +211,7 @@ Moltbot 的 System Prompt 是動態組裝的：
 
 如果快要超過 Context Window 上限，會觸發壓縮機制——把早期對話摘要化，騰出空間。
 
-這就是為什麼 Moltbot 可以跑很長的對話而不會爆掉。
+這就是為什麼 OpenClaw 可以跑很長的對話而不會爆掉。
 
 ---
 
@@ -229,14 +229,14 @@ Moltbot 的 System Prompt 是動態組裝的：
 
 ### 為什麼是 ReAct 而不是 Plan & Execute？
 
-| 項目 | ReAct（Moltbot 用的） | Plan & Execute |
+| 項目 | ReAct（OpenClaw 用的） | Plan & Execute |
 |------|---------------------|----------------|
 | 執行流程 | 一步一步走，邊做邊決定下一步 | 先產出完整計畫，再逐步執行 |
 | 彈性 | 高（可根據工具輸出即時調整） | 低（計畫定了就照做） |
 | Token 消耗 | 較高（每步都要完整 context） | 較低（計畫階段只思考一次） |
 | 適合場景 | 探索性任務、不確定步驟數 | 明確流程、可預測步驟 |
 
-Moltbot 選擇 ReAct 是合理的——它要處理的任務類型太廣（從發會議邀請到剪片），無法預先規劃完整步驟。
+OpenClaw 選擇 ReAct 是合理的——它要處理的任務類型太廣（從發會議邀請到剪片），無法預先規劃完整步驟。
 
 **ReAct 的核心循環：思考 → 行動 → 觀察 → 再思考。**
 
@@ -257,13 +257,13 @@ Moltbot 選擇 ReAct 是合理的——它要處理的任務類型太廣（從�
 
 同時，整個對話會被持久化到 `.jsonl` 檔案。
 
-這就是 Moltbot 的「記憶」——下次對話時，Session History Loader 會讀取這個檔案，讓 Agent 記得之前發生過什麼。
+這就是 OpenClaw 的「記憶」——下次對話時，Session History Loader 會讀取這個檔案，讓 Agent 記得之前發生過什麼。
 
 ---
 
 ## 記憶系統：簡單但有效
 
-Moltbot 的記憶系統出乎意料地簡單：
+OpenClaw 的記憶系統出乎意料地簡單：
 
 ### 1. Session Transcripts（.jsonl）
 
@@ -296,7 +296,7 @@ Agent 自己寫入這些檔案——沒有特殊的 Memory API，就是用標準
 
 ## Computer Use：為什麼不用截圖？
 
-Moltbot 給 Agent 完整的電腦控制權限。這包括：
+OpenClaw 給 Agent 完整的電腦控制權限。這包括：
 
 ### 1. Exec Tool（Shell 命令）
 
@@ -318,7 +318,7 @@ Moltbot 給 Agent 完整的電腦控制權限。這包括：
 
 這個最有趣。
 
-**Moltbot 的 Browser 不是用截圖，而是用 Semantic Snapshots。**
+**OpenClaw 的 Browser 不是用截圖，而是用 Semantic Snapshots。**
 
 什麼是 Semantic Snapshot？就是把網頁的 Accessibility Tree（ARIA）轉成文字：
 
@@ -350,7 +350,7 @@ Agent 不需要「看」到登入按鈕長什麼樣，它只需要知道「有�
 
 ## 安全設計：Allowlist 與危險指令攔截
 
-Moltbot 的安全設計跟 Claude Code 類似：
+OpenClaw 的安全設計跟 Claude Code 類似：
 
 ### 1. Command Allowlist
 
@@ -409,7 +409,7 @@ rm -rf / || echo "failed"          # chained with ||
 
 ### 跟 Claude Code 的本質差異
 
-| 項目 | Claude Code | Moltbot |
+| 項目 | Claude Code | OpenClaw |
 |------|-------------|---------|
 | 互動介面 | Terminal 單一入口 | 多通道（Telegram、Discord 等） |
 | 執行模式 | 使用者觸發 | 使用者觸發 + Cron Job |
@@ -417,17 +417,17 @@ rm -rf / || echo "failed"          # chained with ||
 | 記憶 | 單次對話 | 跨對話持久化 |
 | Browser | 無 | Semantic Snapshot |
 
-**Claude Code 是工具，Moltbot 是員工。**
+**Claude Code 是工具，OpenClaw 是員工。**
 
 工具等你叫它才動。員工會自己檢查信箱、記得昨天交代的事、主動回報進度。
 
-這就是為什麼 Moltbot 的架構複雜那麼多——因為它要支撐的使用情境複雜那麼多。
+這就是為什麼 OpenClaw 的架構複雜那麼多——因為它要支撐的使用情境複雜那麼多。
 
 ---
 
 ## 常見問題 Q&A
 
-**Q: Moltbot 用什麼語言寫的？**
+**Q: OpenClaw 用什麼語言寫的？**
 
 TypeScript。不是 Python、不是 Next.js、不是 Web App。是一個跑在本地的 CLI 應用程式，暴露 Gateway Server 處理多通道訊息。
 
@@ -439,13 +439,13 @@ TypeScript。不是 Python、不是 Next.js、不是 Web App。是一個跑在�
 
 因為截圖 5MB、Semantic Snapshot 50KB。Token 成本差 100 倍。而且瀏覽網頁本質上是語意任務——Agent 不需要看到按鈕長什麼樣，只需要知道「有一個叫 Sign In 的 button」。
 
-**Q: Moltbot 的記憶會不會越來越慢？**
+**Q: OpenClaw 的記憶會不會越來越慢？**
 
 會。因為沒有遺忘機制，memory/ 檔案會持續膨脹。建議每週整理，只保留最近 7 天的 daily notes，重要資訊轉移到 MEMORY.md。
 
 **Q: 安全風險怎麼處理？**
 
-Moltbot 有 Allowlist、Safe Commands Pre-approved、Dangerous Constructs Blocking 三層防護。但核心問題是：你給 Agent 電腦控制權本身就是高風險操作。建議用獨立虛擬機跑，不要在主力機上執行。
+OpenClaw 有 Allowlist、Safe Commands Pre-approved、Dangerous Constructs Blocking 三層防護。但核心問題是：你給 Agent 電腦控制權本身就是高風險操作。建議用獨立虛擬機跑，不要在主力機上執行。
 
 ---
 
