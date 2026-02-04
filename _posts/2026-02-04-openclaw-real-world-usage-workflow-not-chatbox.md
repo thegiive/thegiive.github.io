@@ -88,6 +88,8 @@ description: "OpenClaw 給我的感覺，很像一個真人秘書，活人感很
 
 ## 奇怪用法：幫我剪片
 
+![OpenClaw 幫我剪片的 Telegram 對話](/assets/images/openclaw-video-editing-telegram.png)
+
 其實這是第一個讓我著迷使用小龍蝦的場景。
 
 我週日不是做好一個每週總結的 YouTube，我在跟親戚吃飯時，就問它：
