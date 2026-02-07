@@ -13,6 +13,8 @@ description: "一開始我不敢把 OpenClaw 放在公司網路上。後來換�
 
 但公司網路裡有客戶資料、內部文件、各種敏感資訊。讓一個 AI Agent 直接存取？資安部門會先把我釘在牆上。
 
+![兩難局面：強大的工具與脆弱的資安](/assets/images/openclaw-security-slide-02.png)
+
 後來我換了一個想法：
 
 **把 OpenClaw 當成剛入職的新員工。**
@@ -22,6 +24,8 @@ description: "一開始我不敢把 OpenClaw 放在公司網路上。後來換�
 ---
 
 ## 新人到職：先開帳號
+
+![新人報到：建立獨立的數位身分](/assets/images/openclaw-security-slide-03.png)
 
 HR 幫新人開的第一件事是什麼？公司信箱。
 
@@ -41,6 +45,8 @@ HR 幫新人開的第一件事是什麼？公司信箱。
 
 ### 1. Google Workspace：要用就要申請
 
+![權限設計：要用才申請](/assets/images/openclaw-security-slide-04.png)
+
 新人想看某份文件？主管要先 share 給他。
 
 OpenClaw 也一樣。
@@ -52,6 +58,8 @@ OpenClaw 也一樣。
 **不是用我的帳號，是用它的。**
 
 ### 2. 內部系統：用 Code 層防呆，不靠提示詞
+
+![程式碼防護：不依賴提示詞](/assets/images/openclaw-security-slide-06.png)
 
 公司內部系統的連接，我用寫好的 Skill 處理。
 
@@ -74,6 +82,8 @@ def execute_query(query):
 
 ### 3. 模型選擇：選 Gemini Pro，不是因為能力
 
+![模型選擇：風險與合規的考量](/assets/images/openclaw-security-slide-07.png)
+
 模型能力？三家都夠用。
 
 我選 Gemini Pro 的原因是：**Google 洩密的代價最高。**
@@ -88,6 +98,8 @@ def execute_query(query):
 
 ### 4. 絕對不開 Dashboard 或 SSH
 
+![連線管控：沒有 Root 權限](/assets/images/openclaw-security-slide-05.png)
+
 新人不會有 root 權限，AI 也不該有。
 
 **沒有 Dashboard 存取，沒有直接 SSH。**
@@ -97,6 +109,8 @@ def execute_query(query):
 所有操作都要透過定義好的 Skill 介面。
 
 ### 5. 外部 Skill 絕對不進 OpenClaw
+
+![技能擴充：拒絕外部黑盒子](/assets/images/openclaw-security-slide-08.png)
 
 Skill 很好用，但資安風險也很巨大。
 
@@ -117,6 +131,8 @@ Skill 很好用，但資安風險也很巨大。
 ---
 
 ## Email：風險最高，所以最嚴格
+
+![Email 管理：最高風險的接觸點](/assets/images/openclaw-security-slide-09.png)
 
 Email 是整個架構裡風險最高的環節。
 
@@ -142,6 +158,8 @@ OpenClaw 不會主動掃描我的信箱。
 - 銀行、法律、敏感客戶信件 → 永遠不 forward
 
 ### Python 中介層：Code 層清洗，不是 LLM 清洗
+
+![資料清洗：Python 中介層](/assets/images/openclaw-security-slide-10.png)
 
 OpenClaw 用 Skill 去讀 Email，而且 LLM 不是直接看。
 
@@ -183,6 +201,8 @@ def sanitize_email(raw_email):
 
 ## 坦白說：這樣做比較麻煩
 
+![代價與收穫](/assets/images/openclaw-security-slide-11.png)
+
 對，我承認。
 
 這套架構的代價：
@@ -197,6 +217,8 @@ def sanitize_email(raw_email):
 ---
 
 ## 結論：你怎麼管新人，就該怎麼管 AI
+
+![結論：你怎麼管新人，就該怎麼管 AI](/assets/images/openclaw-security-slide-12.png)
 
 新人到職，總是要慢慢熟悉彼此。
 
