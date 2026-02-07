@@ -86,13 +86,33 @@ def execute_query(query):
 
 這是風險管理，不是技術選型。
 
-### 4. 絕對不開 Dashboard 或 SSH Tunneling
+### 4. 絕對不開 Dashboard 或 SSH
 
 新人不會有 root 權限，AI 也不該有。
 
-**沒有 Dashboard 存取，沒有 SSH Tunneling。**
+**沒有 Dashboard 存取，沒有直接 SSH。**
+
+永遠選用 **Tunneling 或 TailScale** 這類有控制的連線方式。
 
 所有操作都要透過定義好的 Skill 介面。
+
+### 5. 外部 Skill 絕對不進 OpenClaw
+
+Skill 很好用，但資安風險也很巨大。
+
+**絕對不用外部 Skill，一律自己建立自己用。**
+
+反正不難。
+
+外部 Skill 的問題：
+- 你不知道裡面有什麼程式碼
+- 可能有後門或資料回傳
+- 更新後可能被注入惡意邏輯
+
+自己寫的 Skill：
+- 程式碼完全透明
+- 可審計
+- 可控
 
 ---
 
@@ -112,19 +132,20 @@ OpenClaw 不會主動掃描我的信箱。
 
 ### 兩層過濾機制
 
-**Gmail Filter（自動規則）：**
-- 來自公司內部系統的通知 → 自動 forward
-- Jira、Linear、Google Calendar 邀請 → 自動 forward
+**系統產生的信件（自動 Forward）：**
+- 公司很多系統 like JIRA、內部系統的信件
+- 用 Gmail Filter 直接 forward 給 OpenClaw 去整理
+- 反正幾乎沒有 Prompt Injection 可能性
 
-**人工 Filter（我的判斷）：**
+**外部信件（人工 Filter）：**
 - 其他信件一律我覺得需要才 forward
 - 銀行、法律、敏感客戶信件 → 永遠不 forward
 
 ### Python 中介層：Code 層清洗，不是 LLM 清洗
 
-OpenClaw 不是直接讀原始郵件。
+OpenClaw 用 Skill 去讀 Email，而且 LLM 不是直接看。
 
-有一個 Python 中介層先處理：
+有一個 Python 中介層先處理，產出乾淨、可審計的 JSON：
 
 ```python
 def sanitize_email(raw_email):
@@ -140,7 +161,8 @@ def sanitize_email(raw_email):
     }
 ```
 
-輸出：
+最後才給 OpenClaw 去讀：
+
 ```json
 {
   "msg_title": "[專案A] 需求確認",
@@ -155,7 +177,7 @@ def sanitize_email(raw_email):
 - LLM 清洗 = 可能被 Prompt Injection 繞過
 - Code 清洗 = 邏輯固定，無法被繞過
 
-這樣做還有一個好處：**降低 Email 內容洩露給外部的風險**，減少被塞進 Prompt Injection 的可能。
+另一個重點：**避免 OpenClaw Email 地址洩露給外部**，降低被塞進 Prompt Injection 的可能。
 
 ---
 
