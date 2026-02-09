@@ -124,6 +124,40 @@ ICLR 2026 收錄的 [DevOps-Gym](https://arxiv.org/pdf/2601.20882) 論文，以�
 
 另外，基準測試污染（benchmark contamination）也是個老問題但影響持續擴大。有研究顯示，部分模型在無污染測試中的準確率比原始 benchmark 下降高達 13%。這代表一些亮眼的分數，反映的可能是「記憶力」而不是「推理能力」。
 
+### 4. 不只是 infra：LLM 基礎 benchmark 本身就有結構性問題
+
+上面談的都是 agent-based 評測被「執行環境」污染。但學術界指出的問題其實更根本——就算你不跑 agent，只用最傳統的 LLM benchmark（MMLU、HumanEval、GSM8K），分數本身也未必可信。
+
+這裡有四層問題，每一層都有紮實的論文支撐。
+
+**第一層：Data Contamination（資料污染）——模型可能在「背答案」**
+
+這是最普遍、也最被低估的問題。MMLU 原始論文的補充研究就發現，benchmark 題目經常出現在模型的訓練資料中。一旦去除這些「已經見過的題目」，模型表現會大幅下降。
+
+[Hendrycks et al. (2021)](https://arxiv.org/abs/2107.03374) 在 HumanEval 類 coding benchmark 中也發現明顯的資料重疊——這讓 generative 模型看起來比它實際的推理能力要強。[Kadavath et al. (2022)](https://arxiv.org/abs/2207.05221) 更直接建立了一個「清潔測試集」來避免答案洩露，結論是：大模型在無污染集上的 performance 明顯下降。
+
+換句話說，很多 SOTA 分數反映的可能是「記憶」而不是「推理能力」。這種污染對 GPT 系列、LLaMA 系列乃至開源模型都有顯著影響。
+
+**第二層：Benchmark 設計本身帶有偏差**
+
+[Bender et al. (2021)](https://dl.acm.org/doi/10.1145/3442188.3445922) 的「Stochastic Parrots」論文雖然不是專門討論 benchmark，但它指出了大型語言模型 evaluation 的根本問題——自然語言任務存在資料偏見、答案分布不均、標註者主觀性。[Cobbe et al. (2021)](https://arxiv.org/abs/2110.14168) 在數學推理 benchmark 上的發現更具體：如果 benchmark 只用已有公式或固定結構的答案，模型能靠 pattern match 拿高分，但一旦題型改變（distribution shift），分數就劇烈下跌。
+
+這些研究的共同觀察是：很多 benchmark 並不是在純粹測試推理與泛化能力，而是在無意識中測試了模式記憶強度和特定結構的熟悉度。**分數高低，有可能是「會答題型」而不是「真的理解」。**
+
+**第三層：評測指標本身的誘導偏誤**
+
+「BLEU Is Broken」、「ROUGE Is Broken」這類研究雖然最初是針對自然語言生成的評分指標，但它揭示了一個更普遍的問題：**指標本身並不總是與品質對齊。** 同樣的問題出現在 LLM benchmark 的 exact-match 和 accuracy 計算上。
+
+[Ribeiro et al. (2020)](https://arxiv.org/abs/2005.04118) 在 "Beyond Accuracy" 論文中提出：不能只用一個單一指標來評估 NLP 能力，需要測試語言模型的 robust behavior。當你用單一 accuracy 或 token-level metric 去衡量複雜推理時，結果可能偏離真正能力。
+
+**第四層：Benchmark 分數 ≠ 泛化能力**
+
+最後，也是最關鍵的問題：benchmark score 跟模型在真實世界的泛化能力，可能根本不是同一件事。[Chung et al. (2022)](https://arxiv.org/abs/2207.00747) 的研究發現，模型可能在 benchmark 上表現很高，但在 real-world unpredictability 頻繁犯錯。這意味著 benchmark score 與真實能力之間，存在一道不容忽視的鴻溝。
+
+把這四層加在一起看，結論其實很清楚：
+
+**不只是 agent benchmark 被 infra 污染，連最基礎的 LLM benchmark 本身，都面臨資料污染、設計偏差、指標偏誤、以及分數與真實能力脫鉤的問題。** 所謂的「SOTA 排名」，從頭到尾都需要打上很大的問號。
+
 ## 三、那 Arena 類評測是不是解法？
 
 看到這裡，很多人會直覺想到：
