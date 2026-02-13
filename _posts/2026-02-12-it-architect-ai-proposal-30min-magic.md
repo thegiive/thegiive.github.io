@@ -34,7 +34,7 @@ description: "身為架構師，你的架構可以成交嗎？成交後可以落
 
 我用 Nano Banana Pro 畫架構圖的提示詞大概長這樣：
 
-> 請畫一張專業的雲端架構圖，風格為經典企業風。背景白色，帶微妙的淺灰色幾何圖案。左側有一條包含 Google 四色（藍 #4285F4、紅 #DB4437、黃 #F4B400、綠 #0F9D58）的流暢抽象線條。使用扁平化 2D 向量圖標。架構分為五層：Layer 1 Frontend (Amplify) 包含 CloudFront / Sales Portal / Dashboard / Mobile App；Layer 2 Integration (API Gateway) 包含 API Gateway / Lambda / EventBridge；Layer 3 AI/ML (AWS AI Services) 包含 Textract / SageMaker / Bedrock / OpenSearch Vector / Kendra RAG；Layer 4 Data (AWS Data Services) 包含 RDS PostgreSQL / OpenSearch Serverless / S3 / ElastiCache；Layer 5 Security 包含 IAM / KMS / Cognito / CloudTrail / AWS Config / GuardDuty。層與層之間用箭頭連接，左側標註 Auth，右側標註 Monitor。16:9 寬螢幕，高解析度。
+> 請畫一張專業的雲端架構圖，風格為經典企業風。背景白色，帶微妙的淺灰色幾何圖案。左側有一條包含 Google 四色（藍 #4285F4、紅 #DB4437、黃 #F4B400、綠 #0F9D58）的流暢抽象線條。使用扁平化 2D 向量圖標。架構分為.....層與層之間用箭頭連接，左側標註 Auth，右側標註 Monitor。16:9 寬螢幕，高解析度。
 
 關鍵技巧：把架構的層級、每層的 component、連接關係都寫清楚，Nano Banana Pro 就能畫出幾乎可以直接放進 Proposal 的架構圖。不需要再開 draw.io 或 Lucidchart 手動排版了。
 
