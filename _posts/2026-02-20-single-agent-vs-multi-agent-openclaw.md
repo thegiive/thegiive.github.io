@@ -3,7 +3,7 @@ layout: post
 title: "別把 OpenClaw 用成 Claude Code：單 Agent 深化，才是你的護城河"
 date: 2026-02-20 12:35:00 +0800
 permalink: /single-agent-vs-multi-agent-openclaw/
-image: /assets/images/ai-agent-vs-chatbot-comparison.png
+image: /assets/images/single-vs-multi-agent-logo.png
 description: "多 Agent 很強，但如果你的目標是讓 AI 真的替你決策、替你生活，你需要的是一隻有完整記憶、能持續進化的單 Agent。這不是技術炫技，而是方向選擇。"
 ---
 
