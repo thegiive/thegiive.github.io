@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "用手錶跟龍蝦對話：OpenClaw、Anthropic 和一場 Channel 戰爭的啟示"
+title: "Channel 的戰爭：OpenClaw、Anthropic 和誰能決定 AI Agent 的未來"
 date: 2026-02-20 10:00:00 +0800
 permalink: /openclaw-anthropic-channel-war/
 description: "OpenClaw v2.19 出了 Apple Watch MVP，Anthropic 封鎖 OAuth 禁止第三方使用訂閱制，Sam Altman 收編 Peter Steinberger 擁抱開源。三件事串在一起，看到的不是技術競爭，而是 AI 產業最殘酷的現實：掌握 Channel 的人，才能決定模型的命運。"
