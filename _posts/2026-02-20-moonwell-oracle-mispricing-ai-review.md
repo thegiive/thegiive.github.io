@@ -109,6 +109,23 @@ Moonwell 事件後的緊急措施（下調相關資產借款與供應上限）�
 
 ---
 
+## 補充觀察：Moonwell 事件 vs Stripe「Minions」案例
+
+你剛好丟的 Stripe 案例很值得放在一起看。
+
+Stripe 對外提到：每週有超過千筆 PR 由內部 coding agents（Minions）產生，**人類審核但不一定有人手寫 code**。
+
+表面上，這跟 Moonwell 都是「AI 參與寫碼」；但本質差異是：
+
+- Moonwell 暴露的是 **風控配置與變更治理失守**
+- Stripe 強調的是 **高自動化 + 嚴格 human review 流程**
+
+所以真正問題不是「能不能用 AI 寫 code」，而是：
+
+**你有沒有把審核、風險閥值、回滾機制做成制度，而不是靠個人經驗。**
+
+---
+
 ## 結論
 
 Moonwell 這次不是傳統意義上的「高手入侵」，而是**Oracle 錯價 + 審查流程不足**造成的可預防事故。
@@ -121,7 +138,12 @@ Moonwell 這次不是傳統意義上的「高手入侵」，而是**Oracle 錯�
 
 ## 延伸閱讀
 
+### 這次事件與 AI coding 討論
+- [Decrypt｜Oracle Error Leaves DeFi Lender Moonwell With $1.8 Million in Bad Debt](https://decrypt.co/358374/oracle-error-leaves-defi-lender-moonwell-1-8-million-bad-debt)
+- [Stripe on X｜Minions are our homegrown coding agents](https://x.com/stripe/status/2021273907680997439)
+- [Stripe Dev Blog｜Minions: Stripe’s one-shot end-to-end coding agents](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents)
+
+### 你可以一起看的方法論文章
 - [OpenClaw 與 Agent 通道戰爭觀察](/openclaw-anthropic-channel-war/)
 - [Single-Agent vs Multi-Agent：企業導入該怎麼選](/single-agent-vs-multi-agent-openclaw/)
 - [OpenClaw Architecture Deep Dive](/openclaw-architecture-deep-dive-what-claude-code-didnt-tell-you/)
-- [（可補）官方事故公告與 postmortem 連結]
