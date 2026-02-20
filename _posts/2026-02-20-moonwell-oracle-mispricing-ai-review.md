@@ -5,7 +5,7 @@ date: 2026-02-20 18:40:00 +0800
 author: Wisely Chen
 categories: [Web3, Security, AI]
 tags: [Moonwell, Oracle, DeFi, Smart Contract, AI Coding, Risk Management]
-image: /assets/images/single-vs-multi-agent-logo.png
+image: /assets/images/moonwell-logo.png
 ---
 
 很多人第一時間會說「Moonwell 被駭了」。
