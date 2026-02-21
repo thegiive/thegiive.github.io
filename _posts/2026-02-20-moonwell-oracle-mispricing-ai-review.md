@@ -147,6 +147,24 @@ Stripe 處理的是支付系統。Moonwell 處理的是借貸和清算。兩者�
 
 ---
 
+## 最後的諷刺：Anthropic 的左右互搏
+
+就在 Moonwell 事件發酵的同時，Anthropic 發布了新的安全工具，官方說法是「掃描程式碼庫的安全漏洞，並建議針對性的軟體修補方案供人類審查」。
+
+Bloomberg 報導這件事的角度很直接：**Cybersecurity ETF 因為 Anthropic 的工具而下跌**，資安軟體類股正在經歷 2008 金融危機以來最大的季度跌幅（iShares Expanded Tech-Software Sector ETF 今年已下跌超過 23%）。
+
+但我看到的是另一層意思：
+
+**Opus 產生的 code，靠 Opus 的 security tool 去 scan。這不就是左右互搏嗎？**
+
+用同一家公司的 AI 寫程式碼，再用同一家公司的 AI 檢查程式碼。如果模型對某類錯誤有系統性盲區，那檢查工具很可能也有同樣的盲區。
+
+這不是在質疑 Anthropic 的技術能力——而是在指出一個結構性問題：**當生產者和審查者是同一個模型家族，獨立性就不存在了。**
+
+傳統金融業有一個基本原則叫「職責分離」（Separation of Duties）：做帳的人不能同時審帳。AI coding 的世界，目前還沒有建立這個等價的制度。
+
+---
+
 ## 結論
 
 Moonwell 這次事故的教訓很簡單：
