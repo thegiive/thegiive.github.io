@@ -213,6 +213,47 @@ OpenClaw 官方文件的原話是：
 
 ---
 
+## 如果你有 VPS / VM 該怎麼選？
+
+很多人跑 OpenClaw 不是在本機，而是在 VPS（DigitalOcean、Linode）或雲端 VM（AWS EC2、GCP Compute Engine）上。這個場景下，選擇邏輯完全不同。
+
+**核心差異：VPS/VM 通常沒有桌面環境。**
+
+也就是說，你沒有 GUI、沒有 Chrome 視窗可以手動操作。這直接排除了幾個選項：
+
+| 模式 | VPS/VM 能用嗎 | 原因 |
+|------|-------------|------|
+| **Search API** | 可以 | 純 API 呼叫，不需要瀏覽器 |
+| **Web Fetch** | 可以 | 純 HTTP 請求，不需要瀏覽器 |
+| **Managed Browser（headless）** | 可以 | Playwright headless 模式不需要 GUI |
+| **Managed Browser（手動登入）** | 不行 | 需要 GUI 視窗讓你手動操作 |
+| **Remote CDP** | 最適合 | 本來就是為這個場景設計的 |
+| **Extension Relay** | 不行 | 需要你的本機 Chrome |
+
+**VPS/VM 上的最佳組合：**
+
+```
+日常查資料 → Search API + Web Fetch（零風險）
+爬公開網頁 → Managed Browser headless（中風險）
+需要真正的瀏覽器能力 → Remote CDP 連 Browserless（低風險）
+```
+
+**為什麼 Remote CDP 在 VPS 場景特別適合？**
+
+因為你本來就不在本機操作。瀏覽器跑在 Browserless 這類服務上，跟你的 VPS 是完全隔離的。就算瀏覽器被攻擊，影響範圍也僅限於那個容器化的 Chromium 實例，碰不到你 VPS 上的任何東西。
+
+**需要登入怎麼辦？**
+
+這是 VPS 場景最棘手的問題。沒有 GUI，你不能手動登入。幾個做法：
+
+1. **在本機 Managed Browser 登入後，匯出 cookies** — 技術上可行但很折騰
+2. **用 Remote CDP + 帶登入狀態的 user data directory** — 需要自己維護 Chromium 的 profile
+3. **回到本機用 Extension Relay** — 把需要登入的操作留在本機做，VPS 只跑不需登入的任務
+
+我自己的做法是第三種：**職責分離**。VPS 負責跑排程任務（爬蟲、資料處理），需要登入的操作留在 Mac Mini 上用 Extension Relay。不要試圖在 VPS 上解決所有問題。
+
+---
+
 ## 坦白說
 
 **做得好的地方：**
