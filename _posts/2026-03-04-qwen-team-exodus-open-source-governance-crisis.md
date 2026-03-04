@@ -9,8 +9,6 @@ image: /assets/images/qwen-junyang-lin-stepping-down-tweet.png
 description: "兩天前我寫了一篇 Qwen 3.5-9B 的技術分析，讚嘆「9B 打贏 120B」的架構創新。今天，做出這些創新的技術負責人宣布離開了——而且不是自己想走的。這件事比任何 benchmark 都值得認真看。"
 ---
 
-![Junyang Lin 告別推文](/assets/images/qwen-junyang-lin-stepping-down-tweet.png)
-
 ## 發生了什麼
 
 3 月 2 日，Qwen 團隊發布了 Qwen 3.5 小模型系列，我當天寫了一篇[技術拆解](/qwen-3-5-9b-small-model-god-tier-architecture/)。3 月 4 日，技術負責人 Junyang Lin 就在 X 上告別了：
