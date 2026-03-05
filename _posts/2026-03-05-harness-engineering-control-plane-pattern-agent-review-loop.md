@@ -369,6 +369,62 @@ Ryan 特別強調這是一個**通用模式**，不是某個特定工具鏈。
 
 ---
 
+## 工具推薦：搭建 Control-Plane 你需要什麼？
+
+整套 Harness Engineering 涉及的技術工具可以分為四大類。重點是：**這是一個通用模式，每一類都可以換成你熟悉的替代品。**
+
+### 1. AI 模型與 Agent
+
+這是產出代碼和修復代碼的「引擎」：
+
+- **OpenAI Codex**：Ryan 和 OpenAI 團隊的主力工具，支援長時間自主運行（單次可跑 6 小時以上）
+- **Claude Code**：我自己在用的工具，適合需要深度理解 codebase context 的場景
+- 其他選項：Cursor、Devin、Windsurf 等，只要能接 PR workflow 都可以
+
+### 2. 自動化程式碼審查
+
+Control-Plane 裡的「LLM Judge」角色：
+
+- **Greptile**：Ryan 具體實作中使用的 code review agent，能理解 codebase 語義
+- **CodeRabbit**：另一個主流選項，我在〈Make CI/CD Great Again〉裡用過
+- **CodeQL**：GitHub 原生的靜態分析工具，偏向安全漏洞檢測
+- **自建 LLM Review**：用 GPT-4 / Claude 包一層 review prompt，彈性最大但維護成本也最高
+
+### 3. CI/CD 與基礎架構控制平面
+
+這是接住 AI 產出的「防護網」本體，主要依賴 GitHub 生態系與自動化腳本：
+
+- **GitHub Actions**：整個控制平面的執行環境。文中提到的具體 Workflow 包含：
+  - `risk-policy-gate.yml`（Preflight 預檢閘門）
+  - `greptile-rerun.yml`（處理重複觸發的 Dedupe 機制）
+  - `greptile-auto-resolve-threads.yml`（自動清理 Bot 留言）
+- **JSON Contract**：用來撰寫機器可讀的 Risk Contract，定義哪些目錄（如 `db/schema.ts`）需要更嚴格的防線
+- **TypeScript**：用於撰寫自訂的預檢邏輯（Preflight Gate）與去重邏輯（Marker + SHA Dedupe）
+- **Git 原生機制**：深度依賴 PR 的 `synchronize` 事件、HEAD Commit 的 SHA 追蹤，以及隱藏的 HTML Comment（`<!-- marker -->`）來做狀態管理
+
+### 4. 應用程式運行與 UI 驗證工具
+
+為了解決「Agent 看不到運行狀態」的問題，讓 AI 能自己驗證：
+
+- **Chrome DevTools Protocol (CDP)**：OpenAI 團隊將應用程式接上 CDP，讓 Codex 可以直接操作 DOM、查 Log、看 Metrics 並截圖
+- **npm scripts**：用於產生 Browser Evidence，例如 `npm run harness:ui:capture-browser-evidence` 和 `npm run harness:ui:verify-browser-evidence`
+- **Git Worktree**：讓每個 Agent 跑在獨立的 worktree 裡，互不干擾地啟動應用、跑測試
+
+### 最低可行工具組合
+
+如果你是 2-3 人的小團隊，不需要全部到位。我的建議是先從這三樣開始：
+
+| 優先級 | 工具 | 成本 | 對應步驟 |
+|--------|------|------|---------|
+| P0 | JSON Risk Contract + GitHub Actions | 免費 | Step 1, 2 |
+| P0 | Git SHA 追蹤腳本 | 免費 | Step 3, 4 |
+| P1 | CodeRabbit 或 Greptile | $19-49/月 | Step 2 Layer 4 |
+| P2 | Codex 或 Claude Code | 按用量計費 | Step 5 |
+
+**前兩項是純紀律問題，零成本，立即可做。** 後兩項視團隊規模和預算決定。
+
+---
+
 ## 坦白說
 
 Ryan 的這套架構很完整，但我有幾個實際操作上的疑問還沒想通：
