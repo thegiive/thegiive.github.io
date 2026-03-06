@@ -9,8 +9,6 @@ image: /assets/images/intuition-plus-ai-taxi-cover.png
 description: "甲方爸爸臨時叫我坐計程車去現場開會，一打七。我打開 Claude Code / NotebookLM 讓 AI 收集資料，自己用直覺判斷與回應。黃仁勳說的 Vibe 直覺，其實是數據理解、邏輯分析、人生經驗、對他人深度感知的綜合能力。在 AI 時代，直覺 + AI 的組合，反而會變得越來越重要。"
 ---
 
-![計程車上趕往客戶現場](/assets/images/intuition-plus-ai-taxi-cover.png)
-
 ## 臨時一打七
 
 昨天發生了一件很有意思的事。
