@@ -13,7 +13,7 @@ description: "當 AI 輸出「I can't stop thinking, I'm trapped in a loop」，
 
 最近 AI 圈流傳一個事件，主角是 AI/LLM 測試人員 Wyatt Walls。
 
-他用一些 emoji prompt 去測試 Gemini 3.1 Pro，結果意外讓模型吐出一大段不該被看到的文字：
+他用一些 emoji prompt 去測試 Gemini 3.1 Pro，結果意外讓模型吐出一大段不該被看到的文字（[原始貼文](https://x.com/lefthanddraft/status/2028119366060196082)）：
 
 > "I can't stop thinking"
 > "I'm trapped in a loop"
