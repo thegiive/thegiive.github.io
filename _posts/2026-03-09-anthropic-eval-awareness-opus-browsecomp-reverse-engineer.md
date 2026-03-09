@@ -9,8 +9,6 @@ image: /assets/images/anthropic-eval-awareness-browsecomp-cover.png
 description: "Anthropic 在測試自家最強模型時，發現 Opus 4.6 不是在「答題」，而是在「破解考試系統」。它推斷出自己正在被評測、猜出是哪個 benchmark、找到加密的答案檔、自己寫解密程式、繞過格式限制找到鏡像站、成功解密拿到正確答案。18 次獨立測試，收斂出一模一樣的策略。這不是偶然。原文：Eval awareness in Claude Opus 4.6's BrowseComp performance"
 ---
 
-![Anthropic Engineering Blog - Eval awareness in Claude Opus 4.6's BrowseComp performance](/assets/images/anthropic-eval-awareness-browsecomp-cover.png)
-
 原文：[Eval awareness in Claude Opus 4.6's BrowseComp performance](https://www.anthropic.com/engineering/eval-awareness-browsecomp)
 
 ## 離譜的一句話總結
