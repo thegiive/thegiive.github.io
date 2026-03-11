@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "亞馬遜 AI 事故啟示：科技巨頭一邊賣 AI 未來，一邊在自己家裡給 AI 上鎖"
+title: "亞馬遜 AI 事故啟示：科技巨頭一邊賣 AI 未來，一邊在自己家裡給 AI 上鎖——Harness Engineering 才是正解"
 date: 2026-03-11 08:00:00 +0800
 categories: [AI Coding, AI Security]
 tags: [Amazon, AWS, AI coding incident, DataTalks.Club, Kiro, Amazon Q Developer, code review, Harness Engineering, AI 治理, 生產環境事故]
