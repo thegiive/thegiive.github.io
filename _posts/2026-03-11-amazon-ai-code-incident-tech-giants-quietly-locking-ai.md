@@ -276,6 +276,7 @@ Peter Steinberger 一個人用 Claude Code 管理上百個 PR，每個都過 rev
 
 - [AI Coding 的第一個風險，不是模型——是你一直按「Yes」](/ai-coding-tool-security-risk-prompt-injection-rce/)
 - [混沌智能體：史丹佛 x 哈佛的論文告訴我們，控制好一個 AI Agent 不等於控制好一群](/agents-of-chaos-multi-agent-structural-instability/)
+- [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](/harness-engineering-architecture-overview-ai-code-production-guardrails/)
 - [Harness Engineering：Peter Steinberger 的 Control Plane 模式](/harness-engineering-control-plane-pattern-agent-review-loop/)
 - [AI Coding 半年回顧：開發並沒有變快，我們只是把瓶頸從寫 Code，轉移到了 QA 跟需求收集](/ai-coding-half-year-review-demand-transformation-tool-evolution/)
 - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
