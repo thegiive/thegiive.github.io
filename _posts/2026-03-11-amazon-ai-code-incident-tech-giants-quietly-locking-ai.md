@@ -183,6 +183,8 @@ AI coding 最大的價值之一，是讓初級工程師可以更快探索解決�
 
 我認為長期的解法不是禁令，而是**分級審查**。
 
+我在[〈Harness Engineering 架構全景〉](/harness-engineering-architecture-overview-ai-code-production-guardrails/)裡把這套分級機制拆解成七個元件的參考架構，從 Risk Contract 到 Preflight Gate 到 Remediation Loop，完整講清楚「系統怎麼接住 AI」。這裡先講核心邏輯。
+
 這跟 ATPM 框架裡的 QA 驗收邏輯是一致的：
 
 | 變更類型 | 風險等級 | 審查要求 |
@@ -212,7 +214,7 @@ AI coding 最大的價值之一，是讓初級工程師可以更快探索解決�
 
 但我也知道，禁令只是止血。真正的解法，其實已經有人做出來了。
 
-OpenAI 自己的工程團隊，3 個人、5 個月、100 萬行代碼、0 行人寫。他們把這套方法叫 **[Harness Engineering](/harness-engineering-control-plane-pattern-agent-review-loop/)**。
+OpenAI 自己的工程團隊，3 個人、5 個月、100 萬行代碼、0 行人寫。他們把這套方法叫 **[Harness Engineering](/harness-engineering-architecture-overview-ai-code-production-guardrails/)**。
 
 核心哲學八個字：**Humans steer. Agents execute.**（人類掌舵，Agent 執行。）
 
@@ -230,7 +232,7 @@ Harness Engineering 的做法跟亞馬遜的禁令形成了完美對比：
 | **學習** | 切斷初級工程師學習管道 | Agent 每次犯錯都會被框架糾正，越跑越穩 |
 | **擴展性** | 資深工程師成為瓶頸 | Peter Steinberger 一人一天 627 次提交 |
 
-Peter Steinberger 一個人用 Claude Code 管理上百個 PR，每個都過 review。他不是用「禁令」控制 AI，而是用**控制平面**（control plane）接住 AI 的高速產出——risk tier contract 分級風險、preflight gate 自動攔截危險變更、remediation loop 自動修復偏差。
+Peter Steinberger 一個人用 Claude Code 管理上百個 PR，每個都過 review。他不是用「禁令」控制 AI，而是用**控制平面**（control plane）接住 AI 的高速產出——risk tier contract 分級風險、preflight gate 自動攔截危險變更、remediation loop 自動修復偏差。（完整的七元件架構拆解，見[〈Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production〉](/harness-engineering-architecture-overview-ai-code-production-guardrails/)）
 
 如果亞馬遜的 AWS 團隊有這套機制，AI 提出「刪掉整個生產環境」的那一刻，preflight gate 就會直接攔下來。根本不會等到人類按 Yes。
 
