@@ -178,30 +178,15 @@ OpenAI 自己也明確說過：早期進度慢，多半源於環境規格不足�
 
 ![駕馭工程參考架構：三層防禦與七大元件](/assets/images/harness-engineering-slide-05.png)
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     Harness Engineering Layer                    │
-│                                                                 │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │
-│  │ Context  │  │ Arch     │  │ Eval &   │  │ CI/PR    │       │
-│  │ System   │  │ Guard-   │  │ Test     │  │ Auto-    │       │
-│  │          │  │ rails    │  │ Harness  │  │ mation   │       │
-│  │ AGENTS.md│  │ 結構測試  │  │ 單元/整合 │  │ 自動審查  │       │
-│  │ 知識庫   │  │ 自訂Lint  │  │ E2E/基準  │  │ 自動修復  │       │
-│  │ MCP/RAG  │  │ 依賴規則  │  │ LLM Eval │  │ 自動合併  │       │
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │
-│                                                                 │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐                      │
-│  │ Safety   │  │ Observ-  │  │ Feedback │                      │
-│  │ & Policy │  │ ability  │  │ Loops    │                      │
-│  │          │  │          │  │          │                      │
-│  │ Sandbox  │  │ Tracing  │  │ Doc      │                      │
-│  │ 審批策略  │  │ Logs     │  │ Gardening│                      │
-│  │ Policy   │  │ Metrics  │  │ GC Tasks │                      │
-│  │ as Code  │  │ 成本監控  │  │ 回饋吸收  │                      │
-│  └──────────┘  └──────────┘  └──────────┘                      │
-└─────────────────────────────────────────────────────────────────┘
-```
+| 元件 | 名稱 | 關鍵能力 |
+|------|------|----------|
+| 1 | **Context System（上下文系統）** | AGENTS.md、知識庫、MCP/RAG |
+| 2 | **Architecture Guardrails（架構護欄）** | 結構測試、自訂 Lint、依賴規則 |
+| 3 | **Eval & Test Harness（評估與測試框架）** | 單元/整合、E2E/基準、LLM Eval |
+| 4 | **CI/PR Automation（CI/PR 自動化）** | 自動審查、自動修復、自動合併 |
+| 5 | **Safety & Policy（安全與策略）** | Sandbox、審批策略、Policy as Code |
+| 6 | **Observability（可觀測性）** | Tracing、Logs、Metrics、成本監控 |
+| 7 | **Feedback Loops（回饋閉環）** | Doc Gardening、GC Tasks、回饋吸收 |
 
 逐一拆解：
 
@@ -284,40 +269,13 @@ OpenAI 不只把 observability 視為產品能力，也讓 agent 能查 logs/met
 
 七元件是「需要什麼」。三層防禦架構是「怎麼組裝」。
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Harness Engineering                       │
-│                                                             │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  第三層：控制平面 (Control Plane)                      │  │
-│  │  PR 生命週期管理：從開啟到 Merge 的完整閉環             │  │
-│  │                                                       │  │
-│  │  Risk Contract → Preflight Gate → SHA Discipline       │  │
-│  │  → Rerun Dedupe → Remediation Loop → Bot Resolve       │  │
-│  │  → Browser Evidence → Harness Gap Loop                 │  │
-│  │                                                       │  │
-│  │  ┌─────────────────────────────────────────────────┐  │  │
-│  │  │  第二層：四層防禦 (Four-Layer Defense)            │  │  │
-│  │  │  每個 PR 的垂直檢查                               │  │  │
-│  │  │                                                 │  │  │
-│  │  │  Layer 1: Test（確定性，邏輯正確性）              │  │  │
-│  │  │  Layer 2: Lint + Type Check（確定性，風格安全）    │  │  │
-│  │  │  Layer 3: CI Gate（確定性，結構化指標）            │  │  │
-│  │  │  Layer 4: LLM Judge（非確定性，語義理解）          │  │  │
-│  │  │                                                 │  │  │
-│  │  │  ┌───────────────────────────────────────────┐  │  │  │
-│  │  │  │  第一層：分級審查 (Risk Tiering)            │  │  │  │
-│  │  │  │  根據變更的爆炸半徑決定審查強度              │  │  │  │
-│  │  │  │                                           │  │  │  │
-│  │  │  │  低風險 → AI 自動審查                      │  │  │  │
-│  │  │  │  中風險 → AI 審查 + 同儕 review             │  │  │  │
-│  │  │  │  高風險 → AI 審查 + Senior review + 測試    │  │  │  │
-│  │  │  │  極高風險 → 多人簽核 + staging + 回滾計畫    │  │  │  │
-│  │  │  └───────────────────────────────────────────┘  │  │  │
-│  │  └─────────────────────────────────────────────────┘  │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-```
+**三層由內而外：**
+
+| 層級 | 名稱 | 職責 | 關鍵元素 |
+|------|------|------|----------|
+| **第一層（核心）** | 分級審查 Risk Tiering | 根據變更的爆炸半徑決定審查強度 | 低風險 → AI 自動審查；中風險 → AI + 同儕 review；高風險 → AI + Senior review + 測試；極高風險 → 多人簽核 + staging + 回滾計畫 |
+| **第二層** | 四層防禦 Four-Layer Defense | 每個 PR 的垂直檢查 | Layer 1: Test（確定性，邏輯正確性）；Layer 2: Lint + Type Check（確定性，風格安全）；Layer 3: CI Gate（確定性，結構化指標）；Layer 4: LLM Judge（非確定性，語義理解） |
+| **第三層（最外）** | 控制平面 Control Plane | PR 生命週期管理：從開啟到 Merge 的完整閉環 | Risk Contract → Preflight Gate → SHA Discipline → Rerun Dedupe → Remediation Loop → Bot Resolve → Browser Evidence → Harness Gap Loop |
 
 三層的關係：
 - **第一層（分級審查）**決定「這次變更需要多嚴格的檢查」
@@ -385,22 +343,19 @@ Harness Engineering 根據**變更的爆炸半徑**決定審查強度——不�
 
 Ryan Carson 受 OpenAI Harness Engineering 啟發後，落地成的 Control-Plane Pattern，一共八步：
 
-```
-PR 開啟
-  │
-  ├── Step 1: Risk Contract → 判斷風險等級
-  ├── Step 2: Preflight Gate → 先攔再跑（省 CI 成本）
-  │     ├── Layer 1-4 四層防禦在這裡執行
-  │     └── 不過 preflight 的 PR，後面的 CI 不跑
-  ├── Step 3: SHA Discipline → 只信當前 HEAD 的證據
-  ├── Step 4: Rerun Dedupe → 避免重複觸發 review
-  ├── Step 5: Remediation Loop → Agent 自己修、自己重跑
-  ├── Step 6: Bot Thread Resolve → 自動清理 bot 留言
-  ├── Step 7: Browser Evidence → UI 變更需要可驗證的證據
-  ├── Step 8: Harness Gap Loop → 線上事故轉 test case
-  │
-  └── Merge ✅
-```
+**PR 開啟 → Merge 的八步閉環：**
+
+| 步驟 | 名稱 | 說明 |
+|------|------|------|
+| Step 1 | Risk Contract | 判斷風險等級 |
+| Step 2 | Preflight Gate | 先攔再跑（省 CI 成本）。Layer 1-4 四層防禦在這裡執行，不過 preflight 的 PR，後面的 CI 不跑 |
+| Step 3 | SHA Discipline | 只信當前 HEAD 的證據 |
+| Step 4 | Rerun Dedupe | 避免重複觸發 review |
+| Step 5 | Remediation Loop | Agent 自己修、自己重跑 |
+| Step 6 | Bot Thread Resolve | 自動清理 bot 留言 |
+| Step 7 | Browser Evidence | UI 變更需要可驗證的證據 |
+| Step 8 | Harness Gap Loop | 線上事故轉 test case |
+| **結果** | **Merge** | **所有步驟通過後合併** |
 
 八步裡面有 **7 步是完全確定性的**。只有 Step 5 Remediation Loop 裡面有 LLM 參與。這不是巧合——**用確定性的工具框住不確定性的 AI**，這個原則貫穿了整個架構。
 
