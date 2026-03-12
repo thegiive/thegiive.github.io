@@ -321,15 +321,157 @@ Harness Engineering 根據**變更的爆炸半徑**決定審查強度——不�
 
 具體怎麼做？寫一份機器可讀的 Risk Contract：
 
+**risk-contract.json — 完整範例：**
+
 ```json
 {
-  "riskTierRules": {
-    "critical": ["db/schema.ts", "app/api/payments/**", "infrastructure/**"],
-    "high": ["app/api/**", "lib/tools/**"],
-    "medium": ["src/**"],
-    "low": ["docs/**", "README.md", "*.test.ts"]
+  "version": "1.0",
+  "description": "Risk Contract — 根據變更路徑自動決定審查強度",
+
+  "tiers": {
+    "critical": {
+      "paths": ["db/migrations/**", "db/schema.*", "infrastructure/**", "auth/**"],
+      "review": {
+        "min_reviewers": 2,
+        "required_teams": ["platform", "security"],
+        "require_staging": true,
+        "require_rollback_plan": true
+      },
+      "ci": {
+        "run_full_suite": true,
+        "run_security_scan": true,
+        "block_on_coverage_drop": true
+      }
+    },
+    "high": {
+      "paths": ["app/api/**", "lib/tools/**", "app/payments/**"],
+      "review": {
+        "min_reviewers": 1,
+        "required_teams": ["backend"],
+        "require_staging": false,
+        "require_rollback_plan": false
+      },
+      "ci": {
+        "run_full_suite": true,
+        "run_security_scan": false,
+        "block_on_coverage_drop": true
+      }
+    },
+    "medium": {
+      "paths": ["src/**", "app/components/**"],
+      "review": {
+        "min_reviewers": 1,
+        "required_teams": [],
+        "require_staging": false,
+        "require_rollback_plan": false
+      },
+      "ci": {
+        "run_full_suite": false,
+        "run_security_scan": false,
+        "block_on_coverage_drop": false
+      }
+    },
+    "low": {
+      "paths": ["docs/**", "README.md", "*.test.*", "*.spec.*"],
+      "review": {
+        "min_reviewers": 0,
+        "required_teams": [],
+        "require_staging": false,
+        "require_rollback_plan": false
+      },
+      "ci": {
+        "run_full_suite": false,
+        "run_security_scan": false,
+        "block_on_coverage_drop": false
+      }
+    }
   }
 }
+```
+
+**讀取 Risk Contract 的 CI 腳本（GitHub Actions）：**
+
+```yaml
+# .github/workflows/risk-contract.yml
+name: Risk Contract Enforcer
+on: [pull_request]
+
+jobs:
+  evaluate-risk:
+    runs-on: ubuntu-latest
+    outputs:
+      risk_level: ${{ steps.assess.outputs.level }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Assess risk level
+        id: assess
+        run: |
+          CHANGED=$(git diff --name-only origin/main...HEAD)
+          LEVEL="low"
+
+          # 從高到低匹配，取最高風險等級
+          if echo "$CHANGED" | grep -qE '^(db/migrations|db/schema|infrastructure|auth)/'; then
+            LEVEL="critical"
+          elif echo "$CHANGED" | grep -qE '^(app/api|lib/tools|app/payments)/'; then
+            LEVEL="high"
+          elif echo "$CHANGED" | grep -qE '^(src|app/components)/'; then
+            LEVEL="medium"
+          fi
+
+          echo "level=$LEVEL" >> $GITHUB_OUTPUT
+          echo "📊 Risk Level: $LEVEL"
+          echo "📁 Changed files:"
+          echo "$CHANGED"
+
+      - name: Enforce review requirements
+        if: steps.assess.outputs.level == 'critical'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Critical: 要求 platform + security 團隊 review
+            await github.rest.pulls.requestReviewers({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              team_reviewers: ['platform', 'security']
+            });
+
+            // 加標籤提醒
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['🚨 critical-risk', 'needs-staging', 'needs-rollback-plan']
+            });
+
+  run-tests:
+    needs: evaluate-risk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tests based on risk level
+        run: |
+          LEVEL="${{ needs.evaluate-risk.outputs.risk_level }}"
+
+          case $LEVEL in
+            critical|high)
+              echo "🔴 $LEVEL — Running full test suite + security scan"
+              npm run test:all
+              npm run security:scan
+              ;;
+            medium)
+              echo "🟡 Medium — Running unit tests"
+              npm run test:unit
+              ;;
+            low)
+              echo "🟢 Low — Running lint only"
+              npm run lint
+              ;;
+          esac
 ```
 
 然後每個風險等級對應不同的審查要求：
@@ -341,7 +483,7 @@ Harness Engineering 根據**變更的爆炸半徑**決定審查強度——不�
 | 基礎設施、權限修改 | 高 | AI 審查 + Senior review + 自動化測試通過 | 改 CI 配置、API 金鑰 |
 | 生產環境部署、DB schema | 極高 | 多人簽核 + staging 驗證 + 回滾計畫 | 改資料庫 schema |
 
-回到亞馬遜的案例：AI 提出「刪掉整個生產環境再重建」。如果有 Risk Contract，`infrastructure/**` 路徑的變更會被標記為 critical，需要多人簽核 + staging 驗證 + 回滾計畫。**在 AI 生成這個方案的瞬間，系統就會自動攔住它。**
+回到亞馬遜的案例：AI 提出「刪掉整個生產環境再重建」。如果有 Risk Contract，`infrastructure/**` 路徑的變更會被標記為 critical，需要 platform + security 團隊 review + staging 驗證 + 回滾計畫。**在 AI 生成這個方案的瞬間，系統就會自動攔住它。**
 
 **關鍵原則：根據變更的「爆炸半徑」來決定審查強度，而不是根據提交者的職級。**
 
