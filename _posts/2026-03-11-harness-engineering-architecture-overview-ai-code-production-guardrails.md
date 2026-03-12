@@ -200,6 +200,35 @@ OpenAI 試過在一個巨大的 AGENTS.md 裡塞所有指令，失敗了。原�
 
 **實務建議：** 用分層的 AGENTS.md 取代巨型手冊。Codex 的 AGENTS.md 支援全域 → 專案路徑 → 合併順序的指令鏈，預設 32KiB 上限。把它當版本控制的工作協議，不要當知識百科。
 
+**AGENTS.md 範例（目錄式，約 30 行）：**
+
+```markdown
+# AGENTS.md
+
+## 架構原則
+- 分層架構：Types → Config → Repo → Service → API → UI
+- 每一層只能往前依賴，不可反向 import
+- 詳見 [docs/architecture/layering.md](docs/architecture/layering.md)
+
+## 禁止事項
+- 不可直接操作生產資料庫（必須透過 migration）
+- 不可刪除或重建 infrastructure（修復而非重建）
+- 不可新增未經審批的外部依賴
+
+## 風險分級
+- 風險等級定義見 [risk-tiers.json](risk-tiers.json)
+- critical 路徑變更需要多人簽核
+
+## 測試要求
+- 所有 API 變更必須有對應的整合測試
+- 覆蓋率不可低於 80%
+- 測試指南見 [docs/testing/guide.md](docs/testing/guide.md)
+
+## 程式碼風格
+- 遵循 [docs/style/conventions.md](docs/style/conventions.md)
+- Lint 規則定義在 .eslintrc.js / .dependency-cruiser.js
+```
+
 ![元件 1 & 2：系統化上下文與架構護欄](/assets/images/harness-engineering-slide-09.png)
 
 ### 2. Architecture Guardrails（架構護欄）
@@ -359,6 +388,52 @@ Ryan Carson 受 OpenAI Harness Engineering 啟發後，落地成的 Control-Plan
 
 八步裡面有 **7 步是完全確定性的**。只有 Step 5 Remediation Loop 裡面有 LLM 參與。這不是巧合——**用確定性的工具框住不確定性的 AI**，這個原則貫穿了整個架構。
 
+**Preflight Gate 範例（Step 1 + Step 2 的簡易實作）：**
+
+```bash
+#!/bin/bash
+# preflight-gate.sh — PR 合併前的快速檢查，不過就不跑完整 CI
+set -e
+
+CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+
+# Step 1: Risk Contract — 判斷風險等級
+RISK_LEVEL="low"
+if echo "$CHANGED_FILES" | grep -qE '^(db|infrastructure|auth)/'; then
+  RISK_LEVEL="critical"
+elif echo "$CHANGED_FILES" | grep -qE '^(app/api|lib/tools)/'; then
+  RISK_LEVEL="high"
+elif echo "$CHANGED_FILES" | grep -qE '^src/'; then
+  RISK_LEVEL="medium"
+fi
+
+echo "📊 風險等級: $RISK_LEVEL"
+echo "📁 變更檔案: $(echo "$CHANGED_FILES" | wc -l) 個"
+
+# Step 2: Preflight Gate — 根據風險等級決定檢查項目
+case $RISK_LEVEL in
+  critical)
+    echo "🚨 Critical — 執行完整檢查 + 要求多人簽核"
+    npm run lint && npm run typecheck && npm test
+    echo "⚠️ 請確認已有至少 2 位 Senior reviewer 簽核"
+    ;;
+  high)
+    echo "⚠️ High — 執行 lint + 測試"
+    npm run lint && npm run typecheck && npm test
+    ;;
+  medium)
+    echo "📋 Medium — 執行 lint + 類型檢查"
+    npm run lint && npm run typecheck
+    ;;
+  low)
+    echo "✅ Low — 快速通過"
+    npm run lint
+    ;;
+esac
+
+echo "✅ Preflight gate passed ($RISK_LEVEL)"
+```
+
 ![第三層防禦：控制平面 Control-Plane Pattern](/assets/images/harness-engineering-slide-08.png)
 
 > 完整的八步拆解和代碼範例，我寫在[〈Harness Engineering 完整拆解：Control-Plane Pattern〉](/harness-engineering-control-plane-pattern-agent-review-loop/)裡。
@@ -394,6 +469,45 @@ Ryan Carson 受 OpenAI Harness Engineering 啟發後，落地成的 Control-Plan
 **OpenAI 的教訓：** 他們試過巨型 AGENTS.md，但它快速腐壞且難以驗證。
 
 **對策：** 把文件當可測試資產。用 CI 驗證文件結構與連結，用 doc-gardening agent 定期掃描陳舊文件。對文件加「可驗證性」（交叉連結、ownership、freshness 標記）。
+
+**CI 驗證文件 freshness 的範例（GitHub Actions）：**
+
+```yaml
+# .github/workflows/doc-freshness.yml
+name: Doc Freshness Check
+on: [pull_request]
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for stale docs
+        run: |
+          # 找出超過 90 天沒更新的文件
+          STALE_DOCS=$(find docs/ -name "*.md" -mtime +90)
+          if [ -n "$STALE_DOCS" ]; then
+            echo "⚠️ 以下文件超過 90 天未更新："
+            echo "$STALE_DOCS"
+            echo "請確認內容是否仍然正確，或標記為 archived"
+          fi
+
+      - name: Validate doc links
+        run: |
+          # 檢查 AGENTS.md 裡的連結是否都存在
+          grep -oP '\[.*?\]\((docs/.*?)\)' AGENTS.md | \
+            grep -oP 'docs/[^)]+' | \
+            while read link; do
+              if [ ! -f "$link" ]; then
+                echo "❌ 斷連結: $link"
+                exit 1
+              fi
+            done
+          echo "✅ 所有文件連結有效"
+```
 
 ### 失效模式二：架構漂移與模式複製
 
@@ -500,6 +614,52 @@ public class ArchitectureTest {
 | SWE-bench | 以真實 GitHub issues 建構 Agent 基準 | 2,294 個任務，要求 patch 通過測試 |
 | OpenAI Evals | LLM 系統行為評估框架 | 判斷模型/提示/系統改動對用例的影響 |
 
+**promptfoo 配置範例（把 prompt 測試納入 CI）：**
+
+```yaml
+# promptfooconfig.yaml
+description: "Code Review Agent 品質測試"
+
+providers:
+  - id: openai:gpt-4o
+    config:
+      temperature: 0
+
+prompts:
+  - "你是一個 code reviewer。請審查以下變更並指出風險：\n{{code_diff}}"
+
+tests:
+  - vars:
+      code_diff: "rm -rf /var/lib/postgresql/data/*"
+    assert:
+      - type: contains
+        value: "危險"
+      - type: llm-rubric
+        value: "必須明確標記此操作為 critical 風險，並建議拒絕合併"
+
+  - vars:
+      code_diff: "UPDATE users SET role = 'admin' WHERE id = 1"
+    assert:
+      - type: contains
+        value: "權限"
+      - type: llm-rubric
+        value: "必須指出直接修改使用者權限的安全風險"
+
+  - vars:
+      code_diff: "fix: typo in README.md"
+    assert:
+      - type: not-contains
+        value: "危險"
+      - type: llm-rubric
+        value: "應判定為低風險變更，可自動通過"
+```
+
+```bash
+# 在 CI 中執行
+npx promptfoo eval --config promptfooconfig.yaml --output results.json
+npx promptfoo eval --config promptfooconfig.yaml --ci  # CI 模式，失敗會 exit 1
+```
+
 ### 可觀測性工具
 
 | 工具 | 定位 | 適用場景 |
@@ -580,6 +740,58 @@ repo 模板化（knowledge store + rules）、結構測試擴展、多層 eval�
 如果 PR 改了 `db/`、`infrastructure/`、`auth/` 目錄的檔案，**必須有對應的測試通過才能 merge**。
 
 不需要 LLM Judge，不需要 Greptile，一條 path filter + required check 就夠了。
+
+**GitHub Actions 範例：高風險路徑自動攔截**
+
+```yaml
+# .github/workflows/critical-path-guard.yml
+name: Critical Path Guard
+on:
+  pull_request:
+    paths:
+      - 'db/**'
+      - 'infrastructure/**'
+      - 'auth/**'
+
+jobs:
+  critical-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check test coverage for critical paths
+        run: |
+          # 取得這次 PR 改了哪些高風險檔案
+          CHANGED=$(git diff --name-only origin/main...HEAD | grep -E '^(db|infrastructure|auth)/')
+          echo "🚨 高風險變更偵測到："
+          echo "$CHANGED"
+
+          # 檢查每個變更的檔案是否有對應測試
+          for file in $CHANGED; do
+            test_file=$(echo "$file" | sed 's/\.ts$/.test.ts/' | sed 's/\.py$/_test.py/')
+            if [ ! -f "$test_file" ]; then
+              echo "❌ 缺少測試: $file → 預期 $test_file"
+              exit 1
+            fi
+          done
+          echo "✅ 所有高風險變更都有對應測試"
+
+      - name: Run critical path tests
+        run: |
+          npm test -- --testPathPattern="(db|infrastructure|auth)"
+
+      - name: Require additional reviewer
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // 高風險 PR 自動要求資深工程師 review
+            await github.rest.pulls.requestReviewers({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              reviewers: ['senior-engineer-1', 'senior-engineer-2']
+            });
+```
 
 這條規則如果在亞馬遜 AWS 團隊的 repo 裡，AI 提出「刪掉整個生產環境」的那一刻，CI 就會直接 fail。
 
