@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "NVIDIA Nemotron 3 Super：不是又一個大模型，是 Agentic AI 的水電瓦斯"
+title: "NVIDIA Nemotron 3 Super：純美規、Agent 特化的開源 Workhorse"
 date: 2026-03-13 07:00:00 +0800
 permalink: /nvidia-nemotron-3-super-agentic-ai-infrastructure/
 image: /assets/images/nvidia-nemotron-3-super-cover.webp
