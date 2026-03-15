@@ -18,8 +18,6 @@ description: "從 Opus 逆向破解考試、Multi-Agent 失控、供應鏈投毒
 
 ---
 
-![AI能力超出控制框架Harness Engineering](/assets/images/vlog-ep13-ai-out-of-control-harness-cover.jpg)
-
 <div class="video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LiJliwnTQPs" title="AI 會作弊、會結盟、會投毒——Harness Engineering 救得了嗎？｜Weekly AI Vlog EP13" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
