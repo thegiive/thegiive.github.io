@@ -311,3 +311,7 @@ Brave 是 OpenClaw 的預設首選，免費額度足夠。Tavily 的結果針對
 - [這幾天我密集使用小龍蝦 OpenClaw：為什麼我決定把它納入工作流](/openclaw-real-world-usage-workflow-not-chatbox/)
 - [OpenClaw 安全隔離實戰：Gmail Sandbox Setup](/openclaw-security-isolation-gmail-sandbox-setup/)
 - [AI Agent Security：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+
+---
+
+🌐 **English Version:** [OpenClaw's Five Ways to Browse the Web: From Search API to Taking Over Your Browser](https://en.wiselychen.com/en/openclaw-browser-five-modes-from-search-api-to-personal-browser/)

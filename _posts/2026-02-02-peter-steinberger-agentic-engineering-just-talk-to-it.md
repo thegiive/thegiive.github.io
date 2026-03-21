@@ -334,3 +334,4 @@ Wisely Chen，NeuroBrain Dynamics Inc. 研發長，20+ 年 IT 產業經驗。曾
 **相關連結：**
 - 部落格首頁：https://ai-coding.wiselychen.com
 - LinkedIn：https://www.linkedin.com/in/wisely-chen-38033a5b/
+- 🌐 English Version: [From $116M Exit to 100K GitHub Stars: Peter Steinberger's Agentic Engineering Philosophy](https://en.wiselychen.com/en/peter-steinberger-agentic-engineering-just-talk-to-it/)

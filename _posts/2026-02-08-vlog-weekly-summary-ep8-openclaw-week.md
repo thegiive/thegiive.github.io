@@ -284,3 +284,7 @@ Email 這些東西看似簡單，但它其實是 OpenClaw 要放進去企業可�
 4. [OpenClaw 架構全拆解：Agent 工程師必學的六層設計](/openclaw-architecture-deep-dive-what-claude-code-didnt-tell-you/)
 5. [OpenClaw Token 優化指南：如何將 AI Agent 運營成本降低 97%](/openclaw-cost-optimization-guide-97-percent-reduction/)
 6. [OpenClaw 如何部署在企業：我怎麼把 AI Agent 當成一個「全新的員工」](/openclaw-enterprise-deployment-new-employee-mindset/)
+
+---
+
+🌐 **English Version:** [OpenClaw Week: From the Claude Code 1.5 Era to a Digital Jarvis | Weekly Vlog EP8](https://en.wiselychen.com/en/vlog-weekly-summary-ep8-openclaw-week/)

@@ -130,3 +130,7 @@ OpenClaw 最強的地方，不是能開幾個 Agent。
 - [養 🦞 OpenClaw 到底在養什麼？](https://x.com/karry_viber/status/2023941941604590042)
 - [Discord 配置避坑指南 + Agent Terms 實戰](https://x.com/karry_viber/status/2023584266484150369)
 - [5 只🦞不如 1 只深度進化的🦞——我為什麼不做多 Agent](https://x.com/karry_viber/status/2024675195903246732)
+
+---
+
+🌐 **English Version:** [Stop Using OpenClaw Like Claude Code: The Moat Is in Single-Agent Depth](https://en.wiselychen.com/en/single-agent-vs-multi-agent-openclaw/)

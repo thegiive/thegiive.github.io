@@ -241,3 +241,7 @@ MiniMax 自己說：「$1 可以持續運行模型一小時，速度 100 tokens/
 - [OpenClaw 成本優化實戰：從 $200/天到 $6/天的 97% 降幅](/openclaw-cost-optimization-guide/)
 - [OpenClaw 安全隔離：Gmail Sandbox 與最小權限原則](/openclaw-security-isolation-gmail-sandbox/)
 - [Peter Steinberger 的 Agentic Engineering 哲學：Just Talk to It](/peter-steinberger-agentic-engineering-philosophy/)
+
+---
+
+🌐 **English Version:** [The Channel War: OpenClaw, Anthropic, and Who Gets to Decide the Future of AI Agents](https://en.wiselychen.com/en/openclaw-anthropic-channel-war/)
