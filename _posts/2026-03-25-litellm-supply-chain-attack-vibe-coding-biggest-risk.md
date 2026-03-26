@@ -47,7 +47,7 @@ Callum McMahon — 就是 Karpathy 提到的那位。他在 Cursor 裡用了一�
 
 ### 案例二：Browser-Use + Claude MCP 自動載入
 
-推特用戶实践哥MinLi（@MinLiBuilds）也遇到了類似的情況：
+X 用戶（@MinLiBuilds）也遇到了類似的情況：
 
 > 「昨天裝了 browser-use，上午裝的，一打開就有無數 python 進程啟動電腦卡死。claude 一啟動就自動加載 mcp 就會啟動無限個 python。」
 

@@ -131,24 +131,3 @@ K3s cluster + 三層安全機制 + 獨立的 Policy Engine pod = **記憶體消�
 
 ![NemoClaw 架構圖](/assets/images/nemoclaw-architecture-diagram.png)
 
-```
-User → NemoClaw CLI → Blueprint Runner (resolve → verify → plan → apply)
-  ↓
-Gateway Docker Container
-  ↓ openshell gateway start
-K3s Cluster
-  ├── Gateway API (control plane)
-  ├── Policy Engine ──── allow/deny ────→ Sandbox Pod
-  ├── Privacy Router ───────────────────→ NVIDIA Cloud / Local NIM / Local vLLM
-  │
-  └── Sandbox Pod（隔離）
-       ├── netns + HTTP CONNECT proxy + OPA Policy
-       ├── seccomp BPF (allowlist)
-       ├── Landlock (filesystem)
-       │
-       └── OpenClaw Agent
-            ├── HTTP CONNECT proxy（所有流量經過）
-            ├── File System（只能看到 /sandbox, /tmp, /usr, /lib, /etc）
-            ├── Network Egress Policy (YAML allowlist, per-binary)
-            └── Terminal User Interface (TUI)
-```
