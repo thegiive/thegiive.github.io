@@ -283,6 +283,8 @@ Benchmark 是廠商自己跑的。評測方法、prompt 格式、溫度設定、
 - [本地 LLM 處理 Excel 的正確姿勢](/local-llm-excel-code-interpreter/) — 用 Gemma 3 小模型做 Excel 解析的實戰
 - [2026 農曆新年，中國開源大模型集體爆發](/china-ai-models-2026-lunar-new-year-comparison/) — Kimi、Qwen、GLM、MiniMax 怎麼選
 - [2026 AI 模型怎麼選？7 大場景 × 9 個模型的實戰選型指南](/ai-industry-paradigm-shift-2025-2026-model-to-agent-swarm/) — 不同場景的模型選型建議
+- [本地模型的 Tool Calling 到底行不行？ToolCall-15 揭示的殘酷真相](/toolcall-15-local-llm-tool-calling-qwen-27b-sweet-spot/) — 9B 的 tool calling 是天花板，27B dense 才是甜蜜點
+- [把 LLM 直接燒進晶片：Taalas 的瘋狂賭注](/taalas-asic-burn-llm-into-silicon-local-inference-future/) — 如果推理成本歸零，本地小模型的遊戲規則會改變
 - [Qwen 3.5 Official Blog](https://qwen.ai/blog?id=qwen3.5) — 官方技術報告
 - [VentureBeat: Qwen3.5-9B beats GPT-OSS-120B](https://venturebeat.com/technology/alibabas-small-open-source-qwen3-5-9b-beats-openais-gpt-oss-120b-and-can-run) — 外媒報導
 
