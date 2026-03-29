@@ -7,8 +7,6 @@ image: /assets/images/vlog-ep15-ntu-ai-club-chatbot-copilot-agent-cover.png
 description: "台大 AI 社團演講精華（上）——Chatbot → Copilot → Agent 三階段演進。用吃飯時讓 Claude Code 自動剪 YouTube Shorts 的真實故事，說明什麼叫 Agent 的主動性。以及為什麼今年開始，你該為 Agent 打造服務，而不只是為人打造。"
 ---
 
-![台大 AI 社分享 Chatbot-Copilot-Agent 我的龍蝦OpenClaw時刻](/assets/images/vlog-ep15-ntu-ai-club-chatbot-copilot-agent-cover.png)
-
 <div class="video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NjmYQziVTOw" title="從 Chatbot 到 Agent：吃飯時讓 AI 自動剪片的時代已經來了｜Weekly AI Vlog EP15" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
@@ -74,6 +72,8 @@ Agent 真正在做的事情就是：我給他一個任務，然後他會自己�
 5 分鐘之後，他就回傳給我說：
 
 > 「嗨，你好，我已經做完了。幾件事情：第一，我從 YouTube 上面把你的影片下載下來。第二，我把你的聲音轉成逐字稿。第三，我去分析你的逐字稿裡面的東西，我判斷裡面有三段是最適合剪輯的，大概都是一分多鐘的。那請你看一下 OK 不 OK。然後並且，我已經幫你剪了第一段，剪好了你看一下，而且幫你上了字幕。如果你覺得我做的 OK 的話，我現在幫你剪第二段第三段。」
+
+![Claude Code 自動剪 Shorts 的對話截圖](/assets/images/vlog-ep15-claude-code-shorts-demo.png)
 
 **什麼叫主動？這叫主動。** 我在工作管理的時候超喜歡這種主動的員工。這是徹底理解你要做什麼，而且不等命令，做完這件事情就再跟你講：這是我的結果，你看這樣做的話還有什麼能改進的。
 
