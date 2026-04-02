@@ -9,7 +9,7 @@ image: /assets/images/claude-code-source-leak.png
 
 ![Claude Code 被迫開源的設計心得](/assets/images/claude-code-source-leak.png)
 
-{% include youtube.html id="gbk9bCLHxwc" %}
+{% include youtube.html id="LSN7MqXR5Kg" %}
 
 ## 今天發生了一件大事
 
@@ -22,6 +22,8 @@ Claude Code 的完整原始碼被洩出來了。
 最諷刺的是，Claude Code 裡面有一整套叫「Undercover Mode」的子系統，專門防止 AI 在 commit message 裡不小心洩漏 Anthropic 內部資訊。結果原始碼本身是被自家 build pipeline 送出去的。
 
 防了 AI，沒防到人。
+
+![防得了 AI，防不住人類失誤](/assets/images/claude-code-slides/slide-02.png)
 
 ---
 
@@ -36,6 +38,8 @@ Claude Code 的完整原始碼被洩出來了。
 3. 51 萬行 code 裡，到底**藏著什麼**？
 
 讀完之後，我的第一反應是：**這不是一個 AI 編程助手，這是一個作業系統。**
+
+![這不是 AI 工具，這是一個作業系統](/assets/images/claude-code-slides/slide-03.png)
 
 ---
 
@@ -54,6 +58,8 @@ Claude Code 的完整原始碼被洩出來了。
 為什麼 Anthropic 選了最難的那條路？因為只有這樣，AI 才能用**你的終端、你的環境、你的配置**來幹活。這才是「真正幫你寫程式碼」，而不是「在一個乾淨房間裡幫你寫一段 code 然後複製過來」。
 
 但代價是什麼？他們為此寫了 51 萬行程式碼。
+
+![遠端存取權限的哲學差異：Cursor vs Copilot Agent vs Claude Code](/assets/images/claude-code-slides/slide-04.png)
 
 > **💬 我的感想：** 這個比喻把三家的差異講得非常清楚。我自己用了半年多 Claude Code，寫了 63 萬行，一直覺得「手感」跟 Cursor 不一樣，但說不上來為什麼。現在看到原始碼才明白——**Cursor 是讓 AI 坐在你旁邊，Claude Code 是讓 AI 坐在你的位子上。** 它操作的是你真正的開發環境，而不是一個模擬的沙箱。這個設計決定了一切下游的差異。
 
@@ -126,6 +132,8 @@ export async function getSystemPrompt(
 
 Anthropic 把提示詞當成了**編譯器的輸出**來最佳化。靜態部分是「編譯後的 binary」，動態部分是「runtime 參數」。
 
+![提示詞不是寫出來的，是「編譯」出來的](/assets/images/claude-code-slides/slide-05.png)
+
 > **💬 我的感想：** 「把提示詞當編譯器輸出來最佳化」這句話讓我停下來想了很久。我之前寫 CLAUDE.md 的時候，只是想著「把規則寫清楚」，從來沒想過**排列順序會影響 cache 命中率**。但仔細想，Claude API 的 prompt cache 是基於前綴匹配的——靜態規則排前面，每次都不一樣的 git status 放最後。這不是美學問題，是成本問題。以後我寫 CLAUDE.md 的時候會更注意結構。
 
 ### 每個工具都有獨立的「使用手冊」
@@ -151,6 +159,8 @@ Git Safety Protocol:
 
 ## 秘密二：42 個工具，但你只看到了冰山一角
 
+![42 個延遲載入的系統呼叫](/assets/images/claude-code-slides/slide-06.png)
+
 42 個工具，但大部分你從未直接看到過。因為很多工具是**延遲載入**的——只有當 LLM 需要時，才通過 `ToolSearchTool` 按需注入。
 
 為什麼？因為每多一個工具，系統提示詞就多一段描述，token 就多花一份錢。如果你只是想讓 Claude Code 幫你改一行程式碼，它不需要載入「定時任務排程器」和「團隊協作管理器」。
@@ -170,6 +180,8 @@ const TOOL_DEFAULTS = {
 
 這叫 **fail-closed 設計**——如果一個工具的作者忘了聲明安全屬性，系統會假設它是「不安全的、會寫入的」。寧可過度保守，也不漏掉一個風險。
 
+![Fail-Closed：不信任工程師的預設防線](/assets/images/claude-code-slides/slide-07.png)
+
 > **💬 我的感想：** 這個 fail-closed 設計跟我在 [AI Agent Security](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/) 講的是同一件事——AI 工具的安全設計必須是「預設禁止」而不是「預設允許」。但 Anthropic 做得更狠：他們不信任自己的工程師。假設你新寫一個 tool，忘了標注安全屬性，系統會自動假設最壞情況。這比「提醒工程師記得標注」有效多了。
 >
 > 另外 `CLAUDE_CODE_SIMPLE=true` 只剩三個工具（Bash、Read、Edit）這個後門也很有意思。我在 [Shell Wrapper 那篇](/shell-wrapper-2-anthropic-real-threat/) 分析過 Claude Code 的極簡主義基因——它骨子裡就是 terminal + LLM。現在原始碼證實了，最核心的操作確實只需要三個工具。其他 39 個都是「增值服務」。
@@ -188,6 +200,8 @@ function getPreReadInstruction(): string {
 
 這就是為什麼 Claude Code 不會像某些工具那樣「憑空寫一段程式碼覆蓋你的檔案」——它被強制要求**先理解再修改**。
 
+![核心鐵律：先理解再修改](/assets/images/claude-code-slides/slide-08.png)
+
 > **💬 我的感想：** 這讓我想起我在 [ATPM QA 驗收](/atpm-qa-ru-he-yan-shou-ai-coding-de-cheng-shi/) 那篇講過的——AI 最危險的錯誤不是「寫錯代碼」，而是「不理解就動手」。Claude Code 用硬約束解決了這個問題。有些競品的 AI 會直接生成整個檔案覆蓋上去，連原來的代碼都不看。這就是「好用」和「危險」的分界線。
 
 ---
@@ -199,6 +213,8 @@ function getPreReadInstruction(): string {
 你告訴它「不要在測試中 mock 資料庫」，下次對話它就不會再 mock。你告訴它「我是後端工程師，React 新手」，它解釋前端程式碼時就會用後端的類比。
 
 這背後是一個完整的記憶系統，分三層。
+
+![拒絕上下文膨脹的三層記憶體架構](/assets/images/claude-code-slides/slide-09.png)
 
 ### 第一層：MEMORY.md — 永遠載入的輕量索引
 
@@ -245,6 +261,8 @@ Claude Code 有一個設計叫「Strict Write Discipline」：
 > **Agent 必須把自己的記憶當成 hint，必須對照實際 codebase 驗證後才能行動。**
 
 這個思路叫「skeptical memory」——**懷疑式記憶**。
+
+![懷疑式記憶 Skeptical Memory](/assets/images/claude-code-slides/slide-10.png)
 
 我認為這是整包原始碼裡最有價值的設計哲學。大多數 Agent 框架都把記憶當成「真理」。但 Claude Code 的立場是：**記憶只是線索，不是答案。**
 
