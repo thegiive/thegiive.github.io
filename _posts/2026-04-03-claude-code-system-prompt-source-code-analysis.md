@@ -18,6 +18,8 @@ description: "大家都在學 prompt engineering，但你有沒有想過，Anthr
 
 ## 先講結論
 
+上一篇「[Claude Code 51 萬行原始碼外洩拆解：這不是 AI 工具，這是一個作業系統](https://ai-coding.wiselychen.com/claude-code-source-leak-memory-architecture-lessons/)」我們從宏觀架構看了整個系統的設計。這篇我們把鏡頭拉近，只看一個檔案——`prompts.ts`。
+
 我花了一些時間拆解 Claude Code 的 `prompts.ts` 源碼，這是它的核心 system prompt 定義檔。
 
 最讓我意外的不是技術架構，而是 Anthropic 對「語氣控制」下的功夫。他們在一個 prompt 裡面用了 4 種不同的方式，反覆告訴 Claude 同一件事：**閉嘴，少說話，做完就停。**
