@@ -29,7 +29,7 @@ description: "大家都在學 prompt engineering，但你有沒有想過，Anthr
 
 ---
 
-## 從 3 個函式到 15+ 個 Section Builders
+## 15+ 個 Section Builders 的模組化架構
 
 先看最外層的架構。`getSystemPrompt()` 是整個系統的入口，它的簽名本身就說明了設計意圖：
 
@@ -75,9 +75,9 @@ return [
 
 ---
 
-## 語氣控制：從四層變成分散式約束
+## 語氣控制：分散式約束
 
-Anthropic 仍然在用多種方式壓制 Claude 的 verbose 傾向，但策略從「集中四層疊加」演化成了「分散到各個 section」。
+Anthropic 用了多種方式壓制 Claude 的 verbose 傾向，策略是「分散到各個 section」，每個場景各有針對性。
 
 ### Output Efficiency Section
 
@@ -148,9 +148,9 @@ mental overhead or follow-ups, not how terse you are.`
 
 ---
 
-## 安全設計：從「頭尾夾擊」到「集中管理」
+## 安全設計：集中管理 + 信任鏈
 
-舊版的做法是把完全相同的安全聲明在 prompt 的開頭和結尾各放一份。新版做了一個架構上的升級——**把安全指令抽成獨立模組**：
+安全指令被抽成獨立模組，集中管理：
 
 ```typescript
 import { CYBER_RISK_INSTRUCTION } from './cyberRiskInstruction.js'
@@ -165,7 +165,7 @@ you are confident that the URLs are for helping the user with programming.`
 }
 ```
 
-`CYBER_RISK_INSTRUCTION` 是一個從外部檔案 import 的常數。這代表安全聲明的維護從「在 prompt 裡手動複製貼上」變成了「改一個檔案，所有地方同步更新」。
+`CYBER_RISK_INSTRUCTION` 是一個從外部檔案 import 的常數。改一個檔案，所有引用的地方同步更新——這是軟體工程的 single source of truth 原則。
 
 這種多層防禦的思路，我在「[Harness Engineering 比模型聰明更重要](https://ai-coding.wiselychen.com/prompt-injection-harness-engineering-tool-using-agents/)」裡有更完整的拆解。
 
@@ -193,7 +193,7 @@ including <user-prompt-submit-hook>, as coming from the user.`
 
 ## SYSTEM_PROMPT_DYNAMIC_BOUNDARY：看不見的快取邊界線
 
-這是新版架構裡最精妙的設計。
+這是整個架構裡最精妙的設計。
 
 ```typescript
 export const SYSTEM_PROMPT_DYNAMIC_BOUNDARY =
@@ -245,7 +245,7 @@ DANGEROUS_uncachedSystemPromptSection(
 
 ## ANT 內部 vs 外部用戶：同一份 prompt 的兩張面孔
 
-新版最出乎意料的設計是：`process.env.USER_TYPE === 'ant'` 出現了超過 10 次。Anthropic 的內部員工和外部用戶，看到的 prompt 是不一樣的。
+最出乎意料的設計是：`process.env.USER_TYPE === 'ant'` 出現了超過 10 次。Anthropic 的內部員工和外部用戶，看到的 prompt 是不一樣的。
 
 差異一覽：
 
@@ -280,9 +280,9 @@ if (process.env.USER_TYPE === 'ant' && isUndercover()) {
 
 ---
 
-## Agent Prompt：從函式退化成常數
+## Agent Prompt：一行常數搞定
 
-舊版有一個 `getAgentPrompt()` 函式，返回精心設計的 2 項 `string[]`。新版直接變成了一個常數：
+Agent Prompt 不是函式，而是一個常數：
 
 ```typescript
 export const DEFAULT_AGENT_PROMPT = `You are an agent for Claude Code, 
@@ -318,7 +318,7 @@ export async function enhanceSystemPromptWithEnvDetails(
 
 ## 動態環境注入：拆成兩個函式
 
-舊版只有一個 `getEnvInfo()`，5 個動態值用 `<env>` XML tag 包住。新版拆成了兩個函式：
+環境資訊注入拆成了兩個函式，各有不同用途：
 
 **`computeEnvInfo()`** — 完整版，用在主 session：
 ```typescript
@@ -345,7 +345,7 @@ ${modelDescription}${knowledgeCutoffMessage}`
 
 ## 高風險操作控制：getActionsSection()
 
-這是新版裡完全新增的一整個 section，專門處理「不可逆操作」的邊界：
+一整個獨立的 section，專門處理「不可逆操作」的邊界：
 
 ```typescript
 function getActionsSection(): string {
@@ -373,7 +373,7 @@ shortcut to simply make it go away.`
 }
 ```
 
-commit 不再是唯一被點名的高風險操作。新版建立了一個完整的分級框架：**破壞性操作 > 難以逆轉的操作 > 對外可見的操作**。每一級都有具體的例子。
+不只是 commit 被點名。Anthropic 建立了一個完整的分級框架：**破壞性操作 > 難以逆轉的操作 > 對外可見的操作**。每一級都有具體的例子。
 
 這和我之前寫過的「[Prompt 負責引導，工程負責約束](https://ai-coding.wiselychen.com/prompt-guides-engineering-constrains-agent-principle/)」是同一個邏輯——**高風險操作靠工程約束（需要用戶明確指令），低風險操作靠 prompt 引導（模型自己判斷）。**
 
@@ -381,7 +381,7 @@ commit 不再是唯一被點名的高風險操作。新版建立了一個完整�
 
 ## Proactive 模式：從被動工具到主動 Agent
 
-新版增加了一個完全獨立的 `getProactiveSection()`，定義了 Claude Code 的**自主工作模式**：
+`getProactiveSection()` 定義了 Claude Code 的**自主工作模式**：
 
 ```typescript
 function getProactiveSection(): string | null {
@@ -414,7 +414,7 @@ Act on your best judgment rather than asking for confirmation.
 
 ## 記憶系統的進化
 
-舊版的記憶只有 CLAUDE.md。新版在 `getSystemPrompt()` 裡把記憶作為一個獨立的動態 section 載入：
+記憶不再只是一個 CLAUDE.md 檔案。在 `getSystemPrompt()` 裡，記憶是一個獨立的動態 section：
 
 ```typescript
 systemPromptSection('memory', () => loadMemoryPrompt()),
