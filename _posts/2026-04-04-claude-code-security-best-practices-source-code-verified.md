@@ -4,7 +4,7 @@ title: "Claude Code 資安最佳實踐：14 條建議，每條都有原始碼撐
 date: 2026-04-04 07:00:00 +0800
 permalink: /claude-code-security-best-practices-source-code-verified/
 image: /assets/images/claude-code-security-best-practices-cover.png
-description: "網路上關於 Claude Code 安全配置的建議很多，但有多少是真的去翻過原始碼驗證的？我拿 best practice repo 一條一條對 Claude Code 的 TypeScript source code，14 條建議中每一條都能在原始碼裡找到對應實作。番外篇揭露了 Claude Code 在背景回傳到 Anthropic 的完整資料清單：不只是遙測——對話 transcript 會被自動上傳（無法關閉）、feedback 會送出完整對話稿、team memory 和 settings 也會同步到雲端。附完整資料流總覽表。"
+description: "網路上關於 Claude Code 安全配置的建議很多，但有多少是真的去翻過原始碼驗證的？我拿 best practice repo 一條一條對 Claude Code 的 TypeScript source code，14 條建議中每一條都能在原始碼裡找到對應實作。番外篇更揭露了 Claude Code 的完整資料回傳行為（對話 transcript 自動上傳且無法關閉）、以及 Anthropic 透過 GrowthBook feature flags 對你的 CLI 擁有的遠端控制能力——可以在不更新版本的情況下關閉 bypass 模式、auto mode、agent swarms 等功能。"
 ---
 ![Claude Code 開源設計細節：從 source code 去看資安 best practice](/assets/images/claude-code-security-best-practices-cover.png)
 
@@ -41,6 +41,7 @@ description: "網路上關於 Claude Code 安全配置的建議很多，但有�
   - [14. Prompt Injection 要被視為正式威脅模型的一部分](#14-prompt-injection-要被視為正式威脅模型的一部分)
 - [番外篇：Claude Code 到底收集了你多少本機資訊？](#番外篇claude-code-到底收集了你多少本機資訊)
   - [不只是遙測——還有哪些資料會回傳 Anthropic？](#不只是遙測還有哪些資料會回傳-anthropic)
+  - [Anthropic 對你的 CLI 有多少遠端控制能力？](#anthropic-對你的-cli-有多少遠端控制能力)
 - [總覽表：14 條 Best Practice 原始碼驗證結果](#總覽表14-條-best-practice-原始碼驗證結果)
 - [坦白說：這份清單的局限](#坦白說這份清單的局限)
 - [結論：安全不是一個開關，是一個架構](#結論安全不是一個開關是一個架構)
@@ -677,6 +678,51 @@ Endpoint: api.anthropic.com/api/claude_code/settings
 4. **Datadog 是第三方。** 雖然只是監控，但資料離開了 Anthropic 的基礎設施。
 
 如果你的企業有嚴格的資料治理要求，**建議在部署前先設定 `CLAUDE_CODE_ENABLE_TELEMETRY=0`**，或者在企業政策層面做 opt-out。
+
+### Anthropic 對你的 CLI 有多少遠端控制能力？
+
+這是翻 source code 時最讓我意外的發現之一。
+
+除了前面提到的 `bypassPermissions` killswitch，Anthropic 透過 **GrowthBook（feature flags + A/B testing 平台）** 對你正在跑的 Claude Code CLI 有相當廣泛的遠端控制能力——**不需要你更新版本，不需要你同意，甚至不需要你知道**。
+
+核心機制是 `checkSecurityRestrictionGate()` 和 `checkStatsigFeatureGate_CACHED_MAY_BE_STALE()` 這兩個函數。前者用於安全相關的 gate，會等 GrowthBook re-init 完成才返回（確保拿到最新值）；後者用於一般功能 gate，用快取值。
+
+從 source code 找到的遠端控制項：
+
+**安全相關（Security Restriction Gates）：**
+
+| 控制項 | Gate | 效果 |
+|---|---|---|
+| 關閉 bypassPermissions | `tengu_disable_bypass_permissions_mode` | 強制所有人退出 bypass 模式 |
+| Auto mode circuit breaker | `tengu_auto_mode_config` | 遠端關閉 auto mode |
+| Agent swarms killswitch | `tengu_amber_flint` | 遠端關閉多 agent 並行 |
+
+**功能相關（Feature Gates）：**
+
+| 控制項 | Gate | 效果 |
+|---|---|---|
+| Analytics sink | `tengu_frond_boric` | 開關 Datadog / 1P 分析管道 |
+| Settings sync | `tengu_enable_settings_sync_push` | 開關你的設定上傳 |
+| File read dedup | `tengu_read_dedup_killswitch` | 開關檔案讀取去重 |
+| Compact line prefix | `tengu_compact_line_prefix_killswitch` | 開關壓縮格式 |
+| Bash classifier shadow | GrowthBook gate | 開關 bash 指令分類器 |
+| Remote bridge | `tengu_ccr_bridge` | 開關 remote session |
+| Streaming fallback | `tengu_disable_streaming_to_non_streaming_fallback` | 開關串流降級 |
+| Cron scheduler | killswitch（per tick） | 開關排程任務 |
+
+注意那些 gate 名稱——`tengu_frond_boric`、`tengu_amber_flint`——**故意用無意義的代號**，讓你就算讀到 source code 也不容易猜出它控制什麼。這是典型的 feature flag 命名策略，但也意味著 Anthropic 有能力在不透明的情況下切換功能。
+
+**這代表什麼？**
+
+從正面看，這是**負責任的 remote kill capability**。如果發現安全漏洞，Anthropic 可以在幾分鐘內遠端關掉危險功能，不用等所有人更新 CLI。`bypassPermissions` killswitch 就是一個好例子。
+
+從資安角度看，這等於 **Anthropic 對你的開發環境有持續的遠端控制權**。你的 CLI 每次啟動和執行中都會去拉 GrowthBook 的配置，Anthropic 可以：
+- 強制關掉你的 auto mode
+- 停用你的 agent swarms
+- 改變你的 analytics 行為
+- 啟用或停用功能
+
+如果你的企業對供應鏈有嚴格要求，這是需要評估的風險點。**你信任 Anthropic 嗎？** 如果信任，這些 remote capability 是好的安全設計。如果不完全信任，你至少應該知道它存在。
 
 ---
 
