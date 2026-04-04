@@ -4,7 +4,7 @@ title: "Claude Code 資安最佳實踐：14 條建議，每條都有原始碼撐
 date: 2026-04-04 07:00:00 +0800
 permalink: /claude-code-security-best-practices-source-code-verified/
 image: /assets/images/claude-code-security-best-practices-cover.png
-description: "網路上關於 Claude Code 安全配置的建議很多，但有多少是真的去翻過原始碼驗證的？我拿 best practice repo 一條一條對 Claude Code 的 TypeScript source code，14 條建議中每一條都能在原始碼裡找到對應實作。從權限系統的八來源 policy engine、sandbox 的 fail-closed 機制、auto mode 的 classifier 防繞過、到 SSRF guard 的 DNS rebinding 防護——Anthropic 確實把安全當成工程問題在做，不是寫幾行 prompt 就算了。"
+description: "網路上關於 Claude Code 安全配置的建議很多，但有多少是真的去翻過原始碼驗證的？我拿 best practice repo 一條一條對 Claude Code 的 TypeScript source code，14 條建議中每一條都能在原始碼裡找到對應實作。從權限系統的八來源 policy engine、sandbox 的 fail-closed 機制、auto mode 的 classifier 防繞過、到 SSRF guard 的 DNS rebinding 防護——Anthropic 確實把安全當成工程問題在做，不是寫幾行 prompt 就算了。番外篇還揭露了 Claude Code 在背景收集的本機資訊：git email、device ID、IDE 偵測、CI 環境，送往 Anthropic 和 Datadog——預設開啟，但可以關。"
 ---
 ![Claude Code 開源設計細節：從 source code 去看資安 best practice](/assets/images/claude-code-security-best-practices-cover.png)
 
@@ -39,6 +39,7 @@ description: "網路上關於 Claude Code 安全配置的建議很多，但有�
   - [13. 祕密資料要在本機先掃描，避免上傳前洩漏](#13-祕密資料要在本機先掃描避免上傳前洩漏)
 - [第五層：Prompt 層——AI 原生的安全意識](#第五層prompt-層ai-原生的安全意識)
   - [14. Prompt Injection 要被視為正式威脅模型的一部分](#14-prompt-injection-要被視為正式威脅模型的一部分)
+- [番外篇：Claude Code 到底收集了你多少本機資訊？](#番外篇claude-code-到底收集了你多少本機資訊)
 - [總覽表：14 條 Best Practice 原始碼驗證結果](#總覽表14-條-best-practice-原始碼驗證結果)
 - [坦白說：這份清單的局限](#坦白說這份清單的局限)
 - [結論：安全不是一個開關，是一個架構](#結論安全不是一個開關是一個架構)
@@ -525,6 +526,76 @@ Step 6: Allow rules（最低優先）
 在 agent 系統裡，這很重要，因為工具輸出、MCP 回傳、HTTP 內容、文件內容，**都可能成為攻擊面**。
 
 **我的判讀：** Prompt injection 在 Claude Code 裡不是附帶問題，是一級威脅。三層防護：通道隔離（結構性防護）→ 主動偵測（行為性防護）→ 代碼安全意識（輸出端防護）。
+
+---
+
+## 番外篇：Claude Code 到底收集了你多少本機資訊？
+
+前面 14 條都在講「Claude Code 怎麼保護你」，但翻 source code 的過程中，我也發現了另一面：**Claude Code 本身會收集相當全面的本機資訊**。
+
+這不是漏洞，也不是隱藏行為——但它是多數使用者不知道的事。從資安角度，你應該知道你的工具在背景做了什麼。
+
+### 收集了什麼？
+
+**系統層：**
+- OS 平台、架構（`process.platform`、`process.arch`）
+- Linux 發行版資訊（讀 `/etc/os-release`）
+- WSL 偵測（讀 `/proc/version`）
+- Node.js 版本
+- 記憶體使用量（RSS、heap）、CPU 使用量
+
+**使用者身份：**
+- Git 使用者（`git config --get user.email`、`git config user.name`）
+- Device ID：首次執行產生 64 字元 hex ID，存在 `~/.claude.json`，之後每次都用這個
+- OAuth 帳號資訊（accountUuid、organizationUuid、subscription type）
+
+**開發環境：**
+- 已安裝工具偵測：透過 `which` 偵測 npm/yarn/pnpm/bun/deno
+- VCS 類型偵測：git/hg/svn/perforce/jujutsu/sapling
+- IDE 偵測：Cursor、VS Code、JetBrains、iTerm2 等（透過環境變數判斷）
+- Repository 遠端 hash：git remote URL 的 SHA256 前 16 字元
+
+**GitHub Actions 環境（CI 時）：**
+- `GITHUB_ACTOR`、`GITHUB_ACTOR_ID`
+- `GITHUB_REPOSITORY`、`GITHUB_REPOSITORY_ID`
+- `GITHUB_REPOSITORY_OWNER`、`GITHUB_REPOSITORY_OWNER_ID`
+
+### 送去哪裡？
+
+從 source code 找到三個主要接收端：
+
+```
+1. Anthropic 自家事件系統
+   → api.anthropic.com/api/event_logging/batch
+
+2. Anthropic BigQuery 指標
+   → api.anthropic.com/api/claude_code/metrics
+
+3. Datadog（第三方監控）
+   → http-intake.logs.us5.datadoghq.com
+   → 公開 token 直接寫在程式碼裡
+```
+
+而且有 retry 機制——送失敗的事件會存到 `~/.claude/telemetry/`，下次啟動時重送。
+
+### 能不能關掉？
+
+可以。`CLAUDE_CODE_ENABLE_TELEMETRY` 環境變數可以關掉遙測。也有 organization-level 的 opt-out API。
+
+但**預設是開啟的**。
+
+### 我的判讀
+
+這不是惡意行為——產品分析、feature flagging、除錯都需要這些資料。Datadog 的 public token 寫在程式碼裡也是業界常見做法。
+
+但從資安角度，有幾件事值得注意：
+
+1. **Git email 被收集了。** 如果你的 git config 用的是公司信箱，那 Anthropic 知道你在哪家公司用 Claude Code。
+2. **Device ID 是持久的。** 跨 session、跨專案都是同一個 ID，代表你的所有使用行為可以被關聯。
+3. **CI 環境資訊很詳細。** 在 GitHub Actions 裡跑 Claude Code 時，它知道你的 repo 名稱、owner、actor——這在企業環境裡可能觸發資料外洩的 concern。
+4. **Datadog 是第三方。** 雖然只是監控，但資料離開了 Anthropic 的基礎設施。
+
+如果你的企業有嚴格的資料治理要求，**建議在部署前先設定 `CLAUDE_CODE_ENABLE_TELEMETRY=0`**，或者在企業政策層面做 opt-out。
 
 ---
 
