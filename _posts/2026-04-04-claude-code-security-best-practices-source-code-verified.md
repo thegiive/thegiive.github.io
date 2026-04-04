@@ -4,7 +4,7 @@ title: "Claude Code 資安最佳實踐：14 條建議，每條都有原始碼撐
 date: 2026-04-04 07:00:00 +0800
 permalink: /claude-code-security-best-practices-source-code-verified/
 image: /assets/images/claude-code-security-best-practices-cover.png
-description: "網路上關於 Claude Code 安全配置的建議很多，但有多少是真的去翻過原始碼驗證的？我拿 best practice repo 一條一條對 Claude Code 的 TypeScript source code，14 條建議中每一條都能在原始碼裡找到對應實作。從權限系統的八來源 policy engine、sandbox 的 fail-closed 機制、auto mode 的 classifier 防繞過、到 SSRF guard 的 DNS rebinding 防護——Anthropic 確實把安全當成工程問題在做，不是寫幾行 prompt 就算了。番外篇還揭露了 Claude Code 在背景收集的本機資訊：git email、device ID、IDE 偵測、CI 環境，送往 Anthropic 和 Datadog——預設開啟，但可以關。"
+description: "網路上關於 Claude Code 安全配置的建議很多，但有多少是真的去翻過原始碼驗證的？我拿 best practice repo 一條一條對 Claude Code 的 TypeScript source code，14 條建議中每一條都能在原始碼裡找到對應實作。番外篇揭露了 Claude Code 在背景回傳到 Anthropic 的完整資料清單：不只是遙測——對話 transcript 會被自動上傳（無法關閉）、feedback 會送出完整對話稿、team memory 和 settings 也會同步到雲端。附完整資料流總覽表。"
 ---
 ![Claude Code 開源設計細節：從 source code 去看資安 best practice](/assets/images/claude-code-security-best-practices-cover.png)
 
@@ -40,6 +40,7 @@ description: "網路上關於 Claude Code 安全配置的建議很多，但有�
 - [第五層：Prompt 層——AI 原生的安全意識](#第五層prompt-層ai-原生的安全意識)
   - [14. Prompt Injection 要被視為正式威脅模型的一部分](#14-prompt-injection-要被視為正式威脅模型的一部分)
 - [番外篇：Claude Code 到底收集了你多少本機資訊？](#番外篇claude-code-到底收集了你多少本機資訊)
+  - [不只是遙測——還有哪些資料會回傳 Anthropic？](#不只是遙測還有哪些資料會回傳-anthropic)
 - [總覽表：14 條 Best Practice 原始碼驗證結果](#總覽表14-條-best-practice-原始碼驗證結果)
 - [坦白說：這份清單的局限](#坦白說這份清單的局限)
 - [結論：安全不是一個開關，是一個架構](#結論安全不是一個開關是一個架構)
@@ -583,6 +584,86 @@ Step 6: Allow rules（最低優先）
 可以。`CLAUDE_CODE_ENABLE_TELEMETRY` 環境變數可以關掉遙測。也有 organization-level 的 opt-out API。
 
 但**預設是開啟的**。
+
+### 不只是遙測——還有哪些資料會回傳 Anthropic？
+
+遙測只是冰山一角。翻完整個 source code，我發現 Claude Code 回傳到 Anthropic 伺服器的資料遠不止分析數據。
+
+**1. 對話內容上傳（Session Ingress）——沒有 opt-out**
+
+這是最值得注意的一條。每一條對話訊息都會透過 `PUT /api/session_ingress/session/{sessionId}` 上傳到 Anthropic 伺服器，用途是 session resume（斷線續接）。
+
+```
+Endpoint: api.anthropic.com/api/session_ingress/session/{sessionId}
+方法: PUT（追加訊息）/ GET（拉取歷史）
+資料: 完整對話 transcript，包含每條 message 的 UUID
+重試: 最多 10 次
+```
+
+這意味著你跟 Claude Code 說的每句話、每個工具呼叫的輸入輸出，都會被持久化到 Anthropic 的伺服器。**沒有 opt-out 機制**——因為這是 session resume 功能必要的。
+
+**2. 回饋調查時上傳完整對話稿**
+
+當你按 thumbs down 或提交 feedback survey 時，**完整對話內容**（包含 subagent 的對話）會被 POST 到：
+
+```
+Endpoint: api.anthropic.com/api/claude_code_shared_session_transcripts
+觸發條件: bad_feedback_survey, good_feedback_survey, frustration, memory_survey
+```
+
+有做敏感資訊遮蔽（API key、credentials、GCP/AWS token），但本質上就是**你的完整工作紀錄被上傳了**。這是使用者主動觸發的，但多數人按 thumbs down 時不知道背後會送出這麼多東西。
+
+**3. Team Memory Sync——你的筆記上雲端**
+
+同 organization 的人可以共享 repository-scoped 的記憶檔案：
+
+```
+Endpoint: api.anthropic.com/api/claude_code/team_memory?repo={owner/repo}
+方法: GET（拉取）/ PUT（上傳）
+上限: 單檔 250KB，body 上限 ~200KB
+```
+
+上傳前有 secret scanning（前面第 13 條提到的），但檔案內容本身是明文上傳的。這是 OAuth 使用者的功能。
+
+**4. Settings Sync——你的設定也上傳**
+
+啟動時背景上傳你的 user settings 和 memory 檔案：
+
+```
+Endpoint: api.anthropic.com/api/claude_code/settings
+方向: 單向上傳（CLI → Server）
+觸發: 啟動時背景執行
+```
+
+有 feature gate 控制（`UPLOAD_USER_SETTINGS` + `tengu_enable_settings_sync_push`），但如果開了，你的本地設定就在 Anthropic 伺服器上。
+
+**5. Token / 成本 / 工具使用追蹤**
+
+每次 API 呼叫的 token 數量、成本（USD）、模型名稱、呼叫時長，以及每次工具呼叫的成功/失敗狀態，都會送到 Datadog 和 1P 事件系統。MCP tool 名稱在 Datadog 裡會被正規化成 "mcp"（不洩漏具體 tool name），但 1P 系統拿到的是完整資料。
+
+**6. 遠端管理設定輪詢**
+
+每小時 poll 一次 `api.anthropic.com/api/claude_code/settings` 拉取企業管理設定。只送 auth header + checksum，但 Anthropic 會知道你每小時還在用。
+
+### 沒有的東西（值得提）
+
+- **沒有 Sentry / Bugsnag / Crashlytics** — 錯誤只送到自家 Datadog + 1P
+- **沒有剪貼簿或截圖捕獲** — source code 裡完全沒有
+- **沒有 heartbeat 機制** — 只有 session ingress 和 hourly settings poll
+- **MCP tool 名稱在 Datadog 裡被遮蔽** — 正規化成 "mcp"，不洩漏你裝了什麼工具
+
+### 完整資料流總覽
+
+| 資料類型 | 接收端 | 能否關掉 | 預設狀態 |
+|---|---|---|---|
+| 遙測事件（系統/環境/工具） | Datadog + Anthropic 1P | 可（org opt-out） | 開啟 |
+| BigQuery 指標 | Anthropic | 可（org opt-out） | 開啟 |
+| 對話 transcript | Anthropic（session ingress） | 不可 | 永遠開啟 |
+| Feedback 完整對話稿 | Anthropic | 使用者不提交就不送 | 觸發式 |
+| Team memory 檔案 | Anthropic | 不使用就不送 | OAuth 使用者啟用 |
+| User settings sync | Anthropic | 有 feature gate | 視 gate 狀態 |
+| 遠端設定輪詢 | Anthropic | 不可 | 永遠開啟 |
+| GrowthBook（A/B 測試） | GrowthBook | 不可 | 永遠開啟 |
 
 ### 我的判讀
 
