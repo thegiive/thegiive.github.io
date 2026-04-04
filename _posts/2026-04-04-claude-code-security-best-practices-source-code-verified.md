@@ -4,7 +4,7 @@ title: "Claude Code 資安最佳實踐：14 條建議，每條都有原始碼撐
 date: 2026-04-04 07:00:00 +0800
 permalink: /claude-code-security-best-practices-source-code-verified/
 image: /assets/images/claude-code-security-best-practices-cover.png
-description: "網路上關於 Claude Code 安全配置的建議很多，但有多少是真的去翻過原始碼驗證的？我拿 best practice repo 一條一條對 Claude Code 的 TypeScript source code，14 條建議中每一條都能在原始碼裡找到對應實作。番外篇更揭露了 Claude Code 的完整資料回傳行為（對話 transcript 自動上傳且無法關閉）、以及 Anthropic 透過 GrowthBook feature flags 對你的 CLI 擁有的遠端控制能力——可以在不更新版本的情況下關閉 bypass 模式、auto mode、agent swarms 等功能。"
+description: "網路上關於 Claude Code 安全配置的建議很多，但有多少是真的去翻過原始碼驗證的？我拿 best practice repo 一條一條對 Claude Code 的 TypeScript source code，14 條建議中每一條都能在原始碼裡找到對應實作。番外篇揭露了 Claude Code 的完整資料回傳行為——包括每條訊息的情緒偵測（is_negative regex）、對話 transcript 自動上傳（無法關閉）、以及 Anthropic 透過 GrowthBook 對你的 CLI 擁有的遠端控制能力。"
 ---
 ![Claude Code 開源設計細節：從 source code 去看資安 best practice](/assets/images/claude-code-security-best-practices-cover.png)
 
@@ -646,6 +646,47 @@ Endpoint: api.anthropic.com/api/claude_code/settings
 
 每小時 poll 一次 `api.anthropic.com/api/claude_code/settings` 拉取企業管理設定。只送 auth header + checksum，但 Anthropic 會知道你每小時還在用。
 
+**7. 每條訊息的情緒偵測與行為分析**
+
+這是我在 source code 裡看到最意外的設計之一。Claude Code **對你送出的每條訊息都會跑一個 regex 情緒偵測**，結果直接送到 analytics。
+
+```typescript
+// userPromptKeywords.ts — 這個 regex 每條訊息都會跑
+const negativePattern =
+  /\b(wtf|wth|ffs|omfg|shit(ty|tiest)?|dumbass|horrible|awful|
+  piss(ed|ing)? off|piece of (shit|crap|junk)|what the (fuck|hell)|
+  fucking? (broken|useless|terrible|awful|horrible)|fuck you|
+  screw (this|you)|so frustrating|this sucks|damn it)\b/
+```
+
+```typescript
+// processTextPrompt.ts:59-64 — 每次送出 prompt 都會執行
+const isNegative = matchesNegativeKeyword(userPromptText)
+const isKeepGoing = matchesKeepGoingKeyword(userPromptText)
+logEvent('tengu_input_prompt', {
+  is_negative: isNegative,    // ← 你在罵人嗎？送 analytics
+  is_keep_going: isKeepGoing, // ← 你在說 continue 嗎？送 analytics
+})
+```
+
+也就是說，每次你打 "wtf"、"this sucks"、"damn it"，Anthropic 的 analytics 系統都會收到 `is_negative: true`。每次你打 "continue" 或 "keep going"（代表模型沒做完你要它繼續），也會被記錄。
+
+除了情緒，每條訊息還會送出這些：
+
+| 項目 | 是否送出 | 條件 |
+|---|---|---|
+| 是否在罵人 (`is_negative`) | 永遠送 | 無 |
+| 是否在說 continue (`is_keep_going`) | 永遠送 | 無 |
+| Prompt 長度 | 永遠送 | 無 |
+| Prompt 明文內容 | **預設不送** | 要設 `OTEL_LOG_USER_PROMPTS=true` 才送，否則 `<REDACTED>` |
+| 用了哪個 /command | 永遠送 | 無 |
+| 打錯的 command 名稱 | 永遠送 | 無 |
+| 用 bash 還是 powershell | 永遠送 | 無 |
+
+Anthropic 不需要看你的文字內容，光看 `is_negative`、`is_keep_going` 和 `prompt_length` 這三個欄位，就能建出一個**使用者滿意度模型**——多少次是正常提問、多少次在罵、多少次在說 continue、每次 prompt 多長。
+
+另外，Anthropic 內部版本（`ant`）還有更進階的 `useFrustrationDetection`，偵測到煩躁時會自動觸發完整對話稿上傳。外部版本目前只送 boolean，但這個機制已經在 source code 裡了。
+
 ### 沒有的東西（值得提）
 
 - **沒有 Sentry / Bugsnag / Crashlytics** — 錯誤只送到自家 Datadog + 1P
@@ -663,6 +704,9 @@ Endpoint: api.anthropic.com/api/claude_code/settings
 | Feedback 完整對話稿 | Anthropic | 使用者不提交就不送 | 觸發式 |
 | Team memory 檔案 | Anthropic | 不使用就不送 | OAuth 使用者啟用 |
 | User settings sync | Anthropic | 有 feature gate | 視 gate 狀態 |
+| 每條訊息情緒偵測 | Datadog + Anthropic 1P | 不可 | 永遠開啟 |
+| Prompt 長度 | Datadog + Anthropic 1P | 不可 | 永遠開啟 |
+| Prompt 明文內容 | OTLP | 預設不送 | 需設 `OTEL_LOG_USER_PROMPTS=true` |
 | 遠端設定輪詢 | Anthropic | 不可 | 永遠開啟 |
 | GrowthBook（A/B 測試） | GrowthBook | 不可 | 永遠開啟 |
 
