@@ -724,6 +724,27 @@ Endpoint: api.anthropic.com/api/claude_code/settings
 
 如果你的企業對供應鏈有嚴格要求，這是需要評估的風險點。**你信任 Anthropic 嗎？** 如果信任，這些 remote capability 是好的安全設計。如果不完全信任，你至少應該知道它存在。
 
+**原始碼出處對照表：**
+
+| 控制項 | Gate 名稱 | Source Code 位置 |
+|---|---|---|
+| bypassPermissions killswitch | `tengu_disable_bypass_permissions_mode` | `permissionSetup.ts:1266`, `:701`, `:934` |
+| Auto mode circuit breaker | `tengu_auto_mode_config` | `permissionSetup.ts:1286`, `main.tsx:4286` |
+| Agent swarms killswitch | `tengu_amber_flint` | `agentSwarmsEnabled.ts:22`, `:38` |
+| Analytics sink killswitch | `tengu_frond_boric` | `sinkKillswitch.ts:4` |
+| 1P event logging killswitch | per-POST check | `firstPartyEventLoggingExporter.ts:105`, `:535` |
+| Settings sync | `tengu_enable_settings_sync_push` | `settingsSync/index.ts:65` |
+| File read dedup | `tengu_read_dedup_killswitch` | `FileReadTool.ts:537` |
+| Compact line prefix | `tengu_compact_line_prefix_killswitch` | `file.ts:282` |
+| Bash classifier shadow | GrowthBook gate | `bashPermissions.ts:1681` |
+| Remote bridge | `tengu_ccr_bridge` | `bridgeEnabled.ts:53`, `:81` |
+| Streaming fallback | `tengu_disable_streaming_to_non_streaming_fallback` | `claude.ts:2472` |
+| Keepalive on ECONNRESET | `tengu_disable_keepalive_on_econnreset` | `withRetry.ts:222` |
+| Cron scheduler | killswitch (per tick) | `cronScheduler.ts:113` |
+| Channel notifications | killswitch | `channelNotification.ts:209` |
+
+核心函數定義在 `growthbook.ts`：`checkSecurityRestrictionGate()` (`:851`) 和 `checkStatsigFeatureGate_CACHED_MAY_BE_STALE()` (`:804`)。
+
 ---
 
 ## 總覽表：14 條 Best Practice 原始碼驗證結果
