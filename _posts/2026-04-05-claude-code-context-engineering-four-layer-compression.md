@@ -30,7 +30,11 @@ description: "Claude Code 的上下文管理不是一個功能，是一個完整
 
 這個細節告訴我一件事：上下文管理不是設計好就完事的系統，它是一個在生產環境中持續踩坑、持續修補的戰場。
 
+![一個代價高昂的生產級教訓](/assets/images/context-eng-slide-02.png)
+
 ## 四層壓縮架構總覽
+
+![上下文管理是一個完整的子系統](/assets/images/context-eng-slide-03.png)
 
 Claude Code 的上下文壓縮分成四層，從輕到重：
 
@@ -43,7 +47,11 @@ Claude Code 的上下文壓縮分成四層，從輕到重：
 
 每一層都假設上一層可能不夠用。每一層都有自己的成本和適用場景。
 
+![四層降級策略：從零成本到極限保護](/assets/images/context-eng-slide-04.png)
+
 ## 第一層：Micro Compact — 零成本的規則清理
+
+![第一層：Micro Compact（零成本的精細清理）](/assets/images/context-eng-slide-05.png)
 
 微壓縮是成本最低的一層。不調用模型，純規則驅動。
 
@@ -126,6 +134,8 @@ function isMainThreadSource(querySource: QuerySource | undefined): boolean {
 
 ## 第二層：Session Memory Compact — 提煉而非摘要
 
+![第二層：Session Memory（提煉而非摘要）](/assets/images/context-eng-slide-06.png)
+
 這一層和微壓縮有本質區別：微壓縮是**刪東西**，會話記憶壓縮是**提煉東西**。
 
 核心思路：不要把對話做摘要，而是從對話中提取結構化的事實 — 項目結構、用戶偏好、任務進度。然後讀取 `memory.md` 的內容，用這些結構化的記憶來替代傳統的對話摘要。
@@ -191,6 +201,8 @@ export function adjustIndexToPreserveAPIInvariants(
 這一層的優勢：**不需要調用模型來做摘要**，直接用已經提取好的結構化記憶，成本比完整壓縮低得多，而且保留了最近的原始消息。
 
 ## 第三層：Full Compact — 模型調用的 9 維度摘要
+
+![第三層：Full Compact（9 維度與隱藏的 CoT）](/assets/images/context-eng-slide-07.png)
 
 當會話記憶壓縮不可用或不夠用的時候，系統回退到完整壓縮。這一層需要調用模型。
 
@@ -265,6 +277,8 @@ const PTL_RETRY_MARKER = '[earlier conversation truncated for compaction retry]'
 
 解法是按 API 輪次分組，從最早的組開始丟棄，最多重試三次。如果精確的 token 差距無法確定，就丟掉最老的 20%。
 
+![完整壓縮的代價：遞迴重試與精準恢復](/assets/images/context-eng-slide-08.png)
+
 ### 壓縮後的善後工作
 
 壓縮完成後，系統要做一系列善後：
@@ -281,6 +295,8 @@ export const POST_COMPACT_MAX_TOKENS_PER_FILE = 5_000
 重新注入最近訪問的文件內容（最多 5 個文件，每個上限 5,000 token，總預算 50,000 token）。還有 plan 文件、skill 內容、MCP 工具說明、agent 列表 — 這些都是壓縮過程中被丟掉的上下文，需要恢復。
 
 ## 第四層：Auto Compact — 熔斷保護
+
+![第四層：Auto Compact（自動守門員）](/assets/images/context-eng-slide-09.png)
 
 前面三層都是「怎麼壓」，這一層解決「什麼時候壓」。
 
@@ -313,6 +329,8 @@ const MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES = 3
 📎 源碼位置：src/services/compact/autoCompact.ts:67-70
 
 就是開頭提到的那個修復。連續失敗超過 3 次，停止重試。避免在上下文不可恢復的情況下反覆浪費 API 調用。
+
+![生產級救命索：熔斷器（Circuit Breaker）](/assets/images/context-eng-slide-10.png)
 
 ### 排除邏輯：防止死鎖
 
@@ -391,6 +409,8 @@ if (querySource === 'session_memory' || querySource === 'compact') {
 從工程角度看，Anthropic 願意花 output token 讓模型「先想再答」，然後把思考過程丟掉，說明他們在內部測試中驗證過這個方法確實能提升摘要品質。這跟 extended thinking 的設計理念是一致的。
 
 ---
+
+![洞察與收斂：給開發者的 200 行架構藍圖](/assets/images/context-eng-slide-11.png)
 
 ## 總結：上下文管理是 Agent 工程最被低估的子系統
 
