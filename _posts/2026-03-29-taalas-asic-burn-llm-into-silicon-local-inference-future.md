@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "把 LLM 直接燒進晶片：Taalas 的瘋狂賭注，與它揭示的推理成本未來"
+title: "把 LLM 直接燒進晶片：Taalas ASIC 與 Qwen 27B 揭示的推理成本未來"
 date: 2026-03-29 08:00:00 +0800
 permalink: /taalas-asic-burn-llm-into-silicon-local-inference-future/
 image: /assets/images/toolcall-15-qwen35-family-results.png
