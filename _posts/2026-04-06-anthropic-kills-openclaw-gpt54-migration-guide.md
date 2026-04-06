@@ -4,7 +4,7 @@ title: "Anthropic 封殺 OpenClaw 之後的三層替代方案：地端 Qwen 3.5 
 date: 2026-04-06 07:00:00 +0800
 permalink: /anthropic-kills-openclaw-gpt54-migration-guide/
 image: /assets/images/anthropic-kills-openclaw-email.png
-description: "Anthropic 正式封殺 OpenClaw，但你需要的不是一個模型，而是一套 Agent Infra。三層替代方案：入口層換供應來源（GPT-5.4 或 Copilot 裡的 Claude）、雲端 API 層按複雜度分流（Opus 到 Haiku 成本砍九成）、地端層用 Qwen 3.5 27B 處理敏感和高頻任務（零成本零隱私風險）。附完整分流提示詞配置，沒有任何一層是不可替換的。"
+description: "Anthropic 正式封殺 OpenClaw，但你需要的不是一個模型，而是一套 Agent Infra。三層替代方案：入口層換供應來源（GPT-5.4 改提示詞達 80% Claude 體驗、或接 GitHub Copilot）、雲端 API 層按複雜度分流（Opus 到 Haiku 成本砍九成）、地端層用 Qwen 3.5 27B 蒸餾版處理敏感和高頻任務（零成本零隱私風險）。附完整分流提示詞配置，沒有任何一層是不可替換的。OpenClaw, Claude Code, OpenRouter, model routing, local LLM 實戰指南。"
 ---
 
 ![Anthropic 封殺 OpenClaw 官方通知](/assets/images/anthropic-kills-openclaw-email.png)
@@ -12,6 +12,25 @@ description: "Anthropic 正式封殺 OpenClaw，但你需要的不是一個模�
 **作者：** Wisely Chen
 **日期：** 2026 年 4 月
 **系列：** AI Agent 實戰觀察
+**關鍵字：** OpenClaw, Anthropic, Claude Code, Agent Infra, Qwen 3.5 27B, GPT-5.4, OpenRouter, 地端模型, API 分流, model routing
+
+---
+
+## 目錄
+
+- [方案一：OpenClaw 換供應來源](#方案一openclaw-換供應來源)
+  - [選項 A：接 GPT-5.4](#選項-a接-gpt-54chatgpt-plus-訂閱)
+  - [選項 B：接 GitHub Copilot 裡的 Claude](#選項-b接-github-copilot-裡的-claude)
+- [方案二：雲端 API 分層](#方案二雲端-api-分層高低任務用不同等級的模型)
+  - [高複雜度 → 頂級模型 API](#高複雜度--頂級模型-api)
+  - [中低複雜度 → 便宜模型 API](#中低複雜度--便宜模型-api)
+- [方案三：敏感任務與高頻查詢下地端](#方案三敏感任務與高頻查詢下地端)
+- [一個在關門，一個在開門](#一個在關門一個在開門)
+- [附錄：GPT-5.4 系統提示詞配置](#附錄gpt-54-系統提示詞配置)
+- [附錄：雲端 API 分流提示詞](#附錄方案二雲端-api-分流提示詞)
+- [附錄：地端分流提示詞](#附錄方案三地端分流提示詞)
+- [附錄：Gemma 4 31B 在 OpenClaw 上的實測觀察](#附錄gemma-4-31b-在-openclaw-上的實測觀察)
+- [延伸閱讀](#延伸閱讀)
 
 ---
 
