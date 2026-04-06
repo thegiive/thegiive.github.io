@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Anthropic 封殺 OpenClaw：訂閱、API、地端三層分流指南"
+title: "Anthropic 封殺 OpenClaw 之後的三層替代方案：地端 Qwen 3.5 27B + 雲端分流，是未來最佳 Agent Infra？"
 date: 2026-04-06 07:00:00 +0800
 permalink: /anthropic-kills-openclaw-gpt54-migration-guide/
 image: /assets/images/anthropic-kills-openclaw-email.png
-description: "Anthropic 正式把 OpenClaw 踢出 Claude 訂閱。別慌——這篇文章提供三層替代方案：方案一換供應來源（GPT-5.4 改提示詞達 80% Claude 體驗、或接 GitHub Copilot 裡的 Claude）；方案二雲端 API 分層（高複雜度走 Opus/OpenRouter，中低複雜度走 Haiku/GPT-5.4 mini，成本砍九成）；方案三敏感任務與高頻查詢下地端（Qwen3.5 27B 蒸餾版、Gemma 4 31B，零成本零隱私風險）。附完整分流提示詞配置，直接複製就能用。"
+description: "Anthropic 正式封殺 OpenClaw，但你需要的不是一個模型，而是一套 Agent Infra。三層替代方案：入口層換供應來源（GPT-5.4 或 Copilot 裡的 Claude）、雲端 API 層按複雜度分流（Opus 到 Haiku 成本砍九成）、地端層用 Qwen 3.5 27B 處理敏感和高頻任務（零成本零隱私風險）。附完整分流提示詞配置，沒有任何一層是不可替換的。"
 ---
 
 ![Anthropic 封殺 OpenClaw 官方通知](/assets/images/anthropic-kills-openclaw-email.png)
@@ -114,9 +114,25 @@ Anthropic 封殺 OpenClaw，商業邏輯上說得通——訂閱用戶拿 20 美
 
 不過對我們使用者來說，巨頭怎麼打架不重要。重要的是，**你別被任何一家綁死**。
 
-今天講的三條路——OpenClaw 換來源、雲端 API 分層、敏感/高頻下地端——核心思路只有一個：
+今天講的三條路——OpenClaw 換來源、雲端 API 分層、敏感/高頻下地端——背後其實是同一件事：
 
-**你的工作流應該由你自己掌控，而不是被某個平台的一封 email 擊垮**。
+**你需要的不是一個模型，而是一套 Agent Infra。**
+
+什麼是 Agent Infra？就是你的 AI 工作流的基礎設施——模型從哪來、任務怎麼分流、記憶存在哪裡、敏感資料怎麼隔離。這些東西加起來，才是你真正的生產力引擎。
+
+過去我們把 Agent Infra 外包給平台——Claude 訂閱就是你的全部 infra。模型是它的、額度是它的、記憶也存在它的伺服器上。結果就是一封 email 就能讓你的整套工作流停擺。
+
+今天這篇文章做的事情，本質上是**把 Agent Infra 從單一平台拆出來，變成你自己控制的三層架構**：
+
+- **第一層：入口層**（OpenClaw / Claude Code / Cursor）— 接收指令、互動介面
+- **第二層：雲端 API 層**（Opus / Haiku / GPT-5.4 / Gemini Flash）— 按複雜度分流，高低任務走不同價位
+- **第三層：地端層**（Qwen 3.5 27B / Gemma 4 31B）— 敏感資料和高頻任務留在本機
+
+入口層負責接收指令和互動，雲端層負責處理需要頂級智力的任務，地端層負責處理高頻、敏感、和日常瑣事。三層之間靠分流提示詞和共享的 Markdown 記憶串起來。
+
+這套 infra 的核心特性是**沒有任何一層是不可替換的**。Anthropic 封了？雲端層換 OpenRouter。OpenAI 漲價了？中低複雜度搬到 Gemini Flash。地端模型出新版了？Ollama pull 一下就換完。
+
+**你的工作流應該由你自己掌控，而不是被某個平台的一封 email 擊垮。** 而掌控的方式，就是建好自己的 Agent Infra。
 
 ---
 
