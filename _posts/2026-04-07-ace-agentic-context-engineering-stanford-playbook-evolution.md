@@ -4,7 +4,7 @@ title: "Stanford 論文實錘：Context Engineering 比 Fine-tuning 更適合 AI
 date: 2026-04-07 09:00:00 +0800
 permalink: /ace-agentic-context-engineering-stanford-playbook-evolution/
 image: /assets/images/ace-agentic-context-engineering-paper.png
-description: "很多人還在問「要不要 fine-tune」，Stanford 這篇 ICLR 2026 論文直接給了答案：對 Agent 來說，把 context 當作會演化的操作手冊來經營，比急著去調模型權重更快、更便宜、也更有效。ACE 框架用較小的開源模型在 AppWorld leaderboard 追平頂級商用 Agent，在最難的 test-challenge split 上還超過對手。Agent tasks +10.6%、domain reasoning +8.6%，而且不需要 labeled data。這篇文章拆解 ACE 的三步循環（Generation → Reflection → Curation），對比 Claude Code 的四層壓縮機制和 CLAUDE.md playbook，分析企業 AI Agent 落地的三個啟示。"
+description: "很多人還在問「要不要 fine-tune」，Stanford 這篇 ICLR 2026 論文直接給了答案：對 Agent 來說，把 context 當作會演化的操作手冊來經營，比急著去調模型權重更快、更便宜、也更有效。ACE 框架用較小的開源模型在 AppWorld leaderboard 追平頂級商用 Agent，在最難的 test-challenge split 上還超過對手。這篇文章拆解 ACE 的三步循環，對比 fine-tuning 的商業實戰踩坑（驗證地獄、base model 迭代太快、無法積累），分析為什麼要嘛做模型，要嘛 context engineering，沒有中間值。"
 ---
 
 ![ACE: Agentic Context Engineering 論文首頁](/assets/images/ace-agentic-context-engineering-paper.png)
@@ -175,6 +175,52 @@ ACE 用實驗證明了：過度壓縮 context 會導致 performance 退化。那
 這跟我在 Claude Code 源碼裡看到的設計哲學一致。Anthropic 的四層壓縮架構，最底層（Micro Compact）只刪工具輸出，不動策略。最重的一層（Full Compact）做 9 個維度的結構化摘要，而不是無差別壓縮。
 
 它們都在保護同一件事：**context 裡的決策知識**。
+
+---
+
+## Fine-tuning 的商業實戰踩坑：朋友們交過的學費
+
+論文講的是學術證據，但我身邊做過 fine-tune 專案的朋友，踩過的坑其實更痛。
+
+### 坑一：驗證地獄
+
+Fine-tune 完一個場景變得更棒，但很多相對應的場景就變得更差。
+
+這個問題在學術上叫「災難性遺忘」，在實戰裡叫「修 A 壞 B」。而大語言模型的驗證 test case 接近無限——你不可能把所有邊界情況都測完。結果就是，每次以為調好了，上線後又冒出新的退化。
+
+一個朋友的原話：「我們花了兩個月 fine-tune，然後花了四個月在修 fine-tune 造成的 regression。」
+
+### 坑二：Base Model 迭代太快
+
+往往 3 到 6 個月，原本需要 fine-tune 的 case，新一代 base model 就直接原生支援了。
+
+你花了大量時間和 GPU 資源調出來的模型，一個 model iteration 就變得毫無意義。這不是假設性的風險——過去兩年，幾乎每一輪模型更新都讓一批 fine-tune 專案直接報廢。
+
+### 坑三：高成本但護城河不明顯
+
+Fine-tuning 是一個高成本的投資：GPU 租用、數據標註、訓練迭代、驗證測試。但它建立的護城河商業效益不明顯——因為你的競爭對手用新版 base model 加上好的 prompt，可能就達到你 fine-tune 的效果。
+
+### 最致命的問題：Fine-tune 無法積累
+
+這是我認為最關鍵的差異：
+
+**提示詞是可以積累的，fine-tune 不行。**
+
+Context engineering 的成果——你的 CLAUDE.md、你的 memory 系統、你的策略筆記——全部都是可積累的資產。今天寫的一條避雷指南，明天、後天、明年都還在發揮作用。換了模型，這些 context 大部分還能用。
+
+Fine-tune 呢？就是一個 model checkpoint。Base model 一更新，這個 checkpoint 就廢了。你不能把上一版 fine-tune 學到的東西「搬」到新版 base model 上——你得從頭再來。
+
+這就是為什麼 ACE 的 playbook 演化理念特別有說服力：它的產出物是知識，不是權重。知識可以跨模型、跨版本、跨工具地復用。權重不行。
+
+---
+
+## 學術與實戰的共同結論
+
+從學術上，ACE 論文用實驗數據證明了 context engineering 的效果。從實戰上，做過 fine-tune 專案的人用真金白銀證明了同一件事。
+
+結論很直接：**要嘛找大資本直接做模型，要嘛 context engineering。沒有中間值。**
+
+Fine-tuning 卡在一個尷尬的位置：投入不夠大，做不出真正的差異化；投入夠大，不如直接做基礎模型。對絕大多數企業來說，context engineering 才是投資回報率最高的路。
 
 ---
 
