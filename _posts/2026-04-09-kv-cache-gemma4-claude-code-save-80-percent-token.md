@@ -11,6 +11,10 @@ description: "早上打開 Claude Code，敲第一句話，2%～10% 的套餐額
 
 ## 為什麼這篇文章很重要
 
+這幾天 Claude Code 的 [GitHub Issue #38335](https://github.com/anthropics/claude-code/issues/38335) 炸鍋了，478 則留言。Max 5x 用戶（月付 200 美元）反映額度異常快速消耗——有人 9 分鐘思考、沒讀檔案、沒輸出，5% 額度就沒了；有人從 40% 直接跳到 85%，中間只下了幾個簡單指令。獨立安全專家分析後指出根本原因：「Regression and cache re-reads with interrupts melt your usage」——快取機制出了回歸性 bug，導致本來應該低成本復用的 token 被全價重算。
+
+Prompt Cache 率的高低，可以嚴重影響你是否可以多 AI Coding 一輪。Claude Code 作者 Boris Cherny 在 X.com 暗示之所以封掉 OpenClaw，就是因為 OpenClaw 的 Prompt Cache 做得太差——他甚至親自提交 Claude API 快取優化的 PR 給 OpenClaw。對現在的 Token 工業來說，這可是大事情。
+
 我帶著這個疑問，在本地用 Gemma4 跑小模型做實驗——發現同一段對話，有些輪次要等 30 秒，有些只要 0.2 秒。為了搞清楚為什麼，我從 Transformer 的注意力機制開始挖，再到 Claude Code 的程式碼實現，發現 Anthropic 在快取上做了一整套精密工程。理解了這套機制，你就知道怎麼讓同樣的套餐多撐 3-5 倍。
 
 這篇文章是「[Claude Code 開源設計細節](https://ai-coding.wiselychen.com/claude-code-source-leak-memory-architecture-lessons/)」系列的延伸。之前我們拆過 [System Prompt 架構](https://ai-coding.wiselychen.com/claude-code-system-prompt-source-code-analysis/)、[資安最佳實踐](https://ai-coding.wiselychen.com/claude-code-security-best-practices-source-code-verified/)、[四層壓縮機制](https://ai-coding.wiselychen.com/claude-code-context-engineering-four-layer-compression/)。今天，我們從 IT 架構的角度，把快取層單獨拉出來講清楚。
