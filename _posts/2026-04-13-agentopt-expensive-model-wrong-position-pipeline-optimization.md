@@ -9,6 +9,8 @@ description: "Columbia 大學 AgentOpt 論文用 9 個模型、81 種組合實�
 
 ![AgentOpt 論文：Client-Side Optimization for LLM-Based Agent](/assets/images/agentopt-paper-cover.png)
 
+{% include youtube.html id="i6bXmJM5MHI" %}
+
 我之前一直跟大家推薦：用 Opus 當 Planner，然後讓 Sonnet 或 Haiku 當 Executor。這套邏輯聽起來很合理對吧？最強的腦袋負責規劃，便宜的手腳負責執行，分工明確、成本可控。
 
 我自己也一直這樣用，還寫了好幾篇文章推廣這個做法。
