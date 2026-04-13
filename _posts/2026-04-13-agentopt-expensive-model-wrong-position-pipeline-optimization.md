@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Agent Ops 反直覺發現：Agentic System 裡最貴的模型，放錯位置反而拖垮整條管線"
+title: "「Opus 太聰明，所以它不該做 Planning」——一篇論文顛覆 Agent Ops 範式"
 date: 2026-04-13 08:00:00 +0800
 permalink: /agentopt-expensive-model-wrong-position-pipeline-optimization/
 image: /assets/images/agentopt-paper-cover.png
