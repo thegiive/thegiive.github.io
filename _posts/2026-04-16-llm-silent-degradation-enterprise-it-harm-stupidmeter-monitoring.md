@@ -113,7 +113,7 @@ LLM Proxy 做三件事：
 
 光有 Proxy 路由還不夠。你的 Agent 層也要有 fallback 邏輯。
 
-舉個例子：[Lobster](https://github.com/panyanyany/lobster)（龍蝦）這類開源 Agent 框架，可以在 Agent 層面設定多模型 fallback。不是「服務掛了才切」，而是「回應品質不對就切」——Agent 可以檢查模型回應是否符合預期格式、是否包含必要的推理步驟，不符合就自動 retry 到備用模型。
+舉個例子：OpenClaw（龍蝦）這類開源 Agent 框架，可以在 Agent 層面設定多模型 fallback。不是「服務掛了才切」，而是「回應品質不對就切」——Agent 可以檢查模型回應是否符合預期格式、是否包含必要的推理步驟，不符合就自動 retry 到備用模型。
 
 這跟 [Harness Engineering](https://ai-coding.wiselychen.com/harness-engineering-architecture-overview-ai-code-production-guardrails/) 的核心理念一致：AI 可以寫 code，但人類（和工程機制）控制信任邊界。模型品質波動只是讓這個邊界需要**自動化的動態調整**。
 
@@ -121,7 +121,7 @@ LLM Proxy 做三件事：
 
 - **第一層：LLM Proxy** — 接收所有請求，根據 StupidMeter 告警和品質監控做路由，統一記錄觀測數據
 - **第二層：雲端 / 地端（同一個開源模型）** — 雲上調度便宜 GPU 跑高 throughput，地端跑同模型做備援，差別只在算力成本
-- **第三層：Agent 框架（e.g. 龍蝦）** — 檢查模型回應品質，不符合預期自動 retry 到備用節點
+- **第三層：Agent 框架（e.g. OpenClaw）** — 檢查模型回應品質，不符合預期自動 retry 到備用節點
 
 **雲地用同一個開源模型，差別只在算力成本。Agent 層做品質檢查和 fallback。Proxy 層做路由和觀測。** 三層加起來，就是你對 LLM 降智的完整防線。
 
