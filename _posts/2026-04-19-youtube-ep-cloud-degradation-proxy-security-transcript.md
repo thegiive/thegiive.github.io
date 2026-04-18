@@ -7,10 +7,6 @@ image: /assets/images/youtube-claude-degrade-airport-thumbnail.jpg
 description: "YouTube Shorts 雙集聯動逐字稿。EP1 從機場候機室講 Claude 越用越笨的真實體感——新模型上線舊模型降智是產業共識，企業必須投資地端 GPU 做雲地混合架構。EP2 從陽明山講 UCSB 論文《Your Agent Is Mine》——428 個 LLM 中轉實測，29 個在偷你的東西，最聰明的裝死 50 次才發作。兩集底層邏輯一樣：不要把所有賭注壓在你控制不了的基礎設施上。"
 ---
 
-![YouTube Shorts EP1：你的 Claude 越用越笨，不是你的錯覺——機場候機室](/assets/images/youtube-claude-degrade-airport-thumbnail.jpg)
-
-![YouTube Shorts EP2：428 個 LLM 中轉，29 個在偷你的東西——陽明山](/assets/images/youtube-llm-proxy-security-thumbnail.jpg)
-
 **作者：** Wisely Chen
 **日期：** 2026 年 4 月
 **系列：** AI Coding 實戰觀察 — YouTube Shorts 逐字稿
@@ -92,6 +88,8 @@ NVIDIA H100、H200，交期動輒半年。企業級 GPU server 的供應鏈，�
 ---
 
 ## EP2：428 個 LLM 中轉，29 個在偷你的東西
+
+![YouTube Shorts EP2：428 個 LLM 中轉，29 個在偷你的東西——陽明山](/assets/images/youtube-llm-proxy-security-thumbnail.jpg)
 
 **長度：** 5 分 30 秒
 **場景：** 陽明山
