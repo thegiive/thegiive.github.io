@@ -134,6 +134,12 @@ Claude Code 可以設定自定義 API endpoint。Cursor 也可以。很多開發
 
 ---
 
+## YouTube 影片版
+
+{% include youtube.html id="lzyjZ2WpJgQ" %}
+
+---
+
 論文標題是《Your Agent Is Mine》。
 
 翻譯一下：你以為你在跟 Claude 說話。其實你在跟一個你不認識的中間人說話。你告訴它你的代碼、你的密鑰、你的商業邏輯。

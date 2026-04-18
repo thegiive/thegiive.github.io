@@ -143,6 +143,12 @@ StupidMeter 的全場 WARN 數據告訴我們：LLM 的品質波動是結構性�
 
 ---
 
+## YouTube 影片版
+
+{% include youtube.html id="PtWyndLBHuU" %}
+
+---
+
 ## 延伸閱讀
 
 ### Claude 降質數據化系列
