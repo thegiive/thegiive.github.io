@@ -169,7 +169,7 @@ Benchmark 贏 Opus 4.5 只是故事的一半。另一半——也是企業 IT �
 
 ### 核心數據來自這條推文
 
-2026 年 4 月 22 日，推特用戶 Mitko Vasilev（@iotcoi）貼出一張終端機截圖：
+2026 年 4 月 22 日，推特用戶 [Mitko Vasilev（@iotcoi）貼出一張終端機截圖](https://x.com/iotcoi/status/2046950805568164168)：
 
 > "Qwen3.6-27B-FP8 + Dflash + DDTree, 256k context, 10 agents
 > ~200 tokens/sec max decode
