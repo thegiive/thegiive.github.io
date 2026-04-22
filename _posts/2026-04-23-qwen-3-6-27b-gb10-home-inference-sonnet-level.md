@@ -315,10 +315,25 @@ Mitko 的 136 t/s 就是這樣來的——沒有 DFlash + DDTree，同樣硬體�
 
 | 層級 | 硬體 / 服務 | 用途 |
 |---|---|---|
-| **工程師層（80% 任務）** | DGX Spark × N 台（每人一台，$4,699） | 本地跑 Qwen 3.6-27B，autonomous agent 無限跑，不受 rate limit |
+| **工程師層（80% 任務）** | 每人一台桌面 AI 工作站（見下表） | 本地跑 Qwen 3.6-27B，autonomous agent 無限跑，不受 rate limit |
 | **部門層（長 repo reasoning）** | 中央 GPU Server 跑 70B+ 大模型 | 處理跨 repo、長上下文任務 |
 | **關鍵 fallback** | Claude Opus / Sonnet API | 合規允許時用於關鍵 task |
 | **資料層** | Langfuse audit trail | 所有 prompt + response 留在公司網 |
+
+**工程師層硬體選項對照（跑 Qwen 3.6-27B）：**
+
+| 硬體 | 記憶體 | 頻寬 | 可跑量化 | 預期速度 | 售價（USD） | 適用情境 |
+|---|---|---|---|---|---|---|
+| **NVIDIA DGX Spark** | 128GB 統一記憶體 | LPDDR5X | FP8（27GB）+ 大 KV cache | **~136 t/s**（搭 Dflash+DDTree） | $4,699 | 重度 agent workload、10 agents 並行 |
+| **Mac mini M4 Pro 64GB** | 64GB 統一記憶體 | 273 GB/s | Q8 / FP8（含 context headroom） | ~12–18 t/s | ~$2,199 | 個人開發者、interactive use |
+| **Mac mini M4 Pro 48GB** | 48GB 統一記憶體 | 273 GB/s | Q8（context 要小心） | ~12–18 t/s | ~$1,799 | 預算型、短 context 任務 |
+| **Mac mini M4 base** | 最多 32GB | 120 GB/s | 只能跑 Q4（~15GB） | 明顯偏慢 | ~$1,299 | 品質打折，不建議 |
+
+**選型 rule of thumb：**
+
+- **要跑 autonomous agent（10 agents 並行、background task）→ DGX Spark**，頻寬和平行吞吐碾壓 Mac mini
+- **單人 interactive coding（IDE 裡叫一兩個 agent）→ Mac mini M4 Pro 64GB** 就夠用，便宜一半
+- **預算 < $1,500 → 要嘛等 DGX Spark 二手、要嘛退回 Claude Code 訂閱制**。base Mac mini 跑 Q4 27B 品質已經不是 Sonnet 4.6 等級了
 
 這不是要全面取代商業 API，是**把 80% 的日常 agentic coding 負載搬回公司**，只把真正困難的 20% 留給 Claude / GPT。
 
@@ -334,7 +349,13 @@ Apache 2.0 license 本身沒有地緣限制，但多數高度監管產業的法�
 
 **Q: DGX Spark 買不到 / 預算擋不下來，有替代方案嗎？**
 
-Mac Studio M3 Ultra（128GB / 192GB 統一記憶體）可以跑 Qwen 3.6-27B FP8，token 吞吐量會慢一些（大約 60-80 t/s vs DGX Spark 的 136 t/s），但 macOS 生態對一般工程師更友善。RTX 5090（32GB GDDR7）單卡也能跑，適合既有 Windows / Linux 工作站改造。
+看預算和使用強度：
+
+- **$2,000–$2,500 個人級：** Mac mini M4 Pro 64GB，單人 interactive use 夠用（12–18 t/s）。預算再緊一點可以退到 48GB 版本，但 context 會變窄
+- **$4,000–$5,000 工作站級：** Mac Studio M3 Ultra（128/192GB 統一記憶體）可跑 Qwen 3.6-27B FP8，約 60–80 t/s，macOS 生態對一般工程師更友善
+- **既有 Windows / Linux 工作站改造：** RTX 5090（32GB GDDR7）單卡能跑 FP8 27B，配合 vLLM 吞吐量可達 100+ t/s，適合已經有桌機的團隊
+
+需要 agent 並行和最高 t/s 還是 DGX Spark 最划算——128GB 統一記憶體 + FP4 petaFLOP 是 Mac mini / Mac Studio 硬追不上的。
 
 **Q: Dflash + DDTree 這套推理棧現在穩定嗎？**
 
