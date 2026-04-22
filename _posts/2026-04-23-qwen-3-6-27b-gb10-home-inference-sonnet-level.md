@@ -303,30 +303,22 @@ Mitko 的 136 t/s 就是這樣來的——沒有 DFlash + DDTree，同樣硬體�
 
 回到這篇「無聊 IT 架構」系列一貫在問的問題——**架構該長什麼樣？**
 
-舊的 on-prem AI coding 架構：
+**舊的 on-prem AI coding 架構（2024–2025 版）：**
 
-```
-中央 GPU Server（A100 × 4，300 萬台幣）
-   ↓ SSH / API
-N 個工程師搶 quota
-```
+| 層級 | 硬體 / 服務 | 說明 |
+|---|---|---|
+| 運算層 | 中央 GPU Server（A100 × 4） | 投資約 300 萬台幣 |
+| 存取方式 | SSH / 內部 API | 工程師搶 GPU quota |
+| 瓶頸 | 並行 agent 跑不動 | rate limit 發生在內部 |
 
-新的 on-prem AI coding 架構（2026 版）：
+**新的 on-prem AI coding 架構（2026 版）：**
 
-```
-每位工程師：
-  - DGX Spark（$4,699）放辦公桌下
-  - 本地跑 Qwen 3.6-27B 處理 80% 日常任務
-  - 不受 rate limit，autonomous agent 無限跑
-
-部門層級：
-  - 一台中央 GPU Server 跑 70B+ 大模型（長 repo reasoning 用）
-  - fallback 到 Claude Opus / Sonnet API（關鍵 task）
-
-資料層：
-  - 所有 prompt + response 留在公司網
-  - 用 Langfuse 做 audit trail
-```
+| 層級 | 硬體 / 服務 | 用途 |
+|---|---|---|
+| **工程師層（80% 任務）** | DGX Spark × N 台（每人一台，$4,699） | 本地跑 Qwen 3.6-27B，autonomous agent 無限跑，不受 rate limit |
+| **部門層（長 repo reasoning）** | 中央 GPU Server 跑 70B+ 大模型 | 處理跨 repo、長上下文任務 |
+| **關鍵 fallback** | Claude Opus / Sonnet API | 合規允許時用於關鍵 task |
+| **資料層** | Langfuse audit trail | 所有 prompt + response 留在公司網 |
 
 這不是要全面取代商業 API，是**把 80% 的日常 agentic coding 負載搬回公司**，只把真正困難的 20% 留給 Claude / GPT。
 
