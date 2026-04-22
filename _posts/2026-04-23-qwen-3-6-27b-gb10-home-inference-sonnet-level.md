@@ -1,13 +1,54 @@
 ---
 layout: post
-title: "你家裡的小機器現在跑的是 Sonnet 4.6 等級：Qwen 3.6-27B 與企業 on-prem AI Agent 的臨界點"
+title: "Qwen 3.6-27B 本地部署：DGX Spark / Mac mini 跑出 Sonnet 4.6 等級 AI Agent"
 date: 2026-04-23 08:00:00 +0800
 permalink: /qwen-3-6-27b-sonnet-level-home-inference/
 image: /assets/images/qwen-3-6-27b-run-locally-cover.png
-description: "一顆 27B 開源 dense 模型，在 $4,699 的家用 AI 工作站上跑出 136 tokens/sec，Benchmark 打贏 Opus 4.5、Terminal-Bench 微幅超過 Sonnet 4.6。企業 on-prem AI Coding 的 ROI 假設全部要重算。這篇「無聊 IT 架構」系列文，從 Qwen 3.6-27B 的 12 項官方 Benchmark、DGX Spark 硬體規格、Dflash + DDTree 推理棧，到單人 3 年 TCO $22,500 vs $4,729 的對照，替 IT 架構師重新盤點 on-prem AI Agent 的新基準線。"
+image_alt: "Qwen 3.6-27B 本地部署示意圖：Run the new 27B model locally"
+author: "Wisely Chen"
+category: it-arch
+tags:
+  - Qwen 3.6
+  - 本地 LLM
+  - on-prem AI
+  - AI Agent
+  - DGX Spark
+  - Mac mini M4 Pro
+  - Claude Sonnet 4.6
+  - IT 架構
+  - 企業 AI
+  - Dflash DDTree
+description: "Qwen 3.6-27B 開源 dense 模型在 $4,699 的 NVIDIA DGX Spark 跑出 136 tokens/sec，Benchmark 打贏 Claude Opus 4.5、Terminal-Bench 微幅超過 Sonnet 4.6。本文替 IT 架構師盤點 Qwen 3.6-27B 本地部署的硬體選項（DGX Spark vs Mac mini M4 Pro 64GB）、12 項官方 Benchmark、Dflash + DDTree 推理棧、單人 3 年 TCO $22,500 vs $4,729 成本對照，以及 on-prem AI Agent 架構重寫的決策要點。"
+faq:
+  - question: "Qwen 3.6-27B 到底是什麼等級的模型？真的能取代 Claude Sonnet 4.6 嗎？"
+    answer: "就 Qwen 團隊公布的 12 項官方 Benchmark 來看：SWE-bench Verified 77.2（Sonnet 4.6 是 79.6），Terminal-Bench 2.0 59.3（Sonnet 4.6 是 59.1，Qwen 微幅領先），跟 Claude Opus 4.5 對比贏 7 項、平手 1 項、輸 4 項。「Sonnet 4.6 等級」不是比喻，是字面上的事實。但純寫 code 的頂尖品質（SWE-bench Pro、NL2Repo），Opus 4.5/4.6 仍有 3-7 分優勢。結論：80% 日常 agentic coding 任務可取代，關鍵任務仍建議 fallback 到商業 API。"
+  - question: "Qwen 3.6-27B 最低要什麼硬體才跑得動？Mac mini 可以嗎？"
+    answer: "Qwen 3.6-27B FP8 需要約 27GB VRAM。最低可用配置是 Mac mini M4 Pro 64GB（$2,199，12-18 t/s），足以應付單人 interactive coding。Mac mini M4 Pro 48GB 勉強可跑但 context 要小心。base Mac mini（最多 32GB）只能跑 Q4 量化版本，品質打折。要跑 autonomous agent（10 agents 並行）建議 NVIDIA DGX Spark（$4,699，128GB 統一記憶體，136 t/s）。"
+  - question: "NVIDIA DGX Spark 的規格和售價是多少？值得買嗎？"
+    answer: "DGX Spark 搭載 GB10 Grace Blackwell Superchip：20 核 ARM CPU（10 × Cortex-X925 @ 4GHz + 10 × Cortex-A725 @ 2.8GHz）、6,144 CUDA cores Blackwell GPU、128GB LPDDR5X 統一記憶體、4TB NVMe SSD、ConnectX 200 Gbps 網路、FP4 效能 1 petaFLOP，售價 $4,699 USD（約 15 萬台幣）。49W 功耗比 LED 燈泡多一點。對比單人 3 年 Sonnet 4.6 API 成本 $22,500，3 年 TCO 只要 $4,729，省 $17,771。"
+  - question: "Dflash + DDTree 是什麼？沒有這套推理棧也能跑嗎？"
+    answer: "DFlash 是 Block Diffusion Flash Speculative Decoding，用 draft model 一次預測一整個 block 的候選 tokens 在單次 forward pass 中驗證（來自 z-lab 開源專案）。DDTree 是改進版，把候選 tokens 組成樹狀結構同時產出多條路徑。實測加速 6-8 倍。沒有這套棧，同樣硬體大約只有 20-30 t/s（不是 136 t/s）。但它不是主流推理棧——生產環境建議等 vLLM / SGLang 整合（預估 1-2 季）。"
+  - question: "我們是金融 / 醫療 / 政府產業，Qwen 是中國模型，能用嗎？"
+    answer: "Apache 2.0 license 本身沒有地緣限制，但多數高度監管產業的法務會對「中國團隊訓練的權重」有疑慮。實務上建議兩條路：一是等 Llama / Mistral 下一代追上（歷史經驗 2-3 個月落後），二是用 Qwen 3.6-27B 做內部非敏感工具的 pilot，確認流程跑得通再評估。具體合規需看各產業主管機關對開源 AI 模型的指引。"
+  - question: "on-prem 跑 Qwen 3.6-27B vs 用 Claude API，3 年 TCO 差多少？"
+    answer: "以重度 AI coding 工程師為例（日均 5M input + 1M output tokens）：Claude Sonnet 4.6 API 單人年費 $7,500，3 年 $22,500；DGX Spark + Qwen 3.6-27B 硬體 $4,699 + 3 年電費約 $30，TCO $4,729。單人省 $17,771（約 55 萬台幣），10 人團隊省 $177,710，100 人團隊省 $1,777,100。但真正價值不只省錢，還包括資料不出公司、不受 API rate limit、不依賴單一供應商。"
+  - question: "Qwen 3.6-27B 為什麼不做成 MoE 架構？Dense 27B 有什麼優勢？"
+    answer: "Qwen 3.5 自家也出過 397B-A17B 的 MoE 旗艦，但 3.6 世代把最強 agentic coding 能力放回 27B dense。原因是 MoE 雖然 active parameter 少，但總參數大 VRAM 需求反而高，不適合「消費級顯卡 / 桌面工作站」這個部署 sweet spot。27B dense FP8 只要 27GB VRAM，RTX 5090（32GB）、Mac mini M4 Pro 64GB、DGX Spark 128GB 都塞得進去。Qwen 團隊押注 agentic coding 的戰場在 on-device 不在 cloud。"
+  - question: "那 Anthropic / OpenAI 商業 API 是不是要完了？"
+    answer: "不會。Opus 4.6 / Opus 4.7 仍是最強的 coding model，關鍵任務仍會跑在商業 API。但 Anthropic 失去了「你別無選擇」的定價權，這是結構性改變。未來 API 定價壓力會加大，或商業模型必須在 agentic workflow / tool ecosystem / enterprise features 建立更深護城河。對企業 IT 來講這是好事：多了一個可以算 TCO 的選項，原本 API 訂閱變成可以議價的成本。"
 ---
 
-![Qwen3.6 27B - Run the new 27B model locally!](/assets/images/qwen-3-6-27b-run-locally-cover.png)
+![Qwen 3.6-27B 本地部署示意圖：Run the new 27B model locally](/assets/images/qwen-3-6-27b-run-locally-cover.png)
+
+## 目錄
+
+- [TL;DR](#tldr)
+- [為什麼這又是一篇「無聊 IT 架構」文](#為什麼這又是一篇無聊-it-架構文)
+- [第一段：為什麼是 Qwen 3.6-27B？](#第一段為什麼是現在為什麼是-qwen-3-6-27b)
+- [第二段：Qwen 3.6-27B 的 Benchmark 贏過 Opus 4.5](#第二段qwen-3-6-27b-的-benchmark-結果居然贏過-opus-4-5)
+- [第三段：網友用什麼機器跑？Token Performance 多少？](#第三段網友用什麼機器跑起來token-performance-是多少)
+- [這對企業 IT 架構師意味著什麼](#這對企業-it-架構師意味著什麼)
+- [常見問題 Q&A](#常見問題-qa)
 
 ## TL;DR
 
