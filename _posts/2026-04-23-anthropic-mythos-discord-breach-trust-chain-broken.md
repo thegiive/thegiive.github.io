@@ -52,6 +52,10 @@ Discord 群裡有個成員的本職是 Anthropic 某個第三方承包商的員�
 
 ## 最黑色幽默的部分：他們什麼都沒做
 
+<div style="display: flex; justify-content: center; margin: 30px 0;">
+  <iframe width="315" height="560" src="https://www.youtube.com/embed/4Yau5H4oxIc" title="Mythos 被 Discord 小群入侵——AI 安全圈最諷刺的笑話" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 你想想——**世界上最危險的網路武器**，號稱能自動挖零日、能串聯漏洞、能攻破企業基礎設施——現在躺在一群 Discord 素人手上兩週。
 
 他們幹了什麼？
