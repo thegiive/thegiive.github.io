@@ -375,3 +375,7 @@ Pro/Max 用戶的 TTL 是 1 小時。午飯吃 1.5 小時回來，快取就過�
 - [Claude Code 資安最佳實踐：14 條建議](https://ai-coding.wiselychen.com/claude-code-security-best-practices-source-code-verified/)（EP2）
 - [Claude Code 上下文工程：四層壓縮機制](https://ai-coding.wiselychen.com/claude-code-context-engineering-four-layer-compression/)（EP3）
 - [Anthropic 官方解密：Dual-Agent 架構](https://ai-coding.wiselychen.com/anthropic-dual-agent-architecture-claude-code/)
+
+---
+
+🌐 **English Version:** [Cracking the Cache: From Gemma4 to Claude Code, Save 80% on Tokens](https://en.wiselychen.com/en/kv-cache-gemma4-claude-code-save-80-percent-token/)
