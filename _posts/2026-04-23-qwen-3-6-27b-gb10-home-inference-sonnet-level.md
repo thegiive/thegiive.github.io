@@ -447,3 +447,7 @@ Apache 2.0 license 本身沒有地緣限制，但多數高度監管產業的法�
 - [DDTree 研究頁面](https://liranringel.github.io/ddtree/)
 - [Rapid-MLX v0.6.1 — Qwen 3.6 Day-0 Apple Silicon 實測](https://github.com/raullenchai/Rapid-MLX/releases/tag/v0.6.1)
 - Mitko Vasilev X 推文（@iotcoi）、LotusDecoder、Chris Maddern（@chrismaddern）
+
+---
+
+🌐 **English Version:** [Qwen 3.6-27B Local Deployment: Sonnet 4.6-Class AI Agent Running on a DGX Spark / Mac mini](https://en.wiselychen.com/en/qwen-3-6-27b-sonnet-level-home-inference/)

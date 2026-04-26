@@ -256,3 +256,7 @@ results = selector.select_best(parallel=True)
 **Q: 這跟 LLM Router（如 RouteLLM）有什麼不同？**
 
 LLM Router 是針對單個查詢做路由——「這個問題該給 Opus 還是 Haiku？」AgentOpt 是針對整個 pipeline 做組合優化——「Planner 用什麼、Solver 用什麼、Critic 用什麼的組合最好？」這是不同層次的問題。Router 可以幫你省單次呼叫的錢，AgentOpt 幫你省整條管線的錢。
+
+---
+
+🌐 **English Version:** ["Opus Is Too Smart, So It Shouldn't Be Doing the Planning" — A Paper That Flips the Agent Ops Paradigm](https://en.wiselychen.com/en/agentopt-expensive-model-wrong-position-pipeline-optimization/)
