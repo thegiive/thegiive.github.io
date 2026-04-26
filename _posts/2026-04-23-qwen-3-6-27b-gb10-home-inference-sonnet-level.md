@@ -285,6 +285,10 @@ Mitko 的 136 t/s 就是這樣來的——沒有 DFlash + DDTree，同樣硬體�
 
 這個數字低到進不了任何成本模型——跟 API 每年 $7,500 的差距比起來，電費是四捨五入誤差。
 
+### Mac Studio 這邊呢？Rapid-MLX 實測
+
+企業裡比 DGX Spark 更普及的硬體是 Mac Studio，Mac 這邊的數據三天後也出來了。Apple Silicon 推理引擎 [Rapid-MLX](https://github.com/raullenchai/Rapid-MLX)（Apache 2.0 開源、相容 OpenAI API）v0.6.1 做了 Qwen 3.6 Day-0 支援，在 **Mac Studio M3 Ultra（256GB）** 上跑出 **4-bit 36.5 t/s（佔 14.9GB）、8-bit 18.9 t/s（佔 32.3GB）**，coding eval 100% pass、stress test 8/8。**這個數字反過來說明 DGX Spark 那 136 t/s 不是硬體碾壓，是 DFlash + DDTree 軟體棧帶來的**——沒套加速時 GB10 只有 ~15 t/s，跟 M3 Ultra 在同一個檔位。對 IT 架構師意義很直接：**公司已經發 Mac Studio 給工程師的（很多矽谷公司是這樣），不用再買 DGX Spark，`pip install rapid-mlx` 一行就能跑 Qwen 3.6-27B**，36.5 t/s 對單人 interactive coding 完全夠用。
+
 ### 成本結構對照
 
 把單人成本算清楚：
@@ -365,16 +369,18 @@ Mitko 的 136 t/s 就是這樣來的——沒有 DFlash + DDTree，同樣硬體�
 
 | 硬體 | 記憶體 | 頻寬 | 可跑量化 | 預期速度 | 售價（USD） | 適用情境 |
 |---|---|---|---|---|---|---|
-| **NVIDIA DGX Spark** | 128GB 統一記憶體 | LPDDR5X | FP8（27GB）+ 大 KV cache | **~136 t/s**（搭 Dflash+DDTree） | $4,699 | 重度 agent workload、10 agents 並行 |
-| **Mac mini M4 Pro 64GB** | 64GB 統一記憶體 | 273 GB/s | Q8 / FP8（含 context headroom） | ~12–18 t/s | ~$2,199 | 個人開發者、interactive use |
-| **Mac mini M4 Pro 48GB** | 48GB 統一記憶體 | 273 GB/s | Q8（context 要小心） | ~12–18 t/s | ~$1,799 | 預算型、短 context 任務 |
-| **Mac mini M4 base** | 最多 32GB | 120 GB/s | 只能跑 Q4（~15GB） | 明顯偏慢 | ~$1,299 | 品質打折，不建議 |
+| **NVIDIA DGX Spark** | 128GB 統一記憶體 | LPDDR5X | FP8（27GB）+ 大 KV cache | **~136 t/s**（搭 Dflash+DDTree，10 agents 並行） | $4,699 | 重度 agent workload、平行吞吐 |
+| **Mac Studio M3 Ultra 256GB** | 256GB 統一記憶體 | ~819 GB/s | 4-bit / 8-bit（Rapid-MLX 實測） | **36.5 t/s（4-bit）／ 18.9 t/s（8-bit）** | ~$5,599+ | macOS 生態、interactive + 中型 agent 並行 |
+| **Mac mini M4 Pro 64GB** | 64GB 統一記憶體 | 273 GB/s | 4-bit / 8-bit | ~12–18 t/s（推估，社群實測仍少） | ~$2,199 | 個人開發者、interactive use |
+| **Mac mini M4 Pro 48GB** | 48GB 統一記憶體 | 273 GB/s | 4-bit / 8-bit（context 要小心） | ~12–18 t/s（推估） | ~$1,799 | 預算型、短 context 任務 |
+| **Mac mini M4 base** | 最多 32GB | 120 GB/s | 只能跑 4-bit（~15GB） | 明顯偏慢 | ~$1,299 | 品質打折，不建議 |
 
 **選型 rule of thumb：**
 
-- **要跑 autonomous agent（10 agents 並行、background task）→ DGX Spark**，頻寬和平行吞吐碾壓 Mac mini
+- **要跑 autonomous agent（10 agents 並行、background task）→ DGX Spark**，搭 Dflash+DDTree 推理棧後平行吞吐碾壓所有 Mac
+- **單人重度 coding + macOS 生態 → Mac Studio M3 Ultra**，4-bit 36.5 t/s 已經比 DGX Spark 不靠 DFlash 還快，pip install rapid-mlx 一行起跑
 - **單人 interactive coding（IDE 裡叫一兩個 agent）→ Mac mini M4 Pro 64GB** 就夠用，便宜一半
-- **預算 < $1,500 → 要嘛等 DGX Spark 二手、要嘛退回 Claude Code 訂閱制**。base Mac mini 跑 Q4 27B 品質已經不是 Sonnet 4.6 等級了
+- **預算 < $1,500 → 要嘛等 DGX Spark 二手、要嘛退回 Claude Code 訂閱制**。base Mac mini 跑 4-bit 27B 品質已經不是 Sonnet 4.6 等級了
 
 這不是要全面取代商業 API，是**把 80% 的日常 agentic coding 負載搬回公司**，只把真正困難的 20% 留給 Claude / GPT。
 
@@ -393,7 +399,7 @@ Apache 2.0 license 本身沒有地緣限制，但多數高度監管產業的法�
 看預算和使用強度：
 
 - **$2,000–$2,500 個人級：** Mac mini M4 Pro 64GB，單人 interactive use 夠用（12–18 t/s）。預算再緊一點可以退到 48GB 版本，但 context 會變窄
-- **$4,000–$5,000 工作站級：** Mac Studio M3 Ultra（128/192GB 統一記憶體）可跑 Qwen 3.6-27B FP8，約 60–80 t/s，macOS 生態對一般工程師更友善
+- **$4,000–$5,000 工作站級：** Mac Studio M3 Ultra（128/256GB 統一記憶體）跑 Qwen 3.6-27B，[Rapid-MLX 實測](https://github.com/raullenchai/Rapid-MLX/releases/tag/v0.6.1)4-bit 36.5 t/s、8-bit 18.9 t/s，macOS 生態對一般工程師更友善
 - **既有 Windows / Linux 工作站改造：** RTX 5090（32GB GDDR7）單卡能跑 FP8 27B，配合 vLLM 吞吐量可達 100+ t/s，適合已經有桌機的團隊
 
 需要 agent 並行和最高 t/s 還是 DGX Spark 最划算——128GB 統一記憶體 + FP4 petaFLOP 是 Mac mini / Mac Studio 硬追不上的。
@@ -439,4 +445,5 @@ Apache 2.0 license 本身沒有地緣限制，但多數高度監管產業的法�
 - [Claude Sonnet 4.6 Benchmark 數據](https://www.morphllm.com/claude-benchmarks)
 - [DFlash 論文與原始碼](https://github.com/z-lab/dflash)
 - [DDTree 研究頁面](https://liranringel.github.io/ddtree/)
+- [Rapid-MLX v0.6.1 — Qwen 3.6 Day-0 Apple Silicon 實測](https://github.com/raullenchai/Rapid-MLX/releases/tag/v0.6.1)
 - Mitko Vasilev X 推文（@iotcoi）、LotusDecoder、Chris Maddern（@chrismaddern）
