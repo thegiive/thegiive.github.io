@@ -97,7 +97,9 @@ NVIDIA 在 2024 年發了 [RULER（What's the Real Context Size of Your Long-Con
 
 [Stanford 在 2023 年發的 Lost in the Middle](https://arxiv.org/abs/2307.03172) 是另一個讓人坐不住的結果。論文做了個漂亮的實驗：把同一個關鍵資訊放在文件的不同位置，量化問答準確率。
 
-結果是經典的 **U 形曲線**——首尾位置準確率高，中間掉到接近隨機猜的水準。
+![Lost in the Middle (Liu et al., 2023) — 答案位置 vs 準確率的 U 形曲線：首尾準確率高，中間段落跌到接近 closed-book baseline](/assets/images/lost-in-the-middle-u-curve.png)
+
+結果是經典的 **U 形曲線**——首尾位置準確率高，中間掉到接近隨機猜的水準（圖中虛線是 closed-book baseline，等於模型完全沒看文件的表現）。
 
 這個現象到 2025 年還在，所以你會看到很多 RAG 工具的最佳實踐是「重要內容放開頭和結尾」。這不是迷信，是工程上對 Lost in the Middle 的妥協。
 
