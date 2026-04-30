@@ -91,7 +91,13 @@ Token throughput = HBM size × HBM bandwidth
 
 ## 老黄看穿了這件事，然後把所有路都鎖死
 
-老黄自己在訪談裡講過一句話，意思是：Nvidia 真正做得最好的，**不是 GPU 設計、不是 CUDA、是供應鏈整合**。外界一直把焦點放在架構跟軟體生態上，但他自己最在意的，是把整個上游從晶圓、封裝、HBM、到下游系統廠的節奏全部接到自己手上。
+這不是我自己腦補的視角，是老黄這兩個月密集出來講的兩個訪談，他自己親口認的。
+
+**Stratechery（Ben Thompson，2026/03，[An Interview with Nvidia CEO Jensen Huang About Accelerated Computing](https://stratechery.com/2026/an-interview-with-nvidia-ceo-jensen-huang-about-accelerated-computing/)）**——GTC 2026 結束後的長訪。老黄講供應鏈現況時用了一句很白的話：「**almost every link is tight**」（幾乎每個環節都很緊）。然後他說 Nvidia 的能力是對這些環節的**預判跟長期規劃**——不是單買一段，是把整條鏈的節奏排好。
+
+**Dwarkesh Podcast（2026/04，[Jensen Huang – TPU competition & Nvidia's supply chain moat](https://www.dwarkesh.com/p/jensen-huang)）**——更直接。Dwarkesh 一開場就問：「Nvidia 最強的護城河，是不是對稀缺供應鏈的控制力？」老黄沒有迴避，反而把怎麼鎖**先進封裝**（CoWoS）和**製造產能**講得很細。
+
+合起來就是一句話：**Nvidia 真正做得最好的，不是 GPU 設計、不是 CUDA、是供應鏈整合。** 外界一直把焦點放在架構跟軟體生態上，但他自己最在意的，是把整個上游從晶圓、封裝、HBM、到下游系統廠的節奏全部接到自己手上。
 
 這個視角看下面這兩手棋，會非常清楚。
 
@@ -99,11 +105,17 @@ Token throughput = HBM size × HBM bandwidth
 
 **正面：把 HBM 上游全包下來。**
 
-2026 年 SK Hynix 的 HBM 產能已經 sold out，2027 年也在排隊。Jensen Huang 在 GTC 上明確說了「我們鎖了大部分產能」。Micron 退出消費級就是要把產能挪給 Nvidia。Samsung 也在排隊塞進供應鏈。
+具體配額是這樣分的：
+
+- **SK Hynix：** 2026 全年 DRAM/NAND/HBM 全部 sold out，「大部分賣給 Nvidia」（Q3 法說會原話）；Nvidia 2026 HBM 配額大約一半以上吃掉
+- **Samsung：** 正在敲超過 30% 的 HBM4 訂單，並把 HBM 月產能從 17 萬片晶圓拉到 25 萬片（+47%），目標 2026 底達成
+- **Micron：** 2026 HBM 也 sold out，但**直接退出 Rubin HBM4 的供應**——因為 Nvidia 把 HBM4 pin speed 拉到超過 JEDEC 規格，Micron 良率追不上
+
+換句話說，老黄沒有用一句宣示「鎖產能」，他是用**多年期 secured allocation + CoWoS 預訂**直接把帳面綁死。產能還沒生出來，下單的位子已經被佔走。
 
 **結果：要做 GPU 跟 Nvidia 打的人——AMD、Intel、Cerebras、各家 ASIC 新創——拿不到足夠的 HBM。**
 
-這個圍堵很有效，因為 HBM 是極寡占的市場（全球只有三家），不像晶圓代工至少還有 TSMC、Samsung、Intel 三條路。
+這個圍堵很有效，因為 HBM 是極寡占的市場（全球只有三家），不像晶圓代工至少還有 TSMC、Samsung、Intel 三條路。而且 Nvidia 把 HBM4 規格往上推、又包了 CoWoS 先進封裝產能，等於同時鎖了「記憶體」跟「能把記憶體裝上 GPU 的封裝線」兩道閘門。
 
 **背面：把唯一能繞過 HBM 的路徑也買下來。**
 
@@ -164,6 +176,13 @@ DDR 漲價是這個物理定律的副作用。一般消費者組電腦變貴、�
 - 原價屋 2026/4/23 估價單（實拍）
 - TrendForce：2026 Q1 DRAM 合約價 QoQ +90~95%、Q2 +58~63%
 - Goldman Sachs：2026 DRAM 缺口預測 4.9%（15 年來最差）
-- SK Hynix 2026 Q3 法說會：HBM/DRAM/NAND 全年 sold out
+- SK Hynix 2026 Q3 法說會：HBM/DRAM/NAND 全年 sold out（[NotebookCheck 報導](https://www.notebookcheck.net/SK-hynix-sells-out-its-DRAM-NAND-and-HBM-chip-supply-to-Nvidia-through-2026-as-AI-demand-outpaces-Samsung-and-Micron-s-capacity.1151402.0.html)）
+- Digitimes：[Samsung 接近敲定供應 Nvidia 2026 HBM4 超過 30% 配額](https://www.digitimes.com/news/a20251216PD218/hbm4-samsung-nvidia-2026-sk-hynix.html)
+- TrendForce：[Samsung 2026 HBM 月產能擴張 ~50%](https://www.trendforce.com/news/2025/12/30/news-samsung-reportedly-plans-50-hbm-capacity-surge-in-2026-spotlight-on-hbm4)
+- FusionWW 分析：[Nvidia 已 secure HBM4 配額 + 多年期 CoWoS 預訂](https://www.fusionww.com/insights/blog/inside-the-ai-bottleneck-cowos-hbm-and-2-3nm-capacity-constraints-through-2027)
 - Tom's Hardware：Nvidia $20B Groq IP licensing deal（2025/12/24 announced）
 - @fi56622380 推文：[AI 半導體終局推演 2026(I)：當新 token 經濟學範式從 GPU 算力轉移到 HBM](https://x.com/fi56622380/status/2049347677092278749)
+- Stratechery（Ben Thompson, 2026/03）：[An Interview with Nvidia CEO Jensen Huang About Accelerated Computing](https://stratechery.com/2026/an-interview-with-nvidia-ceo-jensen-huang-about-accelerated-computing/)——「almost every link is tight」原話出處
+- Dwarkesh Podcast（2026/04）：[Jensen Huang – TPU competition & Nvidia's supply chain moat](https://www.dwarkesh.com/p/jensen-huang)——老黄親自談先進封裝與製造產能鎖定
+
+**修訂紀錄：** 2026/4/30 修正初版誤植「Jensen 在 GTC 明確說『我們鎖了大部分產能』」——查無原始出處，改為以新聞報導可佐證的多年期 secured allocation + CoWoS 預訂事實版本，並補上 Stratechery、Dwarkesh 兩個訪談原話作為「Nvidia 護城河 = 供應鏈整合」這個論點的直接 reference。
