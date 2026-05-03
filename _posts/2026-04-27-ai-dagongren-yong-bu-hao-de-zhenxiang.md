@@ -9,6 +9,8 @@ description: "你拼了老命學 AI、買 Max 5x，效率真的提升了一些�
 
 ![商周 AI 創新百強 2026 趨勢年會現場](/assets/images/ai-dagongren-yong-bu-hao-cover.png)
 
+[![YouTube Preview](https://img.youtube.com/vi/dPtBqPhU3To/maxresdefault.jpg)](https://youtu.be/dPtBqPhU3To)
+
 > AI 最值錢的地方，不是幫你幹活，而是幫你重新想「這個活要不要這麼幹」。但這需要你對自己的工作有真正的所有權——而打工人，從一開始就沒有這個東西。
 
 ---

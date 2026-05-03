@@ -10,6 +10,8 @@ description: "勞工節給打工人的 5 個 AI 妙招——不是用 AI 變更�
 
 ![向全國勞工致敬！你我相挺，作伙打拼](/assets/images/dagongren-5-zhao-cover.png)
 
+[![YouTube Preview](https://img.youtube.com/vi/dPtBqPhU3To/maxresdefault.jpg)](https://youtu.be/dPtBqPhU3To)
+
 > 勞工節快樂。前作講過：你用 AI 變得更快，省下來的時間都會被老闆吃光。但有一件事老闆吃不走——**你的品質**。這篇就是 5 個讓你「不變更快、變更好」的招。
 
 ---
