@@ -197,21 +197,27 @@ Anthropic 顯然選了前者。
 
 ---
 
-## 印地語、阿拉伯語：為什麼新興市場用 Claude 等於自殺
+## 印地語、阿拉伯語：非英語市場的企業都該重新算這筆帳
 
 3.24x 是什麼概念？
 
-如果你是印度的 startup，做一個印地語的法律諮詢 agent，你的單位成本就是美國同行的 3.24 倍。但你的 ARPU 大概只有美國市場的 1/10。
+如果你是印度的 startup，做一個印地語的法律諮詢 agent，每次 API call 比同樣英語場景多吃 2.24 倍 token。如果產品的 ARPU 又比美國市場低，這個 token 稅在 unit economics 裡就變成需要認真對待的成本項——不是「順便處理一下」可以帶過的。
 
-**結構上你就活不下去。**
+這就是為什麼**印度本土做 Indic 深度應用的團隊**——法律、醫療、教育、政府服務這類需要深度印地語（含其他 22 種印度官方語言）理解的場景——很多走自訓路線，[Sarvam AI](https://www.sarvam.ai/)、[Krutrim](https://www.olakrutrim.com/) 是代表案例，常採用 [Llama](https://www.llama.com/)、[Mistral](https://mistral.ai/) 開源 weights 做 fine-tuning。
 
-這就是為什麼**印度本土做 Indic 深度應用的 startup**——法律、醫療、教育、政府服務這類需要深度印地語（含其他 22 種印度官方語言）理解的場景——幾乎全部走自訓路線，[Sarvam AI](https://www.sarvam.ai/)、[Krutrim](https://www.olakrutrim.com/) 是代表案例，而且大量採用 [Llama](https://www.llama.com/)、[Mistral](https://mistral.ai/) 開源 weights 做 fine-tuning。
+範圍要講清楚——**印度一般 SaaS 公司**（Zoho、Freshworks、Postman 這類）依然大量使用 OpenAI / Claude，因為他們的工作語言主要還是英文、處理的多半也是英文場景。**只有任務需要深度印地語理解**，3.24x 的 token 稅才會明顯壓縮 unit economics，讓自訓 / 開源 fine-tuning 變成更值得考慮的選項。不是民族主義，是經濟學。
 
-注意這個範圍要講清楚——**印度一般 SaaS 公司**（Zoho、Freshworks、Postman 這類）依然大量使用 OpenAI / Claude，因為他們的工作語言主要還是英文、處理的多半也是英文場景。但**只要任務需要深度印地語理解**，3.24x 的稅就讓 Claude 在這個區隔站不住腳。不是民族主義，是經濟學。
+阿拉伯語也是一樣。沙烏地、阿聯的政府投資 AI 蓋自己的模型（[Falcon](https://falconllm.tii.ae/)、[Jais](https://inceptionai.ai/jais/)），表面上是技術自主，底層也跟這個 token 經濟學脫不了關係——每次跑阿拉伯語就吃 2.86x 稅，做大規模消費級應用的成本結構會被改變。
 
-阿拉伯語也是一樣。沙烏地、阿聯的政府投資 AI 蓋自己的模型（[Falcon](https://falconllm.tii.ae/)、[Jais](https://inceptionai.ai/jais/)），表面上是技術自主，底層也是這個 token 經濟學的問題——你不能每次跑阿拉伯語都吃 2.86x 稅。
+但這篇文章的重點，**其實不只是印度跟中東**。
 
-對比之下，**OpenAI 的 1.31x 印地語倍數，是 Anthropic 的不到一半**。這就是為什麼 OpenAI 在新興市場滲透率明顯比 Anthropic 高。Anthropic 在企業市場很強，但企業市場集中在英語區。新興市場是 OpenAI 的天下。
+如果你是台灣、香港、日本、韓國、東南亞、拉美的公司，做的產品有大量目標語言不是英文的場景——你都該停下來重新算這筆帳。Anthropic 是不是貴 1.71x、2.86x、3.24x，要拿你自己的 production prompt 實測。算完之後值不值得繳這筆稅，**取決於你的任務價值密度跟 ARPU**：
+
+- 高價值低 volume（核心 PRD、策略文件、複雜 coding）→ 即使 1.71x 也值得
+- 中價值中 volume（一般客服、文件處理、批次摘要）→ 1.71x 開始痛，要考慮 routing
+- 低價值高 volume（純中文資料清洗、批次分類、embedding 預處理）→ 這個區段繼續用 Claude 是燒錢
+
+對比之下，**OpenAI 的 1.31x 印地語倍數，是 Anthropic 的不到一半**。這也部分解釋了為什麼 OpenAI 在新興市場滲透率比 Anthropic 高。Anthropic 在英語企業市場很強，但企業市場集中在英語區。
 
 這不是巧合，是 tokenizer 設計選擇的累積結果。
 
