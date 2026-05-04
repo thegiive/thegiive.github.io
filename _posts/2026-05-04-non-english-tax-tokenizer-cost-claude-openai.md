@@ -1,12 +1,12 @@
 ---
-title: "非英語稅：你用 Claude 寫中文，每一個字都比美國人貴 71%"
+title: "非英語稅：用 Claude 寫中文，同樣內容 token 比英文版多 71%"
 date: 2026-05-04 08:00:00 +0800
 permalink: /non-english-tax-tokenizer-cost-claude-openai/
 image: /assets/images/non-english-tax-tokenizer-cover.png
-description: "同一篇文章翻成不同語言丟給 LLM，Anthropic 處理中文比英文多吃 1.71 倍 token，印地語直接 3.24 倍；OpenAI 比較克制但中文也要 1.15 倍。這個被叫做「非英語稅」的隱藏成本，正在悄悄拉開亞洲企業跟美國公司的 API 帳單差距。本文拆解 tokenizer 為什麼歧視非英語、算給你看一個典型台灣企業 case 的真實成本差距、以及為什麼我自己仍然主要用 Claude——但會在哪些場景切換到 OpenAI 或 DeepSeek。"
+description: "同一篇文章翻成不同語言丟給 LLM，Anthropic 處理中文比英文多吃 1.71 倍 token，印地語直接 3.24 倍；OpenAI 比較克制但中文也要 1.15 倍。這個被叫做「非英語稅」的隱藏成本，正在悄悄拉開亞洲企業跟美國公司的 API 帳單差距。本文拆解 tokenizer 為什麼歧視非英語、算給你看一個典型台灣企業 case 的真實成本差距、以及為什麼我自己仍然主要用 Claude——但會在哪些場景切換到 OpenAI 或 DeepSeek。注意：1.71x 是 Claude 中文相對 Claude 英文的倍數（同一家內部基準），不是相對 OpenAI 英文的倍數。Opus 4.7 已換 tokenizer，但官方反而提醒同樣輸入可能多吃 1.0-1.35x token，是否改善中文稅需要實測，不能用廠商公告直接推論。"
 ---
 
-# 非英語稅：你用 Claude 寫中文，每一個字都比美國人貴 71%
+# 非英語稅：用 Claude 寫中文，同樣內容 token 比英文版多 71%
 
 ## 一張對比表，看懂為什麼你的 API 帳單比 SF 同事貴
 
@@ -50,7 +50,19 @@ description: "同一篇文章翻成不同語言丟給 LLM，Anthropic 處理中�
 
 ## ⚠️ 兩個你必須知道的 Caveat
 
-在繼續讀下去之前，我必須先講兩件事，不然這篇文章會誤導你。
+在繼續讀下去之前，我必須先講三件事，不然這篇文章會誤導你。
+
+### Caveat 0：「71%」這個數字的基準是什麼
+
+先把基準講清楚再讀下去。上面那兩張表的 1.0x 是**各家 tokenizer 自己處理英文的 token 數**——Anthropic 英文 = 1.0、OpenAI 英文 = 1.0，**不是用同一把尺**。
+
+所以「Claude 中文 1.71x」這個數字的意思是：**Claude 中文 token 數，是 Claude 英文 token 數的 1.71 倍**。也就是「同一家公司內部，中文比英文多吃 71%」。
+
+如果改用 OpenAI 英文當共同基準，原始數據裡 Anthropic 英文約 1.04 倍 OpenAI 英文，重新換算 Claude 中文 ÷ Claude 英文 ≈ 1.64x，差距就變 64%。所以你看到不同來源寫「貴 65%」「貴 71%」其實是同一個現象，只是基準不同。
+
+我這篇文章後面用的都是 Anthropic 內部基準（1.71x = 71%），因為**對企業做選型來說，「Claude 中文比 Claude 英文貴多少」比「Claude 中文比 OpenAI 英文貴多少」更貼近實際的 API 帳單比較場景**。但你看到別人寫 65% 不要覺得衝突，是基準不同。
+
+另外要強調：**71% 不是「每個中文字逐字貴 71%」**。它是「同一段語義內容翻譯成中文後，token 數的平均倍數」。「的」「是」這種高頻字可能還是 1 token，「龘」這種冷字才會吃到 3 個。所以這是**語義內容層級的平均倍數**，不是逐字稅率。
 
 ### Caveat 1：這份數據沒被獨立審計
 
@@ -62,24 +74,23 @@ Aran Komatsuzaki 的測試是社群整理的非正式 benchmark，**沒有任何
 
 唯一比較靠譜的可重現 benchmark 是 [vfalbor/llm-language-token-tax](https://github.com/vfalbor/llm-language-token-tax) 這個 repo，但它只測 OpenAI 的 cl100k 跟 o200k，沒測 Anthropic（因為前面講的原因）。它的 OpenAI 中文倍數是 1.33x，跟 Komatsuzaki 的 1.15x 有差距，可能是用了不同 tokenizer 版本（cl100k vs o200k）或不同文本。
 
-### Caveat 2：Anthropic 已經回應了——Opus 4.7 重新設計 tokenizer
+### Caveat 2：Opus 4.7 換了 tokenizer，但官方說的方向跟你想的不一樣
 
-更重要的更新：**2026/4/16 Anthropic 發布的 [Claude Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7) 直接帶了重新設計的 tokenizer，就是專門針對這個非英語稅問題。**
+2026/4/16 Anthropic 發布的 [Claude Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7) 換了新 tokenizer。我第一次看到這個更新時，直覺是「啊，他們要修非英語稅了」。
 
-根據 [VentureBeat 的報導](https://venturebeat.com/technology/anthropic-releases-claude-opus-4-7-narrowly-retaking-lead-for-most-powerful-generally-available-llm) 跟 [MindStudio 的評測](https://www.mindstudio.ai/blog/claude-opus-4-7-review)，新 tokenizer：
+但實際讀官方 [migration guide](https://docs.claude.com/en/docs/about-claude/models/migrating-to-claude-4) 跟 release notes，方向跟我想的不一樣：
 
-- **中文、日文、韓文、阿拉伯文、印地文 token 數降低 20-35%**
-- **代價：英文 prompt 反而多吃 12-18% token**（vocab 重新分配的 trade-off）
+> **「同樣輸入在 Opus 4.7 上的 token 數可能變成 1.0–1.35 倍，請重新評估你的 token budget。」**
 
-換算下來：
-- Opus 4.7 中文倍數 ≈ 1.71 × 0.7 ≈ **1.20x**（接近 OpenAI 的 1.15x）
-- Opus 4.7 印地語倍數 ≈ 3.24 × 0.7 ≈ **2.27x**（還是偏高，但差距大幅縮小）
+注意這個方向——**Anthropic 自己警告的是 token 數可能「增加」最多 35%，不是降低**。新 tokenizer 對非英語有沒有改善？官方文件**沒有給數字**。
 
-這是一個**值得肯定的修正**。Anthropic 從「對非英語使用者最不友好的大廠」變成「方向正確、但仍未追平 OpenAI」。
+社群有些二手報導（[VentureBeat](https://venturebeat.com/technology/anthropic-releases-claude-opus-4-7-narrowly-retaking-lead-for-most-powerful-generally-available-llm)、[MindStudio](https://www.mindstudio.ai/blog/claude-opus-4-7-review)）寫新 tokenizer「對非拉丁文字更友好」，但這跟官方原文有溫差。我寫第一版的時候直接引用了這些二手數字（中日韓阿印降 20-35%），但回頭查 Anthropic 官方公告跟 migration guide，這個說法**沒有官方背書**，我修掉了。
 
-但要注意：**Sonnet 4.5、4.6 沒換 tokenizer**。所以如果你的 production 用的是 Sonnet（成本敏感的場景大部分都是），Komatsuzaki 的 1.71x 數字基本還是對的。要享受新 tokenizer 的紅利，得切到 Opus 4.7（[$5/$25 per MTok](https://platform.claude.com/docs/en/about-claude/pricing)），單價比 Sonnet 4.5 貴。
+**結論：是否改善中文稅，需要拿你自己的 production prompt 實測。** 不能用「Opus 4.7 = 中文友好」這種廠商行銷話術直接推論，方向有可能是反過來的。
 
-**所以接下來文章用 Sonnet 4.5 的 1.71x 算成本，仍然是 production 主流情境。** Opus 4.7 用戶請自己折算 0.7 倍。
+要驗證 5 分鐘就能跑：用 [Anthropic 的 count_tokens API](https://platform.claude.com/docs/en/build-with-claude/token-counting) 拿同一段中文分別打 `claude-sonnet-4-6` 跟 `claude-opus-4-7`，比對 token 數差距。
+
+另一個 load-bearing 假設：**Opus 4.7 release notes 主要在講 Opus，沒明確說明 Sonnet 4.5/4.6 是否同步換 tokenizer**。我發稿前沒跑完整 benchmark，所以接下來成本計算用 Sonnet 4.5 + Komatsuzaki 的 1.71x（這也是 production 主流情境）。**如果你發現 Sonnet 4.6 token 數實測跟 4.5 有差異，這篇後面的數字要折算**。
 
 ---
 
@@ -160,9 +171,27 @@ Anthropic 顯然選了前者。
 每月成本 = $102
 ```
 
+> **註：DeepSeek 的 0.95x 中文倍數是估計值。** DeepSeek 官方沒公布 tokenizer 多語言 benchmark，這個數字是社群實測的概略區間（多半落在 0.9–1.0x 之間）。直覺上合理——DeepSeek 訓練資料以中文為主，tokenizer vocab 對中文 subword 覆蓋密度高。但**精確數字請拿自家 prompt 實測**，我給這個 0.95x 是為了方便對比，不是法庭證據。
+
 **同樣的中文 chatbot，月帳單差距：Claude $2,310 vs OpenAI $1,121 vs DeepSeek $102。**
 
-差距不是 2 倍 3 倍，是 22 倍。
+但這個差距要拆開看，不能全部歸因到非英語稅，不然會誤導讀者「換家就省 20 倍」。實際拆解：
+
+**Claude → OpenAI（$2,310 → $1,121，2.06x 差距）**
+
+- 單價差距：Claude Sonnet $3 vs GPT-4o $2.5（input）= 1.2x
+- Tokenizer 稅差距：Claude 中文 1.71x vs OpenAI 中文 1.15x = 1.49x
+- 乘起來 ≈ 1.79x，加上 output token 單價差（$15 vs $10）拉到約 2x
+
+**所以換 OpenAI 真正省到的，主要是 tokenizer 稅 1.5x + 單價 1.2x，合計 2 倍左右。** 不是 20 倍。
+
+**Claude → DeepSeek（$2,310 → $102，22.6x 差距）**
+
+- 單價差距：Claude Sonnet $3 vs DeepSeek $0.27（input）= **11.1x**（這是模型本身的定價差，跟 tokenizer 完全無關）
+- Tokenizer 稅差距：Claude 1.71x vs DeepSeek 0.95x = 1.8x
+- 乘起來 ≈ 20x，加上 output 單價差距（$15 vs $1.1）最終約 22x
+
+**這個 22x 裡面，tokenizer 貢獻 1.8x，模型單價貢獻 11x。** 真正的暴力差距是模型單價，不是 tokenizer 稅。要享受這個 11x，你付的代價是 compliance 風險（資料出境）跟一些品質差距。
 
 而且這還只算了單價跟 token 倍數。沒算 latency，沒算 context window 撞上限被迫 truncate、被迫多輪對話的次數、被迫做 summarization 的額外成本。
 
@@ -176,7 +205,9 @@ Anthropic 顯然選了前者。
 
 **結構上你就活不下去。**
 
-這就是為什麼印度本土的 AI startup 幾乎全部投向 [Llama](https://www.llama.com/)、[Mistral](https://mistral.ai/)、自訓 Indic 模型（例如 [Sarvam AI](https://www.sarvam.ai/)、[Krutrim](https://www.olakrutrim.com/)）。不是民族主義，是經濟學。Claude 在印度市場根本沒法做 cost-effective 的 deployment。
+這就是為什麼**印度本土做 Indic 深度應用的 startup**——法律、醫療、教育、政府服務這類需要深度印地語（含其他 22 種印度官方語言）理解的場景——幾乎全部走自訓路線，[Sarvam AI](https://www.sarvam.ai/)、[Krutrim](https://www.olakrutrim.com/) 是代表案例，而且大量採用 [Llama](https://www.llama.com/)、[Mistral](https://mistral.ai/) 開源 weights 做 fine-tuning。
+
+注意這個範圍要講清楚——**印度一般 SaaS 公司**（Zoho、Freshworks、Postman 這類）依然大量使用 OpenAI / Claude，因為他們的工作語言主要還是英文、處理的多半也是英文場景。但**只要任務需要深度印地語理解**，3.24x 的稅就讓 Claude 在這個區隔站不住腳。不是民族主義，是經濟學。
 
 阿拉伯語也是一樣。沙烏地、阿聯的政府投資 AI 蓋自己的模型（[Falcon](https://falconllm.tii.ae/)、[Jais](https://inceptionai.ai/jais/)），表面上是技術自主，底層也是這個 token 經濟學的問題——你不能每次跑阿拉伯語都吃 2.86x 稅。
 
@@ -199,13 +230,13 @@ Anthropic 顯然選了前者。
 
 第二點被嚴重低估。
 
-舉個例子：你要做一個 RAG 系統，retrieve 10 份中文 PDF 餵給模型。
+舉個例子：你要做一個 RAG 系統，retrieve 多份中文 PDF 餵給模型。
 
-用 Claude Sonnet 4.5（200K context）：每份 PDF 中文約 50K 字，被 tokenize 成 ~85K token（1.71x）。**塞 2.5 份就滿了。**
+中文文件實際吃多少 token，**沒辦法用「字數 × 1.71」這種公式估**——1.71x 是「英文翻成中文後 token 倍數」的對比，不是「中文字數轉 token 的轉換率」。要精確估必須拿真實文件丟 token counter 跑一次。
 
-用 DeepSeek V3（128K context）：同樣的 PDF，~47K token（0.95x）。**塞 2.7 份。**
+但結構上你可以這樣理解：**Claude 的 200K context 數字看起來是 DeepSeek 128K 的 1.5 倍，但折算 tokenizer 對中文的處理效率差距，實際處理中文場景的「可用空間」差距會大幅縮小，甚至可能反轉**——同樣一份中文 PDF 餵進 Claude 跟 DeepSeek，Claude 吃到的 token 數明顯較多。
 
-雖然 Claude 的 context window 數字大一倍，但折算非英語倍率，**處理中文場景的有效 context 反而 DeepSeek 比較大**。
+所以中文 RAG 場景下，看 context window 不能只看廣告數字（200K vs 128K），要折算 tokenizer 效率。我自己實測過幾份金融研究報告，原本以為 Claude 200K 一定夠塞，結果撞到 truncation 的次數比預期多很多。
 
 這就是為什麼你會看到中國的金融、法律、醫療領域大量採用 DeepSeek、Qwen——不是因為「國產替代」的口號，是因為在他們的語言場景下，數學就是這樣。
 
@@ -247,9 +278,9 @@ Claude 的 tool use 訓練做得比較細，agent loop 在意外狀態下的 rec
 
 **Tier 1｜高價值、低 volume 的核心任務**
 
-- 用 [Claude Sonnet 4.5](https://platform.claude.com/docs/en/about-claude/models/overview) 或 [Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7)（後者非英語倍數已降 20-35%）
+- 用 [Claude Sonnet 4.5](https://platform.claude.com/docs/en/about-claude/models/overview) 或 [Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7)（後者換了新 tokenizer，但官方沒明確給非英語的改善幅度，自己實測比較保險）
 - 場景：策略文件、PRD、architecture design、核心 coding
-- 心態：認賠 71% 中文稅（Sonnet）或 20% 中文稅（Opus 4.7），因為品質差距 > token 差距
+- 心態：認賠 71% 中文稅（Sonnet 基準），因為品質差距 > token 差距。Opus 4.7 對中文是否真的省，跑 [count_tokens API](https://platform.claude.com/docs/en/build-with-claude/token-counting) 確認過再決定要不要升級
 
 **Tier 2｜中等價值、中 volume 的標準任務**
 
@@ -281,14 +312,15 @@ Claude 的 tool use 訓練做得比較細，agent loop 在意外狀態下的 rec
 
 如果你的核心市場是中文、日韓、東南亞、印度、中東——你正在被收一筆隱藏的稅。**不知道，不代表沒繳。**
 
-最後再強調一次前面講的兩個 caveat：
+最後再強調一次前面講的三個 caveat：
 
-1. **Komatsuzaki 的數字沒被獨立審計**——確切倍數請當參考，不要當聖經。要精確算，自己拿真實 prompt 跑 [Anthropic 的 token counter](https://platform.claude.com/docs/en/build-with-claude/token-counting) 跟 [OpenAI 的 tiktokenizer](https://platform.openai.com/tokenizer)。
-2. **Anthropic Opus 4.7 已經改善了**（[2026/4/16 發布](https://www.anthropic.com/news/claude-opus-4-7)）——非拉丁文字 token 數降 20-35%，但代價是英文 token 多吃 12-18%。Sonnet 系列還沒換 tokenizer，所以 production 主流情境（用 Sonnet 4.5 / 4.6）這篇文章的數字仍然成立。
+1. **基準要講清楚**——表格的 1.0x 是各家自己的英文 token 數，不是同一把尺。「Claude 中文 1.71x」是相對 Claude 英文，不是相對 OpenAI 英文。所以你看到別家寫 65% 不要覺得衝突，是基準不同。
+2. **Komatsuzaki 的數字沒被獨立審計**——確切倍數請當參考，不要當聖經。要精確算，自己拿真實 prompt 跑 [Anthropic 的 token counter](https://platform.claude.com/docs/en/build-with-claude/token-counting) 跟 [OpenAI 的 tiktokenizer](https://platform.openai.com/tokenizer)。
+3. **Opus 4.7 換了 tokenizer，但是否改善中文稅還沒驗證**——Anthropic 官方反而提醒同樣輸入可能多吃 1.0–1.35x token。Sonnet 4.5/4.6 是否同步換沒明確說明，建議發稿前自己 5 分鐘 benchmark 確認。
 
-但「Anthropic 對非英語比 OpenAI 重」這個方向性結論，**跟我自己用了兩年的體感完全一致，差距沒有完全追平**。
+但「Anthropic 對非英語比 OpenAI 重」這個方向性結論，**跟我自己用了兩年的體感完全一致**。
 
-下次跟你的 CTO 報 Claude 帳單時，記得加一句：「這個帳單裡有 71% 是非英語稅。如果我們的目標市場是中文，這筆稅該不該繳，要看每個任務的價值密度。要省這筆稅可以考慮升 Opus 4.7 換新 tokenizer，但單價貴一倍——又是另一個 trade-off。」
+下次跟你的 CTO 報 Claude 帳單時，記得加一句：「我們處理中文比英文多吃了 71% 的 token，這是 Anthropic tokenizer 對非英語的稅。如果我們的目標市場是中文，這筆稅該不該繳，要看每個任務的價值密度。要不要升 Opus 4.7 換新 tokenizer 試試看？官方沒給保證，我們自己跑個 benchmark 比對 Sonnet 4.6 跟 Opus 4.7 的中文 token 數，5 分鐘有結論。」
 
 這比「Claude 太貴了我們換 OpenAI」要 professional 太多。
 
