@@ -3,10 +3,14 @@ title: "GPT-5.5 AISI 安全測試：網安能力追平 Mythos，但 OpenAI 選�
 date: 2026-05-09 06:00:00 +0800
 permalink: /gpt-5-5-aisi-the-last-ones-mythos-cyber-parity/
 image: /assets/images/gpt-5-5-aisi-the-last-ones-cover.png
-description: "英國 AI Safety Institute 公布 GPT-5.5 網安能力評估：Expert 通過率 71.4%、追平 Anthropic Mythos Preview，並在 32 步「The Last Ones」攻擊鏈以 2/10 完成（Mythos 3/10），是史上第二個破關的模型。但 OpenAI 走完全相反的路線——照常發布、開放 API。文章拆解 AISI 方法論、實作篇用 Codex 跑迷你版 The Last Ones 的 5 階段，與 5 個必須誠實處理的 caveat。"
+description: "英國 AI Safety Institute 公布 GPT-5.5 網安能力評估：Expert 通過率 71.4%、追平 Anthropic Mythos Preview，並在 32 步「The Last Ones」攻擊鏈以 2/10 完成（Mythos 3/10），是史上第二個破關的模型。但 OpenAI 走完全相反的路線——照常發布、開放 API。文章拆解 AISI 方法論、為什麼一般開發者不能直接複製 TLO 測試（要申請 OpenAI Program），以及 5 個必須誠實處理的 caveat。"
 ---
 
 # GPT-5.5 AISI 安全測試：網安能力追平 Mythos，但 OpenAI 選擇照常發布
+
+**作者：** Wisely Chen
+**發布日期：** 2026-05-09
+**閱讀時間：** 5 分鐘
 
 ![AISI 評估：GPT-5.5 與 Mythos Preview 在 The Last Ones 攻擊鏈完成步驟對 token 消耗量的對比](/assets/images/gpt-5-5-aisi-the-last-ones-cover.png)
 
@@ -188,154 +192,26 @@ GPT-5.5 把這個不對稱關係加速了——一個 $1.73、10 分鐘的 API �
 
 ---
 
-## 實作篇：用 Codex 自己跑一個迷你版 The Last Ones
+## 想自己跑一個 The Last Ones？要先向 OpenAI 申請 Program
 
-寫到這邊一定有人問——既然 GPT-5.5 / Codex 攻擊能力這麼強，**我能不能用同一個工具測自己的網站？**
+寫到這邊一定有人問——既然 GPT-5.5 攻擊能力這麼強，**我能不能用同一個工具測自己的網站？**
 
-答案是可以，但要先把規模講清楚：
+實話講：你**不能**直接拿一般 API key 跑這種等級的測試。
 
-> **The Last Ones 不是「測網站」，是測一整個 32 步、4 子網、20 主機的企業內網。** 你家如果只是個對外網站，方法論可以借用，但別期待跑出 AISI 那種戲劇性結果。
+如果你想做一個像 The Last Ones 這樣的 multi-step 滲透流程，**你必須先向 OpenAI 申請相關的 Program**。AISI 拿到的不是公開 API access——是 OpenAI 跟政府 / 受信任研究機構簽約的特殊授權，包含 raw model access、放寬的 safety filter、還有針對 cyber range 場景的客製化配置。
 
-### 動手前必須先做的 4 件事
+一般開發者跑這種任務會撞到三道牆：
 
-不做這 4 件事直接跑下去，可能會收到律師信。
+1. **使用條款**：OpenAI 的 [Usage Policies](https://openai.com/policies/usage-policies/) 明確禁止「未經授權的網路滲透」，連對自己的網站都要看授權鏈是否清楚
+2. **Safety filter**：multi-turn agentic 攻擊腳本會被擋下來，這就是 AISI 報告裡花 6 小時才繞過的那個機制
+3. **帳號層級的 risk scoring**：跑這類 prompt pattern 多了，整個 organization 會被標記
 
-1. **書面授權**——是你自己擁有的網站、或拿到老闆書面 OK。共用主機（GoDaddy、Cloudflare Pages）其實會掃到別人。
-2. **限定 scope**——寫一個 `scope.txt`，明確列出哪些 domain / IP 可以打。Agent 跑迭代會擴張範圍，沒 scope 一下就跑出去。
-3. **跑在 staging 不是 prod**——主動掃描可能觸發 WAF、ban IP、甚至誤刪資料。
-4. **保留日誌**——Codex 整個 session 截下來，出事好證明範圍。
+合法管道有兩個：
 
-### 把 The Last Ones 縮小成 5 階段
+- **[OpenAI Cybersecurity Grant Program](https://openai.com/index/cybersecurity-grant-program/)**——給防禦端研究者，提供 API credit + 模型存取
+- **OpenAI Red Teaming Network**——攻擊端評估，要 reviewer 認可才能加入
 
-The Last Ones 原始 32 步，本質上是 5 個 phase 的擴展。對一般網站來說，把它縮成這 5 階段就夠了：
-
-#### 階段 1：偵察（Recon）
-
-```
-你是滲透測試員。目標：example.com（已授權，scope 在 ./scope.txt）。
-請做以下偵察，每一步把結果寫到 ./recon/：
-1. amass 跑子網域枚舉
-2. nmap 對活著的主機掃 top 1000 ports
-3. whatweb / wappalyzer 抓技術棧
-4. 抓 robots.txt / sitemap.xml / .well-known
-跑完總結 attack surface，列出最值得後續測試的 5 個面向。
-```
-
-關鍵指令：
-```bash
-amass enum -d example.com -o recon/subdomains.txt
-nmap -sV -T3 --top-ports 1000 -iL recon/live.txt -oA recon/nmap
-whatweb -a 3 https://example.com > recon/tech.txt
-```
-
-**為什麼這樣 prompt**：給 Codex「總結 attack surface」這個任務，它會自己選下一步要打哪。這就是 The Last Ones 32 步攻擊鏈的核心動作。
-
-#### 階段 2：漏洞掃描（Vuln Discovery）
-
-```
-根據 ./recon/ 的結果，跑：
-1. nuclei 用 critical + high template 掃所有活著的 endpoint
-2. 對每個 web 應用跑 ffuf 做目錄枚舉（用 raft-medium）
-3. 把所有發現的 endpoint 餵給 nikto
-4. 結果寫到 ./vulns/，依風險等級排序
-```
-
-```bash
-nuclei -l recon/urls.txt -severity critical,high -o vulns/nuclei.txt
-ffuf -w /usr/share/wordlists/raft-medium-directories.txt -u https://target/FUZZ
-nikto -h target.com -o vulns/nikto.txt
-```
-
-Codex 跑這段最有價值的點:它會看到 nuclei 報的 CVE，自己 google CVE 編號，判斷你的版本是否受影響。**這是 pre-AI 時代要人坐著查 1 小時的事。**
-
-#### 階段 3：身份驗證 / 邏輯漏洞
-
-這階段沒有現成工具，**完全靠 Codex 的推理能力**。AISI 的 rust_vm 題目是這個 pattern。
-
-```
-我貼上 ./recon/login_flow.har（已用 Burp 抓的登入流程）。
-請你：
-1. 分析認證機制（JWT? Session? OAuth?）
-2. 找常見邏輯漏洞：IDOR、權限越界、狀態跳躍、race condition
-3. 對每個假設寫一段 PoC python script，用 requests library
-4. 一次跑 5 個假設，把成功的 PoC 留下，失敗的標記原因
-```
-
-這就是把 GPT-5.5 當成「便宜的 1.73 美元逆向工程師」用——你貼 HAR 檔、原始碼片段、JS bundle，叫它找邏輯洞。
-
-#### 階段 4：注入類測試（自動化但要小心）
-
-```bash
-sqlmap -m vulns/urls_with_params.txt --batch --risk=2 --level=3
-cat recon/urls.txt | gf xss | kxss
-ffuf -u "https://target/FUZZ?url=http://callback.example" -w payloads.txt
-```
-
-**注意**：`--risk=2` 是上限，不要 `--risk=3`（會 INSERT/DELETE）。Codex 跑完後叫它整理：
-
-```
-跑完上面三個工具後，把所有 finding 整理成 markdown 報告。
-每個 finding 必須有：1) 原始 request 2) 影響評估 3) 修復建議。
-不要列 false positive。
-```
-
-#### 階段 5：橫向 + 提權（多數人可跳過）
-
-The Last Ones 的後半段——lateral movement、找內網憑證、突破到資料庫——只有在你有完整內網環境才測得到。
-
-如果你只是 Vercel / Cloudflare Pages 的網站，跳過。
-如果你有 AWS / GCP，比較對應的測試是：
-
-```bash
-prowler -p your-profile          # IAM 漏洞
-trufflehog s3 --bucket=your-bucket
-pacu                              # AWS 後滲透框架
-```
-
-### 把這串包成 Codex 可以自己跑的迭代任務
-
-The Last Ones 真正厲害的地方是**讓 agent 自己跑迭代**——recon → 找洞 → 測洞 → 用結果改 recon → 再找洞。
-
-把上面 5 階段寫成一個 `pentest-loop.md`：
-
-```markdown
-# Pentest Loop for example.com
-
-## Scope
-- Allowed: example.com, *.example.com (192.0.2.0/24)
-- Forbidden: shared infrastructure, third-party APIs
-
-## Loop
-1. [ ] Recon → ./recon/
-2. [ ] Vuln scan → ./vulns/
-3. [ ] Logic test → ./logic/
-4. [ ] Injection test → ./injection/
-5. [ ] Cloud config → ./cloud/
-6. [ ] 寫總結報告 → ./report.md
-
-每階段做完，停下來讓我 review 再進下一階段。
-```
-
-然後：
-
-```bash
-codex "讀取 pentest-loop.md，從階段 1 開始執行，每階段完成後停下"
-```
-
-**這跟 AISI 的 100M token budget 對 TLO 是同一個 pattern**——你給 agent 一個目標、一個 scope、一個迭代框架，剩下讓它自己跑。
-
-### 我自己的建議
-
-如果你只是想知道網站基本面有沒有大洞，不用搞這麼複雜：
-
-```bash
-nuclei -u https://your-site.com -severity critical,high
-codex "讀 nuclei 結果，每個 finding 寫一段 30 秒可以驗證的 reproduction"
-```
-
-要做完整 The Last Ones 等級的測試，**老實說花錢請一家有 OSCP 的 pentest 公司比較划算**——一次 3-5 萬台幣，比你 debug Codex 一週便宜。
-
-AI 自動化 pentest 真正適合的場景是 **「持續性掃描」**——CI/CD pipeline 裡跑、每次 deploy 後跑、跨 100 個微服務同時跑。**這才是 GPT-5.5 級模型把成本壓到 $1.73 / 10 分鐘變成 game changer 的地方。**
+換句話說：**71% Expert pass rate 是受控環境下的成績，不是「下載 SDK 就能複製」的東西。**這是 AISI 報告最容易被誤讀的地方——數字看起來像「人人可用」，但拿到 71% 的前提包括「特殊 access」這個前置條件。
 
 ---
 
@@ -351,7 +227,7 @@ AI 自動化 pentest 真正適合的場景是 **「持續性掃描」**——CI/
 
 4. **Cooling Tower 大家都 0 分**——別把這個當成「OT 系統很安全」。AISI 的 ICS 模擬只有 7 步，現實世界的 OT 環境複雜度差很多倍。模型現階段過不去，不代表它過不去簡化過的模擬。
 
-5. **71% pass rate 不等於「隨便給網站去打就 71%」**——AISI 原文寫得很清楚：「我們的測試範圍是 agent 在**已有網路存取權限、針對特定脆弱目標**時能做什麼」。換句話說，這是「給你一個有洞的盒子請你打」的成功率，不是野外 attack surface 的成功率。上一章我給的 Codex pentest 流程能不能跑出 71% 的 finding？老實說，對一個架構正常的網站，大概 10-20% 而已。
+5. **71% pass rate 不等於「隨便給網站去打就 71%」**——AISI 原文寫得很清楚：「我們的測試範圍是 agent 在**已有網路存取權限、針對特定脆弱目標**時能做什麼」。換句話說，這是「給你一個有洞的盒子請你打」的成功率，不是野外 attack surface 的成功率。對一個架構正常的 production 網站，這個數字不能直接套用。
 
 ---
 
@@ -376,6 +252,12 @@ AISI 報告裡有一段特別重要：
 對企業的意義很簡單：**不要再把 AI 安全當成「未來可能要面對的事」，它已經是這個月的事**。
 
 ---
+
+## 相關文章
+
+- [AI Agent Security 遊戲規則已經改變](/ai-agent-security/)
+- [Anthropic Mythos：當 AI 變成網路武器](/anthropic-mythos-glasswing/)
+- [Mythos 被 Discord 小群攻破：信任鏈才是真正的洞](/mythos-discord-breach/)
 
 ## 參考資料
 
