@@ -992,6 +992,7 @@ jobs:
 1. [亞馬遜 AI 事故啟示：科技巨頭一邊賣 AI 未來，一邊在自己家裡給 AI 上鎖](/amazon-ai-code-incident-tech-giants-quietly-locking-ai/) — 事件分析 + 為什麼禁令不是終點
 2. [Make CI/CD Great Again：四層防禦架構](/coders-who-stopped-coding-harness-context-spec-engineering/) — 第二層的完整拆解 + 實作經驗
 3. [Harness Engineering 完整拆解：Control-Plane Pattern](/harness-engineering-control-plane-pattern-agent-review-loop/) — 第三層的八步閉環 + 代碼範例
+4. [Harness Engineering 實戰第一篇：把指令拆分到不同檔案裡](/harness-engineering-l04-instruction-file-modular-split/) — 對應 Walking Labs L04，5 個 CLAUDE.md / .cursorrules 失控的真實案例 + AGENTS.md 三層拆分模式
 
 **外部參考資料：**
 
