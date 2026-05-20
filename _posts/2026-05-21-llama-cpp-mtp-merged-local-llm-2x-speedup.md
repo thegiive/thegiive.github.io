@@ -18,6 +18,7 @@ description: "2026 年 5 月 16 日，llama.cpp 合併了等了快一年的 PR #
 - [為什麼速度沒有翻三倍：72% 的接受率](#為什麼速度沒有翻三倍72-的接受率)
 - [反直覺洞察：你的 GGUF 一直跑半速](#反直覺洞察你的-gguf-一直跑半速)
 - [誠實揭露：MTP 不是免費午餐](#誠實揭露mtp-不是免費午餐)
+- [最大受益者其實不是 NVIDIA 用戶——是 Mac](#最大受益者其實不是-nvidia-用戶是-mac)
 - [對企業 on-prem 架構師意味著什麼](#對企業-on-prem-架構師意味著什麼)
 - [常見問題 Q&A](#常見問題-qa)
 
@@ -26,6 +27,7 @@ description: "2026 年 5 月 16 日，llama.cpp 合併了等了快一年的 PR #
 - **2026-05-16，llama.cpp PR #22673 合併**，原生支援 Multi-Token Prediction（MTP）speculative decoding
 - 社群實測：DGX Spark 跑 Qwen3.6-27B **7.0 → 18.0 tok/s，2.57x**；RTX 3090 **38.86 → 65 tok/s，1.71x**
 - **我自己在 RTX 5090 上實測 Qwen3.6-27B + MTP 拿到 140 tok/sec 單流、70%+ acceptance rate**，跟 PR 描述的 72.18% 幾乎重疊
+- **這次 PR 真正的最大受益者其實是 Mac 用戶**——vLLM / SGLang / TensorRT-LLM 永遠不會支援 Apple Silicon，Mac 用戶過去 16 個月想用 MTP「沒有任何一條路」。詳見另一篇 [Mac 用戶等了 16 個月：第一次能用「企業級」LLM 推理加速](https://ai-coding.wiselychen.com/mac-first-enterprise-inference-stack-mtp/)
 - 不是「新模型」新聞，是「inference 框架終於追上模型架構」的新聞——DeepSeek-V3 從 2024 年底就有 MTP heads，**本地用戶等了快一年才能真正按下這個按鈕**
 - 限制：只對「訓練時就帶 MTP head」的模型有效（DeepSeek-V3/R1、Qwen3.6 系列），而且目前 `n_parallel=1`，多用戶場景 vLLM + AWQ 還是壓倒性勝利
 
@@ -179,6 +181,33 @@ PR merge 後的版本強制 `n_parallel=1`。如果你的 on-prem 架構是「�
 **4. 多了 device-to-host embedding transfer overhead**
 
 PR 描述裡明寫了，prompt processing 階段會多一份 embedding 傳輸成本。short prompt + long generation 場景拿到最大紅利，long prompt + short generation 場景紅利會被吃掉。
+
+## 最大受益者其實不是 NVIDIA 用戶——是 Mac
+
+寫到這裡有一個視角必須補上，因為它跟「能拿到多少加速倍率」這個技術問題其實是分開的。
+
+NVIDIA 用戶這次的故事是「**從用 vLLM 麻煩變成用 llama.cpp 輕鬆**」——本來門就是開的，只是要走樓梯，現在多了一個電梯。
+
+但 Mac 用戶的故事完全不一樣，是「**從鎖死變成打開**」。
+
+具體講：
+
+| 推理棧 | NVIDIA 卡 | Mac (Apple Silicon) |
+|--------|---------|---------|
+| vLLM + MTP | ✅ 早就支援（2025 初）| ❌ 完全跑不了（沒 CUDA）|
+| SGLang + MTP | ✅ 早就支援 | ❌ 完全跑不了 |
+| TensorRT-LLM + MTP | ✅ NVIDIA 獨家 | ❌ 永遠不會支援 |
+| **llama.cpp + MTP（2026-05-16）** | ✅ **新解鎖** | ✅ **新解鎖** |
+
+對 NVIDIA 用戶：MTP 在 2025 年初就能用了，只是要會起 vLLM。
+
+對 Mac 用戶：**過去 16 個月「沒有任何一條路」能用到 MTP**——llama.cpp 沒做、Ollama / LM Studio 跟在 llama.cpp 後面、MLX 也沒做、Apple 自己也沒做。
+
+更有意思的是，從**記憶體頻寬論證**來看，Mac Studio 拿到的 MTP 紅利應該**大過 RTX 5090**——因為 MTP 的核心紅利是「同一次 memory access 算多個 token」，越是頻寬 bound 的硬體越受惠。Apple Silicon 統一記憶體架構天生就是頻寬 bound。
+
+這個推論細節跟 Mac 視角的完整論證，我寫在另一篇：[Mac 用戶等了 16 個月：第一次能用「企業級」LLM 推理加速](https://ai-coding.wiselychen.com/mac-first-enterprise-inference-stack-mtp/)。
+
+對 IT 架構師來說，這意味著一件具體的事：**公司本來就配 Mac 給工程師的，Mac Studio M3 Ultra 256GB 本身就可以變成一台單人推理 server**——不用再買 NVIDIA 工作站。
 
 ## 對企業 on-prem 架構師意味著什麼
 
