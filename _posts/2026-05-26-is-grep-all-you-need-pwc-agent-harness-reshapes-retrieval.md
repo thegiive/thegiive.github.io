@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Grep 打贏 Vector RAG？PwC 論文拆解：你以為的檢索問題，其實是 Agent Harness 設計問題"
+title: "Harness Engineering 才是勝負手：PwC 論文拆解 Grep 打贏 Vector RAG，換個 Harness 準確率差 17 個百分點"
 date: 2026-05-26 07:00:00 +0800
 permalink: /is-grep-all-you-need-pwc-agent-harness-reshapes-retrieval/
 image: /assets/images/is-grep-all-you-need-paper-cover.png
