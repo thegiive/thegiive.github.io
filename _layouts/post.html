@@ -1,0 +1,157 @@
+---
+layout: default
+---
+
+{% if page.faq %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in page.faq %}
+    {
+      "@type": "Question",
+      "name": {{ item.question | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.answer | jsonify }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%Y年%m月%d日" }}
+      </time>
+      {% if page.author %}
+      <span class="author">by {{ page.author }}</span>
+      {% endif %}
+    </div>
+
+    {% if page.image %}
+    <div class="post-image">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" title="{{ page.image_alt | default: page.title }}">
+    </div>
+    {% endif %}
+
+    {% if page.description %}
+    <div class="post-description">
+      {{ page.description }}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-tags">
+      {% if page.tags %}
+        {% for tag in page.tags %}
+          <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="post-share">
+      <p>分享文章：</p>
+      <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" target="_blank">Twitter</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank">Facebook</a>
+    </div>
+  </footer>
+</article>
+
+{% if site.disqus.shortname %}
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+  this.page.url = "{{ site.url }}{{ page.url }}";
+  this.page.identifier = "{{ page.id }}";
+};
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+{% endif %}
+
+<script>
+// Collapsible code blocks - collapse if more than 10 lines
+document.addEventListener('DOMContentLoaded', function() {
+  const LINE_THRESHOLD = 10;
+  const processed = new Set();
+
+  // Handle highlight.js wrapper (div.highlight > pre)
+  document.querySelectorAll('.post-content div.highlight').forEach(function(wrapper) {
+    const pres = wrapper.querySelectorAll('pre');
+    if (pres.length === 0) return;
+
+    // Get line count from any pre with code
+    let lineCount = 0;
+    pres.forEach(function(pre) {
+      const code = pre.querySelector('code');
+      const text = code ? code.textContent : pre.textContent;
+      const count = text.split('\n').length;
+      if (count > lineCount) lineCount = count;
+      processed.add(pre);
+    });
+
+    if (lineCount > LINE_THRESHOLD) {
+      wrapper.classList.add('collapsible');
+
+      const toggle = document.createElement('button');
+      toggle.className = 'code-toggle';
+      toggle.textContent = '▼ 展開完整程式碼 (' + lineCount + ' 行)';
+
+      toggle.addEventListener('click', function() {
+        wrapper.classList.toggle('expanded');
+        if (wrapper.classList.contains('expanded')) {
+          toggle.textContent = '▲ 收合程式碼';
+        } else {
+          toggle.textContent = '▼ 展開完整程式碼 (' + lineCount + ' 行)';
+        }
+      });
+
+      wrapper.parentNode.insertBefore(toggle, wrapper.nextSibling);
+    }
+  });
+
+  // Handle standalone pre (not inside div.highlight)
+  document.querySelectorAll('.post-content pre').forEach(function(pre) {
+    if (processed.has(pre)) return;
+
+    const code = pre.querySelector('code');
+    const text = code ? code.textContent : pre.textContent;
+    const lineCount = text.split('\n').length;
+
+    if (lineCount > LINE_THRESHOLD) {
+      pre.classList.add('collapsible');
+
+      const toggle = document.createElement('button');
+      toggle.className = 'code-toggle';
+      toggle.textContent = '▼ 展開完整程式碼 (' + lineCount + ' 行)';
+
+      toggle.addEventListener('click', function() {
+        pre.classList.toggle('expanded');
+        if (pre.classList.contains('expanded')) {
+          toggle.textContent = '▲ 收合程式碼';
+        } else {
+          toggle.textContent = '▼ 展開完整程式碼 (' + lineCount + ' 行)';
+        }
+      });
+
+      pre.parentNode.insertBefore(toggle, pre.nextSibling);
+    }
+  });
+});
+</script>

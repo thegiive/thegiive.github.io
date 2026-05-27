@@ -1,0 +1,89 @@
+# Jekyll 配置檔案 - AI Coding Blog
+
+# 網站基本資訊
+title: "Wisely Chen｜AI Agent、地端 LLM 與企業 AI 架構實戰筆記"
+description: "企業 AI 轉型、AI 資安、AI Agent、Vibe Coding 實戰分享"
+author: "Wisely Chen"
+email: "your-email@example.com"
+baseurl: "" # 留空表示根目錄（使用自定義域名）
+url: "https://ai-coding.wiselychen.com" # 完整網站 URL
+
+# 建置設定
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/ # URL 格式：保持與 Ghost 一致的 /<slug>/ 格式
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+# 排除的檔案
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .git
+  - .github
+  - README.md
+  - LICENSE
+
+# Markdown 處理器設定
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# 分頁設定
+paginate: 3
+paginate_path: "/page:num/"
+
+# 時區與語言
+timezone: Asia/Taipei
+lang: zh-TW
+
+# 顯示未來的文章（避免時間設定問題）
+future: true
+
+# 主題（可選）
+# theme: minima
+
+# 自訂變數（可在模板中使用）
+social:
+  github: thegiive
+  linkedin: wisely-chen-38033a5b
+  website: https://www.wiselychen.com/
+
+# Open Graph / SEO Tag 設定
+twitter:
+  username: wiselychen
+  card: summary_large_image
+
+# Facebook Open Graph (選填)
+facebook:
+  publisher: https://www.facebook.com/wisely.chen
+
+# 預設 OG 圖片（當文章沒有設定 image 時使用）
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      image: /assets/images/default-og.png
+      author: "Wisely Chen"
+
+# Logo 設定 (用於 Schema.org)
+logo: /assets/images/logo.png
+
+# Google Analytics
+google_analytics: G-29FP7PE7GK
+
+# Disqus 評論（可選）
+# disqus:
+#   shortname: your-disqus-shortname

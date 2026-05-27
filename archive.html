@@ -1,0 +1,35 @@
+---
+layout: default
+title: 文章歸檔 - AI Coding 實戰分享
+description: 所有 AI Coding、Vibe Coding、ATPM、AI Agent 相關文章列表
+permalink: /archive/
+---
+
+<div class="archive-page">
+  <h1>文章歸檔</h1>
+  <p class="archive-intro">共 {{ site.posts | size }} 篇文章</p>
+
+  <div class="archive-list">
+    {% for post in site.posts %}
+    <article class="archive-item">
+      <div class="archive-date">
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%Y-%m-%d" }}
+        </time>
+      </div>
+      <div class="archive-content">
+        <h3>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        {% if post.description %}
+        <p class="archive-excerpt">{{ post.description }}</p>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <div class="archive-footer">
+    <a href="{{ '/' | relative_url }}" class="back-home">← 返回首頁</a>
+  </div>
+</div>
