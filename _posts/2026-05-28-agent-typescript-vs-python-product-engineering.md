@@ -26,7 +26,7 @@ description: "做 Agent 到底用 TypeScript 還是 Python？這題在推特吵�
 
 ## 先看數據：TypeScript 已經悄悄超車 Python 了
 
-很多人對「AI = Python」的印象還停在 2023 年。但 GitHub 2025 年的 Octoverse 報告，給了一個讓人意外的數字：
+很多人對「AI = Python」的印象還停在 2023 年。但翻開 [GitHub 2025 年的 Octoverse 報告](https://github.blog/news-insights/octoverse/typescript-python-and-the-ai-feedback-loop-changing-software-development/)，給了一個讓人意外的數字：
 
 **TypeScript 在 2025 年超車 JavaScript 和 Python，成為 GitHub 上使用量第一的語言。年增 66%，是十年來最大的單一語言移動。**
 
@@ -34,7 +34,7 @@ description: "做 Agent 到底用 TypeScript 還是 Python？這題在推特吵�
 
 注意，不是「成長最快的前幾名之一」這種模糊話，是「十年來最大的一次語言版圖移動」。
 
-為什麼？GitHub 的解釋很關鍵，他們稱之為 **AI feedback loop（AI 回饋循環）**：
+為什麼？GitHub 的解釋很關鍵，他們稱之為 [**AI feedback loop（AI 回饋循環）**](https://github.blog/news-insights/octoverse/typescript-python-and-the-ai-feedback-loop-changing-software-development/)：
 
 > 「靜態型別語言給你護欄。如果 AI 工具要幫我生成程式碼，我會想要一個快速的方法去判斷這段程式碼對不對。」
 
@@ -235,4 +235,3 @@ AI 寫程式這件事，正在製造一種語言的「贏者全拿」。
 - [Choosing an agent framework — Speakeasy](https://www.speakeasy.com/blog/ai-agent-framework-comparison)
 - [Another Rust Rewrite: OpenAI's Codex CLI Goes Native, Drops Node and TypeScript for Rust — InfoQ](https://www.infoq.com/news/2025/06/codex-cli-rust-native-rewrite/)
 - [AI CLI Tools Comparison: Why OpenAI Switched to Rust While Claude Code Stays with TypeScript — Mervin Praison](https://mer.vin/2025/12/ai-cli-tools-comparison-why-openai-switched-to-rust-while-claude-code-stays-with-typescript/)
-
