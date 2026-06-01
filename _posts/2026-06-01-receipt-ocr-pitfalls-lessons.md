@@ -17,15 +17,9 @@ description: "做了幾年回單辨識踩過三代做法（OCR+Regex → OCR+文
 
 所以這篇我想先把「三代演進史」講清楚，你才會知道為什麼今天還是有人在用看起來比較舊的做法——不是他們落伍，是場景不一樣。
 
-![回單 OCR 落地實戰：架構心法與避坑指南](/assets/images/hui-dan-ocr-slide-01.jpg)
-
-![Vision LLM 不是萬靈丹，真正的自動化仰賴架構設計（三代演進 / 落地六坑 / 架構心法）](/assets/images/hui-dan-ocr-slide-02.jpg)
-
 ---
 
 ## 開場：回單辨識的三代演進
-
-![第一章：回單辨識的三代演進](/assets/images/hui-dan-ocr-slide-03.jpg)
 
 每一代都解掉上一代的痛，但也帶來新問題。這不是「誰取代誰」，是「每一代各自還活著，看你的場景跟資安要求選哪一代」。
 
@@ -63,11 +57,7 @@ description: "做了幾年回單辨識踩過三代做法（OCR+Regex → OCR+文
 
 > 「LLM 把 regex 的痛解掉了，還能全地端跑；但天花板被前面那層 OCR 鎖死。」
 
-![奠基與過渡：第一代 OCR+Regex 與第二代 OCR+文字 LLM](/assets/images/hui-dan-ocr-slide-04.jpg)
-
 ### 第三代：Vision LLM 直接判斷
-
-![第三代：多模態視覺大模型 Vision LLM 的 Pros 與 Cons](/assets/images/hui-dan-ocr-slide-05.jpg)
 
 最新做法，圖直接進、跳過 OCR。
 
@@ -90,8 +80,6 @@ description: "做了幾年回單辨識踩過三代做法（OCR+Regex → OCR+文
 > 「Vision LLM 把那些坑解掉一大半，代價是慢、貴、還難全地端——選哪代，看你的場景與資安要求。」
 
 ### 三代怎麼選？一張表
-
-![適者生存：依場景與資安要求的三代技術選型對照](/assets/images/hui-dan-ocr-slide-06.jpg)
 
 | 維度 | OCR+Regex | OCR+Text LLM | Vision LLM |
 |------|-----------|--------------|------------|
@@ -159,8 +147,6 @@ description: "做了幾年回單辨識踩過三代做法（OCR+Regex → OCR+文
 ## 問題篇：Vision LLM 落地會踩的六個坑
 
 接下來這六個坑，是我用 Vision LLM 之後，實際在客戶現場的單據上撞到的。先講清楚一件事：**這六個坑裡，Vision LLM 能解掉前五個的一大半，但第六個它解不了——因為那不是模型問題，是輸入問題。**
-
-![第二章：視覺大模型的極限——落地現場的六個真實坑洞](/assets/images/hui-dan-ocr-slide-08.jpg)
 
 ### 坑 1：手寫辨識率，是 OCR 的天敵
 
@@ -286,11 +272,7 @@ description: "做了幾年回單辨識踩過三代做法（OCR+Regex → OCR+文
 
 ## Lesson Learned：踩完坑，我們學到的三件事
 
-![第三章：企業級架構心法](/assets/images/hui-dan-ocr-slide-12.jpg)
-
 ### Lesson 1：不要一個 Prompt 打天下
-
-![心法一：先分類，再路由（不要一個 Prompt 打天下）](/assets/images/hui-dan-ocr-slide-13.jpg)
 
 **踩到的坑**：我一開始以為，有 LLM 就能通吃所有格式——三星出貨單、黑貓宅配、自家簽收單、各客戶客製單…結果一個萬用 Prompt **改 A 壞 B**，永遠在拆東牆補西牆。欄位位置、命名、語意每種單都不同（A 單「單號」在左上，B 單叫「託運號」在右下）。
 
@@ -320,8 +302,6 @@ description: "做了幾年回單辨識踩過三代做法（OCR+Regex → OCR+文
 
 ### Lesson 2：不要讓 OCR 當全部
 
-![心法二：辨識最小化，系統最大化](/assets/images/hui-dan-ocr-slide-14.jpg)
-
 **踩到的坑**：我連單號、品名、應出數量全靠辨識——又慢、又不準、又難對帳。後來才想通：這些欄位**系統裡本來就有正確答案**，我幹嘛賭辨識準不準？
 
 **學到的方法：辨識最小化、系統最大化。**
@@ -344,8 +324,6 @@ description: "做了幾年回單辨識踩過三代做法（OCR+Regex → OCR+文
 
 ### Lesson 3：AI 做不到 100%，就要會舉手
 
-![心法三：AI 做不到 100%，就要會舉手](/assets/images/hui-dan-ocr-slide-15.jpg)
-
 **踩到的坑**：手寫、形近字、塗改、連線、爛照片——**錯得很有自信**比讀不出來更可怕。靜默放行一筆錯的簽收／數量，後面對帳爆掉、責任難追。
 
 **學到的方法：系統要具備三件事。**
@@ -365,8 +343,6 @@ description: "做了幾年回單辨識踩過三代做法（OCR+Regex → OCR+文
 ---
 
 ## 總結：回單自動化的實戰心法
-
-![總結：回單自動化的黃金架構](/assets/images/hui-dan-ocr-slide-16.jpg)
 
 辨識最小化、系統最大化、不確定就交人。
 
@@ -390,8 +366,6 @@ description: "做了幾年回單辨識踩過三代做法（OCR+Regex → OCR+文
 ---
 
 ## 後記：寫這篇的時候，又一個開源 OCR 登頂了
-
-![迎向未來：模型推高天花板，架構確保安全落地](/assets/images/hui-dan-ocr-slide-17.jpg)
 
 就在我整理這篇的時候，阿里又開源了 **Logics-Parsing-v2**——OmniDocBench 公開榜 **93.23 分**、自家 LogicsDocBench 82.16 分，兩個榜都第一，而且是**開源模型打贏所有閉源大模型**（Mathpix、doc2x 這些過去 OCR 的天花板）。它還多了一個叫「Parsing 2.0」的維度：看得懂流程圖直接輸出 Mermaid、識別樂譜轉 ABC 記譜法，連化學分子式跟程式碼塊都能處理。
 
