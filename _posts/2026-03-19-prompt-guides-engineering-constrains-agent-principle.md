@@ -237,6 +237,7 @@ Prompt 適合處理偏好、風格、方向性的指引——就算 Agent 偶爾
 
 ## 延伸閱讀
 
+- [你叫 Agent「不要亂寄信」根本沒用：從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/) — 本文觀點的姊妹篇，用四個 Claude Code hook demo 示範怎麼把「規則」變成「機制」
 - [Harness Engineering 架構全景](/harness-engineering-architecture-overview-ai-code-production-guardrails/) — 完整的七元件參考架構
 - [Control Plane Pattern](/harness-engineering-control-plane-pattern-agent-review-loop/) — 八步建立 Agent Review Loop
 - [四層防禦架構](/coders-who-stopped-coding-harness-context-spec-engineering/) — Test → Lint → CI Gate → LLM Judge

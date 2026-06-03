@@ -1247,6 +1247,7 @@ git diff --cached --name-only | grep -E '\.env(\.local|\.production|\.staging)?$
 ## 延伸閱讀
 
 - **Harness Engineering 系列：**
+  - [你叫 Agent「不要亂寄信」根本沒用：從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/) — least-privilege 與 L0–L4 的入門版，附四個可直接跑的 hook demo
   - [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](harness-engineering-architecture-overview-ai-code-production-guardrails.md)
   - [Harness Engineering Control Plane Pattern：Agent Review Loop 八步拆解](harness-engineering-control-plane-pattern-agent-review-loop.md)
   - [Lecture 04 拆解：指令檔模組化的工程做法](harness-engineering-l04-instruction-file-modular-split.md)

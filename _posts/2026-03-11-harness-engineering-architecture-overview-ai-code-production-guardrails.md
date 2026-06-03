@@ -1008,6 +1008,7 @@ jobs:
 
 **相關文章：**
 
+- [你叫 Agent「不要亂寄信」根本沒用：從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/) — 七元件架構的入門版，附四個可直接跑的 Claude Code hook demo
 - [AI Coding 的第一個風險，不是模型——是你一直按「Yes」](/ai-coding-tool-security-risk-prompt-injection-rce/)
 - [混沌智能體：史丹佛 x 哈佛的論文告訴我們，控制好一個 AI Agent 不等於控制好一群](/agents-of-chaos-multi-agent-structural-instability/)
 - [AI Coding 半年回顧：開發並沒有變快，我們只是把瓶頸從寫 Code，轉移到了 QA 跟需求收集](/ai-coding-half-year-review-demand-transformation-tool-evolution/)
