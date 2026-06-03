@@ -233,5 +233,5 @@ PoC 階段最少要有第一層（架構約束）和第六層（人類閘門）�
 
 ## 延伸閱讀
 
-- [你叫 Agent「不要亂寄信」根本沒用：從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/) — 本文「高風險、不可逆、對外、花錢」四類強制審批，在那篇對應 L0–L4 權限分級與四個可直接跑的 Claude Code hook demo
+- [Harness Engineering 的四個 Demo：Prompt 是建議，機制才是規則](/agent-harness-three-migrations-mechanism/) — 本文「高風險、不可逆、對外、花錢」四類強制審批，在那篇對應 L0–L4 權限分級與四個可直接跑的 Claude Code hook demo
 - [做 Agent 的一個體會：Prompt 負責引導，工程負責約束](/prompt-guides-engineering-constrains-agent-principle/) — 為什麼「不要動」寫在 prompt 裡沒用，要寫進工程
