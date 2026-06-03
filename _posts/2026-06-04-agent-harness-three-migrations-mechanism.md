@@ -57,6 +57,8 @@ OpenAI 那篇 [Harness Engineering](https://openai.com/index/harness-engineering
 
 權限等級標好了，接下來就是把「L3 要審批、危險動作要擋」這些規則，真的接到 agent 身上。我課堂上用**四個 Claude Code hook demo** 把這件事走完——它們不是四個獨立的小把戲，而是同一套信箱 agent，從外到內加上四道機制。
 
+> 四個 demo 的完整程式碼（hook、窄工具、權限設定、稽核腳本）我都放在 GitHub：[**thegiive/harness_engineering**](https://github.com/thegiive/harness_engineering)，clone 下來就能在 Claude Code 裡跟著跑一遍。下面的程式碼片段都是從那裡節錄的。
+
 先講 hook 是什麼：它是在 agent 生命週期的特定時點被觸發的腳本，可以**放行、攔截或記錄**。我只用到兩個事件——`PreToolUse`（工具執行**前**，用來把關）跟 `PostToolUse`（工具執行**後**，用來留軌跡）。**hook 就是「機制」插進 agent loop 的接點。**
 
 這四個 demo 是有順序的，由**軟到硬**剛好疊成四層防線，越往後越難繞過：
@@ -205,5 +207,6 @@ hook 當場 **deny**——注意不是「問你」，是**直接拒絕**：
 
 **參考來源：**
 
+- 本文四個 demo 的完整程式碼 — https://github.com/thegiive/harness_engineering
 - OpenAI, *Harness engineering: leveraging Codex in an agent-first world* — https://openai.com/index/harness-engineering/
 - deusyu/harness-engineering — https://github.com/deusyu/harness-engineering
