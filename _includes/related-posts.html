@@ -1,0 +1,35 @@
+{% assign maxRelated = 5 %}
+{% assign minCommonTags = 1 %}
+{% assign related = "" | split: "" %}
+
+{% for post in site.posts %}
+  {% if post.url == page.url %}
+    {% continue %}
+  {% endif %}
+  {% assign commonTags = 0 %}
+  {% for tag in post.tags %}
+    {% if page.tags contains tag %}
+      {% assign commonTags = commonTags | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if commonTags >= minCommonTags %}
+    {% assign related = related | push: post %}
+  {% endif %}
+  {% if related.size >= maxRelated %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if related.size > 0 %}
+<section class="related-posts">
+  <h3>相關文章</h3>
+  <ul>
+    {% for post in related %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
