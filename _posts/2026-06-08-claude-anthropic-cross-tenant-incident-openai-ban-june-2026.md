@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "6/5 雙重事故：Claude 疑似跨租戶洩漏 + OpenAI 大規模誤封，AI 基礎設施的信任危機"
-date: 2026-06-08 05:33:11 +0800
+date: 2026-06-08 05:41:35 +0800
 permalink: /claude-anthropic-cross-tenant-incident-openai-ban-june-2026/
 image: /assets/images/claude-cross-tenant-incident-2026.png
-description: "2026 年 6 月 5 日，Claude 和 OpenAI 在同一天出事。Claude 的 API 在宕機期間疑似把 A 用戶的推理輸出塞給了 B 用戶——如果屬實，這是雲端架構最致命的跨租戶隔離失效。OpenAI 則因為系統故障大規模誤封付費帳號，30-40 個 Codex agent 的開發者一夜之間失去所有客戶收入。這篇從 Anthropic 官方時間線、cside 的技術根因分析、OpenAI 2023 年 Redis 前科，到 Microsoft 同日揭露的 Claude Code GitHub Action 漏洞，拆解三件事同時炸開背後的結構性問題。"
+description: "2026 年 6 月 5 日，Claude 和 OpenAI 在同一天出事。Claude 的 API 在宕機期間疑似把 A 用戶的推理輸出塞給了 B 用戶——如果屬實，這是雲端架構最致命的跨租戶隔離失效。OpenAI 則因為系統故障大規模誤封付費帳號，30-40 個 Codex agent 的開發者一夜之間失去所有客戶收入。這篇從 Anthropic 官方時間線、cside 的技術根因分析、到 OpenAI 2023 年 Redis 前科，拆解共享快取架構下資料外洩給其他用戶的結構性風險。"
 ---
 
 2026 年 6 月 5 日，一個星期五。
@@ -130,32 +130,15 @@ OpenAI 在 X 上官方承認：
 更新：OpenAI 客服 (Louise) 後來回覆確認該案例已被記錄，提交給審查團隊，要求等待進一步通知。到隔天早上，被誤封的用戶已恢復訪問並收到 email 通知。
 
 
-## 火上加油：Microsoft 同日揭露 Claude Code GitHub Action 漏洞
-
-事情還沒完。
-
-同樣在 6 月 5 日，Microsoft 威脅情報團隊發布了一份報告，揭露 Anthropic 的 Claude Code GitHub Action 存在安全漏洞。
-
-攻擊方式：在 GitHub Issue 的 HTML 註釋 `<!-- -->` 中塞入惡意提示詞。這些註釋在 GitHub 頁面上看不到，但 AI 讀取原始 Markdown 的時候能識別。攻擊者偽裝成功能需求提個工單，不需要任何項目權限，Claude 就會乖乖去讀系統敏感文件。
-
-問題核心：Anthropic 給 Bash 工具加了沙箱防護，但 Read 工具（讀取文件的工具）沒有受到同等限制。它可以讀取 `/proc/self/environ`，直接拿到工作流的 `ANTHROPIC_API_KEY` 和其他在 runner 上可用的憑證。
-
-這個漏洞在 4 月 29 日通過 HackerOne 報告給 Anthropic，5 月 5 日在 Claude Code 2.1.128 中修復——Read 工具現在無條件拒絕讀取 `/proc/` 下的特定文件。
-
-三件事在同一天炸開：服務宕機 + 疑似資料洩漏 + 安全漏洞揭露。這不只是巧合，這是整個 AI 基礎設施擴張速度超過安全基礎設施建設速度的縮影。
-
-
 ## 結構性問題：當「快」成為唯一 KPI
 
-把三起事件放在一起看，有一個共同的結構性問題：**擴張速度和安全品質之間的張力**。
+把兩起事件放在一起看，有一個共同的結構性問題：**擴張速度和安全品質之間的張力**。
 
 Claude 的跨租戶疑慮，技術上來自共享基礎設施在高負載下的邊界條件 bug。但為什麼會有這麼多共享層？因為要同時服務數百萬請求，又要維持低延遲和低成本。每多一層快取、每多一個連接池，就是在效能和隔離之間做取捨。
 
 OpenAI 的誤封，背後是自動化帳號管理系統的邏輯錯誤。大規模用戶管理需要自動化，但自動化的 blast radius（爆炸半徑）也被放大了——一個 bug 影響的不是一個用戶，而是成千上萬個。
 
-Claude Code 的 GitHub Action 漏洞，則是安全邊界設計不完整：Bash 工具有沙箱，Read 工具沒有。功能上線的速度跑在安全審計的前面。
-
-三件事的共同模式：**速度 > 安全**。
+兩件事的共同模式：**速度 > 安全**。
 
 
 ## 對企業用戶的啟示
@@ -205,6 +188,5 @@ Thoughtworks 在事後分析中指出，很多組織對 AI 的依賴程度已經
 - [cside: When an AI API returns someone else's response](https://cside.com/blog/ai-api-shared-cache-data-leaks) — 事發當天最詳細的技術根因分析
 - [Anthropic Status Page: June 5 Incident](https://status.claude.com/) — 官方事件記錄
 - [OpenAI Status: Account Suspension Incident](https://status.openai.com/incidents/01KTBZDS20E3PZ53DH2SCKXN49) — OpenAI 誤封事件記錄
-- [Microsoft: Securing CI/CD — Claude Code GitHub Action Case](https://www.microsoft.com/en-us/security/blog/2026/06/05/securing-ci-cd-in-agentic-world-claude-code-github-action-case/) — Claude Code 漏洞揭露
 - [Thoughtworks: Claude Outage June 2026](https://www.thoughtworks.com/en-ec/insights/blog/generative-ai/claude-outage-june-2026) — 企業 AI 基礎設施韌性分析
 - [Cybersecurity News: Anthropic's Claude Services Down](https://cybersecuritynews.com/anthropics-claude-services-down/) — 事件綜合報導
