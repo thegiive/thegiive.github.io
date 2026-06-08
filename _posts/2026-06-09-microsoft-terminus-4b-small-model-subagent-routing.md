@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "微軟 Terminus-4B：用 4B 小模型當 Coding Agent 的「終端機跑腿」，砍掉 30% 算力消耗"
-date: 2026-06-09 06:00:18 +0800
+date: 2026-06-09 06:10:49 +0800
 permalink: /microsoft-terminus-4b-small-model-subagent-routing/
 description: "**作者：** Wisely Chen **日期：** 2026年6月 **系列：** AI Agent 實戰觀察 **關鍵字：** Terminus-4B, Small Language Model, Subagent Architecture, SWE-Bench, Agent Cost Optimization, Microsoft Research,"
 ---
@@ -17,7 +17,7 @@ description: "**作者：** Wisely Chen **日期：** 2026年6月 **系列：** 
 
 那篇是講「誰該規劃、誰該執行」的位置問題。
 
-今天這篇微軟的 Terminus-4B 論文，則是在講另一個問題——**很多 Agent 任務裡，有大量的「髒活」根本不需要 Opus 這種等級的模型去碰**。
+今天這篇微軟的 [Terminus-4B 論文](https://arxiv.org/abs/2605.03195)，則是在講另一個問題——**很多 Agent 任務裡，有大量的「髒活」根本不需要 Opus 這種等級的模型去碰**。
 
 什麼是「髒活」？就是那些 Agent coding 過程中不斷出現的終端機操作：跑測試、看 build log、讀報錯訊息、裝套件。這些操作產生大量的 verbose 輸出（一次 build log 可能就 60KB），全部塞進主 Agent 的 context window，不只浪費 token，還會污染上下文。
 
