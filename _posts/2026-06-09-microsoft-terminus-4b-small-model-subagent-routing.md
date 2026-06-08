@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "微軟 Terminus-4B：用 4B 小模型當 Coding Agent 的「終端機跑腿」，砍掉 30% 算力消耗"
-date: 2026-06-09 06:10:49 +0800
+date: 2026-06-09 06:15:50 +0800
 permalink: /microsoft-terminus-4b-small-model-subagent-routing/
+image: /assets/images/terminus-4b-cover.png
 description: "**作者：** Wisely Chen **日期：** 2026年6月 **系列：** AI Agent 實戰觀察 **關鍵字：** Terminus-4B, Small Language Model, Subagent Architecture, SWE-Bench, Agent Cost Optimization, Microsoft Research,"
 ---
 
@@ -12,6 +13,8 @@ description: "**作者：** Wisely Chen **日期：** 2026年6月 **系列：** 
 **關鍵字：** Terminus-4B, Small Language Model, Subagent Architecture, SWE-Bench, Agent Cost Optimization, Microsoft Research, Qwen3-4B
 
 ---
+
+![Terminus-4B 論文：用 4B 小模型替代 Frontier LLM 處理終端執行任務](/assets/images/terminus-4b-cover.png)
 
 我之前寫過一篇 [AgentOpt](agentopt-expensive-model-wrong-position-pipeline-optimization.md) 的文章，核心結論是：**最貴的模型不一定要放在最重要的位置**。Columbia 大學的數據顯示，8B 小模型當 Planner、Opus 當 Executor，準確率比反過來高了一倍。
 
