@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Loop Engineering 實作指南：五個組件 + 一個記憶體，讓 Agent 自己跑起來"
-date: 2026-06-11 06:36:50 +0800
+date: 2026-06-11 06:57:10 +0800
 permalink: /loop-engineering-five-plus-one-implementation-guide/
 image: /assets/images/loop-engineering-five-components.png
 description: "上一篇我們拆解了 Loop Engineering 的概念和邊界。這篇講實作。我把 Codex 和 Claude Code 都跑過一輪之後，歸納出一個 Loop 真正需要的五個結構性組件——Loop/Goal、Worktrees、Skills、Connectors、Sub-agents——加上最容易被低估的東西：Memory。逐個拆解哪些能直接用、哪些需要改造、哪些看起來很美但你的場景可能不需要。Loop 改變工作方式，但它不會把你從工作中移除。設計 Loop 的人，比寫 Prompt 的人需要更多判斷力，不是更少。"
@@ -83,6 +83,18 @@ all tests in test/auth pass and lint is clean
 用 `/goal` 做巡檢型任務：如果條件永遠不會「完成」（比如「沒有新 bug」——明天就會有），loop 永遠不停，帳單失控。
 
 一句話：**有終點的用 `/goal`，沒終點的用 `/loop`。**
+
+### Stop Condition 怎麼設
+
+`/goal` 的停止條件直接用自然語言寫在 prompt 裡，但必須是**可驗證的**——不是「代碼品質變好」，而是「all tests pass and lint is clean」。判斷條件是否成立的是一個獨立的小模型，不是寫代碼的那個 agent 自己說了算。這就是 maker/checker 分離被應用到「loop 該不該繼續跑」這個決策本身。
+
+`/loop` 本身不會自己停，所以你必須設三道保險：
+
+1. **Budget cap**——token 預算用完就停。Claude Code 的 workflow 裡可以用 `budget.remaining()` 檢查剩餘額度，歸零就中斷。
+2. **收斂檢測**——連續 N 次沒有新發現就停。寫在 prompt 裡：「if no new issues found for 3 consecutive runs, stop」。
+3. **時間上限**——跑超過 X 分鐘就停。這是 Karpathy 定義 Loop 的第三要素：每次實驗有固定時間限制。
+
+三道保險缺任何一道，你睡覺的時候 Loop 也在跑，醒來帳單可能已經三位數了。
 
 Codex 和 Claude Code 都有這兩個 primitive，行為一致。Codex 的 `/goal` 額外支援 pause、resume、clear。
 
