@@ -6,10 +6,10 @@ permalink: /fable-5-harness-internalization-orchestrator-model-routing/
 description: "Fable 5 的正確打開方式不是拿來聊天，是讓它跑 Workflow、自己挑模型。Fable 5 當 Orchestrator 調度 Haiku 做搜尋分類，省 74% Token 費。Stripe 用它一天遷移 5,000 萬行 Ruby。Simon Willison 一天花 $110。Anthropic 自己建議的四層模型調度架構，把 Harness Engineering 推到下一站：模型不只被 Harness 包住，模型自己變成了 Harness。"
 author: Wisely Chen
 categories: [AI Coding, Harness Engineering]
-image: images/fable5-maxlv-tweet-workflow.png
+image: /assets/images/fable5-maxlv-tweet-workflow.png
 ---
 
-![Max Lv 推文：Fable 5 的正確打開方式是 run a workflow，choose agent's model wisely](images/fable5-maxlv-tweet-workflow.png)
+![Max Lv 推文：Fable 5 的正確打開方式是 run a workflow，choose agent's model wisely](/assets/images/fable5-maxlv-tweet-workflow.png)
 
 Fable 5 到底強在哪？
 
