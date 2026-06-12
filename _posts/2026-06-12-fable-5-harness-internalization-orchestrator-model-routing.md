@@ -82,24 +82,7 @@ Anthropic 在 [Fable 5 Prompting Guide](https://platform.claude.com/docs/en/buil
 
 ## 長時間自主運行：「跑了 8 小時以上」不再是吹牛
 
-Anthropic 官方的說法是 Fable 5 可以「work for **days** at a time」。聽起來像行銷話術，但現在已經有多人跑出實際數據：
-
-| 誰 | 運行時間 | 結果 | 花費 |
-|---|---|---|---|
-| John Exter | 3 小時 17 分（原估 12 小時） | 多檔案重構完成 | $50（設 cap） |
-| John Exter（前次） | **26 小時**（/loop 失控） | 自動跨 API 錯誤恢復續跑 | ~$400 |
-| Simon Willison | ~5.5 小時 | 6 個 changelog、4 個 PR、1 個大型 PR | $110.42 |
-| Matthew Pines | **36 小時** | 前沿物理研究，追上 GPT-5.5 跑 4 天的進度 | 未公開 |
-
-Fable 5 能跑這麼久的關鍵不是「context window 更大」——它跟 Opus 一樣是 1M tokens。關鍵是它在長 session 裡會自己做筆記、自己壓縮已完成的工作串、自己管理記憶。Anthropic 的 Slay the Spire 測試顯示，有持久記憶的 Fable 5 表現比 Opus 4.8 好 3 倍。
-
-但長時間運行也帶來新的 harness 問題：
-
-- **成本失控** — John Exter 的 26 小時 /loop 是個警訊。沒有 spending cap 的長程 agent 是信用卡炸彈。
-- **Context rot** — 跑越久，早期的上下文越容易被壓縮掉或遺忘。需要外部記憶機制（檔案、資料庫）來持久化計畫和已完成步驟。
-- **除錯更難** — 一個 3 小時的 session 出了 bug，你要回溯多少 log？
-
-**結論：Fable 5 確實能長跑，但 harness 必須跟著升級。** Spending cap、外部記憶、斷點恢復——這些不是可選的，是跑超過 1 小時的基本配備。
+Anthropic 官方說 Fable 5 可以「work for days at a time」，聽起來像行銷話術，但現在已經有人跑出實際數據。John Exter 給了它一個預估 12 小時的多檔案重構，3 小時 17 分鐘就完成了；他之前更誇張，一個 `/loop` 指令跑了 26 小時，中間自動恢復 API 錯誤繼續跑，差點燒掉 $400。Matthew Pines 拿它做前沿物理研究，跑了 36 小時，追上 GPT-5.5 花 4 天才到的進度。它能長跑的關鍵不是 context window 更大——跟 Opus 一樣是 1M tokens——而是它會自己做筆記、自己壓縮已完成的工作串。Anthropic 拿 Slay the Spire 測試，有持久記憶的 Fable 5 表現比 Opus 4.8 好 3 倍。但長跑也意味著新的 harness 需求：spending cap（沒設的話就是信用卡炸彈）、外部記憶（跑越久 context rot 越嚴重）、斷點恢復——這些不是可選的，是跑超過 1 小時的基本配備。
 
 ---
 
