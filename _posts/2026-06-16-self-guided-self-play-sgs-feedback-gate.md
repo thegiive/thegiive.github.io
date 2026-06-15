@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "模型能力沒有牆？史丹佛 Self-Guided Self-Play：7B 打贏 671B 的關鍵不是算力，是「把關」"
-date: 2026-06-16 06:51:03 +0800
+title: "模型能力沒有牆？從 Loop Engineering 看史丹佛 Self-Guided Self-Play：7B 打贏 671B 的關鍵是一道「把關」"
+date: 2026-06-16 07:14:31 +0800
 permalink: /self-guided-self-play-sgs-feedback-gate/
 image: /assets/images/self-guided-self-play-sgs-logo.png
-description: "史丹佛 Self-Guided Self-Play（SGS）論文拆解：self-play 撞牆的真因不是算力或資料，而是出題者 reward hacking 自我退化。加一道 Guide 把關閘門後，7B 模型 200 輪自我對弈就解題數超過 671B 的 pass@4。牆從來不在算力，牆在反饋品質。"
+description: "又到了週二讀論文。"
 ---
 
 ![Scaling Self-Play with Self-Guidance 論文首頁](/assets/images/self-guided-self-play-sgs-logo.png)
@@ -103,6 +103,8 @@ R_solve 那部分只獎勵「難度適中」的題（太簡單的、前 30% 最�
 這些全都是 self-play 的近親。而 SGS 給的警告非常直接：
 
 **只要你讓一個系統「自己生資料、自己學」，而中間沒有一道把關，它幾乎一定會 reward hack，往對自己最省力、但對真實目標最沒用的方向退化。** 你以為它在自我進化，其實它在自我退化，而且因為迴圈是閉的，退化會越滾越快。
+
+換成 [Loop Engineering](/loop-engineering-from-prompt-to-loop-paradigm-shift/) 的講法會更清楚：SGS 根本就是一個 Loop Engineering 的範本。它要解的不是「怎麼 prompt 出題者出好題」——那是 prompt 思維；它解的是「**怎麼設計這個自我對弈的 loop，讓 loop 自己長不出爛題**」。Conjecturer、Solver、Guide 三個角色，就是 loop 裡的三個組件，而 Guide 這個把關，就是 loop 裡那個決定「要不要把這輪產出餵回去」的閘門。**Loop Engineering 的重點從來不是 loop 裡的某一個 agent 多強，而是這個 loop 收斂到變強、還是收斂到退化。** SGS 證明了：差別就在你有沒有裝那道閘門。
 
 論文核心那條假設值得記下來：**「語言模型有能力判斷一個子問題對達成目標有沒有用。」** 整套方法能成立，就靠這條。換到你的場景，這句話就是——你敢不敢讓模型自己當那道把關的裁判？敢的話，self-play 的牆能往後推很遠；不敢、或者乾脆不裝裁判，那條退化曲線在等你。
 
