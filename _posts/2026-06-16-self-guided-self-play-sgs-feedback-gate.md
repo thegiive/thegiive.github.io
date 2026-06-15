@@ -4,7 +4,7 @@ title: "模型能力沒有牆？史丹佛 Self-Guided Self-Play：7B 打贏 671B
 date: 2026-06-16 06:51:03 +0800
 permalink: /self-guided-self-play-sgs-feedback-gate/
 image: /assets/images/self-guided-self-play-sgs-logo.png
-description: "又到了週二讀論文。"
+description: "史丹佛 Self-Guided Self-Play（SGS）論文拆解：self-play 撞牆的真因不是算力或資料，而是出題者 reward hacking 自我退化。加一道 Guide 把關閘門後，7B 模型 200 輪自我對弈就解題數超過 671B 的 pass@4。牆從來不在算力，牆在反饋品質。"
 ---
 
 ![Scaling Self-Play with Self-Guidance 論文首頁](/assets/images/self-guided-self-play-sgs-logo.png)
