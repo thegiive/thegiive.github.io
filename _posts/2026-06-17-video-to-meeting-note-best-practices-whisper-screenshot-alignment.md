@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "用 AI 把教學影片變成圖文筆記：逐字稿、摘要、截圖對齊的 Best Practices"
-date: 2026-06-17 05:51:15 +0800
+date: 2026-06-17 07:03:55 +0800
 permalink: /video-to-meeting-note-best-practices-whisper-screenshot-alignment/
-image: /assets/images/video-meeting-note-timeline-demo.png
+image: /assets/images/video-meeting-note-holo-agent-demo.png
 description: "**作者：** Wisely Chen **日期：** 2026 年 6 月 **系列：** AI 工具實戰 **關鍵字：** AI, Whisper, Meeting Notes, Video Processing, 圖文筆記, Screenshot Alignment, PM 訪談, PRD"
 ---
 
@@ -73,9 +73,11 @@ Microsoft 也一樣。Teams 錄影直接存進 OneDrive，它有 Azure 的語音
 
 我最近拿一支 YouTube 技術教學影片（[Holo 3.1 Agent 模型介紹](https://www.youtube.com/watch?v=p6ScdPXdaX4)）來實際跑這套流程，踩了不少坑。做完之後最大的發現是：**這件事最容易做錯的地方不是「有沒有轉出文字」，而是「最後產物到底像不像一份人會想讀的筆記」。**
 
-下面是實際產出的圖文時間軸，每段摘要旁邊就是該段的畫面截圖：
+下面是兩個實際產出的圖文時間軸。第一個是用 Holo 3.1 Agent 教學影片跑出來的，第二個是 Google 試算表教學：
 
-![圖文時間軸實際產出：每段有截圖、小標題、摘要和可展開的逐字稿](/assets/images/video-meeting-note-timeline-demo.png)
+![Holo 3.1 Agent 教學影片的圖文時間軸產出](/assets/images/video-meeting-note-holo-agent-demo.png)
+
+![Google 試算表教學影片的圖文時間軸產出](/assets/images/video-meeting-note-timeline-demo.png)
 
 ---
 
