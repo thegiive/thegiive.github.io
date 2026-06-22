@@ -1,21 +1,23 @@
 ---
 layout: post
 title: "OpenClaw 企業導入：那條使用曲線背後的真實故事"
-date: 2026-06-22 09:27:05 +0800
+date: 2026-06-22 09:05:38 +0800
 permalink: /openclaw-enterprise-adoption-16-weeks-real-usage-curve/
 image: /assets/images/openclaw-enterprise-16-weeks-usage-curve.png
-description: "有好多人都跟我說：「欸，為什麼最近 OpenClaw 不紅了？會不會它根本就是一個假議題呢？」"
+description: "最近這段時間大家都在講，OpenClaw 已經不紅了，Hermes 也沒有人在講了。之前叫 Hermes，現在叫 Loop，但這些東西到底與我何干呢？"
 ---
 
 ![OpenClaw 企業使用曲線](/assets/images/openclaw-enterprise-16-weeks-usage-curve.png)
 
-有好多人都跟我說：「欸，為什麼最近 OpenClaw 不紅了？會不會它根本就是一個假議題呢？」
+最近這段時間大家都在講，OpenClaw 已經不紅了，Hermes 也沒有人在講了。之前叫 Hermes，現在叫 Loop，但這些東西到底與我何干呢？
 
-我今天把這幾個月 OpenClaw 的使用曲線，請 OpenClaw 來畫一下圖表。因為內容涉及公司的一些數據，我這些數據的 scale 跟點數是有調整過的，但整體趨勢是不變的，所以我會以趨勢來做說明。
+其實我還蠻同意這些人講的話。所以過了半年，我也想稍微分享一下，在這段時間裡我所學的這些 AI 技術，重點到底都投入在哪裡。
 
-折線圖是 OpenClaw 總 Task 數，彩色長條是公司機敏文件的 Task 數。最有意思的不是高峰，是中間那段低谷。
+上面那張圖是我這幾個月來 OpenClaw 的使用狀況。藍色線對應左邊的 Y 軸，是 OpenClaw 執行的總 Task 數；彩色長條對應右邊的 Y 軸，是機敏文件相關的 Task 數 — 兩者的 scale 不一樣。長條裡紅色是機敏 Task 1，黃色是機敏 Task 2，綠色是機敏 Task 3。
 
-那段低谷不是因為我不用了。是因為我在做 SOP 數位化。
+大部分人看到這條線，第一反應會問：中間為什麼掉這麼慘？
+
+答案很簡單：**因為我在做 SOP 數位化。**
 
 這件事不是技術問題。這件事是組織問題。而這段低谷，才是 AI 真正落地在企業的關鍵。
 
