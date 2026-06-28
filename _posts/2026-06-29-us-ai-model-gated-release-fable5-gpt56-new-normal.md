@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "美國政府正在成為 AI 模型的 App Store 審核者：從 Fable 5 解封到 GPT-5.6 分階段上線"
-date: 2026-06-29 07:12:31 +0800
+date: 2026-06-29 07:19:38 +0800
 permalink: /us-ai-model-gated-release-fable5-gpt56-new-normal/
 image: /assets/images/gated-release-overview.png
 description: "**作者：** Wisely Chen **日期：** 2026 年 6 月 29 日 **系列：** AI 治理觀察 **關鍵字：** Fable 5, GPT-5.6, AI Export Control, 分階段發布, AI 治理, OpenAI, Anthropic, 出口管制, 開源模型, GLM-5.2, DeepSeek V4, Qwen 3,"
@@ -225,9 +225,30 @@ Sakana AI 的 Fugu 架構是一個值得關注的方向。Fugu 的核心思路�
 
 ---
 
+## 附錄：Sakana Fugu 是什麼？
+
+文章裡多次提到「Fugu 式的編排」，這裡補充說明一下這個架構到底在做什麼。
+
+Sakana Fugu 是日本 Sakana AI 在 2026 年 6 月發布的多模型編排系統。它不是一個傳統意義上的模型——不是訓練出來的單一大模型，也不是 MoE 架構。它的核心是一個用強化學習訓練出來的 **Conductor（指揮者）模型**，負責把任務動態分配給一組 LLM 池裡的不同模型。
+
+架構基於 Sakana AI 的兩篇 ICLR 2026 論文：
+
+- **TRINITY**：把模型池裡的不同 LLM 分配成 Thinker（思考者）、Worker（執行者）、Verifier（驗證者）三種角色，多輪協作完成任務
+- **Conductor**：用強化學習訓練指揮模型，讓它自己學會怎麼分配任務、選哪個模型、用什麼 prompt 協調——而不是靠人工寫死的路由規則
+
+對外就是一個 OpenAI 相容的 API。你呼叫一次，內部 Conductor 自動決定啟動哪些模型、分配什麼角色、怎麼合成最終回覆。使用者不需要知道後面跑了幾個模型。
+
+**一個重要的區分：** Fugu 目前編排的對象是閉源前沿模型（GPT-5.5、Claude Opus、Gemini 3.1 Pro）。本文提到「用 Fugu 式的編排搭配開源模型」，是把這個「學習式多模型協調」的思路延伸到開源場景——如果同樣的 Conductor 架構可以指揮閉源前沿模型拿到超越單一模型的表現，那把它套用在 GLM-5.2、Qwen 3、DeepSeek V4 這些開源模型上，理論上也能從「多個夠強的模型協作」中榨出接近前沿的表現，同時保有完全的自主掌控。
+
+這個方向值得關注的原因很簡單：**它把競爭從「誰有最強的單一模型」轉移到「誰有最好的編排能力」。** 在閘門式發布的世界裡，後者比前者更可控。
+
+---
+
 ## 延伸閱讀
 
 - [上線三天就被「政府下架」：Fable 5 事件的真正重點不是 Fable 5](/fable-5-takedown-ai-export-control-precedent/)
 - [智譜 GLM-5.2：1M Context、全華為晶片訓練、MIT 開源——但跑分表呢？](/glm-5-2-zhipu-1m-context-no-benchmark-open-source/)
 - [鉅亨網：AI監管升級！繼Anthropic事件後 傳川普政府要求OpenAI分階段發布GPT-5.6](https://news.cnyes.com/news/id/6512724)
 - [鉅亨網：Anthropic Fable 5最快「下週」恢復開放！《Axios》：川普政府擬解除限制](https://news.cnyes.com/news/id/6515080)
+- [Sakana AI Fugu 官方頁面](https://sakana.ai/fugu/)
+- [Sakana Fugu Technical Report (arXiv)](https://arxiv.org/html/2606.21228v1)
