@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "美國政府正在成為頂尖模型的「發行人」：從 Fable 5 解封到 GPT-5.6 分階段上線"
-date: 2026-06-29 07:10:52 +0800
+title: "美國政府正在成為 AI 模型的 App Store 審核者：從 Fable 5 解封到 GPT-5.6 分階段上線"
+date: 2026-06-29 07:12:31 +0800
 permalink: /us-ai-model-gated-release-fable5-gpt56-new-normal/
 image: /assets/images/gated-release-overview.png
 description: "**作者：** Wisely Chen **日期：** 2026 年 6 月 29 日 **系列：** AI 治理觀察 **關鍵字：** Fable 5, GPT-5.6, AI Export Control, 分階段發布, AI 治理, OpenAI, Anthropic, 出口管制, 開源模型, GLM-5.2, DeepSeek V4, Qwen 3,"
