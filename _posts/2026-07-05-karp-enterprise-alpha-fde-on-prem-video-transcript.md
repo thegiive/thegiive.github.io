@@ -7,7 +7,8 @@ image: /assets/images/karp-enterprise-alpha-fde-cover.jpg
 description: "Palantir CEO Alex Karp 上 CNBC 炮轟模型廠商，社群兩極反應。我在這支影片裡講為什麼我大部分贊同他——AI Coding 和 Agent 有落地，但企業老闆的真正痛點（OCR 數位化、SOP 在人身上、怕員工離職帶走知識）沒被解決。解法有兩條路：一是用 FDE 深耕現場把價值擠出來，二是用地端三件套（算力 + 本地模型 + Application Layer）保住企業的 Alpha。2026 年，這三件套都到位了。"
 ---
 
-> 影片連結：（上傳後補上）
+<iframe width="100%" height="415" src="https://www.youtube.com/embed/8lpS0bbqRDo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 > 這篇是影片的逐字稿，文字有經過整理。想看 Karp CNBC 專訪的完整文字分析版，請看：[Palantir CEO 上 CNBC 開炮：企業對 AI Labs 的信任正在崩盤](/palantir-karp-ontology-harness-enterprise-ai-trust-crisis/)。想了解 FDE 模式的完整框架，請看：[FDE 模式全解析](/fde-ai-agent-luo-di-xin-mo-shi/)。
 
 ---
