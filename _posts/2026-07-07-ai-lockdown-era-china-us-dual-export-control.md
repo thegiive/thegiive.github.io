@@ -4,19 +4,10 @@ title: "AI 鎖國時代：當中美同時對 AI 模型上鎖，你的模型供�
 date: 2026-07-07 23:53:18 +0800
 permalink: /ai-lockdown-era-china-us-dual-export-control/
 image: /assets/images/ai-lockdown-era-cover.png
-description: "2026 年 6 月 13 日，美國政府下令封鎖 Anthropic 的 Fable 5，禁止外國人使用。我[當時寫了一篇文章](https://ai-coding.wiselychen.com/fable-5-takedown-ai-export-control-precedent/)，說這是「出口管制的戰場，第一次從晶片延伸到已上線的商用模型」。"
+description: "2026 年 7 月 7 日，Reuters 獨家報導中國商務部正召集 Alibaba、ByteDance、Z.ai 討論限制前沿 AI 模型出口。三週前，美國才剛封鎖 Anthropic Fable/Mythos 對外國人使用。中美幾乎同步對 AI 模型上鎖——AI 正式從軟體升級為國家戰略資產，跟先進晶片同級。這對企業意味著什麼？模型供應鏈的斷供風險已經從假設變成現實，而地端部署的投資邏輯，也從成本優化升級為業務連續性。"
 ---
 
 ![AI 鎖國時代](/assets/images/ai-lockdown-era-cover.png)
-
----
-title: "AI 鎖國時代：當中美同時對 AI 模型上鎖，你的模型供應鏈還安全嗎？"
-date: 2026-07-07
-description: "2026 年 7 月 7 日，Reuters 獨家報導中國商務部正召集 Alibaba、ByteDance、Z.ai 討論限制前沿 AI 模型出口。三週前，美國才剛封鎖 Anthropic Fable/Mythos 對外國人使用。中美幾乎同步對 AI 模型上鎖——AI 正式從軟體升級為國家戰略資產，跟先進晶片同級。這對企業意味著什麼？模型供應鏈的斷供風險已經從假設變成現實，而地端部署的投資邏輯，也從成本優化升級為業務連續性。"
-author: Wisely Chen
-categories: [AI治理, IT架構]
-tags: [出口管制, 地端部署, On-Prem, 中美科技戰, 模型供應鏈]
----
 
 2026 年 6 月 13 日，美國政府下令封鎖 Anthropic 的 Fable 5，禁止外國人使用。我[當時寫了一篇文章](https://ai-coding.wiselychen.com/fable-5-takedown-ai-export-control-precedent/)，說這是「出口管制的戰場，第一次從晶片延伸到已上線的商用模型」。
 
