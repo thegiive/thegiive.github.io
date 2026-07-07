@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AI 鎖國時代：當中美同時對 AI 模型上鎖，你的模型供應鏈還安全嗎？"
+title: "一覺醒來不用告別 Fable 5，但三面夾擊和一顆 Reuters 炸彈才是真正的故事"
 date: 2026-07-08 08:00:00 +0800
 permalink: /ai-lockdown-era-china-us-dual-export-control/
 image: /assets/images/ai-lockdown-era-cover.png
