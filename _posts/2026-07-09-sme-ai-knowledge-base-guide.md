@@ -4,7 +4,7 @@ title: "告別「正確的廢話」：中小企業 AI 知識庫實戰藍圖"
 date: 2026-07-09 09:00:00 +0800
 permalink: /sme-ai-knowledge-base-guide/
 description: "通用 AI 工具回答你的業務問題，說的都對，但沒用——因為它不了解你的產品、客戶和規則。這篇文章拆解五種從輕到重的知識庫實現方式，給出今天就能開始的最小版本：一個目錄結構、一套跑通流程、兩段可複製的提示詞、一個選工具的判斷標準。"
-image: images/sme-kb-cover-01.png
+image: /assets/images/sme-kb-cover-01.png
 categories: [企業AI轉型]
 author: Wisely Chen
 ---
