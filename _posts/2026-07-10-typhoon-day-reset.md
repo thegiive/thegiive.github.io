@@ -11,6 +11,12 @@ author: Wisely Chen
 
 今天颱風假，算是老天白送的一天，加上 Fable 5 早上又 reset，索性坐下來，整理一下最近的工作感受。
 
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:30px 0;border-radius:8px;">
+  <iframe src="https://www.youtube.com/embed/id9G20o62sg" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+> 影片版：[https://youtu.be/id9G20o62sg](https://youtu.be/id9G20o62sg)
+
 ---
 
 ## AI 對人心靈造成很巨大的挑戰
