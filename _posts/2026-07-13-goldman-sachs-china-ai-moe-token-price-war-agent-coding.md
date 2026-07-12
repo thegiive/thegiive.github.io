@@ -64,6 +64,28 @@ GS 報告的數字是：中國頭部模型全線激活比例不到 8%。這意�
 
 ---
 
+## 那中國模型的架構效率，理論上真的領先嗎？
+
+上面說架構優勢是「真實、可持續」的，這個宣稱需要證據。答案分兩半：**在公開可驗證的範圍內，是真的領先；但對面是黑箱，你只能拿已發表的跟傳聞的比。**
+
+先看可驗證的一半。
+
+**MLA（Multi-head Latent Attention）**，DeepSeek 從 V2 開始的招牌設計。標準 transformer 推理時要快取每個 head 的完整 Key/Value，MLA 把它們壓進一個共享的低秩潛空間，只快取壓縮後的表示。實測數字：[DeepSeek-V3 每 token 的 KV cache 是 70KB，同級用 GQA 的模型是 192-328KB](https://arxiv.org/pdf/2506.02523)，差 2.7 到 4.7 倍。KV cache 直接決定同一張卡能塞多大 batch、跑多長 context——這是推理成本的核心變數之一。
+
+**V4 的 CSA + HCA 雙 attention**，這個 blog [四月拆過](/deepseek-v4-million-token-csa-hca-attention/)。官方數字：1M token 場景下，V4 Pro 只需要 V3.2 的 27% FLOPs 和 10% KV cache。搭配前面講的 3% 激活比例，對照組是 [GPT-6 傳聞中的「5-6T 總參數、激活約 10%」](https://dgmnews.com/gpt-6-the-complete-guide-2026/)——如果傳聞為真，中國頭部模型的稀疏度是它的 2-3 倍。
+
+還有一個最硬的旁證：**業界在抄**。有 [ACL 論文專門研究怎麼把任意現有模型改裝成 MLA](https://aclanthology.org/2025.acl-long.1597.pdf)。被同行複製，是「這個理論真的更有效率」最誠實的證據。
+
+間接證據也對得上：DeepSeek V4 Pro 的 1.6T 參數塞得進 8×H100 一個節點；V4 Flash 定價 $0.14/$0.28，比 GPT-5.5 輸入便宜約 36 倍、輸出便宜超過 100 倍。這種定價就算疊上補貼，也不可能純靠燒錢燒出來——架構效率必須是真的。
+
+再看不可驗證的一半。
+
+[Claude Opus 4.7 是目前唯一公開證據仍指向 dense（或極輕度 MoE）的前沿模型](https://www.digitalapplied.com/blog/moe-architecture-comparison-gpt-claude-deepseek-qwen)，有分析猜它是 [5T 參數級別](https://aithinkerlab.com/claude-opus-5-trillion-parameters/)，但 Anthropic 從未證實。如果 Opus 真是 dense，那 $25/M 的輸出定價完全合理——它每個 token 真的在燒多幾十倍的 FLOPs。而且閉源廠商有大量外界看不到的 serving 端優化：speculative decoding、自研 kernel、極致 batching。帳面架構效率的差距，不代表實際 serving 成本差同樣的倍數。
+
+**從外部看，「效率差」和「毛利高」在價格上是無法區分的。** 這是這一節的邊界：中國模型的效率創新是發表過、可複現、被同行採用的；但「閉源模型一定更沒效率」這句話，沒有人有證據。
+
+---
+
 ## 成本決定定價：先虧錢，後收割
 
 GS 報告把中國模型市場分成兩層：
@@ -152,6 +174,8 @@ GS 報告裡的 EBIT 利潤率（-30%、-39%）和 2030 年轉正預測（+14%�
 OpenRouter 的數據有代表性問題。OpenRouter 是一個 API 路由平台，用戶以開發者和小型團隊為主，大企業通常直接走模型廠商的 API。85% 和 89% 這兩個數字反映的是「對價格敏感、有能力自己切換模型的開發者群體」的選擇，不是全行業的市占率。
 
 另一個這篇沒展開的變數是品質。中國模型在 benchmark 上追上美國 frontier 模型，但在長鏈推理、複雜 debugging、跨文件重構這些「真正燒 frontier 能力」的任務上，差距是否真的只剩一個百分點，沒有大規模獨立評測能確認。GS 報告也沒有做這個層級的品質分析——它是一份投行報告，關注的是市場結構和盈利模型，不是工程評測。
+
+最後，效率比較那一節的所有「對照組」數字——GPT-6 激活 10%、Opus 5T dense——全部是傳聞和第三方推估，OpenAI 和 Anthropic 從未證實任何一項。中國模型這邊是公開發表的架構，對面是黑箱，這個比較天生不對稱。「效率高」也不等於「每 token 品質同等」——Anthropic 可能是刻意讓每個 token 燒更多計算來換品質，那是產品哲學的選擇，不必然是技術落後。
 
 ---
 
