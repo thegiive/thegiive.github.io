@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "單機跑得動 Tier 1 地端 Model 嗎？RTX Pro 6000 一週實驗 Day 1-2：GLM 5.2 拿 98 分、DeepSeek V4 Flash 55 token/s 提前過線"
+title: "單機跑得動 Tier 1 地端 Model 嗎？RTX Pro 6000 一週實驗 Day 1-2：GLM 5.2 拿 98 分、DeepSeek V4 Flash 58 token/s 提前過線"
 date: 2026-07-19 14:30:00 +0800
 permalink: /rtx-pro-6000-tier1-local-day1-2-glm52-deepseek-v4-flash/
 image: /assets/images/rtx-pro-6000-tier1-day1-2-cover.jpg
-description: "限期一週的實驗：RTX Pro 6000 + 512G RAM，單機跑 Tier 1 地端 model。Day 1 GLM 5.2 2-bit 量化只有 12 token/s，但 Fable 5 打分數據分析 85、寫文章 98。Day 2 DeepSeek V4 Flash IQ2 全塞進 96GB VRAM，55 token/s 且所有題目全對，商務可用線 40 提前過線。外加一課：網路上的調校教學，實作起來七八成不準。"
+description: "限期一週的實驗：RTX Pro 6000 + 512G RAM，單機跑 Tier 1 地端 model。Day 1 GLM 5.2 2-bit 量化只有 10.8 token/s，但 Fable 5 打分數據分析 85、寫文章 98。Day 2 DeepSeek V4 Flash IQ2 全塞進 96GB VRAM，58 token/s 且所有題目全對，商務可用線 40 提前過線。外加一課：網路上的調校教學，實作起來七八成不準。"
 ---
 
 又到了週日，今天我用影片跟大家介紹一下我現在 RTX Pro 6000 桌機的實測結果。
@@ -25,13 +25,13 @@ description: "限期一週的實驗：RTX Pro 6000 + 512G RAM，單機跑 Tier 1
 
 744B MoE 應該至少要 4 張 Pro 6000 才跑得動。所以只能 2-bit 量化，並且 VRAM + DRAM 一起來推：部分 MoE 專家進 VRAM，剩下丟 DRAM。
 
-經過一下午 Claude Code Loop Engineering 自動測試，最佳結果是 72 層專家進 VRAM，結算 12 token/s。大概是雲端 Fable 5 的四分之一速度。
+經過一下午 Claude Code Loop Engineering 自動測試，最佳結果是 25 層專家進 VRAM，結算 10.8 token/s。大概是雲端 Fable 5 的四分之一速度。
 
 慢歸慢，基本 RAG 測驗全對。Agentic task 我讓它接上 Codex 做完整任務：寫程式、Excel 數據分析、上網查資料寫分析文章，再請 Fable 5 當老師打分——數據分析 85 分，文章 98 分。
 
 只能說 GLM 5.2 智力是接近 SOTA 的存在。就算扛著 2-bit 的智力折損，對於地端大部分任務還是簡單。
 
-但是 12 token/s 實戰是不能用的。而且我希望的 GGUF MTP 機制，目前看起來已經進 patch 但是還沒好。我會等全部 model 測完後，再跑一次 KTransformers 看看有沒有更好的結果。
+但是 10.8 token/s 實戰是不能用的。而且我希望的 GGUF MTP 機制，目前看起來已經進 patch 但是還沒好。我會等全部 model 測完後，再跑一次 KTransformers 看看有沒有更好的結果。
 
 ## Day 2：DeepSeek V4 Flash
 
@@ -39,13 +39,13 @@ description: "限期一週的實驗：RTX Pro 6000 + 512G RAM，單機跑 Tier 1
 
 結果開始有用起來了。
 
-Pro 6000 跑 Unsloth Q8 近無損、不開 MTP，就可以走到 22 token/s。但是很奇怪的是，文件跟我說 Unsloth GGUF 支援 MTP，但是跑起來沒有 MTP。
+Pro 6000 跑 Unsloth Q8 近無損、不開 MTP，就可以走到 25 token/s。但是很奇怪的是，文件跟我說 Unsloth GGUF 支援 MTP，但是跑起來沒有 MTP。
 
 我看起來要改跑 KTransformers 了——要重編 KTransformers、用 DeepSeek MTP 原生權重才找得回來。但是要跑 KTransformers，可能要編譯半天時間。
 
 所以在那之前，我先跑 IQ2 量化，全部塞進 96GB VRAM。
 
-結果很感人：55 token/s。而且所有題目都全部答對，沒有明顯的品質問題。我原本設定的商務可用線是 40，提前過線。
+結果很感人：58 token/s。而且所有題目都全部答對，沒有明顯的品質問題。我原本設定的商務可用線是 40，提前過線。
 
 因為速度跟品質看起來都不錯，我暫緩 KTransformers 這條線到明天，現在正在跑更多 IQ2 + Codex 的測試。
 
