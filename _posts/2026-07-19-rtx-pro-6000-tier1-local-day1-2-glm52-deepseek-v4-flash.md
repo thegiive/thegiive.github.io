@@ -3,6 +3,7 @@ layout: post
 title: "單機跑得動 Tier 1 地端 Model 嗎？RTX Pro 6000 一週實驗 Day 1-2：GLM 5.2 拿 98 分、DeepSeek V4 Flash 55 token/s 提前過線"
 date: 2026-07-19 14:30:00 +0800
 permalink: /rtx-pro-6000-tier1-local-day1-2-glm52-deepseek-v4-flash/
+image: /assets/images/rtx-pro-6000-tier1-day1-2-cover.jpg
 description: "限期一週的實驗：RTX Pro 6000 + 512G RAM，單機跑 Tier 1 地端 model。Day 1 GLM 5.2 2-bit 量化只有 12 token/s，但 Fable 5 打分數據分析 85、寫文章 98。Day 2 DeepSeek V4 Flash IQ2 全塞進 96GB VRAM，55 token/s 且所有題目全對，商務可用線 40 提前過線。外加一課：網路上的調校教學，實作起來七八成不準。"
 ---
 
