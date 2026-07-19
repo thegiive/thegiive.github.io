@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "同一顆 Kimi K3，換個 harness 差 10 個百分點：走 local-first 模型，你也需要 local-first harness"
+title: "同一顆 Kimi K3，用第三方 Harness 居然贏原廠 Harness (KCode) 10 個百分點：走 local-first 模型，你也需要 local-first harness"
 date: 2026-07-20 09:00:00 +0800
 permalink: /local-first-model-needs-local-first-harness/
 image: /assets/images/local-first-harness-maka-cover.png
