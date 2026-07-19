@@ -9,8 +9,8 @@ description: "限期一週的實驗：RTX Pro 6000 + 512G RAM，單機跑 Tier 1
 
 又到了週日，今天我用影片跟大家介紹一下我現在 RTX Pro 6000 桌機的實測結果。
 
-<div style="display: flex; justify-content: center; margin: 30px 0;">
-<iframe width="315" height="560" src="https://www.youtube.com/embed/E8XJ1fn_D8A" title="直接實測 Tier 1 地端 Model：RTX Pro 6000 跑 GLM 5.2 與 DeepSeek V4 Flash" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div class="video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E8XJ1fn_D8A" title="直接實測 Tier 1 地端 Model：RTX Pro 6000 跑 GLM 5.2 與 DeepSeek V4 Flash" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 單機，跑得動 Tier 1 等級的地端 model 嗎？
