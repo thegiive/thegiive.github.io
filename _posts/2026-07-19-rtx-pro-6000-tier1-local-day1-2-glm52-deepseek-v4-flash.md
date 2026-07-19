@@ -62,3 +62,33 @@ Pro 6000 跑 Unsloth Q8 近無損、不開 MTP，就可以走到 22 token/s。�
 實踐出真知，才是現在 AI 時代最重要的東西~~~
 
 接下來每天應該都會跟大家回報一下結果~~~
+
+## 附錄：實測數據
+
+影片口播的數字是當下的概略值，下面放 Claude Code 跑完 benchmark 之後整理的精確數據。測試環境統一：RTX Pro 6000（96GB VRAM）+ 512G RAM、llama.cpp b10064、`temperature=0`，速度取 llama-server 的 decode（`predicted_per_second`），VRAM 用 nvidia-smi 在生成期間量測。
+
+### 效能對照
+
+| 模型 | 量化（檔案大小） | 配置 | Decode 速度 | 峰值 VRAM |
+|------|-----------------|------|------------:|----------:|
+| GLM 5.2（744B MoE） | UD-IQ2_M（222GB） | MoE 專家全放 CPU | 7.7 tok/s | 23.7 GB |
+| GLM 5.2 | UD-IQ2_M | 64K context、25 層專家進 VRAM | 10.8 tok/s | 91.7 GB |
+| DeepSeek V4 Flash（284B MoE、激活 13B） | Q8（151GB） | 20 層專家留 CPU | 25 tok/s | 91.9 GB |
+| DeepSeek V4 Flash | IQ2_M（85GB） | 全部塞進 VRAM | 58 tok/s | 89.6 GB |
+
+### 品質對照（同一套 5 題標準題庫）
+
+| 題目 | GLM 5.2 IQ2_M | DeepSeek Q8 | DeepSeek IQ2_M |
+|------|--------------|-------------|----------------|
+| 知識問答 | 100% | 100% | 100% |
+| 困難推理（過橋 29 分） | 70% | 正確、證明嚴謹 | 正確 |
+| 簡單 coding | 100% | 7/7 | 7/7 |
+| 複雜 coding | 6/7 | 6/7 | 6/7 |
+| 數學（被 11 整除計數） | 0% | 正確 | 正確 |
+
+### 三個重點發現
+
+1. **DeepSeek 從 Q8 降到 IQ2_M 幾乎沒有品質損失。** 5 題結果完全相同，IQ2 在推理題還更省 token（5K vs 15K），速度卻是 2.3 倍。單卡 96GB 的最佳日常配置就是 IQ2_M 全 GPU。
+2. **n-gram 推測解碼在部分專家留 CPU 的配置下是負優化。** 草稿接受率只有 37%，被拒絕的草稿讓 CPU 上的 MoE 層多算好幾倍，decode 從 25 掉到 15 tok/s。
+3. **MTP 確認：Unsloth 全系列 GGUF 轉檔時都把 MTP 層丟掉了。** 掃描 tensor 表頭最高只到 blk.42，沒有 nextn 權重。本機唯一能用真 MTP 的路是 KTransformers，但要 WSL2 + 編譯 + 下載 340GB 原始權重，換約 1.2 倍加速——在 IQ2 已經 58 tok/s 之後，CP 值太低。
+
