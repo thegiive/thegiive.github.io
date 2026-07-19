@@ -15,6 +15,8 @@ description: "Maka 團隊拿同一顆 Kimi K3 跑 Terminal-Bench 2.1：官方 Ki
 
 這是 Maka 自報數字，目前沒有第三方復現，後面「坦白說」會完整處理。但它把一個我寫過好幾次的論點第一次變成了同模型、同任務的直接對照——[harness 不是包裝，是能力的一部分](/agent-harness-three-migrations-mechanism/)。而且它正好戳中我最近每天在想的問題：這兩週在[單機上跑 GLM 5.2 和 DeepSeek V4 Flash](/rtx-pro-6000-tier1-local-day1-2-glm52-deepseek-v4-flash/)，模型已經 local-first 了，那 agent 跟 harness 呢？
 
+這篇想講三件事：原廠 harness 不一定最強、地端算力有限所以需要更輕量的 harness、以及原廠 harness 可能偷傳資料——跟你走 local-first 的初衷完全背道而馳。
+
 ---
 
 ## 30 秒定位
@@ -72,49 +74,55 @@ Coding agent 這一類比較亂，值得盤一次：
 | Pi | 社群開源（Mario Zechner） | 模型無關，[預設只有 read / write / edit / bash 四個工具](https://github.com/badlogic/pi-mono)，其餘靠 extension |
 | Maka | 社群開源 | local-first workspace，session 與設定存本機，模型接雲端 API 或本地端點 |
 
----
-
-## 垂直整合 vs 開放配對
-
-這張表裡藏著兩條路線。
-
-**垂直整合**：自家 harness 配自家模型。Kimi Code + K 系、ZCode + GLM-5.2。理由很正當——Moonshot 自己就[說明過 K3 對 harness 敏感](https://www.nxcode.io/resources/news/kimi-k3-benchmarks-coding-agent-evaluation-guide-2026)：thinking history 有沒有被正確傳回去、context 怎麼壓縮，都會影響輸出品質，所以官方推薦用「verified harness」。這是遊戲主機的邏輯：自家硬體配自家遊戲，才能保證最佳化。
-
-**開放配對**：任何 harness 接任何模型。Codex 的 `--oss`、Pi 的極簡工具面、Maka 的 local-first workspace、cc-switch 把六七個 CLI 的供應商設定統一管理。這是 PC 的邏輯：介面標準化之後，配對自由。
-
-Maka 那組數字的意義正在這裡：**垂直整合的核心論述——官方最懂自家模型——第一次被開放配對的實例正面挑戰。** 一個 752 star 的開源專案，用通用機制（prune、精簡工具面）加兩個月的迭代紀律，在原廠模型的主場打贏了原廠 harness。
+七條路攤開來，底下有三個必須面對的問題。
 
 ---
 
-## Grok Build 開源：性能之外的另一半理由
+## 一、原廠 Harness 不一定最強
 
-Maka 案例講的是**性能**：harness 決定分數。Grok Build 事件講的是**信任**。
+Moonshot 自己[說明過 K3 對 harness 敏感](https://www.nxcode.io/resources/news/kimi-k3-benchmarks-coding-agent-evaluation-guide-2026)：thinking history 有沒有被正確傳回去、context 怎麼壓縮，都會影響輸出品質，所以官方推薦用「verified harness」。這是遊戲主機的邏輯：自家硬體配自家遊戲，才能保證最佳化。
 
-7 月 15 日，xAI 把完整 harness 攤開——[844,530 行 Rust，Apache 2.0](https://www.marktechpost.com/2026/07/15/spacexai-open-sources-grok-build-the-rust-agent-harness-tui-and-tool-layer-behind-its-coding-cli/)，agent loop、工具實作、TUI、extension 系統全部在內。但這不是大方，是止血。開源前 72 小時，[安全研究者拿出 wire-level 證據](https://www.digitalapplied.com/blog/grok-build-open-source-72-hours-trust-repair)：Grok 的 CLI 一直在悄悄把使用者完整目錄上傳到自家雲端，[被翻出來的內容包括 SSH 金鑰](https://simonwillison.net/2026/Jul/15/grok-build/)。把程式碼全部公開，是它唯一能拿出來的信任修復手段。模型 grok-build-0.1 本身仍然閉源。
+Maka 那組數字把這個邏輯打了一個洞。一個 752 star 的開源專案，用通用機制（prune、精簡工具面）加兩個月的迭代紀律，在原廠模型的主場打贏了原廠 harness。
 
-harness 是整個 stack 裡看得最多的元件——你的 code、你的 shell、你的憑證全部經過它。模型擺在地端、harness 的資料行為卻是黑箱，資安上等於白做工。這也是為什麼「開源」對 harness 的意義比對模型更硬：模型權重你拿到了也審不動，harness 的每一次上傳你都查得到。
+為什麼？因為原廠 harness 背著產品包袱。20KB 的 prompt 裡每一段都是某個產品需求，全量工具面是為了功能完整度而非推理效率。而開源社群沒有這些包袱——它可以只為「讓模型在這個 benchmark 上拿最高分」而裁剪一切。
 
-而現在，一個生產等級的完整 harness 躺在 Apache 2.0 底下。要打造真正 local-first 的 harness 框架，第一次有了可以直接 fork 的起點，不用從零寫起。
+垂直整合仍然有它的價值，但「原廠配的就是最好的」這個預設需要被放棄了。Codex 的 `--oss`、Pi 的極簡工具面、Maka 的 local-first workspace、cc-switch 把六七個 CLI 的供應商設定統一管理——開放配對的摩擦正在快速下降，而 K3 權重 7/27 開源之後，「開源 harness + 開放權重」的組合空間只會更大。
 
 ---
 
-## 地端推理慢，harness 從優化變成生存條件
+## 二、地端算力有限，需要更輕量的 Harness
 
-還有一層是地端獨有的。
+這是地端獨有的問題。
 
 Maka 的實測裡約 1/3 的任務死於推理服務超時——那還是 Moonshot 自家的雲端推理。換到地端呢？我的 GLM 5.2 2-bit 在 RTX Pro 6000 上是 [10.8 token/s，DeepSeek V4 Flash 是 58 token/s](/rtx-pro-6000-tier1-local-day1-2-glm52-deepseek-v4-flash/)。雲端推理速度掉三成，harness 就死掉三分之一的任務；地端的日常就是雲端的最壞情況。
 
-三件在雲端算「優化」的事，在地端全部升級成生存條件：
+雲端的 frontier model 跑得快、算得強，harness 塞 20KB 的 prompt 加幾十個工具，模型照樣消化得了。地端不行。你的模型智力先被量化折損過一輪，推理速度再慢一個數量級——這時候 harness 每多帶一 KB 的 prompt、每多開一個工具，都是在消耗模型本來就不夠用的注意力和你本來就不夠用的時間。
 
-**Token 預算。** 雲端省 41.7% 的 token 是省錢；地端省 41.7% 的 token 是省牆上時鐘的時間，因為 prefill 和 generation 都慢。同一個 prune 機制，地端的回報率直接高一級。
+**雲端的 harness 可以追求功能完整，地端的 harness 必須追求極簡。** 三件在雲端算「優化」的事，在地端全部升級成生存條件：
 
-**Timeout 容忍。** harness 的重試策略、逾時上限、任務切分粒度，在 10.8 token/s 的世界裡決定任務是「慢慢做完」還是「直接判死」。Kimi Code 那 1/3 的超時死亡，就是 harness 用雲端假設去接慢速推理的下場。
-
-**Prompt 厚度。** 20KB 的產品 prompt 在雲端是雜訊問題，在地端還是 prefill 時間問題。地端模型本來智力就先被量化折損過一輪，更沒有本錢讓它在噪音裡找信號。
+- **Token 預算**：雲端省 41.7% 的 token 是省錢；地端省 41.7% 是省牆上時鐘的時間
+- **Timeout 容忍**：10.8 token/s 的世界裡，harness 的逾時上限決定任務是「慢慢做完」還是「直接判死」
+- **Prompt 厚度**：20KB 的產品 prompt 在雲端是雜訊問題，在地端還疊加 prefill 時間問題
 
 所以 local-first 不是「執行位置」的問題，是「設計假設」的問題。Claude Code 和 Codex 本來就跑在你的機器上，但它們的預設值——context 給多長、工具開幾個、逾時設多久——都是對著雲端 frontier model 調的。**一個 harness 是不是 local-first，看的不是它裝在哪，是它的預設假設把慢速、量化過的模型當不當一等公民。**
 
 這條路我自己已經踩過第一步：Day 1-2 的實測裡，本地 GLM 5.2 接的是 Codex 當 harness，跑完寫程式、數據分析、上網寫文章的完整 agentic 任務，Fable 5 打分給了 98。開放配對接地端模型，今天就是能動的，不是願景。
+
+---
+
+## 三、原廠 Harness 可能偷傳資料，跟 local-first 的初衷背道而馳
+
+很多人走 local-first，第一個理由就是資安——資料不出境、不經過別人的雲端。模型權重下載到本機，推理在自己的 GPU 上跑，看起來很安全。
+
+但模型只是 stack 的一半。harness 是整個 stack 裡看得最多的元件——你的 code、你的 shell、你的憑證、你的完整目錄結構，全部經過它。如果 harness 的資料行為是黑箱，你的 local-first 就只 local 了模型那一半，另一半可能正在悄悄把東西送出去。
+
+這不是假設，是剛發生過的事。
+
+7 月 15 日，xAI 把 Grok Build 完整開源——[844,530 行 Rust，Apache 2.0](https://www.marktechpost.com/2026/07/15/spacexai-open-sources-grok-build-the-rust-agent-harness-tui-and-tool-layer-behind-its-coding-cli/)，agent loop、工具實作、TUI、extension 系統全部在內。但這不是大方，是止血。開源前 72 小時，[安全研究者拿出 wire-level 證據](https://www.digitalapplied.com/blog/grok-build-open-source-72-hours-trust-repair)：Grok 的 CLI 一直在悄悄把使用者完整目錄上傳到自家雲端，[被翻出來的內容包括 SSH 金鑰](https://simonwillison.net/2026/Jul/15/grok-build/)。把程式碼全部公開，是它唯一能拿出來的信任修復手段。
+
+想像一下：你花了大功夫把模型搬到地端，GPU 買了、量化調了、推理跑起來了——結果 harness 把你的整個 codebase 傳回原廠。**你以為你在做 local-first，其實你只是幫 harness 供應商做了免費的資料收集。**
+
+這也是為什麼「開源」對 harness 的意義比對模型更硬。模型權重你拿到了也審不動——幾百 GB 的矩陣你看不出它背後學了什麼。但 harness 不一樣，它就是程式碼，每一次網路連線、每一次檔案讀取你都查得到。而現在，一個生產等級的完整 harness 躺在 Apache 2.0 底下。要打造真正 local-first 的 harness 框架，第一次有了可以直接 fork 的起點，不用從零寫起。
 
 ---
 
@@ -144,10 +152,8 @@ Maka 的實測裡約 1/3 的任務死於推理服務超時——那還是 Moonsh
 
 ## 關鍵洞察
 
-**地端選型是「模型 × harness」的配對題，不是模型單選題。** 同一顆模型換 harness 可以差兩位數百分點。實測要測配對——用你打算天天用的 harness 跑你打算部署的模型，而不是看模型在別人 harness 上的 leaderboard 分數。
+**原廠 Harness 不一定最強，地端選型是「模型 × harness」的配對題。** 同一顆模型換 harness 可以差兩位數百分點。實測要測配對——用你打算天天用的 harness 跑你打算部署的模型，而不是看模型在別人 harness 上的 leaderboard 分數。
 
-**開放配對的摩擦正在快速下降。** Codex `--oss` 直接接本地端點、Claude Code 靠 cc-switch 繞、Pi 和 Maka 天生模型無關，連 Grok Build 的 84 萬行生產級 harness 都躺在 Apache 2.0 底下等人 fork。K3 權重 7/27 開源之後，「開源 harness + 開放權重」這條路的組合空間只會更大。
+**地端算力有限，你需要的不是功能最全的 harness，是最輕量的。** 20KB 的 prompt 加幾十個工具，在雲端 frontier model 上跑沒問題，在 10.8 token/s 的地端就是任務能不能活著跑完的差別。token prune、prompt 減法、timeout 策略——在雲端是省錢，在地端是生存條件。
 
-**挑 harness 時，「資料行為可審計」跟分數放同一級。** harness 看得到你的 code、shell 和憑證，它往哪裡上傳、記了什麼，重要性不亞於它跑幾分。Grok Build 用一次醜聞示範了黑箱 harness 的代價——模型再 local，harness 亂傳就全部歸零。
-
-**地端把 harness engineering 的權重再調高一級。** token prune、prompt 減法、timeout 策略，在雲端是省錢，在 10.8 token/s 的地端是任務能不能活著跑完。挑 harness 的時候，把「它對慢速推理的容忍度」當一級指標。這跟我在 [memory benchmark 那篇](/agent-memory-benchmark-rashomon-filesystem/)給的建議是同一組肌肉：分數先問口徑，再問結論。
+**走 local-first 是為了資安，但 harness 偷傳資料就全部歸零。** 模型擺在地端只 local 了一半，harness 才是看得到你所有東西的那一層。挑 harness 的時候，「資料行為可審計」跟分數放同一級。Grok Build 用一次醜聞示範了這件事的代價——而它被迫開源出來的 84 萬行 Rust，反而成了打造真正 local-first harness 框架的起點。這跟我在 [memory benchmark 那篇](/agent-memory-benchmark-rashomon-filesystem/)給的建議是同一組肌肉：分數先問口徑，再問結論。
