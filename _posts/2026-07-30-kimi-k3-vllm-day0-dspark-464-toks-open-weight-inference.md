@@ -193,6 +193,39 @@ vLLM 的 blog 標題叫 "Efficient Day-0 Support"——不是 Day-1、不是 "co
 
 ---
 
+## 開源生態全面跟進：Unsloth 1-bit 量化把門檻再砍一半
+
+vLLM + DSpark 是「高端自部署」的故事——16 張 GB300 跑 464 tok/s。但同一時間，Unsloth 也推出了 Kimi K3 的全系列量化版本，包括 1-bit 量化。
+
+這代表的訊號很清楚：**所有主要開源推理基礎設施 lab 都在以 Kimi K3 為基礎，努力降低 serving 門檻。**
+
+Unsloth 的量化方案：
+
+| 量化等級 | 模型大小 | RAM+VRAM 需求 | Top-1 準確率 | Perplexity |
+|---------|---------|-------------|------------|-----------|
+| 1-bit S (UD-IQ1_S) | 594 GB | 610 GB | 78.9% | 2.58 |
+| 1-bit M (UD-IQ1_M) | 649 GB | 665 GB | 81.2% | 2.36 |
+| 2-bit XXS (UD-IQ2_XXS) | 711 GB | 726 GB | 84.1% | 2.13 |
+| 2-bit XL (UD-Q2_K_XL) | 861 GB | 880 GB | 90.4% | 1.74 |
+| Q4 (UD-Q4_K_XL) | 1,510 GB | — | — | 1.46 |
+| Q8 Lossless (UD-Q8_K_XL) | 1,560 GB | 1.6 TB | — | 1.46 |
+
+幾個關鍵觀察：
+
+**1-bit 量化的品質損失比想像中小。** 從 Q8（lossless，perplexity 1.46）到 1-bit S（perplexity 2.58），perplexity 上升了 77%。聽起來很多，但 78.9% 的 top-1 準確率意味著在很多實用場景（分類、摘要、簡單推理）仍然可用。
+
+**594 GB 可以塞進單台機器。** Unsloth 官方確認 Kimi K3 可以跑在 NVIDIA DGX Station 或 Mac Studio + 128GB RAM 的組合上（透過 RAM offloading）。2.8T 參數的 frontier 模型跑在一台機器上——這在半年前完全不可想像。
+
+**形成完整的部署光譜。** 從高端到低端：
+- **極速推理：** vLLM + DSpark + 16×GB300 → 464 tok/s
+- **生產部署：** vLLM + 8×GB300 → 111 tok/s
+- **成本優化：** Unsloth 2-bit + DGX Station → ~20 tok/s
+- **開發測試：** Unsloth 1-bit + Mac Studio → 可跑但慢
+
+這個光譜的意義是：無論你的預算和場景是什麼，都有一個可行的自部署方案。Frontier AI 不再是「付 API 費或滾」的二元選擇。
+
+---
+
 ## 給 IT 團隊的 Takeaway
 
 如果你在評估自部署 frontier 模型：
@@ -233,3 +266,4 @@ K3 的測試計畫不太一樣——我更關心的是 **inference infrastructur
 6. [Kimi K3 Technical Report — arXiv](https://arxiv.org/pdf/2607.24653)
 7. [Kimi K3 benchmarks, pricing, and self-hosting — Northflank](https://northflank.com/blog/what-is-kimi-k3-self-hosting)
 8. [Kimi K2.5 深度技術評估 — AI Coding Blog](https://ai-coding.wiselychen.com/kimi-k2.5-agent-swarm-deep-dive-technical-assessment/)
+9. [Unsloth Kimi K3 量化方案（含 1-bit）](https://unsloth.ai/docs/models/kimi-k3)
