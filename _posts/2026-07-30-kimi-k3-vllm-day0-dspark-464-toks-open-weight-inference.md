@@ -4,22 +4,30 @@ title: "Kimi K3 + vLLM Day-0：2.8T 開源模型跑出 464 tok/s，自部署 Fro
 date: 2026-07-30 10:00:00 +0800
 permalink: /kimi-k3-vllm-day0-dspark-464-toks-open-weight-inference/
 image: /assets/images/kimi-k3-vllm-464-toks-cover.png
-description: "vLLM 官方宣布 Kimi K3 Day-0 支援，搭配 Inferact 的 DSpark 投機解碼，在 4×GB300 上跑出 464 tok/s 的 bs=1 peak decode 速度。2.8 兆參數的開源模型，推理速度追上甚至超越閉源 API——自部署 frontier AI 的經濟學正在被改寫。"
+description: "Kimi K3 在 7/27 開源，2.8T 參數史上最大開源模型。所有人都在問「怎麼跑得起 3T 的怪物」——vLLM Day-0 支援 + DSpark MTP 投機解碼跑出 464 tok/s，Unsloth 1-bit 量化壓到 594 GB 單機可跑。所有開源推理 lab 都在以 Kimi K3 為基礎降低 serving 門檻，Jensen Huang 25 家公司連署信的預言正在成真。"
 ---
 
 ![vLLM Kimi K3 464 tok/s](/assets/images/kimi-k3-vllm-464-toks-cover.png)
 
-## 五個月前我寫了 K2.5，結論是「大多數 Agent 應用，Kimi K2.5 都夠用」
+## 3T 的怪物，誰跑得起？
 
-今年二月我做了 [Kimi K2.5 的深度技術評估](https://ai-coding.wiselychen.com/kimi-k2.5-agent-swarm-deep-dive-technical-assessment/)，當時的結論很明確：1 兆參數但推理只用 32B，API 輸入只要 $0.60/M tokens，OpenClaw 社群用得最多的模型就是 K2.5。
+Kimi K3 在 7/27 開源了。2.8 兆參數，史上最大的開源權重模型。
 
-五個月後，Moonshot AI 直接把參數量從 1T 拉到 2.8T，active 參數從 32B 跳到 104B，context window 從 256K 拉到 1M tokens。
+所有人都在下載，但所有人也都在問同一個問題：「我怎麼跑得起這個 3T 的怪物？」
 
-但真正讓我決定寫這篇的不是 K3 本身——是 vLLM 官方在 7/27 宣布的那條推文：
+答案是：整個開源生態正在幫你解決這件事。
 
-**「vLLM hit new peak bs=1 decode on Kimi-K3: 464 tok/s」**
+vLLM 在權重公開的同一天就推出完整支援，搭配 Inferact 的 DSpark——本質上就是 MTP（Multi-Token Prediction）投機解碼——在 16 張 GB300 上跑出 464 tok/s。Kimi K3 官方 API 只有 62 tok/s，自部署快 7.5 倍。
 
-464 tokens per second，batch size 1，在 4×GB300（16 張 GPU，TP16）上用 DSpark 投機解碼跑出來的。這個數字的意義是：一個完全開源、可以下載權重自己跑的 frontier 模型，單用戶推理速度已經快到讓人重新思考「我還需要付 API 費用嗎」這個問題。
+MTP 這個概念不新。[Google 5 月用 Gemma 4 做到 3 倍加速](https://ai-coding.wiselychen.com/gemma4-mtp-drafter-speculative-decoding-open-source/)，DeepSeek V3 更早就把 MTP head 烘進訓練流程。但 DSpark 把同一套思路用在 2.8T 的 frontier 模型上：4B 的 draft 模型一次並行猜 7 個 token，coding 場景每步命中 4.73 個，加速比 3.93 倍。
+
+另一邊 Unsloth 同步推出全系列量化。1-bit 版本把 2.8T 壓到 594 GB，可以跑在單台 DGX Station 或 Mac Studio 上。Top-1 準確率仍有 78.9%。
+
+vLLM 做極速推理，Inferact 用 MTP 做加速，Unsloth 做極限量化。三條路線同時推進，所有開源推理 lab 都在以 Kimi K3 為基礎全力降低門檻。
+
+### 從 K2.5 到 K3
+
+今年二月我做了 [Kimi K2.5 的深度技術評估](https://ai-coding.wiselychen.com/kimi-k2.5-agent-swarm-deep-dive-technical-assessment/)，當時的結論是「大多數 Agent 應用，K2.5 都夠用」。五個月後，Moonshot AI 把參數量從 1T 拉到 2.8T，active 參數從 32B 跳到 104B，context window 從 256K 拉到 1M tokens。
 
 ---
 
@@ -87,19 +95,21 @@ vLLM 在 Kimi K3 權重公開的同一天（7/27）就推出完整支援。這�
 
 ---
 
-## DSpark 到底是什麼：4B 的小模型讓 2.8T 的大模型快 4 倍
+## DSpark = MTP 投機解碼：4B 的小模型讓 2.8T 的大模型快 4 倍
 
-DSpark 是 Inferact 團隊針對 Kimi K3 訓練的投機解碼（Speculative Decoding）draft 模型，已經開源在 HuggingFace（Inferact/Kimi-K3-DSpark）。
+DSpark 是 Inferact 團隊針對 Kimi K3 訓練的 MTP（Multi-Token Prediction）投機解碼 draft 模型，已經開源在 HuggingFace（Inferact/Kimi-K3-DSpark）。
 
-### 投機解碼的基本概念
+### MTP 投機解碼的脈絡
 
-傳統自回歸生成是一次預測一個 token。投機解碼的想法是：用一個小而快的 draft 模型先「猜」出好幾個 token，然後讓大模型一次性驗證這批猜測。猜對的直接用，猜錯的從錯誤點重新生成。
+MTP 不是新概念。2024 年 DeepSeek V3 把 MTP head 烘進主模型訓練流程，2026 年 5 月 [Google 用 Gemma 4 的 MTP drafter 做到 3 倍加速](https://ai-coding.wiselychen.com/gemma4-mtp-drafter-speculative-decoding-open-source/)——我當時寫過一篇詳細分析。
 
-如果 draft 模型的猜測命中率夠高，等於是用小模型的速度做大模型的推理。
+核心思路都一樣：用一個小而快的 draft 模型先「猜」出好幾個 token，讓大模型一次性驗證。猜對的直接用，猜錯的從錯誤點重新生成。如果命中率夠高，等於用小模型的速度做大模型的推理。
+
+DSpark 把這套思路推到了 2.8T frontier 模型的規模。
 
 ### DSpark 的技術細節
 
-DSpark 不是一般的投機解碼。它用了一種叫 **block-diffusion** 的架構：
+DSpark 用了一種叫 **block-diffusion** 的架構，是 MTP 的進階實作：
 
 - **4B 參數的 draft 模型**，包含 5 層 dense layer，使用 non-causal attention
 - **一次性並行生成 7 個 token**（不是逐個生成）
@@ -179,17 +189,29 @@ Moonshot AI 自己也很誠實地說：「K3 的用戶體驗與 Claude Fable 5 �
 
 ---
 
-## 從 K2.5 到 K3：Moonshot AI 的開源飛輪
+## 25 家公司的預言正在成真
+
+這件事要放在更大的脈絡裡看。
+
+就在 Kimi K3 開源的五天前，Jensen Huang 用人生第一則 X 貼文發出 [25 家機構連署的公開信「Open Weights and American AI Leadership」](https://ai-coding.wiselychen.com/open-weights-new-era-nvidia-letter-liang-wenfeng/)——Meta、Microsoft、a16z、Hugging Face 都簽了名，缺席的是 OpenAI 和 Anthropic。
+
+信裡最核心的論點：如果美國持續限制開源模式，不會讓技術留在美國，只會讓全世界把力量投向中國的開源模型。
+
+Kimi K3 正在證明這件事。
+
+一個中國 lab 開源了史上最大的 frontier 模型，美國的 vLLM、法國的 Inferact、澳洲的 Unsloth 立刻全力投入最佳化。不是因為地緣政治立場，是因為開源生態的運作邏輯就是「誰開源誰就得到全球社群的資源」。
+
+vLLM 的 blog 標題叫 "Efficient Day-0 Support"——不是 Day-1、不是 "coming soon"、是模型權重公開的同一天就能跑。這種配合速度本身就是生態系統成熟度的指標。
+
+**封鎖開源不會保護領先地位，只會把全球開發者推向願意開源的那一方。25 家公司的倡議書在講道理，Kimi K3 的生態爆發在講事實。**
+
+### Moonshot AI 的開源飛輪
 
 回頭看這五個月的演進，Moonshot AI 的策略越來越清晰：
 
 **K2.5（2026/02）：** 用極致性價比打開市場。$0.60/M tokens + Agent Swarm，讓開發者願意試用。OpenClaw 社群的大量採用驗證了這個策略。
 
-**K3（2026/07）：** 用 frontier 級能力建立技術壁壘。2.8T 參數、KDA、原生 MXFP4——這些不是簡單地把模型變大，是在架構層面做了根本性的創新。
-
-而 vLLM 的 Day-0 支援 + Inferact 的 DSpark 投機解碼，則代表了開源生態系統的另一個重要訊號：**最重要的 frontier 模型不只是要開源權重，還需要整個推理基礎設施一起到位。**
-
-vLLM 的 blog 標題叫 "Efficient Day-0 Support"——不是 Day-1、不是 "coming soon"、是模型權重公開的同一天就能跑。這種配合速度本身就是生態系統成熟度的指標。
+**K3（2026/07）：** 用 frontier 級能力建立技術壁壘。2.8T 參數、KDA、原生 MXFP4——這些不是簡單地把模型變大，是在架構層面做了根本性的創新。而全球開源生態的即時跟進，讓 K3 的影響力遠超 Moonshot AI 自身能觸及的範圍。
 
 ---
 
@@ -267,3 +289,5 @@ K3 的測試計畫不太一樣——我更關心的是 **inference infrastructur
 7. [Kimi K3 benchmarks, pricing, and self-hosting — Northflank](https://northflank.com/blog/what-is-kimi-k3-self-hosting)
 8. [Kimi K2.5 深度技術評估 — AI Coding Blog](https://ai-coding.wiselychen.com/kimi-k2.5-agent-swarm-deep-dive-technical-assessment/)
 9. [Unsloth Kimi K3 量化方案（含 1-bit）](https://unsloth.ai/docs/models/kimi-k3)
+10. [開源模型是 AI 新時代的偉大航道：老黃的公開信與 25 家機構連署](https://ai-coding.wiselychen.com/open-weights-new-era-nvidia-letter-liang-wenfeng/)
+11. [Gemma 4 加速 3x：MTP Drafter 投機解碼分析](https://ai-coding.wiselychen.com/gemma4-mtp-drafter-speculative-decoding-open-source/)
