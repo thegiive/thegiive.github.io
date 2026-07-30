@@ -83,9 +83,9 @@ vLLM 在 Kimi K3 權重公開的同一天（7/27）就推出完整支援。這�
 
 111-118 tok/s 已經是一個可用的速度了。作為對比，Kimi K3 官方 API 的 output speed 大約是 62 tok/s。自部署跑得比官方 API 還快。
 
-### 加上 DSpark 投機解碼
+### 加上 DSpark（MTP 投機解碼）
 
-| 配置 | 無 DSpark | 有 DSpark | 加速倍率 |
+| 配置 | 無 MTP | 有 MTP (DSpark) | 加速倍率 |
 |------|-----------|-----------|---------|
 | TP8 | 111 tok/s | 331 tok/s | 2.98× |
 | TP16 | 118 tok/s | 370 tok/s | 3.14× |
@@ -217,7 +217,7 @@ vLLM 的 blog 標題叫 "Efficient Day-0 Support"——不是 Day-1、不是 "co
 
 ## 開源生態全面跟進：Unsloth 1-bit 量化把門檻再砍一半
 
-vLLM + DSpark 是「高端自部署」的故事——16 張 GB300 跑 464 tok/s。但同一時間，Unsloth 也推出了 Kimi K3 的全系列量化版本，包括 1-bit 量化。
+vLLM + MTP（DSpark）是「高端自部署」的故事——16 張 GB300 跑 464 tok/s。但同一時間，Unsloth 也推出了 Kimi K3 的全系列量化版本，包括 1-bit 量化。
 
 這代表的訊號很清楚：**所有主要開源推理基礎設施 lab 都在以 Kimi K3 為基礎，努力降低 serving 門檻。**
 
@@ -239,7 +239,7 @@ Unsloth 的量化方案：
 **594 GB 可以塞進單台機器。** Unsloth 官方確認 Kimi K3 可以跑在 NVIDIA DGX Station 或 Mac Studio + 128GB RAM 的組合上（透過 RAM offloading）。2.8T 參數的 frontier 模型跑在一台機器上——這在半年前完全不可想像。
 
 **形成完整的部署光譜。** 從高端到低端：
-- **極速推理：** vLLM + DSpark + 16×GB300 → 464 tok/s
+- **極速推理：** vLLM + MTP (DSpark) + 16×GB300 → 464 tok/s
 - **生產部署：** vLLM + 8×GB300 → 111 tok/s
 - **成本優化：** Unsloth 2-bit + DGX Station → ~20 tok/s
 - **開發測試：** Unsloth 1-bit + Mac Studio → 可跑但慢
@@ -252,9 +252,9 @@ Unsloth 的量化方案：
 
 如果你在評估自部署 frontier 模型：
 
-1. **464 tok/s 是真的** — 但前提是 16 張 GB300 + DSpark + 低熵任務。日常混合任務更實際的期望值是 330-370 tok/s，這仍然非常快。
+1. **464 tok/s 是真的** — 但前提是 16 張 GB300 + MTP 投機解碼 + 低熵任務。日常混合任務更實際的期望值是 330-370 tok/s，這仍然非常快。
 
-2. **DSpark 投機解碼是必開的** — 3-4 倍的加速，幾乎沒有品質損失。4B 的 draft 模型相對於 2.8T 的目標模型幾乎不佔額外資源。
+2. **MTP 投機解碼是必開的** — 3-4 倍的加速，幾乎沒有品質損失。4B 的 draft 模型相對於 2.8T 的目標模型幾乎不佔額外資源。
 
 3. **MXFP4 原生量化是關鍵** — K3 不是「事後壓縮」，而是訓練時就在 4-bit 精度下優化過的。這讓 2.8T 模型的記憶體需求降到 1.4 TB，用 16 張高端 GPU 就能跑。
 
@@ -270,7 +270,7 @@ Unsloth 的量化方案：
 
 K3 的測試計畫不太一樣——我更關心的是 **inference infrastructure** 的故事：
 
-1. **vLLM + DSpark 實際部署體驗** — 用 Docker image 在 RTX Pro 6000 上試跑（雖然 GPU 數不夠跑完整模型，但可以測 pipeline）
+1. **vLLM + MTP (DSpark) 實際部署體驗** — 用 Docker image 在 RTX Pro 6000 上試跑（雖然 GPU 數不夠跑完整模型，但可以測 pipeline）
 2. **KDA 在長 context 場景的真實加速** — 拿實際的 RAG 場景測 1M context 下的 latency 差異
 3. **K3 vs K2.5 的 Agent 任務品質對比** — 同一組 Agent Swarm 任務，看 104B active 相對於 32B active 的品質提升值不值得 5 倍的成本
 
