@@ -101,6 +101,13 @@ cache 存得久，hit rate 就高。但 hit rate 高一點，到底差多少錢�
 | 2026-04 | V4 提出 CSA + HCA | KV cache 壓到 V3.2 的 7% |
 | 2026-07 | V4 Flash 0731 正式版 | cache 價差拉到 50 倍 |
 
+> **附註：這三個縮寫在做什麼**
+> - **MLA**（Multi-head Latent Attention，V2 提出）：用低秩投影讓多個 attention head 共用同一個 latent 空間，壓的是「每個 token 的 KV 表徵」——縱向砍 head 維度，KV cache 直接降 93.3%。
+> - **CSA**（Compressed Sparse Attention，V4 提出）：負責「抓重點」。先把 100 萬 token 的 KV 壓成 25 萬條，再從中挑出最有用的一小部分算 full attention——橫向砍 token 數量，保住局部精度。
+> - **HCA**（Heavily Compressed Attention，V4 提出）：負責「看全域」。把 100 萬 token 直接壓成 7,800 條（0.78%）的低解析度全域通道，讓模型永遠隱約知道整篇在講什麼。
+>
+> 這三個機制的完整拆解（設計思路、跟 NSA/DSA 的傳承關係），在我四月寫的 [DeepSeek V4 把百萬 Token 上下文打到傳統 2% 成本](https://ai-coding.wiselychen.com/deepseek-v4-million-token-csa-hca-attention/)。
+
 順序很重要：**先有 MLA 把 KV 壓小 93%，三個月後才有 disk cache。** 這不是巧合。KV cache 越小，落盤的儲存成本越低、從硬碟載回來的 I/O 越少，disk cache 的經濟學才成立。到了 V4，[CSA + HCA 把 KV cache 再壓到 V3.2 的 7%](https://ai-coding.wiselychen.com/deepseek-v4-million-token-csa-hca-attention/)——每 token 要搬的資料量小到一個量級以下，DeepSeek 才敢把 hit 價格開到 $0.0028 這種接近純儲存成本的數字。
 
 我四月寫 V4 架構那篇的時候，關注的是「百萬 token 怎麼做到保真」。現在看，同一套壓縮還有第二個作用：**它是這次 50 倍定價的前提。**
