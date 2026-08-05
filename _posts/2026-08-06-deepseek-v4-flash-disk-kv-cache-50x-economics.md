@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "DeepSeek V4 Flash 為何那麼強：KV Cache 壓小 93%、落進硬碟、再開出 50 倍價差"
+title: "DeepSeek V4 Flash 0731 為何那麼強：這是一個超過兩年以上的架構革命"
 date: 2026-08-06 09:00:00 +0800
 permalink: /deepseek-v4-flash-disk-kv-cache-50x-economics/
 description: "DeepSeek V4 Flash 0731 上線後，Artificial Analysis 的性價比散點圖上出現一條被中文科技圈叫做「斬殺線」的線：智力分數 49.9、每任務成本 $0.027，比它貴又比它笨的模型全部落進「斬殺區」。這篇拆 V4 Flash 為何站得上這個位置：disk KV cache 落進分散式硬碟陣列、cache hit 價格只剩 miss 的 2%（$0.0028 vs $0.14）、hit rate 90% 和 99% 帳單差 4 倍的數學，以及兩年前 MLA 把 KV 壓小 93% 才鋪出來的路。附 qwen-code 的真實反例：token 少 46%、帳單反而三倍。"
@@ -9,7 +9,7 @@ categories: [AI 前沿技術]
 author: Wisely Chen
 ---
 
-# DeepSeek V4 Flash 為何那麼強：KV Cache 壓小 93%、落進硬碟、再開出 50 倍價差
+# DeepSeek V4 Flash 0731 為何那麼強：這是一個超過兩年以上的架構革命
 
 V4 Flash 0731 在 7 月 31 日上線後一週，中文科技圈開始流傳一個詞：「斬殺線」。
 
