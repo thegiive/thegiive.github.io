@@ -134,6 +134,86 @@ TPU 的起源是一個著名的餐巾紙計算。2013 年，Dean 估算：如果
 
 ---
 
+## Jeff Dean 傳說：工程師世界的創世神話
+
+可能還有人不熟悉 Jeff Dean 在程式設計師世界裡的地位。這麼說吧：很多技術大佬擁有履歷，Jeff Dean 擁有一整套以自己為主角的創世神話和迷因傳播。
+
+2007 年愚人節前後，Google 工程師 Kenton Varda 等人創建了「Jeff Dean Facts」——一系列仿 Chuck Norris Facts 格式的工程師笑話，迅速在矽谷內部和開發者社群瘋傳。[Slate](https://slate.com/technology/2013/01/jeff-dean-facts-how-a-google-legend-became-the-chuck-norris-of-the-internet.html) 這些「事實」至今仍在流傳，而且隨著 Dean 的成就越來越誇張，笑話反而越來越像預言。
+
+以下是精選的 Jeff Dean Facts（括號內為白話翻譯）：
+
+1. 編譯器不會警告 Jeff Dean。Jeff Dean 會警告編譯器。
+
+2. Jeff Dean 提交程式碼前也會編譯和執行一遍。主要是為了檢查編譯器和 CPU 有沒有 Bug。
+
+3. Jeff Dean 曾經寫過一個 O(n²) 演算法。那是用來解決旅行商問題的。（旅行商問題是 NP-hard，O(n²) 等於直接破解了計算理論的千禧年難題。）
+
+4. Jeff Dean 對常數時間複雜度仍不滿意，於是發明了世界上第一個 O(1/n) 演算法。（資料越多，跑得越快。）
+
+5. Jeff Dean 的 PIN 碼，是 π 的最後四位。
+
+6. Jeff Dean 的鍵盤上沒有 Ctrl 鍵。因為 Jeff Dean 永遠擁有控制權。
+
+7. Jeff Dean 的鍵盤其實只有兩個鍵：0 和 1。
+
+8. Jeff Dean 寫程式時，會先把二進位機器碼寫完，再補一份原始碼作為文件。
+
+9. 當 Jeff Dean 打開效能分析器時，迴圈會因為恐懼而自行展開。
+
+10. gcc -O4 的工作原理，是把你的程式碼發給 Jeff Dean，讓他重寫一遍。
+
+11. Jeff Dean 不會產生段錯誤。記憶體會主動重新排列，把程式碼和資料放到正確的位置。
+
+12. Jeff Dean 可以用正規表達式解析 HTML。而且是正確地解析。（這在理論上不可能，因為 HTML 不是正規語言。）
+
+13. Jeff Dean 曾經把一個 bit 移得太用力，結果它跑到了另一台電腦上。
+
+14. Jeff Dean 不使用 ECC 記憶體。他會提前預測宇宙射線，並利用它們提高效能。
+
+15. Jeff Dean 發出一個乙太網路封包時，從來不會發生碰撞。其他封包會主動退回各自網卡的緩衝區。
+
+16. Jeff Dean 的程式碼跑得太快，組合語言程式需要連續執行三個 HALT 才能把它停下來。
+
+17. Jeff Dean 不呼叫 sleep()。他呼叫 wait()。（sleep 是被動等待，wait 是主動決定等待——Jeff Dean 不被動。）
+
+18. Jeff Dean 睡不著時，會用 MapReduce 數羊。
+
+19. 2002 年 Google 索引伺服器當機時，Jeff Dean 曾經人工回答了兩個小時的搜尋請求。評測結果顯示，搜尋品質提高了 5 個百分點。
+
+20. Jeff Dean 發明 MapReduce，是為了給粉絲來信排序。
+
+21. Jeff Dean 發明 Bigtable，是因為他的履歷已經無法存進其他資料庫。
+
+22. Jeff Dean 的履歷只記錄他還沒完成的事情。這樣比較短。
+
+23. Google Search 只是 Jeff Dean 為自己真正的專案寫的一個大型單元測試。
+
+24. Google 基本上是 Jeff Dean 的業餘專案。
+
+25. Jeff Dean 曾經參加圖靈測試，但失敗了。因為他在一秒鐘內準確說出了第 203 個費波那契數。（太強反而被判定不是人類。）
+
+26. Jeff Dean 可以在三步之內贏下四子棋。
+
+27. 貝爾發明電話後，發現自己有一個 Jeff Dean 的未接來電。
+
+28. 上帝說：「要有光。」Jeff Dean 當時負責程式碼審查。
+
+29. 真空中的光速原本只有每小時 35 英里。後來 Jeff Dean 花了一個週末優化物理學。
+
+30. Jeff Dean 的程式出現未定義行為時，一隻獨角獸會騎著彩虹出現，給所有人發免費冰淇淋。
+
+31. Jeff Dean 不寫 Bug。他只會實現一些你暫時無法理解的功能。
+
+32. Jeff Dean 為了讓程式碼審查者相信程式碼出自人類之手，有時不得不故意降低效能。
+
+33. Jeff Dean 不存在。他其實是 Jeff Dean 編寫的一個高級人工智慧。
+
+34. 有人問 Jeff Dean，這些傳言究竟是不是真的。他回答：「111111。」對方還在猜這是什麼意思，他補充道：「每一個 bit 都是真的。」（111111 是二進位，6 個 bit 全為 1 = 全部為真。）
+
+2026 年 8 月 Dean 宣布離開 Google 後，工程師社群的即時反應是一波新的 meme，其中流傳最廣的一句是：「Google 終於把他開源了。」[IBTimes](https://www.ibtimes.com/jeff-dean-leaves-google-discovery-loop) 如果你理解這個梗——把一個人「開源」意味著他不再被一家公司獨佔，而是成為整個社群可以使用的資源——你就理解了 Jeff Dean 在這個產業裡的地位。
+
+---
+
 ## 傳奇背後，也有不能跳過的管理爭議
 
 Jeff Dean 在工程師社群裡有近乎神話的地位，但完整的職業生涯不能只寫技術成就。
