@@ -12,7 +12,7 @@ author: Wisely Chen
 
 ![Jeff Dean（圖片來源：[Wikipedia](https://zh.wikipedia.org/zh-tw/%E5%82%91%E5%A4%AB%C2%B7%E8%BF%AA%E6%81%A9)）](/assets/images/jeff-dean-career-tribute-cover.png)
 
-Jeff Dean 在 Google 的 27 年，幾乎就是一部科技產業的轉型史。他參與並推動了三次重大技術轉型，每一次都讓 Google 在該領域取得領先地位：
+Jeff Dean 在 Google 待了整整 27 年——1999 年中加入，大約是公司第 30 號員工。他幾乎從頭到尾參與並主導了 Google 從「搜尋引擎」變成「全球基礎設施 + AI 帝國」的全過程，推動了三次重大技術轉型，每一次都讓 Google 在該領域取得領先地位：
 
 **第一次，解決網際網路搜尋的規模問題。** 1999 年加入時，Google 的搜尋索引系統正面臨成長危機。Dean 參與重建了五代搜尋爬蟲、索引與查詢服務系統，讓處理能力跟上全球網路的指數成長。
 
@@ -62,7 +62,7 @@ Google 的創辦人設計了搜尋引擎的方向；Dean 與那一代基礎設�
 
 當資料大到一台電腦不可能處理，工程師不只要寫資料分析邏輯，還得自己處理資料切分、機器排程、網路通訊與硬體故障。Dean 與 Ghemawat 在 2004 年發表的 MapReduce，把這些複雜工作收進執行系統，讓開發者主要描述 map 與 reduce 兩個步驟，程式就能自動在大量普通機器上平行執行。[MapReduce 原始論文](https://research.google/pubs/mapreduce-simplified-data-processing-on-large-clusters/)
 
-論文發表時，Google 內部已經實作數百個 MapReduce 程式，每天在叢集上執行超過一千個工作。MapReduce 後來啟發 Apache Hadoop 等開源系統，也讓「大數據處理」從少數大型網路公司的內部能力，逐漸變成整個產業可以採用的工程模式。[MapReduce 原始論文](https://research.google/pubs/mapreduce-simplified-data-processing-on-large-clusters/) [Google Research 個人頁](https://research.google/people/jeff/)
+論文發表時，Google 內部已經實作數百個 MapReduce 程式，每天在叢集上執行超過一千個工作。搜尋索引的建立、日誌分析、地圖渲染——Google 最核心的資料處理工作幾乎都在 MapReduce 上跑。它後來啟發 Apache Hadoop 等開源系統，讓「大數據處理」從少數大型網路公司的內部能力，逐漸變成整個產業可以採用的工程模式。[MapReduce 原始論文](https://research.google/pubs/mapreduce-simplified-data-processing-on-large-clusters/) [Google Research 個人頁](https://research.google/people/jeff/)
 
 MapReduce 最重要的地方不只是速度，而是抽象。它沒有讓機器停止故障，而是讓大部分使用者不需要親自處理每一次故障。
 
@@ -72,7 +72,7 @@ MapReduce 最重要的地方不只是速度，而是抽象。它沒有讓機器�
 
 ## Bigtable 與 Spanner：重新定義資料可以放多大、放多遠
 
-Dean 也是 Bigtable 的共同設計者與實作者。這套大型半結構化儲存系統被大量 Google 產品採用，後來成為對外提供的 Cloud Bigtable。依 Dean 的 Google Research 頁面所列數據，Bigtable 在 2023 年的尖峰負載超過每秒 60 億次請求，管理的資料量超過 10 exabytes。[Google Research 個人頁](https://research.google/people/jeff/)
+Dean 也是 Bigtable 的共同設計者與實作者。這套大型半結構化儲存系統支撐了 Google 上百個產品——Search、Analytics、YouTube、Maps 都靠它運作。依 Dean 的 Google Research 頁面所列數據，Bigtable 在 2023 年的尖峰負載超過每秒 60 億次請求，管理的資料量超過 10 exabytes。Bigtable 後來成為對外提供的 Cloud Bigtable，也直接影響了開源社群的 HBase、Cassandra 等 NoSQL 資料庫的設計。[Google Research 個人頁](https://research.google/people/jeff/)
 
 2012 年發表的 Spanner 則把問題推到全球尺度。Spanner 透過 Paxos 與跨資料中心的高精度同步時鐘，在地理分散的資料庫中提供強一致性與交易能力。Dean、Ghemawat 與其他共同作者的論文，後來成為全球分散式資料庫的重要里程碑。[Google Research：Spanner](https://research.google/pubs/spanner-googles-globally-distributed-database/)
 
@@ -86,7 +86,7 @@ Dean 也是 Bigtable 的共同設計者與實作者。這套大型半結構化�
 
 2011 年，Dean 共同創辦 Google Brain。團隊早期打造 DistBelief，讓大型神經網路可以分散到大量機器上訓練。在當時的非專用硬體上，他們曾訓練約 20 億個非嵌入參數的模型；DistBelief 後來被 Google 內部數百個專案使用。[Google Research 個人頁](https://research.google/people/jeff/)
 
-2012 年廣為人知的「貓神經元」研究，也建立在這套系統上。研究團隊讓大型神經網路從未標記的 YouTube 影片影格中自行學習表徵，並觀察到能對人臉、人體與貓臉產生反應的高階特徵。這項研究的作者包括 Quoc Le、Marc'Aurelio Ranzato、Rajat Monga、Dean、Andrew Ng 等人。[Google 官方介紹](https://blog.google/innovation-and-ai/products/using-large-scale-brain-simulations-for/) [原始論文](https://research.google/pubs/building-high-level-features-using-large-scale-unsupervised-learning/)
+2012 年廣為人知的「貓神經元」研究，也建立在這套系統上。研究團隊讓大型神經網路從未標記的 YouTube 影片影格中自行學習表徵，並觀察到能對人臉、人體與貓臉產生反應的高階特徵。這項研究的作者包括 Quoc Le、Marc’Aurelio Ranzato、Rajat Monga、Dean、Andrew Ng 等人。[Google 官方介紹](https://blog.google/innovation-and-ai/products/using-large-scale-brain-simulations-for/) [原始論文](https://research.google/pubs/building-high-level-features-using-large-scale-unsupervised-learning/)
 
 這一步對 Dean 並不是突然改行。神經網路要從小型研究走向實用，首先需要解決的仍是他熟悉的問題：資料如何切分、計算如何分配、模型如何跨機器更新，以及硬體故障時訓練如何繼續。
 
@@ -112,9 +112,11 @@ Dean 的 AI 貢獻並不限於系統軟體。他是兩篇 word2vec 論文的共�
 
 他也參與 2017 年的稀疏混合專家模型研究。這類架構讓模型擁有大量參數，但每次只啟動部分專家，後來成為擴展大型模型的重要技術路線之一。這裡同樣可以看到 Dean 對效率與規模的長期關注。[原始論文](https://arxiv.org/abs/1701.06538)
 
-在硬體方面，Dean 表示自己早期便推動 Google 發展機器學習專用加速器，因為深度學習若要有效率地擴張，需要超越通用處理器。Google 的第一代 TPU 以推論為目標；後續世代則同時支援大型模型的訓練與推論。[Google Research 個人頁](https://research.google/people/jeff/)
+TPU 的起源是一個著名的餐巾紙計算。2013 年，Dean 估算：如果每個 Google 使用者每天用語音辨識三分鐘，現有伺服器數量就得翻倍。這個數字讓他們決定押注專用硬體——針對低精度稠密線性代數優化的定制晶片。Google 在 ISCA 2017 發表的論文顯示，第一代 TPU 的效能功耗比（perf/watt）比當時的 CPU 高出約 80 倍、比 GPU 高出約 30 倍。後續世代則同時支援大型模型的訓練與推論，成為 Google 在 AI 算力上最核心的護城河之一。[Y Combinator](https://x.com/ycombinator/status/2082938685071491219) [ISCA 2017 論文](https://arxiv.org/abs/1704.04760) [Google Research 個人頁](https://research.google/people/jeff/)
 
-他還是 Pathways 的早期設計者與實作者之一。Pathways 的目標是支援大型、多模態與稀疏模型，其系統後來支撐 PaLM 等研究。Dean 也參與 PaLM，並成為 Gemini 計畫的共同領導者之一。[Google Research 個人頁](https://research.google/people/jeff/)
+除了這些大型系統，Dean 與 Ghemawat 還共同設計了 Protocol Buffers——Google 內部最基礎的資料序列化格式，後來開源後成為跨語言、跨平台資料交換的業界標準。2011 年初，兩人又一起寫了 LevelDB，一個類似 Bigtable tablet stack 的輕量鍵值儲存引擎，後來被 Chrome 的 IndexedDB 等場景廣泛採用。[Google Research 個人頁](https://research.google/people/jeff/) [LevelDB GitHub](https://github.com/google/leveldb)
+
+他還是 Pathways 的早期設計者與實作者之一。Pathways 的目標是支援大型、多模態與稀疏模型，其系統後來支撐 PaLM 等研究。Dean 也參與 PaLM，並成為 Gemini 計畫的共同領導者之一。在硬體與 AI 的交叉點上，他還參與了 AlphaChip 相關工作——用機器學習來設計晶片本身，讓 AI 不只跑在晶片上，還能幫忙設計晶片。[Google Research 個人頁](https://research.google/people/jeff/)
 
 需要再釐清另一個常見錯誤：Jeff Dean 並不是 2017 年〈Attention Is All You Need〉的共同作者。Transformer 論文來自 Google 團隊，但八位論文作者中沒有 Dean。把 Google AI 的所有突破都歸到一位領導者名下，反而會抹去真正作者的貢獻。[NeurIPS 原始論文](https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need)
 
