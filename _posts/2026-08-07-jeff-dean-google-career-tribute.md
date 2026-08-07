@@ -12,6 +12,8 @@ author: Wisely Chen
 
 ![Jeff Dean（圖片來源：[Wikipedia](https://zh.wikipedia.org/zh-tw/%E5%82%91%E5%A4%AB%C2%B7%E8%BF%AA%E6%81%A9)）](/assets/images/jeff-dean-career-tribute-cover.png)
 
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:30px 0"><iframe src="https://www.youtube.com/embed/B7BOwEIib_k" style="position:absolute;top:0;left:0;width:100%;height:100%" frameborder="0" allowfullscreen></iframe></div>
+
 Jeff Dean 在 Google 待了整整 27 年——1999 年中加入，大約是公司第 30 號員工。他幾乎從頭到尾參與並主導了 Google 從「搜尋引擎」變成「全球基礎設施 + AI 帝國」的全過程，推動了三次重大技術轉型，每一次都讓 Google 在該領域取得領先地位：
 
 **第一次，解決網際網路搜尋的規模問題。** 1999 年加入時，Google 的搜尋索引系統正面臨成長危機。Dean 參與重建了五代搜尋爬蟲、索引與查詢服務系統，讓處理能力跟上全球網路的指數成長。
