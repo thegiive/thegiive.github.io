@@ -22,6 +22,8 @@ Jeff Dean 在 Google 待了整整 27 年——1999 年中加入，大約是公�
 
 三次轉型，橫跨搜尋、基礎設施、AI，看起來是三個不同的領域。但 Dean 在做的始終是同一件事：在技術即將被規模壓垮時，找到瓶頸，重新設計系統，讓複雜度被基礎設施吸收。
 
+![27 年只做一件事：設計基礎設施來吸收混亂](/assets/images/jeff-dean-slide-03.png)
+
 這背後需要兩種極其罕見的能力同時存在——
 
 **超前於時代的技術品味。** 不是跟著趨勢走，是在趨勢成形之前就做了選擇。2011 年多數人認為神經網路是上一代的過時技術，Dean 啟動了 Google Brain。2004 年的 MapReduce 和 2012 年的 Spanner 定義了產業後來十年的基礎設施範式——產業不是跟上了這些技術，是花了好幾年才追上來。
@@ -29,6 +31,8 @@ Jeff Dean 在 Google 待了整整 27 年——1999 年中加入，大約是公�
 **把願景變成跑在生產環境裡的系統的能力。** 技術品味好的人不少，但多數停在論文、原型、或概念階段。Dean 的每一個判斷，最後都變成了承載數十億使用者的基礎設施：MapReduce 在論文發表前就已經在 Google 內部每天跑超過一千個工作；TensorFlow 成為全球使用最廣泛的深度學習框架；TPU 把推論成本壓到讓 AI 經濟可行。
 
 品味決定做什麼。落地能力決定它是不是真的存在。兩者同時具備的人，在任何時代都極度稀缺。
+
+![品味與落地](/assets/images/jeff-dean-slide-02.png)
 
 2026 年 8 月，Jeff Dean 結束了在 Google 長達 27 年的職業生涯。這篇文章不是在寫他離開的新聞。這是在回顧一個人如何用 27 年，反覆做同一件事——在技術即將被規模壓垮時，重新設計系統，讓原本只有少數專家能處理的複雜度，變成其他工程師可以直接站上去的地板。[Google 官方公告](https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/)
 
@@ -44,6 +48,8 @@ Jeff Dean 1990 年以最高榮譽取得明尼蘇達大學電腦科學與經濟�
 
 從流行病預測、編譯器最佳化到處理器效能，題目看起來很分散，卻已經出現他往後職涯的一貫方向：先找出系統真正的瓶頸，再設法讓它在更大的規模下仍能運作。這是本文根據其工作軌跡所做的歸納，不是 Dean 的公開原話。
 
+![建立直覺：真實世界演練](/assets/images/jeff-dean-slide-04.png)
+
 ---
 
 ## 1999 年加入 Google：先把搜尋救活
@@ -55,6 +61,8 @@ Jeff Dean 在 1999 年中加入成立不久的 Google。2000 年 3 月，Google 
 Dean 後來回顧，自己參與設計與實作五代 Google 搜尋的爬蟲、索引與查詢服務系統，支撐的文件量、每秒查詢量與更新頻率成長了二到三個數量級。他也參與最初的廣告服務系統、AdSense、Google News、搜尋排序實驗系統，以及早期叢集工作排程器。[Google Research 個人頁](https://research.google/people/jeff/)
 
 Google 的創辦人設計了搜尋引擎的方向；Dean 與那一代基礎設施工程師，則把它變成能承受全球網路成長的服務。
+
+![第一次跨越：拯救搜尋引擎](/assets/images/jeff-dean-slide-05.png)
 
 ---
 
@@ -80,6 +88,8 @@ Dean 也是 Bigtable 的共同設計者與實作者。這套大型半結構化�
 
 2012 年，ACM 將 ACM-Infosys Foundation Award——後來更名為 ACM Prize in Computing——共同頒給 Dean 與 Ghemawat，表彰兩人設計與實作 Google 大量核心軟體基礎設施，並推動網際網路規模運算與雲端運算的發展。[ACM 官方新聞稿](https://awards.acm.org/binaries/content/assets/press_releases/infosys-award-2012.pdf)
 
+![第二次跨越：將故障藏在介面之後](/assets/images/jeff-dean-slide-06.png)
+
 ---
 
 ## 從分散式系統轉進神經網路
@@ -91,6 +101,8 @@ Dean 也是 Bigtable 的共同設計者與實作者。這套大型半結構化�
 這一步對 Dean 並不是突然改行。神經網路要從小型研究走向實用，首先需要解決的仍是他熟悉的問題：資料如何切分、計算如何分配、模型如何跨機器更新，以及硬體故障時訓練如何繼續。
 
 AI 看似是新的研究領域，對他而言卻仍然是一個系統規模問題。
+
+![第三次跨越：AI 的突破](/assets/images/jeff-dean-slide-07.png)
 
 ---
 
@@ -104,6 +116,8 @@ TensorFlow 的意義，與 MapReduce 有一種對稱關係。MapReduce 把分散
 
 兩者相隔十多年，解決的其實是同一類問題：如何讓更多人使用原本只有大型研究與工程團隊才有能力駕馭的運算規模。
 
+![對稱的偉大：MapReduce vs TensorFlow](/assets/images/jeff-dean-slide-08.png)
+
 ---
 
 ## 不只 TensorFlow：word2vec、翻譯、蒸餾、稀疏模型與 TPU
@@ -114,11 +128,15 @@ Dean 的 AI 貢獻並不限於系統軟體。他是兩篇 word2vec 論文的共�
 
 TPU 的起源是一個著名的餐巾紙計算。2013 年，Dean 估算：如果每個 Google 使用者每天用語音辨識三分鐘，現有伺服器數量就得翻倍。這個數字讓他們決定押注專用硬體——針對低精度稠密線性代數優化的定制晶片。Google 在 ISCA 2017 發表的論文顯示，第一代 TPU 的效能功耗比（perf/watt）比當時的 CPU 高出約 80 倍、比 GPU 高出約 30 倍。後續世代則同時支援大型模型的訓練與推論，成為 Google 在 AI 算力上最核心的護城河之一。[Y Combinator](https://x.com/ycombinator/status/2082938685071491219) [ISCA 2017 論文](https://arxiv.org/abs/1704.04760) [Google Research 個人頁](https://research.google/people/jeff/)
 
+![軟硬兼施：AI 推論成本](/assets/images/jeff-dean-slide-09.png)
+
 除了這些大型系統，Dean 與 Ghemawat 還共同設計了 Protocol Buffers——Google 內部最基礎的資料序列化格式，後來開源後成為跨語言、跨平台資料交換的業界標準。2011 年初，兩人又一起寫了 LevelDB，一個類似 Bigtable tablet stack 的輕量鍵值儲存引擎，後來被 Chrome 的 IndexedDB 等場景廣泛採用。[Google Research 個人頁](https://research.google/people/jeff/) [LevelDB GitHub](https://github.com/google/leveldb)
 
 他還是 Pathways 的早期設計者與實作者之一。Pathways 的目標是支援大型、多模態與稀疏模型，其系統後來支撐 PaLM 等研究。Dean 也參與 PaLM，並成為 Gemini 計畫的共同領導者之一。在硬體與 AI 的交叉點上，他還參與了 AlphaChip 相關工作——用機器學習來設計晶片本身，讓 AI 不只跑在晶片上，還能幫忙設計晶片。[Google Research 個人頁](https://research.google/people/jeff/)
 
 需要再釐清另一個常見錯誤：Jeff Dean 並不是 2017 年〈Attention Is All You Need〉的共同作者。Transformer 論文來自 Google 團隊，但八位論文作者中沒有 Dean。把 Google AI 的所有突破都歸到一位領導者名下，反而會抹去真正作者的貢獻。[NeurIPS 原始論文](https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need)
+
+![尊重真實的工程史：不將所有突破歸功於一人](/assets/images/jeff-dean-slide-10.png)
 
 ---
 
@@ -224,6 +242,8 @@ Google 執行長 Sundar Pichai 隨後為事件造成的傷害道歉並啟動調�
 
 這件事不會消除 Dean 對分散式系統與 AI 的貢獻；技術成就也不能讓管理責任消失。一位傑出的工程師成為大型組織領導者後，面對的不再只有系統是否正確，還包括誰能發言、研究能否挑戰公司的利益，以及權力如何被使用。
 
+![規模的代價：當管理複雜度超越系統複雜度](/assets/images/jeff-dean-slide-11.png)
+
 ---
 
 ## 下一個要接管的複雜度：研究本身的實驗迴路
@@ -246,11 +266,15 @@ Google 執行長 Sundar Pichai 隨後為事件造成的傷害道歉並啟動調�
 
 對熟悉他生涯的人來說，這個方向並不意外。Dean 做的始終是同一件事：讓原本需要專家手動操作的環節，變成機器可以反覆執行的迴路。差別只在於，過去他自動化的是資料處理、模型訓練、硬體部署——現在他想自動化的，是產生這些技術的研究過程本身。
 
+![下一個要接管的複雜度：科學實驗迴路本身](/assets/images/jeff-dean-slide-12.png)
+
 ---
 
 ## 27 年的句點
 
 Jeff Dean 在 1999 年加入一間仍在解決搜尋索引問題的年輕公司，離開時，Google 已經是橫跨搜尋、雲端、晶片與前沿 AI 的全球企業。這 27 年裡，他的角色也從親手修復搜尋系統的工程師，變成同時影響 Google Research 與 Google DeepMind 的首席科學家。[Google Research 個人頁](https://research.google/people/jeff/) [Google 官方公告](https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/)
+
+![讓複雜度成為他人的地板](/assets/images/jeff-dean-slide-01.png)
 
 若只用一句話總結他的生涯，我不會說他「發明了 Google」，也不會把所有 Google 技術都算在他名下。
 
@@ -263,6 +287,8 @@ Jeff Dean 在 1999 年加入一間仍在解決搜尋索引問題的年輕公司�
 這些系統未必每天出現在一般使用者眼前，卻決定了搜尋能不能更新、資料能不能被處理、模型能不能被訓練，以及一項研究能不能從論文走進產品。
 
 這才是 Jeff Dean 的故事：不是站在舞台中央創造一個爆紅產品，而是在舞台底下，把整座舞台蓋到足以承受下一個時代。
+
+![27 年的句點：在舞台底下，蓋出承受下個時代的地板](/assets/images/jeff-dean-slide-13.png)
 
 ---
 
