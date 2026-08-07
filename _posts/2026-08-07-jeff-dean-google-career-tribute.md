@@ -10,7 +10,7 @@ tags: [Jeff Dean, Google, Google Brain, TensorFlow, MapReduce, 分散式系統]
 author: Wisely Chen
 ---
 
-![Jeff Dean（圖片來源：[Wikipedia](https://zh.wikipedia.org/zh-tw/%E5%82%91%E5%A4%AB%C2%B7%E8%BF%AA%E6%81%A9)）](/assets/images/jeff-dean-career-tribute-cover.png)
+![Jeff Dean（圖片來源：[Wikipedia](https://en.wikipedia.org/wiki/Jeff_Dean)）](/assets/images/jeff-dean-career-tribute-cover.png)
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:30px 0"><iframe src="https://www.youtube.com/embed/B7BOwEIib_k" style="position:absolute;top:0;left:0;width:100%;height:100%" frameborder="0" allowfullscreen></iframe></div>
 
