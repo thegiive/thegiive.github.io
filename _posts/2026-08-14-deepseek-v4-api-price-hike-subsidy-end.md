@@ -11,7 +11,7 @@ description: "DeepSeek 8 月 13 日公告 V4 API 新價格，8 月 16 日生效�
 
 8 月 13 日，DeepSeek 公告 V4 API 新價格表，[8 月 16 日 16:00 UTC 生效](https://qz.com/deepseek-api-price-increase-v4-peak-off-peak-081326)。
 
-這不是突襲。8 月 6 日 DeepSeek 就[在 API 文件頁預告過「significant increase」](https://dataconomy.com/2026/08/06/deepseek-significant-api-price-increase-2026/)，只是沒給數字；創辦人 Jun Song 後來在 X 上補了一句：[就算漲 2 到 10 倍，還是比多數西方對手便宜](https://www.explainx.ai/blog/deepseek-api-price-increase-jun-song-august-2026)。
+這不是突襲。8 月 6 日 DeepSeek 就[在 API 文件頁預告過「significant increase」](https://dataconomy.com/2026/08/06/deepseek-significant-api-price-increase-2026/)，只是沒給數字；網友後來在 X 上整理：[就算漲 2 到 10 倍，還是比多數西方對手便宜](https://www.explainx.ai/blog/deepseek-api-price-increase-jun-song-august-2026)。
 
 數字出來了，落在預告區間的上緣。單位：美元 / 每百萬 token。
 
@@ -73,7 +73,7 @@ description: "DeepSeek 8 月 13 日公告 V4 API 新價格，8 月 16 日生效�
 
 離峰 Flash 仍有 output 優勢（$0.66 對 $1.20），但 input 端 $0.22 對 $0.20 已經打平。
 
-V4-Pro 對 Terra / Sonnet 的性價比還在——峰值 $1.32/$3.96 對 Terra $2/$12，output 仍只有三分之一。Jun Song 說的「漲完還是便宜」在 Pro 這一級成立，在 Flash 這一級已經不成立。
+V4-Pro 對 Terra / Sonnet 的性價比還在——峰值 $1.32/$3.96 對 Terra $2/$12，output 仍只有三分之一。「漲完還是便宜」在 Pro 這一級成立，在 Flash 這一級已經不成立。
 
 依舊便宜，但以前那種「便宜到不用比」的斬殺線不見了。現在需要拿計算機出來算了，這就是變化本身。
 
