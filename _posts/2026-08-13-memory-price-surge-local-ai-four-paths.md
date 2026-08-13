@@ -3,9 +3,13 @@ layout: post
 title: "5090 三個月從 10 萬變 17 萬：五條技術路徑壓低地端 AI 的硬體門檻"
 date: 2026-08-13 09:00:00 +0800
 permalink: /memory-price-surge-local-ai-five-paths/
-image: /assets/images/memory-price-surge-local-ai-cover.png
 description: "五月估的地端推理機約 10 萬台幣，週二再問同配置變 17 萬。RTX 5090 從首發 MSRP $1,999 漲到官方商店 $4,929。同一時間開源模型密集釋出——DeepSeek V4 Flash、Qwen 3.8 Max/27B、MiniMax H3、Meta Muse Glimmer。硬體在漲，但軟體側的武器也在同步增加。這篇整理五條具體的技術路徑：選對模型、KV 落盤、量化壓縮、MoE offload、agent 編排搭配特化小模型。"
+image: images/memory-price-surge-local-ai-cover.png
+categories: [AI 工具實測]
+author: Wisely Chen
 ---
+
+# 5090 三個月從 10 萬變 17 萬：五條技術路徑壓低地端 AI 的硬體門檻
 
 五月我估了一台跑地端推理的機器，大概 10 萬台幣出頭。
 
@@ -27,6 +31,7 @@ description: "五月估的地端推理機約 10 萬台幣，週二再問同配�
 - **8/3** [Qwen3.8-Max](https://dataconomy.com/2026/08/03/qwen3-8-max-ai-model/)——2.4T MoE、95B 激活、首次開源 Max 級權重，[Qwen3.8-27B 排在週五](https://www.latent.space/p/ainews-qwen-38-max24t-and-27b-new)。社群這幾天都在倒數等 27B，結果 Max 先上
 - **8/3** [MiniMax H3](https://www.opensourceforu.com/2026/08/minimax-releases-h3-multimodal-ai/)——33B dense 統一多模態，文字/圖像/影片/音訊一個架構出，2K 影片，宣布數日內開源權重。[第三方已在單張遊戲 GPU 跑出 Seedance 2.0 等級的影片生成](https://xhinker.medium.com/minimax-h3-i-ran-a-seedance-2-0-video-gen-model-in-one-gaming-gpu-68680a12e86c)
 - **8/10** [Meta Muse Glimmer](https://venturebeat.com/technology/meta-returns-to-open-source-with-muse-glimmer-an-apache-2-0-licensed-30b-parameter-ai-model-optimized-for-agents-available-now)——30B、Apache 2.0、agent 最佳化，[4-bit 量化不到 20GB，一張消費卡或 Mac 就能跑](https://www.engadget.com/2233312/metas-open-source-muse-glimmer-model-can-run-on-a-single-computer/)
+- **8/11** [NVIDIA Nemotron 3.5 Lightning](https://www.cnbc.com/2026/08/11/nvidia-releases-nemotron-3point5-lightning-open-source-ai-model-.html)——30B MoE、每 token 只激活 3B、Mamba-2 混合架構，[專為 agent 執行層設計（tool call、分類、摘要），NVFP4 量化約 18GB](https://www.marktechpost.com/2026/08/11/nvidia-ai-releases-nemotron-3-5-lightning-and-nemo-switchyard/)
 
 硬體在漲，軟體側的武器也在同步增加。問題不是「漲了怎麼辦」，是「手上有哪些技術路徑能把硬體門檻壓下來」。
 
@@ -50,6 +55,7 @@ description: "五月估的地端推理機約 10 萬台幣，週二再問同配�
 - **影片生成**：MiniMax H3 是 33B dense，第三方在單卡上跑起來了。不用 A100。
 - **企業級 agentic 任務**：DeepSeek V4 Flash，284B MoE，但激活只有 13B。IQ2 量化 85GB 可以塞進 96GB VRAM 的單卡。我七月[實測過](https://ai-coding.wiselychen.com/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/)，58 tok/s，五題基準跟 Q8 同分。
 - **輕量 agent 雜務**：Muse Glimmer 30B，4-bit 不到 20GB。Mac 就能跑。
+- **Agent 跑腿層**：NVIDIA Nemotron 3.5 Lightning，30B MoE 只激活 3B，Mamba-2 混合架構，NVFP4 量化約 18GB。吞吐量是同級 Qwen 的 4 倍，專門做 tool call、分類、格式化這類 agent 執行步驟。
 
 27B 級的模型 4-bit 量化後 15-20GB。選這個級距，你避開的是整個「為了大模型而生的硬體採購」——不用四條 DDR5（現在一條近 13,000 元）、不用專業卡。省的不是一點錢，是一整個硬體等級。
 
@@ -105,7 +111,9 @@ DDR 自己也在漲，這個套利不是免費的。但 DDR 每 GB 仍然比 GDD
 
 這個做法在記憶體貴的時候特別有意義：你不用同時在 VRAM 裡養一顆 85GB 的模型待命。多數時間在跑 15GB 以下的小模型，偶爾才載入大模型——或者直接把大模型的步驟丟給 API。
 
-Muse Glimmer 30B 的定位正好卡在這裡：Apache 2.0，agent 最佳化，20GB 以下。它不是要取代 V4 Flash 的全部能力，是要扛住「不用 frontier 也能做」的那 80% 任務量。
+之前這個位置多是中國模型，現在美式模型也出來了。NVIDIA 8/11 發的 [Nemotron 3.5 Lightning](https://www.mindstudio.ai/blog/nvidia-nemotron-3-5-lightning) 就是專門為這一層設計的——30B MoE 只激活 3B，Mamba-2 混合架構，吞吐量是同級 Qwen 的 4 倍。SWE-bench Verified 51.56、PinchBench 85.37，不追求 frontier 智力，專門做 agent 的跑腿層。NVFP4 量化約 18GB，一張消費卡就跑。
+
+Muse Glimmer 30B 也卡在這裡：Apache 2.0，agent 最佳化，20GB 以下。它不是要取代 V4 Flash 的全部能力，是要扛住「不用 frontier 也能做」的那 80% 任務量。
 
 ---
 
@@ -140,6 +148,7 @@ Muse Glimmer 30B 的定位正好卡在這裡：Apache 2.0，agent 最佳化，20
 - [Qwen3.8-Max 發布（Dataconomy）](https://dataconomy.com/2026/08/03/qwen3-8-max-ai-model/)
 - [MiniMax H3 發布（Open Source For You）](https://www.opensourceforu.com/2026/08/minimax-releases-h3-multimodal-ai/)
 - [Meta Muse Glimmer 發布（VentureBeat）](https://venturebeat.com/technology/meta-returns-to-open-source-with-muse-glimmer-an-apache-2-0-licensed-30b-parameter-ai-model-optimized-for-agents-available-now)
+- [NVIDIA Nemotron 3.5 Lightning 發布（CNBC）](https://www.cnbc.com/2026/08/11/nvidia-releases-nemotron-3point5-lightning-open-source-ai-model-.html)
 - [Unsloth DeepSeek-V3.1 dynamic quant](https://unsloth.ai/blog/deepseek-v3.1)
 - [llama.cpp MoE offload 指南（Hugging Face blog）](https://huggingface.co/blog/Doctor-Shotgun/llamacpp-moe-offload-guide)
 
