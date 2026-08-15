@@ -108,9 +108,46 @@ model_type 仍然是 `qwen3_5`。64 層 decoder、5120 hidden size、17408 FFN�
 - **第三方 Q4 量化約 17 GiB**：一張 24GB 消費卡就能跑中等 context
 - 唯一要注意的是長 context 的帳：262K 全開時光 full-attention 那 16 層的 KV cache 就要約 16 GiB，24GB 卡跑的是「Q4 + 節制的 context」，不是規格表上的滿血狀態
 
-我自己在 RTX 5090 32GB 上用 llama.cpp 跑了一輪完整測試。配置：UD-Q4_K_XL 量化（17.92 GiB）、Q4_0 KV Cache、Flash Attention、MTP（draft max 2、p-min 0.75）、Thinking 開啟（budget 1,536 tokens）。
+兩天前我才在[記憶體漲價那篇](https://ai-coding.wiselychen.com/memory-price-surge-local-ai-five-paths/)寫「先選模型，才決定買什麼硬體；27B 級距讓你避開整個為大模型而生的硬體採購」，當時 Qwen3.8-27B 權重還沒放出來，只能當期貨寫。現在權重在手，這條路線補上了最關鍵的一塊：**27B 級距第一次有了官方數字上打贏 frontier 模型的選項。**
 
-先講 VRAM 的真實帳：模型服務本身吃約 26 GB，加上背景程序約 29 GB，長 context 運作時剩餘約 3 GB。Q8_0 KV Cache 在長文預填到約 67K tokens 時 OOM，換成 Q4_0 KV 才能完成約 237K token 的全文輸入。**32GB 卡要跑滿 262K context，KV Cache 必須壓到 Q4——Q8 跑不完。**
+但量化有一個舊帳要記得。[Bonsai 27B 那篇的教訓](https://ai-coding.wiselychen.com/bonsai-27b-qwen36-compression-local-inference/)：壓縮損失不均勻，前代 Qwen3.6-27B 壓到 1-bit 時 MATH 500 從 99.4 只掉到 98，TauBench（tool calling）卻從 82.9 掉到 61.3。官方 benchmark 是 BF16/FP8 測的，你在 24GB 卡上跑的 Q4 版折損多少、有沒有剛好折在 agentic 能力上——目前沒有人量過。**拿到量化版之後，先測 tool calling，再決定信多少。**
+
+---
+
+## 實測報告：RTX 5090 32GB 跑 Qwen3.8-27B
+
+### 硬體與模型配置
+
+| 項目 | 設定 |
+|------|------|
+| GPU | NVIDIA RTX 5090 32 GB |
+| 模型 | Qwen3.8-27B UD-Q4_K_XL |
+| 模型大小 | 17.92 GB |
+| Context 上限 | 262,144 tokens |
+| 實際最長輸入 | 約 237,100 tokens |
+| KV Cache | Q4_0（K／V） |
+| Flash Attention | 開啟 |
+| MTP | 開啟，draft max 2、p-min 0.75 |
+| Parallel | 1 |
+| CPU threads | 8 |
+| Thinking | 開啟 |
+| Thinking budget | 1,536 tokens |
+| Answer 上限 | 4,096 tokens |
+| Temperature | 0 |
+| Prompt cache | 開啟 |
+| 視覺投影 | 未載入；本次為純文字測試 |
+
+### VRAM 實際佔用
+
+- 模型服務：約 26 GB
+- 包含背景程序後：約 29 GB
+- 長 context 運作時剩餘：約 3 GB
+- **Q8_0 KV：長文預填約到 67K tokens 時 OOM**
+- **Q4_0 KV：可完成約 237K token 全文輸入**
+
+32GB 卡要跑滿 262K context，KV Cache 必須壓到 Q4——Q8 跑不完。
+
+### 生成速度
 
 | 情境 | 生成速度 |
 |------|---------|
@@ -120,9 +157,55 @@ model_type 仍然是 `qwen3_5`。64 層 decoder、5120 hidden size、17408 FFN�
 | 237K context（接近滿載） | 49–55 tok/s |
 | MTP 關閉基準 | ~72 tok/s |
 
-237K 首次 prompt 預填約 238 秒，prompt cache 命中後約 12–83 秒／題，全部題目平均總時間約 20 秒。Thinking 對生成速度的影響不算大（106.7 vs 112.8），主要成本來自額外的思考 tokens。Context 超過 200K 後，attention 計算才是主要瓶頸——從 100+ tok/s 掉到 49–55 tok/s。
+- 237K 首次 prompt 預填約 238 秒
+- Prompt cache 命中後約 12–83 秒／題
+- 全部題目平均總時間約 20 秒
+
+Thinking 對生成速度的影響不算大（106.7 vs 112.8），主要成本來自額外的思考 tokens。Context 超過 200K 後，attention 計算才是主要瓶頸——從 100+ tok/s 掉到 49–55 tok/s。
 
 上個月同一台機器跑 GLM 5.2 offload 是十幾 tok/s 的煎熬，27B dense 在日常 context 跑 100+ tok/s——即時對話、長文摘要、高頻推論都沒問題，互動式 agent 完全可以用。
+
+### 啟動參數
+
+伺服器端（llama.cpp）：
+
+```bash
+llama-server \
+  -m Qwen3.8-27B-UD-Q4_K_XL.gguf \
+  -ngl 99 \
+  --flash-attn on \
+  --cache-type-k q4_0 \
+  --cache-type-v q4_0 \
+  --ctx-size 262144 \
+  --spec-type draft-mtp \
+  --spec-draft-p-min 0.75 \
+  --spec-draft-n-max 2 \
+  --parallel 1 \
+  --reasoning on \
+  --reasoning-format deepseek \
+  --reasoning-budget 1536 \
+  --host 0.0.0.0 \
+  --port 8001 \
+  -t 8
+```
+
+API 參數：
+
+```json
+{
+  "temperature": 0,
+  "max_tokens": 4096,
+  "cache_prompt": true,
+  "reasoning_effort": "medium",
+  "chat_template_kwargs": {
+    "enable_thinking": true
+  }
+}
+```
+
+真正限制思考長度的是伺服器端的 `--reasoning-budget 1536`；單獨設定 `reasoning_effort` 不足以避免 Thinking 用盡輸出額度。
+
+### RTX 5090 vs DGX Spark
 
 社群在 DGX Spark 上跑同一顆模型的數字也出來了，放在一起看差距很直觀：
 
@@ -136,10 +219,6 @@ model_type 仍然是 `qwen3_5`。64 層 decoder、5120 hidden size、17408 FFN�
 | DGX Spark | 256K context | ~19 tok/s | [ivanfioravanti](https://x.com/ivanfioravanti/status/2071094289841438866) |
 
 同一顆模型、同一個推理引擎，5090 對 Spark 是 206 對 38——差 5.4 倍。原因不是算力，是記憶體頻寬：5090 的 GDDR7 約 1,792 GB/s，Spark 的 LPDDR5X 約 273 GB/s。Dense 模型每生成一個 token 要把全部權重讀一遍，頻寬不夠就是慢。MoE 每 token 只讀一小部分專家權重，統一記憶體的低頻寬還撐得住；dense 27B 剛好塞得進獨顯 VRAM，Spark 的大容量優勢用不上，只剩頻寬劣勢。**27B dense 選獨顯，大 MoE 才選統一記憶體——選硬體要看模型架構，不是看參數量。**
-
-兩天前我才在[記憶體漲價那篇](https://ai-coding.wiselychen.com/memory-price-surge-local-ai-five-paths/)寫「先選模型，才決定買什麼硬體；27B 級距讓你避開整個為大模型而生的硬體採購」，當時 Qwen3.8-27B 權重還沒放出來，只能當期貨寫。現在權重在手，這條路線補上了最關鍵的一塊：**27B 級距第一次有了官方數字上打贏 frontier 模型的選項。**
-
-但量化有一個舊帳要記得。[Bonsai 27B 那篇的教訓](https://ai-coding.wiselychen.com/bonsai-27b-qwen36-compression-local-inference/)：壓縮損失不均勻，前代 Qwen3.6-27B 壓到 1-bit 時 MATH 500 從 99.4 只掉到 98，TauBench（tool calling）卻從 82.9 掉到 61.3。官方 benchmark 是 BF16/FP8 測的，你在 24GB 卡上跑的 Q4 版折損多少、有沒有剛好折在 agentic 能力上——目前沒有人量過。**拿到量化版之後，先測 tool calling，再決定信多少。**
 
 ---
 
