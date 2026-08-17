@@ -73,7 +73,7 @@ KV cache 決定 context 能開多長。Qwen3.8-27B 的 hybrid architecture（64 
 
 ## RTX 3090 24GB：可用
 
-Q4 權重完整放進 24GB VRAM，二手市場最有性價比。
+Q4 + llama.cpp + MTP，25–57 tok/s，最佳化 stack 宣稱 82。二手市場最便宜的實用起點。
 
 社群實測：
 
@@ -90,7 +90,7 @@ Q4 權重完整放進 24GB VRAM，二手市場最有性價比。
 
 ## RTX 4090 24GB：單人順暢
 
-單人 coding agent、tool calling、RAG 或低併發 API，4090 是速度與軟體成熟度最平衡的配置。[24GB VRAM + 4-bit 是比較實際的單卡條件](https://x.com/ram4_dev/status/2088380537693941817)。
+Q4 + llama.cpp + MTP，45–97 tok/s。單人 coding agent、tool calling、RAG 或低併發 API，4090 是速度與軟體成熟度最平衡的配置。[24GB VRAM + 4-bit 是比較實際的單卡條件](https://x.com/ram4_dev/status/2088380537693941817)。
 
 一組[完整參數實測](https://x.com/outsource_/status/2088743407543812436)用 `UD-Q4_K_XL`、全層 GPU offload、Flash Attention、MTP：[未開 speculative decoding 約 44.9 tok/s；開 MTP 後 32K context 一般工作負載約 86.5 tok/s，coding 峰值約 97.3 tok/s（8K context、draft KV 改 q8_0）](https://x.com/outsource_/status/2088743329760469374)。
 
@@ -117,7 +117,7 @@ llama-server \
 
 ## RTX 5090 32GB：可以四人
 
-多出的 8GB 最實用的價值不是更高精度，是 context headroom。
+Q4 或 NVFP4，單人 74–153 tok/s，本站四人每人 106 tok/s。多出的 8GB 最實用的價值不是更高精度，是 context headroom。
 
 ### 社群數字
 
@@ -230,7 +230,7 @@ vllm serve RadixArk/Qwen3.8-27B-NVFP4 \
 
 ## RTX PRO 6000 96GB：16 人以上，可以當公司 AI Coding Server
 
-96GB VRAM 最獨特的能力：BF16 權重約 51.76 GiB，單張 PRO 6000 放得下，不需要量化。[FP8 實測單人約 23 tok/s（262K context、vLLM 0.27.1）](https://huggingface.co/Qwen/Qwen3.8-27B-FP8/discussions/9)，MTP-2 可推至約 62 tok/s。[SGLang 跑 FP16 decode 甚至比 vLLM FP8 + MTP 還快](https://x.com/OrganicGPT/status/2088704873973879065)，但原帖沒有給確切數字。
+BF16／NVFP4／FP8，BF16 約 23 tok/s，NVFP4 45–223 tok/s，條件差異大。96GB VRAM 最獨特的能力：BF16 權重約 51.76 GiB，單張 PRO 6000 放得下，不需要量化。[FP8 實測單人約 23 tok/s（262K context、vLLM 0.27.1）](https://huggingface.co/Qwen/Qwen3.8-27B-FP8/discussions/9)，MTP-2 可推至約 62 tok/s。[SGLang 跑 FP16 decode 甚至比 vLLM FP8 + MTP 還快](https://x.com/OrganicGPT/status/2088704873973879065)，但原帖沒有給確切數字。
 
 高併發才是 PRO 6000 真正拉開差距的地方。[LLM 高併發測試：16 路每路約 30 tok/s、總計約 480；32 路總計約 720；64 路總計約 1,171 tok/s](https://x.com/Wbackdown/status/2089129248737124590)。這是消費卡做不到的——RTX 5090 四人已經是極限，PRO 6000 可以推到 64 路。
 
@@ -242,7 +242,7 @@ vllm serve RadixArk/Qwen3.8-27B-NVFP4 \
 
 ## DGX Spark：絕對可用，只是沒有用到統一記憶體全部優勢
 
-DGX Spark 跑 Qwen3.8-27B 的早期 baseline：[llama.cpp + unsloth GGUF，prompt processing 約 837 tok/s、generation 約 11.6 tok/s](https://x.com/SaiyamPathak/status/2088305881159184552)；[跨硬體比較約 12.6 tok/s](https://x.com/mertcobanov/status/2088915144646545545)。
+NVFP4／Q4，baseline 8–13 tok/s，調校後 22–75 tok/s。DGX Spark 跑 Qwen3.8-27B 的早期 baseline：[llama.cpp + unsloth GGUF，prompt processing 約 837 tok/s、generation 約 11.6 tok/s](https://x.com/SaiyamPathak/status/2088305881159184552)；[跨硬體比較約 12.6 tok/s](https://x.com/mertcobanov/status/2088915144646545545)。
 
 但 8/17 的新結果證明這不是固定上限。[七配置比較從 vLLM + NVFP4 的 11.2 tok/s，調到 SGLang cookbook 單流 21.6、10 streams aggregate 158 tok/s](https://x.com/Luc_Gibson/status/2089091152255373648)；[0xBakeer 花了一個週末從 stock FP8 的 7.88 一路調到單流 75、16 streams aggregate 256 tok/s](https://x.com/0xBakeer/status/2089092964404601310)，過程拆得很細：
 
@@ -264,7 +264,7 @@ DGX Spark 跑 Qwen3.8-27B 的早期 baseline：[llama.cpp + unsloth GGUF，promp
 
 ## Mac：48GB 以上絕對可用
 
-Apple Silicon 的優點很明確：安靜、省電、統一記憶體大、部署方便。缺點也很明確：Qwen3.8-27B 是 dense model，每個 token 都要讀取大部分權重，decode 吃記憶體頻寬。[社群早在發布當天就提醒：unified memory 機器要的是 MoE，dense 模型塞得下但會很慢](https://x.com/TheAhmadOsman/status/2088348410193600527)；[也有 Mac 使用者回報 dense 跑不好、MoE 表現好得多，連 MTP 都沒幫上忙](https://x.com/goinggodotnet/status/2088661342903251141)。
+24–36GB Q4 約 6–18 tok/s；64–128GB Q6／8-bit 約 10–27 tok/s，MTP 解鎖後 47–56 tok/s。Apple Silicon 的優點很明確：安靜、省電、統一記憶體大、部署方便。缺點也很明確：Qwen3.8-27B 是 dense model，每個 token 都要讀取大部分權重，decode 吃記憶體頻寬。[社群早在發布當天就提醒：unified memory 機器要的是 MoE，dense 模型塞得下但會很慢](https://x.com/TheAhmadOsman/status/2088348410193600527)；[也有 Mac 使用者回報 dense 跑不好、MoE 表現好得多，連 MTP 都沒幫上忙](https://x.com/goinggodotnet/status/2088661342903251141)。
 
 社群實測：
 
