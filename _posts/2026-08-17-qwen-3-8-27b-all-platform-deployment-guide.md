@@ -1,29 +1,23 @@
 ---
 layout: post
-title: "Qwen3.8-27B 社群實測整理：六種硬體、39 條 X 貼文，跑出來的不是同一種產品"
+title: "Qwen3.8-27B 社群實測整理：六種硬體、300+ 條 X 貼文，跑出來的不是同一種產品"
 date: 2026-08-17 09:00:00 +0800
 permalink: /qwen-3-8-27b-all-platform-deployment-guide/
-description: "Qwen3.8-27B 發布 48 小時，X 上炸出一波實測。我把 39 條貼文攤開，按 RTX 3090、4090、5090、RTX PRO 6000、DGX Spark、Mac 六條路線整理社群數字，加上本站 RTX 5090 的 SGLang／vLLM／llama.cpp 實測。結論：24GB NVIDIA + Q4 + MTP + 32K 是消費級甜蜜點，但每條路線解的其實是不同問題。"
+description: "這兩天 X timeline 被 Qwen3.8-27B 洗版，同一個模型數字從 6 到 400 tok/s 都有人喊。我跟 AI 把 300+ 條貼文拆開，按 RTX 3090、4090、5090、RTX PRO 6000、DGX Spark、Mac 六條路線整理社群數字，加上本站 RTX 5090 的 SGLang／vLLM／llama.cpp 實測。48 小時內沒有一個原廠工程師，社群自己把六種硬體的 serving stack 全部摸過一遍。"
 image: /assets/images/qwen-3-8-27b-deployment-guide-cover.png
 categories: [AI 技術實作]
 author: Wisely Chen
 ---
 
-# Qwen3.8-27B 社群實測整理：六種硬體、39 條 X 貼文，跑出來的不是同一種產品
+# Qwen3.8-27B 社群實測整理：六種硬體、300+ 條 X 貼文，跑出來的不是同一種產品
 
-Qwen3.8-27B 放出權重不到 48 小時，X 上就炸開了。
+這兩天我的 X timeline 被 Qwen3.8-27B 洗版。每個人都在曬自己的 tok/s，問題是——同一個模型，數字從 6 到 400 都有人喊。
 
-每個人都在跑自己手上的卡，數字從 5 tok/s 到 223 tok/s 都有人喊。問題是——這些數字的量化版本不同、context 不同、runtime 不同、MTP 開關不同、甚至有人功耗被靜默限制在 210W 都不知道。直接拿來排行毫無意義。
+我決定做一個想想就很吃力不討好的事情：用我跟 AI 一起把 300+ 條 X 貼文一條一條拆開，對照硬體、量化、context、引擎版本、MTP 設定，整理成六條部署路線。再加上本站 RTX 5090 用 SGLang、vLLM、llama.cpp 三套引擎跑的實測數字。
 
-我這兩天做的事情比較無聊：把 39 條 X 貼文一條一條拆開，對照硬體、量化、context、引擎版本、MTP 設定，整理成六條部署路線。再加上本站 RTX 5090 用 SGLang、vLLM、llama.cpp 三套引擎跑的實測數字。
-
-最後得到的結論很簡單：
-
-> **消費級甜蜜點是 24GB NVIDIA GPU + Q4 + MTP + 32K context。不是任何 laptop，不是任何有大記憶體的機器。**
+只有一句話，太可怕的社群力量了。
 
 先看總表，再往下挑你的硬體。
-
-> 本文數字初次整理於 2026-08-16，並於 2026-08-17 追蹤補充發布後 24 小時內的新實測。除了文中特別標示的本站 RTX 5090 測試，其餘為 X 使用者自行回報。量化格式、引擎版本、context、thinking、MTP 與 workload 不一致，請把它們當成部署區間，不是同條件排行榜。
 
 ---
 
@@ -77,7 +71,7 @@ KV cache 決定 context 能開多長。Qwen3.8-27B 的 hybrid architecture（64 
 
 ---
 
-## RTX 3090 24GB：最低成本實用起點
+## RTX 3090 24GB：可用
 
 Q4 權重完整放進 24GB VRAM，二手市場最有性價比。
 
@@ -94,7 +88,7 @@ Q4 權重完整放進 24GB VRAM，二手市場最有性價比。
 
 ---
 
-## RTX 4090 24GB：單人 Agent 的甜蜜點
+## RTX 4090 24GB：單人順暢
 
 單人 coding agent、tool calling、RAG 或低併發 API，4090 是速度與軟體成熟度最平衡的配置。[24GB VRAM + 4-bit 是比較實際的單卡條件](https://x.com/ram4_dev/status/2088380537693941817)。
 
@@ -121,7 +115,7 @@ llama-server \
 
 ---
 
-## RTX 5090 32GB：高速單機，或四人 model server
+## RTX 5090 32GB：可以四人
 
 多出的 8GB 最實用的價值不是更高精度，是 context headroom。
 
@@ -234,7 +228,7 @@ vllm serve RadixArk/Qwen3.8-27B-NVFP4 \
 
 ---
 
-## RTX PRO 6000 96GB：Production 級，也是唯一能跑無損 BF16 的單卡
+## RTX PRO 6000 96GB：16 人以上，可以當公司 AI Coding Server
 
 96GB VRAM 最獨特的能力：BF16 權重約 51.76 GiB，單張 PRO 6000 放得下，不需要量化。[FP8 實測單人約 23 tok/s（262K context、vLLM 0.27.1）](https://huggingface.co/Qwen/Qwen3.8-27B-FP8/discussions/9)，MTP-2 可推至約 62 tok/s。[SGLang 跑 FP16 decode 甚至比 vLLM FP8 + MTP 還快](https://x.com/OrganicGPT/status/2088704873973879065)，但原帖沒有給確切數字。
 
@@ -246,7 +240,7 @@ vllm serve RadixArk/Qwen3.8-27B-NVFP4 \
 
 ---
 
-## DGX Spark：128GB 不等於快
+## DGX Spark：絕對可用，只是沒有用到統一記憶體全部優勢
 
 DGX Spark 跑 Qwen3.8-27B 的早期 baseline：[llama.cpp + unsloth GGUF，prompt processing 約 837 tok/s、generation 約 11.6 tok/s](https://x.com/SaiyamPathak/status/2088305881159184552)；[跨硬體比較約 12.6 tok/s](https://x.com/mertcobanov/status/2088915144646545545)。
 
@@ -268,7 +262,7 @@ DGX Spark 跑 Qwen3.8-27B 的早期 baseline：[llama.cpp + unsloth GGUF，promp
 
 ---
 
-## Mac：安靜省電，Dense 27B 就是慢
+## Mac：48GB 以上絕對可用
 
 Apple Silicon 的優點很明確：安靜、省電、統一記憶體大、部署方便。缺點也很明確：Qwen3.8-27B 是 dense model，每個 token 都要讀取大部分權重，decode 吃記憶體頻寬。[社群早在發布當天就提醒：unified memory 機器要的是 MoE，dense 模型塞得下但會很慢](https://x.com/TheAhmadOsman/status/2088348410193600527)；[也有 Mac 使用者回報 dense 跑不好、MoE 表現好得多，連 MTP 都沒幫上忙](https://x.com/goinggodotnet/status/2088661342903251141)。
 
@@ -414,19 +408,11 @@ Qwen3.8-27B 的賣點是 agentic workflow。部署驗收要測 agent，不是問
 
 ## 結語
 
-Qwen3.8-27B 最有意思的地方，是它在 RTX 3090／4090 這個 24GB 級距已經跨過「真的可以每天工作」的門檻。
+我跟 AI 將看到的 X 貼文整理成這張表。我加 AI 也不可能看過所有網友實測，我將看到的放在這裡，應該會逐步更新（不保證時效）。
 
-3090 買的是性價比，4090 買的是成熟的單人 Agent 體驗，5090 把日常 context 推到 100 tok/s 以上而且同一張卡能變四人 model server，RTX PRO 6000 解的是 96GB VRAM、長 context 與 production serving。Mac 用安靜、省電和統一記憶體交換 decode 速度；DGX Spark 的價值取決於你能不能把 SGLang 和 speculative decoding 調好。
+48 小時內，快要 300+ 篇關於自己的實測報告。開源社群把一個開源模型，在六種硬體加上一堆冷門硬體的 serving stack 參數，全部摸過一遍。有人從 7.88 調到 75，有人把 Mac MTP 從不能用調到 56 tok/s。沒有一人是原廠工程師。
 
-部署順序不要反過來：
-
-> **先定 workload，再定 context；先定 context，再定量化；最後才是買硬體和選 runtime。**
-
-不要先買一台看起來很像 AI 的機器，再想辦法替它找 workload。
-
-大概是這樣子。24GB NVIDIA 是目前最不容易後悔的答案；32K 是最誠實的 context 起點；Q4 是品質和容量的平衡；MTP 要開，但一定要用自己的 prompt 驗收。
-
-真正的 deployment guideline 不是替六台機器排一張總榜。是知道每條路線在解什麼問題，以及那個交換是否符合你的 workload。
+開源模型真正的護城河不是權重，是這群人。
 
 ---
 
