@@ -85,6 +85,8 @@ Q4 + llama.cpp + MTP，25–57 tok/s，最佳化 stack 宣稱 82。二手市場�
 
 有趣的一條：一位使用者的 3090 eGPU（OCuLink 外接）被靜默限制在 210W，[解除到 300W 後無 MTP 從 19.7 升到 36.1 tok/s、MTP n=2 約 48.9–49.8 tok/s](https://x.com/Samsara4567B4/status/2088980390325187055)。llama-bench 進入 131K 深度後 decode 約減半。
 
+8/18 更新：[sudoingX 的 MTP A/B benchmark repo](https://github.com/sudoingX/qwen38-mtp) 收集了 20+ 張卡的標準化對照數字。3090 baseline 31.0 → MTP 41.3 tok/s（n-max 2）；3090 Ti 在 128K context 下[拿到 70 tok/s](https://x.com/0xArchitect)；turboquant n-max 6 配置在 3090 上推到 61.5 tok/s。
+
 **llama.cpp commit、MTP、功耗限制和 agent harness 已經跟硬體型號同樣重要。**
 
 ---
@@ -129,6 +131,11 @@ Q4 或 NVFP4，單人 74–153 tok/s，本站四人每人 106 tok/s。多出的 
 | [Docker llama.cpp + Q4 KV + MTP](https://x.com/johnny_ver_2/status/2088836684771180904) | 131K | 約 102 tok/s |
 | [vLLM + NVFP4 + MTP](https://x.com/MiaAI_lab/status/2088919884730106138) | 256K、單 session（structural 數字，非實跑） | 約 147 tok/s |
 | [SGLang + NVFP4 + MTP](https://x.com/calneymgp/status/2088822975550071292) | Triton attention、lm_head NVFP4 | 約 153 tok/s |
+| [llama.cpp Q4 baseline → MTP n-max 4](https://github.com/sudoingX/qwen38-mtp) | desktop，sudoingX A/B repo | 61.4 → 135 |
+| [llama.cpp UD-Q5_K_XL + MTP n-max 4](https://github.com/sudoingX/qwen38-mtp) | desktop | 66.3 → 144.2 |
+| [llama.cpp Q6_K + MTP](https://github.com/sudoingX/qwen38-mtp) | 128K context | 61.9 → 130 |
+| [llama.cpp Q6_K + MTP](https://github.com/sudoingX/qwen38-mtp) | 256K context | 62.0 → 121.7 |
+| [SGLang NVFP4 + DSpark](https://x.com/smugseahorse) | runpod 5090、single slot | 約 140 tok/s |
 
 [同一則貼文下的回覆也提醒，147 tok/s 會隨 workload 與設定變動，應在自己的硬體上重測](https://x.com/KostyaOnchain/status/2088929890678575368)。
 
@@ -233,6 +240,8 @@ vllm serve RadixArk/Qwen3.8-27B-NVFP4 \
 
 BF16／NVFP4／FP8，BF16 約 23 tok/s，NVFP4 45–223 tok/s，條件差異大。96GB VRAM 最獨特的能力：BF16 權重約 51.76 GiB，單張 PRO 6000 放得下，不需要量化。[FP8 實測單人約 23 tok/s（262K context、vLLM 0.27.1）](https://huggingface.co/Qwen/Qwen3.8-27B-FP8/discussions/9)，MTP-2 可推至約 62 tok/s。[SGLang 跑 FP16 decode 甚至比 vLLM FP8 + MTP 還快](https://x.com/OrganicGPT/status/2088704873973879065)，但原帖沒有給確切數字。
 
+8/18 更新：[llama.cpp MTP A/B 測試 baseline 63.8 → MTP 91.5 tok/s](https://github.com/sudoingX/qwen38-mtp)（@commdata2338）；[3 slot concurrency 配置下 peaks 達 500 tg/s](https://x.com/smugseahorse)（@smugseahorse）。
+
 高併發才是 PRO 6000 真正拉開差距的地方。[LLM 高併發測試：16 路每路約 30 tok/s、總計約 480；32 路總計約 720；64 路總計約 1,171 tok/s](https://x.com/Wbackdown/status/2089129248737124590)。這是消費卡做不到的——RTX 5090 四人已經是極限，PRO 6000 可以推到 64 路。
 
 空間充裕，[NVFP4 + SGLang + DSpark、256K context、concurrency 8，單 stream 約 200–223 tok/s](https://x.com/MiaAI_lab/status/2088917237230932186)。但[full precision 實測裡 context 從 10K 增至 60K，速度約下降一半，TTFT 明顯升高](https://x.com/OrganicGPT/status/2088340860110811322)。容量、單流速度和長 context latency 仍然要分開驗收。
@@ -300,9 +309,26 @@ Mac 是你每天工作的主機的話，不要把記憶體全部給模型。36GB
 
 ---
 
+## AMD／Intel 社群數字：RX 7900 XTX、Arc Pro B70、Radeon AI PRO R9700
+
+8/18 更新：[sudoingX 的 MTP A/B benchmark repo](https://github.com/sudoingX/qwen38-mtp) 也收集了非 NVIDIA 硬體的標準化數字。
+
+| 硬體 | Baseline tok/s | MTP tok/s | 增幅 | 備註 |
+|---|---:|---:|---|---|
+| [RX 7900 XTX](https://github.com/sudoingX/qwen38-mtp) | 30.7 | 43.9 | +43% | llama.cpp |
+| [2x RX 9070](https://github.com/sudoingX/qwen38-mtp) | 22.1 | 41.6 | +88% | 雙卡 |
+| [AMD Radeon AI PRO R9700](https://github.com/sudoingX/qwen38-mtp) | — | 43.3 | — | 單筆數據 |
+| [Intel Arc Pro B70](https://github.com/sudoingX/qwen38-mtp) | 33.7 | 86.5 | **+157%** | vLLM，MTP 增幅最大的一張 |
+
+Intel Arc Pro B70 的 +157% MTP 增幅是整張表裡最高的，而且跑的是 vLLM 不是 llama.cpp。AMD 這邊 RX 7900 XTX 的 43.9 tok/s 和 Radeon AI PRO R9700 的 43.3 tok/s 大約在 RTX 3090 MTP 範圍內。雙 RX 9070 的 41.6 有趣但不高——兩張卡不一定比一張快，跨卡通訊有成本。
+
+這些數字樣本量都只有個位數，只能當定位參考，不能當採購依據。
+
+---
+
 ## Qwen3.8-27B MTP Speculative Decoding：最值得開，也最容易被誤讀
 
-MTP 讓模型用自己的 prediction head 先草擬多個 token，再由主模型驗證。RTX 4090 社群數字從約 44.9 拉到 86.5 tok/s；RTX 5090 也有約 74 到 113 的回報。本站 vLLM 測試從 57.83 到 100.33，單人快 73.5%。
+MTP 讓模型用自己的 prediction head 先草擬多個 token，再由主模型驗證。RTX 4090 社群數字從約 44.9 拉到 86.5 tok/s；RTX 5090 也有約 74 到 113 的回報。本站 vLLM 測試從 57.83 到 100.33，單人快 73.5%。[sudoingX 的 MTP A/B benchmark repo](https://github.com/sudoingX/qwen38-mtp) 收集了 20+ 張卡的標準化 baseline vs MTP 對照，是目前最完整的社群資源。
 
 但 MTP 不是固定 2 倍。最明確的反例來自 M4 Mac mini：Q4_K_M、llama.cpp v10360 的 sweep 中，[baseline 5.91 tok/s，最佳 n-max 2／p-min 0.8 只有 6.34；n-max 4／p-min 0.0 反而掉到 3.05](https://x.com/GreenDragonDM/status/2089086455125770437)。
 
