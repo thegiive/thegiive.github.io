@@ -3,9 +3,10 @@ layout: post
 title: "Qwen3.8-27B 實測：RTX 3090／4090／5090／PRO 6000／DGX Spark／Mac tok/s 整理"
 date: 2026-08-17 09:00:00 +0800
 permalink: /qwen-3-8-27b-all-platform-deployment-guide/
-description: "這兩天 X timeline 被 Qwen3.8-27B 洗版，同一個模型數字從 6 到 400 tok/s 都有人喊。我跟 AI 把 300+ 條貼文拆開，按 RTX 3090、4090、5090、RTX PRO 6000、DGX Spark、Mac 六條路線整理社群數字，加上本站 RTX 5090 的 SGLang／vLLM／llama.cpp 實測。48 小時內沒有一個原廠工程師，社群自己把六種硬體的 serving stack 全部摸過一遍。"
+description: "Qwen3.8-27B 社群實測 tok/s 整理：RTX 3090 25–57、RTX 4090 45–97、RTX 5090 74–153、PRO 6000 高併發 1,171、DGX Spark 調校後 75、Mac MTP 解鎖後 56。六種硬體、300+ 條 X 貼文，附啟動參數與來源連結。"
 image: /assets/images/qwen-3-8-27b-deployment-guide-cover.png
 categories: [AI 技術實作]
+tags: [Qwen3.8-27B, RTX 3090, RTX 4090, RTX 5090, RTX PRO 6000, DGX Spark, Apple Silicon, llama.cpp, SGLang, vLLM, MTP, NVFP4, 本地部署, benchmark, tok/s]
 author: Wisely Chen
 ---
 
@@ -21,7 +22,7 @@ author: Wisely Chen
 
 ---
 
-## 總表：六條路線，一張圖
+## Qwen3.8-27B 總表：六種硬體 tok/s 對比
 
 | 硬體 | VRAM／RAM | 建議量化 | Context 起點 | 建議 Runtime | 單人 Decode（tok/s） |
 |---|---:|---|---:|---|---|
@@ -49,7 +50,7 @@ author: Wisely Chen
 
 ---
 
-## 部署之前：三個預算要分開算
+## Qwen3.8-27B 部署前必知：模型權重、KV cache、記憶體頻寬
 
 最常見的錯誤是只看模型檔案大小。
 
@@ -299,7 +300,7 @@ Mac 是你每天工作的主機的話，不要把記憶體全部給模型。36GB
 
 ---
 
-## MTP：最值得開，也最容易被誤讀
+## Qwen3.8-27B MTP Speculative Decoding：最值得開，也最容易被誤讀
 
 MTP 讓模型用自己的 prediction head 先草擬多個 token，再由主模型驗證。RTX 4090 社群數字從約 44.9 拉到 86.5 tok/s；RTX 5090 也有約 74 到 113 的回報。本站 vLLM 測試從 57.83 到 100.33，單人快 73.5%。
 
@@ -316,7 +317,7 @@ MTP 讓模型用自己的 prediction head 先草擬多個 token，再由主模�
 
 ---
 
-## 量化驗收：會聊天不代表 agent 會做事
+## Qwen3.8-27B 量化品質驗收：Q4 vs FP8 agent 實測
 
 Qwen3.8-27B 的賣點是 agentic workflow。部署驗收要測 agent，不是問「台北有什麼景點」。
 
@@ -336,7 +337,7 @@ Qwen3.8-27B 的賣點是 agentic workflow。部署驗收要測 agent，不是問
 
 ---
 
-## Runtime 怎麼選
+## Qwen3.8-27B Runtime 選擇：llama.cpp vs vLLM vs SGLang vs MLX
 
 | 情境 | 預設選擇 | 原因 |
 |---|---|---|
@@ -353,7 +354,7 @@ Qwen3.8-27B 的賣點是 agentic workflow。部署驗收要測 agent，不是問
 
 ---
 
-## Production 上線前的 12 項檢查
+## Qwen3.8-27B Production 部署 Checklist
 
 ### 模型與品質
 
@@ -378,7 +379,7 @@ Qwen3.8-27B 的賣點是 agentic workflow。部署驗收要測 agent，不是問
 
 ---
 
-## 最後的決策樹
+## Qwen3.8-27B 硬體選購與部署決策樹
 
 **你已經有硬體嗎？**
 
