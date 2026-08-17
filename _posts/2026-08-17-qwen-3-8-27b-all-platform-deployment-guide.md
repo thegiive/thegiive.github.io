@@ -34,10 +34,10 @@ Qwen3.8-27B 放出權重不到 48 小時，X 上就炸開了。
 | RTX 3090 24GB | 24GB | Q4 | 32K | llama.cpp + MTP | 25–57；最佳化 stack 宣稱 82 | 最低成本實用起點 |
 | RTX 4090 24GB | 24GB | Q4 | 32K | llama.cpp + MTP | 45–97 | **消費級甜蜜點** |
 | RTX 5090 32GB | 32GB | Q4／NVFP4 | 32K–128K | llama.cpp 單人；SGLang／vLLM 多人 | 單人 74–153；本站四人每人 106 | 高速單機，或四人 server |
-| RTX PRO 6000 | 96GB | NVFP4／FP8 | 64K–256K | vLLM／SGLang | 45–223，條件差異大 | Production 與長 context |
+| RTX PRO 6000 | 96GB | BF16／NVFP4／FP8 | 64K–256K | vLLM／SGLang | BF16 約 23；NVFP4 45–223，條件差異大 | 唯一能跑無損 BF16 的單卡；Production 與長 context |
 | DGX Spark | 128GB 統一 | NVFP4／Q4 | 32K | SGLang | baseline 8–13；調校 22–75 | **高度依賴 serving stack** |
 | Mac 24–36GB | 24–36GB | Q4 | 8K–16K | MLX／llama.cpp | 6–18 | 可用但不快 |
-| Mac 64–128GB | 64–128GB | Q6／8-bit | 32K | MLX／llama.cpp | 10–27；特製 stack 52+ | 安靜與容量 |
+| Mac 64–128GB | 64–128GB | Q6／8-bit | 32K | MLX／llama.cpp | 10–27；MTP 解鎖後 47–56 | 安靜與容量；MTP 後 decode 不再是瓶頸 |
 
 一句購買建議：
 
@@ -228,7 +228,11 @@ vllm serve RadixArk/Qwen3.8-27B-NVFP4 \
 
 ---
 
-## RTX PRO 6000 96GB：Production 級，但 fast path 還在變
+## RTX PRO 6000 96GB：Production 級，也是唯一能跑無損 BF16 的單卡
+
+96GB VRAM 最獨特的能力：BF16 權重約 51.76 GiB，單張 PRO 6000 放得下，不需要量化。[FP8 實測單人約 23 tok/s（262K context、vLLM 0.27.1）](https://huggingface.co/Qwen/Qwen3.8-27B-FP8/discussions/9)，MTP-2 可推至約 62 tok/s。[SGLang 跑 FP16 decode 甚至比 vLLM FP8 + MTP 還快](https://x.com/OrganicGPT/status/2088704873973879065)，但原帖沒有給確切數字。
+
+高併發才是 PRO 6000 真正拉開差距的地方。[LLM 高併發測試：16 路每路約 30 tok/s、總計約 480；32 路總計約 720；64 路總計約 1,171 tok/s](https://x.com/Wbackdown/status/2089129248737124590)。這是消費卡做不到的——RTX 5090 四人已經是極限，PRO 6000 可以推到 64 路。
 
 空間充裕，[NVFP4 + SGLang + DSpark、256K context、concurrency 8，單 stream 約 200–223 tok/s](https://x.com/MiaAI_lab/status/2088917237230932186)。但[full precision 實測裡 context 從 10K 增至 60K，速度約下降一半，TTFT 明顯升高](https://x.com/OrganicGPT/status/2088340860110811322)。容量、單流速度和長 context latency 仍然要分開驗收。
 
@@ -240,13 +244,21 @@ vllm serve RadixArk/Qwen3.8-27B-NVFP4 \
 
 DGX Spark 跑 Qwen3.8-27B 的早期 baseline：[llama.cpp + unsloth GGUF，prompt processing 約 837 tok/s、generation 約 11.6 tok/s](https://x.com/SaiyamPathak/status/2088305881159184552)；[跨硬體比較約 12.6 tok/s](https://x.com/mertcobanov/status/2088915144646545545)。
 
-但 8/17 的新結果證明這不是固定上限。[七配置比較從 vLLM + NVFP4 的 11.2 tok/s，調到 SGLang cookbook 單流 21.6、10 streams aggregate 158 tok/s](https://x.com/Luc_Gibson/status/2089091152255373648)；[更積極的最佳化宣稱從 stock FP8 的 7.88 拉到單流 75、16 streams aggregate 256 tok/s](https://x.com/0xBakeer/status/2089092964404601310)。較保守的 matched-prompt bake-off 測到 [SGLang + EAGLE 單流約 31–32 tok/s，並明確表示沒有復現 161 tok/s 的單流說法](https://x.com/wikiwayne/status/2089084344015200280)。
+但 8/17 的新結果證明這不是固定上限。[七配置比較從 vLLM + NVFP4 的 11.2 tok/s，調到 SGLang cookbook 單流 21.6、10 streams aggregate 158 tok/s](https://x.com/Luc_Gibson/status/2089091152255373648)；[0xBakeer 花了一個週末從 stock FP8 的 7.88 一路調到單流 75、16 streams aggregate 256 tok/s](https://x.com/0xBakeer/status/2089092964404601310)，過程拆得很細：
+
+- **Speculative decoding 是最大單一變數。** 同一組 FP8 權重，開 speculative decoding 從 7.88 直接跳到 58.5 tok/s（7.4x），模型輸出完全不變——因為主模型驗證每個 draft token，猜錯的丟掉。
+- **DSpark drafter 比 MTP 便宜。** MTP 是模型內建的多缸引擎，每跑一次要過完整 vocab projection；DSpark 是外掛的 1B drafter，一次出 7 個 token。DSpark 接受率更低，但每個 draft token 成本 0.046 vs 0.153，整體快 46%。
+- **Acceptance rate 是陷阱。** k=7 到 k=14，接受率從 98.7% 掉到 68.7%，但 generation 反而快 27%。決定吞吐量的不是接受率，是 mean tokens per forward pass。
+- **Prefix caching 預設是關的。** vLLM 對 hybrid attention 模型（Qwen3.8-27B 回報 `is_hybrid=True`）自動停用 prefix caching，啟動日誌不會提示。手動打開後：19K shared prefix 的 prefill 快 14 倍，53K 的快 22 倍。
+- **4-bit vs FP8 在高併發時收斂。** 單人 4-bit 比 FP8 快 27%；4 人快 20%；8 人快 10%；16 人時兩者差距收到 0.2% 以內，基本一樣。原因是單流是 memory-bandwidth bound（位元數越少越快），多流變成 compute bound（FP8 的額外精度不再是瓶頸）。
+
+較保守的 matched-prompt bake-off 測到 [SGLang + EAGLE 單流約 31–32 tok/s，並明確表示沒有復現 161 tok/s 的單流說法](https://x.com/wikiwayne/status/2089084344015200280)。
 
 這個 baseline 值得停下來看一眼：一台定位為 AI 工作站、128GB unified memory 的機器，未調校時跑 27B dense 竟然慢於多年前的 RTX 3090。
 
 原因不是 Spark 差，是 workload 不對。Spark 的大記憶體適合放消費卡塞不下的大 MoE 或高精度模型；Qwen3.8-27B Q4 已經住進 24GB VRAM，這時 NVIDIA 獨顯的高記憶體頻寬才是決定性優勢。
 
-**Spark 的 baseline 慢，但 serving stack 調整空間非常大。已經有 Spark 可以部署；要為 Qwen3.8-27B 買硬體，拿真實單流 latency 與多流 aggregate 分開比較，不能只看 128GB，也不能只看調校後的 256 tok/s。**
+**Spark 的 baseline 慢，但 serving stack 調整空間非常大——0xBakeer 從 7.88 到 75 全靠 stack 調校，沒有換模型也沒有換硬體。已經有 Spark 可以部署；要為 Qwen3.8-27B 買硬體，拿真實單流 latency 與多流 aggregate 分開比較，不能只看 128GB，也不能只看調校後的 256 tok/s。**
 
 ---
 
@@ -261,6 +273,7 @@ Apple Silicon 的優點很明確：安靜、省電、統一記憶體大、部署
 | [M5 Max 128GB](https://x.com/kystudio_jp/status/2088924387391283639) | Q6 | 約 26.6 tok/s |
 | [M4 Max 128GB](https://x.com/vigg_1991/status/2088932231029072198) | 8-bit MLX／LM Studio | 約 14.3 tok/s |
 | [M4 Max 36GB](https://x.com/enesapp/status/2088923823676535096) | Q4、8K | 約 17.53 tok/s |
+| [M4 Max、mlx-community MTP head](https://x.com/WescheNex1q) | MTP unlocked（239MB drafter） | 46.8 prose / 56.1 code |
 | [M4 Max、MTPLX 最佳化](https://x.com/TypeNuevo/status/2089100306441269427) | MTPLX、coding agent | 約 52 tok/s |
 | [M4 Pro 24GB Mac mini](https://x.com/mertcobanov/status/2088915144646545545) | 條件未完整揭露 | 約 15.1 tok/s |
 | [M3 Max 36GB](https://x.com/rdvnrslnd/status/2088910439576928551) | Q6_K | 約 9.3 tok/s |
@@ -268,6 +281,8 @@ Apple Silicon 的優點很明確：安靜、省電、統一記憶體大、部署
 | [M2 Max 96GB](https://x.com/outsource_/status/2088743329760469374) | BF16 | 約 13–20 tok/s |
 | [M2 Max 96GB](https://x.com/outsource_/status/2088743407543812436) | Ollama MLX NVFP4 + adaptive MTP、thinking off | 約 31.5 tok/s |
 | [M1 Max 64GB](https://x.com/shotalab_com/status/2088914258373542213) | Q4、128K、llama.cpp | 約 10.2 tok/s |
+
+值得注意的是 @WescheNex1q 的 M4 Max「take 2」：前一天只有 29.5 tok/s，mlx-community 把 MTP head 拆成 239MB 獨立權重後，decode 跳到 46.8（prose）和 56.1（code）。但 prefill 仍然是 Mac 的瓶頸——同一個 8.6K token paste，Spark 4 秒吃完，Mac 要 35 秒。**Decode 已經不是 Mac 的問題了，prefill 才是。**
 
 按記憶體級距處理：
 
