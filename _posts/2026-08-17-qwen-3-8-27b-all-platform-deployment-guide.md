@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Qwen3.8-27B 社群實測整理：六種硬體、300+ 條 X 貼文，跑出來的不是同一種產品"
+title: "Qwen3.8-27B 實測：RTX 3090／4090／5090／PRO 6000／DGX Spark／Mac tok/s 整理"
 date: 2026-08-17 09:00:00 +0800
 permalink: /qwen-3-8-27b-all-platform-deployment-guide/
 description: "這兩天 X timeline 被 Qwen3.8-27B 洗版，同一個模型數字從 6 到 400 tok/s 都有人喊。我跟 AI 把 300+ 條貼文拆開，按 RTX 3090、4090、5090、RTX PRO 6000、DGX Spark、Mac 六條路線整理社群數字，加上本站 RTX 5090 的 SGLang／vLLM／llama.cpp 實測。48 小時內沒有一個原廠工程師，社群自己把六種硬體的 serving stack 全部摸過一遍。"
@@ -9,7 +9,7 @@ categories: [AI 技術實作]
 author: Wisely Chen
 ---
 
-# Qwen3.8-27B 社群實測整理：六種硬體、300+ 條 X 貼文，跑出來的不是同一種產品
+# Qwen3.8-27B 實測：RTX 3090／4090／5090／PRO 6000／DGX Spark／Mac tok/s 整理
 
 這兩天我的 X timeline 被 Qwen3.8-27B 洗版。每個人都在曬自己的 tok/s，問題是——同一個模型，數字從 6 到 400 都有人喊。
 
