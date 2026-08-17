@@ -29,15 +29,15 @@ Qwen3.8-27B 放出權重不到 48 小時，X 上就炸開了。
 
 ## 總表：六條路線，一張圖
 
-| 硬體 | VRAM／RAM | 建議量化 | Context 起點 | 建議 Runtime | 單人 Decode（tok/s） | 判斷 |
-|---|---:|---|---:|---|---|---|
-| RTX 3090 24GB | 24GB | Q4 | 32K | llama.cpp + MTP | 25–57；最佳化 stack 宣稱 82 | 最低成本實用起點 |
-| RTX 4090 24GB | 24GB | Q4 | 32K | llama.cpp + MTP | 45–97 | **消費級甜蜜點** |
-| RTX 5090 32GB | 32GB | Q4／NVFP4 | 32K–128K | llama.cpp 單人；SGLang／vLLM 多人 | 單人 74–153；本站四人每人 106 | 高速單機，或四人 server |
-| RTX PRO 6000 | 96GB | BF16／NVFP4／FP8 | 64K–256K | vLLM／SGLang | BF16 約 23；NVFP4 45–223，條件差異大 | 唯一能跑無損 BF16 的單卡；Production 與長 context |
-| DGX Spark | 128GB 統一 | NVFP4／Q4 | 32K | SGLang | baseline 8–13；調校 22–75 | **高度依賴 serving stack** |
-| Mac 24–36GB | 24–36GB | Q4 | 8K–16K | MLX／llama.cpp | 6–18 | 可用但不快 |
-| Mac 64–128GB | 64–128GB | Q6／8-bit | 32K | MLX／llama.cpp | 10–27；MTP 解鎖後 47–56 | 安靜與容量；MTP 後 decode 不再是瓶頸 |
+| 硬體 | VRAM／RAM | 建議量化 | Context 起點 | 建議 Runtime | 單人 Decode（tok/s） |
+|---|---:|---|---:|---|---|
+| RTX 3090 24GB | 24GB | Q4 | 32K | llama.cpp + MTP | 25–57；最佳化 stack 宣稱 82 |
+| RTX 4090 24GB | 24GB | Q4 | 32K | llama.cpp + MTP | 45–97 |
+| RTX 5090 32GB | 32GB | Q4／NVFP4 | 32K–128K | llama.cpp 單人；SGLang／vLLM 多人 | 單人 74–153；本站四人每人 106 |
+| RTX PRO 6000 | 96GB | BF16／NVFP4／FP8 | 64K–256K | vLLM／SGLang | BF16 約 23；NVFP4 45–223，條件差異大 |
+| DGX Spark | 128GB 統一 | NVFP4／Q4 | 32K | SGLang | baseline 8–13；調校 22–75 |
+| Mac 24–36GB | 24–36GB | Q4 | 8K–16K | MLX／llama.cpp | 6–18 |
+| Mac 64–128GB | 64–128GB | Q6／8-bit | 32K | MLX／llama.cpp | 10–27；MTP 解鎖後 47–56 |
 
 一句購買建議：
 
