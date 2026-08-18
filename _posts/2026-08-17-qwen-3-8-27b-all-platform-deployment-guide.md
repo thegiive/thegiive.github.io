@@ -30,7 +30,7 @@ author: Wisely Chen
 | RTX 4090 24GB | 24GB | Q4 | 32K | llama.cpp + MTP | 45–97 |
 | RTX 5090 32GB | 32GB | Q4／NVFP4 | 32K–128K | llama.cpp 單人；SGLang／vLLM 多人 | 單人 74–153；本站四人每人 106 |
 | RTX PRO 6000 | 96GB | BF16／NVFP4／FP8 | 64K–256K | vLLM／SGLang | BF16 約 23；NVFP4 45–223，條件差異大 |
-| DGX Spark | 128GB 統一 | NVFP4／Q4 | 32K | SGLang | baseline 8–13；調校 22–75 |
+| DGX Spark | 128GB 統一 | NVFP4／Q4 | 32K | SGLang | baseline 8–13；調校 22–75；DSpark coding 51.5 |
 | Mac 24–36GB | 24–36GB | Q4 | 8K–16K | MLX／llama.cpp | 6–18 |
 | Mac 64–128GB | 64–128GB | Q6／8-bit | 32K | MLX／llama.cpp | 10–27；MTP 解鎖後 47–56 |
 
@@ -271,6 +271,18 @@ NVFP4／Q4，baseline 8–13 tok/s，調校後 22–75 tok/s。DGX Spark 跑 Qwe
 原因不是 Spark 差，是 workload 不對。Spark 的大記憶體適合放消費卡塞不下的大 MoE 或高精度模型；Qwen3.8-27B Q4 已經住進 24GB VRAM，這時 NVIDIA 獨顯的高記憶體頻寬才是決定性優勢。
 
 **Spark 的 baseline 慢，但 serving stack 調整空間非常大——0xBakeer 從 7.88 到 75 全靠 stack 調校，沒有換模型也沒有換硬體。已經有 Spark 可以部署；要為 Qwen3.8-27B 買硬體，拿真實單流 latency 與多流 aggregate 分開比較，不能只看 128GB，也不能只看調校後的 256 tok/s。**
+
+8/19 更新：[@MiaAI_lab 釋出 Spark 專用的最佳化 DSpark path](https://x.com/MiaAI_lab/status/2089806765290565991)，coding 場景（LRUCache）DSpark 51.5 tok/s 大幅領先 MTP 的 34.5；但長文寫作 MTP 反過來贏（24.1 vs 18.3）。一般聊天兩者差不多，約 21–24 tok/s。
+
+| 場景 | DSpark tok/s | MTP tok/s | 勝出 |
+|---|---:|---:|---|
+| Coding（LRUCache） | 51.5 | 34.5 | DSpark +49% |
+| Long essay | 18.3 | 24.1 | MTP +32% |
+| Chat T=0 thinking off | 22.0 | 24.6 | MTP |
+| Chat T=1 thinking on（預設） | 23.2 | 21.0 | DSpark |
+| LRUCache 400 tok | 47.1 | 33.6 | DSpark +40% |
+
+結論很清楚：**Spark 上 coding 用 DSpark、寫作用 MTP。** 不是選一個就好，是看 workload 切換。
 
 ---
 
