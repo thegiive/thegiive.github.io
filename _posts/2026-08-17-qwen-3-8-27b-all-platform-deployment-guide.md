@@ -116,6 +116,8 @@ llama-server \
 
 這不是最佳參數，是容易驗證的 baseline。先關 MTP 記錄 decode、TTFT 與 VRAM，再用 draft 2、4 跑同一組 prompt；32K 穩定後才升 64K，VRAM 不足時先量化 KV cache。
 
+8/18 更新：[@ryan4yin 分享了一組 130K context 的完整配置](https://gist.github.com/ryan4yin/19db9fa44972c5735c1d181e8888d4fe)——同樣 `UD-Q4_K_XL`，KV cache 改用 `kvarn6`（品質優於標準量化）、最後 2,048 tokens 保留 F16 防止 attention drift、MTP n-max 3、Flash Attention on。日常 decode 約 60–70 tok/s，126.6K input context 仍有 50–62 tok/s。關鍵陷阱：主線 llama.cpp 對非 Q4 KV cache 會靜默 fallback 到 CPU，他用的是 BeeLlama fork；150K 在多輪對話會 OOM，實際天花板約 130K。
+
 ---
 
 ## RTX 5090 32GB：可以四人
@@ -293,6 +295,8 @@ NVFP4／Q4，baseline 8–13 tok/s，調校後 22–75 tok/s。DGX Spark 跑 Qwe
 | [M1 Max 64GB](https://x.com/shotalab_com/status/2088914258373542213) | Q4、128K、llama.cpp | 約 10.2 tok/s |
 
 值得注意的是 @WescheNex1q 的 M4 Max「take 2」：前一天只有 29.5 tok/s，mlx-community 把 MTP head 拆成 239MB 獨立權重後，decode 跳到 46.8（prose）和 56.1（code）。但 prefill 仍然是 Mac 的瓶頸——同一個 8.6K token paste，Spark 4 秒吃完，Mac 要 35 秒。**Decode 已經不是 Mac 的問題了，prefill 才是。**
+
+8/18 更新：[oMLX 0.6.1 發布](https://x.com/jundotkim)，這版直接針對 Qwen3.8 做了兩項最佳化。一是 Dual-ANE/GPU prefill（實驗性），有人去挖 private Apple runtime interface、用近似 INT8 weight，硬把 ANE 跟 GPU 塞在同一個 prefill path——[M3 Ultra 上 32K context prompt 處理 +18.9%](https://x.com/Leoskie_L)。二是 Lightning MTP kernel 再調一輪，[16K context decode 最高 +34%](https://x.com/Leoskie_L)。Dual-ANE/GPU prefill 預設關閉，因為峰值記憶體更高、載入時間更長。[omlx.ai 社群已經累積快 40 萬筆 Apple Silicon 速度結果](https://x.com/jundotkim)，從 0.6 開始連 intelligence benchmark 也收進去了。
 
 按記憶體級距處理：
 
