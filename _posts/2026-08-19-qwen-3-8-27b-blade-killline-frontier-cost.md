@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "Qwen3.8-27B 斬殺線：¥0.1 一刀，frontier 定價邏輯的瓦解"
+title: "Qwen3.8-27B 斬殺線：$0.01 一刀，frontier 定價邏輯的瓦解"
 date: 2026-08-19 12:00:00 +0800
 permalink: /qwen-3-8-27b-blade-killline-frontier-cost/
 image: /assets/images/qwen-3-8-27b-blade-killline-cost.png
-description: "Artificial Analysis Intelligence Index 上，自架 Qwen3.8-27B 每 task 只要 ¥0.1——52 分的智力等級跟 GPT-5.6 Luna 平手，成本是雲端的幾分之一到幾十分之一。Apache 2.0 零授權費，社群第一週把準確率推到 97.3%。這條斬殺線只會往左移：從租金變押金，你買的不是算力是退出選項，而杰文斯悖論告訴我們——智力便宜之後，需求會爆炸。"
+description: "Artificial Analysis Intelligence Index 上，自架 Qwen3.8-27B 每 task 只要 $0.014——52 分的智力等級跟 GPT-5.6 Luna 平手，成本是雲端的幾分之一到幾十分之一。Apache 2.0 零授權費，社群第一週把準確率推到 97.3%。這條斬殺線只會往左移：從租金變押金，而杰文斯悖論告訴我們——智力便宜之後，需求會爆炸。"
 ---
 
 Artificial Analysis 這週在 Intelligence Index v4.1.1 上加了一個功能叫 kill sweep——你設定一個自架成本，它在圖上畫出一條線，所有比這條線更貴、智力又不比你高的模型，全部被一刀斬掉。
 
-Qwen3.8-27B 自架在 RTX 5090 上，10% 利用率，那條線落在 ¥0.1013/task（$0.0143 USD）。
+Qwen3.8-27B 自架在 RTX 5090 上，10% 利用率，那條線落在 $0.0143/task。
 
 我稱它為斬殺線。
 
@@ -35,7 +35,7 @@ GPT-5.6 Luna max 也是 52 分左右。但 task 成本在 $0.03 附近——是 
 
 **雲端 API 是邊際定價：** 每個 token 都收錢，每次 call 都計費。模型想得越久、生成越多，帳單越高。提供商可以隨時調價，volume discount 改善幅度有限。
 
-**自架是固定攤提：** 硬體折舊 + 電費。跑一個 task 跟跑一千個 task，硬體成本一樣。Artificial Analysis 圖上那個 ¥0.1013 是用 RTX 5090 算、10% 利用率的數字。如果利用率拉到 50%，單位成本直接再除 5。
+**自架是固定攤提：** 硬體折舊 + 電費。跑一個 task 跟跑一千個 task，硬體成本一樣。Artificial Analysis 圖上那個 $0.0143 是用 RTX 5090 算、10% 利用率的數字。如果利用率拉到 50%，單位成本直接再除 5。
 
 然後是授權費的問題。
 
@@ -140,7 +140,7 @@ Artificial Analysis 的評測紀錄顯示，Qwen3.8-27B 在評測中總共生成
 
 Qwen3.8-27B 是第一次把這道溝填上了。
 
-Intelligence Index 52 分——跟 GPT-5.6 Luna 同級。24GB 消費級顯卡用 AD-Q5_K 跑到 97.3% 準確率。每 task 成本 ¥0.1。Apache 2.0 零授權費。社群優化還在第一週。同一週 DeepSeek 開源了 DSH（harness 層），模型是嘴、harness 是手——嘴跟手第一次都歸你了。
+Intelligence Index 52 分——跟 GPT-5.6 Luna 同級。24GB 消費級顯卡用 AD-Q5_K 跑到 97.3% 準確率。每 task 成本 $0.014。Apache 2.0 零授權費。社群優化還在第一週。同一週 DeepSeek 開源了 DSH（harness 層），模型是嘴、harness 是手——嘴跟手第一次都歸你了。
 
 這組數字放在一起，構成了一條只會往左移的斬殺線。
 
@@ -150,6 +150,6 @@ Cline 官方的原話：「我們完全沒預料到本地模型進步會這麼�
 
 到那個時候，最值錢的不是聰明本身。是你拿聰明來幹什麼。
 
-雲端閉源模型的護城河在轉移——從純智力，轉向基礎設施的穩定性、生態系的完整度、產品整合的深度。但純智力？純智力這條護城河，已經被 ¥0.1 一刀切開了。
+雲端閉源模型的護城河在轉移——從純智力，轉向基礎設施的穩定性、生態系的完整度、產品整合的深度。但純智力？純智力這條護城河，已經被 $0.01 一刀切開了。
 
 本地 AI 不再是玩具。它第一次有資格站到真正的複雜工作流面前。
