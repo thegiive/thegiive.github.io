@@ -64,6 +64,28 @@ Q4 GGUF 約 17–18GB，很多人看到 24GB 顯卡就推論「還剩 6GB，262K
 | Q4 | 約 17–18GB | 24GB GPU 的主力 |
 | IQ3／低位元 MLX | 約 11–15GB | 16–24GB Mac 實驗用 |
 
+### GGUF 量化品質不只看位元數——AtomicChat AD layout
+
+同樣叫 Q4，不同來源的 GGUF 品質差異很大。[AtomicChat 用 KL divergence vs BF16 做了一張完整比較圖](https://x.com/atomic_chat_hq)，把自家 AD（Atomic Dynamic）layout 跟 unsloth、lmstudio-community、ggml-org 的 GGUF 逐一對比（reference = BF16、4x RTX 5090、4096 context）。結論：**同樣檔案大小，AD layout 的 KL divergence 一致低於其他社群 GGUF。**
+
+按記憶體級距的建議量化：
+
+| 可用記憶體 | 建議量化 | 檔案大小 | Top-1 準確率 | Mean KL Divergence |
+|---:|---|---:|---:|---:|
+| 12GB | AD-IQ2_XS | 9.9GB | 83.5% | 0.1617 |
+| 16GB | AD-IQ3_S | 13.8GB | 92.4% | 0.0325 |
+| 24GB | AD-Q5_K | 20.2GB | 97.3% | 0.0042 |
+| 32GB | AD-Q6_K | 25.0GB | 98.7% | 0.0011 |
+| 48GB | Q8_0 | 28.9GB | 98.9% | 0.0006 |
+
+幾個值得注意的點：
+
+- **24GB 級距（RTX 3090／4090）不一定要卡在 Q4。** AD-Q5_K 只有 20.2GB，塞得進 24GB VRAM，KL divergence 從 Q4 級的 ~0.01 降到 0.0042，Top-1 從 ~95% 升到 97.3%。代價是 KV cache 空間更少、context 天花板更低。
+- **16GB → 24GB 是品質斷崖。** KL divergence 從 0.0325 降到 0.0042，差 8 倍。12GB 的 0.1617 已經是另一個世界。
+- **32GB 的 AD-Q6_K（98.7%）和 48GB 的 Q8_0（98.9%）差距只有 0.2%。** 32GB 卡不需要追到 Q8。
+
+這張圖不能直接等於 agent task 品質——KL divergence 是 token distribution 層級的度量，不是 tool calling 成功率。但它是目前最系統性的 GGUF 量化品質比較。選 GGUF 來源時，不要只看位元數，要看誰做的。
+
 KV cache 決定 context 能開多長。Qwen3.8-27B 的 hybrid architecture（64 層裡只有 16 層 full attention，其餘 48 層 Gated DeltaNet）比純 Transformer 省，但 262K 仍然不是免費的。本站 RTX 5090 32GB 實測：Q4 權重 + Q8 KV，約 67K token 就 OOM；改成 Q4 KV，才完成約 237K token 輸入。
 
 記憶體頻寬決定吐字速度。Dense 27B 每生成一個 token 要把大部分權重讀一遍——未調校的 DGX Spark baseline 約 8–13 tok/s，而 RTX 4090 Q4 + MTP 可以到 86.5。容量解決 fit，頻寬才決定 decode。
