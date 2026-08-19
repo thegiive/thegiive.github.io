@@ -9,9 +9,11 @@ description: "Artificial Analysis 圖上那條 $0.014/task 斬殺線讓社群炸
 
 ## 那條線讓社群炸了
 
-Artificial Analysis 這週在 Intelligence Index v4.1.1 上加了一個功能叫 kill sweep——你設定一個自架成本，它在圖上畫出一條線，所有比這條線更貴、智力又不比你高的模型，全部被一刀斬掉。
+Artificial Analysis 的 Intelligence Index v4.1.1 圖表，Y 軸是智力分數，X 軸是每 task 美元成本，137 個模型攤在上面。
 
-Qwen3.8-27B 自架在 RTX 5090 上，10% 利用率，那條線落在 $0.0143/task。Intelligence Index 52 分，跟 GPT-5.6 Luna 同級。Apache 2.0 零授權費。
+Qwen3.8-27B 自架在 RTX 5090 上，10% 利用率，成本落在 $0.0143/task。Intelligence Index 52 分，跟 GPT-5.6 Luna 同級。Apache 2.0 零授權費。
+
+從這個點往右畫一條水平線——所有比它貴、智力又不比它高的模型，全部被一刀斬掉。我稱它為斬殺線。
 
 ![Artificial Analysis Intelligence Index v4.1.1 vs Cost per Task](/assets/images/qwen-3-8-27b-blade-killline-cost.png)
 
