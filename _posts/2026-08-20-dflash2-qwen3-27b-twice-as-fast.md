@@ -286,6 +286,71 @@ DSpark hash:    3172b2b91e6dfc035b557a62b7f432b43d388567...
 
 速度大幅提升、輸出穩定可復現——對實際應用來說，這已經夠用了。
 
+## 四人同時用：720 tok/s 總吞吐
+
+單人跑得快是一回事，能不能同時服務多人才是地端部署的真問題。我們拿同一張 RTX 5090 測了四人同時送 request 的場景。
+
+### 測試條件
+
+4 個請求同時送出，每人生成 1024 tokens，temperature=0，thinking off。
+
+### 暖機後結果（第二輪）
+
+| 使用者 | Decode 速度 | 完成時間 |
+|--------|------------:|----------:|
+| User 1 | 187.19 tok/s | 5.69 sec |
+| User 2 | 214.87 tok/s | 4.98 sec |
+| User 3 | 192.19 tok/s | 5.54 sec |
+| User 4 | 192.42 tok/s | 5.54 sec |
+
+彙總：
+
+| 指標 | 數值 |
+|------|-----:|
+| 每人 decode 中位數 | 192.30 tok/s |
+| 四人總吞吐 | 719.84 tok/s |
+| TTFT 中位數 | 222 ms |
+| 完成時間中位數 | 5.54 sec |
+| 總輸出 | 4,096 tokens |
+
+冷啟動（第一輪）數字則是：四人總吞吐 575.48 tok/s、每人中位數 178.48 tok/s、TTFT 中位數 1.16 秒。暖機後提升明顯。
+
+### 四人並行的專用設定
+
+要讓四人真正同時跑起來，不能直接套用單人設定。以下是調整過的參數和原因：
+
+```bash
+--mem-fraction-static 0.95 \
+--max-total-tokens 8192 \
+--max-running-requests 4 \
+--max-mamba-cache-size 4 \
+--disable-radix-cache \
+--cuda-graph-max-bs-decode 4
+```
+
+每個參數都有理由：
+
+- **`--disable-radix-cache`**：關鍵。Radix cache 開啟時，每個請求需要 4 個 Mamba state slots；關閉後降到 1，才能真正同時跑四人。
+- **`--cuda-graph-max-bs-decode 4`**：避免預設捕捉到 batch 24 而 OOM。
+- **`--max-total-tokens 8192`**：避免 SGLang 把剩餘 VRAM 全拿去建立 40K 的 KV cache，保留 CUDA Graph workspace。
+- **`--mem-fraction-static 0.95`**：四人模式下可以比單人（0.85）更積極，因為 KV cache 總量已經被 `max-total-tokens` 限住。
+
+### 目前服務狀態
+
+```
+服務：       active
+Health：     HTTP 200
+並行上限：   4
+KV token 池：8192
+VRAM：       31,211 / 32,607 MiB
+```
+
+### 適用與限制
+
+這個設定是**四人吞吐優先**。Radix prefix cache 已關閉，8192 是所有執行中請求共用的 token pool。適合四人一般對話或每人約 1–2K context，**不適合四個人同時跑超長 context**。如果需要更長的 context window，要降低並行數或增加 `max-total-tokens`（但可能 OOM）。
+
+換個角度看：一張 32GB 的消費級顯卡，跑 27B 量化模型 + DFlash 2，同時服務四個人，每人還有接近 200 tok/s。這在半年前是不可能的數字。
+
 ## 更大的圖景
 
 DFlash 2 代表的趨勢很清楚：**推理加速的下一波紅利來自推理層，不是模型層。**
