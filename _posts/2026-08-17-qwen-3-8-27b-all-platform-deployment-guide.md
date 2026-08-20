@@ -32,7 +32,7 @@ author: Wisely Chen
 | RTX PRO 6000 | 96GB | BF16／NVFP4／FP8 | 64K–256K | vLLM／SGLang | BF16 約 23；NVFP4 45–223，條件差異大 |
 | DGX Spark | 128GB 統一 | NVFP4／Q4 | 32K | SGLang | baseline 8–13；調校 22–75；DSpark coding 51.5 |
 | Mac 24–36GB | 24–36GB | Q4 | 8K–16K | MLX／llama.cpp | 6–18 |
-| Mac 64–128GB | 64–128GB | Q6／8-bit | 32K | MLX／llama.cpp | 10–27；MTP 解鎖後 47–56 |
+| Mac 64–128GB | 64–128GB | Q6／8-bit | 32K | MLX／llama.cpp | 10–27；MTP 解鎖後 47–56；MTPLX V2.9 最高 175 |
 
 **看數字之前，先讀這三點：**
 
@@ -331,6 +331,8 @@ NVFP4／Q4，baseline 8–13 tok/s，調校後 22–75 tok/s。DGX Spark 跑 Qwe
 值得注意的是 @WescheNex1q 的 M4 Max「take 2」：前一天只有 29.5 tok/s，mlx-community 把 MTP head 拆成 239MB 獨立權重後，decode 跳到 46.8（prose）和 56.1（code）。但 prefill 仍然是 Mac 的瓶頸——同一個 8.6K token paste，Spark 4 秒吃完，Mac 要 35 秒。**Decode 已經不是 Mac 的問題了，prefill 才是。**
 
 8/18 更新：[oMLX 0.6.1 發布](https://x.com/jundotkim)，這版直接針對 Qwen3.8 做了兩項最佳化。一是 Dual-ANE/GPU prefill（實驗性），有人去挖 private Apple runtime interface、用近似 INT8 weight，硬把 ANE 跟 GPU 塞在同一個 prefill path——[M3 Ultra 上 32K context prompt 處理 +18.9%](https://x.com/Leoskie_L)。二是 Lightning MTP kernel 再調一輪，[16K context decode 最高 +34%](https://x.com/Leoskie_L)。Dual-ANE/GPU prefill 預設關閉，因為峰值記憶體更高、載入時間更長。[omlx.ai 社群已經累積快 40 萬筆 Apple Silicon 速度結果](https://x.com/jundotkim)，從 0.6 開始連 intelligence benchmark 也收進去了。
+
+8/19 更新：[MTPLX V2.9 發布](https://x.com/Youssofal_/status/2090384590913556598)——CLI 速度 +30%、app 速度 +60%、CPU 使用率降 80%、streaming 卡頓減少 95%。所有 MTPLX 模型重新調校為更小且更快（同品質，需重新下載）。bare speed model 搭配 session bank 達到 **175 tok/s**——這是目前 Mac 上 Qwen3.8-27B 回報的最高數字。
 
 按記憶體級距處理：
 
