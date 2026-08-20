@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Moderna 三期成功之後：AI 沒有攻克癌症，但你該開始養好身體"
+title: "Moderna 三期成功之後：你真正該盯的數字不是股價，是長壽逃逸速度"
 date: 2026-08-21 12:00:00 +0800
 permalink: /moderna-ai-longevity-escape-velocity/
 image: /assets/images/moderna-ai-lev-cover.png
