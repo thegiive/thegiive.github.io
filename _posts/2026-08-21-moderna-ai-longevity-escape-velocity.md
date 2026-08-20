@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Moderna 三期成功之後：你真正該盯的數字不是股價，是長壽逃逸速度"
+title: "Moderna 三期成功之後：AI 帶來的長壽逃逸速度加速"
 date: 2026-08-21 12:00:00 +0800
 permalink: /moderna-ai-longevity-escape-velocity/
 image: /assets/images/moderna-ai-lev-cover.png
