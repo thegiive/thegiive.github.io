@@ -157,6 +157,87 @@ Verification scaling 不是萬能的。幾個需要認清的限制：
 
 ---
 
+## 實作：怎麼跑起來
+
+論文團隊開源了完整框架，有兩種用法。
+
+### Python SDK：嵌入自己的 pipeline
+
+```bash
+pip install llm-verifier
+```
+
+核心 API 三個，對應三種場景：
+
+```python
+import llm_verifier
+
+result = llm_verifier.select(
+    problem=problem,
+    candidates=candidates,
+    criteria={"Correctness": "Does the code solve the problem?"},
+)
+
+# 兩兩比較：A 和 B 哪個好
+reward_a, reward_b = llm_verifier.compare(
+    problem, sol_a, sol_b,
+    criteria={"Overall": "Does the code solve the problem?"},
+)
+
+# 過程追蹤：agent 執行途中是不是走對方向
+result = llm_verifier.track(
+    problem=problem, steps=steps,
+    checkpoint_steps=[1, 2, 3, 4, 5], n_evaluations=4,
+)
+```
+
+重現 Terminal-Bench 2.1 的結果只要兩行：
+
+```bash
+python scripts/run_bo3.py   # Best-of-3 → 86.5%
+python scripts/run_bo5.py   # Best-of-5 → 88.0%
+```
+
+`run_bo5.py` 的關鍵參數：`N_TRIALS=5`（五個候選解）、`PIVOTS=1`（PPT 排名選 1 個 pivot）、`N_EVALUATIONS=2`（每個候選解重複驗證 2 次取平均）。
+
+### TurboAgent：Claude Code 的 drop-in proxy
+
+更有意思的用法。[TurboAgent](https://github.com/llm-as-a-verifier/TurboAgent) 是一個 API proxy，插在 client 和 LLM provider 中間，自動做 generate-then-verify：
+
+```bash
+pip install turbo-agent
+turbo-agent              # 啟動 proxy，預設 port 8888
+```
+
+Claude Code 只要改一個環境變數：
+
+```bash
+ANTHROPIC_BASE_URL=http://localhost:8888 claude
+```
+
+Claude Code 完全不知道背後發生了什麼。Proxy 收到請求後自動：並行送 N 個請求到後端模型 → PPT tournament 挑最好的 → 回傳最佳結果。`http://localhost:8888/visualizer` 可以看到完整的 pipeline DAG 和每個候選解的分數。
+
+**重要限制：Verifier 不能用 Claude。** Anthropic API 不開放 token logprobs，所以 Claude 只能當 generator（後端模型），不能當 verifier。Verifier 必須用有 logprobs 的模型——Gemini（透過 Vertex API）或 DeepSeek。
+
+### 本地部署：用 Qwen 3.8 27B 跑 self-verification
+
+如果你有自己的 GPU（例如 RTX Pro 6000），可以用開源模型同時當 generator + verifier，完全不需要外部 API。
+
+Qwen 3.8 27B 在 [Artificial Analysis Intelligence Index](https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index) 上拿到 52 分，跟 DeepSeek V4 Flash 相同。27B dense 模型單卡就能跑，logprobs 完全開放。
+
+```bash
+# 用 vLLM 起一個 OpenAI-compatible server
+vllm serve Qwen/Qwen3.8-27B --port 8000
+```
+
+TurboAgent 的 `turbo-agent.yaml` 把 backend model 指向這個 endpoint，Qwen 同時當 generator + verifier。
+
+成本結構完全不同於 API pricing。論文裡 DeepSeek V4 Flash ×5 的 $0.30/task 是按 API 計費的。本地部署是 Capex——GPU 已經買了，跑 ×5 只是多花五倍推理時間，邊際成本趨近零。對已經有 GPU 的團隊來說，verification scaling 幾乎是免費的性能提升。
+
+要注意的是：論文沒有用 Qwen 3.8 27B 跑過 Terminal-Bench，實際的 pass@1 起點和 verification scaling 曲線需要自己實測。但 Intelligence Index 同為 52 分，合理預期 scaling 幅度不會差太多。
+
+---
+
 ## 最後的觀察
 
 上篇結語是：「最好的產品不一定是賣得最好的產品。」
