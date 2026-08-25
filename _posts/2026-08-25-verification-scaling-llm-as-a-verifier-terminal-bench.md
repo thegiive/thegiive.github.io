@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "便宜模型跑五次再自己挑最好的：Verification Scaling 是智能密度的第二條曲線"
+title: "不換模型、不額外訓練，讓開源模型讀自己的神經層來驗證答案：LLM-as-a-Verifier"
 date: 2026-08-25 12:00:00 +0800
 permalink: /verification-scaling-llm-as-a-verifier-terminal-bench/
 image: /assets/images/verification-scaling-terminal-bench-2-1.png
