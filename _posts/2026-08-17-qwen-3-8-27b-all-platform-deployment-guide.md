@@ -258,6 +258,23 @@ vllm serve RadixArk/Qwen3.8-27B-NVFP4 \
 
 同一張 5090 其實是兩種產品：`llama.cpp + GGUF Q4 + MTP` 是單人長 context 互動機（237K 塞得進去，49–55 tok/s）；`SGLang／vLLM + NVFP4 + MTP-2` 是四人小團隊 model server（每人 106 tok/s，但 context 被 KV pool 綁在幾萬 tokens）。選哪種，取決於這台機器服務一個人還是四個人。
 
+### 2x RTX 5090 TP=2：8 路每路仍有 141 tok/s
+
+8/24 更新：[yage.ai 發布了一組 2x RTX 5090 + SGLang TP=2 + NVFP4 的完整測試](https://yage.ai/share/2x5090-27b-sweet-spot-20260824.html)，包含真實 24 小時 workload 分析。
+
+| 併發數 | 總吞吐 tok/s | 每路 decode tok/s | 加速倍數 |
+|---:|---:|---:|---:|
+| 1 | 268 | 286 | 1.00x |
+| 2 | 461 | 253 | 1.72x |
+| 4 | 692 | 196 | 2.58x |
+| 8 | 962 | 141 | 3.59x |
+
+單流 268 tok/s 接近單卡的 2.4 倍；8 路併發總吞吐 962 tok/s，每路仍有 141 tok/s——單卡四人每人 106，雙卡八人每人 141，scaling 效率不錯。
+
+更有意思的是真實 workload 分析（8/23 一整天）：224M prefill tokens 裡 182M 命中 prefix cache（幾乎不耗算力）；實際新生成 decode tokens 只有 2.25M；active generation 時間約 3.8 小時/天。硬體投資 US$6,000–8,000，持續 500W 功耗每月電費約 US$11。跟商業 API 比，自架每月省約 US$20 營運費，但硬體要 25–33 年回本。
+
+結論：**雙卡 5090 是消費級 inference 的甜蜜點，但回本計算要看真實使用量而不是峰值 tok/s。**
+
 ---
 
 ## RTX PRO 6000 96GB：16 人以上，可以當公司 AI Coding Server
