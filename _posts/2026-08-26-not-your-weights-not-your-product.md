@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sequoia 說「不是你的 weights，就不是你的產品」，但 Harvey 的 7 個人和 Kimi K3 的 60 分之間，還差一整套 evals"
+title: "Sovereign AI 不是口號：Sequoia 的四級路徑、開源 60 vs 封閉 62 的算術、以及你該停在第幾級"
 date: 2026-08-26 09:00:00 +0800
 permalink: /not-your-weights-not-your-product/
 image: /assets/images/not-your-weights-logo.png
