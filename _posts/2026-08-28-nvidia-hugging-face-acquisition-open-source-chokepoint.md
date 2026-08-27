@@ -156,7 +156,7 @@ Hugging Face CEO Clément Delangue 在 CNBC 上說：
 
 ---
 
-## 主權 AI 的加速器，還是新的 gatekeeper？
+## Nvidia 在賭的另一件事：主權 AI 的分發層
 
 兩天前本 blog 寫了一篇 [not your weights, not your product](/not-your-weights-not-your-product/)，核心論點來自 Sequoia 的 Sonya Huang：你的產品要真正屬於你，權重要在你手上。
 
@@ -164,13 +164,13 @@ Hugging Face CEO Clément Delangue 在 CNBC 上說：
 
 這正是 Hugging Face 解決的問題。模型版本管理、權重託管、demo 空間、評測工具、一鍵部署——這些基礎設施如果每家公司都要自己建，成本和複雜度會擋住大多數人。Hugging Face 把分發層變成了公共建設，就像 GitHub 把程式碼協作變成了公共建設一樣。
 
-當每一個人、每一家公司都有自己的模型時，分發端會變得比訓練端更重要。因為訓練只做一次，分發是持續的——更新版本、發布到不同環境、讓下游團隊取用。
+如果主權 AI 是未來的趨勢——每一個人、每一家公司都有自己的模型——那分發端會變得比訓練端更重要。因為訓練只做一次，分發是持續的：更新版本、發布到不同環境、讓下游團隊取用、讓客戶存取。模型越多，分發層的價值越高。
 
-從這個角度看，Nvidia 買下 Hugging Face 對主權 AI 不一定是壞事。Nvidia 的資源——算力、安全基礎設施、全球開發者關係——注入 Hugging Face 之後，分發層的能力可能會大幅提升。企業做完 fine-tuning，不需要自己建模型倉庫和部署管道，Hugging Face 都有現成的。門檻越低，自建模型的公司就越多，主權 AI 的趨勢就越強。
+**Nvidia 說不定就是在賭這件事。** 當分發層變得越來越重要，擁有 Hugging Face 的人就天然地成為預設的分發渠道。不需要強迫任何人——你做完 fine-tuning，最自然的下一步就是推上 Hugging Face。整個生態的慣性會替你完成鎖定。
 
-但張力也在這裡。**分發層越重要、越多人依賴，控制分發層的人就越有影響力。** 當 Hugging Face 是獨立平台時，它的中立性是預設的。當它屬於 Nvidia 時，中立性變成一個需要刻意維護的承諾——而承諾可以改變。
+Nvidia 的資源——算力、安全基礎設施、全球開發者關係——注入 Hugging Face 之後，分發層的能力會大幅提升。企業做完 fine-tuning，不需要自己建模型倉庫和部署管道，Hugging Face 都有現成的。門檻越低，自建模型的公司就越多，主權 AI 的趨勢就越強——而 Nvidia 已經站在分發渠道的位置上了。
 
-Sonya Huang 的框架裡，sovereignty 有四級：API → harness → 回饋閉環 → 自有模型。Nvidia 買 HF 可能會加速更多公司走到第四級。但如果有一天分發管道本身有了立場，sovereignty 的定義可能需要再加一級：分發管道也得有備案。
+Sonya Huang 的框架裡，sovereignty 有四級：API → harness → 回饋閉環 → 自有模型。Nvidia 買 HF 可能會加速更多公司走到第四級。而每多一家走到第四級的公司，Hugging Face 的分發價值就多一分。
 
 ---
 
