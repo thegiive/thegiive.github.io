@@ -132,9 +132,25 @@ Eonopolis Exponential Technologies 基金經理 Siddy Jobe 在 CNBC 上說了一
 
 他提到 Nvidia 有一個「five-layer cake」的結構，基礎模型是其中一層。Hugging Face 不是模型本身，但它是模型流通的管道——把管道拿到手，比自己做模型更有槓桿。
 
-一個月前，Jensen Huang 用[人生第一則 X 貼文](/open-weights-new-era-nvidia-letter-liang-wenfeng/)發出 25 家機構連署的公開信「Open Weights and American AI Leadership」，Hugging Face 也在連署名單上。一個月後買下這個平台。倡導開源和擁有開源的分發管道，是兩件不同的事。
+但這不是什麼新戰略。這是老黃一直在做的事。
 
-疊在一起看：GPU 硬體 → HBM 供應鏈 → 推理加速（Groq LPU）→ 模型分發（Hugging Face）。每一層，Nvidia 都握著。[四月那篇拆解 HBM 供應鏈鎖喉](/ddr-hbm-token-economics-nvidia-lock-supply-chain/)的圖景，現在要往上再加一層。
+Jensen Huang 四月接受 [Dwarkesh Patel 一百分鐘的長訪談](https://www.dwarkesh.com/p/jensen-huang)時，把 Nvidia 的核心邏輯壓成一句話：
+
+> "The input is electron, the output is tokens. In the middle is Nvidia."
+
+輸入是電子，輸出是 token，中間是 Nvidia。要撐住這句話，你必須控制整條鏈上的每一個瓶頸。他在訪談裡用了一個詞叫「prefetching the bottlenecks」——提前好幾年，在供應鏈的瓶頸變成瓶頸之前就鎖住。HBM 記憶體是一個瓶頸，他提前跟三星、SK 海力士談好了產能。CoWoS 先進封裝是一個瓶頸，他確保 TSMC 的產能優先排給 Nvidia。矽光子元件是下一個，他幾年前就開始投資 Lumentum 和 Coherent。每一次都是同一套動作：在別人還沒意識到這是瓶頸的時候，先把位置佔了。
+
+他同一場訪談裡也講得很直白：
+
+> "Accelerated computing was a full stack problem, you have to understand the application to accelerate it."
+
+加速運算是整條 stack 的問題。你不能只做一層。
+
+收購 Hugging Face 就是這套哲學往上再延伸一層。GPU 硬體的供應鏈鎖完了，推理層用 Groq 補上了，下一個瓶頸在哪裡？在模型分發層。當開源模型的數量和使用量指數級成長，分發層會成為新的 chokepoint——誰的模型被看見、被下載、被部署，都經過這個節點。Jensen 不等這個瓶頸出現再搶，先買下來了。
+
+一個月前，他用[人生第一則 X 貼文](/open-weights-new-era-nvidia-letter-liang-wenfeng/)發出 25 家機構連署的公開信「Open Weights and American AI Leadership」，Hugging Face 也在連署名單上。一個月後買下這個平台。倡導開源和擁有開源的分發管道，是兩件不同的事。
+
+疊在一起看：GPU 硬體 → HBM 供應鏈 → 推理加速（Groq LPU）→ 模型分發（Hugging Face）。每一層，Nvidia 都握著。[四月那篇拆解 HBM 供應鏈鎖喉](/ddr-hbm-token-economics-nvidia-lock-supply-chain/)的圖景，現在要往上再加一層。同一套 prefetching the bottlenecks 的劇本，從半導體供應鏈一路打到開發者生態。
 
 而 Groq 交易已經被兩名民主黨參議員質疑是否規避反壟斷審查。HF 這筆交易的監管阻力，大概只會更大。
 
