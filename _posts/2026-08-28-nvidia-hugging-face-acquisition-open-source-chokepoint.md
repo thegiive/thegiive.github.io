@@ -174,24 +174,6 @@ Sonya Huang 的框架裡，sovereignty 有四級：API → harness → 回饋閉
 
 ---
 
-## 反方：但 Microsoft-GitHub 活得好好的
-
-這是最強的反駁。
-
-2018 年 Microsoft 以 75 億美元收購 GitHub，社群恐慌，當年一批開發者遷移到 GitLab。八年後 GitHub 不但沒被摧毀，還活得比收購前好——GitHub Actions 提供免費 CI/CD、Copilot 成了最成功的 AI 產品之一、安全功能持續加強。Microsoft 沒有把 GitHub 變成 Windows 專屬工具，反而投入更多資源。
-
-Nvidia 可能做一樣的事。更多 GPU credits、更好的推理整合、更大的社群投入。開源社群的擔憂可能跟八年前一樣，最終被證明是過慮。
-
-但 GitHub 和 Hugging Face 有一個結構性差異。
-
-程式碼是文字檔。從 GitHub 遷移到 GitLab 只需要 `git remote set-url`，幾秒鐘的事。模型權重是動輒數十 GB 的二進位檔，大型模型更是數百 GB。搬一個模型的時間和頻寬成本，跟搬一個 git repo 完全不在同一個層級。
-
-而且 GitHub 被收購時，GitLab 和 Bitbucket 已經是成熟的替代品。Hugging Face 的替代品——ModelScope、Ollama registry——在規模和生態完整度上差距更大。
-
-chokepoint 的黏性不同，遷移的摩擦不同。即使 Nvidia 沒有惡意，平台的微妙傾斜——CUDA 優化文件更完整、TensorRT-LLM 整合更順暢、Nvidia GPU 的 benchmark 更顯眼——就足以改變生態的引力方向。不需要關門，只需要讓門往一邊開。
-
----
-
 ## 坦白說
 
 這筆交易目前只是「agreed to buy」的階段，[CNBC 原文](https://www.cnbc.com/2026/08/27/nvidia-hugging-face-acquisition.html)的消息來源是 The Information 加上一位匿名消息人士。Nvidia 和 Hugging Face 都沒有公開回應。交易可能在監管審查階段被修改甚至擋下——考慮到 Groq 交易已經引發反壟斷質疑，HF 這筆的監管風險不低。
