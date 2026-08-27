@@ -176,7 +176,19 @@ Hugging Face CEO Clément Delangue 在 CNBC 上說：
 
 兩天前本 blog 寫了一篇 [not your weights, not your product](/not-your-weights-not-your-product/)，核心論點來自 Sequoia 的 Sonya Huang：你的產品要真正屬於你，權重要在你手上。
 
-主權 AI 正在從口號變成現實。前面那張四層表格說的就是這件事——從 27B 到 1.6T，越來越多企業和開發者擁有或微調自己的模型。但「擁有模型」只解決了一半的問題。另一半是：**怎麼分發、怎麼部署、怎麼讓別人用得到？**
+主權 AI 正在從口號變成現實。前面那張四層表格說的就是這件事——從 27B 到 1.6T，越來越多企業和開發者擁有或微調自己的模型。
+
+而主權 AI 對 Nvidia 有一層更直接的好處，跟推理和訓練的競爭格局有關。
+
+當企業只用 API 呼叫封閉模型時，他們需要的只有推理。推理這件事，Apple M5 Ultra 能做、Google TPU 能做、華為昇騰能做、AMD MI300X 也能做。Nvidia 在推理端的護城河正在被侵蝕——前面 GPU 商品化那段講的就是這件事。
+
+但主權 AI 不只是推理。Sonya Huang 四級路徑的第四級是 post-training——fine-tuning、RL environment、領域資料訓練。一旦企業走到這一步，他們需要的是**訓練用的 GPU**。而訓練這件事，Nvidia 到今天還是當之無愧的獨大。沒有哪家公司在 Apple Silicon 上做大規模 fine-tuning，也沒有人拿 Mac Studio 跑 RL。訓練需要的互連頻寬、多卡並行、軟體生態（NCCL、NeMo、Megatron-LM），Nvidia 全部握在手上，短期內沒有可比的替代方案。
+
+**所以 Nvidia 當然要推主權 AI。** 推理端的競爭對手越來越多，但訓練端 Nvidia 獨大。主權 AI 把企業的關注點從「只需要推理」拉到「推理 + post-training」——而 post-training 正是 Nvidia 最不可替代的地盤。每多一家公司走上自建模型的路，就多一家公司在訓練端離不開 Nvidia。
+
+這就是 Nvidia 拱 Hugging Face 的底層邏輯。HF 降低了企業從 API 走向自有模型的門檻——下載基底模型、做 fine-tuning、發布回平台，整條路徑都在 HF 上。門檻越低，走到第四級的公司越多，Nvidia 訓練用 GPU 的需求就越大。
+
+「擁有模型」只解決了一半的問題。另一半是：**怎麼分發、怎麼部署、怎麼讓別人用得到？**
 
 這正是 Hugging Face 解決的問題。模型版本管理、權重託管、demo 空間、評測工具、一鍵部署——這些基礎設施如果每家公司都要自己建，成本和複雜度會擋住大多數人。Hugging Face 把分發層變成了公共建設，就像 GitHub 把程式碼協作變成了公共建設一樣。
 
