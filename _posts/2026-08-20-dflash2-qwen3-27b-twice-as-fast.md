@@ -3,6 +3,7 @@ layout: post
 title: "DFlash 2 讓 Qwen3.8-27B 快了兩倍：同模型、同輸出、同一張卡，純粹靠更聰明的推理"
 date: 2026-08-20 12:00:00 +0800
 permalink: /dflash2-qwen3-27b-twice-as-fast/
+tags: [DFlash 2, Qwen3.8-27B, block diffusion, speculative decoding, inference optimization, 推論加速, SGLang, vLLM, llama.cpp, tok/s, 地端推論, on-premise, GPU inference]
 image: /assets/images/dflash2-benchmark-cover.png
 description: "DFlash 2 用 block diffusion 平行草稿 + 路徑選擇器 + 動態卷積，把 Qwen3.8-27B 的推理速度從 28.9 tok/s 推到 59.1 tok/s。已經進 SGLang、vLLM、llama.cpp，drop-in 升級，輸出完全一致。這不是品質換速度的取捨，是推理層的免費加速。"
 ---

@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "不換模型、不額外訓練，讓開源模型讀自己的神經層來驗證答案：LLM-as-a-Verifier"
+title: "\"不換模型、不額外訓練，讓開源模型讀自己的神經層來驗證答案：LLM-as-a-Verifier\""
 date: 2026-08-25 12:00:00 +0800
 permalink: /verification-scaling-llm-as-a-verifier-terminal-bench/
+tags: [LLM-as-a-Verifier, self-verification, logits, open source, 開源模型, DeepSeek V4 Flash, Terminal-Bench, on-premise, 地端部署, inference, 推論, Stanford, UC Berkeley, verification scaling]
+categories: [AI 產業分析]
 image: /assets/images/verification-scaling-terminal-bench-2-1.png
-description: "Stanford + UC Berkeley 論文 LLM-as-a-Verifier 找到一個方法，讓開源模型深入自己的神經層（logits）自我驗證，不換模型、不額外訓練，DeepSeek V4 Flash 從 79% 跳到 88%。這個框架天然偏好地端部署——需要完整的 logits access，而且很燒 token，剛好是開源 + 自有 GPU 的甜蜜點。"
+description: "\"Stanford + UC Berkeley 論文 LLM-as-a-Verifier 找到一個方法，讓開源模型深入自己的神經層（logits）自我驗證，不換模型、不額外訓練，DeepSeek V4 Flash 從 79% 跳到 88%。這個框架天然偏好地端部署——需要完整的 logits access，而且很燒 token，剛好是開源 + 自有 GPU 的甜蜜點。\""
+author: Wisely Chen
 ---
 
 Stanford + UC Berkeley 的新論文 [LLM-as-a-Verifier](https://arxiv.org/abs/2607.05391)（作者包括 Chelsea Finn、Ion Stoica、Azalia Mirhoseini）找到了一個方法，把開源模型的能力再往上推一個台階。

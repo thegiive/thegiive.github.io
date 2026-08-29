@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "Qwen3.8-27B 斬殺線：別只看那 $0.01，真正該看的是背後的趨勢"
+title: "\"Qwen3.8-27B 斬殺線：別只看那 $0.01，真正該看的是背後的趨勢\""
 date: 2026-08-19 12:00:00 +0800
 permalink: /qwen-3-8-27b-blade-killline-frontier-cost/
+tags: [Qwen3.8-27B, 開源模型, frontier model, cost analysis, 成本分析, Artificial Analysis, on-premise, 地端部署, cloud vs local, serving framework, SGLang, vLLM, intelligence per dollar]
+categories: [AI 產業分析]
 image: /assets/images/qwen-3-8-27b-blade-killline-cost.png
-description: "Artificial Analysis 圖上那條 $0.014/task 斬殺線讓社群炸鍋。但成本從來不是一個數字——雲端含運維，地端含踩坑，叫人『奇點已到、無腦買機器』的人比賣 API 的更壞。真正該看的不是那條線，是線背後的趨勢：開源模型四個月一代、serving framework 雨後春筍、harness 層全面開源——單位智力成本正在結構性崩盤。"
+description: "\"Artificial Analysis 圖上那條 $0.014/task 斬殺線讓社群炸鍋。但成本從來不是一個數字——雲端含運維，地端含踩坑，叫人『奇點已到、無腦買機器』的人比賣 API 的更壞。真正該看的不是那條線，是線背後的趨勢：開源模型四個月一代、serving framework 雨後春筍、harness 層全面開源——單位智力成本正在結構性崩盤。\""
+author: Wisely Chen
 ---
 
 ## 那條線讓社群炸了

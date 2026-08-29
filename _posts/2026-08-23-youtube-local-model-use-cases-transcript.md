@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "YouTube 逐字稿：地端模型到底對我有何用途？機敏場景 Coding、無護欄模型場景、OPEX 變 CAPEX"
+title: "\"YouTube 逐字稿：地端模型到底對我有何用途？機敏場景 Coding、無護欄模型場景、OPEX 變 CAPEX\""
 date: 2026-08-23 20:00:00 +0800
 permalink: /youtube-local-model-use-cases-transcript/
-image: /assets/images/youtube-local-model-use-cases-thumbnail.jpg
-description: "**作者：** Wisely Chen **日期：** 2026 年 8 月 **系列：** AI Coding 實戰觀察 — YouTube 逐字稿 **關鍵字：** Qwen3.8-27B, Opus 4.6, 地端模型, 機敏場景, 無護欄模型, abliteration, 紅隊測試, OPEX, CAPEX, 雲地混合, DeepSeek V4, GLM 5.2, Hugging Face"
+tags: [地端模型, on-premise, local inference, Qwen3.8-27B, Opus 4.6, 機敏場景, uncensored LLM, 無護欄模型, abliteration, red team, OPEX, CAPEX, 雲地混合, DeepSeek V4, GLM 5.2]
 categories: [AI Agent]
+image: /assets/images/youtube-local-model-use-cases-thumbnail.jpg
+description: "\"**作者：** Wisely Chen **日期：** 2026 年 8 月 **系列：** AI Coding 實戰觀察 — YouTube 逐字稿 **關鍵字：** Qwen3.8-27B, Opus 4.6, 地端模型, 機敏場景, 無護欄模型, abliteration, 紅隊測試, OPEX, CAPEX, 雲地混合, DeepSeek V4, GLM 5.2, Hugging Face\""
 author: Wisely Chen
 ---
 

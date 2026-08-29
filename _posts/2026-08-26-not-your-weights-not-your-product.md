@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "Sovereign AI 不是口號：Sequoia 的四級路徑、開源 60 vs 封閉 62 的算術、以及你該停在第幾級"
+title: "\"Sovereign AI 不是口號：Sequoia 的四級路徑、開源 60 vs 封閉 62 的算術、以及你該停在第幾級\""
 date: 2026-08-26 09:00:00 +0800
 permalink: /not-your-weights-not-your-product/
+tags: [sovereign AI, 主權 AI, open source, 開源, Sequoia, 自建模型, intelligence per dollar, Kimi K3, GLM-5.3, Fable 5, on-premise, 地端部署, VC, 成本結構]
+categories: [AI 產業分析]
 image: /assets/images/not-your-weights-logo.png
-description: "Sonya Huang 八月在 Sequoia 活動上把比特幣圈 2017 年的口號翻成 AI 版：not your weights, not your product。口號背後只有一個硬數字支撐——Kimi K3 和 GLM-5.3 在 Artificial Analysis Intelligence Index 上拿到 60，Fable 5 是 62。這篇從那個 2 分差距出發，算自建真正的成本結構，以及 VC 推這個論點的位置利益。"
+description: "\"Sonya Huang 八月在 Sequoia 活動上把比特幣圈 2017 年的口號翻成 AI 版：not your weights, not your product。口號背後只有一個硬數字支撐——Kimi K3 和 GLM-5.3 在 Artificial Analysis Intelligence Index 上拿到 60，Fable 5 是 62。這篇從那個 2 分差距出發，算自建真正的成本結構，以及 VC 推這個論點的位置利益。\""
+author: Wisely Chen
 ---
 
 80 位被投公司 founder 坐在 Sequoia 的活動上，Sonya Huang 把 2017 年比特幣圈那句「not your keys, not your bitcoin」換了個名詞：

@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "What Is Nvidia Actually Buying With Hugging Face?"
+title: "\"What Is Nvidia Actually Buying With Hugging Face?\""
 date: 2026-08-28 09:00:00 +0800
 permalink: /nvidia-hugging-face-acquisition-open-source-chokepoint-en/
+tags: [Nvidia, Hugging Face, acquisition, sovereign AI, open source, GPU, CUDA, AI infrastructure, distribution channel, Jensen Huang, HBM, hyperscaler]
+categories: [AI Industry Analysis]
 image: /assets/images/nvidia-hugging-face-acquisition-cover.png
-description: "Nvidia has reportedly agreed to acquire Hugging Face for $12.9B — 86x revenue for a $150M company. It looks insane until you see it through the sovereign AI lens. This is Jensen Huang's oldest playbook: prefetching the bottlenecks. CUDA locked developers, HBM locked capacity, and now the model distribution layer gets locked. Hyperscalers are all building Plan B away from Nvidia, but sovereign AI customers have far fewer options — serving: Nvidia leads, training: Nvidia monopoly. If the sovereign AI wave rises, Nvidia is the biggest winner."
+description: "\"Nvidia has reportedly agreed to acquire Hugging Face for $12.9B — 86x revenue for a $150M company. It looks insane until you see it through the sovereign AI lens. This is Jensen Huang's oldest playbook: prefetching the bottlenecks. CUDA locked developers, HBM locked capacity, and now the model distribution layer gets locked. Hyperscalers are all building Plan B away from Nvidia, but sovereign AI customers have far fewer options — serving: Nvidia leads, training: Nvidia monopoly. If the sovereign AI wave rises, Nvidia is the biggest winner.\""
+author: Wisely Chen
 ---
 
 In late 2025, Nvidia offered Hugging Face a $500M minority stake at a $7B valuation. Hugging Face declined, citing platform neutrality — they didn't want a single chip giant to have outsized influence.

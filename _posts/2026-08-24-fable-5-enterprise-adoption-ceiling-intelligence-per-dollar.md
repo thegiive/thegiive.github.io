@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "Fable 5 只佔 Anthropic 銷售的 11%：當最強模型不是賣最好的模型，你需要開始計算單位美元可以買到的智能 %"
+title: "\"Fable 5 只佔 Anthropic 銷售的 11%：當最強模型不是賣最好的模型，你需要開始計算單位美元可以買到的智能 %\""
 date: 2026-08-24 12:00:00 +0800
 permalink: /fable-5-enterprise-adoption-ceiling-intelligence-per-dollar/
+tags: [Fable 5, Anthropic, enterprise adoption, intelligence per dollar, Ramp, token usage, model pricing, 模型定價, Artificial Analysis, 智能密度, Claude, 企業採用, cost analysis]
+categories: [AI 產業分析]
 image: /assets/images/fable-5-adoption-ceiling-cover.png
-description: "Ramp 追蹤七萬家企業的支付數據顯示，Fable 5 發布超過兩個月，只佔 Anthropic 模型支出的 11.4%、token 使用量的 6%。這篇從數據出發，拆解三個推開 Fable 5 的力量，提出「每美元多少智能」和「每 B 多少智能」兩個新指標，用 Artificial Analysis Intelligence Index 比較雲端 API 和開源模型的智能密度。"
+description: "\"Ramp 追蹤七萬家企業的支付數據顯示，Fable 5 發布超過兩個月，只佔 Anthropic 模型支出的 11.4%、token 使用量的 6%。這篇從數據出發，拆解三個推開 Fable 5 的力量，提出「每美元多少智能」和「每 B 多少智能」兩個新指標，用 Artificial Analysis Intelligence Index 比較雲端 API 和開源模型的智能密度。\""
+author: Wisely Chen
 ---
 
 Anthropic 的 Fable 5 是目前市面上最強的模型。這一點沒有爭議。
@@ -66,15 +69,15 @@ Anthropic 整體表現不差——七月 ARR 達 $65B，企業採用率 43.5% �
 
 ### 雲端 API：每美元多少智能
 
-| 模型 | Intelligence Index | 輸入 $/MTok | 輸出 $/MTok |
-|------|:--:|--:|--:|
-| Opus 5 | 63 | $5 | $25 |
-| Fable 5 | 62 | $10 | $50 |
-| GPT-5.6 Sol | 61 | $5 | $30 |
-| Sonnet 5 | 55 | $2 | $10 |
-| GPT-5.6 Terra | 55 | $2 | $12 |
-| GPT-5.6 Luna | 52 | $0.20 | $1.20 |
-| Haiku 4.5 | 30 | $1 | $5 |
+| 模型 | Intelligence Index | 輸入 $/MTok | 輸出 $/MTok | II / 輸出$ |
+|------|:--:|--:|--:|:--:|
+| Opus 5 | 63 | $5 | $25 | 2.52 |
+| Fable 5 | 62 | $10 | $50 | 1.24 |
+| GPT-5.6 Sol | 61 | $5 | $30 | 2.03 |
+| Sonnet 5 | 55 | $2 | $10 | 5.50 |
+| GPT-5.6 Terra | 55 | $2 | $12 | 4.58 |
+| GPT-5.6 Luna | 52 | $0.20 | $1.20 | 43.33 |
+| Haiku 4.5 | 30 | $1 | $5 | 6.00 |
 
 Opus 5 分數比 Fable 5 還高一分（63 vs 62），價格卻便宜一半——Fable 5 是整張表裡最貴的，而且不是最聰明的。GPT-5.6 Luna 用 $0.20/$1.20 拿到 52 分，而 Haiku 4.5 花 $1/$5 只拿到 30 分——Luna 便宜五倍，分數高了 73%。
 

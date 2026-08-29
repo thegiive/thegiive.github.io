@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "No Model Swap, No Fine-Tuning: Let Open-Source Models Read Their Own Neural Layers to Self-Verify — LLM-as-a-Verifier"
+title: "\"No Model Swap, No Fine-Tuning: Let Open-Source Models Read Their Own Neural Layers to Self-Verify — LLM-as-a-Verifier\""
 date: 2026-08-25 12:00:00 +0800
 permalink: /verification-scaling-llm-as-a-verifier-terminal-bench-en/
+tags: [LLM-as-a-Verifier, self-verification, logits, open source, DeepSeek V4 Flash, Terminal-Bench, on-premise, inference, Stanford, UC Berkeley, verification scaling, neural layers]
+categories: [AI Industry Analysis]
 image: /assets/images/verification-scaling-terminal-bench-2-1.png
-description: "A Stanford + UC Berkeley paper shows how open-source models can read their own logits to self-verify, jumping DeepSeek V4 Flash from 79% to 88% on Terminal-Bench 2.1. The framework naturally favors on-prem deployment — it needs full logits access and burns 10-15x tokens, making it the sweet spot for open-weight models on your own GPUs."
+description: "\"A Stanford + UC Berkeley paper shows how open-source models can read their own logits to self-verify, jumping DeepSeek V4 Flash from 79% to 88% on Terminal-Bench 2.1. The framework naturally favors on-prem deployment — it needs full logits access and burns 10-15x tokens, making it the sweet spot for open-weight models on your own GPUs.\""
+author: Wisely Chen
 ---
 
 A new paper from Stanford and UC Berkeley — [LLM-as-a-Verifier](https://arxiv.org/abs/2607.05391), authored by Chelsea Finn, Ion Stoica, Azalia Mirhoseini, and others — found a way to push open-source models one notch higher.

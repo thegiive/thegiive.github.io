@@ -1,13 +1,22 @@
 ---
 layout: post
-title: "Pi 99.93% Cache Hit：10 億 token 只花 $2.65，Agent 選型要多盯一個數字"
+title: "\"Pi 99.93% Cache Hit：10 億 token 只花 $2.65，Agent 選型要多盯一個數字\""
 date: 2026-08-25 09:00:00 +0800
 permalink: /pi-cache-hit-99-93-context-compression-roadmap/
+tags: [Pi, cache hit, prefix cache, KV cache, context compression, agent harness, DeepSeek V4 Flash, token cost, 成本優化, compaction, session tree, append-only, coding agent, 開源模型]
+categories: [AI Agent]
 image: /assets/images/pi-cache-hit-99-93-cover.png
-description: "第一次用 Codex 接開源模型寫 code，成效不太好，換成社群推的 Pi 突然強很多。順手算了一筆帳：有人用 Pi 接 DeepSeek V4 Flash 跑掉近 10 億 input token，cache hit 99.93%，帳單 $2.65。這篇把 Pi 做對的事拆成五個機制，逐條對到源碼和官方文件，講它的哲學、session 樹和 compaction 是怎麼運作的，最後講一句結語。"
+description: "\"第一次用 Codex 接開源模型寫 code，成效不太好，換成社群推的 Pi 突然強很多。順手算了一筆帳：有人用 Pi 接 DeepSeek V4 Flash 跑掉近 10 億 input token，cache hit 99.93%，帳單 $2.65。這篇把 Pi 做對的事拆成五個機制，逐條對到源碼和官方文件，講它的哲學、session 樹和 compaction 是怎麼運作的，最後講一句結語。\""
+author: Wisely Chen
 ---
 
+## 先講一句保證無聊的前言
+
+最近研究 Pi 這個 harness 的設計，越看越覺得像大學翻 OS 恐龍本——cache locality、write-ahead log、GC、eviction policy，全是那些老東西，只是現在管的不是 row 跟 page，是對話跟決策。（恐龍本＝資工人的 OS 教科書，因為每一版封面都有恐龍。在 AI 時代還敢提恐龍本，有一種自己是恐龍的自嘲感。）
+
 ## 第一次用開源模型 coding，成效不好
+
+又到了保證無聊的 IT 日。
 
 我前段時間第一次用 Codex 接開源 LLM 做 coding。說實話，成效不太過得去：該改的地方漏改、改動之間互相打架、長一點的 session 就開始忘前面講過什麼。我沒有立刻下結論，因為不太確定問題出在哪——是模型本身不夠強，是 prompt 寫得不好，還是 harness 的問題？
 
@@ -112,6 +121,12 @@ Pi 沒有什麼黑魔法，它的強是「少」。工具少、prompt 薄、cont
 **第二，「省 token」是最常見的優化陷阱。** qwen-code 加了一個工具動態載入的功能——只在模型需要某個工具時才送工具說明。在沒有快取的思維裡這聽起來很合理：少送字，少付錢。結果每個 request 的前綴長得都不一樣了，hit rate 從 97.5% 瞬間雪崩到 81.5%。表面數據：每個 request 的 token 總量少了 46%；實際帳單：原本一次 $1.05 的任務飆到 $3.30。成本翻了三倍多。任何號稱能省 token、卻需要頻繁變動前綴的奇技淫巧，最後都會在 API 帳單上狠狠教訓你。
 
 所以真正的結論只有一句：**前綴穩定是當今所有 harness 都該守的鐵律，Pi 只是目前守得最徹底的那個。** 選 agent 的時候，把 cache hit rate 跟模型智力分並列——這個數字不寫在 leaderboard 上，要自己拉 log 算：Pi 的 footer 直接給（cache read / write / 當次 hit rate），Claude Code 的 log 在 `~/.claude/projects/` 底下，我之前那篇 [17 億 token 成本拆解](/ai-coding-token-cost-calculation-cache-read/) 有方法。不要盲信別人的測試數據，包括這篇。
+
+## 最前沿的科技，需要最基礎的知識
+
+回頭看，整篇文章其實只講一件事：Agent harness 的工程學問就是那些學問，一直都沒變。前綴穩定是 cache locality，session 樹是 write-ahead log，compaction 是 GC，五種壓縮路線對應的是 eviction policy 的選擇。最近看 Agent harness 設計，越來越像 DB、像 OS——差別只是它管的不是 row 跟 page，是對話跟決策。
+
+做得好不好，不是看模型多聰明，是看寫 harness 的人恐龍本翻得夠不夠熟。
 
 ---
 

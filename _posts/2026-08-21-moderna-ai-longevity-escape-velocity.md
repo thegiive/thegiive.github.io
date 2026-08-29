@@ -3,6 +3,7 @@ layout: post
 title: "Moderna 三期成功之後：你真正該盯的數字不是股價，而是 AI 帶來的長壽逃逸速度加速"
 date: 2026-08-21 12:00:00 +0800
 permalink: /moderna-ai-longevity-escape-velocity/
+tags: [Moderna, mRNA, longevity escape velocity, 長壽逃逸速度, AI drug discovery, 癌症療法, biotech, 生技, Elon Musk, 個體化醫療, personalized medicine, 股價, clinical trial]
 image: /assets/images/moderna-ai-lev-cover.png
 description: "Moderna 個體化 mRNA 癌症療法三期成功，股價單日暴漲 177%，Musk 說治病變成了軟體問題。但 X 上的論戰告訴我們：AI 是真的，魔法不是。對個人而言，真正該做的不是追股票，而是養好身體，把自己經營成最有機會迎接長壽逃逸速度的人。"
 ---

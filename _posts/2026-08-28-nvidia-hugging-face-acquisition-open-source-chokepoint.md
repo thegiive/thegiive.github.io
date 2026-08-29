@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "老黃買 Hugging Face 在幹嘛？預判主權 AI，鎖死分銷管道"
+title: "\"老黃買 Hugging Face 在幹嘛？預判主權 AI，鎖死分銷管道\""
 date: 2026-08-28 09:00:00 +0800
 permalink: /nvidia-hugging-face-acquisition-open-source-chokepoint/
+tags: [Nvidia, Hugging Face, 併購, acquisition, sovereign AI, 主權 AI, open source, 開源, GPU, CUDA, AI infrastructure, 分銷管道, distribution, Jensen Huang, HBM]
+categories: [AI 產業分析]
 image: /assets/images/nvidia-hugging-face-acquisition-cover.png
-description: "Nvidia 預計以 129 億收購 Hugging Face，86 倍 revenue 看起來瘋了，但如果從主權 AI 的角度看，這是老黃 prefetching the bottlenecks 的老套路：CUDA 鎖開發者、HBM 鎖產能、現在鎖主權 AI 的分銷管道。Hyperscaler 都在自研晶片想離開 Nvidia，但主權 AI 的客戶沒有選擇——serving Nvidia 最大，post-training Nvidia 獨佔。只要主權 AI 浪潮起來，Nvidia 就是最大的贏家。"
+description: "\"Nvidia 預計以 129 億收購 Hugging Face，86 倍 revenue 看起來瘋了，但如果從主權 AI 的角度看，這是老黃 prefetching the bottlenecks 的老套路：CUDA 鎖開發者、HBM 鎖產能、現在鎖主權 AI 的分銷管道。Hyperscaler 都在自研晶片想離開 Nvidia，但主權 AI 的客戶沒有選擇——serving Nvidia 最大，post-training Nvidia 獨佔。只要主權 AI 浪潮起來，Nvidia 就是最大的贏家。\""
+author: Wisely Chen
 ---
 
 2025 年底，Nvidia 向 Hugging Face 提出 5 億美元少數股權投資，估值 70 億。Hugging Face 拒絕了，理由是不想讓單一晶片巨頭對平台有太大影響力。

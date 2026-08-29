@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "我們訓練越來越多理組 model，所以它們越來越不文組：RLHF vs RLVR 的結構性代價"
+title: "\"我們訓練越來越多理組 model，所以它們越來越不文組：RLHF vs RLVR 的結構性代價\""
 date: 2026-08-05 09:00:00 +0800
 permalink: /rlhf-vs-rlvr-model-likability-alignment-tax/
+tags: [RLHF, RLVR, alignment, alignment tax, model training, 模型訓練, reasoning, likability, 文組理組, reinforcement learning, reward model, creative writing, coding model]
+categories: [AI 產業分析]
 image: /assets/images/rlhf-vs-rlvr-alignment-tax-cover.png
-description: "你有沒有覺得最近的模型變得更囉嗦、更機械、更愛做你沒要求的事？前 Meta/Microsoft L8 工程師 Kun Chen 拆解了原因：2022 年的 RLHF 教模型「讓人類喜歡」，2024 年的 RLVR 教模型「讓機器接受」。RLVR 更便宜、更可擴展——但它的獎勵函數裡根本沒有「人類是否享受這段互動」這個變數。InstructGPT 論文早在 2022 年就發現的 alignment tax，正在以產業規模兌現。這篇從訓練管線演化拆解這個結構性問題，對照 gertlabs 的 coding vs social intelligence 雙軸數據，連結本 blog 之前寫的 Stanford sycophancy 研究和 GPT-4o 人性標準器事件。"
+description: "\"你有沒有覺得最近的模型變得更囉嗦、更機械、更愛做你沒要求的事？前 Meta/Microsoft L8 工程師 Kun Chen 拆解了原因：2022 年的 RLHF 教模型「讓人類喜歡」，2024 年的 RLVR 教模型「讓機器接受」。RLVR 更便宜、更可擴展——但它的獎勵函數裡根本沒有「人類是否享受這段互動」這個變數。InstructGPT 論文早在 2022 年就發現的 alignment tax，正在以產業規模兌現。這篇從訓練管線演化拆解這個結構性問題，對照 gertlabs 的 coding vs social intelligence 雙軸數據，連結本 blog 之前寫的 Stanford sycophancy 研究和 GPT-4o 人性標準器事件。\""
+author: Wisely Chen
 ---
 
 你有沒有覺得，最近的模型變笨了？

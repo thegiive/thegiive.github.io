@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "Qwen3.8-27B 開源三天，五個 Opus 級無護欄模型就在你的筆電上跑了"
+title: "\"Qwen3.8-27B 開源三天，五個 Opus 級無護欄模型就在你的筆電上跑了\""
 date: 2026-08-22 09:00:00 +0800
 permalink: /qwen38-27b-abliteration-three-days-safety-paradox/
-description: "8/14 Qwen3.8-27B 開源，Apache 2.0，官方 SWE-bench Pro 61.7 贏過 Opus 4.6 Max。三天之內，社群造出至少五個 abliterated 版本——護欄歸零、842 道有害 prompt 0% 拒答、專門針對資安紅隊的 build，全部可以跑在 24GB GPU 的筆電上。這篇不是模型推薦，是拆解一個正在發生的安全悖論：開源讓防禦者更強，同時讓攻擊者的門檻歸零。"
-image: /assets/images/qwen38-abliteration-cover.png
+tags: [Qwen3.8-27B, abliteration, uncensored LLM, 無護欄模型, open source, 開源, AI safety, 資安, red team, 紅隊測試, guardrail, Hugging Face, huihui, Apache 2.0, safety paradox]
 categories: [AI 產業分析]
+image: /assets/images/qwen38-abliteration-cover.png
+description: "\"8/14 Qwen3.8-27B 開源，Apache 2.0，官方 SWE-bench Pro 61.7 贏過 Opus 4.6 Max。三天之內，社群造出至少五個 abliterated 版本——護欄歸零、842 道有害 prompt 0% 拒答、專門針對資安紅隊的 build，全部可以跑在 24GB GPU 的筆電上。這篇不是模型推薦，是拆解一個正在發生的安全悖論：開源讓防禦者更強，同時讓攻擊者的門檻歸零。\""
 author: Wisely Chen
 ---
 
