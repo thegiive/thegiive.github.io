@@ -12,6 +12,7 @@ permalink: /categories/
     <li><a href="#fde-enterprise">🏭 FDE 模式與企業 AI 轉型</a></li>
     <li><a href="#ai-security">🔐 AI 資訊安全</a></li>
     <li><a href="#it-arch">💾 IT 架構系列</a></li>
+    <li><a href="#local-first">Local-First Agent Stack</a></li>
     <li><a href="#harness-engineering">🛡️ Harness Engineering 系列</a></li>
     <li><a href="#ai-agent">🤖 AI Agent 完整指南</a></li>
     <li><a href="#openclaw">🦞 OpenClaw 深度解析</a></li>
@@ -92,6 +93,51 @@ permalink: /categories/
     <li><a href="/n8n-hybrid-cloud-on-premise-architecture/">n8n 雲地混合架構：為什麼它不只是一個 Low-Code 工具</a></li>
     <li><a href="/ai-coding-on-prem-three-paths/">AI Coding On-Prem 的三條路：雲端內網化、真地端、還是灰色折衷？</a></li>
     <li><a href="/langfuse-architecture-postgresql-rls-tradeoff/">Langfuse 架構演進：為什麼從全 PostgreSQL 走向 ClickHouse</a></li>
+  </ul>
+</div>
+
+<!-- Local-First Agent Stack Topic Cluster -->
+<div id="local-first" class="category-section topic-cluster-highlight">
+  <h3>Local-First Agent Stack <span class="pillar-badge">Topic Cluster</span></h3>
+  <p class="cluster-intro">2026 年，「用地端」第一次不是退而求其次。Qwen3.8-27B 在 SWE-bench Pro 拿下 61.7 超越 Opus 4.6 Max，一張消費級顯卡就跑得動。這個系列從硬體選型、推論引擎、KV Cache 經濟學、Harness 架構到 Sovereign AI 路徑，記錄了從一張 RTX 5090 到企業級地端部署的完整路線圖。</p>
+  <p class="pillar-link"><strong>📖 Pillar Page：</strong><a href="/local-first-agent-stack/">Local-First Agent Stack 系列總覽：從一張消費級顯卡到企業級地端 AI</a></p>
+
+  <h4>Qwen3.8-27B 實戰</h4>
+  <ul>
+    <li><a href="/qwen-3-8-27b-open-weights-local-security/">Qwen3.8-27B 開源：「那就用地端」第一次不是妥協</a></li>
+    <li><a href="/qwen-3-8-27b-blade-killline-frontier-cost/">Qwen3.8-27B 斬殺線：別只看 $0.01</a></li>
+    <li><a href="/qwen-3-8-27b-all-platform-deployment-guide/">Qwen3.8-27B 多平台 tok/s 整理</a></li>
+    <li><a href="/dflash2-qwen3-27b-twice-as-fast/">DFlash 2 讓 Qwen3.8-27B 快兩倍</a></li>
+  </ul>
+
+  <h4>硬體與推論加速</h4>
+  <ul>
+    <li><a href="/qwen-3-6-27b-rtx-5090-inference-engine-benchmark/">RTX 5090 + Qwen3.6-27B 七種推論引擎實測</a></li>
+    <li><a href="/inference-engine-selection-hardware-strategy/">Inference Engine 選型指南 (2026)</a></li>
+    <li><a href="/llama-cpp-mtp-merged-local-llm-2x-speedup/">llama.cpp 合併 MTP：本地推論提速 30-60%</a></li>
+    <li><a href="/moe-offload-deepseek-v3-v4-local-inference-optimization/">MoE Offload 完全拆解</a></li>
+    <li><a href="/taalas-asic-burn-llm-into-silicon-local-inference-future/">把 LLM 燒進晶片：Taalas ASIC</a></li>
+  </ul>
+
+  <h4>KV Cache 經濟學</h4>
+  <ul>
+    <li><a href="/pi-cache-hit-99-93-context-compression-roadmap/">Pi 99.93% Cache Hit：10 億 token 只花 $2.65</a></li>
+    <li><a href="/kv-cache-gemma4-claude-code-save-80-percent-token/">搞懂快取機制：省 80% Token</a></li>
+    <li><a href="/cross-model-kv-cache-transfer-nvidia-ridge-regression/">切模型不用重算 KV Cache：NVIDIA 線性映射</a></li>
+    <li><a href="/deepseek-v4-flash-disk-kv-cache-50x-economics/">DeepSeek V4 Flash Disk KV Cache 50x 經濟效益</a></li>
+  </ul>
+
+  <h4>Sovereign AI 與開源主權</h4>
+  <ul>
+    <li><a href="/not-your-weights-not-your-product/">Sovereign AI 不是口號：Sequoia 的四級路徑</a></li>
+    <li><a href="/nvidia-hugging-face-acquisition-open-source-chokepoint/">老黃買 Hugging Face：預判主權 AI，鎖死分銷管道</a></li>
+    <li><a href="/open-weights-new-era-nvidia-letter-liang-wenfeng/">開源模型是 AI 新時代的偉大航道</a></li>
+  </ul>
+
+  <h4>安全與紅軍</h4>
+  <ul>
+    <li><a href="/uncensored-ai-red-team-black-box-vibe-coding/">用無護欄 AI 做黑箱紅軍的兩小時實錄</a></li>
+    <li><a href="/qwen38-27b-abliteration-three-days-safety-paradox/">Qwen3.8-27B 開源三天，五個無護欄模型就在你的筆電上</a></li>
   </ul>
 </div>
 
