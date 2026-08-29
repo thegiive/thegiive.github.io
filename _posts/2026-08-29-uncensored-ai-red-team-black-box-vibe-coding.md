@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "給一個 URL，不給任何資訊——用無護欄 AI 做黑箱紅軍的兩小時實錄"
+title: "\"給一個 URL，不給任何資訊——用無護欄 AI 做黑箱紅軍的兩小時實錄\""
 date: 2026-08-29 09:00:00 +0800
 permalink: /uncensored-ai-red-team-black-box-vibe-coding/
+tags: [red team, penetration testing, 滲透測試, 資安, cybersecurity, uncensored LLM, abliteration, guardrail bypass, black box testing, 黑箱測試, VibeCoding, Qwen3.8-27B, huihui, 無護欄模型, AI security, offensive security, 紅隊測試, bug bounty, vulnerability assessment, 弱點掃描]
+categories: [AI Agent]
 image: /assets/images/uncensored-ai-red-team-cover.png
-description: "朋友的網站已經用 Claude Code 白箱掃了三四次、用 Codex 換模型重掃、也簽了資安公司準備付費檢測。大考之前，他想找無護欄 AI 做一次模擬考。我用 RTX 5090 + Qwen3.8-27B huihui 版，只給一個 URL、不給任何其他資訊，跑了一次純黑箱紅軍。前三分鐘畫完架構圖，三十分鐘出兩個 finding，兩小時總共抓到十個問題、留痕兩個。你用 AI 建的網站，別人也能用 AI 拆。"
+description: "\"朋友的網站已經用 Claude Code 白箱掃了三四次、用 Codex 換模型重掃、也簽了資安公司準備付費檢測。大考之前，他想找無護欄 AI 做一次模擬考。我用 RTX 5090 + Qwen3.8-27B huihui 版，只給一個 URL、不給任何其他資訊，跑了一次純黑箱紅軍。前三分鐘畫完架構圖，三十分鐘出兩個 finding，兩小時總共抓到十個問題、留痕兩個。你用 AI 建的網站，別人也能用 AI 拆。\""
+author: Wisely Chen
 ---
 
 > 警語：本文描述的測試是在網站擁有者邀請下進行的授權紅軍測試。隨意攻擊任何一個網站，很可能觸法。
