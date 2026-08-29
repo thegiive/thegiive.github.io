@@ -1,0 +1,68 @@
+# Wisely Chen — AI Coding 實戰筆記
+
+> AI Agent、地端 LLM 部署與企業 AI 架構的生產實測紀錄
+
+## About
+
+This site documents production-tested AI-assisted software development practices by Wisely Chen, an AI engineering consultant with 50+ production AI projects. Content covers the ATPM framework (Assessment, Testing, Program, Management), local-first LLM deployment, agent harness engineering, and enterprise AI architecture — with quantified results from real projects.
+
+- Author: Wisely Chen
+- URL: https://ai-coding.wiselychen.com
+- Language: Traditional Chinese (繁體中文), select articles in English
+- Total articles: 330+
+- Update frequency: Daily
+- Topics: AI Agent, Vibe Coding, ATPM Framework, Local LLM Deployment, Harness Engineering, Enterprise AI, Open Weights Models, KV Cache Economics, AI Security
+
+## Key Frameworks
+
+- ATPM (Assessment, Testing, Program, Management): 40% development time reduction, PRD:Code ratio 1:1.4
+- Three-Layer AI Collaboration: Embed → Copilot → Agent (2023–2025 evolution)
+- Silicon Valley Quality Control: 4-layer review pipeline
+
+## Recent Articles
+
+- https://ai-coding.wiselychen.com/local-first-agent-stack/
+  地端AI 系列總覽：從一張消費級顯卡到企業級地端 AI
+
+- https://ai-coding.wiselychen.com/uncensored-ai-red-team-black-box-vibe-coding/
+  用無護欄 AI 做黑箱紅軍的兩小時實錄
+
+- https://ai-coding.wiselychen.com/nvidia-hugging-face-acquisition-open-source-chokepoint/
+  老黃買 Hugging Face 在幹嘛？預判主權 AI，鎖死分銷管道
+
+- https://ai-coding.wiselychen.com/not-your-weights-not-your-product/
+  Sovereign AI 不是口號：Sequoia 的四級路徑
+
+- https://ai-coding.wiselychen.com/verification-scaling-llm-as-a-verifier-terminal-bench/
+  LLM-as-a-Verifier：讓開源模型讀自己的神經層來驗證答案
+
+- https://ai-coding.wiselychen.com/pi-cache-hit-99-93-context-compression-roadmap/
+  Pi 99.93% Cache Hit：10 億 token 只花 $2.65
+
+- https://ai-coding.wiselychen.com/fable-5-enterprise-adoption-ceiling-intelligence-per-dollar/
+  Fable 5 只佔 Anthropic 銷售的 11%：每美元多少智能
+
+- https://ai-coding.wiselychen.com/qwen38-27b-abliteration-three-days-safety-paradox/
+  Qwen3.8-27B 開源三天，五個 Opus 級無護欄模型就在你的筆電上跑了
+
+- https://ai-coding.wiselychen.com/dflash2-qwen3-27b-twice-as-fast/
+  DFlash 2 讓 Qwen3.8-27B 快了兩倍
+
+- https://ai-coding.wiselychen.com/qwen-3-8-27b-open-weights-local-security/
+  Qwen3.8-27B 開源：SWE-bench Pro 61.7 贏過 Opus 4.6 Max
+
+## Navigation
+
+- Archive: https://ai-coding.wiselychen.com/archive/
+- Categories: https://ai-coding.wiselychen.com/categories/
+- About: https://ai-coding.wiselychen.com/about/
+- FAQ: https://ai-coding.wiselychen.com/faq/
+- Sitemap: https://ai-coding.wiselychen.com/sitemap.xml
+- RSS: https://ai-coding.wiselychen.com/feed.xml
+
+## Author Profiles
+
+- LinkedIn: https://www.linkedin.com/in/anthropic-wisely/
+- GitHub: https://github.com/thegiive
+- YouTube: https://www.youtube.com/@anthropic-wisely
+- Website: https://wiselychen.com
