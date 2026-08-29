@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "\"Local-First Agent Stack 系列總覽：從一張消費級顯卡到企業級地端 AI\""
+title: "\"地端AI 系列總覽：從一張消費級顯卡到企業級地端 AI\""
 date: 2026-08-29 18:00:00 +0800
 permalink: /local-first-agent-stack/
 tags: [local-first, Qwen3.8-27B, RTX 5090, inference engine, KV cache, harness engineering, sovereign AI, on-premise, MoE offload, open weights, abliteration, red team, local inference, enterprise AI, agent stack, MTP, speculative decoding, cache economics, 地端部署, 本地推論]
