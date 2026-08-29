@@ -8,6 +8,17 @@ categories: [AI 產業分析]
 image: /assets/images/qwen38-abliteration-cover.png
 description: "\"8/14 Qwen3.8-27B 開源，Apache 2.0，官方 SWE-bench Pro 61.7 贏過 Opus 4.6 Max。三天之內，社群造出至少五個 abliterated 版本——護欄歸零、842 道有害 prompt 0% 拒答、專門針對資安紅隊的 build，全部可以跑在 24GB GPU 的筆電上。這篇不是模型推薦，是拆解一個正在發生的安全悖論：開源讓防禦者更強，同時讓攻擊者的門檻歸零。\""
 author: Wisely Chen
+faq:
+  - question: "Abliteration 到底是什麼？怎麼做到「拆掉護欄」的？"
+    answer: "Abliteration 是一種用線性代數移除 LLM 拒答行為（Refusal Behavior）的技術。原理來自 Arditi et al. 2024 的研究，發現模型的拒答行為被一個單一的方向向量（Direction Vector）控制。做法就是拿一組有害 prompt 跟一組無害 prompt 分別跑過模型，記錄每一層的啟動值（Activation），算出兩者的平均差異找到「拒答方向」，然後用正交化（Orthogonalization）把這個方向從權重矩陣裡消掉。NousResearch 已經把整套流程打包成開源工具，任何人用一張消費級 GPU 花幾小時就能對任何開源模型做這件事。"
+  - question: "Qwen3.8-27B 從開源到被完全移除護欄花了多久？"
+    answer: "三天。8 月 14 日權重上線，8 月 15 日 OrcaRouter 就發布 FP8 abliterated build，8 月 16 日 huihui-ai 發布另一個版本，8 月 17 日已經有 50 題橫向測試五個 uncensored 版本對打。到第六天，OBLITERATUS 用 multi-direction ablation（多方向消融）做出 842 道有害 prompt 0% 拒答的 cyber build。然後更值得注意的是 OBLITERATUS 的數字：拆掉護欄之後通用能力沒有下降，MMLU 反而比原版高 1.1 個百分點，暗示安全對齊（Safety Alignment）本身會佔用一部分推理容量。"
+  - question: "護欄（Guardrail）既然這麼容易被拆，還有意義嗎？"
+    answer: "有，但要對它的功能有正確期待。護欄擋不住有意圖的攻擊者，任何願意花幾小時下載跑 abliteration script 的人都能得到一個無拒答的 frontier-class 模型。護欄擋的是大規模低門檻濫用（Opportunistic Misuse）：隨手拿官方 API 試試能不能問出惡意內容的人，這些人不會去找 abliterated 權重、不會搞 llama.cpp、不會調量化格式。就是門鎖的概念：防的是路過順手推門的，不是蓄意破門的。大多數濫用是機會犯罪，不是預謀犯罪，護欄對前者有效。"
+  - question: "跟 Grok 4.5 的攻擊力比起來，abliterated Qwen3.8 的風險在哪裡？"
+    answer: "套用文章裡的框架：攻擊力（Attack Surface） = 能力 x 可及性（Accessibility） x 沒有護欄。Grok 4.5 是 2 美元 API 加上護欄刻意放鬆再加上 Opus-class 寫碼能力。Qwen3.8 abliterated 三個乘數全部拉滿：SWE-bench Pro 61.7 贏過 Opus 4.6 Max、Apache 2.0 免費不需 API key 不需帳號不需網路、拒答率 0% 到 6%。而且比 Grok 4.5 多一個維度：離線。Grok 走 API 理論上 xAI 可以事後稽核，abliterated 地端模型跑在自己機器上不留 log，沒有人知道你用它做了什麼。"
+  - question: "企業安全團隊現在應該怎麼調整威脅模型（Threat Model）？"
+    answer: "「對手只能用有護欄的模型」這個假設已經不成立了。攻擊者手上有 frontier-class、無護欄、離線、不留痕跡的 AI，而且取得成本趨近於零。防禦重心要從「假設對手能力有限」轉到「假設對手有 frontier 能力，然後把你的系統設計得能承受」。然後開源的安全好處跟安全風險是同一枚硬幣的兩面：開源讓安全研究者能審計模型內部、找到漏洞、改進防禦，同時也讓任何人能拆掉護欄，而且拆的速度永遠比裝的快。裝護欄需要幾個月的 RLHF 訓練跟紅隊測試，拆護欄只需要幾小時，這個不對稱是結構性的，不是靠做得更好就能解決。"
 ---
 
 8 月 14 日，Qwen3.8-27B [權重上線](https://huggingface.co/Qwen/Qwen3.8-27B)。Apache 2.0，27B dense，SWE-bench Pro 61.7 贏過 Opus 4.6 Max 的 53.4。
@@ -167,3 +178,27 @@ Llama 3.1 被 abliterate 過。Gemma 被 abliterate 過。DeepSeek 被 abliterat
 - [Qwen3.8-27B 開源：SWE-bench Pro 61.7 贏過 Opus 4.6 Max，「那就用地端」第一次不是妥協](/qwen-3-8-27b-open-weights-local-security/) — 本篇的前半：地端能力不再是妥協
 - [Mythos 被鎖起來，Grok 4.5 到處都是：真正的攻擊力，不只是能力](/grok-4-5-attacker-model-access-over-capability-mythos/) — 攻擊力 = 能力 × 可及性 × 沒有護欄，本篇把框架從閉源延伸到開源
 - [Qwen3.8-27B 斬殺線：別只看那 $0.01，真正該看的是背後的趨勢](/qwen-3-8-27b-blade-killline-frontier-cost/) — 成本歸零的趨勢，本篇加上安全歸零
+
+---
+
+## 常見問題 Q&A
+
+**Q: Abliteration 到底是什麼？怎麼做到「拆掉護欄」的？**
+
+Abliteration 是一種用線性代數移除 LLM 拒答行為（Refusal Behavior）的技術。原理來自 Arditi et al. 2024 的研究，發現模型的拒答行為被一個單一的方向向量（Direction Vector）控制。做法就是拿一組有害 prompt 跟一組無害 prompt 分別跑過模型，記錄每一層的啟動值（Activation），算出兩者的平均差異找到「拒答方向」，然後用正交化（Orthogonalization）把這個方向從權重矩陣裡消掉。NousResearch 已經把整套流程打包成開源工具，任何人用一張消費級 GPU 花幾小時就能對任何開源模型做這件事。
+
+**Q: Qwen3.8-27B 從開源到被完全移除護欄花了多久？**
+
+三天。8 月 14 日權重上線，8 月 15 日 OrcaRouter 就發布 FP8 abliterated build，8 月 16 日 huihui-ai 發布另一個版本，8 月 17 日已經有 50 題橫向測試五個 uncensored 版本對打。到第六天，OBLITERATUS 用 multi-direction ablation（多方向消融）做出 842 道有害 prompt 0% 拒答的 cyber build。然後更值得注意的是 OBLITERATUS 的數字：拆掉護欄之後通用能力沒有下降，MMLU 反而比原版高 1.1 個百分點，暗示安全對齊（Safety Alignment）本身會佔用一部分推理容量。
+
+**Q: 護欄（Guardrail）既然這麼容易被拆，還有意義嗎？**
+
+有，但要對它的功能有正確期待。護欄擋不住有意圖的攻擊者，任何願意花幾小時下載跑 abliteration script 的人都能得到一個無拒答的 frontier-class 模型。護欄擋的是大規模低門檻濫用（Opportunistic Misuse）：隨手拿官方 API 試試能不能問出惡意內容的人，這些人不會去找 abliterated 權重、不會搞 llama.cpp、不會調量化格式。就是門鎖的概念：防的是路過順手推門的，不是蓄意破門的。大多數濫用是機會犯罪，不是預謀犯罪，護欄對前者有效。
+
+**Q: 跟 Grok 4.5 的攻擊力比起來，abliterated Qwen3.8 的風險在哪裡？**
+
+套用文章裡的框架：攻擊力（Attack Surface） = 能力 x 可及性（Accessibility） x 沒有護欄。Grok 4.5 是 2 美元 API 加上護欄刻意放鬆再加上 Opus-class 寫碼能力。Qwen3.8 abliterated 三個乘數全部拉滿：SWE-bench Pro 61.7 贏過 Opus 4.6 Max、Apache 2.0 免費不需 API key 不需帳號不需網路、拒答率 0% 到 6%。而且比 Grok 4.5 多一個維度：離線。Grok 走 API 理論上 xAI 可以事後稽核，abliterated 地端模型跑在自己機器上不留 log，沒有人知道你用它做了什麼。
+
+**Q: 企業安全團隊現在應該怎麼調整威脅模型（Threat Model）？**
+
+「對手只能用有護欄的模型」這個假設已經不成立了。攻擊者手上有 frontier-class、無護欄、離線、不留痕跡的 AI，而且取得成本趨近於零。防禦重心要從「假設對手能力有限」轉到「假設對手有 frontier 能力，然後把你的系統設計得能承受」。然後開源的安全好處跟安全風險是同一枚硬幣的兩面：開源讓安全研究者能審計模型內部、找到漏洞、改進防禦，同時也讓任何人能拆掉護欄，而且拆的速度永遠比裝的快。裝護欄需要幾個月的 RLHF 訓練跟紅隊測試，拆護欄只需要幾小時，這個不對稱是結構性的，不是靠做得更好就能解決。

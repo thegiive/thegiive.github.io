@@ -8,6 +8,17 @@ categories: [AI Agent]
 image: /assets/images/pi-cache-hit-99-93-cover.png
 description: "\"第一次用 Codex 接開源模型寫 code，成效不太好，換成社群推的 Pi 突然強很多。順手算了一筆帳：有人用 Pi 接 DeepSeek V4 Flash 跑掉近 10 億 input token，cache hit 99.93%，帳單 $2.65。這篇把 Pi 做對的事拆成五個機制，逐條對到源碼和官方文件，講它的哲學、session 樹和 compaction 是怎麼運作的，最後講一句結語。\""
 author: Wisely Chen
+faq:
+  - question: "我用 Claude（Anthropic API），Pi 的優勢還成立嗎？"
+    answer: "方向成立，幅度收斂。Anthropic 的 prompt cache TTL 是 5 分鐘，離線吃飯回來前綴就斷，hit rate 的天花板比 DeepSeek 低。但前綴穩定的紀律依然省錢——斷了之後重寫的 cost 低，且斷的頻率低。要自己拉 log 看實際 hit rate，不要直接套 99.93%。"
+  - question: "94-97% 的「其他 harness」，具體指誰？"
+    answer: "我的理解是「預設工具多、前綴常動」的那類（工具開場全宣告、每輪重新組 prompt 的）。不是說哪一家做不好，是說這個指標要逐家測，不該預設。"
+  - question: "/compact 和 /tree 會互相干擾嗎？"
+    answer: "不會。兩者都只 append 新 entry（CompactionEntry 或 BranchSummaryEntry），不改舊資料。摘要會互相引用——branch summary 可以壓一個已 compaction 過的 branch，檔案追蹤也是累積併入。完整歷史永遠在 JSONL 檔裡。"
+  - question: "五種壓縮路線可以疊著用嗎？"
+    answer: "可以，但要有主次：入口過濾是底層，備忘錄是主策略，版本控制是安全網，前置異步和遺忘派是調優層。兩個都在「決定保留什麼」的插件裝一起會互相覆蓋。"
+  - question: "我該不該從訂閱轉 API？"
+    answer: "看 API 等值。把我過去兩週真實的 API 用量 log 拉出來，用官方牌價算一次：如果超過訂閱費用的三倍，乖乖回去付月費；三倍以內，API 不僅更便宜，還給更強的靈活性。我 8 月底那篇算過：我的 API 帳單 $631-681 一個月，對 $200 訂閱，超過三倍，訂閱划算。  ---"
 ---
 
 ## 先講一句保證無聊的前言

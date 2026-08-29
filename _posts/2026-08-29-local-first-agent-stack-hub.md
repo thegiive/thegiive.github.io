@@ -7,6 +7,17 @@ tags: [local-first, Qwen3.8-27B, RTX 5090, inference engine, KV cache, harness e
 categories: [AI Agent]
 description: "\"用 Qwen3.8-27B 跑出 Opus 等級的本地推論，不再是妥協而是策略。這個系列整理了硬體選型、推論引擎、KV Cache 經濟學、Harness 架構、Sovereign AI 路徑，以及安全紅軍實測——從一張 RTX 5090 到企業級地端部署的完整路線圖。\""
 author: Wisely Chen
+faq:
+  - question: "地端推論（Local Inference）現在真的能跟雲端模型比了嗎？"
+    answer: "對，2026 年是第一次地端模型在能力上不輸雲端。Qwen3.8-27B 在 SWE-bench Pro 拿下 61.7 分，超過 Opus 4.6 Max，然後它只有 27B 參數，一張消費級 RTX 5090 就能跑出 100+ tok/s。這不是「勉強堪用」的等級，是真的好用。關鍵轉折就是模型能力追上來了，地端部署第一次變成策略選擇而不是退而求其次。"
+  - question: "推論引擎（Inference Engine）怎麼選？SGLang、vLLM、llama.cpp 差在哪？"
+    answer: "先決定硬體策略，引擎自然會浮現。系列裡有一篇專門做了七種推論引擎的完整 benchmark——SGLang、vLLM、llama.cpp、Ollama、LM Studio 都測過。然後像 MTP（Multi-Token Prediction，多 token 預測）這類加速技術落地之後，llama.cpp 合併 MTP 就能提速 30-60%。不同場景適合不同引擎，不是一個答案走天下，建議從「Inference Engine 選型指南」那篇開始看。"
+  - question: "KV Cache 經濟學（KV Cache Economics）是什麼？跟我的成本有什麼關係？"
+    answer: "KV Cache 就是推論過程中模型暫存先前 token 注意力計算結果的那塊記憶體，它是推論成本的隱藏殺手。搞懂 KV Cache 等於搞懂你的 OPEX（營運支出）結構。系列裡有實測數據：Pi 做到 99.93% Cache Hit Rate，10 億個 token 只花 $2.65；Gemma4 到 Claude Code 的快取機制拆解則展示了怎麼省 80% token。做 Agent 選型的時候要多盯這個數字，不然帳單會嚇到你。"
+  - question: "Sovereign AI（主權 AI）跟我有什麼關係？什麼時候該考慮自己跑模型？"
+    answer: "當你的 weights（模型權重）在別人的伺服器上，你的產品就在別人手裡——API 斷供、價格調整、政策變更都不是你能控制的。系列裡引用 Sequoia 的四級路徑來分析：開源模型 60 分 vs 封閉模型 62 分，差距已經很小了。重點是評估你該停在第幾級，不是每個人都需要走到最底層自己訓練。機敏場景（Sensitive Scenario）、無護欄場景（Guardrail-free Scenario）、想把 OPEX 變 CAPEX 的企業，這三類最該認真考慮地端部署。"
+  - question: "這個系列這麼多篇，建議怎麼讀？"
+    answer: "按這個順序走最有效率：第一步看 Qwen3.8-27B 開源那篇，理解為什麼 2026 年地端推論不一樣了；第二步看 Inference Engine 選型指南，決定你的硬體和引擎組合；第三步看 KV Cache 省 80% Token 那篇，搞懂成本結構；最後看 Sovereign AI 四級路徑，決定你要走多深。這四篇讀完就有完整的判斷框架，之後再根據需要挑細節篇看。"
 ---
 
 2026 年，「用地端」第一次不是退而求其次。Qwen3.8-27B 在 SWE-bench Pro 拿下 61.7，超過 Opus 4.6 Max——一張消費級顯卡就跑得動的模型，第一次在能力上不輸雲端。
@@ -127,3 +138,27 @@ Token 不是免費的。KV Cache 是推論成本的隱藏殺手，搞懂它等�
 2. 再看 [Inference Engine 選型指南](/inference-engine-selection-hardware-strategy/) 選你的硬體和引擎
 3. 然後看 [KV Cache 省 80% Token](/kv-cache-gemma4-claude-code-save-80-percent-token/) 搞懂成本結構
 4. 最後看 [Sovereign AI 四級路徑](/not-your-weights-not-your-product/) 決定你要走多深
+
+---
+
+## 常見問題 Q&A
+
+**Q: 地端推論（Local Inference）現在真的能跟雲端模型比了嗎？**
+
+對，2026 年是第一次地端模型在能力上不輸雲端。Qwen3.8-27B 在 SWE-bench Pro 拿下 61.7 分，超過 Opus 4.6 Max，然後它只有 27B 參數，一張消費級 RTX 5090 就能跑出 100+ tok/s。這不是「勉強堪用」的等級，是真的好用。關鍵轉折就是模型能力追上來了，地端部署第一次變成策略選擇而不是退而求其次。
+
+**Q: 推論引擎（Inference Engine）怎麼選？SGLang、vLLM、llama.cpp 差在哪？**
+
+先決定硬體策略，引擎自然會浮現。系列裡有一篇專門做了七種推論引擎的完整 benchmark——SGLang、vLLM、llama.cpp、Ollama、LM Studio 都測過。然後像 MTP（Multi-Token Prediction，多 token 預測）這類加速技術落地之後，llama.cpp 合併 MTP 就能提速 30-60%。不同場景適合不同引擎，不是一個答案走天下，建議從「Inference Engine 選型指南」那篇開始看。
+
+**Q: KV Cache 經濟學（KV Cache Economics）是什麼？跟我的成本有什麼關係？**
+
+KV Cache 就是推論過程中模型暫存先前 token 注意力計算結果的那塊記憶體，它是推論成本的隱藏殺手。搞懂 KV Cache 等於搞懂你的 OPEX（營運支出）結構。系列裡有實測數據：Pi 做到 99.93% Cache Hit Rate，10 億個 token 只花 $2.65；Gemma4 到 Claude Code 的快取機制拆解則展示了怎麼省 80% token。做 Agent 選型的時候要多盯這個數字，不然帳單會嚇到你。
+
+**Q: Sovereign AI（主權 AI）跟我有什麼關係？什麼時候該考慮自己跑模型？**
+
+當你的 weights（模型權重）在別人的伺服器上，你的產品就在別人手裡——API 斷供、價格調整、政策變更都不是你能控制的。系列裡引用 Sequoia 的四級路徑來分析：開源模型 60 分 vs 封閉模型 62 分，差距已經很小了。重點是評估你該停在第幾級，不是每個人都需要走到最底層自己訓練。機敏場景（Sensitive Scenario）、無護欄場景（Guardrail-free Scenario）、想把 OPEX 變 CAPEX 的企業，這三類最該認真考慮地端部署。
+
+**Q: 這個系列這麼多篇，建議怎麼讀？**
+
+按這個順序走最有效率：第一步看 Qwen3.8-27B 開源那篇，理解為什麼 2026 年地端推論不一樣了；第二步看 Inference Engine 選型指南，決定你的硬體和引擎組合；第三步看 KV Cache 省 80% Token 那篇，搞懂成本結構；最後看 Sovereign AI 四級路徑，決定你要走多深。這四篇讀完就有完整的判斷框架，之後再根據需要挑細節篇看。

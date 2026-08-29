@@ -2,26 +2,7 @@
 layout: default
 ---
 
-{% if page.faq %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {% for item in page.faq %}
-    {
-      "@type": "Question",
-      "name": {{ item.question | jsonify }},
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": {{ item.answer | jsonify }}
-      }
-    }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ]
-}
-</script>
-{% endif %}
+{% include json-ld-post.html %}
 
 <article class="post">
   <header class="post-header">

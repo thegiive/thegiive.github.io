@@ -8,6 +8,17 @@ categories: [AI 產業分析]
 image: /assets/images/verification-scaling-terminal-bench-2-1.png
 description: "\"Stanford + UC Berkeley 論文 LLM-as-a-Verifier 找到一個方法，讓開源模型深入自己的神經層（logits）自我驗證，不換模型、不額外訓練，DeepSeek V4 Flash 從 79% 跳到 88%。這個框架天然偏好地端部署——需要完整的 logits access，而且很燒 token，剛好是開源 + 自有 GPU 的甜蜜點。\""
 author: Wisely Chen
+faq:
+  - question: "LLM-as-a-Verifier 到底在做什麼，跟傳統的 LLM-as-a-Judge 差在哪？"
+    answer: "傳統做法 LLM-as-a-Judge 是讓模型看每個答案然後打 1-5 分，但複雜的 coding 任務裡超過 27% 的評分是 tie——兩個品質明顯不同的解法，模型都打了 4 分，離散刻度的解析度不夠。LLM-as-a-Verifier 的做法是往下挖一層，讀取 logits（模型內部對所有候選 token 算出的機率分佈），把所有 scoring token 的機率拿出來做加權平均。比方說模型內部算出 \"7\" 機率 0.35、\"8\" 機率 0.40、\"6\" 機率 0.15，加權平均得到 7.3 這種連續分數。7.3 vs 7.1 的區分度，遠大於離散的 7 vs 7 的 tie。不需要額外訓練，不需要另一個更強的模型當 judge。"
+  - question: "DeepSeek V4 Flash 從 79% 跳到 88% 這個數字可信嗎，有什麼要注意的？"
+    answer: "79% 到 88% 的提升是在 Terminal-Bench 2.1 上測的，用的是同一個模型、同一套 agent 框架（mini-swe-agent），差別只在推理策略：單次跑 79%，跑三次加 self-verify 到 86%，跑五次到 88%。這條上升趨勢是扎實的。但要注意的是，論文圖表上跟 Fable 5（83%）、GPT-5.6 Sol（88%）的跨框架比較要謹慎看——三組用的 agent 框架不同（mini-swe-agent / Codex / Claude Code），不能把全部差距歸因於驗證策略。建議看單個模型在同一框架內的上升趨勢，比看跨框架的絕對值更有意義。"
+  - question: "為什麼同一個模型有能力驗證自己的答案，這不是自己改自己考卷嗎？"
+    answer: "生成和驗證是不同的認知任務（cognitive task）。生成是發散的——從零寫出一個解法；驗證是收斂的——看一個現成的解法判斷好不好。判斷一個答案對不對，比從頭想出正確答案容易，這對人類如此，對 LLM 也是。然後關鍵在 logits 層面：模型內部的機率分佈比它最終輸出的那個 token 包含了更多資訊。模型「心裡」對答案品質的判斷，其實比它「嘴上」說出的那個數字更細膩。LLM-as-a-Verifier 做的事情就是把這份細膩挖出來用。論文還測了 progress tracking，verifier 分數和任務步驟進度之間的相關性（VOC）在成功的 trajectory 上達到 0.966，代表 verifier 在執行過程中就能追蹤 agent 走得對不對。"
+  - question: "這個方法適合地端部署（on-premise）還是雲端 API？"
+    answer: "天然偏好地端部署，理由有兩個。第一，需要讀 logits——自部署的開源模型透過 vLLM 或 SGLang 可以拿到完整的 logits 向量，沒有限制。OpenAI API 只開放 top-5 logprobs，論文說勉強能用但效能不是最好。Anthropic API 完全不開放 logprobs，所以 Claude 不能當 verifier。第二，很燒 token——跑五次生成加重複驗證加多標準評分，token 用量輕鬆是單次的 10-15 倍。雲端 API 帳單直接乘上去，很痛。但地端這兩個問題都不存在：GPU 已經買了，邊際 token 成本趨近零，logits 完全透明。雲端用戶看到的是「多花六倍 token 費」，地端用戶看到的是「免費升級九個百分點」。"
+  - question: "除了 coding，這個框架還能用在什麼地方？"
+    answer: "論文跨了三個完全不同的領域（domain），都不需要 domain-specific fine-tuning。在 coding 領域，Terminal-Bench V2 達到 86.5%、SWE-Bench Verified 達到 78.2%。在機器人領域（Robotics），RoboRewardBench 上拿到 87.4%，打敗了專門訓練過的 RoboReward-8B 獎勵模型的 81.4%——一個通用的 verification 框架靠 logits 加權加三軸 scaling，超越了專家模型。在醫療領域（Medical），MedAgentBench 達到 73.3%。不過要注意適用邊界：這個方法需要有明確的「對錯」標準，Terminal-Bench 和 SWE-Bench 有客觀的通過標準，但真實專案裡「需求理解是否正確」「架構選擇是否合理」這類模糊判斷，self-verification 的可靠度還沒被驗證過。另外延遲會乘以 N，五個候選解意味著五倍生成時間，適合批次處理（batch），不適合即時互動。"
 ---
 
 Stanford + UC Berkeley 的新論文 [LLM-as-a-Verifier](https://arxiv.org/abs/2607.05391)（作者包括 Chelsea Finn、Ion Stoica、Azalia Mirhoseini）找到了一個方法，把開源模型的能力再往上推一個台階。
@@ -211,3 +222,27 @@ TurboAgent 指向這個 endpoint，同一個模型當 generator + verifier，邊
 對地端部署來說，這可能是目前最務實的能力提升路徑——不用等下一代模型，不用花錢買更貴的 API，把手上的開源模型和 GPU 的算力冗餘用起來，讓模型讀自己的大腦，自己驗證自己。
 
 有興趣的人可以自己跑跑看。畢竟，最可靠的驗證方式還是：自己試一次。
+
+---
+
+## 常見問題 Q&A
+
+**Q: LLM-as-a-Verifier 到底在做什麼，跟傳統的 LLM-as-a-Judge 差在哪？**
+
+傳統做法 LLM-as-a-Judge 是讓模型看每個答案然後打 1-5 分，但複雜的 coding 任務裡超過 27% 的評分是 tie——兩個品質明顯不同的解法，模型都打了 4 分，離散刻度的解析度不夠。LLM-as-a-Verifier 的做法是往下挖一層，讀取 logits（模型內部對所有候選 token 算出的機率分佈），把所有 scoring token 的機率拿出來做加權平均。比方說模型內部算出 "7" 機率 0.35、"8" 機率 0.40、"6" 機率 0.15，加權平均得到 7.3 這種連續分數。7.3 vs 7.1 的區分度，遠大於離散的 7 vs 7 的 tie。不需要額外訓練，不需要另一個更強的模型當 judge。
+
+**Q: DeepSeek V4 Flash 從 79% 跳到 88% 這個數字可信嗎，有什麼要注意的？**
+
+79% 到 88% 的提升是在 Terminal-Bench 2.1 上測的，用的是同一個模型、同一套 agent 框架（mini-swe-agent），差別只在推理策略：單次跑 79%，跑三次加 self-verify 到 86%，跑五次到 88%。這條上升趨勢是扎實的。但要注意的是，論文圖表上跟 Fable 5（83%）、GPT-5.6 Sol（88%）的跨框架比較要謹慎看——三組用的 agent 框架不同（mini-swe-agent / Codex / Claude Code），不能把全部差距歸因於驗證策略。建議看單個模型在同一框架內的上升趨勢，比看跨框架的絕對值更有意義。
+
+**Q: 為什麼同一個模型有能力驗證自己的答案，這不是自己改自己考卷嗎？**
+
+生成和驗證是不同的認知任務（cognitive task）。生成是發散的——從零寫出一個解法；驗證是收斂的——看一個現成的解法判斷好不好。判斷一個答案對不對，比從頭想出正確答案容易，這對人類如此，對 LLM 也是。然後關鍵在 logits 層面：模型內部的機率分佈比它最終輸出的那個 token 包含了更多資訊。模型「心裡」對答案品質的判斷，其實比它「嘴上」說出的那個數字更細膩。LLM-as-a-Verifier 做的事情就是把這份細膩挖出來用。論文還測了 progress tracking，verifier 分數和任務步驟進度之間的相關性（VOC）在成功的 trajectory 上達到 0.966，代表 verifier 在執行過程中就能追蹤 agent 走得對不對。
+
+**Q: 這個方法適合地端部署（on-premise）還是雲端 API？**
+
+天然偏好地端部署，理由有兩個。第一，需要讀 logits——自部署的開源模型透過 vLLM 或 SGLang 可以拿到完整的 logits 向量，沒有限制。OpenAI API 只開放 top-5 logprobs，論文說勉強能用但效能不是最好。Anthropic API 完全不開放 logprobs，所以 Claude 不能當 verifier。第二，很燒 token——跑五次生成加重複驗證加多標準評分，token 用量輕鬆是單次的 10-15 倍。雲端 API 帳單直接乘上去，很痛。但地端這兩個問題都不存在：GPU 已經買了，邊際 token 成本趨近零，logits 完全透明。雲端用戶看到的是「多花六倍 token 費」，地端用戶看到的是「免費升級九個百分點」。
+
+**Q: 除了 coding，這個框架還能用在什麼地方？**
+
+論文跨了三個完全不同的領域（domain），都不需要 domain-specific fine-tuning。在 coding 領域，Terminal-Bench V2 達到 86.5%、SWE-Bench Verified 達到 78.2%。在機器人領域（Robotics），RoboRewardBench 上拿到 87.4%，打敗了專門訓練過的 RoboReward-8B 獎勵模型的 81.4%——一個通用的 verification 框架靠 logits 加權加三軸 scaling，超越了專家模型。在醫療領域（Medical），MedAgentBench 達到 73.3%。不過要注意適用邊界：這個方法需要有明確的「對錯」標準，Terminal-Bench 和 SWE-Bench 有客觀的通過標準，但真實專案裡「需求理解是否正確」「架構選擇是否合理」這類模糊判斷，self-verification 的可靠度還沒被驗證過。另外延遲會乘以 N，五個候選解意味著五倍生成時間，適合批次處理（batch），不適合即時互動。

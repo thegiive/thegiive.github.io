@@ -8,6 +8,17 @@ categories: [AI 產業分析]
 image: /assets/images/fable-5-adoption-ceiling-cover.png
 description: "\"Ramp 追蹤七萬家企業的支付數據顯示，Fable 5 發布超過兩個月，只佔 Anthropic 模型支出的 11.4%、token 使用量的 6%。這篇從數據出發，拆解三個推開 Fable 5 的力量，提出「每美元多少智能」和「每 B 多少智能」兩個新指標，用 Artificial Analysis Intelligence Index 比較雲端 API 和開源模型的智能密度。\""
 author: Wisely Chen
+faq:
+  - question: "Fable 5 是最強的模型，為什麼企業不買單？"
+    answer: "三個力量同時在推：第一是價格，Fable 5 每百萬 token 輸入 $10、輸出 $50，是 Opus 5 的整整兩倍；第二是資料留存（Data Retention），Fable 5 強制所有流量留存 30 天，覆蓋掉企業既有的零留存協議（ZDR），受 GDPR、HIPAA 約束的企業合規團隊沒審完就根本不能用；第三是性能沒有體感差，Opus 5 在 CursorBench 3.2 上只差 Fable 5 半個百分點，在 OSWorld 2.0 甚至贏了而且只用三分之一預算。多付 100% 的錢只買到 0.5% 的能力差距，企業當然選便宜的。"
+  - question: "「每美元多少智能」（Intelligence per Dollar）這個指標怎麼算？"
+    answer: "用 Artificial Analysis 的 Intelligence Index（II）除以輸出定價。Intelligence Index 是業界常被引用的綜合評測加權分數，涵蓋多個 benchmark。然後拿 II 除以每百萬 token 的輸出價格，就得到每美元能買到多少智能。以 Opus 5 為例：II 是 63，輸出 $25/MTok，所以 II / 輸出$ = 2.52。Fable 5 的 II 是 62（比 Opus 5 還低一分），輸出 $50/MTok，II / 輸出$ 只有 1.24。就是說 Opus 5 每塊錢買到的智能是 Fable 5 的兩倍。GPT-5.6 Luna 更誇張，用 $0.20/$1.20 拿到 52 分，II / 輸出$ 高達 43.33。"
+  - question: "開源模型要怎麼跟雲端 API 比成本？"
+    answer: "兩邊的成本結構不一樣，所以指標也不同。雲端 API 是 Opex（營運支出），按 token 計費，用「每美元多少智能」來比。開源模型跑在自己的 GPU 上，是 Capex（資本支出），成本取決於模型佔多少顯存（Total B，總參數量）和每個 token 花多少算力（Active B，活躍參數量），所以用 II / Total B（記憶體效率，Memory Efficiency）和 II / Active B（算力效率，Compute Efficiency）來比。務實的做法是兩者並行：用雲端 API 做原型和低量任務，等用量穩定後把高頻任務遷移到自建的開源模型。"
+  - question: "開源模型真的追上 Fable 5 了嗎？"
+    answer: "非常接近。Kimi K3 和 GLM-5.3 的 Intelligence Index 都拿到 60 分，只差 Fable 5（62 分）兩分。DeepSeek V4 Flash 和 Qwen3.8 27B 拿到 52 分，跟 Sonnet 5 的 55 分差距不大，但 DeepSeek V4 Flash 只用 13B active 參數，Qwen3.8 27B 單卡就能跑。然後 Fable 5 不只被開源模型從下面逼近，還被自家的 Opus 5（63 分，比它高一分但便宜一半）從上面夾擊。Frontier 的護城河在 Intelligence Index 上只剩兩三分。"
+  - question: "這對模型公司的商業模式有什麼影響？"
+    answer: "過去兩年的增長飛輪是「更強的模型帶動企業升級帶動收入增加帶動訓練下一代」。但 Fable 5 的數據顯示這個飛輪第一次轉不動了——能力提升進入邊際收益遞減區間（Diminishing Marginal Returns），強的那部分大量真實工作感受不到。Ramp 追蹤七萬家企業的數據顯示 Fable 5 只佔 Anthropic 支出的 11.4%、token 用量 6%，而 GPT-5.6 Sol 在 OpenAI 拿到 25% token、23% 支出。未來主要收入可能不是來自最強的旗艦模型，而是「夠強、夠便宜」的模型。旗艦從收入引擎變成技術展示窗口。"
 ---
 
 Anthropic 的 Fable 5 是目前市面上最強的模型。這一點沒有爭議。
@@ -150,3 +161,27 @@ Fable 5 今天面對的，是同樣的故事。Frontier Intelligence 依然重�
 對模型公司來說，下一個階段的競爭可能不再是「誰的模型最強」，而是「誰能在最低的成本下交付足夠的智能」。
 
 這個轉變已經開始了。Fable 5 的 11.4% 就是證據。
+
+---
+
+## 常見問題 Q&A
+
+**Q: Fable 5 是最強的模型，為什麼企業不買單？**
+
+三個力量同時在推：第一是價格，Fable 5 每百萬 token 輸入 $10、輸出 $50，是 Opus 5 的整整兩倍；第二是資料留存（Data Retention），Fable 5 強制所有流量留存 30 天，覆蓋掉企業既有的零留存協議（ZDR），受 GDPR、HIPAA 約束的企業合規團隊沒審完就根本不能用；第三是性能沒有體感差，Opus 5 在 CursorBench 3.2 上只差 Fable 5 半個百分點，在 OSWorld 2.0 甚至贏了而且只用三分之一預算。多付 100% 的錢只買到 0.5% 的能力差距，企業當然選便宜的。
+
+**Q: 「每美元多少智能」（Intelligence per Dollar）這個指標怎麼算？**
+
+用 Artificial Analysis 的 Intelligence Index（II）除以輸出定價。Intelligence Index 是業界常被引用的綜合評測加權分數，涵蓋多個 benchmark。然後拿 II 除以每百萬 token 的輸出價格，就得到每美元能買到多少智能。以 Opus 5 為例：II 是 63，輸出 $25/MTok，所以 II / 輸出$ = 2.52。Fable 5 的 II 是 62（比 Opus 5 還低一分），輸出 $50/MTok，II / 輸出$ 只有 1.24。就是說 Opus 5 每塊錢買到的智能是 Fable 5 的兩倍。GPT-5.6 Luna 更誇張，用 $0.20/$1.20 拿到 52 分，II / 輸出$ 高達 43.33。
+
+**Q: 開源模型要怎麼跟雲端 API 比成本？**
+
+兩邊的成本結構不一樣，所以指標也不同。雲端 API 是 Opex（營運支出），按 token 計費，用「每美元多少智能」來比。開源模型跑在自己的 GPU 上，是 Capex（資本支出），成本取決於模型佔多少顯存（Total B，總參數量）和每個 token 花多少算力（Active B，活躍參數量），所以用 II / Total B（記憶體效率，Memory Efficiency）和 II / Active B（算力效率，Compute Efficiency）來比。務實的做法是兩者並行：用雲端 API 做原型和低量任務，等用量穩定後把高頻任務遷移到自建的開源模型。
+
+**Q: 開源模型真的追上 Fable 5 了嗎？**
+
+非常接近。Kimi K3 和 GLM-5.3 的 Intelligence Index 都拿到 60 分，只差 Fable 5（62 分）兩分。DeepSeek V4 Flash 和 Qwen3.8 27B 拿到 52 分，跟 Sonnet 5 的 55 分差距不大，但 DeepSeek V4 Flash 只用 13B active 參數，Qwen3.8 27B 單卡就能跑。然後 Fable 5 不只被開源模型從下面逼近，還被自家的 Opus 5（63 分，比它高一分但便宜一半）從上面夾擊。Frontier 的護城河在 Intelligence Index 上只剩兩三分。
+
+**Q: 這對模型公司的商業模式有什麼影響？**
+
+過去兩年的增長飛輪是「更強的模型帶動企業升級帶動收入增加帶動訓練下一代」。但 Fable 5 的數據顯示這個飛輪第一次轉不動了——能力提升進入邊際收益遞減區間（Diminishing Marginal Returns），強的那部分大量真實工作感受不到。Ramp 追蹤七萬家企業的數據顯示 Fable 5 只佔 Anthropic 支出的 11.4%、token 用量 6%，而 GPT-5.6 Sol 在 OpenAI 拿到 25% token、23% 支出。未來主要收入可能不是來自最強的旗艦模型，而是「夠強、夠便宜」的模型。旗艦從收入引擎變成技術展示窗口。

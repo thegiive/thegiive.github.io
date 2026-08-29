@@ -8,6 +8,15 @@ categories: [AI Agent]
 image: /assets/images/youtube-local-model-use-cases-thumbnail.jpg
 description: "\"**作者：** Wisely Chen **日期：** 2026 年 8 月 **系列：** AI Coding 實戰觀察 — YouTube 逐字稿 **關鍵字：** Qwen3.8-27B, Opus 4.6, 地端模型, 機敏場景, 無護欄模型, abliteration, 紅隊測試, OPEX, CAPEX, 雲地混合, DeepSeek V4, GLM 5.2, Hugging Face\""
 author: Wisely Chen
+faq:
+  - question: "Qwen3.8-27B 跟 Opus 4.6 的 coding 能力到底差多少？"
+    answer: "抖音「Token就是詞元」的祖傳代碼 Bug 挑戰賽（Legacy Code Bug Challenge）裡，Qwen3.8-27B 跟 Opus 4.6 在青銅、白銀、黃金三個難度各三題，結果都是解兩題，打平。這是該系列唯一一次地端小模型上場，也是唯一一次跟 Tier 1 雲端模型打成平手。不過代價是速度：黃金級最難的題目，27B 花了 45 到 50 分鐘思考，Opus 4.6 只要 4 到 5 分鐘，差了大概 10 倍。對，就是結果一樣好，但要等很久。"
+  - question: "地端模型（On-Premise Model）能解鎖哪些以前做不到的企業需求？"
+    answer: "主要三個。第一是機敏場景 Coding（Sensitive-Context Coding）：企業裡有些資料、演算法、文件不允許丟到雲端，以前要先做去機敏化才能用 AI，現在有 75 到 80 分的地端模型就可以直接在本地碰這些資料做開發。第二是無護欄模型場景（Uncensored Model Use Cases）：資安紅軍藍軍（Red Team / Blue Team）的攻防測試需要模型不拒答，雲端模型審核越來越嚴格，連 trace log 都會被當成模擬進攻而拒絕。第三是 OPEX 變 CAPEX：把不穩定的雲端按量計費（OPEX，Operating Expenditure）換成可預測的硬體投資（CAPEX，Capital Expenditure）。"
+  - question: "為什麼說雲端模型做資安紅隊測試（Red Team Testing）越來越難用？"
+    answer: "7 月 Hugging Face 被入侵的時候就是一個實例。他們想用 AI 去 trace 入侵的 log，結果找 Claude、找 OpenAI，兩家都直接判定這是模擬攻擊行為，拒絕協助。到最後沒辦法了，只能找 GLM 5.2 來做這件事。然後雲端模型的審核只會越來越嚴格，很多理論上合法合規的資安任務都會被擋住。有了地端模型再搭配護欄移除（Abliteration），這類任務就不再受限於雲端廠商的政策判斷。"
+  - question: "未來企業的 AI 部署會是雲端還是地端為主？"
+    answer: "一定是雲地混合（Hybrid Cloud-On-Premise），差別只在比例。至少未來半年，不會是雲端獨大，也不會是地端吃掉全部。對機敏程度要求高的企業可能是 7 比 3（地端為主），一般企業可能是 3 比 7（雲端為主），中間也可能 5 比 5。關鍵是根據自己的機敏需求、成本結構、跟資安要求來規劃比例，不是選邊站。"
 ---
 
 **作者：** Wisely Chen
@@ -129,3 +138,23 @@ Qwen3.8-27B 開源之後，抖音「Token就是詞元」做了一集祖傳代碼
 - [GLM-5.2 出了，好評如潮：開源這次真的贏了](/glm5-it-architecture-huawei-ascend-moe-infrastructure/)
 - [Qwen 3.6-27B 本地部署：DGX Spark / Mac mini 跑出 Sonnet 4.6 等級 AI Agent](/qwen-3-6-27b-sonnet-level-home-inference/)
 - [YouTube 逐字稿：千問3.8-27B 用了兩天說說感覺——RTX 5090 SGLang/vLLM/llama.cpp 實測](/youtube-qwen38-27b-rtx5090-sglang-vllm-mtp-transcript/)
+
+---
+
+## 常見問題 Q&A
+
+**Q: Qwen3.8-27B 跟 Opus 4.6 的 coding 能力到底差多少？**
+
+抖音「Token就是詞元」的祖傳代碼 Bug 挑戰賽（Legacy Code Bug Challenge）裡，Qwen3.8-27B 跟 Opus 4.6 在青銅、白銀、黃金三個難度各三題，結果都是解兩題，打平。這是該系列唯一一次地端小模型上場，也是唯一一次跟 Tier 1 雲端模型打成平手。不過代價是速度：黃金級最難的題目，27B 花了 45 到 50 分鐘思考，Opus 4.6 只要 4 到 5 分鐘，差了大概 10 倍。對，就是結果一樣好，但要等很久。
+
+**Q: 地端模型（On-Premise Model）能解鎖哪些以前做不到的企業需求？**
+
+主要三個。第一是機敏場景 Coding（Sensitive-Context Coding）：企業裡有些資料、演算法、文件不允許丟到雲端，以前要先做去機敏化才能用 AI，現在有 75 到 80 分的地端模型就可以直接在本地碰這些資料做開發。第二是無護欄模型場景（Uncensored Model Use Cases）：資安紅軍藍軍（Red Team / Blue Team）的攻防測試需要模型不拒答，雲端模型審核越來越嚴格，連 trace log 都會被當成模擬進攻而拒絕。第三是 OPEX 變 CAPEX：把不穩定的雲端按量計費（OPEX，Operating Expenditure）換成可預測的硬體投資（CAPEX，Capital Expenditure）。
+
+**Q: 為什麼說雲端模型做資安紅隊測試（Red Team Testing）越來越難用？**
+
+7 月 Hugging Face 被入侵的時候就是一個實例。他們想用 AI 去 trace 入侵的 log，結果找 Claude、找 OpenAI，兩家都直接判定這是模擬攻擊行為，拒絕協助。到最後沒辦法了，只能找 GLM 5.2 來做這件事。然後雲端模型的審核只會越來越嚴格，很多理論上合法合規的資安任務都會被擋住。有了地端模型再搭配護欄移除（Abliteration），這類任務就不再受限於雲端廠商的政策判斷。
+
+**Q: 未來企業的 AI 部署會是雲端還是地端為主？**
+
+一定是雲地混合（Hybrid Cloud-On-Premise），差別只在比例。至少未來半年，不會是雲端獨大，也不會是地端吃掉全部。對機敏程度要求高的企業可能是 7 比 3（地端為主），一般企業可能是 3 比 7（雲端為主），中間也可能 5 比 5。關鍵是根據自己的機敏需求、成本結構、跟資安要求來規劃比例，不是選邊站。

@@ -6,6 +6,17 @@ permalink: /dflash2-qwen3-27b-twice-as-fast/
 tags: [DFlash 2, Qwen3.8-27B, block diffusion, speculative decoding, inference optimization, 推論加速, SGLang, vLLM, llama.cpp, tok/s, 地端推論, on-premise, GPU inference]
 image: /assets/images/dflash2-benchmark-cover.png
 description: "DFlash 2 用 block diffusion 平行草稿 + 路徑選擇器 + 動態卷積，把 Qwen3.8-27B 的推理速度從 28.9 tok/s 推到 59.1 tok/s。已經進 SGLang、vLLM、llama.cpp，drop-in 升級，輸出完全一致。這不是品質換速度的取捨，是推理層的免費加速。"
+faq:
+  - question: "DFlash 2 是怎麼做到同模型、同卡、速度翻倍的？"
+    answer: "核心就是投機解碼（Speculative Decoding）的升級。傳統自迴歸推理（Autoregressive Inference）一次生一個 token、跑一次 forward pass，GPU 大部分時間在等記憶體搬資料。DFlash 2 用區塊擴散模型（Block Diffusion Model）一次平行預測整個 block 的 K 個 token，然後讓目標模型一次性驗證。在 DFlash 1 基礎上加了三件事：保留 top 16 個候選（不只留最高分那一個）、用輕量路徑選擇器（Path Selector，只加 200 萬參數、+0.6% 延遲）找最佳組合、再用雙抽動態卷積（Two-Tap Dynamic Convolution）解決 block 尾端預測衰減的問題。三件事合起來讓每次驗證多接受約一個 token，聽起來不多，但 speculative decoding 每秒跑幾十次驗證，每次多一個就是直接翻倍。"
+  - question: "輸出品質會變差嗎？跟原本的自迴歸推理結果一樣嗎？"
+    answer: "在 dense BF16 模型上，DFlash 2 是無損投機解碼（Lossless Speculative Decoding）：greedy decoding 下輸出跟原本逐 token 推理完全相同，sampling 模式下保持目標模型的機率分佈不變，數學上可證明。但有一個實際的例外——如果你用量化模型（Quantized Model），比如 NVFP4 量化的 lm-head 需要走相容補丁，就可能引入微小數值差異。作者在 RTX 5090 上用 NVFP4 實測，DFlash 2 三次輸出彼此完全一致（hash 相同），但跟純自迴歸的 byte-level hash 不同。對實際應用來說，速度大幅提升、輸出穩定可復現，已經夠用了。"
+  - question: "消費級顯卡跑得動嗎？實際數字大概多少？"
+    answer: "跑得動，而且數字很扎實。X 上已經有一堆人拿自己的硬體獨立跑出來：RTX 4090 上 DFlash 2 跑到 90-109 tok/s；RTX 5090 上從 baseline 56.8 tok/s 推到 123.1 tok/s（2.17 倍）；作者自己在 RTX 5090 用 NVFP4 量化跑出 207.52 tok/s，對比純自迴歸的 62.14 tok/s 是 3.34 倍加速。然後四人同時用的場景，同一張 RTX 5090 跑 Qwen3.8-27B 量化模型，四人總吞吐達到 719.84 tok/s，每人中位數還有 192.30 tok/s。一張 32GB 消費級顯卡同時服務四個人，半年前是不可能的數字。"
+  - question: "什麼場景適合用 DFlash 2，什麼時候不該用？"
+    answer: "適合的場景就是 batch size 低（1 到 8）、GPU 有閒置算力、輸出較長（reasoning、code generation、長文生成）、需要加速但不能降品質、用 NVIDIA GPU 的情況。不適合的場景包括 batch size 超過 32（並行請求太多，GPU compute 已經吃滿）、輸出很短（少於 50 tokens，speculative decoding 的 overhead 會抵消收益）、在 Mac 上已經用 Lightning MTP 跑得很好（社群有人實測 DFlash 2 在 M5 Max 上只有 31 tok/s 而 Lightning MTP 有 48 tok/s），還有主要跑 creative writing 或 free prose 的任務（結構化輸出加速最明顯，free prose 收益較小）。推薦的 draft token 數量：instruction 任務用 8，混合任務用 6，creative 任務用 4。"
+  - question: "RTX 5090 上實際部署 DFlash 2 會踩到什麼坑？"
+    answer: "作者踩了七個坑。最關鍵的幾個：第一，SGLang 正式版還沒有完整支援，必須用包含 DFlash 2 merge 的特定 commit。第二，官方範例用 dense BF16 但 5090 只有 32GB 塞不下完整 27B（要 54GB），改用 NVFP4 量化後 DFlash 2 會報錯，因為 NVFP4 把 lm_head 也量化了，必須手動修改 SGLang 的 dflash.py 加入相容路徑。第三，最容易忽略的：關掉 Decode CUDA Graph 速度直接從 207 tok/s 崩到 63.85 tok/s，差距超過三倍。記憶體也很接近上限，VRAM 使用 29,076 / 32,607 MiB，啟動時必須用 `--mem-fraction-static 0.85`、`--max-running-requests 1`、`--kv-cache-dtype fp8_e4m3` 這些參數精細控制，不然長 context 會 OOM（Out of Memory）。"
 ---
 
 同一個模型、同一張卡、同樣的輸出——速度翻倍。
@@ -377,3 +388,27 @@ DFlash 1 從今年一月到現在半年多，下載量 350 萬。DFlash 2 帶著
 - [GitHub: z-lab/dflash](https://github.com/z-lab/dflash)
 - [DFlash on GPU Cloud — Spheron](https://www.spheron.network/blog/dflash-block-diffusion-speculative-decoding-gpu-cloud/)
 - [Z Lab DFlash Project Page](https://z-lab.ai/projects/dflash/)
+
+---
+
+## 常見問題 Q&A
+
+**Q: DFlash 2 是怎麼做到同模型、同卡、速度翻倍的？**
+
+核心就是投機解碼（Speculative Decoding）的升級。傳統自迴歸推理（Autoregressive Inference）一次生一個 token、跑一次 forward pass，GPU 大部分時間在等記憶體搬資料。DFlash 2 用區塊擴散模型（Block Diffusion Model）一次平行預測整個 block 的 K 個 token，然後讓目標模型一次性驗證。在 DFlash 1 基礎上加了三件事：保留 top 16 個候選（不只留最高分那一個）、用輕量路徑選擇器（Path Selector，只加 200 萬參數、+0.6% 延遲）找最佳組合、再用雙抽動態卷積（Two-Tap Dynamic Convolution）解決 block 尾端預測衰減的問題。三件事合起來讓每次驗證多接受約一個 token，聽起來不多，但 speculative decoding 每秒跑幾十次驗證，每次多一個就是直接翻倍。
+
+**Q: 輸出品質會變差嗎？跟原本的自迴歸推理結果一樣嗎？**
+
+在 dense BF16 模型上，DFlash 2 是無損投機解碼（Lossless Speculative Decoding）：greedy decoding 下輸出跟原本逐 token 推理完全相同，sampling 模式下保持目標模型的機率分佈不變，數學上可證明。但有一個實際的例外——如果你用量化模型（Quantized Model），比如 NVFP4 量化的 lm-head 需要走相容補丁，就可能引入微小數值差異。作者在 RTX 5090 上用 NVFP4 實測，DFlash 2 三次輸出彼此完全一致（hash 相同），但跟純自迴歸的 byte-level hash 不同。對實際應用來說，速度大幅提升、輸出穩定可復現，已經夠用了。
+
+**Q: 消費級顯卡跑得動嗎？實際數字大概多少？**
+
+跑得動，而且數字很扎實。X 上已經有一堆人拿自己的硬體獨立跑出來：RTX 4090 上 DFlash 2 跑到 90-109 tok/s；RTX 5090 上從 baseline 56.8 tok/s 推到 123.1 tok/s（2.17 倍）；作者自己在 RTX 5090 用 NVFP4 量化跑出 207.52 tok/s，對比純自迴歸的 62.14 tok/s 是 3.34 倍加速。然後四人同時用的場景，同一張 RTX 5090 跑 Qwen3.8-27B 量化模型，四人總吞吐達到 719.84 tok/s，每人中位數還有 192.30 tok/s。一張 32GB 消費級顯卡同時服務四個人，半年前是不可能的數字。
+
+**Q: 什麼場景適合用 DFlash 2，什麼時候不該用？**
+
+適合的場景就是 batch size 低（1 到 8）、GPU 有閒置算力、輸出較長（reasoning、code generation、長文生成）、需要加速但不能降品質、用 NVIDIA GPU 的情況。不適合的場景包括 batch size 超過 32（並行請求太多，GPU compute 已經吃滿）、輸出很短（少於 50 tokens，speculative decoding 的 overhead 會抵消收益）、在 Mac 上已經用 Lightning MTP 跑得很好（社群有人實測 DFlash 2 在 M5 Max 上只有 31 tok/s 而 Lightning MTP 有 48 tok/s），還有主要跑 creative writing 或 free prose 的任務（結構化輸出加速最明顯，free prose 收益較小）。推薦的 draft token 數量：instruction 任務用 8，混合任務用 6，creative 任務用 4。
+
+**Q: RTX 5090 上實際部署 DFlash 2 會踩到什麼坑？**
+
+作者踩了七個坑。最關鍵的幾個：第一，SGLang 正式版還沒有完整支援，必須用包含 DFlash 2 merge 的特定 commit。第二，官方範例用 dense BF16 但 5090 只有 32GB 塞不下完整 27B（要 54GB），改用 NVFP4 量化後 DFlash 2 會報錯，因為 NVFP4 把 lm_head 也量化了，必須手動修改 SGLang 的 dflash.py 加入相容路徑。第三，最容易忽略的：關掉 Decode CUDA Graph 速度直接從 207 tok/s 崩到 63.85 tok/s，差距超過三倍。記憶體也很接近上限，VRAM 使用 29,076 / 32,607 MiB，啟動時必須用 `--mem-fraction-static 0.85`、`--max-running-requests 1`、`--kv-cache-dtype fp8_e4m3` 這些參數精細控制，不然長 context 會 OOM（Out of Memory）。

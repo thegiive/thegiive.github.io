@@ -1,0 +1,21 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Wisely Chen AI Coding",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}/assets/images/logo.png",
+  "description": {{ site.description | jsonify }},
+  "sameAs": [
+    "https://www.linkedin.com/in/{{ site.social.linkedin }}",
+    "https://github.com/{{ site.social.github }}",
+    "{{ site.facebook.publisher }}",
+    "{{ site.social.website }}"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "url": "https://www.wiselychen.com/#contact"
+  }
+}
+</script>
