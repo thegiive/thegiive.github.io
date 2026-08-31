@@ -214,6 +214,32 @@ Google 的 Gemini Notebook 是最新一個。巴克萊報告 8/28 發布，同�
 
 ---
 
+## 三方大逃殺，一個軍火商
+
+把上面所有動作攤開來看，這不是單一條利潤鏈——是一場三方大逃殺，每一方都在同時逃離和鎖定其他兩方：
+
+**Users** 被趕向 API 計費（帳單變貴）→ 反應是往地端跑、擁抱開源和 sovereign AI → labs 失去定價權。**Labs** 被雲端抽走 $35-40 → 趕 users 去 API 提高毛利、同時自建機房脫離雲端 → 但 capex 暴增，而且被 users 不滿。**Cloud** 背一身 capex 建機房 → 用自研晶片（Trainium、TPU）鎖 labs、用股權對沖出走風險、自己訓模型當 plan B → 直接變成 labs 的競爭對手。
+
+每一方的防禦動作，都是另一方的新威脅。循環不斷。
+
+但不管這場大逃殺誰贏誰輸，有一方穩坐釣魚台。
+
+| 角色 | 處境 | 利潤率 |
+|------|------|--------|
+| NVIDIA | 賣 GPU 給所有人 | [~60%+ 毛利，AI 晶片市佔 80-85%](https://presenc.ai/research/ai-chip-market-share-2026) |
+| Cloud | 賣水表，三層防線鎖客 | 34-47% |
+| Frontier labs（API） | 推理印鈔但訓練燒掉 | ~7% net |
+| Frontier labs（訂閱） | 被兩頭夾 | -10% net |
+| 中國模型 | 虧損換市占 | -30% to -39% |
+
+Users 逃去地端——買 NVIDIA GPU。Labs 自建機房——買 NVIDIA GPU。Cloud 擴建——買 NVIDIA GPU。NVIDIA FY2026 資料中心營收 [$1,937 億](https://www.datacenterdynamics.com/en/news/nvidia-reports-record-data-center-revenues-of-623bn-up-75-yoy/)，2026 Q2 單季 $890 億，YoY +117%。
+
+**越上游越賺。** NVIDIA 賣鏟子，雲端賣水，labs 淘金，中國模型在虧錢拉人頭。唯一的威脅是自研晶片——Trainium、TPU 合計已吃到 15-20% 市佔，TCO 優勢 40-65%——但這些晶片只有做它的那家雲端自己能用，不是公開市場。對所有非超大規模客戶來說，能買的還是 NVIDIA。
+
+老黃是這場大逃殺裡唯一不用逃的人。
+
+---
+
 ## 常見問題 Q&A
 
 **Q: 巴克萊這份研報的核心結論是什麼？**
