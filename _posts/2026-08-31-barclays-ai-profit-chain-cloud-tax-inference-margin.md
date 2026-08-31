@@ -174,7 +174,19 @@ Google 的 Gemini Notebook 是最新一個。巴克萊報告 8/28 發布，同�
 
 **三、地端推理正在把邊際成本推向零。** 這個 blog [寫過北京 AGI Bar 的案例](/agi-bar-free-token-dgx-spark-inference-infrastructure/)：兩台 DGX Spark（共 $9,400）跑 V4 Flash，年化成本約 $3,500，之後只剩電費。當硬體一次性攤完、token 邊際成本趨零，雲端 API 的利潤就面臨結構性壓力。
 
-這三個力量沒有一個已經擊穿 frontier labs 的利潤。但它們同時在推，方向一致。巴克萊的 65% 是此刻的利潤率，不是鐵板。
+**四、Frontier labs 自己在脫離雲端。** 巴克萊假設 $35-40 流向三大雲，但 frontier labs 看得懂這筆帳——被抽走 $35-40、雲端還賺 34-47% 利潤，自己扣完訓練只剩 $7 或虧 $10。理性反應就是自建機房，把雲端利潤吃回來。OpenAI 啟動了 [Project Camellia（喬治亞州自建機房，3.2GW）](https://builtin.com/articles/openai-cloud-deals)加上 Stargate（7GW，$4,000 億以上），infra 預算拉到 2030 年 $7,500 億。Anthropic 簽了 [$500 億 Fluidstack 機房合約](https://www.techcrunch.com/2025/11/12/anthropic-announces-50-billion-data-center-plan/)，2026 年 8 月跟 Macquarie 和 GIC 成立 [Theseus Infrastructure JV](https://enterprisedna.co/resources/news/anthropic-theseus-infrastructure-macquarie-gic-data-centers-2026/) 自建專用機房。xAI 從頭就自建——Memphis Colossus 已到 1GW、55 萬顆 GPU。Google DeepMind 跑在 Google 自有 TPU 上，Meta 的 Llama 全在自有機房訓練。雲端的水表生意短期很好，但最大客戶正在自己裝水管。
+
+**但雲端大廠不是坐等被脫離——它們有三層防線。**
+
+第一層是**股權綁定**。Amazon 累計投入 Anthropic [$330 億](https://www.forbes.com/sites/jonmarkman/2026/04/22/amazon-33-billion-anthropic-deal-and-the-limits-of-ai-infrastructure/)，Microsoft 投 OpenAI $130 億以上並鎖定 [$2,500 億 Azure 承諾](https://techcrunch.com/2026/07/29/microsoft-is-openly-competing-with-openai-anthropic-more-than-ever/)到 2032 年。即使 frontier labs 自建機房，雲端作為股東照樣分利潤。投資不只是雲生意，是對沖。
+
+第二層是**自研晶片的遷移成本**。AWS Trainium [年化營收 $200 億](https://cryptobriefing.com/amazon-trainium-chip-20b-revenue/)，鎖定超過 $2,250 億承諾營收，Anthropic 和 OpenAI 都簽了多年合約。Google TPU 賣到 100 萬顆給 Anthropic，Gemini 完全在 TPU 上訓練。在 Trainium / TPU 上訓練的模型，搬家成本極高——不只搬資料，是重新適配整套訓練棧。
+
+第三層是**自建模型**。Microsoft 2025 年 9 月[拿到自建模型的自由](https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html)後，2026 年推出 MAI-Code-1-Flash、MAI-Thinking-1 等一系列自有模型。Amazon AGI 團隊被要求做出超越 Claude 的模型。Google 的 Gemini 本來就是自己的。三大雲的訊息很明確：你不跑我的雲？那我自己也有模型。
+
+再加上 Bedrock、Vertex AI、Azure Foundry 這種多模型平台——上面同時放了 Claude、Llama、Gemini、Mistral——企業客戶換模型不用換雲，這本身就是留客機制。
+
+這五個力量沒有一個已經擊穿 frontier labs 的利潤。但它們同時在推，方向一致。巴克萊的 65% 是此刻的利潤率，不是鐵板。而雲端的 34-47% 利潤率也不是穩態——它既被客戶自建威脅，又被自己的三層防線保護著。攻防還在進行中。
 
 ---
 
