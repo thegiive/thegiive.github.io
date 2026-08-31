@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "\"NUS 訓練出一顆「專門寫 Harness」的模型：JIT-Agent 讓 DeepSeek-V4-Flash 在 DeepSearchQA 贏 GPT-5.6 九個百分點，token 成本砍半\""
+title: "NUS 訓練出一顆「專門寫 Harness」的模型：JIT-Agent 讓 DeepSeek-V4-Flash 在 DeepSearchQA 贏 GPT-5.6 九個百分點，token 成本砍半"
 date: 2026-09-01 09:00:00 +0800
 permalink: /jit-agent-harness-intelligence-trainable-scaling/
 categories: [AI 產業分析]
 image: /assets/images/jit-agent-harness-intelligence-cover.png
-description: "\"NUS LV-Lab 的 JIT-Agent 論文把 Harness Engineering 從手藝推向科學：訓練一顆 27B 模型專門「替別的模型寫 harness」，用四模組協議（Memory / Planning / Capability Orchestration / Action）即時合成任務自適應的 agent scaffold。結果：DeepSeek-V4-Flash 套上 JIT-Agent 生成的 harness，DeepSearchQA 85.1 贏 GPT-5.6 的 76.0（+9.1）；GLM-5.2 最高漲 20.2 分；九項 benchmark 平均，JIT-Agent 和 Claude Code、OpenCode 這類手工打造的成熟 harness 打成平手，但 token 量少 50%、成本少 36%。這是第一次有人把「寫 harness 的能力」當成一個獨立的 scaling 維度來訓練，而且證明它和模型 scaling 正交——你不需要換更大的模型，換更好的 harness 就夠了。\""
+description: "NUS LV-Lab 的 JIT-Agent 論文把 Harness Engineering 從手藝推向科學：訓練一顆 27B 模型專門「替別的模型寫 harness」，用四模組協議（Memory / Planning / Capability Orchestration / Action）即時合成任務自適應的 agent scaffold。結果：DeepSeek-V4-Flash 套上 JIT-Agent 生成的 harness，DeepSearchQA 85.1 贏 GPT-5.6 的 76.0（+9.1）；GLM-5.2 最高漲 20.2 分；九項 benchmark 平均，JIT-Agent 和 Claude Code、OpenCode 這類手工打造的成熟 harness 打成平手，但 token 量少 50%、成本少 36%。這是第一次有人把「寫 harness 的能力」當成一個獨立的 scaling 維度來訓練，而且證明它和模型 scaling 正交——你不需要換更大的模型，換更好的 harness 就夠了。"
 author: Wisely Chen
 faq:
   - question: "JIT-Agent 本身需要多大的算力？"
