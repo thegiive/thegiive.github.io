@@ -102,7 +102,7 @@ JIT-Agent 的基底是 Qwen3.6-27B，訓練分三個階段，每個階段解決�
 5. PPO 更新策略
 6. **進 archive 的門檻**：效能不低於前沿線，且至少有一個效率軸（延遲或成本）嚴格改善
 
-這意味著 JIT-Agent 越用越強——每一次成功的 harness 都會擴充 archive，讓下一次碰到類似任務時有更好的起點。
+這個進化迴路發生在**訓練階段**——Evo-GDPO 是一個 online RL loop，需要取樣、執行、算 reward、更新權重。部署之後，JIT-Agent 用的是訓練時累積好的 archive 和學到的策略來生成 harness，不是「用了就自動變好」的 runtime 機制。但訓練時的 archive 越大越多樣，推理時能參考的範本就越豐富。
 
 ---
 
