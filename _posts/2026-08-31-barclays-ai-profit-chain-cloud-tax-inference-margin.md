@@ -140,6 +140,30 @@ Frontier labs 的策略是用推理利潤補貼訓練——2024 年訓練占 96%
 
 ---
 
+## 行為證據：全產業定價遷移，殺訂閱、推 token 計費
+
+如果巴克萊的利潤模型是對的——API 計費（Lab A）毛利 55%，訂閱制（Lab B）只有 38%——那模型公司的理性行為就是竭盡所能把客戶從訂閱趕到 API 計費。
+
+過去一年，它們確實在這麼做。
+
+| 公司 | 產品 | 時間 | 變化 |
+|------|------|------|------|
+| Anthropic | Enterprise Claude | 2025/11 起 → 2026/04 完成 | 固定座位費含 token → [座位費 + per-token 另計](https://www.theregister.com/2026/04/16/anthropic_ejects_bundled_tokens_enterprise/)，150 人以上無 flat-fee 選項 |
+| OpenAI | ChatGPT / Codex | 2026/04/02 | per-message → [token credit 計費](https://lilting.ch/en/articles/openai-codex-token-based-pricing-rate-card)，Business 座位費從 $25 降到 $20 |
+| GitHub | Copilot | 2026/04 → 06 | 固定配額 → [AI Credits（token 計費）](https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/) |
+| Anthropic | Pro / Max（消費者） | 2026/05/13 宣布（[6/15 暫緩](https://www.techtimes.com/articles/317625/20260602/anthropic-ends-subscription-subsidy-agents-june-15-credit-pool-replaces-flat-rate-access.htm)） | flat-rate → credit pool + per-token |
+| Google | Gemini Notebook（原 NotebookLM） | [2026/08/28 宣布](https://9to5google.com/2026/08/28/gemini-notebook-usage-limits/)，9/2 生效 | 每日固定次數 → compute-based，5 小時滾動窗口 + 週限額 |
+
+Anthropic 的路徑最完整：2025 年 11 月開始把企業客戶續約改成 usage-based，2026 年 2 月推出新制（$20/人月只買平台入場券，token 全部照 API 費率另計），3 月 8 日是 legacy plan 硬截止。到了 4 月，bundled token 從企業方案裡徹底移除。甚至 5 月嘗試把消費者方案的 agent 用量也拆出來改 credit 計費——雖然在 6/15 暫緩了，方向沒變。
+
+OpenAI 的動作更乾脆：4 月 2 日一刀切，Plus、Pro、Business 全部從 per-message 改 token credit。座位費反而降了 $5——降座位費是為了讓客戶覺得「便宜了」，真正的收入來源搬到了 token 消耗。
+
+Google 的 Gemini Notebook 是最新一個。巴克萊報告 8/28 發布，同一天 Google 宣布把 NotebookLM 從「每天 N 次」固定配額改成 compute-based 計費——每個請求按運算量算，短對話便宜、複雜 prompt 貴。
+
+**五家公司在同一季做了同一件事。** 方向完全一致：座位費／月費變成入場券，真正的收入來源搬到 per-token 或 per-compute。這不是巧合，是利潤結構決定的必然——巴克萊的數字解釋了為什麼。API 計費比訂閱制每 $100 多留 $17 的毛利。在營收 1,370 億的規模上，17 個百分點是超過 200 億美元的差距。
+
+---
+
 ## 反方：這個利潤率能撐多久
 
 巴克萊的數字是 2026 年的快照。它能不能代表新常態，至少有三個理由質疑：
