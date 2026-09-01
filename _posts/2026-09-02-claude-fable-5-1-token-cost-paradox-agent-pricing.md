@@ -29,21 +29,30 @@ Artificial Analysis Intelligence Index 66 分。Opus 5 是 63，GPT-5.6 Sol 是 
 
 Artificial Analysis Intelligence Index 是目前追蹤範圍最廣的 AI 模型綜合排行，由四個維度各佔 25% 加權組成：agent、coding、通用能力、科學推理。底層包含 9 個 benchmark（GDPval-AA v2、τ³-Banking、Terminal-Bench v2.1、SciCode、Humanity's Last Exam、GPQA Diamond、CritPt、AA-Omniscience、AA-LCR），所有評測由 Artificial Analysis 獨立執行。
 
-[9 月 1 日的排行](https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index)：
+[9 月 1 日的排行](https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index)，把同一模型不同 effort level 的重複去掉，按模型家族看差距：
 
-| 排名 | 模型 | 分數 |
-|:--:|------|:--:|
-| 1 | Claude Fable 5.1 (max) | 66 |
-| 2 | Claude Fable 5.1 (xhigh) | 65 |
-| 3 | Claude Opus 5 (max) | 63 |
-| 4 | Claude Fable 5 (max) | 62 |
-| 5 | GPT-5.6 Sol | 61 |
-| 5 | Grok 4.6 (high) | 61 |
-| 7 | Kimi K3 (max) | 60 |
-| 7 | GLM-5.1 (max) | 60 |
-| 9 | MiniMax Spark 1.2 (high) | 57 |
+| 排名 | 模型 | 分數 | 與 Fable 5.1 差距 |
+|:--:|------|:--:|:--:|
+| 1 | **Claude Fable 5.1** (Anthropic) | **66** | — |
+| 2 | Claude Opus 5 (Anthropic) | 63 | -3 |
+| 3 | Claude Fable 5 (Anthropic) | 62 | -4 |
+| 4 | GPT-5.6 Sol (OpenAI) | 61 | -5 |
+| 4 | Grok 4.6 (xAI) | 61 | -5 |
+| 6 | Kimi K3 (Moonshot) | 60 | -6 |
+| 6 | GLM-5.3 (智譜) | 60 | -6 |
+| 8 | Qwen3.8 (阿里) | 58 | -8 |
+| 8 | Qwen3.8 2.4T A95B (開放權重) | 58 | -8 |
+| 10 | MiniMax Spark 1.2 | 57 | -9 |
 
-前四名都是 Anthropic 的模型。AA-Omniscience 準確率 67.2%，Fable 5 是 65.4%。
+幾個數字值得停下來看。
+
+**vs OpenAI：差 5 分。** GPT-5.6 Sol 排第 4（61 分），在 Fable 5.1 發布前已經落後 Opus 5 和 Fable 5。這不是 1 分的誤差範圍，是明確的世代差。
+
+**vs 開源/開放權重：差 6-8 分。** 開放權重最強的是 Kimi K3 和 GLM-5.3（都是 60 分），比 Fable 5.1 低 6 分。Qwen3.8 的 2.4T 開源版是 58 分，差 8 分。DeepSeek V4 不在 top 20 裡。
+
+**Anthropic 的壟斷程度。** 如果不去重，top 20 裡有 10 個位置是 Anthropic 的模型（同一模型不同 effort level 各占一位）。去重後，前三名仍然全是 Anthropic。
+
+AA-Omniscience 準確率 67.2%，Fable 5 是 65.4%。
 
 ---
 
