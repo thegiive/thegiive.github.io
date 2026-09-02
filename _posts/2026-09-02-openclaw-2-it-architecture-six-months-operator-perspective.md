@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "OpenClaw 2.0 架構拆解：六層改動一次看完"
-date: 2026-09-02 21:54:44 +0800
+date: 2026-09-02 05:28:14 +0800
 permalink: /openclaw-2-it-architecture-six-months-operator-perspective/
 image: /assets/images/openclaw-2-detailed-architecture.png
 description: "8 月 30 號，OpenClaw 推出了 2.0 版（版號 v2026.8.1）。官方自己的標題叫「OpenClaw 2.0, Accidentally」——意思是他們本來沒打算做一次大改版，結果改到最後回頭一看，動到的東西已經大到必須叫 2.0 了。"
@@ -163,10 +163,37 @@ Skill Workshop 也加入了驗證流程——修改 skill 之前會先驗證變�
 
 ---
 
+## 跟 Hermes Agent 比，差距在哪
+
+討論 OpenClaw 2.0 的架構，繞不開另一個 2026 年崛起的開源 agent 框架——Nous Research 的 [Hermes Agent](https://hermes-agent.nousresearch.com/)。兩者都是 local-first、model-agnostic、MIT-licensed，但設計哲學完全不同。
+
+**OpenClaw 是 gateway 平台思維**——一個 Gateway 管多個 agent session，強調組織層級的多人協作和 breadth of integration。TypeScript 寫的，345K+ GitHub stars。
+
+**Hermes 是 self-improving single agent 思維**——核心賭注是 agent 應該隨時間自我提升。2026 年 2 月上線，64K+ stars。到 6 月在 OpenRouter 的 daily token usage 已經超過 OpenClaw（224B vs 186B）。
+
+六個關鍵差異：
+
+| 維度 | OpenClaw 2.0 | Hermes Agent |
+|------|-------------|--------------|
+| 記憶系統 | 2.0 剛從 QMD plugin 拉進核心，background consolidation | Day 1 就是五大支柱之一，user.md + memory.md + SQLite-backed store，closed learning loop |
+| 自我提升 | 沒有。Skill Workshop 驗證修改，但 agent 不會自己學新 skill | 核心設計。完成複雜任務後自動寫 reusable skill，越用越強 |
+| 多 agent | Shared Cloud Sessions 多人共用 context | Profile 系統——每個 profile 獨立 config / memory / gateway PID，並行但隔離 |
+| 安全模型 | 4 個 access mode，sandbox 預設關閉、Secret Store 不加密 | Tirith 安全層——approval workflow + allowlist + observable execution；截至 2026/06 零 CVE |
+| 通訊渠道 | Browser + Mobile + CLI + 4 平台 | 16+ 平台 + 完整語音互動（STT + TTS） |
+| Cron 排程 | 2.0 加入 automation，無效 config 建立前擋下 | First-class cron，fresh AIAgent instance，支援 skill attachment |
+
+**最大的架構落差是 self-improving loop。** Hermes 完成任務後會把解法結構化成 skill，下次碰到類似問題直接調用。OpenClaw 2.0 的記憶系統做到了 background consolidation，但離「agent 自己寫 skill」還有一段距離。
+
+**安全性差距也很明顯。** Hermes 的 Tirith 安全層是 safer-by-default——危險指令要 approval，所有 tool call 對使用者可見。OpenClaw 的 gateway 預設假設操作者是受信任的單一使用者，sandbox 和 execution approval 都關著。
+
+不過 OpenClaw 的優勢也很清楚：enterprise breadth、multi-model routing、團隊多人共用 session、ClawHub 13,000+ skills 生態。如果需求是組織層級的 agent 管理，OpenClaw 目前沒有對手。如果重視長期使用的個人化和 agent 自我提升，Hermes 的架構方向更前面。
+
+---
+
 ## 結語
 
 OpenClaw 2.0 的 IT 架構改動，整體來說是在做基礎建設的升級：從檔案系統搬到資料庫、從單人假設擴展到多人協作、從模糊的安全邊界走向明確的信任域。
 
 如果只是個人使用，這些改動大部分是透明的——升級、跑 `openclaw doctor --fix`、繼續用。
 
-但如果已經在企業環境裡跑 OpenClaw，或者正在規劃部署，這次架構改動就值得花時間認真理解。因為這些基礎設施的選擇——SQLite 遷移的單向性、Gateway 信任邊界的粒度、shared session 的安全假設——會直接影響後續的部署架構和安全策略。
+但如果已經在企業環境裡跑 OpenClaw，或者正在規劃部署，這次架構改動就值得花時間認真理解。因為這些基礎設施的選擇——SQLite 遷移的單向性、Gateway 信任邊界的粒度、shared session 的安全假設——會直接影響後續的部署架構和安全策略。而 Hermes Agent 在記憶、自我提升和安全預設上的設計，也值得拿來做為評估 agent 框架時的參照點。
