@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "OpenClaw 2.0 架構拆解：七個子系統一次看完"
-date: 2026-09-02 05:38:43 +0800
+date: 2026-09-02 07:08:12 +0800
 permalink: /openclaw-2-it-architecture-six-months-operator-perspective/
 image: /assets/images/openclaw-2-detailed-architecture.png
 description: "8 月 30 號，OpenClaw 推出了 2.0 版（版號 v2026.8.1）。官方自己的標題叫「OpenClaw 2.0, Accidentally」——意思是他們本來沒打算做一次大改版，結果改到最後回頭一看，動到的東西已經大到必須叫 2.0 了。"
 ---
 
-> OpenClaw 2.0（v2026.8.1）是專案史上最大改版——16,977 個 PR、987 位貢獻者。這篇從 IT 架構師角度拆解七個子系統的變動：Session 儲存遷移、Shared Cloud Sessions 的分散式設計、Gateway 信任邊界與安全模型、Control UI 重寫、模型偵測機制、內建記憶與自我學習、以及 Secret Store 與權限管理。最後評估 OpenClaw 2.0 的架構成熟度，並跟 Hermes Agent 做正面比較。
+> OpenClaw 2.0（v2026.8.1）是專案史上最大改版——16,977 個 PR、987 位貢獻者。這篇從 IT 架構師角度拆解七個子系統的變動：Session 儲存遷移、Shared Cloud Sessions 的分散式設計、Gateway 信任邊界與安全模型、Control UI 重寫、模型偵測機制、內建記憶與自我學習、以及 Secret Store 與權限管理。最後評估架構成熟度，跟 Hermes Agent 正面比較，並拆解企業數位助手場景下兩者各自適合的位置。
 
 ![OpenClaw 2.0 Gateway 架構圖](/assets/images/openclaw-2-detailed-architecture.png)
 
@@ -229,6 +229,43 @@ Skill Workshop 本身也加入了驗證流程——修改 skill 之前會先驗�
 **生態與整合 OpenClaw 明顯贏。** 20+ channels、ClawHub 13,000+ skills、team operator roles、1Password broker、cloud workers、session workspace migration。Hermes 的 skill 生態更小但平均品質更高（stricter submission process）。
 
 **一句話：Hermes 是「一個會長大的 agent」，OpenClaw 是「一群 agent 的作業平台」。** 選哪個看你是要管一個還是管一群。
+
+---
+
+## 企業數位助手：什麼場景選 Hermes
+
+上面的比較講的是架構差異。但如果把問題收窄到「企業數位助手」這個具體場景，OpenClaw 跟 Hermes 各自適合哪一邊？
+
+**OpenClaw 的位置比較明確：統一入口、多人共用、跨部門協作。** 20+ enterprise channels、shared cloud sessions、team roles、ClawHub 生態——這些加起來就是「公司的助手」的基礎設施。Slack / Teams 進來的請求、跨部門共用的知識庫查詢、需要多人接手的 session——這是 OpenClaw 原生支援的。
+
+**Hermes 的定位不同：一個長期跟著單一 owner、越用越像他的 agent。** 它不是要當「公司的助手」，是要當「某個人的助手」或「某個領域的專家」。用這個定位去看，它在企業裡有五個明確贏的場景：
+
+**一、每個人一個助手，不是一群人一個助手。** Profile 是一等公民——獨立 HERMES_HOME、config、memory、sessions、gateway PID。高階主管助理、每個工程師自己的 agent、每個業務自己的 agent，這種「一人一隻、資料互不相通」的模型，Hermes 是原生設計，OpenClaw 要靠多開 Gateway 硬做。
+
+**二、無人值守的長期排程。** Hermes 的 cron 是 first-class：每個 job 開 fresh AIAgent instance（不帶舊對話），可以 attach skill，結果送到任何平台。每日報表、備份檢查、晨間簡報這類東西，Hermes 的 cron 比 OpenClaw 2.0 剛加的 automation 成熟。
+
+**三、安全預設要求高的環境。** Tirith 安全層——approval workflow、allowlist + DM pairing、每個 tool call 對使用者可見——開箱就有。金融、醫療這種「不能靠 operator 記得去開 sandbox」的場景，safer-by-default 是實質差異，不是行銷詞。
+
+**四、單一領域的累積型專家。** Closed learning loop 的價值在長時間：客服 triage、特定 codebase 的維護 agent、法遵查核，這種「同一件事做幾百次、越做越準」的場景，compounding 才看得到。但要注意：closed loop 沒有 review gate，學到的東西沒人審過就上線，在 compliance 環境需要自己在外面加一層。
+
+**五、地端 / edge 部署。** NVIDIA 跟 Hermes 有 RTX / DGX Spark 的合作，self-hosted、無 telemetry。資料不能出機器的場景，Hermes 的敘事比 OpenClaw 完整。
+
+### Hermes 進企業的硬傷
+
+**沒有 shared context。** Profile 隔離是設計目的，所以同事接手、多人共用一個 session 這件事在 Hermes 裡不存在。企業數位助手最常見的需求——「我不在的時候同事幫我接」——做不到。
+
+**企業 channel 生態偏弱。** 16+ 平台偏消費端（Telegram、Discord、WhatsApp）。Slack Enterprise Grid、Teams、Google Chat、Feishu 這些企業在用的，OpenClaw 有 plugin，Hermes 從公開文件看沒有對應的 enterprise 整合。
+
+**Learning 沒有 review gate。** Closed loop 直接寫 skill，沒有 pending → operator apply 的閘門。在 compliance 場景這是問題——agent 學到的東西沒人審過就上線。
+
+### 實務上怎麼放
+
+不是二選一，是**按場景切**：
+
+- 公司對外的統一入口、跨部門共用、Slack / Teams 進來的請求 → **OpenClaw**。這是 platform 的事。
+- 每個人自己的助手、無人值守 cron、單一領域越做越準的專家 agent → **Hermes**。這是 agent 的事。
+
+一個可能的架構是 OpenClaw 當 front door 和 team 層，Hermes 當 per-person 或 specialist 層。但要提醒：兩者之間目前沒有現成的整合路徑，這一段要自己接。
 
 ---
 
