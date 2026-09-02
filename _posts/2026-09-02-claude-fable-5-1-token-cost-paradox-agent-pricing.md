@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Intelligence Index 66 分登頂：Fable 5.1 是目前最強的模型，成本帳怎麼算"
+title: "Intelligence Index 66 分登頂：Fable 5.1 可能是你付得起最接近 AGI 的模型"
 date: 2026-09-02 09:00:00 +0800
 permalink: /claude-fable-5-1-token-cost-paradox-agent-pricing/
 tags: [Anthropic, Claude, Fable 5.1, Mythos 5.1, Intelligence Index, cache read, token cost, per-task cost, Artificial Analysis, agent pricing, thinking block, anti-distillation]
 categories: [AI 產業分析]
 image: /assets/images/fable-5-1-cost-paradox-cover.png
-description: "Anthropic 9 月 1 日發布 Fable 5.1，Artificial Analysis Intelligence Index 66 分登頂，Terminal-Bench Science 從 24.7% 翻倍到 52.6%，把 Opus 5、GPT-5.6 Sol、Grok 4.6 全部壓在後面。同時 cache read 降價 75%（$1 → $0.25/M token），對 agent 工作流省 25-45%。但 Artificial Analysis 測出 per-task cost 反而貴了 20%——因為模型更話多，output token 量漲 1.7 倍。這篇攤開能力帳和成本帳，看目前最強模型的真實代價。"
+description: "Anthropic 9 月 1 日發布 Fable 5.1 / Mythos 5.1，Intelligence Index 66 分登頂，Terminal-Bench Science 翻倍到 52.6%。更讓人興奮的是科研能力的實際產出：金星地形圖精度提升 5 倍、蛋白質設計成功率 50%（行業 10-15%）、自寫 GPU kernel 把推理速度提升 1.4-2.5 倍。Cache read 降價 75% 對 agent 有利，但 per-task cost 反而貴了 20%。護欄、30 天數據留存、IPO 前的競爭格局——這篇攤開能力帳、成本帳、和戰略帳。"
 author: Wisely Chen
 faq:
   - question: "Fable 5.1 到底是不是目前最強的 AI 模型？"
@@ -16,7 +16,11 @@ faq:
   - question: "為什麼 Artificial Analysis 說 Fable 5.1 per-task cost 貴了 20%？"
     answer: "因為 Fable 5.1 平均輸出 1.7 倍的 token——模型更聰明但也更話多。Output 單價 $50/M 是 cache read 新價 $0.25/M 的 200 倍，所以 output 多吃的錢把 cache 省下的吃回去了。Artificial Analysis 的 per-task cost（每任務成本）$3.69 是跑 Intelligence Index benchmark 的結果，這類 benchmark 是一組獨立問題，cache 佔比遠低於真實 agent 長對話。在 cache 佔比高的真實 agent 工作流裡，整體成本方向是省的。"
   - question: "訂閱用戶（Claude Pro / Max）用 Fable 5.1 有什麼要注意的？"
-    answer: "1.7 倍的 output token 在訂閱制下不會多收錢，但會更快消耗你的配額上限——5 小時窗口限額和週限額都會更快用完。有用戶反映一次小調查就燒掉 5 小時限額的 13%。建議把 Fable 5.1 留給高價值的長時間 coding / agent 任務，日常工作用 Opus 5（Intelligence Index 63 分，per-task cost $2.34），在能力和配額之間找平衡。  ---"
+    answer: "1.7 倍的 output token 在訂閱制下不會多收錢，但會更快消耗你的配額上限——5 小時窗口限額和週限額都會更快用完。有用戶反映一次小調查就燒掉 5 小時限額的 13%。建議把 Fable 5.1 留給高價值的長時間 coding / agent 任務，日常工作用 Opus 5（Intelligence Index 63 分，per-task cost $2.34），在能力和配額之間找平衡。"
+  - question: "Fable 5.1 的安全護欄（Guardrails）有改善嗎？"
+    answer: "Anthropic 官方說 cyber safeguard 介入減少 60%，生物類良性請求誤判減少 85%。但發布第一天的社群體感不太一樣——多位用戶回報護欄仍然很兇，甚至比 Fable 5 更煩。官方量的是「誤觸率降了多少」，用戶感受的是「我被擋的時候有沒有變少」，兩件事不完全一樣。這題要等更多人跑過日常工作流才有定論。"
+  - question: "Fable 模型的 30 天數據留存（Data Retention）是什麼問題？"
+    answer: "Anthropic 強制所有 Fable / Mythos 級模型的使用數據保留 30 天，原本享受零數據留存（Zero Data Retention, ZDR）的企業客戶一夜之間隱私保障降了一級。Anthropic 的回應是 Enterprise Frontier Safeguards（EFS）：數據存在客戶自己控制的雲基礎設施，人工審核也由客戶自己完成，預計 2026 年秋天分階段上線。過渡期間，符合條件的 ZDR 客戶可照常使用 Fable 5.1。  ---"
 ---
 
 Artificial Analysis Intelligence Index 66 分。Opus 5 是 63，GPT-5.6 Sol 是 61，Grok 4.6 是 61。
@@ -77,6 +81,22 @@ Anthropic 自己的說法：Fable 5.1 特別針對「長時間複雜任務」強
 
 這和 benchmark 數字的方向一致——漲幅最大的都在需要自主操作、多步驟、長時間的任務上（Terminal-Bench Science +113%、AutomationBench +84%），而偏短任務的 benchmark（CursorBench +4%、Humanity's Last Exam +2%）提升有限。
 
+X 上 [JAZII 的三日風向整理](https://x.com/notjazii/status/2094906574703882530)講得精準：「beast at coding and agentic work / consume usage way faster / thinks 2–5x longer」。[JUMPERZ 實測](https://x.com/jumperz/status/2094912752837894645)：比 Opus 5 聰明、規劃強、不會盲目同意，但不適合當日常模型。
+
+---
+
+## AI 科研能力大躍進：不只是 benchmark，是實際產出
+
+科研能力的跳躍幅度可能比 coding 更有長期意義。Terminal-Bench Science 翻倍不是唯一訊號——Anthropic 同時展示了三個實際科研產出。
+
+**金星地形圖。** Fable 5.1 / Mythos 5.1 用 NASA 麥哲倫任務 30 多年前拍攝的雷達圖像，訓練神經網絡，為金星三分之一的表面生成高分辨率地形圖。精度從 10-20 公里提升到 2-3 公里，高度精度提高最多 25%。Anthropic 以 Creative Commons 協議公開發布，希望對 NASA 即將執行的 VERITAS 任務和 ESA 的 EnVision 任務有用。
+
+**蛋白質設計。** Mythos 5.1 配上開源的蛋白質設計和折疊工具後，設計出的高親和力結合物在三個靶點上的結合親和力比 Adaptyv Bio 蛋白質設計競賽的最佳提交高出 10 倍，成功率接近 50%，行業一般水平是 10-15%。
+
+**GPU kernel 優化。** Mythos 5.1 自己寫 GPU kernel 和快取中間結果，把七個開源深度學習模型的推理速度提升 1.4-2.5 倍。全基因組分析的 GPU 成本因此降低 30-60%。Anthropic 說這類優化通常需要性能工程團隊花幾週，學術實驗室根本做不起，Mythos 5.1 用公開源代碼幾天搞定。
+
+這些不是 benchmark 分數，是模型開始在前沿科學領域做出實際產出。幾個月後回頭看，科研能力的大幅跳躍可能比 coding 更有長期意義——半年後人類科學可能因此加速。
+
 ---
 
 ## 成本帳：cache 降 75%，對 agent 是真的便宜
@@ -131,6 +151,31 @@ API 用戶得到更強的模型和更便宜的 cache，訂閱用戶得到更強�
 
 ---
 
+## Fable 最大的問題「護欄」有改善嗎？
+
+說到 Fable 5，大家最討厭就是那個切到 Opus 的自動安全護欄。Anthropic 說 5.1 有改善：
+
+- cyber safeguard 介入減少 60%
+- 生物類良性請求的誤判減少 85%
+
+官方數字聽起來進步很大，但社群體感不太一樣。[JAZII](https://x.com/notjazii/status/2094906574703882530)：「safeguards still kinda same」。JUMPERZ：護欄仍兇。QC：比 Fable 5 更煩。
+
+官方量的是「誤觸率降了多少」，用戶感受的是「我被擋的時候有沒有變少」——兩件事不完全一樣。誤判減 85% 代表以前 100 次誤殺現在只剩 15 次，但如果你剛好撞到那 15 次，體感就是「沒變」。
+
+護欄這題大概要等更多人跑過日常工作流才有定論。發布第一天的抱怨和官方 benchmark 都不是終局數字。
+
+---
+
+## 企業最討厭的問題：數據留存 30 天
+
+Fable 模型強制數據保留 30 天。原本享受零數據留存（ZDR）的企業客戶，一夜之間隱私保障降了一級。金融、醫療、政府——數據合規要求最嚴的行業，推理過程留在 Anthropic 伺服器 30 天，客戶怎麼可能接受？
+
+OpenAI 兩週前剛拿這個點發起攻勢，宣布 Private Safety Processing：最強模型也能零留存。
+
+Anthropic 的回應是 Enterprise Frontier Safeguards（EFS）。核心思路：數據存在客戶自己控制的雲基礎設施，不進 Anthropic 系統；人工審核也由客戶自己完成。Anthropic 說跟 100 多家客戶合作開發，涵蓋金融、醫療、製造、法律。EFS 預計秋天分階段上線，過渡期 ZDR 客戶可照常使用 Fable 5.1。
+
+---
+
 ## 防蒸餾：thinking block 開始上鎖
 
 Fable 5.1 帶了一個跟成本無關但跟生態有關的 breaking change。
@@ -145,11 +190,27 @@ Fable 5.1 帶了一個跟成本無關但跟生態有關的 breaking change。
 
 ---
 
+## IPO 預演與開源防線
+
+這次發布，是 Anthropic 衝 IPO 前秀出的最強成績單。Intelligence Index 66 分登頂，投資人看的就是這個。
+
+其他廠商呢？OpenAI 拼性價比——GPT-5.6 Sol 61 分但便宜很多。開源陣營 Qwen3.8 / GLM-5.3 差 6-8 分，但免費。除了爭奪最強，其他人都在拼 cost per intelligence。
+
+防蒸餾機制在這個脈絡下就看得懂了：thinking block 鎖住不讓改，不只是技術規格，是防止開源透過蒸餾搬走閉源的推理能力。蒸餾是開源追上閉源最快的捷徑，Anthropic 把這條路堵了。30 天數據留存也是同一邏輯——Anthropic 需要偵測誰在大規模蒸餾。
+
+天花板的護城河不能被蒸餾填平，但護城河的代價是用戶的數據也被圍在牆內。EFS 是 Anthropic 試著在兩邊取平衡的解法。
+
+---
+
 ## 坦白說
 
 Intelligence Index 排行和 benchmark 分數來自第三方獨立評測，可信度高。但 benchmark 不等於你的實際工作流——Terminal-Bench Science 的 52.6% 代表模型在標準化科學任務上的能力，不代表它在你的 codebase 上的表現。
 
+科研展示（金星地形圖、蛋白質設計、GPU kernel）帶有 Anthropic 的敘事目的，但蛋白質設計的結果經過了外部實驗驗證，金星地圖也以 Creative Commons 公開可下載，不是空口說說。不過這些是精心挑選的 demo，不代表所有科研場景都能複製同等成果。
+
 Artificial Analysis 的 per-task cost $3.69 和「貴 20%」是跑 Intelligence Index benchmark 的成本，不是真實 agent 工作流的成本。我用的「cache 佔 55% → 省 27%」粗算基於我自己的帳單結構，不同人的工作流差異很大。1.7 倍 output 是 benchmark 數字，真實 coding 場景的 output 增量可能不同。
+
+護欄改善的官方數字和社群體感有落差，兩邊的量測方式不同，都不算錯。EFS 秋天才上線，30 天留存在過渡期仍然是事實。IPO 格局是我的推演，不是 Anthropic 自己說的。
 
 社群反應是發布後 24 小時的快照。配額問題的回報來自個別用戶，不是系統性測量。
 
@@ -165,7 +226,11 @@ Artificial Analysis 的 per-task cost $3.69 和「貴 20%」是跑 Intelligence 
 
 **三、訂閱用戶要重新估配額。** Fable 5.1 的 1.7 倍 output 會讓你的有效配額再縮一截。日常工作考慮用 Opus 5（Intelligence Index 63，per-task cost $2.34），把 Fable 5.1 留給真正需要天花板能力的任務。
 
-**四、自建 harness 的開發者注意防蒸餾機制。** 動態修改 system prompt、壓縮歷史、切換 fallback 模型的設計，在 Fable 5.1 上會讓 thinking block 失效。這不是 bug，是有意設計——現在只限新帳號，但未來會擴大。
+**四、科研能力可能是最有長期意義的升級。** 金星地形圖、蛋白質設計 50% 成功率、自寫 GPU kernel——這些不是 benchmark，是實際科研產出。做自動科研的公司會是 Fable 5.1 / Mythos 5.1 最大受益者，半年後人類科學可能因此加速。
+
+**五、日常工作不一定需要 Fable 5.1。** 一般任務，普通模型早就 KO。天花板任務再上就好。模型愈來愈強，但不是每個人都需要天花板——知道什麼時候該上、什麼時候不用，這才是真正的能力。
+
+**六、自建 harness 的開發者注意防蒸餾機制。** 動態修改 system prompt、壓縮歷史、切換 fallback 模型的設計，在 Fable 5.1 上會讓 thinking block 失效。這不是 bug，是有意設計——現在只限新帳號，但未來會擴大。
 
 ---
 
@@ -187,6 +252,14 @@ Artificial Analysis 的 per-task cost $3.69 和「貴 20%」是跑 Intelligence 
 
 1.7 倍的 output token 在訂閱制下不會多收錢，但會更快消耗你的配額上限——5 小時窗口限額和週限額都會更快用完。有用戶反映一次小調查就燒掉 5 小時限額的 13%。建議把 Fable 5.1 留給高價值的長時間 coding / agent 任務，日常工作用 Opus 5（Intelligence Index 63 分，per-task cost $2.34），在能力和配額之間找平衡。
 
+**Q: Fable 5.1 的安全護欄（Guardrails）有改善嗎？**
+
+Anthropic 官方說 cyber safeguard 介入減少 60%，生物類良性請求誤判減少 85%。但發布第一天的社群體感不太一樣——多位用戶回報護欄仍然很兇，甚至比 Fable 5 更煩。官方量的是「誤觸率降了多少」，用戶感受的是「我被擋的時候有沒有變少」，兩件事不完全一樣。這題要等更多人跑過日常工作流才有定論。
+
+**Q: Fable 模型的 30 天數據留存（Data Retention）是什麼問題？**
+
+Anthropic 強制所有 Fable / Mythos 級模型的使用數據保留 30 天，原本享受零數據留存（Zero Data Retention, ZDR）的企業客戶一夜之間隱私保障降了一級。Anthropic 的回應是 Enterprise Frontier Safeguards（EFS）：數據存在客戶自己控制的雲基礎設施，人工審核也由客戶自己完成，預計 2026 年秋天分階段上線。過渡期間，符合條件的 ZDR 客戶可照常使用 Fable 5.1。
+
 ---
 
 ## 來源
@@ -206,3 +279,7 @@ Artificial Analysis 的 per-task cost $3.69 和「貴 20%」是跑 Intelligence 
 - [@connect24h 防蒸餾評論](https://x.com/connect24h/status/2094926674823639528)
 - [本 blog：兩個月 17 億 token——AI coding 的雲端帳單](/ai-coding-token-cost-calculation-cache-read/)
 - [本 blog：20x 是什麼的 20 倍](/claude-pricing-20x-weekly-limit-trust-crisis/)
+- [@notjazii X 三日風向整理](https://x.com/notjazii/status/2094906574703882530)
+- [@jumperz X 實測評論](https://x.com/jumperz/status/2094912752837894645)
+- [METR：Mythos 5.1 safety evaluation（via @AndrewCurran_）](https://x.com/AndrewCurran_/status/2094858938760204642)
+- [寶玉 Threads：Fable 5.1 數據留存與 EFS](https://www.threads.com/@baoyu_)
