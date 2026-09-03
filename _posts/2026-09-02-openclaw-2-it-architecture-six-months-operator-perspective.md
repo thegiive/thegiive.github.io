@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "OpenClaw 2.0 架構拆解：改了什麼、跟 Hermes 怎麼比、我的期許"
-date: 2026-09-02 08:44:58 +0800
+date: 2026-09-02 11:38:30 +0800
 permalink: /openclaw-2-it-architecture-six-months-operator-perspective/
 image: /assets/images/openclaw-2-detailed-architecture.png
 description: "OpenClaw 2.0 發布了。這是 AI 時代的頭部 Project，裡面 16,977 個 PR、987 位貢獻者。官方自己的標題叫「OpenClaw 2.0, Accidentally」——意思是他們本來沒打算做一次大改版，結果改到最後回頭一看，動到的東西已經大到必須叫 2.0 了。"
@@ -31,9 +31,9 @@ OpenClaw 2.0 發布了。這是 AI 時代的頭部 Project，裡面 16,977 個 P
 
 為什麼這件事重要？因為**這是一條單行道**。升級之後新產生的 session 都只存在 SQLite 裡，要降回舊版得先用新版 CLI 匯出成舊格式。
 
-好處是並發穩定性。檔案形式的 session 在並發場景下容易碰到鎖定或讀寫衝突，SQLite 的 atomic write 穩定很多。備份也不再是口號——2.0 新增了 snapshot 功能（create / list / verify / restore），升級前跑一次 `snapshot create` 是官方建議的 SOP。
+好處是並發穩定性。檔案形式的 session 在並發場景下容易碰到鎖定或讀寫衝突，SQLite 的 atomic write 穩定很多。備份也不再是口號——2.0 新增了 `openclaw backup` 系列指令（`backup create` / `backup sqlite create|list|verify|restore` / `backup git create|list|verify|restore`），升級前跑一次 backup 是官方建議的 SOP。
 
-**跑 Docker 的人要特別注意：** SQLite 在共享檔案系統（virtiofs / 9p mount）上的 POSIX lock 不可靠。2.0 偵測到這類 mount 會自動改用 rollback journal 而非 WAL，犧牲一點效能換穩定性。這個細節只寫在 release notes 裡。
+**跑 Docker 的人要特別注意：** SQLite 在共享檔案系統上的 POSIX lock 不可靠。2.0 偵測到 virtiofs、9p、NFS、SMB 這類 mount 會自動改用 rollback journal 而非 WAL，犧牲一點效能換穩定性。使用者文件有寫 NFS/SMB 的退回行為，但 virtiofs / 9p 這兩個名字幾乎只出現在 release notes（PR #120597）裡，Docker Desktop 使用者容易漏掉。
 
 ### Shared Cloud Sessions
 
@@ -53,11 +53,11 @@ Session 可以跑在三個地方：本機 Gateway（預設）、自己的硬體�
 
 2.0 把安全講清楚了。核心原則是 **one trust boundary per Gateway**，所有連上同一個 Gateway 的使用者共享同一個信任域。
 
-四個層級的 access mode：
-- **Read-only**：只能看不能動
-- **Guarded**：需要逐次核准
-- **Workspace**：限定在特定工作目錄
-- **Full access**：完全授權
+四個 session permission mode（注意：前三個都鎖在 sessionRoot，差別在 exec 誰審）：
+- **Read-only**：只能讀 sessionRoot，exec 直接 deny
+- **Guarded**：可讀寫 sessionRoot，exec 走 allowlist，miss 才問人
+- **Workspace**：一樣鎖在 sessionRoot，exec 先 LLM review，人是 fallback
+- **Full access**：不限 filesystem，需要 operator.admin
 
 加上 **team operator roles**——限制特定操作者能存取哪些 agent、是否能看別人的 session。Configuration 變更記錄 writer label 並自動 redact 敏感值，企業環境要的 RBAC 和 audit trail 有了。
 
@@ -72,13 +72,17 @@ Session 可以跑在三個地方：本機 Gateway（預設）、自己的硬體�
 | Claude Haiku 4.5 | 1.3% |
 | Gemini 2.5 Pro | 8.5% |
 
-但架構師要知道的是，**injection 防禦是外包給模型廠商的**，Gateway 自己不做 input sanitization。你的安全天花板取決於你選的模型。用 frontier model 跑機敏任務，0.5% 可能還行；換一個便宜的小模型跑同樣的場景，風險完全不同。
+Gateway 不是完全不做防禦——外部內容會用 `<<<EXTERNAL_UNTRUSTED_CONTENT>>>` wrapping 標記，會清掉 Qwen / ChatML / Llama / Gemma 等 special tokens 避免偽造 role boundary，outbound 也會剝 `<tool_call>` 這類 scaffolding。但**主防線仍然是模型本身** + tool policy + sandbox + allowlist，Gateway 做的是輔助清理，不是完整的 input sanitization。你的安全天花板仍然取決於你選的模型。用 frontier model 跑機敏任務，0.5% 可能還行；換一個便宜的小模型跑同樣的場景，風險完全不同。
 
 ### Self-learning
 
 2.0 把記憶系統從外掛（QMD plugin）拉進核心，加入背景整合（background consolidation）。更重要的是加入了 **automatic self-learning**——agent 從對話中擷取有效的解法模式，自動產生 Skill Workshop proposal。
 
-走的是 Review gate 路線：proposal 進 pending，operator 審核後才套用。三種模式：off（關閉）、propose（產生 pending proposal）、auto（掃描後自動套用）。Manual history review 更保守——掃最近 20 個 substantial sessions，最多產生 3 個 pending proposals。
+三種模式：off（關閉）、propose（產生 pending proposal，需人工審核）、auto（scanner-gated 自動套用）。**但出廠預設是 auto + approvalPolicy auto**——agent 可以自己 apply / reject / quarantine，不需要人審。要走 review gate（pending → operator apply）要自己把 approvalPolicy 改成 `pending`。
+
+這個出廠預設很重要：它代表 **OpenClaw 2.0 的 self-learning 出廠行為其實跟 Hermes 的 closed loop 比想像中更接近**——都是自動寫入。企業要的 review gate 是能力，不是預設。這又是一個「安全是 opt-in」的例子。
+
+Manual history review 更保守——掃最近 20 個 substantial sessions（至少 6 個 model turns），最多產生 3 個 pending proposals。
 
 ### Secret Store
 
@@ -92,15 +96,17 @@ Session 可以跑在三個地方：本機 Gateway（預設）、自己的硬體�
 
 接了 1Password broker 之後 credential 全程不落地。**差距在 default vs configured。**
 
-### 已知問題
+### 其他變動與已知問題
 
-- `doctor --fix` 在無 TTY 環境靜默失敗——自動化腳本環境升級後要特別檢查
-- Gemini embedding batch 超過 API limit，會導致 memory sync 中斷
+產品變更：
+- 地端推理引擎從 node-llama-cpp 換成 managed llama-server，預設模型改 Gemma 4，context window 擴到 64K
+- `codex/*` / `openai-codex/*` model route 自動遷移到 `openai/*`，可用 `openclaw doctor --fix` 處理
+
+發布時的已知問題（部分可能已在後續版本修復）：
+- Gemini embedding batch 超過 API limit，會導致 memory sync 中斷（8.1 已有 streaming / timeout 相關 PR）
 - Legacy 安裝的 plugin consent 未持久化，升級後可能需要重新授權
-- 地端模型改成 managed llama-server + Gemma 4 預設 + 64K context window
-- `codex/*` model route 自動遷移到 `openai/*`，可用 `openclaw doctor --fix` 處理
 
-官方在發布兩天後推了 [v2026.8.2 hotfix](https://github.com/openclaw/openclaw/releases/tag/v2026.8.2) 修升級相關的 breaking bugs。
+後續版本 [v2026.8.2](https://github.com/openclaw/openclaw/releases/tag/v2026.8.2) 不是 hotfix——是正式版本，784 PRs、134 contributors，新增 Home 按鈕、Linux desktop companion、background sessions、四套 Control UI theme，同時也修了升級相關的問題。
 
 ---
 
@@ -112,7 +118,7 @@ Session 可以跑在三個地方：本機 Gateway（預設）、自己的硬體�
 
 ### OpenClaw = 一群人的助手
 
-OpenClaw 的 Gateway 模型天生就是這個方向。Shared sessions、team roles、多人共用 context，同事接手不用重講脈絡。一個 Gateway 管多個 agent session，強調組織層級的多人協作和 breadth of integration。TypeScript 寫的，345K+ GitHub stars。
+OpenClaw 的 Gateway 模型天生就是這個方向。Shared sessions、team roles、多人共用 context，同事接手不用重講脈絡。一個 Gateway 管多個 agent session，強調組織層級的多人協作和 breadth of integration。TypeScript 寫的，388K+ GitHub stars。
 
 ### Hermes = 一個人的專家
 
@@ -125,12 +131,12 @@ Hermes 的 profile 模型更偏後者：每個 profile 獨立 memory、獨立 so
 | 生態 | 20+ 企業頻道（Slack、Teams、LINE、Feishu 都有 plugin），ClawHub 13,000+ skills | 16+ 平台偏消費端（WhatsApp、Signal、Discord），skill 生態小但品質高 |
 | 安全預設 | Sandbox / approval 預設關閉，要 operator 自己開 | Tirith 安全層開箱即用（approval + allowlist + observable execution） |
 | 隔離 | 多開 Gateway 硬做，N 租戶 = N 份維運成本 | Profile 一等公民——獨立 home、config、memory、gateway PID |
-| 自我學習 | Review gate：pending → operator apply，可審計可回滾 | Closed loop：直接寫 skill，累積快但沒 audit trail |
+| 自我學習 | 有 review gate 能力，但出廠預設是 auto-apply（跟 Hermes 接近） | Closed loop：直接寫 skill，累積快但沒 audit trail |
 | 協作 | Shared sessions + team roles + config audit | 單人模型，同事接手做不到 |
 
 具體到企業數位助手，決定性的不是 channel 數量，是 channel 種類。Slack Enterprise Grid、MS Teams、Google Chat、Feishu、LINE 這些是企業在用的——OpenClaw 有，Hermes 沒有。
 
-在自我學習上，OpenClaw 的 review gate（proposal 進 pending、operator 審核後 apply）是企業要的。Hermes 的 closed loop 直接寫 skill 對個人很棒，對企業是 compliance 問題——agent 學到的東西沒人審過就上線。
+在自我學習上，OpenClaw 有 review gate 的能力（approvalPolicy 設成 pending），這是企業要的。但出廠預設是 auto-apply，跟 Hermes 的 closed loop 其實很接近——都是 agent 學到東西自動上線。差別在 OpenClaw 可以切到 pending 模式，Hermes 目前沒有這個選項。對企業來說，能力有但預設沒開，等於還是要靠 operator 記得去改設定。
 
 ### Hermes 贏的企業場景
 
@@ -138,7 +144,7 @@ Hermes 的 profile 模型更偏後者：每個 profile 獨立 memory、獨立 so
 
 **每個人一個助手。** 高階主管助理、每個工程師自己的 agent、每個業務自己的 agent，「一人一隻、資料互不相通」的模型，Hermes 原生設計，OpenClaw 要靠多開 Gateway 硬做。
 
-**無人值守的排程。** Hermes 的 cron 是 first-class：每個 job 開 fresh AIAgent instance，可以 attach skill，結果送到任何平台。每日報表、備份檢查、晨間簡報，比 OpenClaw 2.0 剛加的 automation 成熟。
+**無人值守的排程。** Hermes 的 cron 是 first-class：每個 job 開 fresh AIAgent instance，可以 attach skill，結果送到任何平台。每日報表、備份檢查、晨間簡報。OpenClaw 也有 cron / heartbeat / standing orders，但 Hermes 的排程設計從 Day 1 就是核心支柱。
 
 **安全預設要求高的環境。** 金融、醫療這種「不能靠 operator 記得去開 sandbox」的場景，Tirith 的 safer-by-default 是實質差異。
 
@@ -186,7 +192,7 @@ OpenClaw 6 月在 Microsoft Build 也提出 Windows 原生支援——透過 Mic
 
 **一、SQLite 單機單 writer 要有下一步。** 不一定是換 Postgres，但至少需要 HA 或 read replica 的敘事。現在 Multiplayer 和 cloud workers 是分散式功能，蓋在單機地基上，這個 tension 遲早要面對。
 
-**二、安全預設要翻過來。** Sandbox 和 approval 預設關閉，對個人開發者沒問題，但每多一個企業用戶就多一個忘記開 sandbox 的風險。Hermes 的 Tirith 證明了 safer-by-default 不會犧牲開發體驗。
+**二、預設值要翻過來。** 不只是 sandbox 和 approval 預設關閉——Skill Workshop 的 self-learning 出廠也是 auto-apply，不是 review gate。對個人開發者這些預設都沒問題，但每多一個企業用戶就多一個「忘記改設定」的風險。Hermes 的 Tirith 證明了 safer-by-default 不會犧牲開發體驗。
 
 **三、隔離需要一等抽象。** 「要隔離就多開 Gateway」是能用但不 scale 的答案。N 個 Gateway = N 份升級、N 份 secret store、N 份 snapshot backup。如果 OpenClaw 想進企業多租戶場景，profile 或 namespace 級別的隔離是必要的。
 
