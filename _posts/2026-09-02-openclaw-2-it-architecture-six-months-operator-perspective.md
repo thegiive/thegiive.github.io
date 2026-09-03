@@ -1,77 +1,69 @@
 ---
 layout: post
-title: "OpenClaw 2.0 架構拆解：七個子系統一次看完"
-date: 2026-09-02 07:08:12 +0800
+title: "OpenClaw 2.0 架構拆解：改了什麼、跟 Hermes 怎麼比、我的期許"
+date: 2026-09-02 08:44:58 +0800
 permalink: /openclaw-2-it-architecture-six-months-operator-perspective/
 image: /assets/images/openclaw-2-detailed-architecture.png
-description: "8 月 30 號，OpenClaw 推出了 2.0 版（版號 v2026.8.1）。官方自己的標題叫「OpenClaw 2.0, Accidentally」——意思是他們本來沒打算做一次大改版，結果改到最後回頭一看，動到的東西已經大到必須叫 2.0 了。"
+description: "OpenClaw 2.0 發布了。這是 AI 時代的頭部 Project，裡面 16,977 個 PR、987 位貢獻者。官方自己的標題叫「OpenClaw 2.0, Accidentally」——意思是他們本來沒打算做一次大改版，結果改到最後回頭一看，動到的東西已經大到必須叫 2.0 了。"
 ---
 
-> OpenClaw 2.0（v2026.8.1）是專案史上最大改版——16,977 個 PR、987 位貢獻者。這篇從 IT 架構師角度拆解七個子系統的變動：Session 儲存遷移、Shared Cloud Sessions 的分散式設計、Gateway 信任邊界與安全模型、Control UI 重寫、模型偵測機制、內建記憶與自我學習、以及 Secret Store 與權限管理。最後評估架構成熟度，跟 Hermes Agent 正面比較，並拆解企業數位助手場景下兩者各自適合的位置。
+> OpenClaw 2.0（v2026.8.1）發布了——16,977 個 PR、987 位貢獻者，專案史上最大改版。這篇從 IT 架構師角度拆主要變化，跟 Hermes Agent 做定位比較，最後講我對 OpenClaw 的期許。企業數位助手的根本問題是：一群人用一個助手，還是每個人有自己的助手？
 
 ![OpenClaw 2.0 Gateway 架構圖](/assets/images/openclaw-2-detailed-architecture.png)
 
 ---
 
-8 月 30 號，OpenClaw 推出了 2.0 版（版號 v2026.8.1）。官方自己的標題叫「OpenClaw 2.0, Accidentally」——意思是他們本來沒打算做一次大改版，結果改到最後回頭一看，動到的東西已經大到必須叫 2.0 了。
+OpenClaw 2.0 發布了。這是 AI 時代的頭部 Project，裡面 16,977 個 PR、987 位貢獻者。官方自己的標題叫「OpenClaw 2.0, Accidentally」——意思是他們本來沒打算做一次大改版，結果改到最後回頭一看，動到的東西已經大到必須叫 2.0 了。
 
-以下從 IT 架構的角度拆七個子系統，每個都講它改了什麼、為什麼改、以及對實際部署的影響。
-
----
-
-## 一、Session 儲存從檔案搬進 SQLite
-
-這是 2.0 最底層、影響最大的一個改動。
-
-舊版的 session 和 transcript（對話紀錄）都是以檔案形式存在硬碟上。2.0 把它們全部搬進 SQLite。
-
-為什麼這件事重要？因為**這是一條單行道**。升級之後，新產生的 session 都只存在 SQLite 裡面。如果要降回舊版，得先用新版 CLI 把資料匯出成舊格式，否則那些 session 就看不到了。
-
-這個改動帶來兩個面向的影響：
-
-**好處是效能跟一致性。** 檔案形式的 session 在並發場景下容易碰到鎖定或讀寫衝突，尤其 transcript 量大的時候。SQLite 做為 embedded database，在並發讀取和 atomic write 上比散落的檔案穩定很多。2.0 啟用了 WAL（Write-Ahead Logging）模式，並加入了 WAL split-brain 保護——防止 WAL 檔案在異常關閉後出現不一致狀態導致資料損壞。
-
-**備份不是口號，有具體機制。** 2.0 新增了 SQLite snapshot 功能：create / list / verify / restore，可以做 compact 的全域或 per-agent database 備份。升級前跑一次 `snapshot create`，驗證通過再動正式環境，這是官方建議的 SOP。
-
-**跑 Docker Desktop 或 VM 共享目錄的人要特別注意。** SQLite 在共享檔案系統（virtiofs / 9p mount）上的 POSIX lock 不可靠是老問題。2.0 偵測到這類 mount 時會自動改用 rollback journal 而非 WAL，犧牲一點效能換穩定性。這個細節沒寫在 blog 裡，但 release notes 有。如果你的 Gateway 跑在 Docker 裡用 volume mount，這是直接影響你的改動。
+又到了保證無聊的 IT 日。我從 IT 架構師角度拆 OpenClaw 2.0 的主要變化。
 
 ---
 
-## 二、Shared Cloud Sessions：不只是多人協作
+## 2.0 改了什麼
 
-2.0 加入了 Shared Cloud Sessions，表面上看是讓多個使用者可以加入同一個 agent session。但從架構角度看，這其實是一套**分散式 session 執行機制**。
+一開始簡單說，最大的差別是 onboarding UI 更加簡單，可以讓更多人快速上手。自動偵測機器上已有的 AI 資源——已登入的 ChatGPT、Claude CLI、系統裡的 API key、透過 Ollama 或 LM Studio 跑的本地模型——偵測到之後模型必須「證明自己能回答問題」才會被存入設定。Control UI 也整個重寫了，JS requests 從 140 降到 45，啟動時間從 1.6 秒降到 575 毫秒。
 
-Release notes 寫的是：session 可以搬到 paired devices 或 cloud workers 執行，workspace 跟著走。Cloud worker 閒置時會 suspend，下次收到訊息時 re-provision 新的 worker，同時保留 session 和已 reconciled 的 workspace。
+除此之外，幾個比較大的變化：
 
-這裡最值得架構師關注的是**一致性模型**。當本地和遠端的 workspace 出現分歧時，2.0 做 reconciliation——官方用語是 "staged-ref guidance, bounded conflicted paths"。白話講就是：分歧的檔案不會無聲覆蓋，會標記出來讓使用者處理。
+### Session 儲存從檔案搬進 SQLite
 
-但有一個非常重要的前提，官方文件講得很直白：
+檔案系統是一開始 OpenClaw 最有趣的設計，當然也是草創期的象徵。2.0 把 session 和 transcript 全部搬進 SQLite，啟用 WAL（Write-Ahead Logging）模式，並加入 WAL split-brain 保護。
 
-**Shared cloud sessions 不是 tenant isolation，也不是 security boundary。**
+為什麼這件事重要？因為**這是一條單行道**。升級之後新產生的 session 都只存在 SQLite 裡，要降回舊版得先用新版 CLI 匯出成舊格式。
 
-白話講就是——這功能假設參與的人都是「可信任的同事」。它不是設計來讓不同部門、不同公司的人共用同一個 Gateway 的。如果組織有多個業務單位需要資料隔離，就得部署多個 Gateway instance，每個有自己的 state、credentials 和 workspace。
+好處是並發穩定性。檔案形式的 session 在並發場景下容易碰到鎖定或讀寫衝突，SQLite 的 atomic write 穩定很多。備份也不再是口號——2.0 新增了 snapshot 功能（create / list / verify / restore），升級前跑一次 `snapshot create` 是官方建議的 SOP。
 
-**這裡的 tension 是：** Multiplayer 和 cloud workers 是分散式功能，蓋在單機 SQLite + 單信任域的地基上。2.0 用 reconciliation 補，但完整的一致性設計文件目前還沒公開。對於打算在生產環境跑多機協作的團隊，這是需要先搞清楚的。
+**跑 Docker 的人要特別注意：** SQLite 在共享檔案系統（virtiofs / 9p mount）上的 POSIX lock 不可靠。2.0 偵測到這類 mount 會自動改用 rollback journal 而非 WAL，犧牲一點效能換穩定性。這個細節只寫在 release notes 裡。
 
----
+### Shared Cloud Sessions
 
-## 三、Gateway 信任邊界與安全模型
+表面上看是讓多人共用 agent session，但從架構角度看，這其實是一套**分散式 session 執行機制**。
 
-2.0 把 Gateway 的安全模型講得更清楚了。
+Gateway 持有一切持久狀態——對話記錄、workspace、credentials、session metadata。Cloud workers 是無狀態的執行單元，用完就丟，下次開新的。API key 不給 worker，model 查詢全部回 Gateway 轉發。方便後面 scale。
 
-核心原則是 **one trust boundary per Gateway**。所有連上同一個 Gateway 的使用者，共享同一個信任域。Gateway 的預設姿態是：sandboxing 和 execution approval 都是關閉的，假設操作者是受信任的單一使用者。
+Session 可以跑在三個地方：本機 Gateway（預設）、自己的硬體（`openclaw connect`）、或租來的拋棄式雲端機器（透過 Crabbox provisioner，支援 AWS / Hetzner 等）。Cloud worker 閒置時會 suspend（`suspendAfter` 設定最低 1 分鐘），下次收到訊息時 re-provision 新的 worker。Session 在 sidebar 裡全程不消失。
 
-如果需要管控，2.0 提供了四個層級的 access mode：
+一致性模型上，正常停機會先 reconcile workspace 再釋放機器。唯一的資料遺失窗口是非正常停機（crash / 斷網）時最後一次同步之後的變更。分歧的檔案不會無聲覆蓋，會標記出來讓使用者處理。
+
+但有一個非常重要的前提：**Shared cloud sessions 不是 tenant isolation，也不是 security boundary。** 這功能假設參與的人都是「可信任的同事」。不同部門、不同公司要資料隔離，就得部署多個 Gateway instance。
+
+**這裡最大的 tension 是：** Multiplayer 和 cloud workers 是分散式功能，蓋在單機 SQLite + 單信任域的地基上。完整的一致性設計文件目前還沒公開。
+
+### 安全模型
+
+2.0 把安全講清楚了。核心原則是 **one trust boundary per Gateway**，所有連上同一個 Gateway 的使用者共享同一個信任域。
+
+四個層級的 access mode：
 - **Read-only**：只能看不能動
 - **Guarded**：需要逐次核准
 - **Workspace**：限定在特定工作目錄
 - **Full access**：完全授權
 
-2.0 也加入了 **team operator roles**，可以限制特定操作者能存取哪些 agent、是否能看別人的 session、以及 operator scope 的範圍。Configuration 變更會記錄 writer label 並自動 redact 敏感值——這是企業環境第一個會問的 RBAC 和 audit trail，2.0 有了。
+加上 **team operator roles**——限制特定操作者能存取哪些 agent、是否能看別人的 session。Configuration 變更記錄 writer label 並自動 redact 敏感值，企業環境要的 RBAC 和 audit trail 有了。
 
-**安全預設是 opt-in，不是 opt-out。** Sandbox 預設關閉、execution approval 預設關閉。這跟 Docker daemon 以 root 跑是同一類 tradeoff——開發者工具可以接受，企業環境要靠 policy 硬化。不是「不安全」，是「安全是你自己要開的」。
+**安全預設是 opt-in，不是 opt-out。** Sandbox 預設關閉、execution approval 預設關閉。這跟 Docker daemon 以 root 跑是同一類 tradeoff——開發者工具可以接受，企業環境要靠 policy 硬化。
 
-在 prompt injection 防禦上，2.0 公布了一組測試數據：272K 筆群眾攻擊（crowdsourced attacks）、41 個 agent scenarios。架構師該怎麼讀這組數據？
+另外 OpenClaw 用 272K 筆群眾提交的攻擊做 prompt injection 測試，數據很好看：
 
 | 模型 | Prompt Injection 成功率 |
 |------|------------------------|
@@ -80,199 +72,126 @@ Release notes 寫的是：session 可以搬到 paired devices 或 cloud workers 
 | Claude Haiku 4.5 | 1.3% |
 | Gemini 2.5 Pro | 8.5% |
 
-**重點不是數字好看，而是這告訴你 OpenClaw 把 injection 防禦外包給模型廠商。** Gateway 這層自己沒有做 input sanitization 或 output validation。模型選擇本身就是安全架構的一環，但這也意味著你的安全天花板取決於你選的模型。用 frontier model 跑機敏任務，0.5% 的攻擊成功率可能還行；換一個便宜的小模型跑同樣的場景，風險就完全不同了。
+但架構師要知道的是，**injection 防禦是外包給模型廠商的**，Gateway 自己不做 input sanitization。你的安全天花板取決於你選的模型。用 frontier model 跑機敏任務，0.5% 可能還行；換一個便宜的小模型跑同樣的場景，風險完全不同。
 
----
+### Self-learning
 
-## 四、Control UI 重寫
+2.0 把記憶系統從外掛（QMD plugin）拉進核心，加入背景整合（background consolidation）。更重要的是加入了 **automatic self-learning**——agent 從對話中擷取有效的解法模式，自動產生 Skill Workshop proposal。
 
-Control UI 是在瀏覽器裡管理 OpenClaw 的 Web 介面，2.0 把它整個重寫了。JavaScript requests 從 140 個降到 45 個，啟動時間從 1.6 秒降到 575 毫秒（測試條件：50ms HTTP/1.1 latency，mocked Gateway）。UI 結構重新設計，session 可以用真實 browser tab 開多個，sidebar 可調寬度。
+走的是 Review gate 路線：proposal 進 pending，operator 審核後才套用。三種模式：off（關閉）、propose（產生 pending proposal）、auto（掃描後自動套用）。Manual history review 更保守——掃最近 20 個 substantial sessions，最多產生 3 個 pending proposals。
 
-這是 frontend 效能優化，不是架構層面的改動，但對日常操作體驗影響很直接。
+### Secret Store
 
----
+2.0 最受批評的部分——API key 存在 Gateway 裡**沒有 at-rest encryption**，完全靠 filesystem permissions。The Register 的標題最直接：「pours glitter on slow-burning security dumpster fire」。
 
-## 五、模型偵測與地端架構改動
-
-2.0 在 onboarding 流程做了一個重要的設計：**自動偵測機器上已有的 AI 資源。**
-
-它會去掃：
-- 已登入的 ChatGPT、Claude CLI
-- 系統裡的 API key
-- 透過 Ollama 或 LM Studio 跑的本地模型
-
-偵測到之後，模型必須「證明自己能回答問題」才會被存入設定。這避免了以前常見的問題——使用者設了一個模型但其實連不上，結果一直報錯。
-
-地端模型方面有幾個重要變動：
-
-- **node-llama-cpp 換成 managed llama-server**：推理引擎改用獨立管理的 llama-server process，穩定性提升
-- **預設地端模型改成 Gemma 4**
-- **Context window 擴到 64K tokens**：對長文件處理場景很有幫助
-
-另外，`codex/*` 和 `openai-codex/*` 的 model route 在 2.0 會自動遷移到 `openai/*`，可以用 `openclaw doctor --fix` 自動處理。不過有個已知 bug：如果沒有 TTY（比如在 cron 或自動化腳本裡跑），`doctor --fix` 會靜默跳過遷移，可能導致 Gateway crash。
-
----
-
-## 六、Memory 與自我學習
-
-2.0 把記憶系統從外掛（QMD plugin）拉進核心。新的記憶架構支援背景整合（background consolidation），會自動把對話中有來源追溯的素材沉澱到長期記憶。
-
-更重要的是，2.0 加入了 **automatic self-learning**。Agent 可以從對話中擷取有效的解法模式，自動產生 Skill Workshop proposal。這不是靜默改行為——每個 proposal 都進 pending 狀態，等 operator review 才 apply。
-
-Self-learning 有三種模式：
-- **off**：關閉
-- **propose**：產生 pending proposal，需要人工審核後套用
-- **auto**：掃描後自動套用（經 scanner 核准）
-
-Skill Workshop 本身也加入了驗證流程——修改 skill 之前會先驗證變更是否合理，不會直接寫入。Manual history review 則是更保守的選項：掃最近 20 個 substantial sessions（至少 6 個 model turns），最多產生 3 個 pending proposals。
-
-這跟 Hermes Agent 的 closed learning loop 方向一致，但設計選擇不同——OpenClaw 選擇了**可審計、可回滾的 review gate**，而不是直接寫入。後面比較段會再展開。
-
----
-
-## 七、Secret Store 與權限管理
-
-2.0 的 Secret Store 是最受批評的部分——API key 存在 Gateway 裡**沒有 at-rest encryption**，完全靠 filesystem permissions。The Register 的標題最直接：「pours glitter on slow-burning security dumpster fire」。
-
-批評成立，但只看這一面不公平。2.0 同時做了幾件事來緩解：
-
+批評成立，但只看這一面不公平。2.0 同時做了：
 - **Secret values 是 write-only**：寫入後無法從 API 讀回明文
-- **1Password broker 整合**：用 service-account auth、per-secret approval、value-free audit，credential 可以不碰 OpenClaw 的 file system
-- **Private credential request**：agent 可以請求 credential 但值不進 chat 也不進 model context
-- **Credential egress 控制**：proxy connections、upstream requests、bypass tunnels 在 run 結束時自動關閉
+- **1Password broker 整合**：credential 可以不碰 OpenClaw 的 file system
+- **Private credential request**：值不進 chat 也不進 model context
+- **Credential egress 控制**：proxy connections 在 run 結束時自動關閉
 
-所以實際的安全姿態是：如果只用內建 Secret Store，確實沒有 at-rest encryption。但如果接了 1Password broker，credential 全程不落地，比大多數自建方案都安全。**差距在 default vs configured。**
+接了 1Password broker 之後 credential 全程不落地。**差距在 default vs configured。**
 
----
+### 已知問題
 
-## 已知問題
+- `doctor --fix` 在無 TTY 環境靜默失敗——自動化腳本環境升級後要特別檢查
+- Gemini embedding batch 超過 API limit，會導致 memory sync 中斷
+- Legacy 安裝的 plugin consent 未持久化，升級後可能需要重新授權
+- 地端模型改成 managed llama-server + Gemma 4 預設 + 64K context window
+- `codex/*` model route 自動遷移到 `openai/*`，可用 `openclaw doctor --fix` 處理
 
-- **`doctor --fix` 在無 TTY 環境靜默失敗**：自動化腳本環境升級後要特別檢查
-- **Gemini embedding batch 超過 API limit**：會導致 memory sync 中斷
-- **Legacy 安裝的 plugin consent 未持久化**：升級後可能需要重新授權
-
-官方在發布兩天後就推了 [v2026.8.2 hotfix](https://github.com/openclaw/openclaw/releases/tag/v2026.8.2) 修升級相關的 breaking bugs。但在正式環境裡，升級前務必完成備份和測試。
-
----
-
-## X 社群怎麼看這次改版
-
-官方公告在 X 上拿到 6,700+ likes、300 萬 views，聲量很大。但社群的實際體感是分裂的。
-
-**正面的部分集中在 UX。** Onboarding 自動偵測已有的 AI 資源、瀏覽器直接開聊天、密碼不再出現在 chat 裡——這些改動讓第一次接觸的人感覺門檻降低了不少。多人協作和 session 搜尋也是被提到最多的亮點。
-
-**批評集中在穩定性和實際體驗。** 有人直接說「impressive concept, frustrating product——capability 不等於 product quality」，指出 agent 還是會陷入 loop、需要 babysitting。用了幾個月的老用戶也反映 2.0 在穩定性上是退步的——「unstable、gets itself in weird loops、wonky」。更有人三次嘗試安裝全部失敗：app 打不開、gateway 壞掉、登入時電腦直接凍住。
-
-**安全性是最大的爭議點。** 具體批評包括 sandbox 預設關閉、Secret Store 沒有 at-rest encryption、shared sessions 明確不是 security boundary。安全社群的質疑可以濃縮成一句話：**讓更多人更容易跑起來一個預設不安全的系統，不一定是好事。**
-
-不過也有人持相反觀點——認為 OpenClaw 在開源 agent 裡已經是安全做得比較認真的，272K 筆 prompt injection 測試數據至少證明他們有在量化這件事。
-
-整體風向：**方向認可、Day One 體驗落差大。** Hype 和 hands-on 之間有明顯的 gap，這在大型開源專案的 major release 並不少見。
+官方在發布兩天後推了 [v2026.8.2 hotfix](https://github.com/openclaw/openclaw/releases/tag/v2026.8.2) 修升級相關的 breaking bugs。
 
 ---
 
-## OpenClaw 2.0 的架構成熟度
+## 跟 Hermes Agent 比
 
-拆完七個子系統之後，退一步看整體：**OpenClaw 2.0 的架構 OK 嗎？**
+我很少寫 Hermes 的原因，是因為我一直認為 OpenClaw 是更適合企業數位助手的 Agent，但 Hermes 更適合個人。
 
-答案取決於你的部署場景。
+沒有高下，是定位不同。我認為企業數位助手的根本問題是：**一群人用一個助手，還是每個人有自己的助手？**
 
-**對單一操作者或小型互信團隊、單機部署：架構是 OK 的，而且 2.0 是一次健康的還債式改版。**
+### OpenClaw = 一群人的助手
 
-好的部分全部是在「把散的收攏、把隱性行為變顯性」：file 搬 SQLite + WAL + snapshot、plugin memory 拉進 core、learning 進 review gate、config audit 記 writer label、1Password broker 整合。方向是對的。
+OpenClaw 的 Gateway 模型天生就是這個方向。Shared sessions、team roles、多人共用 context，同事接手不用重講脈絡。一個 Gateway 管多個 agent session，強調組織層級的多人協作和 breadth of integration。TypeScript 寫的，345K+ GitHub stars。
 
-**對企業平台級部署：還不是。** 原因有三個結構性限制：
+### Hermes = 一個人的專家
 
-第一，**SQLite 是單機、單 writer。** 這從根本上決定了一個 Gateway 就是一台機器的事。官方沒有 HA / clustering / multi-node 的敘事，甚至連 roadmap 都沒有暗示。
+Hermes 的 profile 模型更偏後者：每個 profile 獨立 memory、獨立 soul、越用越像那個人。核心賭注是 agent 應該隨時間自我提升。2026 年 2 月上線，64K+ stars，Python 寫的，五大支柱架構（memory / skills / soul / crons / self-improving loop）。
 
-第二，**「一個 Gateway 一個信任域、要隔離就多開」等於把多租戶推給運維。** N 個 Gateway = N 份升級、N 份 secret store、N 份 snapshot backup。做得到，但這是線性成本，不 scale。
-
-第三，也是最大的 tension：**Multiplayer 和 cloud workers 是分散式功能，蓋在單機 SQLite + 單信任域的地基上。** 2.0 用 reconciliation 處理分歧，但完整的一致性模型沒有公開文件。Cloud worker suspend / re-provision 的 failover 語意也不清楚——workspace 跟著走，但如果 worker 在寫入中途掛掉呢？
-
-這不是說 OpenClaw 的架構有 bug。而是說它目前的定位是**開發者工具**，不是**基礎設施平台**。用同一把尺量兩者不公平。但如果你正在評估要不要把 OpenClaw 放進企業的 IT 架構裡，這三個限制是要明確標出來的。
-
----
-
-## 跟 Hermes Agent 比，差距在哪
-
-討論 OpenClaw 2.0 的架構，繞不開另一個 2026 年崛起的開源 agent 框架——Nous Research 的 [Hermes Agent](https://hermes-agent.nousresearch.com/)。兩者都是 local-first、model-agnostic、MIT-licensed，但設計哲學完全不同。
-
-**OpenClaw 是 gateway 平台思維**——一個 Gateway 管多個 agent session，強調組織層級的多人協作和 breadth of integration。TypeScript 寫的，345K+ GitHub stars。
-
-**Hermes 是 self-improving single agent 思維**——核心賭注是 agent 應該隨時間自我提升。2026 年 2 月上線，64K+ stars。Python 寫的，五大支柱架構（memory / skills / soul / crons / self-improving loop）。
-
-六個關鍵差異：
+### 五個維度的比較
 
 | 維度 | OpenClaw 2.0 | Hermes Agent |
 |------|-------------|--------------|
-| 記憶系統 | 2.0 從 QMD plugin 拉進核心，background consolidation | Day 1 就是五大支柱之一，user.md + memory.md + SQLite-backed store，closed learning loop |
-| 自我學習 | 有。Self-learning 產生 pending proposal，經 review gate 後套用（off / propose / auto 三模式） | 核心設計。完成任務後直接寫 reusable skill，closed loop 不需人工介入 |
-| 隔離模型 | 「多開 Gateway」是運維手段，不是一等抽象 | Profile = 獨立 HERMES_HOME + config + memory + gateway PID，一等公民隔離 |
-| 安全預設 | 4 個 access mode + team roles + audit，但 sandbox/approval 預設關閉 | Tirith 安全層——approval workflow + allowlist + observable execution，開箱即用 |
-| 通訊渠道 | 20+ channels（Telegram 內建；Discord / Slack / WhatsApp / Signal / iMessage / Matrix / Teams / LINE 等 plugin） | 16+ 平台 + 完整語音互動（STT + TTS） |
-| Cron 排程 | 2.0 加入 automation，無效 config 建立前擋下 | First-class cron，fresh AIAgent instance，支援 skill attachment |
+| 生態 | 20+ 企業頻道（Slack、Teams、LINE、Feishu 都有 plugin），ClawHub 13,000+ skills | 16+ 平台偏消費端（WhatsApp、Signal、Discord），skill 生態小但品質高 |
+| 安全預設 | Sandbox / approval 預設關閉，要 operator 自己開 | Tirith 安全層開箱即用（approval + allowlist + observable execution） |
+| 隔離 | 多開 Gateway 硬做，N 租戶 = N 份維運成本 | Profile 一等公民——獨立 home、config、memory、gateway PID |
+| 自我學習 | Review gate：pending → operator apply，可審計可回滾 | Closed loop：直接寫 skill，累積快但沒 audit trail |
+| 協作 | Shared sessions + team roles + config audit | 單人模型，同事接手做不到 |
 
-### 修正幾個常見的比較誤區
+具體到企業數位助手，決定性的不是 channel 數量，是 channel 種類。Slack Enterprise Grid、MS Teams、Google Chat、Feishu、LINE 這些是企業在用的——OpenClaw 有，Hermes 沒有。
 
-**「OpenClaw 不會自我學習」是錯的。** 2.0 有 automatic self-learning，差別在設計選擇：OpenClaw 走 review gate（pending → operator apply），Hermes 走 closed loop 直接寫。架構師角度 OpenClaw 更可審計、可回滾；產品角度 Hermes 更自動。
+在自我學習上，OpenClaw 的 review gate（proposal 進 pending、operator 審核後 apply）是企業要的。Hermes 的 closed loop 直接寫 skill 對個人很棒，對企業是 compliance 問題——agent 學到的東西沒人審過就上線。
 
-**「OpenClaw 只支援 4 個通訊平台」是錯的。** 官方支援 20+ channels，Telegram 是 bundled，其餘以 plugin 安裝。跟 Hermes 的 16+ 平台基本打平，各自有對方沒有的平台。
+### Hermes 贏的企業場景
 
-**Hermes「零 CVE」不能直接當安全證據。** 到 2026 年 6 月 Hermes 才上線 4 個月，受到的安全審視跟運行 2 年多的 OpenClaw 不在同一個量級。零 CVE 可能只是還沒被認真看過。
+反過來看，Hermes 在企業裡也有明確贏的位置：
 
-### 真正的架構差距
+**每個人一個助手。** 高階主管助理、每個工程師自己的 agent、每個業務自己的 agent，「一人一隻、資料互不相通」的模型，Hermes 原生設計，OpenClaw 要靠多開 Gateway 硬做。
 
-**隔離是 Hermes 真的贏的地方。** Profile 是一等公民抽象——每個 profile 有自己的 HERMES_HOME、config、memory、sessions、gateway PID。OpenClaw 的「多開 Gateway」是運維手段，要自己管 N 份部署。這個差距不是功能問題，是抽象層級的問題。
+**無人值守的排程。** Hermes 的 cron 是 first-class：每個 job 開 fresh AIAgent instance，可以 attach skill，結果送到任何平台。每日報表、備份檢查、晨間簡報，比 OpenClaw 2.0 剛加的 automation 成熟。
 
-**安全預設 Hermes 也贏。** Approval + allowlist + observable execution 開箱就有，不需要 operator 手動硬化。OpenClaw 的 team roles 和 audit trail 功能上不差，但預設是關的。
+**安全預設要求高的環境。** 金融、醫療這種「不能靠 operator 記得去開 sandbox」的場景，Tirith 的 safer-by-default 是實質差異。
 
-**生態與整合 OpenClaw 明顯贏。** 20+ channels、ClawHub 13,000+ skills、team operator roles、1Password broker、cloud workers、session workspace migration。Hermes 的 skill 生態更小但平均品質更高（stricter submission process）。
+**單一領域的累積型專家。** 客服 triage、特定 codebase 的維護 agent、法遵查核，「同一件事做幾百次、越做越準」，compounding 才看得到。
 
-**一句話：Hermes 是「一個會長大的 agent」，OpenClaw 是「一群 agent 的作業平台」。** 選哪個看你是要管一個還是管一群。
-
----
-
-## 企業數位助手：什麼場景選 Hermes
-
-上面的比較講的是架構差異。但如果把問題收窄到「企業數位助手」這個具體場景，OpenClaw 跟 Hermes 各自適合哪一邊？
-
-**OpenClaw 的位置比較明確：統一入口、多人共用、跨部門協作。** 20+ enterprise channels、shared cloud sessions、team roles、ClawHub 生態——這些加起來就是「公司的助手」的基礎設施。Slack / Teams 進來的請求、跨部門共用的知識庫查詢、需要多人接手的 session——這是 OpenClaw 原生支援的。
-
-**Hermes 的定位不同：一個長期跟著單一 owner、越用越像他的 agent。** 它不是要當「公司的助手」，是要當「某個人的助手」或「某個領域的專家」。用這個定位去看，它在企業裡有五個明確贏的場景：
-
-**一、每個人一個助手，不是一群人一個助手。** Profile 是一等公民——獨立 HERMES_HOME、config、memory、sessions、gateway PID。高階主管助理、每個工程師自己的 agent、每個業務自己的 agent，這種「一人一隻、資料互不相通」的模型，Hermes 是原生設計，OpenClaw 要靠多開 Gateway 硬做。
-
-**二、無人值守的長期排程。** Hermes 的 cron 是 first-class：每個 job 開 fresh AIAgent instance（不帶舊對話），可以 attach skill，結果送到任何平台。每日報表、備份檢查、晨間簡報這類東西，Hermes 的 cron 比 OpenClaw 2.0 剛加的 automation 成熟。
-
-**三、安全預設要求高的環境。** Tirith 安全層——approval workflow、allowlist + DM pairing、每個 tool call 對使用者可見——開箱就有。金融、醫療這種「不能靠 operator 記得去開 sandbox」的場景，safer-by-default 是實質差異，不是行銷詞。
-
-**四、單一領域的累積型專家。** Closed learning loop 的價值在長時間：客服 triage、特定 codebase 的維護 agent、法遵查核，這種「同一件事做幾百次、越做越準」的場景，compounding 才看得到。但要注意：closed loop 沒有 review gate，學到的東西沒人審過就上線，在 compliance 環境需要自己在外面加一層。
-
-**五、地端 / edge 部署。** NVIDIA 跟 Hermes 有 RTX / DGX Spark 的合作，self-hosted、無 telemetry。資料不能出機器的場景，Hermes 的敘事比 OpenClaw 完整。
-
-### Hermes 進企業的硬傷
-
-**沒有 shared context。** Profile 隔離是設計目的，所以同事接手、多人共用一個 session 這件事在 Hermes 裡不存在。企業數位助手最常見的需求——「我不在的時候同事幫我接」——做不到。
-
-**企業 channel 生態偏弱。** 16+ 平台偏消費端（Telegram、Discord、WhatsApp）。Slack Enterprise Grid、Teams、Google Chat、Feishu 這些企業在用的，OpenClaw 有 plugin，Hermes 從公開文件看沒有對應的 enterprise 整合。
-
-**Learning 沒有 review gate。** Closed loop 直接寫 skill，沒有 pending → operator apply 的閘門。在 compliance 場景這是問題——agent 學到的東西沒人審過就上線。
+**地端 / edge 部署。** NVIDIA 跟 Hermes 有 RTX / DGX Spark 的合作，self-hosted、無 telemetry。
 
 ### 實務上怎麼放
 
-不是二選一，是**按場景切**：
+不是二選一，是按場景切。OpenClaw 當 front door 和 team 層，是團隊的數位助手。Hermes 當 per-person 數位助手，但是他更了解你。
 
-- 公司對外的統一入口、跨部門共用、Slack / Teams 進來的請求 → **OpenClaw**。這是 platform 的事。
-- 每個人自己的助手、無人值守 cron、單一領域越做越準的專家 agent → **Hermes**。這是 agent 的事。
-
-一個可能的架構是 OpenClaw 當 front door 和 team 層，Hermes 當 per-person 或 specialist 層。但要提醒：兩者之間目前沒有現成的整合路徑，這一段要自己接。
+一個可能的架構是 OpenClaw 當統一入口和協作層，Hermes 當個人專家和排程層。但兩者之間目前沒有現成的整合路徑，這一段要自己接。
 
 ---
 
-## 結語
+## 對 OpenClaw 的期許
 
-OpenClaw 2.0 的架構改動，整體來說是在做基礎建設的升級：從檔案系統搬到資料庫、從單人假設擴展到多人協作、從模糊的安全邊界走向明確的信任域、從手動整理記憶到帶 review gate 的自我學習。
+### X 社群怎麼看
 
-作為開發者工具，這次改版方向正確、執行到位。作為企業基礎設施，SQLite 單機限制、信任邊界粒度、shared session 的安全假設還是結構性天花板。
+官方公告在 X 上拿到 6,700+ likes、300 萬 views，聲量很大。但社群的實際體感是分裂的。
 
-如果只是個人使用，升級、跑 `openclaw doctor --fix`、繼續用。如果正在評估 agent 框架的 IT 架構，OpenClaw 跟 Hermes 代表了兩個不同方向的設計取捨——前者重平台廣度，後者重個體深度。而這些基礎設施的選擇，會直接影響後續的部署架構和安全策略。
+正面的部分集中在 UX——onboarding 自動偵測、瀏覽器直接開聊天、密碼不再出現在 chat 裡，門檻降低了不少。
+
+批評集中在穩定性——有人直接說「impressive concept, frustrating product——capability 不等於 product quality」，agent 還是會陷入 loop、需要 babysitting。更有人三次嘗試安裝全部失敗。
+
+安全性是最大的爭議點。安全社群的質疑濃縮成一句話：**讓更多人更容易跑起來一個預設不安全的系統，不一定是好事。**
+
+整體風向：**方向認可、Day One 體驗落差大。**
+
+最近看到 X 上網友討論，大家都在問「OpenClaw 到底涼了嗎？」
+
+### 其實越來越切進企業
+
+有趣的是，我反而認為 OpenClaw 越來越切進企業。
+
+NVIDIA 老黃在 GTC 2026 直接說 OpenClaw 是「personal AI 的 Linux」——「Mac and Windows are the OS for the personal computer. OpenClaw is the OS for personal AI.」NVIDIA 還發布了 NemoClaw，企業級 stack 把 Nemotron 模型 + OpenShell runtime 疊在 OpenClaw 上面，一鍵安裝，主打隱私、安全、可擴展。TechCrunch 評 NemoClaw 正好補 OpenClaw 最弱的安全環節。
+
+OpenClaw 6 月在 Microsoft Build 也提出 Windows 原生支援——透過 Microsoft Execution Containers（MXC），不用再裝 WSL2。Microsoft 出了 Windows Hub 配套 app（WinUI，支援 Win10 / Win11 / ARM64），有系統匣整合、自動更新、code signing。
+
+這些動作慢慢往更多企業支援走進去。
+
+### 三個結構性的期許
+
+但要從開發者工具走到企業基礎設施，有三件事繞不過去：
+
+**一、SQLite 單機單 writer 要有下一步。** 不一定是換 Postgres，但至少需要 HA 或 read replica 的敘事。現在 Multiplayer 和 cloud workers 是分散式功能，蓋在單機地基上，這個 tension 遲早要面對。
+
+**二、安全預設要翻過來。** Sandbox 和 approval 預設關閉，對個人開發者沒問題，但每多一個企業用戶就多一個忘記開 sandbox 的風險。Hermes 的 Tirith 證明了 safer-by-default 不會犧牲開發體驗。
+
+**三、隔離需要一等抽象。** 「要隔離就多開 Gateway」是能用但不 scale 的答案。N 個 Gateway = N 份升級、N 份 secret store、N 份 snapshot backup。如果 OpenClaw 想進企業多租戶場景，profile 或 namespace 級別的隔離是必要的。
+
+做到這三件，OpenClaw 就不只是最好的開源 agent 開發者工具，而是真正的企業 agent 平台。
+
+### 個人感受
+
+我自己的感受就是我那四隻蝦子（四個 OpenClaw agent）依舊活得好好的，每天跟我有良好的互動跟幫忙。我真心期待他越做越好。OpenClaw 不會變成唯一的 Agent 框架，但是他在我的人機協作流程裡面越來越不可或缺。
