@@ -74,13 +74,11 @@ Downdetector 的尖峰落在美東時間 10:30 到 11:00 之間：ChatGPT 逾三
 
 第三條是這樣寫的：不是統一雲機房斷電，因為三家算力底座分別依托 Azure、AWS、自建集群，底層機房相互獨立。
 
-這條在 2026 年 5 月就已經不成立了。
+這條在 2026 年 5 月就已經不成立了。我在[《Google 賣 TPU 給 Anthropic、Musk 租 Colossus 給競爭對手——Westinghouse 的賭注》](/google-tpu-westinghouse-bet-gcp-vs-gemini/)裡寫過這筆交易的細節：
 
-維基百科 Colossus 條目寫得很清楚：
+> 2026 年 5 月，Anthropic 與 SpaceX 簽約，取得 Colossus 1 的完整獨佔使用權——222,000 顆 NVIDIA GPU（H100/H200/GB200 混合）、300+ MW 電力，月租 12.5 億美元，合約到 2029 年 5 月，總值超過 400 億美元。
 
-> In May 2026 Anthropic agreed to rent essentially all compute capacity at Colossus 1.
-
-Colossus 1 在孟菲斯，2024 年 7 到 9 月間投入運作，初期約十萬顆 H100，電網併接從約 8MW 一路往 150MW 推。它原本是 xAI 拿來訓練 Grok 的機器。2026 年 5 月之後，Anthropic 租下了它幾乎全部的算力。
+Colossus 1 在孟菲斯，2024 年 7 到 9 月間投入運作。它原本是 xAI 建來訓練 Grok 的，xAI 自己的訓練已經搬到更大的 Colossus 2（2 GW、555,000 顆 GPU），Colossus 1 整座租給了 Grok 的直接競爭對手。
 
 事發當天傍晚，SpaceXAI 官方帳號發了這段話：
 
