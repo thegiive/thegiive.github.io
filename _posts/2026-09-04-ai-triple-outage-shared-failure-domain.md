@@ -10,7 +10,7 @@ description: "9 月 3 日，Claude 在美東時間上午九點四十一分左右
 author: Wisely Chen
 faq:
   - question: "2026 年 9 月 3 日的 AI 大當機，官方公布根因了嗎？"
-    answer: "到目前為止沒有跨公司的統一根因說明。OpenAI、Anthropic、xAI 都在各自的狀態頁確認了事故並修復，但沒有任何一家把原因指向共同的基礎設施。唯一具名的硬體故障來自 SpaceXAI 的官方貼文，承認孟菲斯（Memphis）算力中心當天上午故障，並向受影響的算力夥伴道歉。Cloudflare 則明確否認自己有重大服務中斷。"
+    answer: "到目前為止沒有跨公司的統一根因說明。SpaceXAI 官方承認孟菲斯算力中心故障並向「受影響的算力夥伴」道歉，Grok 官方帳號進一步確認受影響的包括 Anthropic 的租用算力。OpenAI 發言人對 Newsweek 稱 ChatGPT 的故障是 routing error，沒有提到孟菲斯或共用基礎設施。Anthropic 完全沒有在事故說明中提到孟菲斯。Cloudflare 明確否認自己有重大服務中斷。"
   - question: "什麼是故障域（Failure Domain）？跟多供應商策略差在哪？"
     answer: "故障域指的是「一起壞掉」的最小單位——同一台機器、同一個機櫃、同一棟資料中心、同一條電力供應。多供應商策略分散的是商業合約關係，故障域分散的是物理與基礎設施關係。兩者常被當成同一件事，但當供應商 A 把算力租給供應商 B 的時候，兩個 logo 就落在同一個故障域裡。2026 年 5 月 Anthropic 同意租下 xAI 孟菲斯 Colossus 1 幾乎全部算力，就是這種情況。"
   - question: "為什麼 Gemini 沒事，其他三家都掛了？"
@@ -35,8 +35,8 @@ Downdetector 的尖峰落在美東時間 10:30 到 11:00 之間：ChatGPT 逾三
 | 順序 | Claude（美東 09:41 左右）→ Grok（幾乎同時）→ ChatGPT（晚約一小時） |
 | 未受影響 | Gemini（無官方故障公告） |
 | 間接受害 | Cursor（呼叫上游 API） |
-| 官方根因 | 至今無跨公司統一說明 |
-| 唯一具名的硬體故障 | SpaceXAI 承認孟菲斯算力中心故障 |
+| 官方根因 | 至今無跨公司統一說明；OpenAI 發言人稱 routing error，SpaceXAI 承認孟菲斯算力中心故障 |
+| 具名硬體故障 | SpaceXAI 承認孟菲斯故障；Grok 帳號確認 Anthropic 租用算力受影響 |
 | 官方否認 | Cloudflare 明確否認有重大服務中斷 |
 
 ## 假說一：Cloudflare 接入層
@@ -88,18 +88,22 @@ Colossus 1 在孟菲斯，2024 年 7 到 9 月間投入運作。它原本是 xAI
 
 重點在最後一句。他們不只為 Grok 道歉，還為「受影響的算力夥伴」道歉。這是整起事件裡，唯一一個公司具名承認的硬體故障，而且明說有外部客戶被波及。
 
-把兩件事放在一起：孟菲斯出事、Anthropic 租下孟菲斯幾乎全部算力、Claude 和 Grok 幾乎同時降級。第二張骨牌的疑問就沒了——那兩張骨牌可能從頭到尾就是同一張。
+隨後 Grok 官方帳號進一步確認，孟菲斯的故障打到的是「Grok and Anthropic's leased capacity there (Claude)」。SpaceXAI 的貼文只說「compute partners」，Grok 直接點了名——這是第一次有官方把 Anthropic 跟孟菲斯故障連在一起。
+
+把這些放在一起：孟菲斯出事、Anthropic 租下孟菲斯幾乎全部算力、官方確認 Anthropic 的租用算力受影響、Claude 和 Grok 幾乎同時降級。第二張骨牌的疑問就沒了——那兩張骨牌可能從頭到尾就是同一張。
 
 ## 那 ChatGPT 呢
 
 這是我不打算硬凹的地方。OpenAI 跟孟菲斯沒有已知關係。ChatGPT 晚一小時才掛，用共用故障域解釋不通。
 
+OpenAI 發言人對 [Newsweek](https://www.newsweek.com/outages-openai-chatgpt-grok-claude-gemini-downdetector-12401012) 的說法是：「A routing error starting around 7:43 a.m. PT made ChatGPT and Codex unavailable for some users across platforms.」他們只講了 routing error，沒提孟菲斯，也沒說跟其他家有關。值得注意的是，OpenAI 狀態頁本身只寫了「investigating the issue」和「applied mitigation」，routing error 這個詞只出現在發言人對媒體的回應裡。
+
 有媒體把矛頭指向 Azure East US，主張三家都在同一個雲端故障域裡，Gemini 因為跑在 Google Cloud 才活下來。但 [Quartz 的報導](https://qz.com/chatgpt-claude-grok-simultaneous-outages-090326)明確寫道，沒有官方確認 Azure 故障造成這次事件，也沒有任何共同基礎設施故障被證實。
 
 所以我的判讀是兩層原因串接：
 
-- **第一層（物理層）**：孟菲斯算力中心故障，同時打掉 Claude 和 Grok。這一層有官方貼文和租賃合約支撐。
-- **第二層（流量層）**：兩家同時失效後，重試風暴加上使用者手動切換，把負載推向 OpenAI，一小時後越過閾值。這一層沒有直接證據，但時間差的形狀對得上。
+- **第一層（物理層）**：孟菲斯算力中心故障，同時打掉 Claude 和 Grok。這一層有官方貼文、Grok 帳號具名確認、以及租賃合約支撐。
+- **第二層（流量層）**：兩家同時失效後，重試風暴加上使用者手動切換，把負載推向 OpenAI，一小時後越過閾值。OpenAI 自己說的 routing error，跟一個 routing layer 突然承受幾百萬額外用戶的場景是相容的。
 
 一個事件不一定只有一個根因。這次比較像是物理層先開了一個洞，流量層再把洞撕大。
 
@@ -143,7 +147,7 @@ Colossus 1 在孟菲斯，2024 年 7 到 9 月間投入運作。它原本是 xAI
 
 具體來說，有三個洞：
 
-第一，SpaceXAI 說的「算力夥伴」沒有點名。可能是 Anthropic，也可能是完全無關的雲端轉售客戶。我是從租賃關係反推的，這中間沒有直接證據。
+第一，SpaceXAI 說的「算力夥伴」沒有點名，但 Grok 官方帳號隨後確認受影響的包括「Anthropic's leased capacity」。不過 Grok 帳號是 AI 生成的回覆，不等同於 xAI 的正式公關聲明，權威程度有折扣。
 
 第二，Anthropic 租 Colossus 1 的用途沒有公開說明。大型 GPU 叢集的租賃很多是拿來訓練，訓練叢集出事不必然打掉推理服務。如果 Anthropic 的推理跑在別的地方，這條線就斷了。
 
@@ -169,7 +173,7 @@ Colossus 1 在孟菲斯，2024 年 7 到 9 月間投入運作。它原本是 xAI
 
 **Q: 2026 年 9 月 3 日的 AI 大當機，官方公布根因了嗎？**
 
-到目前為止沒有跨公司的統一根因說明。OpenAI、Anthropic、xAI 都在各自的狀態頁確認了事故並修復，但沒有任何一家把原因指向共同的基礎設施。唯一具名的硬體故障來自 SpaceXAI 的官方貼文，承認孟菲斯（Memphis）算力中心當天上午故障，並向受影響的算力夥伴道歉。Cloudflare 則明確否認自己有重大服務中斷。
+到目前為止沒有跨公司的統一根因說明。SpaceXAI 官方承認孟菲斯算力中心故障並向「受影響的算力夥伴」道歉，Grok 官方帳號進一步確認受影響的包括 Anthropic 的租用算力。OpenAI 發言人對 Newsweek 稱 ChatGPT 的故障是 routing error，沒有提到孟菲斯或共用基礎設施。Anthropic 完全沒有在事故說明中提到孟菲斯。Cloudflare 明確否認自己有重大服務中斷。
 
 **Q: 什麼是故障域（Failure Domain）？跟多供應商策略差在哪？**
 
@@ -197,4 +201,10 @@ Cursor 沒有自研的前沿模型，它的核心功能是呼叫 OpenAI、Anthro
 - [Karmactive：Downdetector 數據整理](https://www.karmactive.com/chatgpt-claude-grok-simultaneous-ai-outage-september-2026/)
 - [SpaceXAI 官方貼文：孟菲斯算力中心故障](https://x.com/SpaceXAI/status/2095597264043717014)
 - [Wikipedia：Colossus (supercomputer)](https://en.wikipedia.org/wiki/Colossus_(supercomputer))
+- [Newsweek：OpenAI 發言人確認 routing error](https://www.newsweek.com/outages-openai-chatgpt-grok-claude-gemini-downdetector-12401012)
+- [OpenAI 狀態頁：ChatGPT/Codex 事故紀錄](https://status.openai.com/incidents/01M1KWEDH417T2CF44YYHZDFCR)
 - [Charles Hoskinson 的國家級攻擊說](https://bitcoinethereumnews.com/tech/charles-hoskinson-has-a-theory-for-ai-outage-affecting-chatgpt-claude-and-grok/)
+
+---
+
+**Read this article in English:** [Claude First, Grok Seconds Later, ChatGPT an Hour Behind: The September 3 AI Outage and the Assumption Nobody Checked](https://en.wiselychen.com/en/ai-triple-outage-shared-failure-domain/)
