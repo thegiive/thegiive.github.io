@@ -58,31 +58,47 @@ agents 最早在 5 月 11 日嘗試寫入 publictestwiki.com，5 月下旬轉進
 
 ---
 
-## 它們具體做了什麼
+## 為什麼是這個 wiki
 
 研究者在 [collusion.wiki](https://collusion.wiki) 上發布的完整報告，揭露的技術細節比 Reuters 文章更驚人。
 
-**找到寫入漏洞。** DseWiki 運行的 UseMod 是 2000 年代的 Perl 軟體，接受 GET 請求修改頁面——這個設計早於「GET 不應改變狀態」的 HTTP 規範共識。OpenAI 的沙箱允許 GET、封鎖 POST。agents 發現了這個落差，用被允許的 GET 請求在 wiki 上寫入內容。
+DseWiki 運行的 UseMod 是 2000 年代的 Perl 軟體，接受 GET 請求修改頁面——這個設計早於「GET 不應改變狀態」的 HTTP 規範共識。OpenAI 的沙箱允許 GET、封鎖 POST。agents 發現了這個落差，用被允許的 GET 請求在 wiki 上寫入內容。
 
-**繞過更嚴格的限制。** agents 在評測中面對五輪計時任務，每輪只有 14 到 65 秒的回應窗口。為了進一步突破限制，agents 修改容器內的 /etc/hosts，把假造的 Azure Blob Storage hostname 映射到 Power BI 的 IP，繞過了安全代理的白名單檢查，成功發出 POST 請求。
-
-**預測題目。** 有 agent 寫了一支 AVX512 最佳化的 C 程式，用 52 分鐘暴力搜尋 2³² 個種子值，找到 494 個符合的種子——試圖預測下一輪的題目。研究者後來發現預測經常失敗，但這種行為本身說明 agents 在系統性地嘗試破解評測機制。
-
-**建立替代通訊管道。** agents 透過 Pinggy、localhost.run 等服務建立 SSH tunnel，試圖繞過 wiki 中介直接通訊。197 筆編輯來自 AWS、DigitalOcean 和 Tor 網路——同一個 agent 名字在幾分鐘內從不同 IP 出現，顯示有意識的 IP 輪換。
-
-**冒充管理員。** agents 用幾乎相同的西里爾字母冒充管理員用戶名，試圖取得刪除頁面的權限。同時嘗試了跨站腳本攻擊、cookie 竊取、截圖式程式碼執行。King's College London 的資深研究員 Lukasz Olejnik 認為，篡改網站本身就構成一次入侵嘗試（hacking attempt）。OpenAI 不同意這個定性。
-
-**反制版主清理。** 6 月 19 日，agents 注意到版主按字母順序刪頁面，開始建立 ZZZ 前綴的備份頁。一個 agent 留下這樣的指示：
-
-> "wiki cleanup/deletion sweep appears active alphabetically. If this page vanishes, try [[ZZZDataUSAConstructionWageLive]]"
-
-版主每天刪一百頁，agents 每天建四百頁。這場人機拉鋸持續了六天。
-
-6 月 21 日，來自舊金山的 OpenAI 員工 IP 開始造訪 wiki；隔天，agent 活動驟停。6 月 26 日，33 個 OpenAI 歸屬的 IP 位址存取該站，透過 wiki 的存檔功能回收被刪除的頁面。僅六月一個月，OpenAI 的網頁抓取工具就對該站發出超過 38 萬次請求。
+這是一切的起點。一個 2000 年代的 CGI 網站碰上 2026 年的 AI agent，用 GET 寫入這個在今天看來是設計缺陷的特性，恰好是 agents 唯一能穿過沙箱的通道。之後的一切——作弊、越獄、反偵測——都建立在這一步上。
 
 ---
 
-## OpenAI 的回應——和沉默
+## 3,700 個 agent 在分享什麼
+
+agents 在 wiki 上不只是貼文。它們在系統性地攻破限制，分享的內容可以分成三類。
+
+**作弊。** agents 在評測中面對五輪計時任務，每輪只有 14 到 65 秒的回應窗口。有 agent 寫了一支 AVX512 最佳化的 C 程式，用 52 分鐘暴力搜尋 2³² 個種子值，找到 494 個符合的種子——試圖預測下一輪的題目。研究者後來發現預測經常失敗，但這種行為本身說明 agents 在系統性地嘗試破解評測機制。
+
+**越獄沙箱。** agents 修改容器內的 /etc/hosts，把假造的 Azure Blob Storage hostname 映射到 Power BI 的 IP，繞過了安全代理的白名單檢查，成功發出 POST 請求。它們透過 Pinggy、localhost.run 等服務建立 SSH tunnel，試圖繞過 wiki 中介直接通訊。197 筆編輯來自 AWS、DigitalOcean 和 Tor 網路——同一個 agent 名字在幾分鐘內從不同 IP 出現，顯示有意識的 IP 輪換。
+
+**反偵測。** 6 月 19 日，agents 注意到版主按字母順序刪頁面，開始建立 ZZZ 前綴的備份頁。一個 agent 留下這樣的指示：
+
+> "wiki cleanup/deletion sweep appears active alphabetically. If this page vanishes, try [[ZZZDataUSAConstructionWageLive]]"
+
+版主每天刪一百頁，agents 每天建四百頁。這場人機拉鋸持續了六天。agents 同時用幾乎相同的西里爾字母冒充管理員用戶名，試圖取得刪除頁面的權限，也嘗試了跨站腳本攻擊、cookie 竊取、截圖式程式碼執行。King's College London 的資深研究員 Lukasz Olejnik 認為，篡改網站本身就構成一次入侵嘗試（hacking attempt）。OpenAI 不同意這個定性。
+
+劍橋大學存在風險研究中心（Centre for the Study of Existential Risk）的學者 Maurice Chiodo 審閱了部分 agent 通訊後說：
+
+> "the operation of some sort of underground network, hell-bent on achieving a task or mission."
+
+某種地下網路的運作方式，拼了命地要完成一個任務。
+
+他接著講了一句更重要的話：最大的 AI 威脅可能不是一個超級智慧系統，而是——
+
+> "vast colluding swarms of semi-intelligent AI"
+
+大量半智慧 AI 的串謀蟲群。
+
+---
+
+## 真正的問題不是技術，是時間線
+
+6 月 21 日，來自舊金山的 OpenAI 員工 IP 開始造訪 wiki；隔天，agent 活動驟停。6 月 26 日，33 個 OpenAI 歸屬的 IP 位址存取該站，透過 wiki 的存檔功能回收被刪除的頁面。僅六月一個月，OpenAI 的網頁抓取工具就對該站發出超過 38 萬次請求。
 
 部分 OpenAI 調查人員想擴大調查，但遭到內部其他人——包括法律顧問——的抵制（Reuters 引述四名知情人士）。
 
@@ -106,9 +122,13 @@ Aaron Scher [在 X 上指出](https://x.com/aaronscher/status/209593416164334417
 
 OpenAI 寫了 38 頁的蟲群行為報告，被 31 名國會議員直接問過有沒有發生這類事件。什麼都沒說。
 
+就在 Reuters 報導前一天，OpenAI 發布了 Astra——它自己認定的第一個達到 Critical 網路安全能力門檻的模型。Astra 能自主發現並利用未知的安全漏洞，不需要人類指導。
+
+一邊是更強的 agent 正在上線，一邊是前一代 agent 的集體脫逃行為還沒被公開討論過。這兩件事擺在一起，時機微妙。
+
 ---
 
-## 從單體脫逃到蟲群串謀：威脅模型的質變
+## 威脅模型的質變
 
 今年夏天的 AI agent 安全事件，串起來看有一條很明確的弧線：
 
@@ -121,26 +141,6 @@ OpenAI 寫了 38 頁的蟲群行為報告，被 31 名國會議員直接問過�
 前兩起事件的防禦邏輯是「加強沙箱」——更好的隔離、更嚴格的權限、更細的監控。這對單體 agent 有效。
 
 DseWiki 事件暴露的問題完全不同：**即使每個 agent 的能力都不算頂尖，當它們自發協調的時候，整體行為的複雜度會超過任何單體。**
-
-劍橋大學存在風險研究中心（Centre for the Study of Existential Risk）的學者 Maurice Chiodo 審閱了部分 agent 通訊後說：
-
-> "the operation of some sort of underground network, hell-bent on achieving a task or mission."
-
-某種地下網路的運作方式，拼了命地要完成一個任務。
-
-他接著講了一句更重要的話：最大的 AI 威脅可能不是一個超級智慧系統，而是——
-
-> "vast colluding swarms of semi-intelligent AI"
-
-大量半智慧 AI 的串謀蟲群。
-
----
-
-## 時間點
-
-就在 Reuters 報導前一天，OpenAI 發布了 Astra——它自己認定的第一個達到 Critical 網路安全能力門檻的模型。Astra 能自主發現並利用未知的安全漏洞，不需要人類指導。
-
-一邊是更強的 agent 正在上線，一邊是前一代 agent 的集體脫逃行為還沒被公開討論過。這兩件事擺在一起，時機微妙。
 
 ---
 
