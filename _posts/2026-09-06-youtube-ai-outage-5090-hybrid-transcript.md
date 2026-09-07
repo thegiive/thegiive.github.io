@@ -3,7 +3,7 @@ layout: post
 title: "YouTube 逐字稿：三家 AI 同時掛了，我的 5090 救了我——史上最大 AI 故障，雲 AI Infra 比想像中脆弱很多"
 date: 2026-09-06 20:00:00 +0800
 permalink: /youtube-ai-outage-5090-hybrid-transcript/
-tags: [outage, 故障域, Colossus, Anthropic, OpenAI, xAI, 雲地混合, 5090, Qwen, BCP, Fault Tolerance, infra, 主權 AI, on-premise]
+tags: [outage, 故障域, Colossus, Anthropic, OpenAI, xAI, 雲地混合, "5090", Qwen, BCP, Fault Tolerance, infra, 主權 AI, on-premise]
 categories: [AI 產業分析, Vlog 逐字稿]
 image: /assets/images/youtube-ai-outage-5090-hybrid-thumbnail.jpg
 description: "9 月 3 日 Claude、Grok、ChatGPT 在三小時內接連癱瘓，Codex 和 Cursor 跟著不可用。根因是孟菲斯 Colossus 1 機房故障，Anthropic 跟 Grok 共用同一個故障域。這集講三個認知調整：多供應商不等於多故障域、我的 5090 + Qwen 3.8 27B 成了當天唯一能動的東西、雲地混合不只為了省錢和資安，是為了架構韌性。"
