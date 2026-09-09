@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Grok Bot 給了 AI 一台自己的電腦：五個員工共用一組密碼，token 五分鐘燒完"
+title: "Grok Bot：xAI 用 30 美金賣你一台 150 美金的 VM，還附 AI 員工"
 date: 2026-09-09 09:00:00 +0800
 permalink: /grok-bot-persistent-agent-cloud-computer-cost/
 tags: [Grok Bot, xAI, agent, persistent agent, Claude Code, Codex, harness engineering, agent security, token cost]
