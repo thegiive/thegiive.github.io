@@ -16,6 +16,8 @@ author: Wisely Chen
 
 9 月 23 日，Anthropic 公布了自家生物實驗室的第一項成果。這個案例值得仔細看——不只是因為發現本身，更因為它完整展示了 AI 協助前沿科學的分工模式：人類出題和做實驗，AI 做大規模搜尋。發現來自一個 Agent 的「多看一眼」。但那一眼，不是每次都會發生的。
 
+{% include youtube.html id="UEq9NUSQzfs" vertical=true %}
+
 ---
 
 ## 先講 CRISPR
