@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sequoia 的 Pat Grady 錄了 15 分鐘 AI 現況：1.1 億進場、一個月後 34 億，他自己說這是泡沫"
+title: "頂級 VC 怎麼看 2026 年現在的 AI：AGI 已至，但是落地的落差越來越大"
 date: 2026-09-28 09:00:00 +0800
 permalink: /sequoia-pat-grady-state-of-ai-bubble-110m-3-4b/
 tags: [Sequoia, Pat Grady, AGI, 泡沫, 估值, Instinct, Meta Muse, Jev, TypeSafe, FDE, 部署小隊, own your intelligence, 擴散落差, diffusion gap, 應用層]
