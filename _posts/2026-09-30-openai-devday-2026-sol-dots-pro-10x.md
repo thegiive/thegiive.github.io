@@ -53,6 +53,23 @@ Pro 500 的倍數，多篇整理寫 25 倍 Plus。用這組數字算每一倍用
 
 想拿回原本的 20x，最近的一檔是 Pro 500：價格 2.5 倍，用量 1.25 倍。
 
+### 年底前，老帳號比 Pro 500 值錢
+
+這反而讓舊 Pro 200 的 20X 更顯眼。新訂閱者已經拿不到 20x，手上還有老帳號的人，在年底前可能比付 $500 的人更划算。
+
+但要講精確：20x 只到 10 月 29 日，撐到年底的是那筆 credits。[TNW](https://thenextweb.com/news/openai-devday-pro-200-usage-cut-pro-500-plan) 的原文是：
+
+> "Existing subscribers keep their current limits until 29 October and get a one-time grant of usage credits worth $2,500, which expire at the end of the year."
+
+算到 12 月 31 日：
+
+- **舊 Pro 200**：三個月 $600，拿到 10 月的 20x、11 到 12 月的 10x，外加 $2,500 credits
+- **Pro 500**：三個月 $1,500，每個月 25x，多一個 Ultrafast
+
+10 月這個月，舊 Pro 200 用 Pro 500 四成的價格拿到八成的用量。11、12 月額度掉到 10x，但手上多一筆標價 $2,500 的 credits，比兩個方案三個月的價差 $900 還多。Credits 能換多少實際用量，OpenAI 沒公布換算，這筆帳只能算到標價為止。
+
+還有一個前提：訂閱不能斷。新訂閱者一開始就是 10x，老帳號斷掉再訂，很可能就回不去了。
+
 ### 講白了，還是被罵
 
 9 月 2 日我寫 [Claude 的 20x 爭議](/claude-pricing-20x-weekly-limit-trust-crisis/)時，用戶對 Anthropic 的要求是「Just tell us plainly」——直接講壞消息，我們受得了。
@@ -123,7 +140,7 @@ Sol 的 benchmark 全是 OpenAI 自己跑的，上線才一天。Dots 我還沒�
 
 **算「每 1x 單價」，不要看倍數。** OpenAI 新方案每一倍都是 $20，沒有量販優惠。
 
-**舊 Pro 200 用戶記兩個日期：** 10 月 29 日是 20x 最後一天，12 月 31 日是 $2,500 credits 到期日。
+**舊 Pro 200 用戶記兩個日期：** 10 月 29 日是 20x 最後一天，12 月 31 日是 $2,500 credits 到期日。年底前別急著升 Pro 500，也別讓老帳號斷訂。
 
 **Always-on agent 的價值取決於停止條件。** 接 Dots 之前，先看 Custom Rules 能不能把「碰到牆就停下來問人」設成預設。
 
