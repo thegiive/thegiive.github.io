@@ -35,6 +35,7 @@ exclude:
 # Markdown 處理器設定
 kramdown:
   input: GFM
+  toc_levels: 2
   syntax_highlighter: rouge
   syntax_highlighter_opts:
     block:

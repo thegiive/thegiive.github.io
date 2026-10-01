@@ -3,7 +3,7 @@ layout: post
 title: "Qwen3.8-Flash-Next 跑在 RTX 5090 + 64GB：Strata 實測 IQ3_XXS vs IQ3_S"
 date: 2026-10-01 09:00:00 +0800
 permalink: /strata-qwen38-flash-next-rtx5090-1m-context/
-last_modified_at: 2026-10-01 14:50:00 +0800
+last_modified_at: 2026-10-01 15:10:00 +0800
 categories: [AI 工具實測]
 image: /assets/images/strata-qwen38-flash-next-rtx5090-cover.png
 description: "用開源引擎 Strata，把 125B 的 Qwen3.8-Flash-Next 跑在 RTX 5090 + 64GB RAM：IQ3_XXS 把 context 開到 1M，99.9 萬 token 的文件藏三組驗證碼全對；IQ3_S 收回 262K，真實 agent 請求生成中位數 106.8 tok/s、日常錯誤更少。附官方表對比 Qwen3.8-27B，以及 FreeToken 為什麼跑不動。"
@@ -37,6 +37,13 @@ Qwen3.8-Flash-Next 這個模型我想試很久了。看官方 benchmark，很多
 差最多的幾項，都是 agent 類的工作：修 repo、跑工具、做完一整份任務。
 
 但偏偏，我這台 5090 + 64GB RAM，卡在想試卻跑不動的位置。
+
+<nav class="post-toc" markdown="1">
+**目錄**
+
+* 目錄
+{:toc}
+</nav>
 
 ---
 

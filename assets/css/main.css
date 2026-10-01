@@ -187,6 +187,25 @@ main {
   font-weight: 500;
 }
 
+.post-toc {
+  background: #f7f7fb;
+  border: 1px solid #e3e3ef;
+  border-radius: 8px;
+  padding: 16px 22px;
+  margin: 24px 0 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.post-toc ul {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+.post-toc li {
+  margin: 2px 0;
+}
+
 .post-content {
   font-size: 18px;
   line-height: 1.8;
