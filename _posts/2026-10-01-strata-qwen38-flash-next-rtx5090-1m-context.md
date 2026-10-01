@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "Strata 讓 5090 就地升級：64GB RAM 也跑得起 125B 的 Qwen3.8-Flash-Next，IQ3_XXS 撐到 1M、IQ3_S 換回精度"
+title: "Qwen3.8-Flash-Next 跑在 RTX 5090 + 64GB：Strata 實測 IQ3_XXS vs IQ3_S"
 date: 2026-10-01 09:00:00 +0800
 permalink: /strata-qwen38-flash-next-rtx5090-1m-context/
+last_modified_at: 2026-10-01 14:50:00 +0800
 categories: [AI 工具實測]
 image: /assets/images/strata-qwen38-flash-next-rtx5090-cover.png
-description: "Qwen3.8-Flash-Next 在官方表上多項贏過我平常用的 Qwen3.8-27B（DeepSWE 1.1 58.7 對 42.2），但 125B 主幹加一張巨大的 n-gram 表，讓 RTX 5090 + 64GB RAM 卡在想試卻跑不動的位置，連 FreeToken 的配置都超出記憶體預算。Strata 用低位元量化、專家快取、n-gram 表放 SSD、MTP 四件事把它塞了進來：IQ3_XXS 把 context 撐到 1M，短 prompt 生成 101.9 tok/s；IQ3_S 收回 262K，真實 agent 請求生成中位數 106.8 tok/s，日常使用的錯誤也少了。這篇記錄兩版的實測，以及最後為什麼留在 IQ3_S。"
+description: "用開源引擎 Strata，把 125B 的 Qwen3.8-Flash-Next 跑在 RTX 5090 + 64GB RAM：IQ3_XXS 把 context 開到 1M，99.9 萬 token 的文件藏三組驗證碼全對；IQ3_S 收回 262K，真實 agent 請求生成中位數 106.8 tok/s、日常錯誤更少。附官方表對比 Qwen3.8-27B，以及 FreeToken 為什麼跑不動。"
 author: Wisely Chen
 faq:
   - question: "Strata 是什麼？跟 llama.cpp 有什麼不同？"
@@ -75,7 +76,7 @@ MoE 塞遊戲卡，學術界最新的解法是 FreeToken。8 月 17 日上 arXiv
 
 ## Strata 怎麼讓它跑起來
 
-![Strata 的 GitHub README：一張 12-24GB 的 NVIDIA 卡加 64GB RAM，跑 125B 的模型](/assets/images/strata-github-readme-1.png)
+![Strata 的 GitHub README：一張 12-24GB 的 NVIDIA 卡加 64GB RAM，跑 125B 的模型](/assets/images/strata-github-readme-1.jpg)
 
 Strata 是一個高手自己做、面向消費級 RTX 20 到 50 系列 PC 的開源推理引擎。README 第一行就寫：一張 12-24GB 的 NVIDIA 卡加 64GB RAM，跑 125B 的模型。GitHub 上 2.9k stars（10/1 看的）。看完才發現，想用大模型、又不想升級整台電腦的人，不只我一個。
 
