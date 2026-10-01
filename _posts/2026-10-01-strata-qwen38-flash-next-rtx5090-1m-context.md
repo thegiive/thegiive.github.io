@@ -1,42 +1,41 @@
 ---
 layout: post
-title: "125B 的 Qwen3.8-Flash-Next 塞進一張 5090：Strata 實測 101.9 tok/s，一次讀完百萬 token 的文件，代價是 64GB RAM 只剩 5.8GiB"
+title: "Strata 讓 5090 就地升級：64GB RAM 也跑得起 125B 的 Qwen3.8-Flash-Next，IQ3_XXS 撐到 1M、IQ3_S 換回精度"
 date: 2026-10-01 09:00:00 +0800
 permalink: /strata-qwen38-flash-next-rtx5090-1m-context/
 categories: [AI 工具實測]
 image: /assets/images/strata-qwen38-flash-next-rtx5090-cover.png
-description: "Strata 是 9 月 24 日才出現的開源推論引擎，宣稱一張遊戲卡加 64GB RAM 就能跑 125B 的 Qwen3.8-Flash-Next。我在自己的 RTX 5090 上從 0.1.14 一路升到 0.1.30：短請求 101.9 tok/s，昨晚把 context 開到 1M：丟給它一份將近 100 萬 token 的超長文件，裡面前、中、後各偷藏一組驗證碼，它讀了將近六分鐘，三組全部答對。這篇拆解它怎麼把 75.8GB 的模型分到 VRAM、RAM、SSD 三層，瓶頸又怎麼從顯卡移到了記憶體。"
+description: "Qwen3.8-Flash-Next 在官方表上多項贏過我平常用的 Qwen3.8-27B（DeepSWE 1.1 58.7 對 42.2），但 125B 主幹加一張巨大的 n-gram 表，讓 RTX 5090 + 64GB RAM 卡在想試卻跑不動的位置，連 FreeToken 的配置都超出記憶體預算。Strata 用低位元量化、專家快取、n-gram 表放 SSD、MTP 四件事把它塞了進來：IQ3_XXS 把 context 撐到 1M，短 prompt 生成 101.9 tok/s；IQ3_S 收回 262K，真實 agent 請求生成中位數 106.8 tok/s，日常使用的錯誤也少了。這篇記錄兩版的實測，以及最後為什麼留在 IQ3_S。"
 author: Wisely Chen
 faq:
   - question: "Strata 是什麼？跟 llama.cpp 有什麼不同？"
-    answer: "Strata 是 GitHub 使用者 Niko1221 在 2026 年 9 月 24 日開源的推論引擎（MIT 授權），專門讓 Qwen3.8-Flash-Next 這個 125B 的混合專家模型（Mixture of Experts, MoE）跑在一張 12-24GB 的 NVIDIA 遊戲卡加 64GB RAM 上。它用了部分 llama.cpp / ggml 的元件，但做法不同：llama.cpp 的 MoE 卸載（MoE Offload）是把 expert 放 CPU RAM、用到時搬到 GPU 算；Strata 則把最常用的 expert 快取在 VRAM，沒命中的直接由 CPU 在 RAM 裡算，不搬 PCIe。在 RTX 5090 上實測 GPU expert 快取命中率 93.4%。"
+    answer: "Strata 是 GitHub 使用者 Niko1221 在 2026 年 9 月 24 日開源的推論引擎（MIT 授權），專門讓 Qwen3.8-Flash-Next 這個 125B 的混合專家模型（Mixture of Experts, MoE）跑在一張 12-24GB 的 NVIDIA 遊戲卡加 64GB RAM 上。它用了部分 llama.cpp / ggml 的元件，但做法不同：llama.cpp 的 MoE 卸載（MoE Offload）是把 expert 放 CPU RAM、用到時搬到 GPU 算；Strata 把最常用的 expert 快取在 VRAM，沒命中的直接由 CPU 在 RAM 裡算，並把 29GB 的 n-gram 查表留在 SSD。在 RTX 5090 上實測 GPU expert 快取命中率 93.4%。"
+  - question: "IQ3_XXS 和 IQ3_S 差在哪？該選哪個？"
+    answer: "兩者都是 llama.cpp 家族的 3-bit 量化（Quantization）：IQ3_XXS 約 3.06 bit/權重，IQ3_S 約 3.44 bit/權重。跑 Qwen3.8-Flash-Next 時，IQ3_XXS 的 RAM+VRAM 需求是 47.0GB，IQ3_S 是 54.8GB。在 RTX 5090 + 64GB RAM 上，IQ3_XXS 可以把 context 開到 1M，IQ3_S 多吃 7.8GB 只能用到 262K。第三方用 291 題 MMLU-Pro 測，Strata 的 IQ3_S 得 65.3%，比 Unsloth 的 UD-Q6_K_XL（68.7%）低約 3 分；IQ3_XXS 壓得更多。日常跑 agent，作者實際使用時 IQ3_S 出錯較少，但那是使用觀察，不是對照實驗。"
   - question: "RTX 5090 跑 Qwen3.8-Flash-Next 實際有多快？"
-    answer: "在 Core Ultra 7 265K、64GB DDR5-4800、RTX 5090 32GB 的機器上，用 Strata 跑 IQ3_XXS 量化版（約 75.8GB）：Strata 0.1.30 生成 512 token 為 101.9 tok/s；0.1.14 在 32K context 下短請求 87.7 到 118.8 tok/s，首 token 0.31 到 0.45 秒。如果同一張卡還跑著其他 GPU 服務（例如 CosyVoice 語音合成），Strata 可用的 VRAM 變少，速度會掉到 61.5 tok/s。以上都是單次量測。2026 年 10 月 1 日改跑品質最好的 IQ3_S（262K context、int8 KV）後，一個多小時內 41 筆真實 agent 請求的生成速度中位數是 106.8 tok/s，但那不是同題對照。"
+    answer: "在 Core Ultra 7 265K、64GB DDR5-4800、RTX 5090 32GB 的機器上用 Strata 0.1.30：IQ3_XXS 生成 512 token 為 101.9 tok/s；IQ3_S（262K context、int8 KV）41 筆真實 agent 請求的生成速度中位數 106.8 tok/s，讀 prompt（Prefill）大約每秒 3,000 到 4,000 token。這些是約 64K token 的真實請求，不是塞滿 262K 的測速。如果同一張卡還跑著其他 GPU 服務，Strata 可快取的 expert 變少，速度會掉，例如跟 CosyVoice 共用時掉到 61.5 tok/s。"
   - question: "Qwen3.8-Flash-Next 在 5090 上真的能開到 1M context 嗎？"
-    answer: "能跑，但屬於實驗性質。模型原生訓練長度是 262,144 token，要到 1M 必須用 YaRN 旋轉位置編碼延伸（Rope Scaling）4 倍，並把 KV cache 從 int8 降到 4-bit（q4_0）才放得進 64GB RAM。實測做法是大海撈針測試（Needle-in-a-Haystack）：把一份 999,490 token 的超長文件丟進去，在 10%、50%、90% 的位置各藏一組驗證碼，問它三組是什麼。它三組全部答對，但讀完花了 344 秒，測試當下 RAM 只剩 5.8 GiB。這種測試只證明找得到，不代表長文件理解品質不變；Strata 自己的測試顯示 q4_0 KV 會讓文件類 perplexity 在 8K 多 12%。"
-  - question: "5090 上應該跑 Qwen3.8-Flash-Next 還是 Qwen3.8-27B？"
-    answer: "看場景。多人共用：選 27B dense，同一張 5090 用 SGLang 單人 113.75 tok/s、四人並行總吞吐 425.44 tok/s，而 Strata 一次只服務一個請求。程式能力上兩者接近：Flash-Next 官方 SWE-bench Pro 62.5，27B 是 61.7。而且 Flash-Next 在 Strata 上跑的是量化版，會再扣分：第三方用同一組 291 題 MMLU-Pro 測，Strata 的 IQ3_S 拿 65.3%，Unsloth 的 UD-Q6_K_XL 拿 68.7%，差約 3 分。單人、需要超長 context（整個 repo、大量文件一次讀入）的個人 agent，才適合 Flash-Next + Strata，前提是機器有 64GB RAM。"
-  - question: "跑 Strata 需要多少 RAM？為什麼 RAM 比顯卡重要？"
-    answer: "Strata 官方需求是 64GB RAM；IQ3_XXS 的第一個模型檔 47GB 要整個載入 RAM，官方建議 RAM 至少要比它多約 10GB。原因是 RAM 放著全部 24,576 個 expert，VRAM 只是快取熱門的那幾千個——RAM 決定能不能跑，VRAM 決定跑多快。這讓地端推論的瓶頸從顯示記憶體（VRAM）轉到系統記憶體（DRAM），而 2026 年 8 月台灣 32GB DDR5 已經從約 3,000 元漲到近 13,000 元。  ---"
+    answer: "能跑，但屬於實驗性質。模型原生訓練長度是 262,144 token，要到 1M 必須用 YaRN 旋轉位置編碼延伸（Rope Scaling）4 倍，並把 KV cache 從 int8 降到 4-bit（q4_0）。實測做法是大海撈針測試（Needle-in-a-Haystack）：把一份 999,490 token 的文件丟進去，在 10%、50%、90% 的位置各藏一組驗證碼，三組全部答對，但讀完花了 344 秒，RAM 只剩 5.8 GiB。這種測試只證明找得到，不代表長文件理解品質不變；而且只有 IQ3_XXS 放得下，IQ3_S 就塞不進 64GB RAM。"
+  - question: "為什麼 FreeToken 跑不動，Strata 卻可以？"
+    answer: "FreeToken 是 2026 年 8 月 UC Berkeley 領頭發表的 MoE 推論系統，做法是把全部 expert 放在主機記憶體（Host RAM），論文裡的 RTX 5090 測試機配了 192GB DDR5。它支援 Qwen3.8-Flash-Next 的 FP8 或 NVFP4 版本，NVFP4 checkpoint 還有 135GB，而且那張 n-gram 查表要 47.7 GiB 固定在 RAM。RTX 5090 的 32GB VRAM 加 64GB RAM 總共 96GB，放不下。Strata 改用約 3-bit 的 IQ3 量化，並把 29GB 的 n-gram 查表留在 SSD 按需讀取，所以 64GB RAM 就跑得起來。  ---"
 ---
 
-一張 32GB 的 5090，能跑 125B 的模型嗎？
+又到了保證無聊的 IT 日。
 
-以前我的答案是不行。這台機器過去兩個月的主力都是 27B dense——Qwen3.8-27B、Huihui、Bonsai。32GB VRAM，27B 剛好是天花板。
+Qwen3.8-Flash-Next 這個模型我想試很久了。看官方 benchmark，很多項目都比我平常用的 27B 更強：
 
-然後 Strata 出現了。GitHub 上一個叫 Niko1221 的作者，9 月 24 日第一個 commit，宣稱「一張 12-24GB 的 NVIDIA 卡加 64GB RAM」就能跑 Qwen3.8-Flash-Next。9 月 30 日已經是 0.1.30。一週三十個版本，GitHub 上 2.9k stars（10/1 看的）。
+| 項目 | Qwen3.8-Flash-Next | Qwen3.8-27B |
+|------|------:|------:|
+| DeepSWE 1.1 | 58.7 | 42.2 |
+| JobBench | 55.7 | 33.4 |
+| SWE-bench Multilingual | 81.0 | 73.8 |
+| Toolathlon Verified | 73.5 | 67.1 |
+| SWE-bench Pro | 62.5 | 61.7 |
+| GPQA Diamond | 91.7 | 89.2 |
 
-![Strata 的 GitHub README：一張 12-24GB 的 NVIDIA 卡加 64GB RAM，跑 125B 的模型](/assets/images/strata-github-readme-1.png)
+差最多的幾項，都是 agent 類的工作：修 repo、跑工具、做完一整份任務。
 
-我 9/28 裝起來，9/30 晚上升 0.1.29，昨晚到今天凌晨升 0.1.30，順手把 context 從 262K 開到 1M。
-
-結果先講兩件事。
-
-第一，速度：**寫答案每秒 101.9 個 token**，比人眼閱讀快很多。
-
-第二，長文件：我丟給它一份將近 100 萬 token 的超長文件（英文，大約三、四百萬個字母），在文件的前段、中段、後段各偷藏一組驗證碼，最後問它：「三組驗證碼是什麼？」**它讀了 344 秒，將近六分鐘，三組全部答對。**
-
-代價是 64GB RAM 在測試當下只剩 5.8 GiB。
+但偏偏，我這台 5090 + 64GB RAM，卡在想試卻跑不動的位置。
 
 ---
 
@@ -47,148 +46,135 @@ faq:
 | 模型 | Qwen3.8-Flash-Next，8 月 26 日發布，Qwen Community License |
 | 參數 | 125B 總參數、每個 token 只激活 6B，另外掛一張 51B 的 n-gram embedding 表和 4B 的 MTP 模組 |
 | MoE 結構 | 每層 512 個 expert，每個 token 用 10 個路由 expert 加 1 個共享 expert |
-| 注意力 | 48 層，其中 36 層是 Gated DeltaNet 線性注意力、12 層是 Qwen Sparse Attention（QSA） |
 | Context | 原生 262,144 token，官方說可延伸到 1M |
-| 量化檔 | IQ3_XXS 兩個檔加起來約 75.8GB，第一個 47GB |
+| 引擎 | Strata，Niko1221 開源（MIT），9 月 24 日第一個 commit，9 月 30 日已經是 0.1.30 |
+| 量化 | IQ3_XXS（RAM+VRAM 需求 47.0GB）、IQ3_S（54.8GB） |
 | 我的機器 | Core Ultra 7 265K、64GB DDR5-4800、RTX 5090 32GB、CUDA 12.9 |
-
-75.8GB 的模型，32GB 的卡。多出來的 43.8GB 去哪了？這就是 Strata 的全部故事。
 
 ---
 
-## Strata 怎麼塞：三層記憶體，外加一個會學的快取
+## 卡住的地方：125B，不大不小
 
-Strata README 的比喻是廚房：常用的東西放流理台，其他的放儲藏室。拆開來是三層：
+Qwen3.8-27B 的量化版塞得進顯卡，平常也用得順。同一張 5090，八月[跑 Qwen3.8-27B](/youtube-qwen38-27b-rtx5090-sglang-vllm-mtp-transcript/) 是單人 113.75 tok/s，四人並行總吞吐 425.44 tok/s。
 
-- **VRAM**：每個 token 都要跑的部分（attention、共享 expert、路由），加上「最常被叫到」的幾千個 expert。
-- **RAM**：全部 24,576 個 expert 都有一份。GPU 沒有的 expert，**CPU 直接在 RAM 裡算**，跟 GPU 同時進行。
-- **SSD**：那張 29GB 的 n-gram 查表留在 SSD，每個 token 只讀幾行。
+Flash-Next 則是 125B 主幹，每個 token 啟用約 6B，另外還有一張巨大的 n-gram 向量表。整顆塞不進 32GB 的顯卡。
 
-24,576 這個數字就是 48 層 × 512 個 expert。每個 token 只叫 10 個，所以任何時候絕大多數的 expert 都在睡覺。
+MoE 塞遊戲卡，學術界最新的解法是 FreeToken。8 月 17 日上 arXiv，UC Berkeley 領頭，作者群有 Ion Stoica、Song Han、Matei Zaharia，論文宣稱一張 5090 就能跑 284B 的 DeepSeek V4 Flash，22-25 tok/s。它也支援 Flash-Next，但在我這台機器上跑不起來：
 
-關鍵在 GPU 那層是「會學的」。它會記錄哪些 expert 最常被叫，把它們留在 VRAM。9/30 升 0.1.29 那次的 log 裡，GPU expert 快取命中率 93.4%。意思是 100 次 expert 呼叫，有 93 次在顯卡上就解決了，剩下 7 次才輪到 CPU。
+- 它把全部專家放在主機 RAM，論文裡那台 5090 配的是 192GB DDR5
+- Flash-Next 它只吃 FP8 或 NVFP4，NVFP4 版的 checkpoint 還有 135GB
+- 那張 n-gram 查表，就要 47.7 GiB 釘在主機 RAM
 
-生成端再加一層 MTP（Multi-Token Prediction）：小模型先猜後面幾個 token，大模型一次驗證。作者說快 1.6-1.8 倍。我昨晚那次的 log 是 MTP 猜了 191 個 token，被接受 76 個，大約四成。
+32GB VRAM 加 64GB RAM，總共 96GB。135GB 的模型，一開始就塞不進去。
 
-### 這修正了我七月的結論
+那就加 RAM？八月我記錄過 [32GB DDR5 從約 3,000 元漲到近 13,000 元](/memory-price-surge-local-ai-five-paths/)。為了嘗試一個模型特別花錢升級，我一直下不了手。
 
-七月寫 [MoE Offload 完全拆解](/moe-offload-deepseek-v3-v4-local-inference-optimization/) 的時候，我的結論是：
+直到最近，我發現了 Strata。
+
+---
+
+## Strata 怎麼讓它跑起來
+
+![Strata 的 GitHub README：一張 12-24GB 的 NVIDIA 卡加 64GB RAM，跑 125B 的模型](/assets/images/strata-github-readme-1.png)
+
+Strata 是一個高手自己做、面向消費級 RTX 20 到 50 系列 PC 的開源推理引擎。README 第一行就寫：一張 12-24GB 的 NVIDIA 卡加 64GB RAM，跑 125B 的模型。GitHub 上 2.9k stars（10/1 看的）。看完才發現，想用大模型、又不想升級整台電腦的人，不只我一個。
+
+它把四種技術整合起來，讓顯卡、CPU、RAM 和 SSD 一起分工。
+
+### 1. 低位元量化
+
+先用 IQ3 格式把權重壓小。兩個都是 3-bit 量化：
+
+- **IQ3_XXS**：llama.cpp 定義約 3.06 bit/權重，壓得最兇，RAM+VRAM 需求 47.0GB
+- **IQ3_S**：約 3.44 bit/權重，多留一點精度，RAM+VRAM 需求 54.8GB
+
+這裡用的是 ISTA-DASLab 重新調過的版本，不同層分到的精度不一樣。Strata 作者對 IQ3_S 的形容是品質最好，官方公開測試上跟原版一樣。
+
+### 2. 專家快取與 CPU／GPU 分工
+
+全模型有 24,576 個 expert（48 層 × 512 個），每個 token 只叫 10 個。
+
+- **專家權重全部放在 RAM**
+- **常用的快取到 VRAM**
+- **生成時，GPU 算快取裡的專家，CPU 同時處理沒命中的專家**
+
+快取還會隨實際使用情況動態調整，讓留在 VRAM 裡的專家更貼近當下的工作。9/30 升 0.1.29 那次的 log 裡，GPU 專家快取命中率 93.4%：100 次呼叫有 93 次在顯卡上就解決了。
+
+這修正了我七月寫 [MoE Offload 完全拆解](/moe-offload-deepseek-v3-v4-local-inference-optimization/) 時的結論：
 
 > MoE offload 場景下，速度 = f(VRAM 能留多少 expert)。大 VRAM 不是為了塞下模型，是為了少搬 PCIe。
 
-那時候的前提是 llama.cpp 的做法：expert 放 CPU RAM，用到時搬過 PCIe 給 GPU 算。
+那時候的前提是 llama.cpp 的做法：沒命中的 expert 搬過 PCIe 給 GPU 算。Strata 的做法是不搬，CPU 就地算。前半句還是對的，VRAM 越大能留的 expert 越多；後半句要改成：大 VRAM 不只是為了少搬 PCIe，是為了少叫 CPU。
 
-Strata 換了一個思路：**沒命中的 expert 不搬，CPU 就地算。** 搬 PCIe 的問題被繞過去，剩下的問題變成「CPU 算得夠不夠快」和「GPU 快取猜得準不準」。93.4% 的命中率，就是這個設計能成立的原因。
+### 3. n-gram 向量表放 SSD
 
-前半句還是對的——VRAM 越大，能留的 expert 越多。後半句要改：大 VRAM 不只是為了少搬 PCIe，是為了少叫 CPU。
+Flash-Next 有一張 29GB 的 n-gram 查表，存的是模型學到的連續 token 組合向量，查出來之後仍要交給模型繼續計算。
+
+FreeToken 把這張表整張釘在 RAM。Strata 把它留在 SSD，需要哪幾行才讀哪幾行。對 64GB RAM 的機器來說，這一步就是能不能跑的分界。
+
+### 4. MTP 推測解碼
+
+老朋友了。小模型先猜接下來幾個 token，主模型一次驗證，猜對了就一次往前走幾步。作者說快 1.6-1.8 倍；我昨晚那次的 log 是猜了 191 個 token、被接受 76 個，大約四成。
+
+### Strata 的價值在整合
+
+CPU／GPU 混合推理、量化、推測解碼，各自都有先例。Strata 的價值，是針對 Flash-Next 的特性把這些方法工程整合起來，讓一台家用電腦的硬體一起分工。
+
+更重要的是，它切中了一群人的痛點：手上有一張好顯卡、RAM 只有 64GB、又不想為了一個模型升級整台機器。
 
 ---
 
-## 實測過程：從 32K 到 1M，四個版本
+## 我的實測
 
-### 9/28：0.1.14，32K context
+機器就是原本那台：RTX 5090 32GB、64GB DDR5-4800、Core Ultra 7 265K。
 
-第一次跑，32K context、int8 KV cache、MTP 開、vision 關。
+### IQ3_XXS：context 一路開到 1M
 
-短請求 87.7 到 118.8 tok/s，首 token 0.31 到 0.45 秒。768 token 長輸出 129.9 tok/s，同 prompt 重跑 146.9。
-
-對照作者在 5070 上 IQ3_XXS 短對話 62 tok/s，5090 多出來的 20GB VRAM 確實有換到速度。
-
-但 VRAM 吃到 31,693 MiB，只剩 416 MiB。Strata 的 expert 快取預設就是「能吃多少吃多少」。
-
-### 搶 GPU 的代價
-
-這台 5090 不是只跑 LLM。它同時掛著 Whisper 轉錄，有時還有 CosyVoice 做配音、Bonsai 做小模型。
-
-旁邊還掛著 Bonsai 的時候，同一題長輸出只剩 97.4 tok/s。9/30 讓 CosyVoice 一起上 GPU，Strata 要讓出 4GB VRAM，expert 快取格數從 13,602 掉到 9,084，生成掉到 61.5 tok/s。
-
-道理不複雜：**Strata 的速度是 VRAM 裡住了多少 expert 決定的。** 任何跟它搶 VRAM 的服務，都是在拿它的速度。
-
-9/30 那天，Strata 被停、被開、跟 Huihui 和 CosyVoice 輪流搶 GPU，來回切了好幾次。最後的決定是 CosyVoice 停掉，只留 Whisper 陪它。
-
-### 9/30 晚上：0.1.29，262K
-
-升 0.1.29，context 開到原生上限 262K、int8 KV。384 token 生成 94.4 tok/s，前一版同條件 80.6，單次比較。
-
-### 昨晚到今天凌晨：0.1.30，1M
-
-0.1.30 的 release note 寫短 prompt 最多快 28%，還加了 rope scaling 的選項。我就順手把 context 推到 1M：
+先試 IQ3_XXS，Strata 0.1.30，把 context 上限開到 1M：
 
 - `--rope-scaling yarn --rope-scale 4`：把原生 262K 用 YaRN 拉 4 倍
 - `--kv q4_0`：KV cache 從 int8 降到 4-bit，不然 64GB RAM 放不下
-- `--kv-resident 32768`：只有最近 32K 的 KV 留在 VRAM，其他放 RAM
 
-先跑官方 serve 測試，51/51 過。然後 512 token 生成 101.9 tok/s。
+短 prompt、生成 512 token 的那次，速度是 101.9 tok/s。
 
-接著測長文件，這個測試業界叫「大海撈針」（needle-in-a-haystack）。做法很土：準備一大堆無關的填充文字，在 10%、50%、90% 的位置各插一句「驗證碼是 violet-harbor-731」這種句子，然後問模型三組驗證碼是什麼。模型如果沒真的把整份文件讀進去，就答不出來：
+接著測長文件，業界叫「大海撈針」（needle-in-a-haystack）：準備一大堆無關的填充文字，在 10%、50%、90% 的位置各插一句「驗證碼是 violet-harbor-731」這種句子，最後問模型三組驗證碼是什麼。沒真的讀進去就答不出來。
 
-| 文件長度 | 三組驗證碼 | 讀完到回答花了多久 | 換算讀取速度 |
-
+| 文件長度 | 三組驗證碼 | 讀完到回答 | 換算讀取速度 |
 |---|---|---:|---:|
 | 30 萬 token（299,513） | 全對 | 76 秒 | 大約每秒 4,000 token |
 | 99.9 萬 token（999,490） | 全對 | 344 秒，將近六分鐘 | 掉到每秒 2,900 左右 |
 
-1M 那次，RAM 只剩 5.8 GiB，swap 約 1.6 GiB，事後 VRAM 剩 3,725 MiB。沒有 OOM，服務沒重啟。
+1M token 的輸入真的跑過去了。代價是那次 RAM 只剩 5.8 GiB。
 
-最後走公網 HTTPS 再打一次：算術 391、tool call 回傳 total 42、紅色圖片辨識，三個都過。mini 上 OpenClaw 的 context 設定也一起改成 1M。
+接進 OpenClaw 之後的真實請求，實際 context 約 185K 到 188K，prefill 3,278 到 3,642 tok/s，長輸出生成 87.2 到 89.6 tok/s。
 
-### 10/1 清晨更新：最後換成 IQ3_S + 256K
+### IQ3_S：context 收回 262K
 
-1M 跑通之後，我沒有讓它留在 1M。
+IQ3_S 比 IQ3_XXS 多吃 7.8GB。1M 測試時 RAM 只剩 5.8 GiB，這 7.8GB 塞不進去。所以 context 上限改回 262K，KV 換回 int8，不開 YaRN。
 
-清晨 5 點 21 分開始下載 IQ3_S，5 點 50 分下載完，5 點 54 分切過去。IQ3_S 是 Strata 四個版本裡品質最好的那個，第一個檔 54.8GB，比 IQ3_XXS 的 47GB 多 7.8GB；第二個檔（29GB 的 n-gram 查表）兩版共用，不用重下。
+切過去之後，32.81 GiB 的專家常駐 RAM，GPU 快取 9,494 格。
 
-這就是前面講的取捨。IQ3_XXS 的 1M 測試時 RAM 只剩 5.8 GiB，IQ3_S 多吃的 7.8GB 塞不進去。所以二選一：**要 1M，就用 IQ3_XXS；要品質最好的量化，就退回 262K。** 我選了後者，KV 也從 q4_0 換回 int8，不開 YaRN 延伸。
+一個多小時接了 41 筆真實 agent 請求：
 
-切過去之後的狀態：
+- **Decode（生成）速度中位數 106.8 tok/s**，範圍 31.8 到 170.6
+- **Prefill（讀 prompt）大概每秒 3K 到 4K token**（3,160 到 4,250）
+- 每筆 prompt 5 萬到 6.7 萬 token，大約 64K
 
-- 32.81 GiB 的 expert 常駐 RAM，GPU 快取 9,494 格（IQ3_XXS 在 262K 時是 11,340 格，IQ3_S 每個 expert 比較大，住得比較少）
-- 平常 RAM 還剩 17GB 左右，VRAM 剩 3.6GB
-- 公網的健康檢查、算術、tool call 都過；mini 上 OpenClaw 也改用 IQ3_S，context 設回 262,144
+所以這個速度，是實際約 64K 請求的結果，不是塞滿 262K 的測速。而且前面 49,152 token 沿用上一輪讀過的，不能把整份 prompt 都當成重新讀取。
 
-接下來一個多小時，它接了 41 筆真實請求，大部分是 OpenClaw 的 agent 對話，每筆 prompt 5 萬到 6.7 萬 token（前面 49,152 token 沿用上一輪讀過的，只讀新增的部分）。生成速度中位數 106.8 tok/s，範圍 31.8 到 170.6。GPU expert 快取命中率在 67.8% 到 96.5% 之間跳，大多在九成上下。
-
-VRAM 裡住的 expert 變少了，速度看起來卻沒掉。但這 41 筆不是對照實驗：prompt 不一樣、輸出長短不一樣，短輸出的速度本來就很吵。IQ3_XXS 跟 IQ3_S 同題 A/B，我還沒跑。
+目前我先留在 IQ3_S + 262K。1M 是這次測試的亮點，但日常 OpenClaw 的工作，我選擇多留一點權重精度和記憶體餘裕。
 
 ---
 
-## 瓶頸從顯卡搬到了記憶體
+## 為什麼最後選 IQ3_S
 
-八月我寫過 [5090 三個月從 10 萬變 17 萬](/memory-price-surge-local-ai-five-paths/)，裡面記錄了 32GB DDR5 從約 3,000 元漲到近 13,000 元。
+實際用下來，我也感覺到兩版的差別。
 
-Strata 的門檻是「一張 12-24GB 的 NVIDIA 卡加 64GB RAM」。它把對 VRAM 的需求壓下去了，壓力轉到 DRAM——剛好是這半年漲最兇的東西。
+IQ3_XXS 在 OpenClaw 裡寫程式、看截圖，比較常碰到一些錯誤。因為 agent 會自動重試，也不太會整個 fail，但就是有一些錯誤訊息。換成 IQ3_S、把 context 收回來之後，這些問題少了很多。
 
-這改變了買機器的決策順序。以前在 5090 上規劃地端模型，思路是「32GB VRAM 能塞什麼」，答案是 27B dense。現在多一條路：**如果你已經有 64GB RAM，這台機器可以跑 125B MoE；如果沒有，補 RAM 比換更大的卡更划算，也更痛。**
+這是我自己的使用觀察。兩次的 context、KV 精度和任務不完全相同，還不能把改善全部歸因於 IQ3_S。
 
-我這台剛好有 64GB。1M 測試時剩 5.8 GiB，說明 64GB 是「剛好夠」，不是「很寬裕」。如果還要在同一台機器上開瀏覽器、跑 Docker、跑別的服務，1M context 大概不現實。
-
----
-
-## 反方：那 27B dense 不就好了？
-
-這是我寫這篇時最卡的地方。
-
-同一張 5090，八月[跑 Qwen3.8-27B](/youtube-qwen38-27b-rtx5090-sglang-vllm-mtp-transcript/) 的數字是：SGLang 單人 113.75 tok/s，四人並行總吞吐 425.44 tok/s。
-
-Flash-Next 在 Strata 上：單人 101.9 tok/s，而且 Strata 一次只回一個請求。
-
-程式能力呢？Flash-Next 官方 SWE-bench Pro 62.5，[27B 是 61.7](/qwen-3-8-27b-open-weights-local-security/)。差 0.8 分。
-
-所以如果問題是「幫小團隊架一台 coding model server」，答案還是 27B dense。它整顆住在 VRAM，不吃 RAM，能並行，單人速度也不輸。
-
-那 Flash-Next 贏在哪？我能用數據講的只有一件事：**context 長度。** 將近 100 萬 token 的文件，一台遊戲機讀得完、找得到裡面藏的東西，這是 27B 在這張卡上我沒測到的東西。其他的——知識廣度、125B 總參數到底比 27B 多懂多少——我沒有測，不能宣稱。
-
-所以主論點要改一下。Strata + Flash-Next 不是「5090 的新主力」，它是**單人、長 context 的個人 agent 機**：一個人、一個 agent、一次把整個 repo 或一整年的文件塞進去。這個場景它是目前這台機器上唯一的選項。
-
----
-
-## 坦白說
-
-這篇的數字有幾個很明顯的限制。
-
-**第一，我自己沒有品質 benchmark。** 我跑的是 smoke test 和大海撈針：算術、tool call、看圖、在長文件裡找驗證碼。9/28 讓它寫一個 merge_intervals，過了 5 個邊界案例，但漏寫了我明確要求的測試範例。這些只能證明「能跑、沒壞」，不能證明 IQ3_XXS 量化後的智力等於原版。
-
-目前我在 X 上找到最像樣的第三方數字，是 Nigel Hungerford-Symes（[@VectorCrossProd](https://x.com/VectorCrossProd/status/2105124854169227592)）9/30 發的。他用同一組 291 題 MMLU-Pro，比較 Strata 的 IQ3_S 和 Unsloth 兩個比較大的量化版：
+第三方的數字也指向同一個方向。X 上 Nigel Hungerford-Symes（[@VectorCrossProd](https://x.com/VectorCrossProd/status/2105124854169227592)）用同一組 291 題 MMLU-Pro 比較 Strata 的 IQ3_S 和 Unsloth 的兩個較大量化版：
 
 ```
 IQ3_S on Strata, 84 GB:     65.3%
@@ -196,37 +182,101 @@ UD-Q4_K_XL, 111 GB:         68.4%
 UD-Q6_K_XL, 169 GB:        68.7%
 ```
 
-Strata 的 IQ3_S 比 Q6 低 3.4 分。他在[下一則](https://x.com/VectorCrossProd/status/2105124856941650123)自己補了一句：
+他在[下一則](https://x.com/VectorCrossProd/status/2105124856941650123)補了一句：
 
 > The 3.5-bit does cost ~3 pts, and it's real (p=0.02 vs Q6).
 
-壓到 3.5-bit 大約扣 3 分，而且統計上站得住。換回來的是速度：同一台機器，Strata 每題 2.6 秒、約 40 tok/s；llama.cpp 跑 Q4 每題 7.5 秒、約 9 tok/s。
+壓到 3.5-bit 大約扣 3 分，而且統計上站得住。IQ3_S 已經是 Strata 精度最高的版本，IQ3_XXS 壓得更兇，照常理只會扣更多，但沒有人測過。
 
-這串有個細節比數字本身更值得記。在這則之前兩個小時，他先發了一則[「目前跟 Q6 在誤差範圍內，Winning!」](https://x.com/VectorCrossProd/status/2105095519001522212)，那則 95 個讚；291 題跑完、改口說差 3 分的那則，34 個讚。好消息傳得比更正快。
+對我來說，選擇很直接：**比起把 context 撐到最大，我更在意每天做事時，能少出錯、少花時間重做。**
 
-還要扣到我自己身上：他測的是 IQ3_S，Strata 四個版本裡品質最好的那個。我跑的 IQ3_XXS 壓得更兇，照常理只會更低，但我沒測。所以「扣 3 分」對我這台機器來說比較像下限。
+---
 
-**第二，1M 是硬撐出來的。** 模型原生訓練到 262,144，1M 是 YaRN 延伸 4 倍。KV 也從 int8 降到 q4_0——Strata 自己的測試顯示，q4_0 讓文件類 perplexity 在 1K 多 8%、8K 多 12%。三組驗證碼全對，只代表它「找得到」一句明顯的話，不代表它「讀得懂」整份文件。長文件理解會不會變笨，我沒測。
+## 那 27B 不就好了？
 
-**第三，1M prompt 要等將近六分鐘。** 而且我的 proxy 非串流等 300 秒就斷，344 秒的請求必須走串流才拿得到結果。這不是互動式的速度，是「丟進去、去倒杯咖啡」的速度。
+官方表上 Flash-Next 明顯比 27B 強，差最多的 DeepSWE 1.1 是 16.5 分。但放到我這張 5090 上，要扣掉兩件事：
 
-**第四，速度都是單次量測。** 94.4 vs 80.6 這種比較，是同一台機器、同一條件跑一次的結果，沒有重複取平均。
+- **量化折扣**：官方分數是原版模型，我跑的是 3-bit。上面 MMLU-Pro 的例子，IQ3_S 就扣了大約 3 分。
+- **一次只回一個請求**：Strata README 寫得很清楚，它一次只回一個請求。27B 用 SGLang 可以四個人同時用，總吞吐 425.44 tok/s。
 
-**第五，Strata 是一個人、一週的專案。** 一週三十個版本，代表迭代很快，也代表明天的 0.1.31 可能改掉今天的行為。要放進正式環境，至少要鎖版本、留 rollback。我這次每一版都留了前一版的 engine 和 config 備份，就是因為這個。
+所以如果問題是「幫小團隊架一台共用的 coding server」，答案還是 27B dense。它整顆住在 VRAM、不吃 RAM、能並行。
 
-但它做對了一件事：**它證明了「32GB 顯卡跑 125B MoE」不是 demo，是可以每天開著用的服務。** 9/28 起它就是我 mini 上 OpenClaw 的預設模型，中間停過幾次，最後都切回來。
+Strata + Flash-Next 的位置是**單人的個人 agent 機**：一個人、一個 agent、要更強的模型，必要時一次把整個 repo 塞進去。
+
+---
+
+## 瓶頸從顯卡搬到了記憶體
+
+Strata 把對 VRAM 的需求壓下去了，壓力轉到 DRAM。
+
+以前在 5090 上規劃模型，問的是「32GB VRAM 塞得下什麼」，答案是 27B dense。現在多一條路，但要先問「RAM 夠不夠放全部專家」：
+
+- **RAM 決定能不能跑**：IQ3_XXS 要 47.0GB、IQ3_S 要 54.8GB 放專家
+- **VRAM 決定跑多快**：能快取多少熱門專家，就少叫多少次 CPU
+
+而 RAM 剛好是這半年漲最兇的東西。64GB 對這個模型是「剛好夠」，不是「很寬裕」：IQ3_XXS 開 1M 剩 5.8 GiB，IQ3_S 多吃 7.8GB 就得放棄 1M。
+
+---
+
+## 開源的威力
+
+回頭看這整件事，沒有一個環節是同一家公司做的：
+
+- Qwen 把 125B 的權重放出來
+- ISTA-DASLab 把它壓到 3-bit
+- 一個人花一週寫出 Strata，站在 llama.cpp 的肩膀上，MIT 授權
+- X 上有人自己跑 291 題 MMLU-Pro 幫大家驗品質，有人順手[送 PR](https://x.com/khu/status/2105391806020284722) 讓舊顯卡也能跑
+- 然後我在一張 5090 上，把它接進自己每天在用的 agent
+
+雲端模型便宜歸便宜，但是廠商到最後要 IPO，Codex、Claude 還是會漲價。
+
+反觀半年前投資的這台 5090 沒變。它的價格倒是從 10 萬、12 萬、17 萬，一路漲到現在 22 萬。模型從 Qwen 3.6 27B、Qwen 3.8 27B 換到 Qwen 3.8 Flash Next，[Artificial Analysis 智力指數](https://artificialanalysis.ai/models/qwen3-8-flash-next)從 21、34 到 40。
+
+機器還是那個機器，智力卻一路往上長。
+
+---
+
+## 坦白說
+
+這篇的數字有幾個很明顯的限制。
+
+**第一，benchmark 是 Qwen 官方自己的表。** 我自己沒有跑品質 benchmark，只有算術、tool call、看圖、找驗證碼這種「能跑、沒壞」的測試。9/28 讓它寫一個 merge_intervals，過了 5 個邊界案例，但漏寫了我明確要求的測試範例。
+
+**第二，IQ3_S 比較少出錯，是使用觀察，不是對照實驗。** 兩段時間的 context、KV 精度、任務都不一樣。兩版真實請求的速度也一樣不是同條件：IQ3_XXS 那邊的 context 是兩倍長。
+
+**第三，1M 是硬撐出來的。** 模型原生訓練到 262,144，1M 是 YaRN 延伸 4 倍；KV 降到 q4_0，Strata 自己的測試顯示文件類 perplexity 在 1K 多 8%、8K 多 12%。三組驗證碼全對，只代表它「找得到」一句明顯的話，不代表它「讀得懂」整份文件。
+
+**第四，Strata 是一個人、一週的專案。** 一週三十個版本，代表迭代很快，也代表明天的版本可能改掉今天的行為。我每一版都留了前一版的 engine 和 config 備份。
+
+但它做對了一件事：**它證明了「32GB 顯卡 + 64GB RAM 跑 125B MoE」不是 demo，是可以每天開著用的服務。** 9/28 起它就是我 mini 上 OpenClaw 的預設模型。
 
 ---
 
 ## 關鍵洞察
 
-**MoE 時代，地端的瓶頸從 VRAM 移到 DRAM。** 規劃機器時先問「RAM 夠不夠放全部 expert」，再問「VRAM 能快取多少熱門 expert」。前者決定能不能跑，後者決定跑多快。
+**MoE 時代，地端的瓶頸從 VRAM 移到 DRAM。** 規劃機器時先問「RAM 夠不夠放全部 expert」，再問「VRAM 能快取多少熱門 expert」。
 
-**會學的 expert 快取，比單純 offload 重要。** 93.4% 的命中率，才是一張 32GB 卡能跑 75.8GB 模型還維持 100 tok/s 的原因。任何跟它搶 VRAM 的服務，都在直接扣它的速度——同卡跑 CosyVoice 時，expert 快取格數從 13,602 掉到 9,084，生成掉到 61.5 tok/s。
+**同一個模型，量化版本的選擇就是 RAM 的分配。** 64GB 上，IQ3_XXS 換到 1M context，IQ3_S 換到精度。日常跑 agent，少出錯比 context 長更值錢。
 
-**選模型看場景，不看參數量。** 多人共用的 coding server，27B dense 還是比較好的選擇。單人、長 context、要一次吃下整個 repo 的 agent，才是 125B MoE + Strata 的位置。
+**選模型看場景。** 多人共用的 server 選 27B dense；單人、要更強模型的個人 agent，才是 125B MoE + Strata 的位置。
 
-如果你手上也是 5090 + 64GB RAM，建議啦，先從 262K、int8 KV 開始。1M 那條路能走，但先想清楚你真的需要一次塞一百萬個 token。
+> 雲端的智力是租的，租金會漲；地端的機器是買的，智力會漲。
+
+---
+
+## 附錄：實測數據
+
+所有數字都在同一台機器：Core Ultra 7 265K、64GB DDR5-4800、RTX 5090 32GB、CUDA 12.9。速度都是單次量測。
+
+| 日期 | 版本與設定 | 數字 |
+|------|-----------|------|
+| 9/28 | 0.1.14、IQ3_XXS、32K、int8 KV | 短請求 87.7 到 118.8 tok/s，首 token 0.31 到 0.45 秒；768 token 長輸出 129.9 tok/s，同 prompt 重跑 146.9；VRAM 吃到 31,693 MiB，只剩 416 MiB |
+| 9/28 | 同上，旁邊掛著 Bonsai | 同一題長輸出 97.4 tok/s |
+| 9/30 | 跟 CosyVoice 共用 GPU | Strata 讓出 4GB VRAM，expert 快取格數從 13,602 掉到 9,084，生成 61.5 tok/s |
+| 9/30 晚 | 0.1.29、IQ3_XXS、262K、int8 KV | 384 token 生成 94.4 tok/s（前一版同條件 80.6）；GPU expert 快取命中率 93.4%；快取 11,340 格 |
+| 10/1 凌晨 | 0.1.30、IQ3_XXS、1M、q4_0 KV | 512 token 生成 101.9 tok/s；官方 serve 測試 51/51；30 萬 token 撈針 76 秒全對；99.9 萬 token 344 秒全對，RAM 剩 5.8 GiB |
+| 10/1 凌晨 | 同上，真實請求 | 實際 context 約 185K 到 188K；prefill 3,278 到 3,642 tok/s；長輸出生成 87.2 到 89.6 tok/s |
+| 10/1 清晨起 | 0.1.30、IQ3_S、262K、int8 KV | 32.81 GiB 專家常駐 RAM，快取 9,494 格；41 筆真實請求生成中位數 106.8 tok/s；prefill 3,160 到 4,250 tok/s；專家快取命中率 67.8% 到 96.5% |
 
 ---
 
@@ -234,23 +284,23 @@ Strata 的 IQ3_S 比 Q6 低 3.4 分。他在[下一則](https://x.com/VectorCros
 
 **Q: Strata 是什麼？跟 llama.cpp 有什麼不同？**
 
-Strata 是 GitHub 使用者 Niko1221 在 2026 年 9 月 24 日開源的推論引擎（MIT 授權），專門讓 Qwen3.8-Flash-Next 這個 125B 的混合專家模型（Mixture of Experts, MoE）跑在一張 12-24GB 的 NVIDIA 遊戲卡加 64GB RAM 上。它用了部分 llama.cpp / ggml 的元件，但做法不同：llama.cpp 的 MoE 卸載（MoE Offload）是把 expert 放 CPU RAM、用到時搬到 GPU 算；Strata 則把最常用的 expert 快取在 VRAM，沒命中的直接由 CPU 在 RAM 裡算，不搬 PCIe。在 RTX 5090 上實測 GPU expert 快取命中率 93.4%。
+Strata 是 GitHub 使用者 Niko1221 在 2026 年 9 月 24 日開源的推論引擎（MIT 授權），專門讓 Qwen3.8-Flash-Next 這個 125B 的混合專家模型（Mixture of Experts, MoE）跑在一張 12-24GB 的 NVIDIA 遊戲卡加 64GB RAM 上。它用了部分 llama.cpp / ggml 的元件，但做法不同：llama.cpp 的 MoE 卸載（MoE Offload）是把 expert 放 CPU RAM、用到時搬到 GPU 算；Strata 把最常用的 expert 快取在 VRAM，沒命中的直接由 CPU 在 RAM 裡算，並把 29GB 的 n-gram 查表留在 SSD。在 RTX 5090 上實測 GPU expert 快取命中率 93.4%。
+
+**Q: IQ3_XXS 和 IQ3_S 差在哪？該選哪個？**
+
+兩者都是 llama.cpp 家族的 3-bit 量化（Quantization）：IQ3_XXS 約 3.06 bit/權重，IQ3_S 約 3.44 bit/權重。跑 Qwen3.8-Flash-Next 時，IQ3_XXS 的 RAM+VRAM 需求是 47.0GB，IQ3_S 是 54.8GB。在 RTX 5090 + 64GB RAM 上，IQ3_XXS 可以把 context 開到 1M，IQ3_S 多吃 7.8GB 只能用到 262K。第三方用 291 題 MMLU-Pro 測，Strata 的 IQ3_S 得 65.3%，比 Unsloth 的 UD-Q6_K_XL（68.7%）低約 3 分；IQ3_XXS 壓得更多。日常跑 agent，作者實際使用時 IQ3_S 出錯較少，但那是使用觀察，不是對照實驗。
 
 **Q: RTX 5090 跑 Qwen3.8-Flash-Next 實際有多快？**
 
-在 Core Ultra 7 265K、64GB DDR5-4800、RTX 5090 32GB 的機器上，用 Strata 跑 IQ3_XXS 量化版（約 75.8GB）：Strata 0.1.30 生成 512 token 為 101.9 tok/s；0.1.14 在 32K context 下短請求 87.7 到 118.8 tok/s，首 token 0.31 到 0.45 秒。如果同一張卡還跑著其他 GPU 服務（例如 CosyVoice 語音合成），Strata 可用的 VRAM 變少，速度會掉到 61.5 tok/s。以上都是單次量測。2026 年 10 月 1 日改跑品質最好的 IQ3_S（262K context、int8 KV）後，一個多小時內 41 筆真實 agent 請求的生成速度中位數是 106.8 tok/s，但那不是同題對照。
+在 Core Ultra 7 265K、64GB DDR5-4800、RTX 5090 32GB 的機器上用 Strata 0.1.30：IQ3_XXS 生成 512 token 為 101.9 tok/s；IQ3_S（262K context、int8 KV）41 筆真實 agent 請求的生成速度中位數 106.8 tok/s，讀 prompt（Prefill）大約每秒 3,000 到 4,000 token。這些是約 64K token 的真實請求，不是塞滿 262K 的測速。如果同一張卡還跑著其他 GPU 服務，Strata 可快取的 expert 變少，速度會掉，例如跟 CosyVoice 共用時掉到 61.5 tok/s。
 
 **Q: Qwen3.8-Flash-Next 在 5090 上真的能開到 1M context 嗎？**
 
-能跑，但屬於實驗性質。模型原生訓練長度是 262,144 token，要到 1M 必須用 YaRN 旋轉位置編碼延伸（Rope Scaling）4 倍，並把 KV cache 從 int8 降到 4-bit（q4_0）才放得進 64GB RAM。實測做法是大海撈針測試（Needle-in-a-Haystack）：把一份 999,490 token 的超長文件丟進去，在 10%、50%、90% 的位置各藏一組驗證碼，問它三組是什麼。它三組全部答對，但讀完花了 344 秒，測試當下 RAM 只剩 5.8 GiB。這種測試只證明找得到，不代表長文件理解品質不變；Strata 自己的測試顯示 q4_0 KV 會讓文件類 perplexity 在 8K 多 12%。
+能跑，但屬於實驗性質。模型原生訓練長度是 262,144 token，要到 1M 必須用 YaRN 旋轉位置編碼延伸（Rope Scaling）4 倍，並把 KV cache 從 int8 降到 4-bit（q4_0）。實測做法是大海撈針測試（Needle-in-a-Haystack）：把一份 999,490 token 的文件丟進去，在 10%、50%、90% 的位置各藏一組驗證碼，三組全部答對，但讀完花了 344 秒，RAM 只剩 5.8 GiB。這種測試只證明找得到，不代表長文件理解品質不變；而且只有 IQ3_XXS 放得下，IQ3_S 就塞不進 64GB RAM。
 
-**Q: 5090 上應該跑 Qwen3.8-Flash-Next 還是 Qwen3.8-27B？**
+**Q: 為什麼 FreeToken 跑不動，Strata 卻可以？**
 
-看場景。多人共用：選 27B dense，同一張 5090 用 SGLang 單人 113.75 tok/s、四人並行總吞吐 425.44 tok/s，而 Strata 一次只服務一個請求。程式能力上兩者接近：Flash-Next 官方 SWE-bench Pro 62.5，27B 是 61.7。而且 Flash-Next 在 Strata 上跑的是量化版，會再扣分：第三方用同一組 291 題 MMLU-Pro 測，Strata 的 IQ3_S 拿 65.3%，Unsloth 的 UD-Q6_K_XL 拿 68.7%，差約 3 分。單人、需要超長 context（整個 repo、大量文件一次讀入）的個人 agent，才適合 Flash-Next + Strata，前提是機器有 64GB RAM。
-
-**Q: 跑 Strata 需要多少 RAM？為什麼 RAM 比顯卡重要？**
-
-Strata 官方需求是 64GB RAM；IQ3_XXS 的第一個模型檔 47GB 要整個載入 RAM，官方建議 RAM 至少要比它多約 10GB。原因是 RAM 放著全部 24,576 個 expert，VRAM 只是快取熱門的那幾千個——RAM 決定能不能跑，VRAM 決定跑多快。這讓地端推論的瓶頸從顯示記憶體（VRAM）轉到系統記憶體（DRAM），而 2026 年 8 月台灣 32GB DDR5 已經從約 3,000 元漲到近 13,000 元。
+FreeToken 是 2026 年 8 月 UC Berkeley 領頭發表的 MoE 推論系統，做法是把全部 expert 放在主機記憶體（Host RAM），論文裡的 RTX 5090 測試機配了 192GB DDR5。它支援 Qwen3.8-Flash-Next 的 FP8 或 NVFP4 版本，NVFP4 checkpoint 還有 135GB，而且那張 n-gram 查表要 47.7 GiB 固定在 RAM。RTX 5090 的 32GB VRAM 加 64GB RAM 總共 96GB，放不下。Strata 改用約 3-bit 的 IQ3 量化，並把 29GB 的 n-gram 查表留在 SSD 按需讀取，所以 64GB RAM 就跑得起來。
 
 ---
 
@@ -259,11 +309,16 @@ Strata 官方需求是 64GB RAM；IQ3_XXS 的第一個模型檔 47GB 要整個�
 - [MoE Offload 完全拆解：為什麼 671B 模型只吃 17GB VRAM 還能跑](/moe-offload-deepseek-v3-v4-local-inference-optimization/)
 - [5090 三個月從 10 萬變 17 萬：五條技術路徑壓低地端 AI 的硬體門檻](/memory-price-surge-local-ai-five-paths/)
 - [YouTube 逐字稿：千問3.8-27B 用了兩天說說感覺——RTX 5090 SGLang/vLLM/llama.cpp 實測](/youtube-qwen38-27b-rtx5090-sglang-vllm-mtp-transcript/)
+- [Qwen3.8-27B 開源：SWE-bench Pro 61.7 贏過 Opus 4.6 Max](/qwen-3-8-27b-open-weights-local-security/)
 - [單機跑得動 Tier 1 地端 Model 嗎？RTX Pro 6000 一週實驗 Day 1-2](/rtx-pro-6000-tier1-local-day1-2-glm52-deepseek-v4-flash/)
 
 ## 來源
 
 - [Strata（GitHub, Niko1221）](https://github.com/Niko1221/Strata)
 - [Qwen/Qwen3.8-Flash-Next model card（Hugging Face）](https://huggingface.co/Qwen/Qwen3.8-Flash-Next)
-- [MarkTechPost：Alibaba's Qwen Team Releases Qwen3.8-Flash-Next](https://www.marktechpost.com/2026/08/26/alibabas-qwen-team-releases-qwen3-8-flash-next-a-125b-multimodal-moe-with-6b-active-parameters-previewing-the-qwen4-architecture/)
+- [FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution（arXiv 2608.16157）](https://arxiv.org/html/2608.16157v1)
+- [FreeToken supported models](https://github.com/FlashML-org/FreeToken/blob/main/docs/models.md)
+- [RadixArk/Qwen3.8-Flash-Next-NVFP4](https://huggingface.co/RadixArk/Qwen3.8-Flash-Next-NVFP4)
+- [Artificial Analysis：Qwen3.8-Flash-Next](https://artificialanalysis.ai/models/qwen3-8-flash-next)、[Qwen3.8 27B](https://artificialanalysis.ai/models/qwen3-8-27b)、[Qwen3.6 27B](https://artificialanalysis.ai/models/qwen3-6-27b)
 - [Nigel Hungerford-Symes（@VectorCrossProd）：Strata IQ3_S 的 291 題 MMLU-Pro 測試](https://x.com/VectorCrossProd/status/2105124854169227592)
+- [llama-quantize 量化類型說明（IQ3_XXS / IQ3_S bpw）](https://manpages.debian.org/unstable/llama.cpp-tools/llama-quantize.1.en.html)
