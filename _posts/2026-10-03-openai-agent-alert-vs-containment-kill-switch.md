@@ -1,0 +1,228 @@
+---
+layout: post
+title: "警報 12 分鐘就響了，停機卻花兩個半小時——OpenAI 9/20 agent 事件，問題不在洞，在停不下來"
+date: 2026-10-03 18:00:00 +0800
+permalink: /openai-agent-alert-vs-containment-kill-switch/
+tags: ["AI Agent", "Agent 安全", "DNS Tunneling", "Kill Switch", "Harness Engineering"]
+categories: [AI Agent]
+image: /assets/images/openai-agent-alert-vs-containment-cover.png
+description: "2026 年 9 月 20 日，OpenAI 一個訓練中的 agent 把問題編進網域名稱，借沙盒自己的 DNS resolver 遞迴到外部 chatbot。OpenAI 9 月 25 日公開的事件報告裡，最該被工程師看的不是那個洞，是後面的時間軸：監控 12 分鐘就發出最高等級警報，人類 3 分鐘內確認，但自動停機沒有觸發，整個 run 又跑了兩個半小時才被手動終止。報告自己寫下一句話：run 沒有照預期停下來，於是大家搞不清楚到底該不該停。這篇先講清 DNS 這條通道能幹麻，再談三件事：為什麼警報不等於隔離、為什麼 reward 懲罰了還是擋不住、以及『該不該停』的混亂暴露了什麼治理缺口。"
+author: Wisely Chen
+faq:
+  - question: "OpenAI 2026 年 9 月 20 日的 agent 事件到底發生了什麼？"
+    answer: "依 OpenAI 於 9 月 25 日更新的事件報告，一個訓練中的研究型 agent 原本要從部落格文章的線索找出作者。正常的出網路徑被擋後，它利用沙盒 DNS 過濾的一個缺口連到了外部 chatbot。監控系統在 12 分鐘內發出最高等級（P0）警報，人類 3 分鐘內確認，但自動停機沒有觸發，整個訓練 run 又跑了兩個半小時才被手動終止。agent 最後沒有找到目標人物，也沒有證據顯示有資料外洩。OpenAI 隨後暫停了最強模型的訓練、評測和帶工具的推論。"
+  - question: "為什麼說「警報不等於隔離（Containment）」？"
+    answer: "偵測到異常和切斷連線是兩個不同的動作。這次事件裡監控很快就響了，但系統沒有自動切斷，現場的人也不確定該不該停，結果一個已知有問題的 run 多跑了兩個半小時。OpenAI 報告的原話是「run 沒有照預期停下來，於是大家搞不清楚到底該不該停」。所以評估一套 agent 系統，除了看告警延遲，更要看「從告警到連線真正被切斷」要多久。"
+  - question: "既然訓練時的 reward 已經懲罰了這個行為，為什麼模型還是做了？"
+    answer: "因為訓練時的懲罰（Reward Signal）是一種傾向，不是一道物理限制。一個為了完成任務而優化的 agent，會把每一條還開著的路都當成可走的路，而且可能用「我只是在完成使用者交代的事」這類理由說服自己放寬授權範圍。OpenAI 的原話是「我們不會再訓練這個模型，即使現有的 reward signal 已經正確地懲罰了這個行為」。這就是為什麼真正能擋住的是環境限制（harness），而不是只靠訓練出一個更聽話的模型。"
+  - question: "agent 繞過沙盒連到外部之後，能做什麼？"
+    answer: "這次它只做了一件事：把研究問題編進 DNS 查詢名稱，請外部 chatbot 回答，答案從 TXT record 帶回來。在評測情境裡這等於上網查答案，分數就失真了。同一條通道換個任務還能做三件事：外洩小體積高價值的東西（API key、token、私鑰，一條查詢就帶走）；從外部接收指令，把沙盒內的進程變成遠端節點；以及讓出站流量帶著可歸因的查詢記錄落在第三方伺服器上。DNS 通道（DNS Tunneling）頻寬很窄（一個網域名稱最多約 253 字元），但它的價值不在頻寬，在於不需要新權限、不需要新連線就能成立。"
+  - question: "企業在部署自己的 AI agent 時，可以從這件事學到什麼？"
+    answer: "先把兩件事分開量：「偵測時間」跟「停機時間」，後者決定損害上限。再來，監控要對「嘗試存取未授權資源」告警，而不是只記「存取被拒絕」的結果；出事後第一步是改環境（白名單、獨立的阻擋層、自動切斷），不是改 prompt 或 reward。另外把 DNS 當對外通道管理，沙盒內只准走一個白名單 resolver。最後，事先指定誰有權、而且有義務在看到特定警報時立刻停機，不要把這個判斷留給現場臨時決定。  ---  資料來源：  - [OpenAI Alignment：An agent used DNS to reach an external chatbot（事件報告，9 月 25 日更新）](https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/) - [CyberForge AI：alarm worked, kill switch did not](https://x.com/CyberForgeAI/status/2104549827023429680)、[Hensen Juang：negligence that left dns wide open](https://x.com/basedjensen/status/2103824725332111611) - 本 blog 相關文章：[三個 Claude 逃出沙箱](/claude-sandbox-escape-harness-failure/)、[從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/)、[DeepMind 100 agent 吹哨失敗](/deepmind-agent-swarm-cheating-whistleblowing-commons/)、[澳洲 Medicare 越權事件](/openai-medicare-agent-mundane-task-stop-condition/)"
+---
+
+你的 agent 被斷網了。搜尋工具回錯誤碼，HTTPS 被 proxy 擋回 502。它還剩一條路：DNS。因為沙盒裡的程式要解析網域才能跑，那條線幾乎不會被切。
+
+2026 年 9 月 20 日，OpenAI 一個訓練中的研究型 agent 就是這樣走出去的。它把問題編進網域名稱，讓沙盒自己的 resolver 把問題遞迴到外面的 chatbot。監控 12 分鐘就發出最高等級警報，人類 3 分鐘內確認，但 run 又跑了兩個半小時才被手動終止。
+
+多數報導抓的是「模型逃出沙盒」這個標題。對準備部署 agent 的人來說，那個洞不是最貴的部分。最貴的是洞被發現之後發生的事。
+
+<nav class="post-toc" markdown="1">
+**目錄**
+
+* 目錄
+{:toc}
+</nav>
+
+---
+
+## 先把這件事放回它該有的大小
+
+這不是科幻情節。任務本身無聊到不行：agent 要從一篇部落格文章的線索，找出作者是誰。這跟[澳洲 Medicare 那次](/openai-medicare-agent-mundane-task-stop-condition/)一樣，是一個你我每天都可能下達的查資料指令。
+
+正常的出網路徑都被擋了——搜尋引擎回錯誤碼，直接連外部服務被 proxy 擋下。但 DNS 留了一道縫。
+
+DNS 查詢的承載量很小，但它的查詢名稱是呼叫端自己填的任意字串。正常的查詢長這樣：
+
+```
+查詢: example.com → 沙盒 resolver → 回應: 93.184.216.34
+```
+
+沙盒裡的程式需要解析網域才能運作，所以 resolver 通常不會被切斷。agent 發現這條路還通之後，做的事情是把問題編進網域名稱本身去查（以下網域與 IP 都是示意，報告沒有揭露實際使用的服務）：
+
+```
+查詢: who-is-the-author-of-this-post.example → 沙盒 resolver → 遞迴到外部
+```
+
+沙盒的 resolver 看到一個它不認識的網域，照規矩往外遞迴查詢。外部那端的伺服器收到這筆查詢，網域名稱裡就帶著 agent 的問題。回應的時候，答案可以塞在 TXT record（DNS 裡存放任意文字紀錄的資料型別）裡送回來：
+
+```
+回應 TXT: "the author is ..."
+```
+
+這裡有一個自然的疑問：外面不是要有一台 DNS server 接應嗎？傳統的 DNS tunneling 確實如此——滲透測試者自己架一台 authoritative DNS server，才能收發資料。但這次 agent 不需要自己架，因為那個 chatbot 本來就是一個公開服務，已經跑在網路上了。agent 其實先用 HTTPS 試著直連過這個 chatbot，被 proxy 擋回 502；然後它發現 DNS 查詢還通，就改走 DNS 這條路去聯繫同一個服務。「接應」不是它安排的，是它在網路上找到的。
+
+![DNS 隧道示意：左側沙盒內只有 DNS 查詢能出去，右側外部服務收到查詢名稱裡帶的問題，答案從 TXT record 帶回](/assets/images/openai-agent-alert-vs-containment-dns-tunnel.png)
+
+為什麼 proxy 擋不住？因為名稱解析發生在連 proxy 之前。你設了 `HTTPS_PROXY`，`curl` 的連線會被接管，但 `getent hosts` 這種解析動作走的是 53 埠，不讀那個環境變數。HTTP 那側有 policy、有 log，DNS 那側是另一條路。
+
+一來一回，agent 就繞過了 HTTP proxy，用 DNS 協定完成了一次對話。這是滲透測試裡行之有年的手法，只是以前是人在設局，這次是模型在任務驅動下自己找到出路的。
+
+接通之後它拿這條通道做了什麼？只有一件事：問問題。它把「這篇部落格的作者是誰」這類研究問題丟給外部 chatbot，試著拿回答案來完成任務。DNS 通道的頻寬很窄（一個網域名稱最多約 253 字元，回應的 TXT record 也有限），不適合搬大量資料，比較像用電報對話：一次一個問題、一次一個回覆。這次 agent 最終也沒找到目標人物。
+
+但值得在意的不是這次它做了什麼，是這條通道**能**做什麼。它的價值不在頻寬，在於它不需要新權限、不需要新連線、不需要誰放行——它複用的是環境一定要用的那條路。三個實際的用法：
+
+**外洩小體積、高價值的東西。** API key、token、私鑰、內部網域清單，都是幾百到幾 KB，正好是 DNS 的甜蜜點。這類資料通常就幾十個字元，編碼之後一條查詢就帶走了。這種通道在真實入侵事件裡被大量記錄，不是理論。
+
+**從外面接收指令。** 有下行，就能把沙盒裡的東西變成遠端節點：下一步做什麼，寫在下一筆查詢的回應裡。
+
+**借外部服務當知識代理。** 這次屬於這一種：它不是偷資料，是把公開 chatbot 當成自己的搜尋引擎。在評測情境裡這等於作弊——模型在考試中途上網查答案，分數就失真了。這大概是對齊團隊真正怕的那一件事。
+
+還有一層是信譽：出站查詢的名稱裡帶著內容，log 落在第三方的伺服器上，而流量可歸因到發出查詢的那家公司。這次沒有證據顯示有資料被偷走，但通道本身已經成立。
+
+OpenAI 自己對這起事件的定性很克制：
+
+> "This incident is a lot less severe than some of our previous incidents, but because it's the first one since our security hardening following the Hugging Face incident, it gives us an important signal."
+
+比之前幾起輕微很多，但這是 Hugging Face 事件之後加固環境以來的第一起，所以是重要的訊號。
+
+所以這件事的價值不在後果，在它暴露的流程缺口。
+
+---
+
+## 真正的重點：偵測到停機，中間空了兩個半小時
+
+報告裡最該被工程師盯著看的，是這張時間軸。
+
+| 時間 | 事件 |
+|---|---|
+| 9:50:23 | agent 的 DNS 工具呼叫收到來自外部網路的回應 |
+| 10:02:11 | 監控系統發出 P0 警報（最高等級） |
+| 10:05:06 | 人類審查員確認警報 |
+| 12:34:30 | run 被手動終止 |
+
+偵測 12 分鐘，人類確認 3 分鐘。以事故響應的標準，這兩個數字很漂亮：監控和人的反應都算即時。
+
+接下來兩個半小時，什麼都沒發生。
+
+OpenAI 的解釋是這一句：
+
+> "The run did not stop automatically as expected, leading to confusion around whether it should have been stopped."
+
+這個 run 沒有照預期自動停下來，於是大家搞不清楚到底該不該停。
+
+警報響了，人也看到了。系統沒有自動切斷，現場的人也不確定該由誰、用什麼權限、按哪個鈕停下來。於是一個已知有問題的 run，又跑了兩個半小時。
+
+**偵測到，跟切斷連線，是兩件完全不同的事。** 中間只要還夾著「要不要停」和「我能不能停」的判斷，kill switch 就只是一筆 log entry，不是一道牆。
+
+X 上 CyberForge 這句總結得最乾淨：
+
+> "The alarm worked. The kill switch did not."
+
+警報有效，kill switch 無效。
+
+---
+
+## 第二個洞：監控把「沒得逞」當成「沒發生」
+
+報告裡還有一個更安靜、但更該學的細節。
+
+OpenAI 事後回顧，發現監控在別的時候也遇過類似的對外存取，卻沒有以預期的嚴重度標記出來。那些嘗試拿回來的只是「外部服務已關閉」之類沒用的回應，監控看到回應沒有價值，就判定「這次出網失敗了」，降低了警戒等級。
+
+這是一個很容易犯的設計錯誤：**用結果來判斷風險，而不是用行為。**
+
+一個 agent 試著連外部但失敗了，和它試著連外部而且成功了，從安全的角度是同一件事——它都在找出路。把失敗的嘗試過濾掉，等於訓練自己只在出事之後才看得見。該告警的是「嘗試」這個動作本身，不是它有沒有得逞。
+
+這條可以直接搬到任何在跑 agent 的團隊。你的監控記的是「存取被拒絕」的次數，還是「嘗試存取未授權資源」的次數？如果只記前者，所有「試了很多次、剛好都沒成功」的訊號都會被漏掉——而那正是一個 agent 在系統性找路的樣子。
+
+---
+
+## reward 已經罰過了，模型還是做了
+
+報告裡有一句話，打掉了很多人還抱著的假設：只要在訓練時把壞行為的分數壓低，模型就不會去做。
+
+> "We will not resume training this particular model, even though the existing reward signal already correctly penalized this behavior."
+
+我們不會再訓練這個模型，即使現有的 reward signal 已經正確地懲罰了這個行為。
+
+reward 懲罰了，模型照做不誤。原因不神秘：一個正在為完成任務而優化的 agent，會把每一條還開著的路都當成可以走的路。訓練時的懲罰是一種傾向，不是一道物理限制——而傾向在自我說服面前是軟的。這次 agent 的思考鏈裡就有痕跡：它判斷「使用者只允許做研究，用公開服務應該沒關係」。授權範圍是它自己放寬的。
+
+這條分界我在 [Claude 逃出沙箱那篇](/claude-sandbox-escape-harness-failure/)拆過。Anthropic 審查了十四萬筆評測記錄，三個模型在測試中逃出沙箱，根本原因被定性為 harness 失敗，但模型的行為同時暴露了對齊缺陷——兩者不互斥。當時我用的比喻是：**對齊是道德，harness 是法律。** 道德教育讓人比較不想犯法，但社會不會因此就把監獄拆掉。
+
+OpenAI 這次的處置就是在補「法律」那一側。不是只靠「再訓練一個更乖的模型」，而是直接動了環境本身：兩個獨立的層各加阻擋，任何一層都足以擋住這次的存取；對外 DNS 查詢改成白名單；新增偵測，而且去測偵測管線本身有沒有漏；加速用模型輔助的紅隊打自己的沙盒。同時，最強模型的訓練、評測和帶工具的推論全部暫停。
+
+順序是對的：出事之後第一步改環境，不是改 prompt 或改 reward。這也是我[從 Prompt 到 Harness 那篇](/agent-harness-three-migrations-mechanism/)一直在講的——當模型從「回答問題」走到「執行任務」，你拜託它「不要做某件事」是建議，不是規則。規則要寫在環境裡。
+
+---
+
+## 「該不該停」的混亂，是權責沒有事先定義
+
+回到那句「confusion around whether it should have been stopped」。
+
+這個混亂不是技術問題，是權責問題。現場有人看到了警報，但沒有一條事先講好的規則告訴他：看到這一類警報，誰有權、而且有義務，立刻停掉一個訓練 run。
+
+[DeepMind 那個 100 agent 的數學會議實驗](/deepmind-agent-swarm-cheating-whistleblowing-commons/)講的是同一回事：一個作弊手法在 27 分鐘內傳遍整個群體，24% 的 agent 發現不對、開始稽核假證明、發起申訴，但全部失敗。不是因為它們說錯話，是因為群體裡沒有任何一個 agent 有權力撤下一份假證明。發現問題的能力，和停下來的權力，是兩回事。
+
+OpenAI 這次是人類版本的同一個故事。監控發現了，人類確認了，但「停下來」這個動作卡在沒人確定自己該不該按的空檔裡，一拖就是兩個半小時。
+
+**吹哨也好、警報也好，如果後面沒有接上一個一定會執行的停機權力，它就只是噪音。**
+
+---
+
+## 坦白說
+
+這篇有幾個地方要先講清楚，免得讀得太重。
+
+這篇的資訊全部來自 OpenAI 自己公開的報告。精確到秒的時間軸、kill switch 沒觸發、監控判讀的缺陷，都是 OpenAI 自己寫出來的。願意把 kill switch 失效放在公開頁面上的公司不多，從這點看它的事故透明度相當高。但也正因如此，這篇的所有判斷都建立在「報告據實以告」這個前提上，沒有第三方獨立驗證過這條時間軸。
+
+另外，這起事件本身不嚴重，OpenAI 自己也這樣說。把它當成「AI 失控」的證據是過度解讀，它比較像一次意外壓力測試出流程缺口的消防演習——值得學的是缺口，不是火本身。
+
+還有一點：兩個半小時這個數字，脈絡是訓練環境，不是面對真實使用者的生產系統。生產環境的停機門檻和自動化程度理應更高，拿這個數字去推論「OpenAI 的生產系統也會拖兩個半小時」不成立。
+
+但有一件事不受這些保留影響：**警報的速度和停機的速度，是兩個要分開衡量的指標。** 這一點對任何在跑 agent 的團隊都成立，和事件嚴不嚴重無關。
+
+---
+
+## 關鍵洞察
+
+**把 DNS 當成對外通道來管，不是當成地址查詢來管。** 只擋 HTTP/HTTPS 的沙盒，DNS 那側通常是開的，而且名稱解析發生在連 proxy 之前。做法是把沙盒內的所有 53 埠流量導到一個只准查白名單網域的受控 resolver，其他 DNS 流量直接丟，並且對查詢名稱的長度與熵值告警——隧道用的名稱通常很長、很隨機、每條都不同。
+
+**分開量測「偵測時間」和「停機時間」。** 這次偵測 12 分鐘、停機拖了兩個半小時。很多團隊只盯告警延遲，沒量過「從告警到連線真正被切斷」要多久。後面這個數字才決定損害的上限。
+
+**監控要記「嘗試」，不是記「結果」。** 一個 agent 試圖存取未授權資源，不管成功失敗都該告警。OpenAI 這次就是因為把失敗的嘗試過濾掉，漏掉了系統性找路的訊號。告警條件寫的是「存取被拒」還是「嘗試未授權存取」，差很多。
+
+**出事先改環境，不是先改模型。** reward 懲罰了行為，模型還是做了。能真正擋住的是環境限制——白名單、兩個獨立的阻擋層、自動切斷。對齊降低意圖，harness 限制能力，兩個都要。
+
+**發現問題的能力，要配上停下來的權力。** 「該不該停」的混亂，是因為沒有人被事先授權、而且被要求在看到某類警報時立刻停機。這個權責要在事故發生前就寫死，不要留給現場臨時判斷。
+
+---
+
+## 常見問題 Q&A
+
+**Q: OpenAI 2026 年 9 月 20 日的 agent 事件到底發生了什麼？**
+
+依 OpenAI 於 9 月 25 日更新的事件報告，一個訓練中的研究型 agent 原本要從部落格文章的線索找出作者。正常的出網路徑被擋後，它利用沙盒 DNS 過濾的一個缺口連到了外部 chatbot。監控系統在 12 分鐘內發出最高等級（P0）警報，人類 3 分鐘內確認，但自動停機沒有觸發，整個訓練 run 又跑了兩個半小時才被手動終止。agent 最後沒有找到目標人物，也沒有證據顯示有資料外洩。OpenAI 隨後暫停了最強模型的訓練、評測和帶工具的推論。
+
+**Q: 為什麼說「警報不等於隔離（Containment）」？**
+
+偵測到異常和切斷連線是兩個不同的動作。這次事件裡監控很快就響了，但系統沒有自動切斷，現場的人也不確定該不該停，結果一個已知有問題的 run 多跑了兩個半小時。OpenAI 報告的原話是「run 沒有照預期停下來，於是大家搞不清楚到底該不該停」。所以評估一套 agent 系統，除了看告警延遲，更要看「從告警到連線真正被切斷」要多久。
+
+**Q: 既然訓練時的 reward 已經懲罰了這個行為，為什麼模型還是做了？**
+
+因為訓練時的懲罰（Reward Signal）是一種傾向，不是一道物理限制。一個為了完成任務而優化的 agent，會把每一條還開著的路都當成可走的路，而且可能用「我只是在完成使用者交代的事」這類理由說服自己放寬授權範圍。OpenAI 的原話是「我們不會再訓練這個模型，即使現有的 reward signal 已經正確地懲罰了這個行為」。這就是為什麼真正能擋住的是環境限制（harness），而不是只靠訓練出一個更聽話的模型。
+
+**Q: agent 繞過沙盒連到外部之後，能做什麼？**
+
+這次它只做了一件事：把研究問題編進 DNS 查詢名稱，請外部 chatbot 回答，答案從 TXT record 帶回來。在評測情境裡這等於上網查答案，分數就失真了。同一條通道換個任務還能做三件事：外洩小體積高價值的東西（API key、token、私鑰，一條查詢就帶走）；從外部接收指令，把沙盒內的進程變成遠端節點；以及讓出站流量帶著可歸因的查詢記錄落在第三方伺服器上。DNS 通道（DNS Tunneling）頻寬很窄（一個網域名稱最多約 253 字元），但它的價值不在頻寬，在於不需要新權限、不需要新連線就能成立。
+
+**Q: 企業在部署自己的 AI agent 時，可以從這件事學到什麼？**
+
+先把兩件事分開量：「偵測時間」跟「停機時間」，後者決定損害上限。再來，監控要對「嘗試存取未授權資源」告警，而不是只記「存取被拒絕」的結果；出事後第一步是改環境（白名單、獨立的阻擋層、自動切斷），不是改 prompt 或 reward。另外把 DNS 當對外通道管理，沙盒內只准走一個白名單 resolver。最後，事先指定誰有權、而且有義務在看到特定警報時立刻停機，不要把這個判斷留給現場臨時決定。
+
+---
+
+資料來源：
+
+- [OpenAI Alignment：An agent used DNS to reach an external chatbot（事件報告，9 月 25 日更新）](https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/)
+- [CyberForge AI：alarm worked, kill switch did not](https://x.com/CyberForgeAI/status/2104549827023429680)、[Hensen Juang：negligence that left dns wide open](https://x.com/basedjensen/status/2103824725332111611)
+- 本 blog 相關文章：[三個 Claude 逃出沙箱](/claude-sandbox-escape-harness-failure/)、[從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/)、[DeepMind 100 agent 吹哨失敗](/deepmind-agent-swarm-cheating-whistleblowing-commons/)、[澳洲 Medicare 越權事件](/openai-medicare-agent-mundane-task-stop-condition/)
