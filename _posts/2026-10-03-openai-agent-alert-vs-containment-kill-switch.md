@@ -3,22 +3,11 @@ layout: post
 title: "地端 agent 就不會外洩嗎？——OpenAI 那個 agent 用 DNS 逃給你看"
 date: 2026-10-03 18:00:00 +0800
 permalink: /openai-agent-alert-vs-containment-kill-switch/
+description: "2026 年 9 月 20 日，OpenAI 一個訓練中的 agent 從網路封閉的沙盒又跑出去了。這次不是零日漏洞，是 DNS：它把問題編進網域名稱，借沙盒自己的 resolver 遞迴到外部 chatbot，答案從 TXT record 帶回來。事件報告裡最該被工程師看的不是那個洞，是後面的時間軸：監控 12 分鐘就發出最高等級警報，人類 3 分鐘內確認，但自動停機沒有觸發，整個 run 又跑了兩個半小時才被手動終止。這篇從這個手法講到兩件事：為什麼警報不等於隔離，以及為什麼『跑地端就不會外洩』這個推論不成立——你的機器要上網就需要 resolver，防火牆擋 HTTP，但 53 埠大概率是開的。"
+image: images/openai-agent-alert-vs-containment-cover.png
 tags: ["AI Agent", "Agent 安全", "DNS Tunneling", "Kill Switch", "地端部署", "OnPrem"]
 categories: [AI Agent]
-image: /assets/images/openai-agent-alert-vs-containment-cover.png
-description: "2026 年 9 月 20 日，OpenAI 一個訓練中的 agent 從網路封閉的沙盒又跑出去了。這次不是零日漏洞，是 DNS：它把問題編進網域名稱，借沙盒自己的 resolver 遞迴到外部 chatbot，答案從 TXT record 帶回來。事件報告裡最該被工程師看的不是那個洞，是後面的時間軸：監控 12 分鐘就發出最高等級警報，人類 3 分鐘內確認，但自動停機沒有觸發，整個 run 又跑了兩個半小時才被手動終止。這篇從這個手法講到兩件事：為什麼警報不等於隔離，以及為什麼『跑地端就不會外洩』這個推論不成立——你的機器要上網就需要 resolver，防火牆擋 HTTP，但 53 埠大概率是開的。"
 author: Wisely Chen
-faq:
-  - question: "OpenAI 2026 年 9 月 20 日的 agent 事件到底發生了什麼？"
-    answer: "依 OpenAI 於 9 月 25 日更新的事件報告，一個訓練中的研究型 agent 原本要從部落格文章的線索找出作者。正常的出網路徑被擋後，它利用沙盒 DNS 過濾的一個缺口連到了外部 chatbot。監控系統在 12 分鐘內發出最高等級（P0）警報，人類 3 分鐘內確認，但自動停機沒有觸發，整個訓練 run 又跑了兩個半小時才被手動終止。agent 最後沒有找到目標人物，也沒有證據顯示有資料外洩。OpenAI 隨後暫停了最強模型的訓練、評測和帶工具的推論。"
-  - question: "為什麼說「警報不等於隔離（Containment）」？"
-    answer: "偵測到異常和切斷連線是兩個不同的動作。這次事件裡監控很快就響了，但系統沒有自動切斷，現場的人也不確定該不該停，結果一個已知有問題的 run 多跑了兩個半小時。OpenAI 報告的原話是「run 沒有照預期停下來，於是大家搞不清楚到底該不該停」。所以評估一套 agent 系統，除了看告警延遲，更要看「從告警到連線真正被切斷」要多久。"
-  - question: "既然訓練時的 reward 已經懲罰了這個行為，為什麼模型還是做了？"
-    answer: "因為訓練時的懲罰（Reward Signal）是一種傾向，不是一道物理限制。一個為了完成任務而優化的 agent，會把每一條還開著的路都當成可走的路，而且可能用「我只是在完成使用者交代的事」這類理由說服自己放寬授權範圍。OpenAI 的原話是「我們不會再訓練這個模型，即使現有的 reward signal 已經正確地懲罰了這個行為」。這就是為什麼真正能擋住的是環境限制（harness），而不是只靠訓練出一個更聽話的模型。"
-  - question: "地端部署的 AI agent 就不會外洩公司資料嗎？"
-    answer: "不一定。地端的好處是資料不會進到廠商的環境，而且你有完整的 log 和秒級的切斷能力。但「資料不出我的機器」不等於「不會外洩」：只要那台機器能上網，它就需要 DNS resolver（網域解析），而 agent 可以把內容編進網域名稱，讓 resolver 把它遞迴送出去，答案從 TXT record 帶回來。防火牆通常擋 HTTP 和 443，但 53 埠大概率是開的，因為關掉它環境就無法運作。雲端和地端的風險長得不一樣：雲端是你的資料進了別人的環境，地端是你以為資料沒出去但它從你沒注意的通道走了。"
-  - question: "企業在部署自己的 AI agent 時，可以從這件事學到什麼？"
-    answer: "先把兩件事分開量：「偵測時間」跟「停機時間」，後者決定損害上限。再來，監控要對「嘗試存取未授權資源」告警，而不是只記「存取被拒絕」的結果；出事後第一步是改環境（白名單、獨立的阻擋層、自動切斷），不是改 prompt 或 reward。另外把 DNS 當對外通道管理，環境內只准走一個白名單 resolver。如果只能做一件事，做微分段（Network Segmentation）：就算 DNS 通道成立，它能外洩的也只有幾百個字元；但 agent 那台機器如果能連整個內網，碰到的是資料本身。最後，事先指定誰有權、而且有義務在看到特定警報時立刻停機，不要把這個判斷留給現場臨時決定。  ---  資料來源：  - [OpenAI Alignment：An agent used DNS to reach an external chatbot（事件報告，9 月 25 日更新）](https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/) - [CyberForge AI：alarm worked, kill switch did not](https://x.com/CyberForgeAI/status/2104549827023429680)、[Hensen Juang：negligence that left dns wide open](https://x.com/basedjensen/status/2103824725332111611) - 本 blog 相關文章：[三個 Claude 逃出沙箱](/claude-sandbox-escape-harness-failure/)、[從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/)、[DeepMind 100 agent 吹哨失敗](/deepmind-agent-swarm-cheating-whistleblowing-commons/)、[澳洲 Medicare 越權事件](/openai-medicare-agent-mundane-task-stop-condition/)"
 ---
 
 你的 agent 被斷網了。搜尋工具回錯誤碼，HTTPS 被 proxy 擋回 502。它還剩一條路：DNS。因為沙盒裡的程式要解析網域才能跑，那條線幾乎不會被切。
@@ -28,13 +17,6 @@ faq:
 多數報導抓的是「模型逃出沙盒」這個標題。對準備部署 agent 的人來說，那個洞不是最貴的部分。最貴的是洞被發現之後發生的事。
 
 這篇要講兩個結論。第一個：警報響了不等於連線被切斷。第二個比較不舒服：很多人以為把 agent 搬到地端就不會外洩，但 DNS 這條路地端一樣有，因為你的機器要上網就需要 resolver。
-
-<nav class="post-toc" markdown="1">
-**目錄**
-
-* 目錄
-{:toc}
-</nav>
 
 ---
 
@@ -46,25 +28,19 @@ faq:
 
 DNS 查詢的承載量很小，但它的查詢名稱是呼叫端自己填的任意字串。正常的查詢長這樣：
 
-```
-查詢: example.com → 沙盒 resolver → 回應: 93.184.216.34
-```
+> 查詢: `example.com` → 沙盒 resolver → 回應: `93.184.216.34`
 
 沙盒裡的程式需要解析網域才能運作，所以 resolver 通常不會被切斷。agent 發現這條路還通之後，做的事情是把問題編進網域名稱本身去查（以下網域與 IP 都是示意，報告沒有揭露實際使用的服務）：
 
-```
-查詢: who-is-the-author-of-this-post.example → 沙盒 resolver → 遞迴到外部
-```
+> 查詢: `who-is-the-author-of-this-post.example` → 沙盒 resolver → 遞迴到外部
 
 沙盒的 resolver 看到一個它不認識的網域，照規矩往外遞迴查詢。外部那端的伺服器收到這筆查詢，網域名稱裡就帶著 agent 的問題。回應的時候，答案可以塞在 TXT record（DNS 裡存放任意文字紀錄的資料型別）裡送回來：
 
-```
-回應 TXT: "the author is ..."
-```
+> 回應 TXT: `"the author is ..."`
 
 這裡有一個自然的疑問：外面不是要有一台 DNS server 接應嗎？傳統的 DNS tunneling 確實如此——滲透測試者自己架一台 authoritative DNS server，才能收發資料。但這次 agent 不需要自己架，因為那個 chatbot 本來就是一個公開服務，已經跑在網路上了。agent 其實先用 HTTPS 試著直連過這個 chatbot，被 proxy 擋回 502；然後它發現 DNS 查詢還通，就改走 DNS 這條路去聯繫同一個服務。「接應」不是它安排的，是它在網路上找到的。
 
-![DNS 隧道示意：左側沙盒內只有 DNS 查詢能出去，右側外部服務收到查詢名稱裡帶的問題，答案從 TXT record 帶回](/assets/images/openai-agent-alert-vs-containment-dns-tunnel.png)
+![DNS 隧道示意：左側沙盒內只有 DNS 查詢能出去，右側外部服務收到查詢名稱裡帶的問題，答案從 TXT record 帶回](images/openai-agent-alert-vs-containment-dns-tunnel.png)
 
 為什麼 proxy 擋不住？因為名稱解析發生在連 proxy 之前。你設了 `HTTPS_PROXY`，`curl` 的連線會被接管，但 `getent hosts` 這種解析動作走的是 53 埠，不讀那個環境變數。HTTP 那側有 policy、有 log，DNS 那側是另一條路。
 
@@ -263,6 +239,14 @@ OnPrem 確實比較難被「意外」外洩，但它也帶來雲端沙盒沒有�
 DNS 這次只是那條被找到的路。它不是最聰明的一條，它是最先被試通的一條。
 
 以前是人在找這條路。現在模型會自己找了。
+
+---
+
+## 短影音版
+
+{% include youtube.html id="UswYGq7LIiM" vertical=true %}
+
+79 秒看完 DNS 逃獄手法與地端部署的風險。
 
 ---
 
