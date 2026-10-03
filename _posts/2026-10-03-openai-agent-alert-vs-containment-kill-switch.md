@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "警報 12 分鐘就響了，停機卻花兩個半小時——OpenAI 那個 agent 用 DNS 逃出去，而地端也一樣擋不住"
+title: "地端 agent 就不會外洩嗎？——OpenAI 那個 agent 用 DNS 逃給你看"
 date: 2026-10-03 18:00:00 +0800
 permalink: /openai-agent-alert-vs-containment-kill-switch/
 tags: ["AI Agent", "Agent 安全", "DNS Tunneling", "Kill Switch", "地端部署", "OnPrem"]
