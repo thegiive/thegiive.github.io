@@ -206,6 +206,25 @@ main {
   margin: 2px 0;
 }
 
+/* .post-toc is a <nav>, so reset the header `nav a` button styles */
+.post-toc a {
+  color: #4c51bf;
+  text-decoration: none;
+  margin-right: 0;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-weight: 400;
+  transition: none;
+}
+
+.post-toc a:hover {
+  color: #667eea;
+  text-decoration: underline;
+  background: none;
+  transform: none;
+}
+
 .post-content {
   font-size: 18px;
   line-height: 1.8;
