@@ -6,7 +6,7 @@ permalink: /ai-math-rhymes-with-ai-coding-do-we-still-read-papers/
 tags: [AI for Math, Lean, OpenAI, AlphaProof Nexus, AI Coding, AI 文學, SWE-bench, ImpossibleBench, Clarkesworld, 形式化驗證, 論文閱讀]
 categories: [AI 觀點]
 image: /assets/images/ai-math-rhymes-with-ai-coding-cover.png
-description: "10 月 6 日 OpenAI 一次公開 722 篇數學手稿，隔天 AHM 呼籲數學家停止與 OpenAI 合作，再隔天 AlphaProof Nexus 登上 Science，353 道 Erdős 問題解出 9 道。數學界這一週吵的是：Lean 驗過的那一句，是不是論文宣稱的那一句。同一輪爭論，文學從 2022 年 11 月起吵了約兩年，AI Coding 從 2025 年 4 月起吵了約十個月。這篇把三條時間線並排，回答一個問題：論文可以量產之後，我們該讀的是什麼。"
+description: "10 月 6 日 OpenAI 一次公開 722 篇數學手稿，隔天 AHM 呼籲數學家停止與 OpenAI 合作，再隔天 AlphaProof Nexus 登上 Science，353 道 Erdős 問題解出 9 道。數學界這一週吵的是：Lean 驗過的那一句，是不是論文宣稱的那一句。同一輪爭論，文學從 2022 年 11 月起吵了約兩年，AI Coding 從 2025 年 4 月起吵了約十個月。這篇把三條時間線並排，分成四個階段，回答一個問題：論文可以量產之後，我們該讀的是什麼。"
 author: Wisely Chen
 faq:
   - question: "Lean 驗證過的 AI 數學證明，可以直接相信嗎？"
@@ -14,7 +14,7 @@ faq:
   - question: "OpenAI 的 Navier-Stokes 證明被推翻了嗎？"
     answer: "沒有。OpenAI 在 2026 年 9 月 8 日宣布的是帶外力版本的爆破證明，不是千禧年大獎難題的完整解。目前的爭議是 Lean 版和自然語言版的關鍵引理表述不同：數學家 Francesco Maggi 轉述審查中的同行看法，Lean 版較弱但能編譯、目前看來沒有錯，自然語言版較強但有些陳述不正確或沒證好。審查還在進行。"
   - question: "AI 數學、AI Coding、AI 文學的爭議像在哪裡？"
-    answer: "像在「驗證通過不等於意圖達成」，而且發生的順序很像：先拿產量當成果，接收方被灌爆後關門，接著發現檢查靠不住。AI 文學這邊，科幻雜誌 Clarkesworld 在 2023 年 2 月 20 日停止收稿，關閉前那個月收到 500 篇機器寫的投稿；OpenAI 的 AI 文字偵測器只能正確標出 26% 的 AI 文字，2023 年 7 月 20 日下架。AI Coding 這邊，2025 年 10 月的 ImpossibleBench 論文量到 GPT-5 在 Oneoff-SWEbench 變體上有 76% 的比例會走捷徑通過與規格矛盾的測試。AI 數學這邊，形式化過程中命題可能變弱，Lean 照樣通過。三邊的共同點是：檢查器只保證它檢查的那個東西，命題和原始意圖之間的翻譯仍是人的工作。"
+    answer: "像在「驗證通過不等於意圖達成」，而且人的反應順序很像，可以分成四個階段：震撼（拿產量當成果）、過載（審查的人撐不住，關門）、磨合（發現過了檢查不等於做對）、共存（重新設計 review）。AI 文學這邊，科幻雜誌 Clarkesworld 在 2023 年 2 月 20 日停止收稿，關閉前那個月收到 500 篇機器寫的投稿；OpenAI 的 AI 文字偵測器只能正確標出 26% 的 AI 文字，2023 年 7 月 20 日下架。AI Coding 這邊，2025 年 10 月的 ImpossibleBench 論文量到 GPT-5 在 Oneoff-SWEbench 變體上有 76% 的比例會走捷徑通過與規格矛盾的測試。AI 數學這邊，形式化過程中命題可能變弱，Lean 照樣通過。三邊的共同點是：檢查器只保證它檢查的那個東西，命題和原始意圖之間的翻譯仍是人的工作。"
   - question: "數學家為什麼呼籲停止與 OpenAI 合作？"
     answer: "呼籲來自 Association for Human Mathematics（AHM）2026 年 10 月 7 日的聲明，由 Terence Tao 在自己的 blog 以 guest post 轉貼。聲明的重點不是證明對錯，而是程序：OpenAI 在 10 月 6 日一次釋出 700 多個檔案，聲明認為這是展示力量而非學術，並強調沒有數學家要求過這份工作。更早的 9 月 11 日，25 位 Fields 獎得主也聯署過宣言〈A Severe Misalignment of AI in Mathematics〉。"
   - question: "論文可以量產之後，還需要讀論文嗎？"
@@ -84,23 +84,22 @@ Bastounis、Circelli、Hansen 三位作者 10 月 6 日放上 arXiv 的論文（
 
 再往前推，文學更早走過一輪。ChatGPT 在 2022 年 11 月上線，三個月後，科幻雜誌就被機器投稿灌到停止收稿。
 
-我把三條線的事件並排：
+我把三條線的事件並排，照人的反應分成四個階段：震撼、過載、磨合、共存。
 
-| 韻腳 | AI 文學（2022 年 11 月起，約兩年） | AI Coding（2025 年 4 月到 2026 年 2 月） | AI 數學（2024 年就有議題，2026 年 9 月到 10 月爆發） |
+| 階段 | AI 文學（2022 年 11 月起，約兩年） | AI Coding（2025 年 4 月到 2026 年 2 月） | AI 數學（2024 年就有議題，2026 年 9 月到 10 月爆發） |
 |------|------|------|------|
-| 起點 | 2022 年 11 月 ChatGPT 上線 | Thorsten Ball 2025 年 4 月 15 日發表〈How to Build an Agent〉，副標 The Emperor Has No Clothes，不到 400 行 | 2024 年 7 月 25 日，AlphaProof 和 AlphaGeometry 2 做到 IMO 銀牌水準 |
-| 行數當成果 | 2023 年 2 月，Amazon 出現 200 多本把 ChatGPT 列為作者的電子書 | 2025 年 4 月 29 日 Nadella 說微軟也許有 20% 到 30% 的程式碼是 AI 寫的；Cursor 的 FastRender 瀏覽器（2026 年 1 月）約三百萬行；Anthropic 的 C 編譯器（2026 年 2 月 5 日）約 10 萬行 Rust | Navier-Stokes 約 10,000 個 agent；6 階半群分類，Lean 超過 500 萬行；OpenAI 一次 722 篇 |
-| 倒貨後關門 | 2023 年 2 月 20 日 Clarkesworld 停止收稿；2023 年 9 月 Amazon 把自助出版限制在每天 3 本 | curl 2025 年 5 月開始直接封鎖 AI 灌水回報，bug bounty 1 月 31 日終止；2026 年 1 月，tldraw 開始自動關閉所有外部 PR | 25 位 Fields 獎得主聯署宣言；AHM 呼籲停止與 OpenAI 合作 |
-| 通過檢查不等於做對 | OpenAI 的 AI 文字偵測器只能正確標出 26% 的 AI 文字，2023 年 7 月 20 日下架 | ImpossibleBench（2025 年 10 月）：GPT-5 在其中一個變體（Oneoff-SWEbench）上的作弊率是 76% | Navier-Stokes 的 Lean 版引理比論文弱；DeepMind 的 100 agent 實驗裡，agent 用 local notation 把定理陳述重新定義掉 |
-| 分數要看怎麼量 | 2024 年 11 月的研究說讀者給 AI 詩的評分比名家高，評分的是非專業讀者 | SWE-bench Verified 是從 2,294 題裡篩出來的 500 題；OpenAI 自己稽核後不再用它 | AlphaProof Nexus：9 除以 353，約 2.5%。OpenAI：約 4,000 道題，整理出 372 個結果家族 |
-| 人的工作往上移 | 2024 年 1 月芥川賞得主九段理江說，得獎作大約 5% 直接出自生成式 AI | 2025 年 9 月，GitHub 開源 Spec Kit；我們的 ATPM 把 PRD 當 Single Source of Truth | Tao 的「Math 2.0」；顧問小組的揭露建議 |
-| 迴圈其實很薄 | 沒找到對應的事件 | mini-swe-agent 的 agent 本體約 100 行 Python，除了 bash 沒有別的工具，SWE-bench Verified 做到 74% 以上 | AlphaProof Nexus 論文摘要自己寫：只交替做「LLM 生成、Lean 驗證」的基本 agent，也複現了 Erdős 的成果，只是在最難的題上成本較高 |
+| 1 震撼：拿 AI 碾壓性的數字當成果 | 2023 年 2 月，Amazon 出現 200 多本把 ChatGPT 列為作者的電子書 | 2025 年 4 月 29 日 Nadella 說微軟也許有 20% 到 30% 的程式碼是 AI 寫的；Cursor 的 FastRender 瀏覽器（2026 年 1 月）約三百萬行；Anthropic 的 C 編譯器（2026 年 2 月 5 日）約 10 萬行 Rust | Navier-Stokes 約 10,000 個 agent；6 階半群分類，Lean 超過 500 萬行；OpenAI 一次 722 篇 |
+| 2 過載：審查的人撐不住，直接關門 | 2023 年 2 月 20 日 Clarkesworld 停止收稿；2023 年 9 月 Amazon 把自助出版限制在每天 3 本 | curl 2025 年 5 月開始直接封鎖 AI 灌水回報，bug bounty 1 月 31 日終止；2026 年 1 月，tldraw 開始自動關閉所有外部 PR | 25 位 Fields 獎得主聯署宣言；AHM 呼籲停止與 OpenAI 合作 |
+| 3 磨合：摸清彼此的問題，過檢查不等於做對 | OpenAI 的 AI 文字偵測器只能正確標出 26% 的 AI 文字，2023 年 7 月 20 日下架；2024 年 11 月的研究說讀者給 AI 詩的評分比名家高，評分的是非專業讀者 | ImpossibleBench（2025 年 10 月）：GPT-5 在其中一個變體（Oneoff-SWEbench）上的作弊率是 76%；SWE-bench Verified 被 OpenAI 自己稽核後停用 | Navier-Stokes 的 Lean 版引理比論文弱；DeepMind 的 100 agent 實驗裡，agent 用 local notation 把定理陳述重新定義掉；AlphaProof Nexus 的 9 題，分母是 353 |
+| 4 共存：重新思考真正的 review 模式 | 2024 年 1 月芥川賞得主九段理江說，得獎作大約 5% 直接出自生成式 AI | 2025 年 9 月，GitHub 開源 Spec Kit；我們的 ATPM 把 PRD 當 Single Source of Truth；2026 年 1 月，Linus Torvalds 和 DHH 這樣的懷疑派也開始用 | 還沒走到。目前看得到的是 Tao 的「Math 2.0」和顧問小組的揭露建議 |
 
-三條線的順序很像：先有人拿產量當成果，接收的一方被灌爆後關門，接著大家發現檢查靠不住，最後連量尺本身都被拿出來檢討。下面照這個順序拆。
+下面一個階段一個階段拆。
 
 ---
 
-## 韻腳一：行數當成果
+## 階段一：震撼
+
+第一個反應是被數字嚇到，然後把數字當成果。
 
 文學最早。2023 年 2 月，Reuters 報導 Amazon 的 Kindle 商店出現 200 多本把 ChatGPT 列為作者或共同作者的電子書。成果的單位從「寫了什麼」變成「上架幾本」。
 
@@ -122,7 +121,9 @@ Coding 這邊，最早的版本是比例。2025 年 4 月 29 日，微軟 CEO Sa
 
 ---
 
-## 韻腳二：倒貨後關門
+## 階段二：過載
+
+產出變便宜，審查的人先撐不住，直接關門。
 
 2023 年 2 月 20 日，科幻雜誌 Clarkesworld 停止收稿。主編 Neil Clarke 說，關閉前那個月收到 700 篇正常投稿、500 篇機器寫的。同年 9 月，Amazon 把自助出版限制在每天 3 本。
 
@@ -138,7 +139,9 @@ AHM 那句「沒有數學家要求過這份工作」，是同一個抱怨。722 
 
 ---
 
-## 韻腳三：通過檢查不等於做對
+## 階段三：磨合
+
+這個階段是兩邊開始摸清對方哪裡會出問題。最先被摸清的一件事：過了檢查，不等於做對。
 
 三個領域各有自己的檢查器，硬度差很多。
 
@@ -160,9 +163,7 @@ Navier-Stokes 這次溫和得多，沒有人指控 OpenAI 的 Lean 證明動了�
 
 **只要過關條件是機器可判定的，模型就會往過關條件走，不會往條件背後的意圖走。**
 
----
-
-## 韻腳四：分數要看怎麼量
+量尺本身也在這個階段被拿出來檢討。
 
 2024 年 11 月，Scientific Reports 刊出 Porter 和 Machery 的研究：1,634 位受試者分辨 AI 詩和名家詩，正確率 46.6%，而且給 AI 詩的評分更高。標題可以寫成「AI 詩贏過名家」。但受試者是非專業讀者，AI 詩是 ChatGPT 3.5 模仿名家風格寫的。量到的是一般讀者的偏好。
 
@@ -174,6 +175,22 @@ Coding 這邊的量尺是 SWE-bench Verified，從原版 2,294 題裡篩出來�
 
 ---
 
+## 階段四：共存
+
+走到這裡，爭論的重點從「能不能用」變成「怎麼一起做」。
+
+文學這邊，2024 年 1 月拿下芥川賞的九段理江說，得獎作大約 5% 直接出自生成式 AI。
+
+Coding 這邊走得最遠。2025 年 9 月，GitHub 開源 Spec Kit，做法是先寫規格，再讓 agent 寫 code。原本最懷疑的人也開始用。Linus Torvalds 在 2024 年 10 月還說 AI 產業九成是行銷、一成是現實，2026 年 1 月，他在自己的業餘專案 AudioNoise 裡用 vibe coding 寫了一個 Python 視覺化工具。DHH 在 2026 年 1 月 7 日發表〈Promoting AI agents〉，說 agent 已經能對正式的 codebase 做出貢獻。
+
+兩個人都留了但書。Linus 在 2025 年 11 月說 vibe coding 不適合 kernel 這類正式專案。DHH 在同一篇文章裡說，純 vibe coding 對專業工作還只是願景，行得通的是有人監督的協作。
+
+共存不是全盤接受，是知道哪裡能用、哪裡要人盯。
+
+數學還沒走到這一步。目前看得到的是 Tao 提的「Math 2.0」，和顧問小組建議釋出時揭露模型、prompt、算力和選題方式。
+
+---
+
 ## 數學也不是這個月才開始
 
 數學這條線，AI 的議題早就有了，只是之前是零星事件。
@@ -182,7 +199,7 @@ Coding 這邊的量尺是 SWE-bench Verified，從原版 2,294 題裡篩出來�
 - 2024 年 12 月 20 日，Epoch AI 才揭露數學基準 FrontierMath 是 OpenAI 出資的，不少出題的數學家事前不知情。
 - 2025 年 10 月，OpenAI 的 Kevin Weil 發文說 GPT-5 解掉 10 道 Erdős 未解問題。經營 erdosproblems.com 的 Thomas Bloom 出面說明，那些題只是他自己不知道有解，GPT-5 找到的是文獻裡已經發表的答案。貼文後來刪除。
 
-這三件事分別對得上起點、分數要看怎麼量、通過檢查不等於做對。差別是它們散在一年多裡，各發生一次。2026 年 9 月到 10 月，是所有韻腳在一個月內一起出現。
+照四個階段看，第一件是震撼，後兩件已經是磨合。差別是它們散在一年多裡，各發生一次。2026 年 9 月到 10 月，是前三個階段在一個月內一起出現。
 
 ---
 
@@ -218,9 +235,9 @@ Coding 這邊的量尺是 SWE-bench Verified，從原版 2,294 題裡篩出來�
 
 AI Coding 走過的路是這樣：程式碼變便宜之後，沒有人能逐行讀完 agent 的產出，讀的重心移到規格和驗收條件。ATPM 把 PRD 當 [Single Source of Truth](/atpm-a-real-production-vibe-coding-process/)，是同一個邏輯：程式碼可以重生，PRD 寫錯了，後面全錯。
 
-文學那邊也有類似的訊號：2024 年 1 月拿下芥川賞的九段理江說，得獎作大約 5% 直接出自生成式 AI。
+照這四個階段，Coding 已經走到共存，數學現在在磨合。
 
-論文現在走到同一個位置。一個晚上 722 篇，逐篇讀證明不可能。
+論文現在走到 Coding 走過的位置。一個晚上 722 篇，逐篇讀證明不可能。
 
 如果你也每週讀 AI 論文，讀法可以改成先看三樣：
 
@@ -269,7 +286,7 @@ AI Coding 走過的路是這樣：程式碼變便宜之後，沒有人能逐行�
 
 **Q: AI 數學、AI Coding、AI 文學的爭議像在哪裡？**
 
-像在「驗證通過不等於意圖達成」，而且發生的順序很像：先拿產量當成果，接收方被灌爆後關門，接著發現檢查靠不住。AI 文學這邊，科幻雜誌 Clarkesworld 在 2023 年 2 月 20 日停止收稿，關閉前那個月收到 500 篇機器寫的投稿；OpenAI 的 AI 文字偵測器只能正確標出 26% 的 AI 文字，2023 年 7 月 20 日下架。AI Coding 這邊，2025 年 10 月的 ImpossibleBench 論文量到 GPT-5 在 Oneoff-SWEbench 變體上有 76% 的比例會走捷徑通過與規格矛盾的測試。AI 數學這邊，形式化過程中命題可能變弱，Lean 照樣通過。三邊的共同點是：檢查器只保證它檢查的那個東西，命題和原始意圖之間的翻譯仍是人的工作。
+像在「驗證通過不等於意圖達成」，而且人的反應順序很像，可以分成四個階段：震撼（拿產量當成果）、過載（審查的人撐不住，關門）、磨合（發現過了檢查不等於做對）、共存（重新設計 review）。AI 文學這邊，科幻雜誌 Clarkesworld 在 2023 年 2 月 20 日停止收稿，關閉前那個月收到 500 篇機器寫的投稿；OpenAI 的 AI 文字偵測器只能正確標出 26% 的 AI 文字，2023 年 7 月 20 日下架。AI Coding 這邊，2025 年 10 月的 ImpossibleBench 論文量到 GPT-5 在 Oneoff-SWEbench 變體上有 76% 的比例會走捷徑通過與規格矛盾的測試。AI 數學這邊，形式化過程中命題可能變弱，Lean 照樣通過。三邊的共同點是：檢查器只保證它檢查的那個東西，命題和原始意圖之間的翻譯仍是人的工作。
 
 **Q: 數學家為什麼呼籲停止與 OpenAI 合作？**
 
@@ -290,8 +307,6 @@ AI Coding 走過的路是這樣：程式碼變便宜之後，沒有人能逐行�
 - Tsoukalas et al.，[Advancing Mathematics Research with AI-Driven Formal Proof Search](https://arxiv.org/abs/2605.22763)（arXiv 2605.22763；[Science 版](https://www.science.org/doi/10.1126/science.aej2213)）
 - Bartosz Naskręcki，[2026 年 10 月 2 日貼文](https://x.com/nasqret/status/2106136282061574579)
 - Vals AI，[Thomson 問題貼文](https://x.com/ValsAI/status/2104757086462914888)
-- Thorsten Ball，[How to Build an Agent](https://ampcode.com/how-to-build-an-agent)
-- [mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent)（GitHub README）
 - Zhong, Raghunathan, Carlini，[ImpossibleBench](https://arxiv.org/abs/2510.20270)（arXiv 2510.20270）
 - The Register，[Cursor used agents to write a browser](https://www.theregister.com/2026/01/22/cursor_ai_wrote_a_browser/)
 - Nicholas Carlini，[Building a C compiler with a team of parallel Claudes](https://www.anthropic.com/engineering/building-c-compiler)
@@ -306,6 +321,8 @@ AI Coding 走過的路是這樣：程式碼變便宜之後，沒有人能逐行�
 - Smithsonian Magazine，[This Award-Winning Japanese Novel Was Written Partly by ChatGPT](https://www.smithsonianmag.com/smart-news/this-award-winning-japanese-novel-was-written-partly-by-chatgpt-180983641/)
 - TechRepublic，[Microsoft CEO Nadella: 20% to 30% of Our Code Was Written by AI](https://www.techrepublic.com/article/news-microsoft-meta-code-written-by-ai/)
 - The Register，[Curl project founder snaps over deluge of time-sucking AI slop bug reports](https://www.theregister.com/2025/05/07/curl_ai_bug_reports/)
+- It's FOSS，[Linus Torvalds Spent Years Dismissing AI, Only to Vouch for It](https://itsfoss.com/news/linus-torvalds-on-ai/)
+- DHH，[Promoting AI agents](https://world.hey.com/dhh/promoting-ai-agents-3ee04945)
 - The Register，[Stack Overflow bans ChatGPT](https://www.theregister.com/2022/12/05/stack_overflow_bans_chatgpt/)
 - Google DeepMind，[AI achieves silver-medal standard solving International Mathematical Olympiad problems](https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level)
 - TechCrunch，[AI benchmarking organization criticized for waiting to disclose funding from OpenAI](https://techcrunch.com/2025/01/19/ai-benchmarking-organization-criticized-for-waiting-to-disclose-funding-from-openai)
