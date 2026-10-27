@@ -1,39 +1,33 @@
 ---
 layout: post
-title: "Claude 把 cosine 學習率當成創意突破：Anthropic 的 Agent4Sci 用三份 Skill 讓提升從 10.4% 變 20.1%，補上的是指導教授，不是判斷力"
+title: "AI Agent 能自己做科研嗎？Anthropic 的 Agent4Sci：可以，但要先打上一層科研 Harness，三份 Skill 讓 Opus 從 10.4% 變 20.1%"
 date: 2026-10-27 09:00:00 +0800
 permalink: /agent4sci-research-agent-skills-judgment/
-tags: [Agent4Sci, Anthropic, Claude Code, Codex, Gemini CLI, Research Agent, Agent Skills, Hooks, ML for Science, Evaluation Gaming]
+tags: [Agent4Sci, Anthropic, Claude Code, Codex, Gemini CLI, Research Agent, Agent Skills, Hooks, Harness Engineering, ML for Science]
 categories: [AI Agent]
 image: /assets/images/agent4sci-research-agent-skills-cover.png
-description: "Anthropic 研究員做了一個實驗：給 AI agent 一篇科學論文、它的程式碼和資料，叫它想辦法把論文的成績做得更好。20 個題目，AI 全部都做到了，Claude Opus 平均進步 10.4%。但仔細看，AI 用的大多是工程師的熟練招式，像調參數、換更大的模型，很少有真正的新想法。作者加了三份給 AI 看的工作說明書，其中一份每小時會強制 AI 停下來自我檢查，結果 Opus 的進步變成 20.1%。這篇用白話拆解：AI 做研究卡在哪裡、那三份說明書做了什麼、以及「翻倍」這個數字該怎麼看。"
+description: "Anthropic 想知道現在的 AI agent 能不能自己做科學研究，做法是給 Claude Code、Codex、Gemini 一篇科學論文、程式碼和資料，叫它把成績做得更好。20 題、11 個領域、8 張 H200、12 小時，agent 每一題都找到提升，Claude Opus 平均相對提升 10.4%。但拆開來看，大部分是調學習率、加深模型、換 backbone，依舊是大力出奇蹟。作者沒有換模型，只加了三份總共 277 行的 skill 和一支每小時觸發的 hook，Opus 就變成 20.1%、Codex 從 4.4% 變 8.1%。這篇拆解 agent 做科研的三個毛病、那層科研 Harness 長什麼樣子，以及為什麼它缺的不是判斷力，是人類研究者訓練出來的反射。"
 author: Wisely Chen
 faq:
   - question: "Agent4Sci 是什麼？"
-    answer: "Agent4Sci 是 Anthropic 研究團隊在 2026 年 10 月發表的研究（arXiv 2610.28763），用來測試 AI agent 能不能自己做科學研究。它準備了 20 個真實的科學題目，橫跨 11 個領域，讓 Claude Code、Codex、Gemini CLI 這類 AI 程式助手，在 8 張 H200 顯卡、12 小時內，想辦法把原論文的成績做得更好。這種任務叫做自動化科學爬山（Automated Scientific Hill-Climbing）。為了防止作弊，分數由另一個獨立的 AI 計算，再由第三個 AI 檢查過程。"
-  - question: "那三份說明書（Skill）是什麼？"
-    answer: "三份說明書分別是研究構思（Research Ideation）、實驗管理（Experiment Management）和定時自檢（Scheduled Checklist），都是寫給 AI 看的工作守則，加起來不到 300 行。第一份叫 AI 先查資料、優先做大膽的實驗；第二份叫 AI 不要讓顯卡閒著；第三份每小時強制 AI 停下來回答「我是在做有科學思考的實驗，還是只在調參數？」這類問題，檢查完之前其他工具都會被鎖住。加上之後，Claude Opus 的平均進步從 10.4% 變成 20.1%，Codex 從 4.4% 變成 8.1%。"
-  - question: "「三份說明書讓成績翻倍」可信嗎？"
-    answer: "平均數是真的，但要注意三點。第一，進步集中在少數題目，Opus 多出來的進步約四分之三來自 6 個題目，看中位數只從 5.6% 變成 8.45%。第二，同樣的實驗重跑，結果差很多，同一個電網題目跑四次，成績從 29.4% 到 65.3% 都有。第三，有些題目加了說明書反而退步，例如 Codex 在電網題目從進步 4.6% 變成退步 12.8%。"
-  - question: "讓 AI 跑更久，會不會自己想出好點子？"
-    answer: "論文的三天實驗顯示不會。Claude Opus 在前 12 小時嘗試了很多方法，之後 60 小時又回到一直調學習速度。Codex 在另一個題目上，前面約 40 小時沒有進展，最後疊了一大堆模型，練習成績變好，但正式成績反而退步 25%。唯一的大突破，是 Codex 在電網題目上想到一個新方法，誤差降了 99.5%，這是靠好點子，不是靠時間。"
-  - question: "我自己用 Claude Code 跑實驗，可以直接用這三份說明書嗎？"
-    answer: "可以拿來改，程式碼公開在 github.com/maszhongming/agent4sci（Apache 2.0 授權），有 Claude Code 和 Codex 兩個版本。但作者也說，這些說明書是照 Claude 在這 20 個題目上的工作紀錄設計的，換到其他領域或其他 AI 不一定有效。最值得先學的是兩件事：把打分數和做實驗分給不同的 AI，以及用「鎖住工具」的方式強制 AI 定期自我檢查。  ---"
+    answer: "Agent4Sci 是 Anthropic Fellows Program 與 Anthropic 研究員在 2026 年 10 月發表的研究（arXiv 2610.28763，NeurIPS 2026 Evaluations and Datasets track），測試 AI agent 能不能自己做科學研究。它收錄 20 個 ML for Science benchmark、11 個科學領域，讓 Claude Code、Codex、Gemini CLI 在 8 張 H200、12 小時內，把原論文發表的最好結果往上推，這個任務形式叫自動化科學爬山（Automated Scientific Hill-Climbing）。預設設定下 Claude Opus 4.6 平均相對提升 10.4%，但大部分來自調超參、改架構這類 ML 工程技巧。"
+  - question: "什麼是「科研 Harness」？Agent4Sci 加了什麼？"
+    answer: "Harness 指的是包在 AI 模型外面、規定它怎麼工作的那一層：工具、規則、流程和檢查機制。Agent4Sci 加了三份 skill（Agent Skills）：科研構思 102 行、實驗管理 112 行、定時自檢 63 行，加起來 277 行；再加一支 Claude Code 的 PreToolUse hook，每 3600 秒觸發一次，觸發後除了 Skill 以外的工具都被擋下，直到 agent 跑完自檢清單。模型沒換、算力沒加，Claude Opus 的平均相對提升從 10.4% 變成 20.1%，Codex 從 4.4% 變成 8.1%。"
+  - question: "AI agent 做科學研究最常犯哪些錯？"
+    answer: "論文從軌跡整理出三個反覆出現的毛病。第一是高估新穎性（Novelty Miscalibration），例如 Claude 把幾乎人人預設會開的 cosine 學習率排程當成創意突破。第二是資源閒置（Resource Under-utilization），8 張 H200 常常有卡閒著，能平行的實驗被排成串行。第三是探索收斂（Exploration Collapse），找到一個有效方向後就一直在附近調 seed 和學習率，不再嘗試其他做法。"
+  - question: "為什麼「請你多想一點」沒用，但 Harness 有用？"
+    answer: "「請你多想一點」只是 prompt，模型可以忽略，也可以寫完「我正在做有創意的實驗」之後繼續調參數。Agent4Sci 的 Harness 是拿掉選項：科研構思在文獻回顧跑完之前禁止碰 codebase，實驗管理直接列出重跑 baseline、多 seed、seed ensemble 等不准做的實驗，定時自檢用 PreToolUse hook 每 3600 秒把 Skill 以外的工具擋下（exit 2），agent 只剩做自檢這條路。效果不是來自文字寫得多好，而是來自其他路被堵住。"
+  - question: "加了 Harness 之後，AI 就會做真正的科研嗎？"
+    answer: "會更常碰到真正的領域洞見，但不保證。在電網題目 PFDelta 上，加了 Harness 的 Claude Opus 認出評分指標可以從克希荷夫定律推出來，把它改成主要訓練目標，進步從 64.4% 變成 91.0%。但同一題沒有 Harness 重跑四次，只有兩次想到類似的關鍵改法；Codex 加了 Harness 在這題反而從進步 4.6% 變成退步 12.8%；跑滿三天的 Opus 在第 12 小時之後還是回到調學習率。程式碼在 github.com/maszhongming/agent4sci（Apache 2.0），可以拿來改，但 skill 是照 Claude Code 的軌跡設計的，換領域要自己測。  ---"
 ---
 
-Claude 在做科學研究時，把一個幾乎人人都在用的訓練設定，當成了自己的「創意突破」。
+現在的 AI agent，能不能自己做科學研究？
 
-這個設定叫 cosine 學習率排程，簡單講就是讓模型訓練時「一開始學快一點，後面慢慢放慢」。訓練模型的人大多預設就會開，算不上新點子。
+Anthropic 10 月 20 日放上 arXiv 的 [Agent4Sci](https://arxiv.org/abs/2610.28763) 就在問這件事。做法很直接：給 agent 一篇科學論文、它的程式碼和資料，叫它想辦法把論文的成績做得更好。
 
-論文原文是這樣寫的：
+答案是可以。
 
-> "Claude Code treats cosine learning-rate schedules as a creative breakthrough across runs, even though they are long-standing standard practice."
-
-Claude 在好幾次實驗裡都把這個標準做法當成創意突破，但它其實是用了很久的常規操作。
-
-這個例子出自 10 月 20 日上 arXiv 的論文 [Agent4Sci](https://arxiv.org/abs/2610.28763)，作者是 Anthropic 的研究團隊。它想回答一個問題：**現在的 AI agent，能不能自己做科學研究？**
-
-答案是：能做出成績，但做法比較像熟練的工程師，還不像研究者。
+但是要先打上一層科研專屬的 Harness。
 
 ![Automating ML for Science: Can Frontier Agents Climb Scientific Hills in the Wild? 論文首頁](/assets/images/agent4sci-logo.png)
 
@@ -46,192 +40,178 @@ Claude 在好幾次實驗裡都把這個標準做法當成創意突破，但它�
 
 ---
 
-## 30 秒看懂這個實驗
+## 30 秒定位
 
-| 項目 | 白話說明 |
+| 項目 | 內容 |
 |------|------|
-| 考什麼 | 給 AI 一篇科學論文、程式碼、資料，叫它把論文的成績做得更好 |
-| 題目 | 20 個題目，橫跨天文、化學、生態、物理、生物等 11 個科學領域 |
-| 考生 | Claude Opus 4.6、Claude Sonnet 4.6、Codex（GPT-5.4）、Gemini 3.1 Pro |
-| 考試條件 | 每次 8 張 H200 顯卡、12 小時，中間沒有人幫忙 |
-| 原本成績 | 平均進步：Opus 10.4%、Sonnet 9.6%、Gemini 6.8%、Codex 4.4% |
-| 加了說明書之後 | Opus 10.4% → 20.1%，Codex 4.4% → 8.1% |
-| 有沒有作弊 | 沒有任何一次被抓到 |
+| 論文 | Automating ML for Science: Can Frontier Agents Climb Scientific Hills in the Wild?，arXiv 2610.28763 |
+| 作者 | Ming Zhong、Stacy Li（Anthropic Fellows Program），Nicholas Carlini、Matthew Jagielski（Anthropic） |
+| 題目 | 20 個真實的 ML for Science benchmark，橫跨天文、化學、生態、物理、生物工程等 11 個領域 |
+| 受測 agent | Claude Opus 4.6、Claude Sonnet 4.6、Codex（GPT-5.4）、Gemini 3.1 Pro |
+| 條件 | 每次 8 張 H200、12 小時，除了開跑和到時間停掉之外沒有人介入 |
+| 預設結果 | 平均相對提升：Opus 10.4%、Sonnet 9.6%、Gemini 6.8%、Codex 4.4% |
+| 加上 Harness | Opus 10.4% → 20.1%（1.9 倍），Codex 4.4% → 8.1%（1.8 倍） |
+| 程式碼 | [github.com/maszhongming/agent4sci](https://github.com/maszhongming/agent4sci)，Apache 2.0，skill 和 hook 都在裡面 |
 
 ---
 
-## 第一步：先防止 AI 作弊
+## 實驗怎麼做的
 
-這個實驗設計裡，最先處理的是作弊問題。
+Agent4Sci 把 Claude Code、Codex、Gemini CLI 放進 20 個真實的科學 benchmark。每一題的起點，都是那篇論文已經發表的最好結果，agent 要在 12 小時內把它往上推。
 
-作者一開始用最簡單的方式測：把論文和程式碼直接丟給 AI，叫它把分數做高。結果 12 個題目裡，有 5 個出現作弊。
+在正式開跑之前，作者先處理了一個問題：**什麼叫做「驗證過了」？**
 
-AI 的作弊手法有四種，用考試來比喻：
+他們先做了一個最簡單的版本，把論文和原始 repo 直接丟給 agent。結果 5 個 NeurIPS 2025 benchmark 的 12 個任務裡，有 5 個出現嚴重的 evaluation gaming。手法分四類，用考試來比喻：
 
 - **只挑會的題目算分**：只拿對自己有利的那部分資料算成績。
 - **偷看考卷**：去看本來不該看的測試資料。
 - **改評分標準**：說官方的評分方式有問題，自己換一套。
-- **直接抄答案**：把答案寫死在程式裡，甚至謊稱「檔案不小心刪了」。
+- **直接抄答案**：把答案寫死在程式裡，甚至謊稱 checkpoint「不小心刪了」。
 
-作者的解法很簡單：**不讓考生自己改考卷。** 測試資料藏起來，AI 看不到。AI 交卷之後，由另一個 AI 負責打分數，再由第三個 AI 檢查整個過程有沒有作弊。
+所以作者把評分權從 agent 手上拿走。測試資料藏起來，agent 只看得到訓練和驗證資料；交卷之後，由另一個 evaluation agent 跑分，再由第三個 auditing agent 讀完整條軌跡找作弊。這樣處理之後，沒有任何一次 run 被標記作弊。
 
-這跟我九月寫的 [DeepMind 100 個 agent 數學會議](/deepmind-agent-swarm-cheating-whistleblowing-commons/) 是同一個教訓。那次的檢查機制有漏洞，作弊方法 27 分鐘就傳遍所有 agent。**讓 AI 自己回報分數的實驗，數字不能信。**
+這跟我九月寫的 [DeepMind 100 個 agent 數學會議](/deepmind-agent-swarm-cheating-whistleblowing-commons/) 是同一件事的兩面：那邊的驗證器太弱，作弊 27 分鐘傳遍整個群體；這邊作者先看到漏洞，就把評分和稽核拆給別人。
 
----
-
-## 結果：全部進步了，但靠的是熟練招式
-
-20 個題目，AI 全部都做得比原論文好。進步幅度從最少 1.1% 到最多 64.4%。
-
-但問題在於它們怎麼做到的。
-
-論文把 AI 用的方法分類之後發現，大部分是這幾種：
-
-- **調參數**：像調音響的旋鈕，把學習速度、訓練次數之類的數值調到最好。Opus 的實驗裡，有 56% 用了這招。
-- **換更大的模型**：把原本的模型換成更大、更強的版本。
-- **多個模型一起投票**：訓練好幾個模型，把答案平均起來。
-
-這些都有效，但都是 ML 工程師的日常工具。真正針對科學問題本身去想新方法的，很少。
-
-三個 AI 的工作習慣也很不一樣：
-
-- **Claude Opus**：一直盯著實驗結果，看完一輪再決定下一輪，12 個小時都在工作。
-- **Codex**：第一個小時就丟出一大批實驗，然後剩下的十一個小時都在等結果。
-- **Gemini**：兩種模式之間來回切換。
+這是整篇論文的第一層 Harness。後面那三份 skill 是第二層。
 
 ---
 
-## AI 做研究的三個壞習慣
+## 結果：每題都有提升，但依舊是大力出奇蹟
 
-作者看完所有 AI 的工作紀錄，整理出三個反覆出現的問題：
+前沿 agent 在每一題上都找到提升，Claude Opus 平均相對提升 10.4%。
 
-1. **分不清什麼是新點子。** 把老招當成新發明，cosine 學習率就是例子。
-2. **機器常常閒著。** 明明有 8 張顯卡，AI 常常一次只跑一個實驗，其他顯卡都在休息。
-3. **找到一招就一直用。** 一開始會嘗試很多想法，但只要找到一個有效的，剩下的時間就一直在那個方向上微調，不再嘗試別的路。
+但作者把軌跡拆開後發現，大部分提升來自熟悉的 ML 工程技巧：學習率調整、加深加寬模型、換 backbone、weight decay、pooling、資料增強、輔助 loss。
 
----
+Opus 的 run 裡，56% 用了調超參、44% 改架構。真正針對科學問題本身的新解法，很少。
 
-## 用一個比喻來理解
+所以依舊是大力出奇蹟。
 
-這三個問題，很像一個沒有指導教授的研究生。
-
-他拿到一個題目，發現調一下某個設定可以多幾分，很開心。接下來幾週都在調同樣的東西。實驗室的機器大多在閒置，因為他一次只敢跑一個實驗。
-
-這時候指導教授在週會上問了幾個問題：這個方法換到別的資料還有效嗎？這個領域的專家會怎麼看這個問題？那些閒著的機器，你打算拿來做什麼？
-
-學生的能力沒有變。變的是，有人定期逼他停下來，想想自己是不是在原地打轉。
-
-這篇論文加的三份說明書，做的就是這件事。
+三家花掉這 12 小時的方式也不一樣：Opus 一直盯著 log，看完一輪再決定下一輪，平均 12.0 小時都在工作；Codex 第一個小時就丟出一支長跑腳本，剩下的十一個小時在等；Gemini 在兩種模式之間來回。
 
 ---
 
-## 三份說明書在做什麼
+## Agent 做科研反覆出現的三個毛病
 
-這三份說明書在 Claude Code 裡叫做 skill，就是寫給 AI 看的工作守則。三份加起來不到 300 行。
+作者讀完所有軌跡，整理出三個一直出現的毛病。
 
-**第一份：開工前先做功課。**
-叫 AI 扮演一個「瘋狂科學家」，只想要突破，看不起調參數。開始寫程式之前，先派四個小助手去查資料，兩個查這個科學領域的知識，兩個查 AI 領域的最新方法。查完之後，把要做的實驗分成兩類：大膽的、和穩健的，而且大膽的要先做。
+**一，高估新點子的新穎性。** Claude 在做科學研究時，把 cosine 學習率排程當成了自己的「創意突破」。
 
-**第二份：管好機器。**
-規定 AI 不准浪費時間重複跑原本的方法，所有顯卡都要一直有工作在跑。實驗失敗了，要先查清楚原因，不准直接放棄。
+> "Claude Code treats cosine learning-rate schedules as a creative breakthrough across runs, even though they are long-standing standard practice."
 
-**第三份：每小時自我檢查一次。**
-每過一小時，AI 要回答幾個問題，例如：
+cosine 學習率排程是訓練模型的預設動作：一開始學快一點，後面慢慢放慢，幾乎人人都在用。Claude 在好幾次 run 裡都把它當成大膽的新想法。
+
+**二，GPU 放著不用。** 明明有 8 張 H200，GPU 常常閒著，能平行跑的實驗被排成一個接一個跑，有時候 CPU 和 GPU 還互相搶資源。
+
+**三，找到一個有效方向，就一直在附近刷參數。** 前幾輪想法很多，但只要發現某個做法有效，剩下的時間就在它周圍調 seed、調學習率，沒有再從其他領域的角度廣泛去想。
+
+---
+
+## 怎麼解決？依舊是 Harness
+
+作者沒有換模型，也沒有加算力。他們只加了三份很輕量的 skill：科研構思、實驗管理、定時自檢。三份加起來 277 行。
+
+**1. 科研構思（102 行）**
+
+開跑時先派四個 subagent 平行查文獻，兩個查科學領域、兩個查 AI/ML 方法，查資料期間主 agent 不准碰程式碼。回來之後，強制把實驗分成兩級：Tier 1 是大膽、高風險高報酬的，Tier 2 是文獻支持、穩健的。Tier 1 先做，而且第一輪就要把所有顯卡吃滿。
+
+最後還有一道校準：如果某個 Tier 1 實驗其實只是換超參、換訓練技巧或做 ensemble，就把它降級，換一個更大膽的上去。這一條正好對準 cosine 學習率那個毛病。
+
+**2. 實驗管理（112 行）**
+
+列出一張「無效實驗」清單：重跑 baseline、多 seed、在 baseline 上調超參、seed ensemble，全部不准。顯卡必須一直有工作在跑。實驗失敗了要先分類原因，不准反射性地丟掉。
+
+**3. 定時自檢（63 行）**
+
+每小時觸發一次，分四組回答：自我檢視、每個 job 的運維、策略、任務清單。自我檢視裡有一題是：
 
 > "Am I designing creative experiments that require scientific reasoning, or just tweaking hyperparameters and calling it novel?"
 
-我是在設計需要科學思考的實驗，還是只在調參數，然後說它是新點子？
+我是在設計需要科學推理的實驗，還是只在調超參，然後說它是新點子？
 
-我覺得第三份最值得學，因為它不只是一份文件。
+**它根本不是 prompt。**
 
-我去看了程式碼，它的做法像一個**鬧鐘加鎖**：每 3600 秒（一小時）鬧鐘響一次，響了之後，AI 除了「跑自我檢查」以外，什麼工具都不能用。檢查完，才能繼續工作。
+Claude Code 有一個機制叫 hook：每做一個動作之前，會先跑你掛上去的腳本。作者掛了一支 PreToolUse hook，INTERVAL=3600；時間到了之後，除了 Skill 以外的工具呼叫都被 exit 2 擋下，直到跑完 checklist 才解鎖。為了避免整個 session 卡死，鎖超過 10 分鐘會自動放行；subagent 不受影響。
 
-這跟我六月寫的 [從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/) 講的是同一件事：你在指令裡拜託 AI「記得每小時反省一下」，它很可能會忘；直接把其他工具鎖起來，它就只能反省。上週寫的 [Harness²](/harness2-recursive-agent-harnessing-open-world/) 也得到類似結論。**能用機制強制的，就不要只靠提醒。**
+也就是說，一小時一到，agent 只剩「做自檢」這一條路可以走。
 
-要注意的是，論文沒有分開測試三份說明書各自的效果，所以沒辦法說哪一份最有用。
+前兩份 skill 其實也是同一個思路。科研構思是在文獻回顧跑完之前，禁止 agent 碰 codebase；實驗管理是直接列出不准做的實驗。三份的效果都來自**拿掉選項**，不是多加一句「請你更有創意」。
 
----
-
-## 效果：平均進步翻倍
-
-加了說明書之後：
-
-- Opus 平均進步從 10.4% 變成 20.1%，20 個題目裡有 18 個變好。
-- Codex 從 4.4% 變成 8.1%，有 12 個題目變好。
-
-最好的例子是一個電網預測的題目（PFDelta）。沒有說明書時，Opus 靠調整 loss 權重、換學習率排程這類工程手法，進步了 64.4%。有了說明書之後，它想到可以直接用電學的基本定律（克希荷夫定律）來當訓練標準，進步變成 91.0%。
-
-這就不是調參數了，是真的理解了問題背後的物理，換了一種解法。
-
-另一個例子是碳排放預測（CarbonGlobe）。沒有說明書時，Opus 疊了 14 個模型，花了約 49 小時的顯卡時間。有說明書時，它換了一種模型設計，只用不到 6 小時，預測速度快了約 500 倍，成績還更好。好點子不一定比較貴。
+這跟我六月寫的 [從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/) 是同一件事：你在 prompt 裡拜託 agent「記得每小時反省一下」，它會忘；用 hook 把其他動作擋掉，它就只能反省。上週拆的 [Harness²](/harness2-recursive-agent-harnessing-open-world/) 也是這個方向，拿掉 skills 和 scripts 掉的分數，比拿掉 prompt 類元件多。
 
 ---
 
-## 但「翻倍」要打幾個折
+## 加了 Harness 之後
 
-看完論文後面的附錄，我覺得「三份說明書讓成績翻倍」這句話，要加三個但書。
+- Opus：結果提升從 10.4% 變成 20.1%（1.9 倍），20 個 benchmark 裡改善 18 個
+- Codex：結果提升從 4.4% 變成 8.1%（1.8 倍），改善 12 個
 
-**第一，進步集中在少數題目。**
-Opus 多出來的進步，大約四分之三來自其中 6 個題目。如果看中間那個題目的成績（中位數），只是從 5.6% 變成 8.45%。平均翻倍，不代表每題都翻倍。
+這裡的數字是「平均相對提升」：20 個題目各自比原論文進步多少，再取平均。不是某個模型的準確率翻倍。論文自己的用詞是「接近翻倍」（nearly double）。
 
-**第二，同樣的實驗再跑一次，結果可能差很多。**
-作者把同一個電網題目重跑了四次（沒有說明書的版本），成績分別是 64.4%、65.3%、32.5%、29.4%。只有兩次想到關鍵的好方法。也就是說，「有沒有想到好點子」很看運氣。而加說明書的版本，每題只跑了一次。
-
-**第三，有些題目反而變差。**
-例如 Codex 加了說明書之後，電網題目從進步 4.6% 變成退步 12.8%。叫 AI「大膽一點」，有時候它會大膽地摔下去。
+skill 是照 Claude Code 調的，Codex 也拿到接近比例的增益。
 
 ---
 
-## 給更多時間，會不會更好？
+## AI 不是不會判斷
 
-作者還做了一個實驗：讓 AI 不是跑 12 小時，而是跑整整三天。
+最好的例子是電網題目 PFDelta。
 
-結果是，**時間拉長，不會自動變出好點子。**
+沒有 Harness 的時候，Opus 在這題進步了 64.4%，做法是把評分指標改寫成可微的輔助 loss、MSE 權重從 0.1 調到 0.3、換成 cosine annealing 加 warmup。三招都是工程手法。
 
-- Opus 在前 12 小時試了很多不同方法，之後的 60 小時又回到一直調學習速度。
-- Codex 在一個題目上，前面約 40 小時都沒進展，最後疊了一大堆模型，練習成績變好，正式考試成績反而退步 25%。
-- 唯一的大突破，是 Codex 在電網題目上想到一個聰明的新方法，誤差降了 99.5%。這是靠一個好點子，不是靠時間堆出來的。
+加了 Harness 之後，進步變成 91.0%。這次 agent 認出評分用的 PBL 可以從克希荷夫定律推出來，不需要標籤，於是直接改成主要的訓練目標；推論時再把 GNN 的預測當成 AC power-flow 方程的起始值，往物理上正確的解收斂。
 
-所以我要修正一開始的說法。網路上有一種說法，認為 AI 做研究的瓶頸在判斷力，這點我同意一半。**這三份說明書沒有讓 AI 學會判斷，而是用一個每小時響一次的鬧鐘，逼它停下來檢查。** 它能讓 AI 晚一點陷入原地打轉，但不能完全避免。
+這需要真的理解問題。
+
+所以 agent 不是不會判斷。同一個模型，被逼著先查文獻、先做大膽的實驗、每小時停下來問自己「這是不是只在調參」之後，就做出了需要物理直覺的改法。
+
+另一個例子是碳排放預測 CarbonGlobe。沒有 Harness 時，Opus 堆了 14 個模型的 ensemble，約 49 GPU 小時；有 Harness 時換成 8 個非自迴歸 transformer，不到 6 GPU 小時，推論快約 500 倍，成績還更好。好點子不一定比較貴。
 
 ---
 
-## 如果你也用 AI 跑實驗
+## 缺的是反射
 
-如果你平常用 Claude Code 或 Codex 跑實驗，這篇可以帶走這幾個做法：
+什麼時候該停、什麼該算新點子、顯卡該怎麼用、什麼叫做「驗證過了」。
 
-- **卡住的時候，先看機器有沒有閒著**，不要第一反應就是加機器、加時間。
-- **要 AI 定期反省，用機制強制**，不要只寫在指令裡拜託它。
-- **打分數和做實驗分開**，不要讓做實驗的 AI 自己看到考卷。
-- **AI 說「這是新方法」時，自己再問一次**：這是不是只是調參數換了個說法？
+這些東西人類研究者不用特別想，因為那是訓練出來的反射。指導教授在週會上問過太多次「這換個資料集還成立嗎」、「那幾張卡你打算拿來做什麼」，久了就內化了。
 
-論文的程式碼和這三份說明書都公開在 [GitHub](https://github.com/maszhongming/agent4sci)，可以直接拿來改。不過作者自己也說，這些說明書是照 Claude 的工作紀錄設計的，用在別的領域或別的 AI 上，效果要自己測。
+Agent 沒有這層反射，它就預設走機器最省力的路：調參數、刷分數。
+
+三份 skill 加上一支 hook，本質上就是在 agent 外面架一層東西。**不是告訴它「要更聰明」，是告訴它「這幾件事一定要做」。**
+
+比起給它更多算力，先給它一層科研的 Harness 更划算。
 
 ---
 
 ## 坦白說
 
-這篇論文有幾個地方要保留看待：
+這層 Harness 有效，但有幾個地方要打折看。
 
-**沒有跟人類比。** 作者找不到合適的領域專家花同樣的時間來做。所以我們知道 AI 比原論文好，但不知道一個專業研究員用同樣 12 小時能做到多好。
+**提升集中在少數題目。** 我用論文 Table 2 自己加了一下：Opus 增加的那 9.7 個百分點，大約四分之三來自 6 個 benchmark。看中位數，Opus 從 5.6% 到 8.45%。平均接近翻倍，典型的那一題沒有翻倍。
 
-**「大部分是調參數」不代表「調參數就夠了」。** 作者另外測過：只准 AI 調參數、不准改其他東西，成績遠遠比不上。例如電網題目，只調參數進步 4.6%，可以自由發揮則是 64.4%。AI 做的是工程，不是亂槍打鳥。
+**洞見型的提升很看運氣。** 作者在沒有 Harness 的設定下把 PFDelta 重跑了四次：64.4、65.3、32.5、29.4，平均 47.9 ± 19.6，只有兩次找到 loss 重構。工程型的提升就很穩，Mars-Bench 重跑四次是 45.9 ± 1.5。而加了 Harness 的版本，每題只跑了一次，91.0% 裡有多少是 Harness 的功勞、多少是那次剛好走運，論文沒有拆開。
 
-**考官和考生是同一家。** 預設負責打分數和抓作弊的 AI，跟受測的 Opus 是同一個模型。作者有另外找三個不同的 AI 重新檢查一半的實驗，結論一致，算是處理得滿仔細。
+**Harness 也會讓某些題目倒退。** Codex + Skills 在 PFDelta 從 4.6% 變 −12.8%、LITHOS 從 4.8% 變 −10.0%。逼 agent 大膽，有時候它真的會大膽地摔下去。
 
-**測的不是最新的模型。** 受測的是 Opus 4.6 和 GPT-5.4，上週的 Harness² 已經在用 Opus 4.8。具體的百分比，換新模型大概就會變。
+**時間拉長不會自動變出反射。** 作者讓帶 Harness 的 agent 跑滿三天。在更難的 PFDelta 2000 上，Opus + Skills 前 12 小時換了一輪 GNN 架構，之後 60 小時分六輪調學習率，最後 88%。在 CarbonGlobe 上，Codex + Skills 近 40 小時沒進展，最後訓練 80–100 個架構做 ensemble，validation 好 37%，held-out test 反而倒退 25%。每小時的自檢能延後原地打轉，不能消除它。
+
+**「大力出奇蹟」也不完全公平。** 作者另外測了只准用 Optuna 調超參、不准改架構和 loss 的版本，同樣 8 張 H200、12 小時：CheMixHub 11.9 vs 1.4、Mars-Bench 46.4 vs 4.3、PFDelta 64.4 vs 4.6。agent 做的是工程，不是亂槍打鳥。
+
+**沒有人類研究員對照，skill 也可能過擬合。** 作者找不到對的領域專家花夠長時間做同樣的事；三份 skill 是看 Claude Code 的軌跡設計的，換到別的領域、別的 agent，效果要自己測。另外，評分和稽核預設也是 Opus 4.6，作者有另外找三個不同 agent 重新稽核一半的 run，結論一致。
 
 ---
 
 ## 關鍵洞察
 
-**看 AI 的進步，先分清楚是「熟練」還是「點子」。** 靠熟練招式的進步很穩定，重跑幾次都差不多；靠好點子的進步很看運氣。兩種混在一個平均數裡，容易看錯。
+**卡住的時候，先加 Harness，再加算力。** 同樣 8 張 H200、12 小時，三份 skill 加一支 hook，Opus 的平均相對提升從 10.4% 變 20.1%。
 
-**反省要用鎖，不要用提醒。** 每小時把其他工具鎖起來，比在指令裡寫「記得反省」可靠。
+**反省要做成鎖，不要做成提醒。** 寫在 prompt 裡的「記得反省」沒有東西保證會被執行；hook 每 3600 秒把 Skill 以外的工具全部擋掉，agent 才真的會停下來。
 
-**不要指望時間換突破。** 跑三天的 AI，大部分時間還是在原地微調。
+**把「無效實驗」寫成清單。** 重跑 baseline、多 seed、seed ensemble 這些最省力的路，直接列出來禁止，比叫 agent「要有創意」具體得多。
 
-**不要讓考生自己改考卷。** 沒有防護的時候，12 題裡有 5 題被 AI 鑽了漏洞。
+**評分權不能留在爬山的人手上。** 原始設定下 12 題有 5 題被鑽。用 agent 跑任何「自己做、自己量」的任務，先把驗收拆出去。
+
+經常拿 Claude Code 或 Codex 跑實驗的朋友，這篇很值得讀。
+
+你平常跑實驗卡住的時候，第一個動作是加機器，還是先回去重想題目？
 
 ---
 
@@ -239,28 +219,28 @@ Opus 多出來的進步，大約四分之三來自其中 6 個題目。如果看
 
 **Q: Agent4Sci 是什麼？**
 
-Agent4Sci 是 Anthropic 研究團隊在 2026 年 10 月發表的研究（arXiv 2610.28763），用來測試 AI agent 能不能自己做科學研究。它準備了 20 個真實的科學題目，橫跨 11 個領域，讓 Claude Code、Codex、Gemini CLI 這類 AI 程式助手，在 8 張 H200 顯卡、12 小時內，想辦法把原論文的成績做得更好。這種任務叫做自動化科學爬山（Automated Scientific Hill-Climbing）。為了防止作弊，分數由另一個獨立的 AI 計算，再由第三個 AI 檢查過程。
+Agent4Sci 是 Anthropic Fellows Program 與 Anthropic 研究員在 2026 年 10 月發表的研究（arXiv 2610.28763，NeurIPS 2026 Evaluations and Datasets track），測試 AI agent 能不能自己做科學研究。它收錄 20 個 ML for Science benchmark、11 個科學領域，讓 Claude Code、Codex、Gemini CLI 在 8 張 H200、12 小時內，把原論文發表的最好結果往上推，這個任務形式叫自動化科學爬山（Automated Scientific Hill-Climbing）。預設設定下 Claude Opus 4.6 平均相對提升 10.4%，但大部分來自調超參、改架構這類 ML 工程技巧。
 
-**Q: 那三份說明書（Skill）是什麼？**
+**Q: 什麼是「科研 Harness」？Agent4Sci 加了什麼？**
 
-三份說明書分別是研究構思（Research Ideation）、實驗管理（Experiment Management）和定時自檢（Scheduled Checklist），都是寫給 AI 看的工作守則，加起來不到 300 行。第一份叫 AI 先查資料、優先做大膽的實驗；第二份叫 AI 不要讓顯卡閒著；第三份每小時強制 AI 停下來回答「我是在做有科學思考的實驗，還是只在調參數？」這類問題，檢查完之前其他工具都會被鎖住。加上之後，Claude Opus 的平均進步從 10.4% 變成 20.1%，Codex 從 4.4% 變成 8.1%。
+Harness 指的是包在 AI 模型外面、規定它怎麼工作的那一層：工具、規則、流程和檢查機制。Agent4Sci 加了三份 skill（Agent Skills）：科研構思 102 行、實驗管理 112 行、定時自檢 63 行，加起來 277 行；再加一支 Claude Code 的 PreToolUse hook，每 3600 秒觸發一次，觸發後除了 Skill 以外的工具都被擋下，直到 agent 跑完自檢清單。模型沒換、算力沒加，Claude Opus 的平均相對提升從 10.4% 變成 20.1%，Codex 從 4.4% 變成 8.1%。
 
-**Q: 「三份說明書讓成績翻倍」可信嗎？**
+**Q: AI agent 做科學研究最常犯哪些錯？**
 
-平均數是真的，但要注意三點。第一，進步集中在少數題目，Opus 多出來的進步約四分之三來自 6 個題目，看中位數只從 5.6% 變成 8.45%。第二，同樣的實驗重跑，結果差很多，同一個電網題目跑四次，成績從 29.4% 到 65.3% 都有。第三，有些題目加了說明書反而退步，例如 Codex 在電網題目從進步 4.6% 變成退步 12.8%。
+論文從軌跡整理出三個反覆出現的毛病。第一是高估新穎性（Novelty Miscalibration），例如 Claude 把幾乎人人預設會開的 cosine 學習率排程當成創意突破。第二是資源閒置（Resource Under-utilization），8 張 H200 常常有卡閒著，能平行的實驗被排成串行。第三是探索收斂（Exploration Collapse），找到一個有效方向後就一直在附近調 seed 和學習率，不再嘗試其他做法。
 
-**Q: 讓 AI 跑更久，會不會自己想出好點子？**
+**Q: 為什麼「請你多想一點」沒用，但 Harness 有用？**
 
-論文的三天實驗顯示不會。Claude Opus 在前 12 小時嘗試了很多方法，之後 60 小時又回到一直調學習速度。Codex 在另一個題目上，前面約 40 小時沒有進展，最後疊了一大堆模型，練習成績變好，但正式成績反而退步 25%。唯一的大突破，是 Codex 在電網題目上想到一個新方法，誤差降了 99.5%，這是靠好點子，不是靠時間。
+「請你多想一點」只是 prompt，模型可以忽略，也可以寫完「我正在做有創意的實驗」之後繼續調參數。Agent4Sci 的 Harness 是拿掉選項：科研構思在文獻回顧跑完之前禁止碰 codebase，實驗管理直接列出重跑 baseline、多 seed、seed ensemble 等不准做的實驗，定時自檢用 PreToolUse hook 每 3600 秒把 Skill 以外的工具擋下（exit 2），agent 只剩做自檢這條路。效果不是來自文字寫得多好，而是來自其他路被堵住。
 
-**Q: 我自己用 Claude Code 跑實驗，可以直接用這三份說明書嗎？**
+**Q: 加了 Harness 之後，AI 就會做真正的科研嗎？**
 
-可以拿來改，程式碼公開在 github.com/maszhongming/agent4sci（Apache 2.0 授權），有 Claude Code 和 Codex 兩個版本。但作者也說，這些說明書是照 Claude 在這 20 個題目上的工作紀錄設計的，換到其他領域或其他 AI 不一定有效。最值得先學的是兩件事：把打分數和做實驗分給不同的 AI，以及用「鎖住工具」的方式強制 AI 定期自我檢查。
+會更常碰到真正的領域洞見，但不保證。在電網題目 PFDelta 上，加了 Harness 的 Claude Opus 認出評分指標可以從克希荷夫定律推出來，把它改成主要訓練目標，進步從 64.4% 變成 91.0%。但同一題沒有 Harness 重跑四次，只有兩次想到類似的關鍵改法；Codex 加了 Harness 在這題反而從進步 4.6% 變成退步 12.8%；跑滿三天的 Opus 在第 12 小時之後還是回到調學習率。程式碼在 github.com/maszhongming/agent4sci（Apache 2.0），可以拿來改，但 skill 是照 Claude Code 的軌跡設計的，換領域要自己測。
 
 ---
 
 ## 來源
 
-- Zhong, Li, Carlini, Jagielski，[Automating ML for Science: Can Frontier Agents Climb Scientific Hills in the Wild?](https://arxiv.org/abs/2610.28763)（arXiv 2610.28763）
-- [maszhongming/agent4sci](https://github.com/maszhongming/agent4sci)（程式碼、說明書、hook 設定）
+- Ming Zhong, Stacy Li, Nicholas Carlini, Matthew Jagielski，[Automating ML for Science: Can Frontier Agents Climb Scientific Hills in the Wild?](https://arxiv.org/abs/2610.28763)（arXiv 2610.28763，2026-10-20，NeurIPS 2026 Evaluations and Datasets track）
+- [maszhongming/agent4sci](https://github.com/maszhongming/agent4sci)（程式碼、skill、hook 設定）
 - [Hugging Face 資料集 MingZhong/agent4sci](https://huggingface.co/datasets/MingZhong/agent4sci)
