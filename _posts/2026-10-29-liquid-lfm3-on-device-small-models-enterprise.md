@@ -6,6 +6,8 @@ permalink: /liquid-lfm3-on-device-small-models-enterprise/
 description: "Liquid AI 在 2026 年 10 月 27 日發表 LFM3，六個模型全壓在 2B 參數級，文字模型 4-bit 之後約 1 GB，官方也說每個模型都能在單張 GPU 上微調。這篇從台灣企業的角度回答：地端小模型什麼時候該搬、什麼時候別搬，以及要驗證時該怎麼設計測試。作者實測了其中四個模型，官方宣稱一律標明。"
 categories: [AI 地端部署]
 tags: [LFM3, Liquid AI, 小模型, 地端 LLM, on-device, 決策模型, 企業導入, 微調, LFM Open License]
+image: /assets/images/liquid-lfm3-logo.jpg
+image_alt: "Liquid AI 在 X 上發表 LFM3：六個 2B 級模型，涵蓋文字、視覺、語音、Omni 與決策模型"
 author: Wisely Chen
 ---
 
@@ -16,8 +18,6 @@ Liquid AI 這次的整條產品線，沒有一顆放在資料中心當明星的�
 這篇要回答的不是「LFM3 強不強」，而是企業為什麼該在意 2B 以下、能跑在裝置上的專用模型，什麼場景用、什麼場景別用。
 
 前提先講清楚：我在 2026 年 10 月 29 日於 RTX 5090 32 GB 上，以 BF16 實測了 d1-2B、LFM3-VL-2B、LFM3-Audio-2B、d1-Omni-2B 四個模型（結果見下方專節）。LFM3-1.7B 與 LFM3-Omni-2B 本輪沒有測。官方宣稱、模型卡規格、我的實測、外部資料與我的推論，全部分開寫。
-
-![Liquid AI 在 X 上發表 LFM3：六個 2B 級模型，涵蓋文字、視覺、語音、Omni 與決策模型](/assets/images/liquid-lfm3-logo.jpg)
 
 ---
 
