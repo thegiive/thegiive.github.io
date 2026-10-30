@@ -5,6 +5,7 @@ date: 2026-10-30 09:00:00 +0800
 permalink: /binance-suspected-hack-5-6-billion/
 tags: [Binance, 幣安, CZ, 資安, 駭客, 熱錢包, Arkham, Lookonchain, Tether, Circle]
 categories: [AI 資安]
+image: /assets/images/binance-suspected-hack-5-6-billion-cover.png
 description: "鏈上已確認約 56 億美元從幣安熱錢包流到某個地址，CZ 說「看起來是被駭了」。幣安官方只說「潛在安全問題」，沒公布損失數字；已驗證凍結 25.4 億美元，提款暫停。這篇整理台北時間 10/30 的時間軸與鏈上證據。"
 author: Wisely Chen
 ---
