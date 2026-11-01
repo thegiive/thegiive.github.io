@@ -202,7 +202,7 @@ Spawn 這篇最有用的地方，是它給了一張可以對照的清單。你�
 - Uber，[Running a Software Factory Efficiently at Uber Scale](https://www.uber.com/us/en/blog/efficient-software-factory/)，2026-08-27
 - Uber CTO Praveen Neppalli Naga，[tokenmaxxing 時代將結束](https://x.com/praveenTweets/status/2085124500614680891)，2026-08-06（台北時間）
 - India Today，[Uber CTO says AI spending plans fall short as tools like Claude Code drive costs up](https://www.indiatoday.in/technology/story/uber-cto-says-ai-spending-plans-fall-short-as-tools-like-claude-code-drive-costs-up-2896621-2026-04-15)，2026-04-15
--《金融時報》，[‘We created a monster’: companies rein in AI usage as costs strain budgets](https://www.ft.com/content/1d37cc08-e0aa-45a4-a45d-4ad282529314)（讀的是 AISolver 轉載版）
+- 《金融時報》，[‘We created a monster’: companies rein in AI usage as costs strain budgets](https://www.ft.com/content/1d37cc08-e0aa-45a4-a45d-4ad282529314)（讀的是 AISolver 轉載版）
 - SaaStr，[Meet Our Agents: What All 20 Actually Do, What They Refuse to Do, and Every Place They've Failed Us](https://www.saastr.com/meet-our-agents-what-all-20-actually-do-what-they-refuse-to-do-and-every-place-theyve-failed-us/)
 - Rocketable，[Alan Wells 的軟體工廠說明](https://x.com/alanwells/status/2113859186362925305)、[夜間做、早上批次 merge](https://x.com/alanwells/status/2114417318881349656)
 - OpenAlgo，[Marketcalls 的 dark software factory 貼文](https://x.com/marketcallsHQ/status/2116595037505216933)
