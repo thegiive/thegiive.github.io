@@ -114,7 +114,7 @@ HackerTube 也有偏見，它把排序權交給 HN 的品味。發布當天就�
 
 ## 參考資料
 
-- [Karpathy：HackerTube（頁面日期 01 Nov, 2026）](https://karpathy.bearblog.dev/hacker-tube/)
+- [Karpathy：HackerTube（頁面日期 31 Oct, 2026）](https://karpathy.bearblog.dev/hacker-tube/)
 - [HackerTube 資料頁](https://hackertube.org/data)
 - [Karpathy 的 RSS 貼文（2026-02-01 UTC，台北時間 2 月 2 日）](https://x.com/karpathy/status/2018043254986703167)
 - [Karpathy 回覆 Substack](https://x.com/karpathy/status/2018048149903048980)
