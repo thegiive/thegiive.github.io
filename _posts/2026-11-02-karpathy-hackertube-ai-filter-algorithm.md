@@ -8,7 +8,7 @@ categories: [AI 觀點]
 tags: [Karpathy, HackerTube, YouTube, RSS, X API, Grok, 推薦演算法, 資訊攝取, AI Agent]
 image: /assets/images/karpathy-hackertube-ai-filter-algorithm-cover.png
 image_alt: "HackerTube 首頁截圖：左側是 Home、Longs、Liked 等選單，右側是來自 Hacker News 推薦的 YouTube 影片"
-description: "10 月底的週五晚上，Karpathy 受不了 YouTube 首頁，隔天用 Opus 5.5 花約 2 小時做出 HackerTube：6,454 支 Hacker News 上被推薦過的影片。我的看法是，資訊管道要更多元，並請 AI 排序，這是 AI 最重要的用法之一。但 X 也是演算法，AI 排序也是一種排序，我這次取材就踩到了這個矛盾。"
+description: "10 月底的週五晚上，Karpathy 受不了 YouTube 首頁，隔天用 Opus 5.5 花約 2 小時做出 HackerTube：6,454 支 Hacker News 上被推薦過的影片。我的看法是，資訊管道要更多元，並請 AI 排序，這是 AI 最重要的用法之一。但 X 也是演算法，AI 排序也是一種排序，所以真正要問的是誰設定標準、你能不能改。"
 ---
 
 ![HackerTube 首頁截圖](/assets/images/karpathy-hackertube-ai-filter-algorithm-cover.png)
@@ -29,7 +29,7 @@ Karpathy 在附註裡說，他用 Claude Code 桌面版、Opus 5.5 的 Medium ef
 
 之後他把 IP 丟給 Claude，叫它部署、加固、最佳化。這三件都卡在帳號、機器和付費。抓取、篩選、分類、寫介面都交出去了。
 
-**清單裡有兩項我特別在意**：沒了誇張縮圖，改用影片 50% 處的畫面；以及站台資料整包匯出給你的 agent，資料頁 hackertube.org/data 列出 videos.jsonl、mentions.jsonl、taxonomy.json。整條排序管線，從「哪些留言算數」到「最後怎麼排」，都可以被拿走、改寫。
+**清單裡有兩項最值得看**：沒了誇張縮圖，改用影片 50% 處的畫面；以及站台資料整包匯出給你的 agent，資料頁 hackertube.org/data 列出 videos.jsonl、mentions.jsonl、taxonomy.json。整條排序管線，從「哪些留言算數」到「最後怎麼排」，都可以被拿走、改寫。
 
 ## 2 月他先做的是 RSS
 
@@ -39,7 +39,7 @@ Karpathy 在附註裡說，他用 Claude Code 桌面版、Opus 5.5 的 Medium ef
 
 任何看起來不一樣、但底層誘因結構相同的產品，最後都會掉進同一個重力井中央的黑洞。接著他叫大家把 RSS 帶回來，或直接 vibe code 一個閱讀器，還附上 92 個 2025 年 HN 熱門部落格的 feed 清單。同一天有人問他 Substack，他回「another walled garden」。
 
-我的讀法是：HackerTube 是這句話的推論。既然首頁和 Substack 走到最後是同一件事，解法就得動誘因結構：來源換成 HN 上的人推薦過的影片，狀態存在自己的瀏覽器，也不用帳號。
+HackerTube 可以看成這句話的推論。既然首頁和 Substack 走到最後是同一件事，解法就得動誘因結構：來源換成 HN 上的人推薦過的影片，狀態存在自己的瀏覽器，也不用帳號。
 
 這個判準也可以拿來篩產品：看一個產品時先問，它的誘因是把人留住，還是幫你找到東西。
 
@@ -84,37 +84,25 @@ Grok 則是讓我搜尋方便很多。Brian Roemmele 用 Grok Tasks 做每天早
 
 **第二層的規則你改得到，第三層的標準你通常看不到。**
 
-## 坦白說：我用的尺可能是演算法的
+## AI 排序，也是一種排序
 
-**我請 AI 幫我排序，不等於我就跳出演算法。** X 也是演算法，Nature 那篇講的就是 X。我說「目前還算 OK」，是目前，不是中立。Nikita Bier 今年 7 月、時任 X 產品負責人時說過，custom timeline 上的停留時間與互動，會塑造你的 For You。另外，X 開源的 For You 程式碼寫的是用 transformer 排序；他說由 Grok 排序與標註的是 AI custom timeline，兩件事別混。
+X 也是演算法，Nature 那篇講的就是 X。所以「目前還算 OK」只代表目前，不代表中立。Nikita Bier 今年 7 月、時任 X 產品負責人時說過，custom timeline 上的停留時間與互動，會塑造你的 For You。另外，X 開源的 For You 程式碼寫的是用 transformer 排序；他說由 Grok 排序與標註的是 AI custom timeline，兩件事別混。
 
 HackerTube 也有偏見，它把排序權交給 HN 的品味。發布當天就有人說「it all so bad」；也有人回，最新的影片是五個月前、「closer to a time capsule」。
 
 再往下，品味到底是人的還是模型的？圈內人自己也吵。Chamath 說判斷與品味仍是人類獨有的領域；Andreessen 說頂尖模型在長期規劃、點子生成和品味上都「quite good」；Mollick 說在 agent 時代還講 AI 沒有品味是「obviously false」，但也承認他比較能接受對「AI 選擇的品質或多樣性」的質疑。Paul Graham 講的是創作端：人人都能做東西之後，差別在你選擇做什麼。
 
-我的看法是，放回資訊攝取，品味的問題不會消失，只會換人扛。
-
-所以真正要問的是：誰設定標準，你能不能改。這篇取材的過程，正好踩到這個矛盾。
-
-我把這題的 X 搜尋派給自己的 agent（GrokBot）。第 1 輪回來 31 則，數字都對，但撐不起文章：同類案例最高只有 36 讚，反方那則只有 0 讚、18 次瀏覽。第 2 輪我把門檻寫死：「本人第一手、讚數至少 100」，才找到 Karpathy 2 月的 RSS 貼文、Nature 作者本人的貼文、Mollick 的親身經驗。
-
-門檻是我自己定的。這裡要坦白：第 2 輪看起來好多了，很可能只是因為我把自己偏好的標準放大了；換個人定門檻，找到的會是另一批貼文。
-
-更怪的是，我想找一則具名、第一手、至少 100 讚、明確主張「AI 排序也只是另一套演算法」的貼文，沒找到。
-
-最接近的是第 1 輪那則 0 讚、18 次瀏覽的回覆。它說自建 AI 新聞流「sounds like hiring a robot bartender to decide what you drink」，又說明天「透明」的資訊流可能是最大聲的回音室。但它開頭寫著「Hook:」，最後一句也沒寫完，看起來很可能本身就是自動產生的回覆，不能算誰的立場。
-
-所以這個反方是我自己提的疑問。而且我說不準它沒出現，是因為真的沒人講，還是因為我拿平台的互動數當尺：想逃開演算法，用的卻是演算法分發出來的讚數。認真講這件事的小帳號，在我的門檻底下本來就看不到。
+放回資訊攝取，品味的問題不會消失，只會換人扛。所以真正要問的是：**誰設定標準，你能不能改。** HackerTube 的資料可以整包匯出，這題它答得出來；平台首頁答不出來。
 
 ## 可以做的四件事
 
 第一，把管道順序寫出來。哪一條負責什麼、你為什麼留著它，寫給自己看。
 
-第二，把篩選標準寫死，再交給 AI。「找一些好的討論」不算門檻，「本人第一手、至少 100 讚」才算。但記得，寫死的門檻是你自己的偏好，改它比改模型的直覺容易。
+第二，把篩選標準寫清楚，再交給 AI。「找一些好的討論」不算標準，「本人第一手、附原始連結」才算。標準寫出來，之後才改得動。
 
 第三，至少留一條不經演算法的來源。RSS、newsletter、一支固定的 Podcast 都可以。它不會更聰明，但它不會因為你這週多滑了兩分鐘就換內容。
 
-第四，定期看 AI 漏了什麼。每週挑一次，自己手動搜尋對照，包括那些讚數不高、卻正好說中你盲點的東西。
+第四，定期看 AI 漏了什麼。每週挑一次，自己手動搜尋對照。
 
 **AI 最重要的用法之一，是幫我們快速找到對的東西，不被任何演算法挾持。** 但那是要動手才有的結果，不是換一個工具就自動發生。
 
@@ -147,6 +135,5 @@ HackerTube 也有偏見，它把排序權交給 HN 的品味。發布當天就�
 - [Chamath：判斷與品味仍屬人類](https://x.com/chamath/status/2049497195376988615)
 - [parsecranberry：對 HackerTube 的批評](https://x.com/parsecranberry/status/2116785470218924500)
 - [Lincoln：最新影片是五個月前](https://x.com/Presidentlin/status/2116854338781856069)
-- [Dot Phase：疑似自動回覆，提到回音室](https://x.com/MaxRecursion/status/2114604654994829667)
 
 > 貼文讚數與瀏覽數為 2026-11-01 查詢結果，會變動，文中數字為約略值。
