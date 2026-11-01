@@ -135,5 +135,3 @@ HackerTube 也有偏見，它把排序權交給 HN 的品味。發布當天就�
 - [Chamath：判斷與品味仍屬人類](https://x.com/chamath/status/2049497195376988615)
 - [parsecranberry：對 HackerTube 的批評](https://x.com/parsecranberry/status/2116785470218924500)
 - [Lincoln：最新影片是五個月前](https://x.com/Presidentlin/status/2116854338781856069)
-
-> 貼文讚數與瀏覽數為 2026-11-01 查詢結果，會變動，文中數字為約略值。
