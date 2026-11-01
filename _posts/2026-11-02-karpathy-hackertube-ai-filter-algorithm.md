@@ -13,13 +13,13 @@ description: "10 月底的週五晚上，Karpathy 受不了 YouTube 首頁，隔
 
 ![HackerTube 首頁截圖](/assets/images/karpathy-hackertube-ai-filter-algorithm-cover.png)
 
-10 月底的週五晚上 11 點，Karpathy 很累，打開 YouTube 想隨便看點東西，結果看到一整面被他形容為「enshittified wall of slop」的推薦：誇張縮圖、同幾個題目、像電影《蠢蛋進化論》裡的內容。他自己說，這套演算法大概對網路上的中位數使用者很好用，**但對他不好用**。
+10 月底的一個週五晚上 11 點，Karpathy 累了，打開 YouTube 想隨便看點東西。首頁是一整面誇張的縮圖和老掉牙的題目，內容像電影《蠢蛋進化論》裡演的，他直接叫它「enshittified wall of slop」。他說這套演算法大概很適合網路上的中位數使用者，**只是不適合他**。
 
-隔天早上，他把這件事交給 Opus 5.5：做一個以 Hacker News 推薦為來源的 YouTube clone。Opus 過濾掉 HN 留言裡的垃圾，留下 40K 則推薦了某支影片的留言，對應到 6,454 支影片、150 個主題，時間橫跨 2007 到 2026。加上介面、買網域、丟 VPS，約 2 小時。
+隔天早上，他請 Opus 5.5 做一個 YouTube clone，影片只收 Hacker News 上有人推薦過的。Opus 把 HN 留言全部抓下來，濾掉垃圾訊息，留下 4 萬則推薦影片的留言，對應到 6,454 支影片、150 個主題，時間從 2007 年到 2026 年。連同介面、網域和部署，總共約 2 小時。
 
-這篇要講的，是 AI 會寫網站以外的事。**我的看法：大量東西被演算法控制，收集資訊的管道就必須更多元，並請 AI 來排序。這是 AI 最重要的用法之一。**
+兩小時做出網站不是重點，重點是他不再讓 YouTube 決定他看什麼。**現在大量內容都被演算法控制，所以收集資訊的管道必須更多元，再請 AI 來排序。我認為這是 AI 最重要的用法之一。**
 
-## 他手動只做三件事
+## 他親手做的只有三件事
 
 Karpathy 在附註裡說，他用 Claude Code 桌面版、Opus 5.5 的 Medium effort 當預設，現在只跟 Claude 講話。真正的手動工作只有三件：
 
@@ -27,25 +27,25 @@ Karpathy 在附註裡說，他用 Claude Code 桌面版、Opus 5.5 的 Medium ef
 2. 開一台 VPS
 3. 買網域
 
-之後他把 IP 丟給 Claude，叫它部署、加固、最佳化。這三件都卡在帳號、機器和付費。抓取、篩選、分類、寫介面都交出去了。
+之後他把 IP 丟給 Claude，叫它部署、加固、最佳化。這三件都和帳號、機器、付款有關，其餘的抓取、篩選、分類、寫介面都交給了 Claude。
 
-**清單裡有兩項最值得看**：沒了誇張縮圖，改用影片 50% 處的畫面；以及站台資料整包匯出給你的 agent，資料頁 hackertube.org/data 列出 videos.jsonl、mentions.jsonl、taxonomy.json。整條排序管線，從「哪些留言算數」到「最後怎麼排」，都可以被拿走、改寫。
+**HackerTube 的功能裡，有兩項最值得看**：一是不用上傳者挑的縮圖，改用影片 50% 處的畫面；二是站台資料可以整包匯出給你的 agent，資料頁 hackertube.org/data 列出 videos.jsonl、mentions.jsonl、taxonomy.json。整條排序管線，從「哪些留言算數」到「最後怎麼排」，都可以被拿走、改寫。
 
 ## 2 月他先做的是 RSS
 
-台灣時間 2 月 2 日，他發了一則貼文，說自己最近回去用 RSS／Atom 訂閱多了很多，品質好的長文多得多，為了挑釁而生的浮濫內容少很多。貼文裡他寫：
+台灣時間 2 月 2 日，他發文說自己最近更常回去用 RSS／Atom 訂閱，品質好的長文多得多，為了挑釁而生的浮濫內容也少很多。貼文裡他寫：
 
 > Any product that happens to look a bit different today but that has fundamentally the same incentive structures will eventually converge to the same black hole at the center of gravity well.
 
 任何看起來不一樣、但底層誘因結構相同的產品，最後都會掉進同一個重力井中央的黑洞。接著他叫大家把 RSS 帶回來，或直接 vibe code 一個閱讀器，還附上 92 個 2025 年 HN 熱門部落格的 feed 清單。同一天有人問他 Substack，他回「another walled garden」。
 
-HackerTube 可以看成這句話的推論。既然首頁和 Substack 走到最後是同一件事，解法就得動誘因結構：來源換成 HN 上的人推薦過的影片，狀態存在自己的瀏覽器，也不用帳號。
+HackerTube 可以看成這句話的推論。既然換個長相的產品最後都一樣，解法就得動誘因結構：來源換成 HN 上的人推薦過的影片，狀態存在自己的瀏覽器，也不用帳號。
 
-這個判準也可以拿來篩產品：看一個產品時先問，它的誘因是把人留住，還是幫你找到東西。
+這個判準也能拿來看任何產品：它的誘因是把人留住，還是幫你找到東西？
 
 ## 被演算法控制的證據
 
-Karpathy 說首頁「對他不好用」是主觀感受。但「演算法會影響人」已經有實驗證據，不只他在講。
+Karpathy 說首頁不適合他，這是主觀感受。但演算法會影響人，已經有實驗證據。
 
 今年 2 月 18 日，Nature 刊出 〈The political effects of X's feed algorithm〉。研究團隊在 2023 年夏天做了七週的實地實驗：把活躍的美國 X 用戶隨機分派成「追蹤」（時間序）和「For You」（演算法）兩種時間軸，與 X 沒有合作，也不用平台內部數據。
 
@@ -57,24 +57,24 @@ Karpathy 說首頁「對他不好用」是主觀感受。但「演算法會影�
 
 範圍要講清楚：這是 2023 年、X、美國用戶、政治態度，不能外推到所有平台，也不代表「看 YouTube 會把你變怎樣」。
 
-內容供給端也一樣。Kapwing 2025 年 11 月的報告開新帳號，記錄前 500 支 YouTube Shorts：**104 支（21%）是 AI 生成，165 支（33%）是 brainrot**，資料到 2025 年 10 月。這是一個新帳號的樣本，不是整個 YouTube 的統計，但它量的是新帳號一開始會看到什麼。
+內容這一端也有數據。Kapwing 2025 年 11 月的報告用新帳號記錄刷到的前 500 支 YouTube Shorts：**104 支（21%）是 AI 生成，165 支（33%）是 brainrot**，資料到 2025 年 10 月。這是一個新帳號的樣本，不是整個 YouTube 的統計，但它量的是新帳號一開始會看到什麼。
 
 10 月 30 日，Wharton 教授 Ethan Mollick 說他每則貼文底下都有幾十則明顯的 AI 浮濫回覆；更糟的是，真人回覆（他舉的例子是 Anthropic 的人來回應他的問題）不會被回覆演算法優先顯示。
 
 ## 我的管道順序
 
-我目前已經不太用 YouTube 來看東西了。我看的角度是：大量內容被演算法控制，收集資訊的管道就必須更雜，最後再請 AI 幫我排。
+我目前已經不太用 YouTube 來看東西了，X 才是第一優先。順序大概是這樣：
 
 | 順序 | 管道 | 我的用法 | 為什麼 |
 |---|---|---|---|
 | 第一優先 | X | 主要獲取管道 | 演算法目前還算 OK；用 Grok 幫忙搜尋；API 比較親民 |
-| 也常看 | 抖音 | 大量 AI 新聞 | 很棒的管道 |
+| 另外 | 抖音 | 大量 AI 新聞 | 很棒的管道 |
 | 第二 | YouTube | 不當主要管道，更多是一種呈現方式 | 還是會看，Podcast 值得聽、值得看 |
 | 第三 | Facebook、LinkedIn、IG | 還是可用 | 不當主要的獲取管道 |
 
 X 放第一有一個現實理由：它的 API 是 pay-per-use，沒有訂閱制，Posts: Read 一筆 $0.005，同一則貼文在同一個 UTC 日內重複讀取不算第二次錢。每天盯幾十個帳號的小工具，成本算得出來。
 
-Grok 則是讓我搜尋方便很多。Brian Roemmele 用 Grok Tasks 做每天早上的 X 摘要，形容成「取代噪音時間軸與無止盡手動滑動」：從「平台餵你」變成「你去要」。
+Grok 讓我搜尋方便很多。Brian Roemmele 用 Grok Tasks 做每天早上的 X 摘要，形容成「取代噪音時間軸與無止盡手動滑動」：從「平台餵你」變成「你去要」。
 
 ## 別人怎麼換掉演算法
 
@@ -86,7 +86,7 @@ Grok 則是讓我搜尋方便很多。Brian Roemmele 用 Grok Tasks 做每天早
 
 ## AI 排序，也是一種排序
 
-X 也是演算法，Nature 那篇講的就是 X。所以「目前還算 OK」只代表目前，不代表中立。Nikita Bier 今年 7 月、時任 X 產品負責人時說過，custom timeline 上的停留時間與互動，會塑造你的 For You。另外，X 開源的 For You 程式碼寫的是用 transformer 排序；他說由 Grok 排序與標註的是 AI custom timeline，兩件事別混。
+X 也是演算法，Nature 那篇講的就是 X。所以「目前還算 OK」只代表目前，不代表中立。Nikita Bier 今年 7 月、時任 X 產品負責人時說過，custom timeline 上的停留時間與互動，會塑造你的 For You。X 開源的 For You 程式碼是用 transformer 排序；Bier 說的 Grok 排序與標註，指的是 AI custom timeline，這是兩件事。
 
 HackerTube 也有偏見，它把排序權交給 HN 的品味。發布當天就有人說「it all so bad」；也有人回，最新的影片是五個月前、「closer to a time capsule」。
 
@@ -104,7 +104,7 @@ HackerTube 也有偏見，它把排序權交給 HN 的品味。發布當天就�
 
 第四，定期看 AI 漏了什麼。每週挑一次，自己手動搜尋對照。
 
-**AI 最重要的用法之一，是幫我們快速找到對的東西，不被任何演算法挾持。** 但那是要動手才有的結果，不是換一個工具就自動發生。
+**AI 最重要的用法之一，是幫我們快速找到對的東西，不被任何演算法挾持。** 但這要自己動手，不會因為換一個工具就自動發生。
 
 ## 延伸閱讀
 
