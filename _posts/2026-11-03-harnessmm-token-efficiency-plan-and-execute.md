@@ -24,7 +24,7 @@ faq:
 
 然而，既有的 Agent Harness 普遍採用 ReAct 迴圈：只要工具回傳結果，即便只是個標準的 `returncode == 0` 或 `HTTP 200 OK`，控制器就會把整包幾萬 Token 的上下文歷史重新塞回模型，呼叫慢速推理問下一步。
 
-清華大學與微軟亞洲研究院（MSRA）於 2026 年 10 月 23 日公開預印本〈[HarnessMM: Recursive Self-Improvement for Harness Token Efficiency](https://arxiv.org/abs/2610.32813)〉（arXiv:2610.32813v1，Yuhua Jiang 等人），正是針對這種「重新決定已決定的事」的算力浪費提出解法。
+清華大學與微軟亞洲研究院（MSRA）於 2026 年 10 月 23 日公開預印本〈[HarnessMM: Recursive Self-Improvement for Harness Token Efficiency](https://arxiv.org/abs/2610.32813)〉（arXiv:2610.32813v1，Yuhua Jiang 等人），針對這種「重新決定已決定的事」的算力浪費提出解法。
 
 作者不修改底層模型權重，而是在模型與工具邊界插入控制器，讓已決定的步驟在符合守衛條件時直接派發執行。
 
@@ -114,3 +114,47 @@ Plan and Execute 這種模式，我幾乎在今年初時就已經開始在架構
 這其實反映了一個趨勢：**底座模型的單點突破期正在放緩，Agent 正式進入下半場。** 
 
 未來企業 AI 的競爭力，不再只是誰的模型比較會寫程式，而是誰能在 **Day 2 的 Agent 編排架構、安全護欄、Token 成本控制、以及確定性程式碼與模型推理的混搭效率** 上，做得更紮實、更可控。
+
+---
+
+## 坦白說
+
+- 我還沒有在生產環境跑過 HarnessMM 官方的完整 pipeline。這篇分析基於 arXiv 論文公開資料與 GitHub 原始碼架構分析，不是生產線上的 Benchmark 重測。
+- 官方開源庫裡的資料是合成資料，官方文件自己載明無法重現論文分數；87.93% 的極端省幅有特定的評測環境依賴，不能直接等同於你手頭專案的節省幅度。
+- HumanEval 和 MBPP 都是短程單函式 coding 題目，大型專案中檔案相依與動態變動更多，預寫圖的失效重試比率必然會比論文測試集更高。
+
+---
+
+## 常見問題 Q&A
+
+**Q: 什麼是 HarnessMM 的可執行決策圖（Executable Decision Graph, EDG）？**
+
+EDG 是模型在慢速推理時順手輸出的一張有界無環圖（DAG）。每個節點寫死原生工具指令、具體參數（禁用變數）與公開守衛條件（如 CommandLine 回傳 0 或 API 回傳 200）。當後續工具回傳符合守衛條件時，控制器直接沿著 DAG 派發下一步動作，跳過大模型回呼，達成 0 Token 消耗。
+
+**Q: 為什麼說 HarnessMM 本質上是 Plan and Execute 的變種？**
+
+傳統 ReAct 是「每動一步就向模型重送整包上下文」，在固定流水線上造成大量輸入 Token 浪費；純 Plan and Execute 則是預先規劃整條路徑，但在遇到錯誤時缺乏隨機應變能力。HarnessMM 的 EDG 機制結合了兩者：順境時照著 Plan 好的 DAG 讓確定性程式碼跑反射，逆境（守衛未過、報錯）時才退回 ReAct 重新思考。
+
+**Q: 為什麼不能直接用 7B 或 8B 的小模型來取代 EDG 守衛？**
+
+小模型依然是神經網路（Neural Network），每次決策依然要傳輸歷史上下文並計算注意力機制，且仍有幻覺與格式跑版的機率；EDG 搭配程式碼守衛則是完全確定性的工程邏輯，零 Token 消耗、零推理延遲，而且「絕對忠實」。在流程已經確定的場景下，確定性的程式碼永遠比任何神經網路更便宜、更可靠。
+
+**Q: 什麼樣的任務適合導入 HarnessMM，什麼場景反而會虧錢？**
+
+它最適合「主幹高度機械化 + 局部保留彈性」的任務（如 CI/CD 流水線檢驗、固定資料清洗、寫檔後的編譯與測試循環）。在這些場景中，80% 的動作是固定的，只有 20% 異常需要大模型介入。但在高度動態推導、邊界不固定的任務（如 AIME 數學題、探索型架構設計），每一步都要隨機應變，預先畫圖的成本無法攤平，反而會觸發「替換悖論」（Substitution Paradox），在 AIME 題目上成本反而增加 28.34%。
+
+---
+
+## 延伸閱讀
+
+- [Meta 把 Agent 的「決策」和「做事」拆開：同一顆 GPT-5.5，ProgramBench 從 63.7% 拉到 71.5%，但原本的 Agent 只用了 18% 預算就收工](https://ai-coding.wiselychen.com/meta-reasoning-controller-worker-separation/)
+- [Pi 99.93% Cache Hit：10 億 token 只花 $2.65，Agent 選型要多盯一個數字](https://ai-coding.wiselychen.com/pi-cache-hit-99-93-context-compression-roadmap/)
+- [Jev 的原理是讓大模型不寫字、直接讀 logit：開源 Laya 零樣本輸它，180 筆 RCA 合成資料微調後 0.496 變 0.921](https://ai-coding.wiselychen.com/jev-principle-logit-readout-laya-finetune-open-source/)
+
+## 參考資料
+
+- Yuhua Jiang、Chang Xu、Feifei Gao、Li Zhao（清華大學、微軟亞洲研究院），[HarnessMM: Recursive Self-Improvement for Harness Token Efficiency（arXiv:2610.32813v1）](https://arxiv.org/abs/2610.32813)，2026-10-23
+- Yuhua Jiang，[YuhuaJiang2002/HarnessMM GitHub 儲存庫](https://github.com/YuhuaJiang2002/HarnessMM)，2026-10-26
+- Yuhua Jiang，[HarnessMM Reproduction and Deployment 說明文件（REPRODUCIBILITY.md）](https://github.com/YuhuaJiang2002/HarnessMM/blob/main/docs/REPRODUCIBILITY.md)，2026-10-26
+- DeepSeek，[deepseek-ai/deepseek-harness（Official dsh-v0.2.0-rc.1）](https://github.com/deepseek-ai/deepseek-harness/commit/4878cdabd87d4041bdaff61d04c966883b9fd07a)，2026-09-30
+- OpenAI，[openai/codex（Official CLI 0.142.5）](https://github.com/openai/codex/commit/26de83050b20f7e0ee211b9739e52ae00ce8032a)，2026-09-30
