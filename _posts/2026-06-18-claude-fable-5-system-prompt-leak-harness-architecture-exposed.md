@@ -25,7 +25,7 @@ gerardsans 說「這根本不是一場公平的比賽——你是在拿一個原
 
 回頭想想，難怪我在用 Fable 5 的時候總覺得它很慢——說一個 hello 都要等很久。原來每一次回應背後跑的不是單一的 LLM call，是一整套類似 Claude Code 的 Agent 完成流程。
 
-但如果你從 [Harness Engineering](/harness-engineering-architecture-overview/) 的角度看，這份洩漏文件揭露的東西比「公不公平」有價值得多。
+但如果你從 [Harness Engineering](/harness-engineering-architecture-overview-ai-code-production-guardrails/) 的角度看，這份洩漏文件揭露的東西比「公不公平」有價值得多。
 
 **這是目前為止最詳細的一份生產級 AI Harness 架構文件。** 不是研究論文，不是技術 blog，是跑在數百萬使用者面前的真實系統配置。
 
@@ -132,7 +132,7 @@ benchmark 分數只告訴你系統的輸出品質，不告訴你系統的組成�
 
 如果你在 Fable 5 上面再套一層 LangChain，你等於在 12 萬字符的 harness 上面又加一層 harness。兩層 harness 之間的交互作用很難預測——你的工具定義可能跟系統提示詞裡的 18 個工具 schema 衝突。
 
-更實際的做法是我們在 [Harness 架構概覽](/harness-engineering-architecture-overview/) 裡講的：**做減法**。用模型原生的工具鏈（MCP、Claude Code skills），把你的 harness 限縮在模型管不到的地方——業務邏輯驗證、合規檢查、外部系統整合。
+更實際的做法是我們在 [Harness 架構概覽](/harness-engineering-architecture-overview-ai-code-production-guardrails/) 裡講的：**做減法**。用模型原生的工具鏈（MCP、Claude Code skills），把你的 harness 限縮在模型管不到的地方——業務邏輯驗證、合規檢查、外部系統整合。
 
 ### 3. 系統提示詞洩漏是一個安全事件，也是一個架構風險
 

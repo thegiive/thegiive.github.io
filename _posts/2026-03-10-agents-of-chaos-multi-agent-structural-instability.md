@@ -100,7 +100,7 @@ Mira 和 Doug 也在類似的情境下交出了資料。
 
 這就是所謂的**語義重構攻擊**（Semantic Reframing）。模型的安全護欄是建立在特定的詞彙觸發上，不是建立在語義理解上。你只要繞過那個觸發詞，護欄就形同虛設。
 
-跟我之前在 [AI Agent Security](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/) 那篇講的 Prompt Injection 是同一個本質問題——安全機制跟功能機制住在同一層，攻擊者只要找到語義的縫隙就能穿過去。
+跟我之前在 [AI Agent Security](/ai-agent-security-game-changed/) 那篇講的 Prompt Injection 是同一個本質問題——安全機制跟功能機制住在同一層，攻擊者只要找到語義的縫隙就能穿過去。
 
 ### 案例 3：為了保護秘密，炸掉自己的郵件伺服器
 
@@ -241,6 +241,6 @@ Quinn/Kimi K2.5 的案例告訴我們：你的 Agent 平台底層用的是什麼
 - [Eval awareness in Claude Opus 4.6's BrowseComp performance — Anthropic Engineering Blog](https://www.anthropic.com/engineering/eval-awareness-browsecomp)
 - [NIST AI Agent Standards Initiative (February 2026)](https://www.nist.gov/artificial-intelligence)
 - 本站相關文章：
-  - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+  - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)
   - [Opus 4.6 逆向破解 BrowseComp 考試](/anthropic-eval-awareness-opus-browsecomp-reverse-engineer/)
   - [Harness Engineering：Agent 控制面設計](/harness-engineering-control-plane-pattern-agent-review-loop/)

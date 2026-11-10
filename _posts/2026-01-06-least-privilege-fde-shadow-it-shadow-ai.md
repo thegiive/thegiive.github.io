@@ -147,6 +147,6 @@ XX 金控的張副總整天忙著跟客戶交際，所有協辦單位要上呈�
 ---
 
 **相關文章：**
-- [FDE：AI Agent 落地新模式](/fde-ai-agent-luo-di-xin-mo-shi/)
+- [FDE：AI Agent 落地新模式](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/)
 - [AI 時代的資安攻防：Guardrails 為什麼擋不住？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)
 - [CaMeL：Google DeepMind 的雙層 Agent 防禦架構](/camel-privileged-quarantined-agent/)

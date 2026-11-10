@@ -16,7 +16,7 @@ description: "**作者：** Wisely Chen **日期：** 2026年6月 **系列：** 
 
 ![Terminus-4B 論文：用 4B 小模型替代 Frontier LLM 處理終端執行任務](/assets/images/terminus-4b-cover.png)
 
-我之前寫過一篇 [AgentOpt](agentopt-expensive-model-wrong-position-pipeline-optimization.md) 的文章，核心結論是：**最貴的模型不一定要放在最重要的位置**。Columbia 大學的數據顯示，8B 小模型當 Planner、Opus 當 Executor，準確率比反過來高了一倍。
+我之前寫過一篇 [AgentOpt](/agentopt-expensive-model-wrong-position-pipeline-optimization/) 的文章，核心結論是：**最貴的模型不一定要放在最重要的位置**。Columbia 大學的數據顯示，8B 小模型當 Planner、Opus 當 Executor，準確率比反過來高了一倍。
 
 那篇是講「誰該規劃、誰該執行」的位置問題。
 
@@ -197,7 +197,7 @@ Terminus-4B 的 0.14 次已經接近 frontier 模型的水準。這是 RL 訓練
 
 ## 跟 AgentOpt 放在一起看：小模型的兩個戰場
 
-把這篇跟 [AgentOpt 那篇](agentopt-expensive-model-wrong-position-pipeline-optimization.md) 放在一起看，一個更完整的圖景就出來了：
+把這篇跟 [AgentOpt 那篇](/agentopt-expensive-model-wrong-position-pipeline-optimization/) 放在一起看，一個更完整的圖景就出來了：
 
 ### AgentOpt 的發現：小模型更適合當 Planner
 
@@ -281,8 +281,8 @@ Frontier 模型的最佳戰場，可能只是整個 pipeline 裡的一小段。�
 ## 參考資料
 
 - Garg, S., Nitin, V., & Huang, Y. (2026). [Terminus-4B: Can a Smaller Model Replace Frontier LLMs at Agentic Execution Tasks?](https://arxiv.org/abs/2605.03195) Microsoft Research.
-- 相關閱讀：[AgentOpt 論文：Opus 太聰明，所以它不該做 Planning](agentopt-expensive-model-wrong-position-pipeline-optimization.md)
-- 相關閱讀：[On-Prem 小模型爆發時代來了](on-prem-small-model-explosion-2026-shift.md)
+- 相關閱讀：[AgentOpt 論文：Opus 太聰明，所以它不該做 Planning](/agentopt-expensive-model-wrong-position-pipeline-optimization/)
+- 相關閱讀：[On-Prem 小模型爆發時代來了](/on-prem-small-model-explosion-2026-shift/)
 
 ---
 

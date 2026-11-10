@@ -5,6 +5,8 @@ date: 2026-07-08 08:00:00 +0800
 permalink: /ai-lockdown-era-china-us-dual-export-control/
 image: /assets/images/ai-lockdown-era-cover.png
 description: "Anthropic 把 Fable 5 免費期延長到 7 月 12 日。表面是補償出口管制造成的使用中斷，但背後是三面夾擊：政府封禁的餘波、GPT 5.6 Sol 的性價比打壓、GLM 5.2 開源地端的自主 AI 敘事挑戰。市場競爭逼你開放，但就在同一天，Reuters 報導中國正討論對前沿 AI 模型出口管制。地緣政治逼你上鎖。越動態的環境，越需要確定性的東西——地端知識庫加地端 AI，是你的保底。"
+categories: [AI 產業分析]
+author: Wisely Chen
 ---
 
 ![AI 鎖國時代](/assets/images/ai-lockdown-era-cover.png)
@@ -131,5 +133,5 @@ Anthropic 延長免費期，因為用戶正在被 Sol 和 GLM 吸走。Z.ai 用 
 
 - [上線三天就被「政府下架」：Fable 5 事件的真正重點不是 Fable 5](https://ai-coding.wiselychen.com/fable-5-takedown-ai-export-control-precedent/)
 - [Token 出海：中國 AI 不再賣商品，開始賣 Token](https://ai-coding.wiselychen.com/china-token-export-new-trade-model-selling-intelligence/)
-- [On-Prem 小模型爆發時代來了 — 為什麼我這週訂了 RTX 5090 桌機](https://ai-coding.wiselychen.com/on-prem-small-model-explosion-2026-shift/)
-- [AI Coding On-Prem 的三條路：雲端內網化、真地端、還是灰色折衷？](https://ai-coding.wiselychen.com/ai-coding-on-prem-three-paths/)
+- [On-Prem 小模型爆發時代來了 — 為什麼我這週訂了 RTX 5090 桌機](/on-prem-small-model-explosion-2026-shift/)
+- [AI Coding On-Prem 的三條路：雲端內網化、真地端、還是灰色折衷？](/ai-coding-on-prem-three-paths/)

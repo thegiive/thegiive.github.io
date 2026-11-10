@@ -257,5 +257,5 @@ Deloitte 的變革和我的生態系觀點，都有各自的問題，我得誠�
 ## 延伸閱讀
 
 - [AI 勞資雙方破局的全端人才](/ai-labor-management-full-stack-talent/)
-- [AI 企業轉型不是導入工具，而是治理問題](/ai-enterprise-transformation-governance-pillar/)
-- [FDE — AI Agent 落地新模式](/fde-ai-agent-luo-di-xin-mo-shi/)
+- [AI 企業轉型不是導入工具，而是治理問題](/ai-enterprise-transformation-governance/)
+- [FDE — AI Agent 落地新模式](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/)

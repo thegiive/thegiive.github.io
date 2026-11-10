@@ -5,6 +5,8 @@ date: 2026-07-31 09:00:00 +0800
 permalink: /arc-agi-3-harness-retained-reasoning-compaction/
 image: /assets/images/arc-agi-3-harness-retained-reasoning-cover.png
 description: "OpenAI 7 月 29 日發文指出，GPT-5.6 Sol 在 ARC-AGI-3 的低分不是模型問題——是 harness 設計把推理記憶砍了。改兩個 API 設定（retained reasoning + compaction），公開題集分數從 13.3% 跳到 38.3%，output tokens 減少 6 倍。OpenAI 產品 GM Thibault Sottiaux 直接宣稱 Sol 才是 ARC-AGI-3 的真正 SOTA。這篇拆解這兩個設定的機制、benchmark 公平性的兩難，以及為什麼這是 harness 系列的第三個數據點——同模型、同任務，只改基礎設施，能力差 3 倍。"
+categories: [AI Agent]
+author: Wisely Chen
 ---
 
 Opus 5 在 ARC-AGI-3 官方排行榜拿下 30.2%，刷新紀錄。兩天後，OpenAI 發了一篇[技術文](https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/)，說 GPT-5.6 Sol 其實是 38.3%——只是需要開兩個設定。

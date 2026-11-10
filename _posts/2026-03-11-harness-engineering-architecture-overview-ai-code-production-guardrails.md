@@ -44,7 +44,7 @@ description: "亞馬遜讓 AI 修 bug，AI 刪掉整個生產環境。DataTalks.
 
 然後接下來的問題幾乎都一樣：「所以到底該怎麼辦？」
 
-我之前已經寫過三篇相關的深度文：[Amazon 事件分析](/amazon-ai-code-incident-tech-giants-quietly-locking-ai/)、[四層防禦架構](/coders-who-stopped-coding-harness-context-spec-engineering/)、[Control Plane 八步拆解](/harness-engineering-control-plane-pattern-agent-review-loop/)。但這三篇加起來超過一萬字，而且是按時間順序寫的，不是按架構邏輯。
+我之前已經寫過三篇相關的深度文：[Amazon 事件分析](/amazon-ai-code-incident-tech-giants-quietly-locking-ai/)、[四層防禦架構](/ai-coding-framework-deterministic-tools-control-ai/)、[Control Plane 八步拆解](/harness-engineering-control-plane-pattern-agent-review-loop/)。但這三篇加起來超過一萬字，而且是按時間順序寫的，不是按架構邏輯。
 
 這篇要做的事很簡單：**用一張圖、一套架構、一條路線圖，把 Harness Engineering 的全貌講清楚。**
 
@@ -508,7 +508,7 @@ jobs:
 
 ![第二層防禦：用確定性工具框住不確定性的 AI](/assets/images/harness-engineering-slide-07.png)
 
-> 詳細的四層防禦設計和實作經驗，我寫在[〈Make CI/CD Great Again〉](/coders-who-stopped-coding-harness-context-spec-engineering/)裡。
+> 詳細的四層防禦設計和實作經驗，我寫在[〈Make CI/CD Great Again〉](/ai-coding-framework-deterministic-tools-control-ai/)裡。
 
 ### 第三層：控制平面——從 PR 開啟到 Merge 的完整閉環
 
@@ -990,7 +990,7 @@ jobs:
 **Harness Engineering 系列（由淺入深）：**
 
 1. [亞馬遜 AI 事故啟示：科技巨頭一邊賣 AI 未來，一邊在自己家裡給 AI 上鎖](/amazon-ai-code-incident-tech-giants-quietly-locking-ai/) — 事件分析 + 為什麼禁令不是終點
-2. [Make CI/CD Great Again：四層防禦架構](/coders-who-stopped-coding-harness-context-spec-engineering/) — 第二層的完整拆解 + 實作經驗
+2. [Make CI/CD Great Again：四層防禦架構](/ai-coding-framework-deterministic-tools-control-ai/) — 第二層的完整拆解 + 實作經驗
 3. [Harness Engineering 完整拆解：Control-Plane Pattern](/harness-engineering-control-plane-pattern-agent-review-loop/) — 第三層的八步閉環 + 代碼範例
 4. [Harness Engineering 實戰第一篇：把指令拆分到不同檔案裡](/harness-engineering-l04-instruction-file-modular-split/) — 對應 Walking Labs L04，5 個 CLAUDE.md / .cursorrules 失控的真實案例 + AGENTS.md 三層拆分模式
 

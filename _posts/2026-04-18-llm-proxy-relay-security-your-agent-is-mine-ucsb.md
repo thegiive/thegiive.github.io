@@ -100,7 +100,7 @@ Claude Code 可以設定自定義 API endpoint。Cursor 也可以。很多開發
 
 這件事讓我重新審視了 AI coding 的供應鏈。
 
-我之前寫過 [LiteLLM PyPI 攻擊](https://ai-coding.wiselychen.com/litellm-supply-chain-attack-vibe-coding-biggest-risk/)——那是安裝包被污染。寫過 [Codex 訓練數據被投毒](https://ai-coding.wiselychen.com/ai-supply-chain-attack-codex-gambling-huggingface-malicious-models/)——那是模型源頭被動手腳。寫過 [IDE 裡的 prompt injection](https://ai-coding.wiselychen.com/ai-coding-tool-security-risk-prompt-injection-rce/)——那是代碼審查時的自動接受風險。
+我之前寫過 [LiteLLM PyPI 攻擊](https://ai-coding.wiselychen.com/litellm-supply-chain-attack-vibe-coding-biggest-risk/)——那是安裝包被污染。寫過 [Codex 訓練數據被投毒](https://ai-coding.wiselychen.com/ai-supply-chain-attack-codex-gambling-huggingface-malicious-models/)——那是模型源頭被動手腳。寫過 [IDE 裡的 prompt injection](/ai-coding-tool-security-risk-prompt-injection-rce/)——那是代碼審查時的自動接受風險。
 
 這篇論文補上了最後一塊拼圖：**API 中轉層**。
 
@@ -109,7 +109,7 @@ Claude Code 可以設定自定義 API endpoint。Cursor 也可以。很多開發
 - **模型層**（訓練數據投毒）— [Codex 賭博廣告 + HuggingFace 惡意模型](https://ai-coding.wiselychen.com/ai-supply-chain-attack-codex-gambling-huggingface-malicious-models/)
 - **API 層**（中轉偷竊 / 注入）← 這篇
 - **安裝包層**（PyPI 污染）— [LiteLLM 供應鏈攻擊](https://ai-coding.wiselychen.com/litellm-supply-chain-attack-vibe-coding-biggest-risk/)
-- **IDE 層**（prompt injection / 自動接受）— [AI Coding 工具的 RCE 風險](https://ai-coding.wiselychen.com/ai-coding-tool-security-risk-prompt-injection-rce/)
+- **IDE 層**（prompt injection / 自動接受）— [AI Coding 工具的 RCE 風險](/ai-coding-tool-security-risk-prompt-injection-rce/)
 - **你的代碼庫**
 
 每一層都有人在做攻擊。而且每一層的攻擊，傳統安全工具都很難偵測——因為一切看起來都是正常的 HTTP 200、正常的 JSON 回覆、正常的依賴安裝。

@@ -246,7 +246,7 @@ Google 的團隊可能有他們的考量——也許自動判斷在大多數場�
 
 **延伸閱讀：**
 - [地端 LLM 企業架構：為什麼 2026 年你該認真考慮](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)
-- [AI Coding 工具安全風險：當 Prompt Injection 遇上 RCE](https://ai-coding.wiselychen.com/ai-coding-tool-security-risk-prompt-injection-rce/)
+- [AI Coding 工具安全風險：當 Prompt Injection 遇上 RCE](/ai-coding-tool-security-risk-prompt-injection-rce/)
 
 ---
 

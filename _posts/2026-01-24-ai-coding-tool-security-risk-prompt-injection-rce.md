@@ -36,7 +36,7 @@ description: "AI Coding 工具最大的風險不是模型太笨，而是你把�
 
 ---
 
-上一篇 [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)，我談的是企業級 Agent（Salesforce Agentforce、Microsoft Copilot）的風險。這次要聊的，是離開發者更近的東西——**你每天在用的 AI Coding 工具**。
+上一篇 [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)，我談的是企業級 Agent（Salesforce Agentforce、Microsoft Copilot）的風險。這次要聊的，是離開發者更近的東西——**你每天在用的 AI Coding 工具**。
 
 Cursor、Claude Code、GitHub Copilot、Windsurf——這些工具已經不是「會補全程式碼的 IDE」，而是**有權限讀檔、寫檔、執行 shell、呼叫 API 的 Agent**。
 
@@ -761,9 +761,9 @@ CLAUDE.md 不是萬能解，但它是目前成本最低、效果最好的第一�
 - [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/) — OWASP GenAI
 
 ### 相關文章（本站）
-- [CaMeL：Google DeepMind 的 Prompt Injection 防禦架構](/camel-privileged-vs-quarantined-agent-which-needs-stronger-llm/)
+- [CaMeL：Google DeepMind 的 Prompt Injection 防禦架構](/camel-privileged-quarantined-agent/)
 - [AI Guardrails 為什麼註定失敗？](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)
-- [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+- [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)
 
 ---
 

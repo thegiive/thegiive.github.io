@@ -142,6 +142,6 @@ Project Manager 其實本身就是在做相關的事情。他在你們在學這�
 1. [直覺 + AI，是未來工作者最重要的能力之一](https://ai-coding.wiselychen.com/intuition-plus-ai-future-worker-core-ability/)
 2. [AI 打仗的文章滿天飛，但你看到的「細節」九成是編的](https://ai-coding.wiselychen.com/ai-iran-war-fake-analysis-media-literacy/)
 3. [Gemini 3.1 Pro「我停不下來思考」——AI 崩潰？不，只是 Stop Token 壞了](https://ai-coding.wiselychen.com/gemini-cot-leak-ai-thinking-loop-not-conscious/)
-4. [Harness Engineering 完整拆解：當 AI Agent 寫完 Code，你的 Repo 準備好自動接住了嗎？](https://ai-coding.wiselychen.com/harness-engineering-control-plane-pattern-agent-review-loop/)
+4. [Harness Engineering 完整拆解：當 AI Agent 寫完 Code，你的 Repo 準備好自動接住了嗎？](/harness-engineering-control-plane-pattern-agent-review-loop/)
 5. [越級打怪的「神級小模型」：帶你認識 Qwen 3.5 與爆紅的 9B 架構](https://ai-coding.wiselychen.com/qwen-3-5-9b-small-model-god-tier-architecture/)
 6. [Qwen 技術負責人被離開：當開源神話撞上 KPI](https://ai-coding.wiselychen.com/qwen-team-exodus-open-source-governance-crisis/)

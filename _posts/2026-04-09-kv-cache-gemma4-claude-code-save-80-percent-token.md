@@ -17,7 +17,7 @@ Prompt Cache 率的高低，可以嚴重影響你是否可以多 AI Coding 一�
 
 我帶著這個疑問，在本地用 Gemma4 跑小模型做實驗——發現同一段對話，有些輪次要等 30 秒，有些只要 0.2 秒。為了搞清楚為什麼，我從 Transformer 的注意力機制開始挖，再到 Claude Code 的程式碼實現，發現 Anthropic 在快取上做了一整套精密工程。理解了這套機制，你就知道怎麼讓同樣的套餐多撐 3-5 倍。
 
-這篇文章是「[Claude Code 開源設計細節](https://ai-coding.wiselychen.com/claude-code-source-leak-memory-architecture-lessons/)」系列的延伸。之前我們拆過 [System Prompt 架構](https://ai-coding.wiselychen.com/claude-code-system-prompt-source-code-analysis/)、[資安最佳實踐](https://ai-coding.wiselychen.com/claude-code-security-best-practices-source-code-verified/)、[四層壓縮機制](https://ai-coding.wiselychen.com/claude-code-context-engineering-four-layer-compression/)。今天，我們從 IT 架構的角度，把快取層單獨拉出來講清楚。
+這篇文章是「[Claude Code 開源設計細節](https://ai-coding.wiselychen.com/claude-code-source-leak-memory-architecture-lessons/)」系列的延伸。之前我們拆過 [System Prompt 架構](https://ai-coding.wiselychen.com/claude-code-system-prompt-source-code-analysis/)、[資安最佳實踐](/claude-code-security-best-practices-source-code-verified/)、[四層壓縮機制](https://ai-coding.wiselychen.com/claude-code-context-engineering-four-layer-compression/)。今天，我們從 IT 架構的角度，把快取層單獨拉出來講清楚。
 
 ### 導讀
 
@@ -342,7 +342,7 @@ Pro/Max 用戶的 TTL 是 1 小時。午飯吃 1.5 小時回來，快取就過�
 | 文章 | 架構層 | 解決什麼問題 |
 |------|--------|-------------|
 | [System Prompt 源碼分析](https://ai-coding.wiselychen.com/claude-code-system-prompt-source-code-analysis/) | 上下文層 | Prompt 怎麼組裝、DYNAMIC_BOUNDARY 怎麼切分 |
-| [資安最佳實踐](https://ai-coding.wiselychen.com/claude-code-security-best-practices-source-code-verified/) | 控制層 | 權限、沙箱、Hook 治理 |
+| [資安最佳實踐](/claude-code-security-best-practices-source-code-verified/) | 控制層 | 權限、沙箱、Hook 治理 |
 | [四層壓縮機制](https://ai-coding.wiselychen.com/claude-code-context-engineering-four-layer-compression/) | 上下文層 | 上下文太長怎麼辦 |
 | **本篇：快取機制** | **快取層** | **重複計算怎麼省** |
 
@@ -372,7 +372,7 @@ Pro/Max 用戶的 TTL 是 1 小時。午飯吃 1.5 小時回來，快取就過�
 
 - [Claude Code 51 萬行原始碼外洩拆解](https://ai-coding.wiselychen.com/claude-code-source-leak-memory-architecture-lessons/)
 - [拆解 Claude Code 的 System Prompt 源碼](https://ai-coding.wiselychen.com/claude-code-system-prompt-source-code-analysis/)（EP1）
-- [Claude Code 資安最佳實踐：14 條建議](https://ai-coding.wiselychen.com/claude-code-security-best-practices-source-code-verified/)（EP2）
+- [Claude Code 資安最佳實踐：14 條建議](/claude-code-security-best-practices-source-code-verified/)（EP2）
 - [Claude Code 上下文工程：四層壓縮機制](https://ai-coding.wiselychen.com/claude-code-context-engineering-four-layer-compression/)（EP3）
 - [Anthropic 官方解密：Dual-Agent 架構](https://ai-coding.wiselychen.com/anthropic-dual-agent-architecture-claude-code/)
 

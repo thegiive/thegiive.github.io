@@ -403,4 +403,4 @@ No. Many open-source AI agent tools have similar issues. I previously mentioned 
 ## Further reading
 
 - [The first risk of AI coding isn’t the model—it’s that you keep clicking “Yes”](/ai-coding-tool-security-risk-prompt-injection-rce/)
-- [AI Agent Security: the rules of the game have changed](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+- [AI Agent Security: the rules of the game have changed](/ai-agent-security-game-changed/)

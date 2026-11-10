@@ -265,6 +265,6 @@ AI 時代的創業，不是程式設計師的專利。是那些「懂行業 + �
 ## 延伸閱讀
 
 - [AI 時代的殘酷進化：別再賣「能力」，請開始提供 RaaS](/ai-era-raas-results-as-a-service/) — AI 原生代辦機構的個人版
-- [FDE：AI Agent 落地新模式](/fde-ai-agent-new-model/) — 深入現場解決問題的方法論
-- [ATPM：一個真正在生產環境跑過的 Vibe Coding 流程](/atpm-real-production-vibe-coding/) — PRD 驅動的 AI 開發流程
+- [FDE：AI Agent 落地新模式](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/) — 深入現場解決問題的方法論
+- [ATPM：一個真正在生產環境跑過的 Vibe Coding 流程](/atpm-a-real-production-vibe-coding-process/) — PRD 驅動的 AI 開發流程
 - [AI 產業範式轉移：從模型到 Agent Swarm](/ai-industry-paradigm-shift-2025-2026/) — AI 產業的更大趨勢圖

@@ -291,7 +291,7 @@ ACE 這篇論文最大的貢獻不是提出了什麼全新的技術，而是用�
 
 - [Claude Code 上下文工程：四層壓縮機制的源碼級拆解](/claude-code-context-engineering-four-layer-compression/)
 - [Claude Code System Prompt 架構拆解](/claude-code-system-prompt-source-code-analysis/)
-- [Google Nested Learning：AI 終於可以「記住」東西了？](/google-nested-learning-ai-memory-breakthrough/)
+- [Google Nested Learning：AI 終於可以「記住」東西了？](/nested-learning-ai-memory/)
 - [告別 Context Rot：RLM 遞歸語言模型](/recursive-language-models-rlm-context-rot-solution/)
 - [Prompt 負責引導，工程負責約束：Agent 設計的黃金守則](/prompt-guides-engineering-constrains-agent-principle/)
 

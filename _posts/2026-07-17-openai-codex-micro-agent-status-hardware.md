@@ -5,6 +5,8 @@ date: 2026-07-17 09:00:00 +0800
 permalink: /openai-codex-micro-agent-status-hardware/
 image: /assets/images/codex-micro-work-louder-cover.png
 description: "2026 年 7 月 15 日，OpenAI 第一個掛自家品牌的硬體開賣：與 Work Louder 聯名的 Codex Micro，一顆放在鍵盤旁邊的 macro pad，230 美元，限量發售，兩天後官網已顯示缺貨。13 個機械軸、一支搖桿、一顆旋鈕，外加 6 顆會依 agent 狀態變色的 RGB 燈鍵。媒體評價分歧：有人說它是重度 Codex 用戶的利器，有人說同級硬體只要 80 到 100 美元。這篇拆解的不是該不該買，是它揭露的訊號——管理多條 agent 線程的認知負荷，已經真實到值得為它做一個實體 UI。"
+categories: [AI Agent]
+author: Wisely Chen
 ---
 
 OpenAI 講了一年多的硬體野心，大家都在等 Jony Ive 的 io 做出什麼神祕消費裝置。結果 2026 年 7 月 15 日，第一個掛 OpenAI 品牌上市的硬體是這個：一顆跟精品鍵盤廠 Work Louder 聯名的 macro pad，型號 kbd-1.0-codex-micro，230 美元。

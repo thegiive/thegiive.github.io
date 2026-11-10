@@ -110,7 +110,7 @@ Storm 最有趣的一點是：**人在裡面很方便插入，能快速進到 hu
 - [Atlas 跟 Grafana 的組合技](/chatgpt-atlas-grafana-debug/)
 
 ### Agent 架構
-- [LATS 讓 Agent 像下圍棋一樣思考](/agent-pattern-lats/)
+- [LATS 讓 Agent 像下圍棋一樣思考](/lats-agent-tree-search-decision-brain/)
 - [Storm：AI 負責提供觀點，人類負責最後選擇](/storm-ai-agent-as-expert-editor-team/)
 
 ### AI 轉型跟 FDE

@@ -103,7 +103,7 @@ Silen 的新工作方式是：**直接測試「行為」**。
 | 理解所有實作細節 | 理解介面契約 |
 | 人類是程式碼審查者 | 人類是行為驗證者 |
 
-這讓我想到之前寫的 [ATPM 框架](/atpm-real-production-vibe-coding/)——PRD 作為 Single Source of Truth 的核心價值，正是讓 AI 在需求層級工作，而不是在程式碼層級糾纏。
+這讓我想到之前寫的 [ATPM 框架](/atpm-a-real-production-vibe-coding-process/)——PRD 作為 Single Source of Truth 的核心價值，正是讓 AI 在需求層級工作，而不是在程式碼層級糾纏。
 
 ---
 
@@ -284,11 +284,11 @@ Silen 的五大支柱，和我們團隊過去一年在 ATPM 框架裡驗證的�
 
 **1. Context Management → 工作記憶管理**
 
-這和我們團隊在 [Unix 哲學文章](/unix-philosophy-command-line-renaissance/) 裡提到的「文字作為狀態」概念相呼應。上下文管理的本質，是讓 Agent 的「工作記憶」保持乾淨。Claude Code 的 200k 限制確實是痛點，但透過 CLAUDE.md 持續更新和任務拆分，可以有效緩解。
+這和我們團隊在 [Unix 哲學文章](/unix-philosophy-claude-code-command-line-renaissance/) 裡提到的「文字作為狀態」概念相呼應。上下文管理的本質，是讓 Agent 的「工作記憶」保持乾淨。Claude Code 的 200k 限制確實是痛點，但透過 CLAUDE.md 持續更新和任務拆分，可以有效緩解。
 
 **2. Planning → PRD as Single Source of Truth**
 
-這完全印證了 [ATPM 框架](/atpm-real-production-vibe-coding/) 的核心——PRD 不是文件，是投資。我們團隊的數據是「PRD 迭代 6-7 次」、「PRD:Code 比例 1:1.4」（9,211 行 PRD → 13,022 行程式碼）。規劃的槓桿效應，隨著模型變強只會更大。
+這完全印證了 [ATPM 框架](/atpm-a-real-production-vibe-coding-process/) 的核心——PRD 不是文件，是投資。我們團隊的數據是「PRD 迭代 6-7 次」、「PRD:Code 比例 1:1.4」（9,211 行 PRD → 13,022 行程式碼）。規劃的槓桿效應，隨著模型變強只會更大。
 
 **3. Closing the Loop → 知識結晶**
 
@@ -296,7 +296,7 @@ Silen 的五大支柱，和我們團隊過去一年在 ATPM 框架裡驗證的�
 
 **4. Verifiability → QA 驗收流程**
 
-這和我在 [QA 驗收文章](/atpm-qa-ai-coding/) 裡強調的觀點一致。AI 產出的程式碼品質，不是靠「讀」來保證的，是靠「測」來保證的。我們預期 QA 流程能加速 80%，實際只有 20%——但這 20% 仍然值得，因為它建立了可重複驗證的基準。
+這和我在 [QA 驗收文章](/atpm-qa-ru-he-yan-shou-ai-coding-de-cheng-shi/) 裡強調的觀點一致。AI 產出的程式碼品質，不是靠「讀」來保證的，是靠「測」來保證的。我們預期 QA 流程能加速 80%，實際只有 20%——但這 20% 仍然值得，因為它建立了可重複驗證的基準。
 
 **5. Debugging → 人類價值重新定位**
 
@@ -323,8 +323,8 @@ Silen 在說的是「個人開發者如何最大化 Claude Code 的效率」。
 - [Silen Naihin 原文](https://blog.silennai.com/claude-code) —— 完整的萬字轉換筆記
 - [Hacker News 討論](https://news.ycombinator.com/item?id=46676554) —— 社群的質疑與辯論
 - [從「套殼 1.0」到「套殼 2.0」](/shell-wrapper-2-anthropic-real-threat/) —— 為什麼真正該緊張的是 Anthropic
-- [ATPM：一個真正上過生產的 Vibe Coding 流程](/atpm-real-production-vibe-coding/) —— 我們團隊的實戰框架
-- [當 Unix 哲學遇上 AI](/unix-philosophy-command-line-renaissance/) —— 為什麼 Command Line 是 AI 時代最完美的介面
+- [ATPM：一個真正上過生產的 Vibe Coding 流程](/atpm-a-real-production-vibe-coding-process/) —— 我們團隊的實戰框架
+- [當 Unix 哲學遇上 AI](/unix-philosophy-claude-code-command-line-renaissance/) —— 為什麼 Command Line 是 AI 時代最完美的介面
 
 ---
 

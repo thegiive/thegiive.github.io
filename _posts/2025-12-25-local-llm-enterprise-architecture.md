@@ -152,7 +152,7 @@ Auth Gateway 就是解決這些問題的第一道防線。為什麼我們需要�
 
 實作上，我們不需要從頭寫一個 Orchestrator。透過 Low-Code 自動化工具，可以快速實現上述的任務拆解與流程控制。
 
-> 💡 **實作範例：** [n8n 雲地混合架構：為什麼它不只是一個 Low-Code 工具](/n8n-hybrid-cloud-on-premise-architecture/)
+> 💡 **實作範例：** [n8n 雲地混合架構：為什麼它不只是一個 Low-Code 工具](/n8n-hybrid-architecture/)
 
 ---
 

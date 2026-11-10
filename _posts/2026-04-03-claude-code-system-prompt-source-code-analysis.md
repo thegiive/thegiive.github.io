@@ -144,7 +144,7 @@ mental overhead or follow-ups, not how terse you are.`
 
 這暗示了一件事：**Anthropic 內部正在做 A/B testing，用量化數據來找「簡潔」和「清楚」的最佳平衡點。** 外部用戶拿到的是保守版本（越短越好），內部員工拿到的是實驗版本（清楚比短重要）。
 
-這其實呼應了 Google Research 在 2025 年 12 月發表的研究 [Prompt Repetition Improves Non-Reasoning LLMs](https://ai-coding.wiselychen.com/google-prompt-repetition-free-lunch-accuracy/)——用不同措辭重複同一個意圖，會激活不同的注意力路徑，從多個角度強化同一條指令。Anthropic 在不同 section 裡用不同方式強調「簡潔」，本質上就是這個策略。
+這其實呼應了 Google Research 在 2025 年 12 月發表的研究 [Prompt Repetition Improves Non-Reasoning LLMs](/google-prompt-repetition-free-lunch/)——用不同措辭重複同一個意圖，會激活不同的注意力路徑，從多個角度強化同一條指令。Anthropic 在不同 section 裡用不同方式強調「簡潔」，本質上就是這個策略。
 
 ---
 
@@ -187,7 +187,7 @@ to events like tool calls, in settings. Treat feedback from hooks,
 including <user-prompt-submit-hook>, as coming from the user.`
 ```
 
-關於 AI Coding 工具的各種攻擊向量（包括 Unicode injection、RCE 等），可以參考我之前寫的「[AI Coding 的第一個風險，不是模型——是你一直按 Yes](https://ai-coding.wiselychen.com/ai-coding-tool-security-risk-prompt-injection-rce/)」。
+關於 AI Coding 工具的各種攻擊向量（包括 Unicode injection、RCE 等），可以參考我之前寫的「[AI Coding 的第一個風險，不是模型——是你一直按 Yes](/ai-coding-tool-security-risk-prompt-injection-rce/)」。
 
 ---
 
@@ -339,7 +339,7 @@ ${modelDescription}${knowledgeCutoffMessage}`
 - **Claude Code 平台資訊** — CLI / Desktop / Web / IDE extensions
 - **Fast mode 說明** — 「Fast mode 用的是同一個 Opus 4.6 模型，只是輸出更快」
 
-用 XML tag 把動態資料「框住」，本質上是在 prompt 層面做資料隔離——避免動態內容被模型誤讀為指令。這和 Google DeepMind 的 CaMeL 架構是同一個邏輯：Quarantined LLM 讀取外部不可信資料後，必須轉成結構化輸出（structured output），不能直接把原始文字傳給有權限的模型。我在「[CaMeL：Google DeepMind 的 Prompt Injection 防禦架構](https://ai-coding.wiselychen.com/camel-privileged-vs-quarantined-agent-which-needs-stronger-llm/)」裡有更完整的分析。而這個「不信任外部輸入」的原則要怎麼落地到資料庫層？可以看「[CaMeL 落地 PostgreSQL：三層記憶架構](https://ai-coding.wiselychen.com/camel-postgresql-implementation-memory-permission-db-layer/)」——用 RLS 設計不可繞過的隔離機制，比應用層的 if-else 可靠得多。
+用 XML tag 把動態資料「框住」，本質上是在 prompt 層面做資料隔離——避免動態內容被模型誤讀為指令。這和 Google DeepMind 的 CaMeL 架構是同一個邏輯：Quarantined LLM 讀取外部不可信資料後，必須轉成結構化輸出（structured output），不能直接把原始文字傳給有權限的模型。我在「[CaMeL：Google DeepMind 的 Prompt Injection 防禦架構](/camel-privileged-quarantined-agent/)」裡有更完整的分析。而這個「不信任外部輸入」的原則要怎麼落地到資料庫層？可以看「[CaMeL 落地 PostgreSQL：三層記憶架構](https://ai-coding.wiselychen.com/camel-postgresql-implementation-memory-permission-db-layer/)」——用 RLS 設計不可繞過的隔離機制，比應用層的 if-else 可靠得多。
 
 ---
 
@@ -422,7 +422,7 @@ systemPromptSection('memory', () => loadMemoryPrompt()),
 
 `loadMemoryPrompt()` 從 `memdir/memdir.js` 載入——這意味著記憶系統已經不只是一個 CLAUDE.md 檔案，而是一個有自己載入邏輯的獨立模組。
 
-這個「檔案即記憶」的範式，字節跳動的 OpenViking 把它推到了極致——我在「[用文件系統重構 Agent 記憶](https://ai-coding.wiselychen.com/openviking-agent-memory-filesystem-paradigm-end-game/)」裡分析過他們的 L0/L1/L2 三層記憶架構，和 CLAUDE.md 是同一條路線的進化版。
+這個「檔案即記憶」的範式，字節跳動的 OpenViking 把它推到了極致——我在「[用文件系統重構 Agent 記憶](/openviking-agent-memory-filesystem-paradigm/)」裡分析過他們的 L0/L1/L2 三層記憶架構，和 CLAUDE.md 是同一條路線的進化版。
 
 ---
 
@@ -503,15 +503,15 @@ systemPromptSection('memory', () => loadMemoryPrompt()),
 
 | Anthropic 怎麼做 | 我們之前怎麼寫 |
 |------------------|----------------|
-| 多種措辭分散在不同 section 重複同一意圖 | [重複一次 Prompt 就能讓大模型更準？Google 的「免費午餐」](https://ai-coding.wiselychen.com/google-prompt-repetition-free-lunch-accuracy/) |
+| 多種措辭分散在不同 section 重複同一意圖 | [重複一次 Prompt 就能讓大模型更準？Google 的「免費午餐」](/google-prompt-repetition-free-lunch/) |
 | CYBER_RISK_INSTRUCTION 集中管理 + 多層防禦 | [Harness Engineering 比模型聰明更重要](https://ai-coding.wiselychen.com/prompt-injection-harness-engineering-tool-using-agents/) |
 | getActionsSection() 高風險操作分級控制 | [Prompt 負責引導，工程負責約束](https://ai-coding.wiselychen.com/prompt-guides-engineering-constrains-agent-principle/) |
 | Agent Prompt 退化成常數，安全由外層控制 | [Claude Code 架構、治理與工程實踐（六層架構）](https://ai-coding.wiselychen.com/claude-code-architecture-governance-engineering-practice/) |
 | 主 Agent / 子 Agent 職責分離 + enhanceSystemPromptWithEnvDetails | [Anthropic 官方解密：Claude Code 雙 Agent 架構](https://ai-coding.wiselychen.com/anthropic-dual-agent-architecture-claude-code/) |
-| XML tag + computeEnvInfo() 隔離動態資料 | [CaMeL：Google DeepMind 的 Prompt Injection 防禦架構](https://ai-coding.wiselychen.com/camel-privileged-vs-quarantined-agent-which-needs-stronger-llm/) |
+| XML tag + computeEnvInfo() 隔離動態資料 | [CaMeL：Google DeepMind 的 Prompt Injection 防禦架構](/camel-privileged-quarantined-agent/) |
 | 結構化隔離落地到工程層 | [CaMeL 落地 PostgreSQL：三層記憶架構](https://ai-coding.wiselychen.com/camel-postgresql-implementation-memory-permission-db-layer/) |
-| loadMemoryPrompt() 獨立記憶模組 | [OpenViking：用文件系統重構 Agent 記憶](https://ai-coding.wiselychen.com/openviking-agent-memory-filesystem-paradigm-end-game/) |
-| prompt injection 防護 + hooks 信任鏈 | [AI Coding 的第一個風險：你一直按 Yes](https://ai-coding.wiselychen.com/ai-coding-tool-security-risk-prompt-injection-rce/) |
+| loadMemoryPrompt() 獨立記憶模組 | [OpenViking：用文件系統重構 Agent 記憶](/openviking-agent-memory-filesystem-paradigm/) |
+| prompt injection 防護 + hooks 信任鏈 | [AI Coding 的第一個風險：你一直按 Yes](/ai-coding-tool-security-risk-prompt-injection-rce/) |
 
 9 個設計決策，9 篇對應文章。不是巧合，是因為這些問題在實戰中真的會遇到，而解法就那幾條路。
 

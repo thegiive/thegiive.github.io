@@ -154,7 +154,7 @@ OpenClaw 是非常新的 Open Source Project，程式還是非常不穩定。
 
 OpenClaw 也在做一模一樣的事情，甚至更極端——把大量上下文放在幾個重要的 MD 檔裡面，每天的記憶用日期來做擺放，放在 Folder Structure 裡面。
 
-就這麼簡單，但可以發揮非常好用的效果。（延伸閱讀：[OneFlow：Single Agent vs Multi-Agent 重新思考](/oneflow-single-agent-vs-multi-agent-rethinking/)）
+就這麼簡單，但可以發揮非常好用的效果。（延伸閱讀：[OneFlow：Single Agent vs Multi-Agent 重新思考](/oneflow-single-agent-vs-multi-agent/)）
 
 ## 坦白說
 
@@ -209,6 +209,6 @@ OpenClaw 也在做一模一樣的事情，甚至更極端——把大量上下�
 **延伸閱讀：**
 - [OpenClaw 四層縱深防禦加固指南](/moltbot-security-hardening-guide/)
 - [Unix 哲學在 Claude Code 的復興](/unix-philosophy-claude-code-command-line-renaissance/)
-- [OneFlow：Single Agent vs Multi-Agent 重新思考](/oneflow-single-agent-vs-multi-agent-rethinking/)
+- [OneFlow：Single Agent vs Multi-Agent 重新思考](/oneflow-single-agent-vs-multi-agent/)
 - [從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic](/shell-wrapper-2-anthropic-real-threat/)
 - [Cursor 前 0.01% 大神倒戈 Claude Code：Agentic Coding 五大支柱完整解析](/cursor-top-user-switch-claude-code-agentic-coding/)

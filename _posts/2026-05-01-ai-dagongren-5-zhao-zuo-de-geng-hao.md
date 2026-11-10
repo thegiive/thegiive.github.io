@@ -270,5 +270,5 @@ AI Coding 圈有一個流傳很廣的網友實測：**Claude 寫的 code，丟�
 
 **延伸閱讀：**
 - [打工人用不好 AI，不是聰不聰明、努不努力的問題——是位置的問題](https://ai-coding.wiselychen.com/ai-dagongren-yong-bu-hao-de-zhenxiang/)
-- [PRD 的重要性——你給 AI 9,211 行的 PRD，它給你 13,022 行可用的 code](https://ai-coding.wiselychen.com/atpm-prd-de-zhong-yao-xing/)
+- [PRD 的重要性——你給 AI 9,211 行的 PRD，它給你 13,022 行可用的 code](/atpm-prdde-zhong-yao-xing/)
 - [從文件庫到 Agent 知識庫：50+ 專案 insights → 237 組 QA 對](https://ai-coding.wiselychen.com/cong-wen-jian-ku-dao-agent-zhi-shi-ku/)

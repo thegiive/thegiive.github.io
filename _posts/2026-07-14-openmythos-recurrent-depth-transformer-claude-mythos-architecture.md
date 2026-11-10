@@ -5,6 +5,8 @@ date: 2026-07-14 09:00:00 +0800
 permalink: /openmythos-recurrent-depth-transformer-claude-mythos-architecture/
 image: /assets/images/openmythos-rdt-architecture-cover.png
 description: "一個 22 歲的高中輟學生，用公開論文和行為觀察，在 GitHub 上發布了一個叫 OpenMythos 的專案，嘗試逆向重建 Claude Mythos 的架構。他的核心假設：Mythos 不是靠堆參數，而是一個 Recurrent Depth Transformer——同一批權重反覆迴圈執行多次。Parcae 論文的實驗顯示，這種迴圈架構用 1.3B 參數能達到兩倍大小標準 Transformer 87.5% 的品質。本文拆解這個假設的三個支柱：迴圈提供深度、MoE 提供廣度、譜半徑約束保證穩定——以及為什麼這套邏輯跟 Agent 架構的設計模式是同一件事。"
+categories: [AI 前沿技術]
+author: Wisely Chen
 ---
 
 Anthropic 從不公開 Mythos 的架構細節。但 2026 年 4 月，一個叫 [OpenMythos](https://github.com/kyegomez/OpenMythos) 的開源專案出現在 GitHub 上，兩週內拿到超過一萬顆星。
@@ -129,7 +131,7 @@ Gomez 和多位研究者並不是憑空猜測。他們的推論基於 Mythos 的
 
 **這是同一個模式。** 迴圈模組對應多跳 orchestration，MoE 對應路由邏輯，ACT 對應停止條件。
 
-這個 blog 之前在 [Harness Engineering](agent-harness-three-migrations-mechanism.md) 那篇講過一個核心觀點：**機制取代建議**——用 hook 和權限擋住行為，不要用 prompt 拜託模型自律。RDT 在模型層做了同樣的事：隱式 CoT（機制）取代顯式 CoT（prompt 裡的思維鏈）。你不需要在 prompt 裡寫死一個 10 步的思維鏈範例，迴圈架構本身就是那個思維鏈的機制化實現。
+這個 blog 之前在 [Harness Engineering](/agent-harness-three-migrations-mechanism/) 那篇講過一個核心觀點：**機制取代建議**——用 hook 和權限擋住行為，不要用 prompt 拜託模型自律。RDT 在模型層做了同樣的事：隱式 CoT（機制）取代顯式 CoT（prompt 裡的思維鏈）。你不需要在 prompt 裡寫死一個 10 步的思維鏈範例，迴圈架構本身就是那個思維鏈的機制化實現。
 
 如果這個假設方向是對的，Mythos 相當於把我們在 Harness 層做的路由邏輯和多跳 orchestration 直接融進了模型內部。這也解釋了一件事：為什麼 Mythos 的能力明顯超過 Opus，但如果 RDT 假設為真，它的實際參數量可能反而更少。
 
@@ -177,4 +179,4 @@ Parcae 論文的「87.5% quality of 2x size」是在 1.3B 規模上的結果。�
 - [Parcae: Scaling Laws For Stable Looped Language Models](https://arxiv.org/abs/2604.12946)（Prairie et al., 2026）
 - [Loop, Think, & Generalize: Implicit Reasoning in Recurrent-Depth Transformers](https://arxiv.org/abs/2604.07822)（Kohli et al., 2026）
 - [Forbes: Did A 22-Year-Old Dropout Reverse-Engineer The World's Scariest AI?](https://www.forbes.com/sites/craigsmith/2026/05/02/a-22-year-old-dropout-just-reverse-engineered-the-worlds-scariest-ai/)
-- 本 blog 相關：[Mythos 有多強](anthropic-mythos-project-glasswing-cyber-inflection-point.md) ｜ [Harness Engineering](agent-harness-three-migrations-mechanism.md)
+- 本 blog 相關：[Mythos 有多強](/anthropic-mythos-project-glasswing-cyber-inflection-point/) ｜ [Harness Engineering](/agent-harness-three-migrations-mechanism/)

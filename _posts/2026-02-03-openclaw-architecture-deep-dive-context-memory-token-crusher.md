@@ -408,7 +408,7 @@ AGENTS.md 建議定期維護，但很少人真的做。我的建議是：每週�
 - [從 $1.16 億退休到 Agentic Engineering：Peter Steinberger 與 OpenClaw 的傳奇開發哲學](/peter-steinberger-agentic-engineering-just-talk-to-it/) —— OpenClaw 背後的人與哲學
 - [從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic](/shell-wrapper-2-anthropic-real-threat/) —— 套殼 2.0 生態的完整分析
 - [OpenClaw 四層縱深防禦加固指南](/moltbot-security-hardening-guide/) —— 如果你要跑 OpenClaw，這篇必讀
-- [OneFlow：Single Agent vs Multi-Agent 重新思考](/oneflow-single-agent-vs-multi-agent-rethinking/) —— 為什麼 Context Management 比堆 Agent 更重要
+- [OneFlow：Single Agent vs Multi-Agent 重新思考](/oneflow-single-agent-vs-multi-agent/) —— 為什麼 Context Management 比堆 Agent 更重要
 - [個人 AI 助手決戰週：Claude Code vs OpenClaw 殊途同歸](/personal-ai-agent-future-claude-code-vs-openclaw/) —— 兩條路線的比較分析
 
 ---

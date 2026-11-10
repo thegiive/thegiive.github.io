@@ -255,9 +255,9 @@ AISI 報告裡有一段特別重要：
 
 ## 相關文章
 
-- [AI Agent Security 遊戲規則已經改變](/ai-agent-security/)
-- [Anthropic Mythos：當 AI 變成網路武器](/anthropic-mythos-glasswing/)
-- [Mythos 被 Discord 小群攻破：信任鏈才是真正的洞](/mythos-discord-breach/)
+- [AI Agent Security 遊戲規則已經改變](/ai-agent-security-game-changed/)
+- [Anthropic Mythos：當 AI 變成網路武器](/anthropic-mythos-project-glasswing-cyber-inflection-point/)
+- [Mythos 被 Discord 小群攻破：信任鏈才是真正的洞](/anthropic-mythos-discord-breach-trust-chain-broken/)
 
 ## 參考資料
 

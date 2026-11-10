@@ -462,7 +462,7 @@ Ryan 的這套架構很完整，但我有幾個實際操作上的疑問還沒想
 ---
 
 **延伸閱讀：**
-- [當代碼量暴增 10 倍後，到底誰來做 Review？Make CI/CD Great Again](https://ai-coding.wiselychen.com/coders-who-stopped-coding-harness-context-spec-engineering/)
+- [當代碼量暴增 10 倍後，到底誰來做 Review？Make CI/CD Great Again](/ai-coding-framework-deterministic-tools-control-ai/)
 - [三個月 63 萬行之後：在 AI Coding 時代，工程師真正的價值是什麼？](https://ai-coding.wiselychen.com/claude-code-630k-lines-three-months-reflection/)
 - [AI Coding 半年回顧：開發並沒有變快，我們只是把瓶頸從寫 Code，轉移到了 QA 跟需求收集](https://ai-coding.wiselychen.com/ai-coding-half-year-review-demand-transformation-tool-evolution/)
-- [AI Coding 工具的資安風險：當 Prompt Injection 遇上 RCE](https://ai-coding.wiselychen.com/ai-coding-tool-security-risk-prompt-injection-rce/)
+- [AI Coding 工具的資安風險：當 Prompt Injection 遇上 RCE](/ai-coding-tool-security-risk-prompt-injection-rce/)

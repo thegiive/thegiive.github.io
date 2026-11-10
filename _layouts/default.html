@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
+  <title>{% if page.title %}{{ page.title | strip_html | normalize_whitespace | escape_once }} | {{ site.author | escape_once }}{% else %}{{ site.title | escape_once }}{% endif %}</title>
 
-  <!-- SEO -->
-  {% seo %}
+  <!-- SEO（title=false：標題只由上面那一個 <title> 輸出，避免重複） -->
+  {% seo title=false %}
 
   <!-- Feed -->
   {% feed_meta %}
@@ -25,7 +25,12 @@
 <body>
   <header>
     <div class="container">
-      <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      {% comment %}每頁只留一個 <h1>：內容已有 <h1>（文章、首頁、歸檔等）時，站名改用 <div>{% endcomment %}
+      {% if content contains '<h1' %}
+      <div class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></div>
+      {% else %}
+      <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      {% endif %}
       <p>{{ site.description }}</p>
       <nav>
         <a href="{{ '/' | relative_url }}">首頁</a>

@@ -5,6 +5,8 @@ date: 2026-08-04 09:00:00 +0800
 permalink: /agent-memory-reconstruction-memharness/
 image: /assets/images/memharness-agent-memory-reconstruction-cover.png
 description: "你給 Agent 加上記憶系統，期待它變聰明——結果在 ALFWorld 上表現從 76.4% 掉到 70.1%，比沒有記憶還差。MemHarness 論文的發現：問題不在記憶本身，在於 agent 是「死背」還是「重構」。一個 Qwen2.5-7B 模型用記憶重構做到 85.2%，贏 Gemini-2.5-Pro 超過 23 個百分點。這篇拆解論文的三階段機制、最關鍵的消融實驗、以及對 agent 記憶系統設計的三個實務啟示。"
+categories: [AI Agent]
+author: Wisely Chen
 ---
 
 你給 Agent 加上記憶系統，想讓它從過去的經驗學習。結果跑一下測評，成績從 76.4% 掉到 70.1%。

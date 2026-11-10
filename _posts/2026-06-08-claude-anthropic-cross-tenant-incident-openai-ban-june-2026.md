@@ -172,7 +172,7 @@ Thoughtworks 在事後分析中指出，很多組織對 AI 的依賴程度已經
 
 寫這篇文章的時候，我在想一個問題：作為一個幫客戶導入 AI 工具的顧問，我有沒有認真跟客戶討論過「如果你用的 AI 服務把你的資料送給了別人怎麼辦」這個場景？
 
-坦白講，在這次事件之前，我討論的重點一直是 [prompt injection](prompt-injection-harness-engineering-tool-using-agents.md)、[proxy relay 攻擊](llm-proxy-relay-security-your-agent-is-mine-ucsb.md)、[harness 的七條安全實踐](harness-engineering-security-best-practices.md)——這些都是「怎麼防止 AI agent 被攻擊或搞破壞」的問題。
+坦白講，在這次事件之前，我討論的重點一直是 [prompt injection](prompt-injection-harness-engineering-tool-using-agents.md)、[proxy relay 攻擊](/llm-proxy-relay-security-your-agent-is-mine-ucsb/)、[harness 的七條安全實踐](/harness-engineering-security-best-practices/)——這些都是「怎麼防止 AI agent 被攻擊或搞破壞」的問題。
 
 但跨租戶隔離失效是一個完全不同的維度：這不是攻擊者的問題，這是供應商的基礎設施本身的問題。你做了所有正確的安全措施，你的 harness 設計得無懈可擊，但供應商的一個共享快取 bug 就能把你的資料塞給別人——這是你無法在客戶端防禦的。
 

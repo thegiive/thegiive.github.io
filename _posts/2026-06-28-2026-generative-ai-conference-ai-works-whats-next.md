@@ -121,8 +121,8 @@ Sunny 的 session 我非常推薦，因為他裡面講到很多訪談的方法�
 
 ## 延伸閱讀
 
-- [AI 企業轉型不是導入工具，而是治理問題](/ai-enterprise-transformation-governance-pillar/)
-- [Coders Who Stopped Coding — Harness、Context、Spec Engineering](/coders-who-stopped-coding-harness-context-spec-engineering/)
+- [AI 企業轉型不是導入工具，而是治理問題](/ai-enterprise-transformation-governance/)
+- [Coders Who Stopped Coding — Harness、Context、Spec Engineering](/ai-coding-framework-deterministic-tools-control-ai/)
 - [AI 時代的勞動力管理](/ai-labor-management-full-stack-talent/)
 
 ---

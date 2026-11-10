@@ -22,7 +22,7 @@ description: "創智動能以 AI Coding 流程導入與 AI Pocket 語音助手�
 
 ---
 
-在加入創智之前，我在物流產業與夥伴們，實際落地過一套結構化、流程化的 AI Coding 機制（我們內部稱為 [ATPM](https://ai-coding.wiselychen.com/atpm-a-real-production-vibe-coding-process/)）
+在加入創智之前，我在物流產業與夥伴們，實際落地過一套結構化、流程化的 AI Coding 機制（我們內部稱為 [ATPM](/atpm-a-real-production-vibe-coding-process/)）
 
 ![ATPM AI Coding 流程](/assets/images/business-weekly-ai-innovation-100-award-2025-3.png)
 

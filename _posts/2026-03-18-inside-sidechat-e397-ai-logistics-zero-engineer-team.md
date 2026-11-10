@@ -231,5 +231,5 @@ FDE 模式之所以有效，不是因為我們技術多強，而是因為我們�
 
 - **INSIDE 塞掐 Side Chat E397：** [YouTube 完整影片](https://www.youtube.com/watch?v=xUDpKAkkURQ)
 - **INSIDE 硬塞的網路趨勢觀察：** [YouTube 頻道](https://www.youtube.com/@inside6202)
-- **延伸閱讀：** [FDE: AI Agent 落地新模式](https://ai-coding.wiselychen.com/fde-ai-agent/)
-- **延伸閱讀：** [什麼是 AI Agent？企業 AI 導入的真實觀察](https://ai-coding.wiselychen.com/xiaolaoban-charging-station-part2/)
+- **延伸閱讀：** [FDE: AI Agent 落地新模式](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/)
+- **延伸閱讀：** [什麼是 AI Agent？企業 AI 導入的真實觀察](/xiaolaoban-part2-ai-agent-definition/)

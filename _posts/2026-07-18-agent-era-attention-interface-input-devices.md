@@ -5,6 +5,8 @@ date: 2026-07-18 09:00:00 +0800
 permalink: /agent-era-attention-interface-input-devices/
 image: /assets/images/agent-era-attention-interface-cover.png
 description: "OpenAI 上週上市了一顆 230 美元的 agent 鍵盤，兩天缺貨。這篇要回答的問題比那顆鍵盤大：新的工作時代，會不會需要新的鍵盤滑鼠？歷史上輸入裝置從來跟著「工作的互動單位」走——字元給了鍵盤、點擊給了滑鼠、手勢給了觸控。agent 時代的互動單位是決策，而「監工」這種工作型態，人類早就有對應的硬體：混音台、駕駛艙、控制室、Stream Deck。但先別急著下單——Touch Bar 七年就死、Leap Motion 用峰值估值的一成賣掉，為新典範設計的輸入裝置死亡率極高。這篇拆解三個反方，收在一個判斷：需要的不是新鍵盤，是新的注意力介面。"
+categories: [AI Agent]
+author: Wisely Chen
 ---
 
 [上一篇拆完 Codex Micro](/openai-codex-micro-agent-status-hardware/)——OpenAI 第一個自家品牌硬體，一顆 230 美元的 agent 控制鍵盤，上市兩天缺貨——之後，剩下一個更大的問題一直放著：

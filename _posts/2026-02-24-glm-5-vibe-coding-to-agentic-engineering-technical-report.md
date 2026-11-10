@@ -147,5 +147,5 @@ SWE-bench 只輸 Opus 4.6 三個百分點，幻覺率甚至更低，而價格大
 - [Kimi K2.5 深度技術評估：Agent Swarm 到底厲害在哪裡？](/kimi-k2.5-agent-swarm-deep-dive-technical-assessment/)
 - [當代碼量暴增 10 倍後，到底誰來做 Review？Make CI/CD Great Again](/ai-coding-framework-deterministic-tools-control-ai/)
 - [Cursor 前 0.01% 大神倒戈 Claude Code：Agentic Coding 五大支柱完整解析](/cursor-top-user-switch-claude-code-agentic-coding/)
-- [OneFlow：重新思考「單一 Agent 就夠了」的邊界](/oneflow-single-agent-vs-multi-agent-rethinking/)
+- [OneFlow：重新思考「單一 Agent 就夠了」的邊界](/oneflow-single-agent-vs-multi-agent/)
 - [從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic](/shell-wrapper-2-anthropic-real-threat/)

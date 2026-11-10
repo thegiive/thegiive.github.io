@@ -59,7 +59,7 @@ description: "可解釋性不只是治理需求，更是建立現場信任的關
 
 ## 學界趨勢：Kalman Filter × Transformer
 
-> 📖 延伸閱讀：[Kalman Filter × Transformer：可解釋 AI 的工程突破](/kalman-filter-transformer-state-estimation-breakthrough/)
+> 📖 延伸閱讀：[Kalman Filter × Transformer：可解釋 AI 的工程突破](/kalman-filter-transformer-state-estimation/)
 
 那在這週在講一些可解釋性部分的時候，我注意到的目前學界的一些趨勢。
 
@@ -100,7 +100,7 @@ description: "可解釋性不只是治理需求，更是建立現場信任的關
 
 ## IT 架構：Langfuse V3 的治理困境
 
-> 📖 延伸閱讀：[Langfuse V3 架構分析：PostgreSQL 與 RLS 的治理取捨](/langfuse-architecture-postgresql-rls-tradeoff/)
+> 📖 延伸閱讀：[Langfuse V3 架構分析：PostgreSQL 與 RLS 的治理取捨](/langfuse-postgresql-clickhouse-rls-tradeoff/)
 
 然後再來就是講到了，就是相關的那個保證很無聊的 IT 架構。
 
@@ -244,8 +244,8 @@ description: "可解釋性不只是治理需求，更是建立現場信任的關
 
 - [AI Agent 可解釋性：三層工程鏈路設計](/ai-agent-explainability-operational-trust/)
 - [披薩指數：為什麼 FDE 模式 50 年後依然有效](/fde-pizza-index-2026-update/)
-- [Kalman Filter × Transformer：可解釋 AI 的工程突破](/kalman-filter-transformer-state-estimation-breakthrough/)
-- [Langfuse V3 架構分析：PostgreSQL 與 RLS 的治理取捨](/langfuse-architecture-postgresql-rls-tradeoff/)
+- [Kalman Filter × Transformer：可解釋 AI 的工程突破](/kalman-filter-transformer-state-estimation/)
+- [Langfuse V3 架構分析：PostgreSQL 與 RLS 的治理取捨](/langfuse-postgresql-clickhouse-rls-tradeoff/)
 
 ---
 

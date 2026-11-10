@@ -3,6 +3,8 @@ layout: post
 title: "AI Agent Security：為什麼它正在改變企業資安架構（不是你想的 Prompt 問題）"
 date: 2025-12-05 10:00:00 +0800
 permalink: /ai-agent-security-game-changed/
+redirect_from:
+  - /ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/
 image: /assets/images/ai-agent-security-logo.png
 description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭露 AI Agent 時代的資安盲點。94.4% 的 Agent 容易受攻擊，傳統 WAF/APM 完全失效。這不是危言聳聽，這是學術研究的結論。"
 ---

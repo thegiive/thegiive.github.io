@@ -111,7 +111,7 @@ AI 天生就帶著海量的跨領域專家知識——它讀過你公司沒有�
 
 ## 第三層：AI 的上限，被你的資訊視野鎖死
 
-AI 的輸出上限，取決於你能餵給它的資訊質量。這件事我在 [PRD 那篇](https://ai-coding.wiselychen.com/atpm-prd-de-zhong-yao-xing/) 講過：你給 AI 9,211 行的高品質 PRD，它給你 13,022 行可用的 code（1:1.4 比例）。你給它一句「幫我做個系統」，它給你一坨技術債。
+AI 的輸出上限，取決於你能餵給它的資訊質量。這件事我在 [PRD 那篇](/atpm-prdde-zhong-yao-xing/) 講過：你給 AI 9,211 行的高品質 PRD，它給你 13,022 行可用的 code（1:1.4 比例）。你給它一句「幫我做個系統」，它給你一坨技術債。
 
 老闆能餵給 AI 什麼？
 
@@ -202,7 +202,7 @@ AI 導入要真的有 ROI，**從來不是「在原本的流程裡塞一個 AI �
 
 所以你會看到一個很弔詭的現象：**員工拼命學 prompt、學工具，但公司整體 ROI 根本沒起來。** 因為真正能讓 AI 翻倍的那一刀（重切流程），只有老闆能下。員工再會用，也只是在原本的格子裡繞圈。
 
-這也是為什麼我在做 [ATPM](https://ai-coding.wiselychen.com/atpm-a-real-production-vibe-coding-process/) 跟 [FDE](https://ai-coding.wiselychen.com/fde-ai-agent-luo-di-xin-mo-shi/) 的時候，必定要拉到老闆或 head of 層級才談——不是看不起執行層，是這件事真的需要動到流程權限，才有意義。
+這也是為什麼我在做 [ATPM](/atpm-a-real-production-vibe-coding-process/) 跟 [FDE](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/) 的時候，必定要拉到老闆或 head of 層級才談——不是看不起執行層，是這件事真的需要動到流程權限，才有意義。
 
 ### 5. 激勵機制完全對齊：每一次贏，都直接進口袋
 
@@ -234,7 +234,7 @@ AI 導入要真的有 ROI，**從來不是「在原本的流程裡塞一個 AI �
 
 1. **加入創業團隊。** 我不再是某個大公司的零件，我做的每一個決定、每一段流程、每一行 PRD，都直接連到一門生意的死活。AI 在這個位置上才真的會變成「外掛」——因為我可以動流程、可以看全局、可以決定方向。
 
-2. **工作之餘，把時間投入到 [這個 blog](https://ai-coding.wiselychen.com/)、我的小天地。** 寫的每一篇文章、累積的每一個讀者、推導出來的每一套方法論（[ATPM](https://ai-coding.wiselychen.com/atpm-a-real-production-vibe-coding-process/)、[FDE](https://ai-coding.wiselychen.com/fde-ai-agent-luo-di-xin-mo-shi/)），都是「我的」。沒有 KPI 可以把它收回去，沒有裁員可以把它清零。
+2. **工作之餘，把時間投入到 [這個 blog](https://ai-coding.wiselychen.com/)、我的小天地。** 寫的每一篇文章、累積的每一個讀者、推導出來的每一套方法論（[ATPM](/atpm-a-real-production-vibe-coding-process/)、[FDE](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/)），都是「我的」。沒有 KPI 可以把它收回去，沒有裁員可以把它清零。
 
   而且這就是「自己的小天地」最爽的地方——AI 在這裡是真的開外掛：我用 AI 幫我取材、用 AI 幫我剪片、上字幕、用 AI 做 SEO 跟 GEO（而且還做得很好）。後台數據好到有人主動找我幫他們做 SEO，我都拒絕了——因為我真的是 AI 教我的，不是我會（笑）。
 
@@ -278,4 +278,4 @@ AI 導入要真的有 ROI，**從來不是「在原本的流程裡塞一個 AI �
 
 **Q：你自己是老闆視角，會不會講得太站著說話不腰疼？**
 
-我做過 12 年打工人，在 Google、Yahoo 都待過，這三層困境我都親身踩過。今天我跳出來做 [FDE](https://ai-coding.wiselychen.com/fde-ai-agent-luo-di-xin-mo-shi/) 跟顧問，不是因為我突然變聰明，是因為我終於不用在那三層結構裡跑了。這篇就是想把當年沒人跟我講清楚的事，講給還在裡面的人聽。
+我做過 12 年打工人，在 Google、Yahoo 都待過，這三層困境我都親身踩過。今天我跳出來做 [FDE](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/) 跟顧問，不是因為我突然變聰明，是因為我終於不用在那三層結構裡跑了。這篇就是想把當年沒人跟我講清楚的事，講給還在裡面的人聽。

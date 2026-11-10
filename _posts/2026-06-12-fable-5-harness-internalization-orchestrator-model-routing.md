@@ -92,7 +92,7 @@ Fable 5 本質上是把過去兩年 harness 工程師做的事——任務拆解
 
 **階段一：外部框架（2024）** — LangChain、CrewAI、AutoGen。你用 Python 寫一大堆 orchestration code，定義 Agent 的角色、工具、流程。Harness 跟模型完全分離。問題是框架太厚，本身變成一個需要維護的 codebase。
 
-**階段二：輕量 Harness（2025）** — Claude Code 的做法：[CLAUDE.md + hooks + permission tiers](/agent-harness-three-migrations-mechanism/)。Harness 變薄了，核心是約束和驗證，不是流程控制。Anthropic [不斷刪掉 harness 裡的邏輯](https://www.epsilla.com/blogs/anthropic-harness-engineering-agent-orchestration-subtraction)，因為新模型版本會內化那些能力。我們在 [Harness 系列](/harness-engineering-architecture-overview/) 裡講過這個「減法哲學」。
+**階段二：輕量 Harness（2025）** — Claude Code 的做法：[CLAUDE.md + hooks + permission tiers](/agent-harness-three-migrations-mechanism/)。Harness 變薄了，核心是約束和驗證，不是流程控制。Anthropic [不斷刪掉 harness 裡的邏輯](https://www.epsilla.com/blogs/anthropic-harness-engineering-agent-orchestration-subtraction)，因為新模型版本會內化那些能力。我們在 [Harness 系列](/harness-engineering-architecture-overview-ai-code-production-guardrails/) 裡講過這個「減法哲學」。
 
 **階段三：兩條路線同時出現（2026 中）** — 一條是 [Boris Cherny 的 Loop Engineering](/loop-engineering-from-prompt-to-loop-paradigm-shift/)，人設計自動迴圈讓 Agent 自己跑，加入 Memory（跨次記憶）和 Automations（定時觸發）。另一條是 Fable 5 代表的「模型即 Orchestrator」，模型自己寫 workflow 腳本、自己決定模型調度、自己管理子任務的並行和合成。這兩條路線哪個會成為主流，現在還看不清楚——也可能最後是混合的。
 
@@ -186,7 +186,7 @@ Fable 5 在高 effort 模式下，單一請求可以跑很多分鐘。自主模�
 
 Fable 5 是法拉利——強、快、貴，而且鎖了很多東西。它內化的是 **orchestration** 能力——任務分解、模型選擇、並行管理。這是 Harness 的「引擎」。
 
-但 Harness 的另一半——約束、防護、審計——這些是刻意限制模型能做什麼的機制。你不會讓一個模型自己決定「我應不應該被約束」。如果你的 Harness 在做的是 [四層防禦](/coders-who-stopped-coding-harness-context-spec-engineering/)、[機械式強制執行](/agent-harness-three-migrations-mechanism/)、[安全最佳實踐](/harness-engineering-security-best-practices/)——這些不但不會被取代，反而因為模型自主性更高，變得更重要了。
+但 Harness 的另一半——約束、防護、審計——這些是刻意限制模型能做什麼的機制。你不會讓一個模型自己決定「我應不應該被約束」。如果你的 Harness 在做的是 [四層防禦](/ai-coding-framework-deterministic-tools-control-ai/)、[機械式強制執行](/agent-harness-three-migrations-mechanism/)、[安全最佳實踐](/harness-engineering-security-best-practices/)——這些不但不會被取代，反而因為模型自主性更高，變得更重要了。
 
 **大多數人更需要的是 Tesla：** 一個 local Qwen + 一個 Opus 4.6 + 一套 GPT-5.5 的組合，配合寫好的 harness——模型路由、成本控制、安全邊界都在你自己手上。Fable 5 告訴你 orchestration 的方向，但不代表你要用 Fable 5 來跑每一個任務。
 
@@ -199,7 +199,7 @@ Harness 工程師的工作重心會從「怎麼調度 Agent」轉向三件事：
 ## 延伸閱讀
 
 **Harness Engineering 系列：**
-- [Harness Engineering 七件式參考架構](/harness-engineering-architecture-overview/)
+- [Harness Engineering 七件式參考架構](/harness-engineering-architecture-overview-ai-code-production-guardrails/)
 - [Agent Harness 三次中心遷移：Mechanism > Prompt](/agent-harness-three-migrations-mechanism/)
 - [Opus 4.7 Post-mortem：是 Harness，不是模型](/opus-4-7-claude-code-harness-postmortem/)
 - [Loop Engineering：不再 Prompt Agent，改設計 Loop](/loop-engineering-from-prompt-to-loop-paradigm-shift/)

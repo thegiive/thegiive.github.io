@@ -64,7 +64,7 @@ image: /assets/images/kimi-k2-5-agent-swarm-cover.png
 
 問題很明顯：50 個子任務每個 1 分鐘，就是 50 分鐘。而且對話越長，模型越容易「忘記」你最初要幹嘛。
 
-我在之前寫 [OneFlow](/oneflow-single-agent-vs-multi-agent-rethinking/) 那篇也指出過——很多 Multi-Agent 系統不是在協作，是在做重複勞動。
+我在之前寫 [OneFlow](/oneflow-single-agent-vs-multi-agent/) 那篇也指出過——很多 Multi-Agent 系統不是在協作，是在做重複勞動。
 
 ### Agent Swarm 怎麼做
 

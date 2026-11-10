@@ -201,7 +201,7 @@ JIT-Agent 的基底是 Qwen3.6-27B，訓練分三個階段，每個階段解決�
 
 **長期（Harness Engineering 的走向）**：這篇論文確認了 Harness Intelligence 是一個**獨立的 scaling 維度**。Model scaling（更大的模型）、Agent scaling（更長的 horizon）、Knowledge scaling（更好的知識庫），現在加上 Harness scaling（更好的 scaffold 生成）。四條軸各自獨立，意味著你不需要把預算全押在一條線上。
 
-回頭看這半年的 blog，從[Harness Engineering 全景圖](/harness-engineering-architecture-overview/)到 [Pi 的 99.93% cache hit](/pi-cache-hit-99-93-context-compression-roadmap/)，我們一直在講同一件事：**不要只盯著模型，盯著 harness**。JIT-Agent 的貢獻是把這句口號變成了一個可量化、可訓練、可自動化的方向。
+回頭看這半年的 blog，從[Harness Engineering 全景圖](/harness-engineering-architecture-overview-ai-code-production-guardrails/)到 [Pi 的 99.93% cache hit](/pi-cache-hit-99-93-context-compression-roadmap/)，我們一直在講同一件事：**不要只盯著模型，盯著 harness**。JIT-Agent 的貢獻是把這句口號變成了一個可量化、可訓練、可自動化的方向。
 
 ---
 

@@ -45,7 +45,7 @@ The new name **Moltbot** (mascot: Molty) keeps the lobster theme—“molt” re
 
 ## Background: Why does Moltbot need security hardening?
 
-The previous post, [500 AI assistants exposed on the public internet: the Moltbot security disaster and unsafe defaults](/moltbot-security-disaster/), revealed how catastrophic Moltbot’s default configuration could be. This post is the sequel—from problems to solutions.
+The previous post, [500 AI assistants exposed on the public internet: the Moltbot security disaster and unsafe defaults](/clawdbot-exposed-500-servers-security-disaster/), revealed how catastrophic Moltbot’s default configuration could be. This post is the sequel—from problems to solutions.
 
 This article is compiled from Moltbot community hands-on experience. The fun part is: **you can have Moltbot harden Moltbot for you**.
 
@@ -398,11 +398,11 @@ Security settings were inspired by Moltbot community posts:
 
 ## Further reading
 
-- [500 AI assistants exposed on the public internet: Moltbot 0.0.0.0 configuration disaster](/moltbot-security-disaster/)
+- [500 AI assistants exposed on the public internet: Moltbot 0.0.0.0 configuration disaster](/clawdbot-exposed-500-servers-security-disaster/)
 - [AI Agent Security: the rules of the game have changed](/ai-agent-security-game-changed/)
-- [The first risk of AI coding: you keep clicking Yes](/ai-coding-security-risk/)
+- [The first risk of AI coding: you keep clicking Yes](/ai-coding-tool-security-risk-prompt-injection-rce/)
 - [CaMeL: Google DeepMind’s prompt-injection defense architecture](/camel-privileged-quarantined-agent/) — the theoretical basis for Layer 2 “content isolation”
-- [Implementing the CaMeL agent architecture in PostgreSQL: designing unbypassable AI memory with RLS](/camel-postgresql-implementation/) — a database-based isolation layer
+- [Implementing the CaMeL agent architecture in PostgreSQL: designing unbypassable AI memory with RLS](/camel-postgresql-implementation-memory-permission-db-layer/) — a database-based isolation layer
 
 ---
 

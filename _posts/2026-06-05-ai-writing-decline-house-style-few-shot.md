@@ -146,7 +146,7 @@ AI 賴以生存的基石是訓練數據。而**訓練數據本身正在崩塌。
 
 所以身為一個吃文字飯的人，這陣子我已經開始認真做一件事——**把寫作搬到地端模型。** 我給自己的目標很明確：**3 個月內，做出一套全地端的寫作工作流。** 不是因為地端現在就比雲端強，而是因為**只有地端模型，是「下載下來就永遠是你的」，不會某天突然只剩 API、再某天連 API 都沒了。**
 
-這跟我之前寫 [On-Prem 三條路](/ai-coding-on-prem-three-paths/) 跟 [Qwen 3.6-27B 家用推論](/qwen-3-6-27b-gb10-home-inference-sonnet-level/) 是同一條線——只是這次的動機不是資安、不是成本，而是**寫作品質的主權**。
+這跟我之前寫 [On-Prem 三條路](/ai-coding-on-prem-three-paths/) 跟 [Qwen 3.6-27B 家用推論](/qwen-3-6-27b-sonnet-level-home-inference/) 是同一條線——只是這次的動機不是資安、不是成本，而是**寫作品質的主權**。
 
 順帶提一下，如果你寫的是英文，地端社群其實已經有不錯的選項。Gemma 3 27B 有很多寫作向的微調版，像 TheDrummer 的 Big-Tiger-Gemma、Cydonia、Skyfall 這些，社群評價都不錯——模型卡目標就是「更中性、少過度正向、少 Markdown」，根本衝著 house style 來的解藥。**但中文太弱了。** 我實測過 Gemma 3 27B 官方版和 Cydonia 24B，中文寫出來不是 house style 就是亂碼，完全不能用。所以對我這種主力寫中文的人來說，Gemma 系列暫時排除，要等它中文能力補上來再說。
 

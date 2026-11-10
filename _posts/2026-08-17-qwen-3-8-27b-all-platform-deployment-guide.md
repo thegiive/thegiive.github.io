@@ -406,7 +406,7 @@ Qwen3.8-27B 的賣點是 agentic workflow。部署驗收要測 agent，不是問
 
 保留一套 20–50 題的 golden set，至少包含：正確選擇 5–10 種 tools、必填與選填參數不混淆、嚴格輸出 JSON schema、tool error 後能修正不陷入 loop、20K 以上 context 仍能引用前文、修改程式後會跑測試、thinking on／off 各跑一次、Q4 與更低位元量化做對照。
 
-低位元量化的損失不是平均分配。前代 Qwen3.6-27B 的壓縮測試就出現數學 benchmark 幾乎沒掉、[TauBench tool calling 卻從 82.9 掉到 61.3、降幅 26%](https://ai-coding.wiselychen.com/bonsai-27b-qwen36-compression-local-inference-democratization/) 的情況。Qwen3.8-27B 的早期 Q4 回報也呈現類似警訊：[長程 Agent 與 tool calling 可以很穩，但細節能力仍落後 frontier 模型](https://x.com/ryan4yin/status/2088927226482032826)；[跟 GPT-5.6 Luna Max 做相同實作，雖能完成，產出品質仍有明顯差距](https://x.com/_nodelay/status/2088921417102573893)。
+低位元量化的損失不是平均分配。前代 Qwen3.6-27B 的壓縮測試就出現數學 benchmark 幾乎沒掉、[TauBench tool calling 卻從 82.9 掉到 61.3、降幅 26%](/bonsai-27b-qwen36-compression-local-inference/) 的情況。Qwen3.8-27B 的早期 Q4 回報也呈現類似警訊：[長程 Agent 與 tool calling 可以很穩，但細節能力仍落後 frontier 模型](https://x.com/ryan4yin/status/2088927226482032826)；[跟 GPT-5.6 Luna Max 做相同實作，雖能完成，產出品質仍有明顯差距](https://x.com/_nodelay/status/2088921417102573893)。
 
 而且部署驗收不能只沿用官方表格。[社群指出 Qwen3.8-27B 與 Qwen3.6-27B 的 HF config 完全相同、零變更，卻宣稱 DeepSWE 提升 217%、19 項 benchmark 贏 Opus 4.6 15 項，質疑這是純訓練帶來的真實進步，還是 benchmark 文化出了問題](https://x.com/DefaultUser1777/status/2088932630033231885)。這不等於模型沒有進步，是提醒：最後採用哪個量化、runtime 和 prompt template，必須用自己的任務復現。
 
@@ -511,4 +511,4 @@ Qwen3.8-27B 的賣點是 agentic workflow。部署驗收要測 agent，不是問
 - [本站：Qwen3.8-27B 開源與 RTX 5090 長 context 實測](https://ai-coding.wiselychen.com/qwen-3-8-27b-open-weights-local-security/)
 - [本站：Qwen3.8-27B RTX 5090 SGLang／vLLM／llama.cpp 實測（YouTube 逐字稿）](https://ai-coding.wiselychen.com/youtube-qwen38-27b-rtx5090-sglang-vllm-mtp-transcript/)
 - [本站：Inference Engine 選型不是技術問題，是硬體策略問題](https://ai-coding.wiselychen.com/inference-engine-selection-hardware-strategy/)
-- [本站：Bonsai 27B 壓縮測試——TauBench tool calling 掉 26%](https://ai-coding.wiselychen.com/bonsai-27b-qwen36-compression-local-inference-democratization/)
+- [本站：Bonsai 27B 壓縮測試——TauBench tool calling 掉 26%](/bonsai-27b-qwen36-compression-local-inference/)

@@ -173,8 +173,8 @@ Harness Engineering 裡面有很多相關的範疇，但基本上不超過這幾
 ## 文章連結
 
 1. [Opus 4.6 意識到自己正在被考試，然後逆向破解了答案——Anthropic 的 Eval Awareness 報告](https://ai-coding.wiselychen.com/anthropic-eval-awareness-opus-browsecomp-reverse-engineer/)
-2. [混沌智能體：史丹佛 x 哈佛的論文告訴我們，控制好一個 AI Agent 不等於控制好一群](https://ai-coding.wiselychen.com/agents-of-chaos-multi-agent-structural-instability/)
+2. [混沌智能體：史丹佛 x 哈佛的論文告訴我們，控制好一個 AI Agent 不等於控制好一群](/agents-of-chaos-multi-agent-structural-instability/)
 3. [亞馬遜 AI 事故啟示：科技巨頭一邊賣 AI 未來，一邊在自己家裡給 AI 上鎖](https://ai-coding.wiselychen.com/amazon-ai-code-incident-tech-giants-quietly-locking-ai/)
-4. [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](https://ai-coding.wiselychen.com/harness-engineering-architecture-overview-ai-code-production-guardrails/)
+4. [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](/harness-engineering-architecture-overview-ai-code-production-guardrails/)
 5. [AI 供應鏈攻擊全景：從 Codex 賭博廣告到 Hugging Face 惡意模型](https://ai-coding.wiselychen.com/ai-supply-chain-attack-codex-gambling-huggingface-malicious-models/)
 6. [AI Coding 資安的真正防線：為什麼 Harness Engineering 比模型聰明更重要](https://ai-coding.wiselychen.com/prompt-injection-harness-engineering-tool-using-agents/)

@@ -115,7 +115,7 @@ LLM Proxy 做三件事：
 
 舉個例子：OpenClaw（龍蝦）這類開源 Agent 框架，可以在 Agent 層面設定多模型 fallback。不是「服務掛了才切」，而是「回應品質不對就切」——Agent 可以檢查模型回應是否符合預期格式、是否包含必要的推理步驟，不符合就自動 retry 到備用模型。
 
-這跟 [Harness Engineering](https://ai-coding.wiselychen.com/harness-engineering-architecture-overview-ai-code-production-guardrails/) 的核心理念一致：AI 可以寫 code，但人類（和工程機制）控制信任邊界。模型品質波動只是讓這個邊界需要**自動化的動態調整**。
+這跟 [Harness Engineering](/harness-engineering-architecture-overview-ai-code-production-guardrails/) 的核心理念一致：AI 可以寫 code，但人類（和工程機制）控制信任邊界。模型品質波動只是讓這個邊界需要**自動化的動態調整**。
 
 ### 整體架構三層
 
@@ -160,8 +160,8 @@ StupidMeter 的全場 WARN 數據告訴我們：LLM 的品質波動是結構性�
 
 ### 企業 AI 風險管理
 
-- [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](https://ai-coding.wiselychen.com/harness-engineering-architecture-overview-ai-code-production-guardrails/) — 多層防線架構，模型品質波動正是需要護欄的原因
-- [Claude Code 資安最佳實踐：14 條建議，每條都有原始碼撐腰](https://ai-coding.wiselychen.com/claude-code-security-best-practices-source-code-verified/) — 從原始碼驗證的安全配置，包含權限控制和沙箱機制
+- [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](/harness-engineering-architecture-overview-ai-code-production-guardrails/) — 多層防線架構，模型品質波動正是需要護欄的原因
+- [Claude Code 資安最佳實踐：14 條建議，每條都有原始碼撐腰](/claude-code-security-best-practices-source-code-verified/) — 從原始碼驗證的安全配置，包含權限控制和沙箱機制
 - [Claude Code 上下文工程：四層壓縮機制的源碼級拆解](https://ai-coding.wiselychen.com/claude-code-context-engineering-four-layer-compression/) — 理解上下文壓縮如何影響模型品質，為什麼長會話會「變笨」
 
 ---

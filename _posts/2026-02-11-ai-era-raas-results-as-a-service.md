@@ -112,6 +112,6 @@ RaaS 不是萬靈丹，不是所有人都適合，不是所有場景都需要。
 
 ## 延伸閱讀
 
-- [FDE：AI Agent 落地新模式](/fde-ai-agent-new-model/) — FDE 本質上就是 RaaS 的落地形式
+- [FDE：AI Agent 落地新模式](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/) — FDE 本質上就是 RaaS 的落地形式
 - [AI 時代的全端人才：勞資雙方的破局之道](/ai-labor-management-full-stack-talent/) — 有了全端能力之後，下一步是什麼？
-- [ATPM：一個真正在生產環境跑過的 Vibe Coding 流程](/atpm-real-production-vibe-coding/) — 用 ATPM 框架封裝 AI 開發過程，交付確定性結果
+- [ATPM：一個真正在生產環境跑過的 Vibe Coding 流程](/atpm-a-real-production-vibe-coding-process/) — 用 ATPM 框架封裝 AI 開發過程，交付確定性結果

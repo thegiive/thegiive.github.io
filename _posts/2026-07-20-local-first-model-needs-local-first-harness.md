@@ -5,6 +5,8 @@ date: 2026-07-20 09:00:00 +0800
 permalink: /local-first-model-needs-local-first-harness/
 image: /assets/images/local-first-harness-maka-cover.png
 description: "Maka 團隊拿同一顆 Kimi K3 跑 Terminal-Bench 2.1：官方 Kimi Code 59.6%，開源 Maka 69.7%，困難題子集差距拉到 20 個百分點。同一顆模型，換個 harness，差出接近一個世代。這篇先拆差距的三個來源（context prune、精簡工具面、跑分-看 trace-重跑的迭代循環），再回答一個地端玩家繞不開的問題：模型 local-first 了，agent 跟 harness 呢？盤點 coding agent 接地端模型的七條路——Codex --oss、Claude Code + cc-switch、Kimi Code、ZCode、Grok Build、Pi、Maka——加上 Grok Build 在資料外洩醜聞後 72 小時開源 84 萬行 Rust harness 的信任課，以及為什麼在 10.8 token/s 的地端世界，harness engineering 從優化變成生存條件。"
+categories: [AI Agent]
+author: Wisely Chen
 ---
 
 用 Claude 就配 Claude Code，用 GPT 就配 Codex，用 GLM-5.2 就配 ZCode，用 Kimi 就配 Kimi Code。不管模型是開放權重還是 cloud-only，大家的預設邏輯都一樣：模型是誰家的，harness 就用誰家的。原廠最懂自家模型，這件事看起來不需要討論。

@@ -5,6 +5,8 @@ date: 2026-07-11 09:00:00 +0800
 permalink: /grok-4-5-attacker-model-access-over-capability-mythos/
 image: /assets/images/grok-4-5-deepswe-benchmark-cover.png
 description: "Anthropic 最強的 cyber 模型 Mythos 能自動找漏洞，強到驚動財政部——然後被鎖進只借給 52 家機構的封閉計畫。同一時間，Grok 4.5 頂著 Opus-class 的寫程式能力、兩塊錢的 API、幾乎為零的護欄，攤在所有人面前。這篇要講一件資安圈正在低估的事：對真實攻擊者來說，威脅不是由最強的模型決定的，是由最容易拿到、又最不會拒絕你的那個決定的。攻擊力 = 能力 × 可及性 × 沒有護欄。"
+categories: [AI 產業分析]
+author: Wisely Chen
 ---
 
 SlowMist 創辦人余弦（[@evilcos](https://x.com/evilcos)）7 月 10 日貼出他做鏈上攻擊分析 Agent 的模型滿意度梯隊，Grok 4.5 排在前段。真正值得注意的不是排名，是他那條推文的回覆區裡，有人這樣講：
@@ -29,7 +31,7 @@ SlowMist 創辦人余弦（[@evilcos](https://x.com/evilcos)）7 月 10 日貼�
 
 同一個時間，市場上其實有一個 cyber 能力明顯更強的模型：Anthropic 的 **Mythos**。
 
-這個 blog [四月寫過它](anthropic-mythos-project-glasswing-cyber-inflection-point.md)。Mythos 強到能自動識別並利用系統漏洞，強到美國財政部長和 Fed 主席臨時召見六大行 CEO 要他們做好防禦準備。按 Anthropic 自己報的數字，它的 Cyber Gym 約 83%、SWE-bench Verified 93.9%，都在 Opus 之上。
+這個 blog [四月寫過它](/anthropic-mythos-project-glasswing-cyber-inflection-point/)。Mythos 強到能自動識別並利用系統漏洞，強到美國財政部長和 Fed 主席臨時召見六大行 CEO 要他們做好防禦準備。按 Anthropic 自己報的數字，它的 Cyber Gym 約 83%、SWE-bench Verified 93.9%，都在 Opus 之上。
 
 但關鍵是接下來這句：**Mythos 不上 claude.ai、不開 API。** 它只透過 Project Glasswing 借給 Apple、Microsoft、CrowdStrike、JPMorgan 等大約 52 家審核過的機構，而且用途限定在找漏洞、做防禦。
 

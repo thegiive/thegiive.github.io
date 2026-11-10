@@ -365,5 +365,5 @@ API 速率大幅提高，**意味著我們可以做更密集的 agent 編排，�
 
 ### AI Coding 實戰
 
-- [ATPM：真實的 Vibe Coding 流程](https://ai-coding.wiselychen.com/atpm-a-real-production-vibe-coding-process/)
+- [ATPM：真實的 Vibe Coding 流程](/atpm-a-real-production-vibe-coding-process/)
 - [AI 轉型：AI Agent 如何落地](https://ai-coding.wiselychen.com/aizhuan-xing-ai-agent-ru-he-luo-di/)

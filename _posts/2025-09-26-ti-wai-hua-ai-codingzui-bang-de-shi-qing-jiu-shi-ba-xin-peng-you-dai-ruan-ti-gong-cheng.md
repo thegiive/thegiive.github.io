@@ -46,7 +46,7 @@ Code 寫不好，教就是了我們不也是整天都commit security key 進git 
 
 > 可是我一點都不覺得這是壞事，只是要習慣
 
-因為我們這些老工程師也獲利，我帶著非資訊科系的小朋友們一起做專案，我們公司的成本下降，產能說實在真的提升(我們需要相關 QA / Code Review 流程把關 like [ATPM](https://ai-coding.wiselychen.com/atpm-a-real-production-vibe-coding-process/) ) 。而且有了他們，我不害怕工程師鬧加薪離職，對我這個技術主管來說，AI帶給我幾乎都是好處，我有了這些任勞任怨並且很努力的這些小朋友們，是我的寶藏
+因為我們這些老工程師也獲利，我帶著非資訊科系的小朋友們一起做專案，我們公司的成本下降，產能說實在真的提升(我們需要相關 QA / Code Review 流程把關 like [ATPM](/atpm-a-real-production-vibe-coding-process/) ) 。而且有了他們，我不害怕工程師鬧加薪離職，對我這個技術主管來說，AI帶給我幾乎都是好處，我有了這些任勞任怨並且很努力的這些小朋友們，是我的寶藏
 
 ### 犯錯是正常
 

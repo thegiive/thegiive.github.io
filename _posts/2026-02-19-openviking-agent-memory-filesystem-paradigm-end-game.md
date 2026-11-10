@@ -17,9 +17,9 @@ image: /assets/images/openviking-logo.png
 
 但仔細研究之後，我發現它的核心思路跟我之前寫過的幾個主題產生了強烈共振：
 
-- [為什麼我選擇 PostgreSQL 當 Vector Store](/postgresql-vector-store-pragmatic-choice/) — 我說過「Vector 只是資料的一種型態」
+- [為什麼我選擇 PostgreSQL 當 Vector Store](/postgresql-ai-memory-store/) — 我說過「Vector 只是資料的一種型態」
 - [OpenClaw 記憶系統全解析](/openclaw-architecture-deep-dive-context-memory-token-crusher/) — OpenClaw 的 File-First 設計哲學
-- [Google Nested Learning](/google-nested-learning-ai-memory-breakthrough/) — AI 的短期記憶 vs 長期記憶問題
+- [Google Nested Learning](/nested-learning-ai-memory/) — AI 的短期記憶 vs 長期記憶問題
 
 OpenViking 不是在造另一個 Vector DB。它試圖回答一個更根本的問題：
 
@@ -184,7 +184,7 @@ OpenViking 還有一個值得注意的設計：**記憶自演化機制**。
 
 這意味著 Agent 的記憶不是靜態的知識庫，而是會隨著使用不斷成長的「經驗資料庫」。
 
-這跟我之前寫的 [Google Nested Learning](/google-nested-learning-ai-memory-breakthrough/) 有異曲同工之處——Google 想在模型層面解決「短期記憶 → 長期記憶」的升級問題，OpenViking 是在應用層面用工程手段做同一件事。
+這跟我之前寫的 [Google Nested Learning](/nested-learning-ai-memory/) 有異曲同工之處——Google 想在模型層面解決「短期記憶 → 長期記憶」的升級問題，OpenViking 是在應用層面用工程手段做同一件事。
 
 ---
 
@@ -332,7 +332,7 @@ OpenViking 2026 年 1 月才開源，目前 2.8k stars。跟 LangChain（90k+）
 ## 延伸閱讀
 
 - [OpenViking GitHub](https://github.com/volcengine/OpenViking) — 原始碼和文檔
-- [為什麼我選擇 PostgreSQL 當 Vector Store](/postgresql-vector-store-pragmatic-choice/) — 80% 的 RAG 不需要專用 Vector DB
+- [為什麼我選擇 PostgreSQL 當 Vector Store](/postgresql-ai-memory-store/) — 80% 的 RAG 不需要專用 Vector DB
 - [OpenClaw 記憶系統全解析](/openclaw-architecture-deep-dive-context-memory-token-crusher/) — File-First 設計哲學
-- [Google Nested Learning](/google-nested-learning-ai-memory-breakthrough/) — AI 的短期記憶 vs 長期記憶
+- [Google Nested Learning](/nested-learning-ai-memory/) — AI 的短期記憶 vs 長期記憶
 - [RLM 遞迴語言模型](/recursive-language-models-rlm-context-rot-solution/) — Context Rot 問題的另一種解法

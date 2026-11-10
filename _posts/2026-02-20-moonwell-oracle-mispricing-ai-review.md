@@ -193,4 +193,4 @@ Stripe 每週合併上千筆 AI PR 是一個令人印象深刻的工程成就。
 
 ### 相關方法論
 - [AI Coding Tool 安全風險：當 Prompt Injection 遇上 RCE](/ai-coding-tool-security-risk-prompt-injection-rce/)
-- [AI Agent 安全：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+- [AI Agent 安全：遊戲規則已經改變](/ai-agent-security-game-changed/)

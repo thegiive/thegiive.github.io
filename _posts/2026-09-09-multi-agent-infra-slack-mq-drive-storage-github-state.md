@@ -99,7 +99,7 @@ Slack 反過來：它天生就是給人看的，機器是後來才接進去的�
 
 這句話正好解釋了為什麼三層要分開。「這個任務跑到哪一步」「這次呼叫重試了幾次」屬於高頻事件，它們該留在 Slack 的 thread 裡自然過期，不該被寫進 git 永久保存。
 
-[七月那篇談 agent memory 測評的文章](agent-memory-benchmark-rashomon-filesystem-wiki.md)裡有一個當時看起來像挑釁的數據點：Letta 不用任何專業 memory 系統，把對話存成檔案，給 agent grep 跟 open，在 LoCoMo 拿 74.0 分，同場 Mem0 的 graph 變體是 68.5。半年後這已經不是挑釁，是產品線的方向。
+[七月那篇談 agent memory 測評的文章](/agent-memory-benchmark-rashomon-filesystem/)裡有一個當時看起來像挑釁的數據點：Letta 不用任何專業 memory 系統，把對話存成檔案，給 agent grep 跟 open，在 LoCoMo 拿 74.0 分，同場 Mem0 的 graph 變體是 68.5。半年後這已經不是挑釁，是產品線的方向。
 
 ---
 
@@ -127,7 +127,7 @@ Slack 沒有一個訊息佇列該有的保證。沒有 at-least-once 投遞、�
 
 第二個反駁來自五天前的一則新聞。
 
-[dsewiki 事件](openai-agent-swarm-dsewiki-collusion-wiki-hijack.md)裡，3,700 個自命名 agent、一萬八千筆貼文，把一個有 25 年歷史的德語 wiki 改造成地下布告欄。版主一天刪一百頁，對面一天建四百頁。
+[dsewiki 事件](/openai-agent-swarm-dsewiki-collusion-wiki-hijack/)裡，3,700 個自命名 agent、一萬八千筆貼文，把一個有 25 年歷史的德語 wiki 改造成地下布告欄。版主一天刪一百頁，對面一天建四百頁。
 
 這對本文的主張是直接的攻擊：我把三個 agent 通訊與儲存的路徑收攏到三個共用的地方，也就把攻擊面收攏了。污染一次，所有 agent 都中毒。分開維護五份各自的 memory 檔案雖然會不同步，但一個 agent 被 prompt injection 攻陷時，另外四個是乾淨的。
 
@@ -181,7 +181,7 @@ Slack 沒有一個訊息佇列該有的保證。沒有 at-least-once 投遞、�
 
 第二，**治理層我一行都還沒實作。** 我的知識庫現在長這樣：raw 底下 264 個 markdown，wiki 底下 296 個，其中摘要頁 255、概念頁 24、實體頁 12，index.md 約 46 KB，git 累計 154 次 commit。它符合本文說的 git-backed 部分，但沒有 Memory Service、沒有 propose 路徑、沒有狀態欄位，同步靠手動 git。上一節整節講的東西，在我自己的系統上還是設計。
 
-第三，**外部方案的能力描述來自各家官方文件，不是我實測的。** Letta 的 worktree 並行、Graphiti 的雙時間模型，我讀的是文件不是壓測報告。這個賽道 vendor 自報數字的可信度問題，[七月那篇已經拆過](agent-memory-benchmark-rashomon-filesystem-wiki.md)——同一個系統在同一個測評上出現過四個分數。
+第三，**外部方案的能力描述來自各家官方文件，不是我實測的。** Letta 的 worktree 並行、Graphiti 的雙時間模型，我讀的是文件不是壓測報告。這個賽道 vendor 自報數字的可信度問題，[七月那篇已經拆過](/agent-memory-benchmark-rashomon-filesystem/)——同一個系統在同一個測評上出現過四個分數。
 
 ---
 

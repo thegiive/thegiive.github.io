@@ -5,6 +5,8 @@ date: 2026-07-28 09:00:00 +0800
 permalink: /kimi-k3-architecture-innovation-scaling-efficiency/
 image: /assets/images/kimi-k3-architecture-innovation-cover.png
 description: "Moonshot AI 發布 2.78T 參數的 Kimi K3，但真正值得看的不是參數量——是三套架構創新（KDA 擴長度、AttnRes 擴深度、Stable LatentMoE 擴寬度）加起來，讓每單位算力的 scaling 效率比 K2 提升了 2.5 倍。這篇拆解架構設計、跑分表現、開源策略，和我覺得最值得注意的限制。"
+categories: [AI 前沿技術]
+author: Wisely Chen
 ---
 
 7 月 27 日，Kimi K3 的 weights 準時上了 HuggingFace。如約而至。

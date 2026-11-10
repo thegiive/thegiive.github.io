@@ -1,0 +1,30 @@
+---
+layout: default
+title: 文章標籤
+description: "依標籤瀏覽 Wisely Chen 的 AI Agent、地端 LLM、AI 資安與企業 AI 架構文章。"
+permalink: /tags/
+---
+
+<h1>文章標籤</h1>
+
+{% assign sorted_tags = site.tags %}
+
+<div class="category-toc">
+  <p><strong>全部標籤（{{ sorted_tags.size }}）：</strong></p>
+  <ul class="toc-list">
+    {% for tag in sorted_tags %}
+    <li><a href="#{{ tag[0] | slugify }}">{{ tag[0] }}（{{ tag[1].size }}）</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% for tag in sorted_tags %}
+<div id="{{ tag[0] | slugify }}" class="category-section">
+  <h2>{{ tag[0] }}</h2>
+  <ul>
+    {% for post in tag[1] %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endfor %}

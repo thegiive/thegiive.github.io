@@ -35,7 +35,7 @@ tags:
 
 又一篇 IT 架構系列文，不是炫耀 benchmark。
 
-過去半年我一直在追這條線：**「本地 LLM 到底什麼時候 ROI 翻過來」**。前幾個月寫過 [DGX Spark 跑 Qwen3.6-27B](/qwen-3-6-27b-gb10-home-inference-sonnet-level/) 的觀察 — 那篇結論是「家用 AI 工作站時代到了」。但 DGX Spark 是 $4,699 的特規機，買的人還不多。
+過去半年我一直在追這條線：**「本地 LLM 到底什麼時候 ROI 翻過來」**。前幾個月寫過 [DGX Spark 跑 Qwen3.6-27B](/qwen-3-6-27b-sonnet-level-home-inference/) 的觀察 — 那篇結論是「家用 AI 工作站時代到了」。但 DGX Spark 是 $4,699 的特規機，買的人還不多。
 
 這次我自己組了一台桌機（消費級零組件），想回答一個非常具體的性價比問題：
 
@@ -389,6 +389,6 @@ Ollama 的優勢是「開箱即用」 — 不會 build、不熟 CUDA、不知道
 ---
 
 **延伸閱讀：**
-- [Qwen 3.6-27B 本地部署：DGX Spark / Mac mini 跑出 Sonnet 4.6 等級 AI Agent](/qwen-3-6-27b-gb10-home-inference-sonnet-level/)
+- [Qwen 3.6-27B 本地部署：DGX Spark / Mac mini 跑出 Sonnet 4.6 等級 AI Agent](/qwen-3-6-27b-sonnet-level-home-inference/)
 - [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/)
 - [Tool Calling 1.5 - 本地 LLM Tool Calling 與 27B Sweet Spot](/toolcall-15-local-llm-tool-calling-qwen-27b-sweet-spot/)

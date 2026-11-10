@@ -15,7 +15,7 @@ description: "Claude Code 的上下文管理不是一個功能，是一個完整
 
 > 本文是「Claude Code 開源設計細節」系列的第三篇。本系列從 Claude Code 的 TypeScript 原始碼出發，拆解 Anthropic 怎麼設計一個生產級 AI Coding Agent。
 > - **EP1：** [System Prompt 架構](https://ai-coding.wiselychen.com/claude-code-system-prompt-source-code-analysis/)
-> - **EP2：** [資安架構：14 條 Best Practice 原始碼驗證](https://ai-coding.wiselychen.com/claude-code-security-best-practices-source-code-verified/)
+> - **EP2：** [資安架構：14 條 Best Practice 原始碼驗證](/claude-code-security-best-practices-source-code-verified/)
 > - **EP3（本篇）：** 上下文工程：四層壓縮機制
 
 > 我把 Claude Code 洩漏的源碼翻了一遍，發現它的上下文管理不是一個功能，是一個完整的子系統。四層壓縮、熔斷器、Cache Editing API — 每一個設計決策背後都有真實的生產事故。這篇文章附上所有源碼位置，你可以自己去驗證。

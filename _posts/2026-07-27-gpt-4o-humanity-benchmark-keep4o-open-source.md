@@ -5,6 +5,8 @@ date: 2026-07-27 09:00:00 +0800
 permalink: /gpt-4o-humanity-benchmark-keep4o-open-source/
 description: "2026 年 6 月 26 日發布的 GPT-5.6 system card 裡，第一人稱公平性評估的評分者是 GPT-4o，理由是它的評分「被證明與人類評價一致」。而四個月前的 2 月 13 日，OpenAI 才以只剩 0.1% 日活用戶為由把 4o 從 ChatGPT 下架。一邊退役、一邊當人性標準器，中間夾著超過兩萬人連署的 keep4o 運動、至少八起心理健康訴訟。這篇拆解 4o 的雙重身分，最後用幾段隨筆談：為什麼「像人」可能比「聰明」更難做到，以及為什麼開源是讓一個模型在商業排程之外長存的唯一機制。"
 image: /assets/images/gpt-4o-humanity-benchmark-cover.png
+categories: [AI 產業分析]
+author: Wisely Chen
 ---
 
 2026 年 6 月 26 日，OpenAI 發布 [GPT-5.6 的 system card](https://deploymentsafety.openai.com/gpt-5-6)。在第一人稱公平性評估（first-person fairness）那一節，方法論說明裡有一行字：

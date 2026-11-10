@@ -166,7 +166,7 @@ Nexus 裡面有幾個零件：
 | 資料天天大改 | 重新編譯的成本會吃掉你省下的查詢成本 |
 | 還在 POC 階段 | Agentic RAG 接起來快，先驗證價值再說 |
 
-這個判斷邏輯，跟我之前寫 [PostgreSQL 當 Vector Store](/postgresql-vector-store-pragmatic-choice/) 那篇其實是一脈相承的——**架構不是選最新的，是選最適合你場景的。**
+這個判斷邏輯，跟我之前寫 [PostgreSQL 當 Vector Store](/postgresql-ai-memory-store/) 那篇其實是一脈相承的——**架構不是選最新的，是選最適合你場景的。**
 
 ### 想試水溫？我建議直接從 LLM Wiki 開始
 
@@ -190,7 +190,7 @@ Nexus 裡面有幾個零件：
 4. 加一個**差量更新（incremental update）**機制，解決重新編譯成本的問題
 5. 查詢語言？**換成 SQL 就好了**，不用學 KnowQL
 
-是不是很眼熟？這跟我一直在講的 [pgvector 務實路線](/postgresql-vector-store-pragmatic-choice/) 幾乎是同一套工程哲學。Pinecone 把它包裝成 KnowQL + Artifact + Context Compiler，聽起來很高級，但拆開來看，骨架就是「**ETL + schema + index + 差量更新**」這些做資料工程的人做了二十年的東西。
+是不是很眼熟？這跟我一直在講的 [pgvector 務實路線](/postgresql-ai-memory-store/) 幾乎是同一套工程哲學。Pinecone 把它包裝成 KnowQL + Artifact + Context Compiler，聽起來很高級，但拆開來看，骨架就是「**ETL + schema + index + 差量更新**」這些做資料工程的人做了二十年的東西。
 
 > 整個方向真正的啟示不是某個產品，而是這句話：**把推理工作從查詢階段，前移到資料編譯階段**。這會是未來 Agent 系統設計的一個重要選擇。
 
@@ -200,10 +200,10 @@ Nexus 裡面有幾個零件：
 
 ## 延伸閱讀
 
-- [為什麼我選擇 PostgreSQL 當 Vector Store？](/postgresql-vector-store-pragmatic-choice/)
+- [為什麼我選擇 PostgreSQL 當 Vector Store？](/postgresql-ai-memory-store/)
 - [PostgreSQL 當 AI Memory Store 的實戰](/postgresql-ai-memory-store/)
 - [Stanford 論文實錘：Context Engineering 比 Fine-tuning 更適合 AI Agent（ACE 框架）](/ace-agentic-context-engineering-stanford-playbook-evolution/)
-- [Google Nested Learning：讓模型擁有大腦般的長期記憶](/google-nested-learning-ai-memory-breakthrough/)
+- [Google Nested Learning：讓模型擁有大腦般的長期記憶](/nested-learning-ai-memory/)
 - [Pinecone Nexus 官方公告：The Knowledge Engine for Agents](https://www.pinecone.io/blog/knowledge-infrastructure-for-agents/)
 - [Better Models Won't Save Your Agent（Pinecone）](https://www.pinecone.io/blog/introducing-nexus-knowledge-engine/)
 - [VentureBeat：The RAG era is ending for agentic AI — a new compilation-stage knowledge layer is what comes next](https://venturebeat.com/data/the-rag-era-is-ending-for-agentic-ai-a-new-compilation-stage-knowledge-layer-is-what-comes-next)

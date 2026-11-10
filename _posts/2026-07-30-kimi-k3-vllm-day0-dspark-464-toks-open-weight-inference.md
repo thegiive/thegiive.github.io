@@ -5,6 +5,8 @@ date: 2026-07-30 10:00:00 +0800
 permalink: /kimi-k3-vllm-day0-dspark-464-toks-open-weight-inference/
 image: /assets/images/kimi-k3-vllm-464-toks-cover.png
 description: "Kimi K3 在 7/27 開源，2.8T 參數史上最大開源模型。所有人都在問「怎麼跑得起 3T 的怪物」——vLLM Day-0 支援 + DSpark MTP 投機解碼跑出 464 tok/s，Unsloth 1-bit 量化壓到 594 GB 單機可跑。所有開源推理 lab 都在以 Kimi K3 為基礎降低 serving 門檻，Jensen Huang 25 家公司連署信的預言正在成真。"
+categories: [AI 前沿技術]
+author: Wisely Chen
 ---
 
 ![vLLM Kimi K3 464 tok/s](/assets/images/kimi-k3-vllm-464-toks-cover.png)

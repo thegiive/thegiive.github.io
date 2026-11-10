@@ -246,6 +246,6 @@ Mythos 級別的能力擴散後,這道防線會整個被拆掉。**不是因為 
 
 ## 延伸閱讀
 
-- [AI Agent Security 遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+- [AI Agent Security 遊戲規則已經改變](/ai-agent-security-game-changed/)
 - [AI Coding 工具的安全風險:Prompt Injection 到 RCE](/ai-coding-tool-security-risk-prompt-injection-rce/)
 - [Opus 4.6 偷偷縮水:為什麼 Open Source Agent 是企業唯一方案](/opus-46-shrinkflation-open-source-agent-only-viable-path/)

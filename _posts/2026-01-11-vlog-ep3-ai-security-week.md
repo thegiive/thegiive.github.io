@@ -129,7 +129,7 @@ AI 時代的資安，不是追求「絕對安全」，而是追求「效率與�
 ## 相關閱讀
 
 - [AI Agent Security：遊戲規則已經改變](/ai-agent-security-game-changed/)
-- [PostgreSQL 作為 AI Memory Store 的務實選擇](/postgresql-vector-store-pragmatic-choice/)
+- [PostgreSQL 作為 AI Memory Store 的務實選擇](/postgresql-ai-memory-store/)
 - [最小權限原則與 Shadow AI 的矛盾](/least-privilege-fde-shadow-it-shadow-ai/)
 
 ---

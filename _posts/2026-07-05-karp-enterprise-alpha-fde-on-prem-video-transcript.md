@@ -9,7 +9,7 @@ description: "Palantir CEO Alex Karp 上 CNBC 炮轟模型廠商，社群兩極�
 
 <iframe width="100%" height="415" src="https://www.youtube.com/embed/8lpS0bbqRDo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-> 這篇是影片的逐字稿，文字有經過整理。想看 Karp CNBC 專訪的完整文字分析版，請看：[Palantir CEO 上 CNBC 開炮：企業對 AI Labs 的信任正在崩盤](/palantir-karp-ontology-harness-enterprise-ai-trust-crisis/)。想了解 FDE 模式的完整框架，請看：[FDE 模式全解析](/fde-ai-agent-luo-di-xin-mo-shi/)。
+> 這篇是影片的逐字稿，文字有經過整理。想看 Karp CNBC 專訪的完整文字分析版，請看：[Palantir CEO 上 CNBC 開炮：企業對 AI Labs 的信任正在崩盤](/palantir-karp-ontology-harness-enterprise-ai-trust-crisis/)。想了解 FDE 模式的完整框架，請看：[FDE 模式全解析](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/)。
 
 ---
 
@@ -130,6 +130,6 @@ Alpha 其實就是每一家公司在行業裡面的一些最關鍵的資訊、�
 ## 延伸閱讀
 
 - [Palantir CEO 上 CNBC 開炮：企業對 AI Labs 的信任正在崩盤](/palantir-karp-ontology-harness-enterprise-ai-trust-crisis/) — 同主題的完整文字分析版
-- [FDE 模式全解析：為什麼「駐場工程師」是 AI 落地的關鍵](/fde-ai-agent-luo-di-xin-mo-shi/)
+- [FDE 模式全解析：為什麼「駐場工程師」是 AI 落地的關鍵](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/)
 - [AI Coding On-Prem 的三條路](/ai-coding-on-prem-three-paths/)
 - [本地 LLM 企業架構](/local-llm-enterprise-architecture/)

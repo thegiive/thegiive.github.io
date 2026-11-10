@@ -5,6 +5,8 @@ date: 2026-07-19 14:30:00 +0800
 permalink: /rtx-pro-6000-tier1-local-day1-2-glm52-deepseek-v4-flash/
 image: /assets/images/rtx-pro-6000-tier1-day1-2-cover.jpg
 description: "限期一週的實驗：RTX Pro 6000 + 512G RAM，單機跑 Tier 1 地端 model。Day 1 GLM 5.2 2-bit 量化只有 10.8 token/s，但 Fable 5 打分數據分析 85、寫文章 98。Day 2 DeepSeek V4 Flash IQ2 全塞進 96GB VRAM，58 token/s 且所有題目全對，商務可用線 40 提前過線。外加一課：網路上的調校教學，實作起來七八成不準。"
+categories: [AI 前沿技術]
+author: Wisely Chen
 ---
 
 又到了週日，今天我用影片跟大家介紹一下我現在 RTX Pro 6000 桌機的實測結果。

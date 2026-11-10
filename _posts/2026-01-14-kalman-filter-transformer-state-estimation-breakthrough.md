@@ -348,8 +348,8 @@ Kalman 作為最後一道防線，保證輸出結果在物理上是合理的。
 ## 延伸閱讀
 
 - [Agent 模式 Part 3：Autonomous & Cyclic Agent](/agent-mo-shi-part-3-autonomous-cyclic-agents/) - 類似的「控制 + 學習」雙系統架構
-- [PostgreSQL 作為 AI 記憶庫](/postgresql-vector-store-pragmatic-choice/) - 另一種「用傳統工具約束 AI」的思路
-- [Google Nested Learning](/google-nested-learning-ai-memory-breakthrough/) - 另一個把傳統理論帶回深度學習的研究方向
+- [PostgreSQL 作為 AI 記憶庫](/postgresql-ai-memory-store/) - 另一種「用傳統工具約束 AI」的思路
+- [Google Nested Learning](/nested-learning-ai-memory/) - 另一個把傳統理論帶回深度學習的研究方向
 
 ---
 

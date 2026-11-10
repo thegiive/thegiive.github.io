@@ -163,7 +163,7 @@ We don’t actually need that many agents to build an ecosystem. It gets complex
 
 OpenClaw does the same thing, even more aggressively: it stores large amounts of context in a few key markdown files; daily memory is organized by date in a folder structure.
 
-Simple—but extremely effective. (Related: [OneFlow: rethinking Single Agent vs Multi-Agent](/oneflow-single-agent-vs-multi-agent-rethinking/))
+Simple—but extremely effective. (Related: [OneFlow: rethinking Single Agent vs Multi-Agent](/oneflow-single-agent-vs-multi-agent/))
 
 ## Frankly
 
@@ -220,6 +220,6 @@ Not useless—just often unnecessary for personal assistant scenarios. Single ag
 **Further reading:**
 - [OpenClaw four-layer defense-in-depth hardening guide](/moltbot-security-hardening-guide/)
 - [The Unix philosophy revived in Claude Code](/unix-philosophy-claude-code-command-line-renaissance/)
-- [OneFlow: rethinking Single Agent vs Multi-Agent](/oneflow-single-agent-vs-multi-agent-rethinking/)
+- [OneFlow: rethinking Single Agent vs Multi-Agent](/oneflow-single-agent-vs-multi-agent/)
 - [From “wrapper 1.0” to “wrapper 2.0”: why Anthropic should be the one sweating](/shell-wrapper-2-anthropic-real-threat/)
 - [A top 0.01% Cursor power user switched to Claude Code: the five pillars of agentic coding](/cursor-top-user-switch-claude-code-agentic-coding/)

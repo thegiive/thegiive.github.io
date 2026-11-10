@@ -5,6 +5,8 @@ date: 2026-07-06 09:00:00 +0800
 permalink: /fable-5-before-july-7-thinking-partner-not-faster-coder/
 image: /assets/images/fable-5-before-july-7-thinking-partner.png
 description: "7/7 是 Fable 5 從訂閱免費切換到 metered credits 的最後一天。社群在衝 codebase migration 和 security audit，我也做了大量 code review，但花更多時間測試另一件事：LLM 到底是不是比人類更好的生涯導師？24 小時在線、沒有情緒、沒有利益衝突、能同時處理更多變量、而且已經累積了大量個人 context。理論上它在生涯諮詢的理性面應該全面碾壓人類。限制是情緒和直覺——但這恰好是互補，不是替代。"
+categories: [工作心法]
+author: Wisely Chen
 ---
 
 7/1 Fable 5 回來了。7/7 之後它從訂閱方案免費使用切換到 metered usage credits，費率 $10/$50 per Mtok in/out，是 Opus 4.8 的兩倍。

@@ -194,5 +194,5 @@ NemoClaw 給了一個方向：**用 infra + policy 來約束 AI agent。**
 - [NemoClaw 架構拆解：K3s、seccomp、Landlock 三層縱深防禦](/nemoclaw-architecture-deep-dive/)
 - [OpenClaw 架構拆解：Context、Memory、Token 壓縮機](/openclaw-architecture-deep-dive-context-memory-token-crusher/)
 - [OpenClaw 安全隔離：Gmail Sandbox 到底怎麼設定](/openclaw-security-isolation-gmail-sandbox-setup/)
-- [Channel 的戰爭：OpenClaw、Anthropic 和誰能決定 AI Agent 的未來](/openclaw-anthropic-channel-war-who-controls-ai-agent-future/)
+- [Channel 的戰爭：OpenClaw、Anthropic 和誰能決定 AI Agent 的未來](/openclaw-anthropic-channel-war/)
 - [從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic](/shell-wrapper-2-anthropic-real-threat/)

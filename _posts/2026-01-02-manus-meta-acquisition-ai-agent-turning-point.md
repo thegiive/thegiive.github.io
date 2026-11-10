@@ -148,14 +148,14 @@ Manus 不是下一個 DeepSeek。
 ## 延伸閱讀
 
 ### AI Agent 架構與實踐
-- [AI Agent 完整指南：從概念到落地](/ai-agent-complete-guide/) — 從入門到進階的 AI Agent 系統性理解
+- [AI Agent 完整指南：從概念到落地](/ai-agent/) — 從入門到進階的 AI Agent 系統性理解
 - [Anthropic 雙代理架構：Claude Code 的設計哲學](/anthropic-dual-agent-architecture-claude-code/) — 理解主流 Agent 架構的設計思路
 - [LATS：讓 AI Agent 擁有決策大腦](/lats-agent-tree-search-decision-brain/) — 進階的 Agent 推理架構
 
 ### AI 產業趨勢
 - [2025 AI 前沿格局變遷](/ai-frontier-landscape-shift-2025/) — AI 產業的最新發展趨勢
-- [AI 企業轉型三步驟](/enterprise-ai-transformation-three-steps/) — 企業如何導入 AI 的實務框架
+- [AI 企業轉型三步驟](/enterprise-ai-transformation/) — 企業如何導入 AI 的實務框架
 
 ### 相關評論
 - [AI Agent Security：遊戲規則已經改變](/ai-agent-security-game-changed/) — Agent 時代的安全考量
-- [FDE 模式：AI Agent 落地的新選擇](/fde-ai-agent-luo-di-xin-mo-shi/) — 為什麼「不可規模化」反而是優勢
+- [FDE 模式：AI Agent 落地的新選擇](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/) — 為什麼「不可規模化」反而是優勢

@@ -213,7 +213,7 @@ Taalas 做的事情從技術上令人尊敬。把 530 億個電晶體安排成�
 
 - [On-Premise Enterprise LLM Deployment：企業級地端 LLM 架構完整藍圖](/local-llm-enterprise-architecture/) — 本文的前傳，地端部署的完整架構
 - [越級打怪的「神級小模型」：帶你認識 Qwen 3.5 與爆紅的 9B 架構](/qwen-3-5-9b-small-model-god-tier-architecture/) — Taalas 下一個目標可能是 Qwen 3.5 系列
-- [AI Agent Security 遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/) — 本地 ASIC 推理的安全考量
+- [AI Agent Security 遊戲規則已經改變](/ai-agent-security-game-changed/) — 本地 ASIC 推理的安全考量
 
 ---
 

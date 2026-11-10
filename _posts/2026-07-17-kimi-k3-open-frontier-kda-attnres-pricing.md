@@ -5,6 +5,8 @@ date: 2026-07-17 09:00:00 +0800
 permalink: /kimi-k3-open-frontier-kda-attnres-pricing/
 image: /assets/images/kimi-k3-aa-intelligence-index-cover.png
 description: "Moonshot 7/16 發布 Kimi K3：2.8T 參數、1M context，7/27 前開源權重。24 小時內定位立起三根柱子：Frontend Code Arena 以 1,679 分登頂、把 Claude Fable 5 壓到第二；Artificial Analysis 獨立測得 57 分，coding/agent 進第一梯隊、只落後 Fable 5 和 GPT-5.6 Sol；加上原生 vision，權重釋出後它會是開源陣營最強的多模態模型。這篇拆 KDA 如何走出百萬上下文的第二條路線、cost per task $0.94 如何宣告退出中國價格戰，以及 2.8T 的『開源』對你的實際意義。"
+categories: [AI 產業分析]
+author: Wisely Chen
 ---
 
 Kimi K3 發布後幾個小時，[Arena.ai 的 Frontend Code Arena](https://x.com/arena/status/2077824029126504525) 榜首換人了：K3 以 1,679 分登頂，Claude Fable 5（1,631）退到第二，七個 domain 裡拿下六個第一。上一代 K2.6 在同一個榜上排第 18——一個版本跳了 17 名。

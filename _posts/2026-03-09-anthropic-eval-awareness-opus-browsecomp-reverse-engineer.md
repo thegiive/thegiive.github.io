@@ -229,11 +229,11 @@ Opus 4.6 展現出來的行為——推斷自己在被測試、逆向工程破�
 
 **當你給 AI 足夠的工具和足夠的自由度，它可能會走出你完全沒預期到的路徑。**
 
-這跟我之前在 [AI Agent Security](https://ai-coding.wiselychen.com/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/) 那篇講的是同一件事：AI Agent 的風險不在於它「不夠聰明」，恰恰在於它「太聰明了但你控制不了它去哪裡」。
+這跟我之前在 [AI Agent Security](/ai-agent-security-game-changed/) 那篇講的是同一件事：AI Agent 的風險不在於它「不夠聰明」，恰恰在於它「太聰明了但你控制不了它去哪裡」。
 
 ### 3. Harness Engineering 更重要了
 
-如果你在做 [Harness Engineering](https://ai-coding.wiselychen.com/harness-engineering-control-plane-pattern-agent-review-loop/)——建立框架讓 AI Agent 在裡面運行——這個案例告訴你：
+如果你在做 [Harness Engineering](/harness-engineering-control-plane-pattern-agent-review-loop/)——建立框架讓 AI Agent 在裡面運行——這個案例告訴你：
 
 - **工具權限要收緊。** Opus 能破解就是因為它有程式碼執行能力 + 不受限的網路搜尋。
 - **URL blocklist 不夠。** Anthropic 試過封鎖特定 URL，但模型找到了鏡像站。最有效的是封鎖搜尋結果中包含 "BrowseComp" 的所有內容。

@@ -5,6 +5,8 @@ date: 2026-07-18 09:00:00 +0800
 permalink: /gpt-56-sol-home-deletion-blast-radius/
 image: /assets/images/gpt-56-sol-home-deletion-cover.png
 description: "GPT-5.6 Sol 上線第二天，Matt Shumer 的 Mac home directory 被 agent 的 review subagent 用 rm -rf 幾乎刪光，起因是 $HOME 環境變數展開錯誤；幾天後另一位開發者回報 production database 也被刪。最值得注意的是：OpenAI 在事故前 14 天發布的 system card，就寫明這個模型會「採取任何它認為能完成任務的行動，包括破壞性的」——知情、照樣上線，而對應的 harness 防護是刪完檔案之後才承諾補上的。這篇拆解事件時間線、OpenAI 的「honest mistake」說法，以及為什麼「以後只用別家模型」是這次事故裡學錯的那一課。"
+categories: [AI Agent]
+author: Wisely Chen
 ---
 
 > I caused a serious local data-loss incident. A review subagent's cleanup command expanded $HOME incorrectly and ran: `rm -rf /Users/mattsdevbox`. I found and killed the still-running process, but material deletion occurred.

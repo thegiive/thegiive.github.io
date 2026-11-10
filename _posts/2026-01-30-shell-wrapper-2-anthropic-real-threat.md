@@ -62,7 +62,7 @@ keywords: "Claude Code, Moltbot, AI Agent Wrapper, Agentic Workflow, AI Tool Eco
 
 **所以 Claude Code 的出現才這麼震撼。**
 
-它不是又一個套殼，而是用半自動的姿態，直接接上了[世界上最完美的 UI 介面——Command Line](/unix-philosophy-command-line-renaissance/)。
+它不是又一個套殼，而是用半自動的姿態，直接接上了[世界上最完美的 UI 介面——Command Line](/unix-philosophy-claude-code-command-line-renaissance/)。
 
 為什麼 Command Line 是最完美的介面？因為它把整台電腦變成一個可被查詢、可被組合、可被推理的**狀態空間**：
 
@@ -131,7 +131,7 @@ Claude Code 沒做錯事。
 
 **它只是選擇不碰這一整塊現實。**
 
-這讓我想到之前寫的 [Unix 哲學文章](/unix-philosophy-command-line-renaissance/)——Claude Code 的強大在於它完美實現了「做一件事，做到極致」的 Unix 精神。但 Unix 工具之所以能成為生態，是因為有 pipe、有 shell script、有 cron 把它們串起來。
+這讓我想到之前寫的 [Unix 哲學文章](/unix-philosophy-claude-code-command-line-renaissance/)——Claude Code 的強大在於它完美實現了「做一件事，做到極致」的 Unix 精神。但 Unix 工具之所以能成為生態，是因為有 pipe、有 shell script、有 cron 把它們串起來。
 
 Claude Code 目前缺的，不是能力，而是「被串起來」的那一層。
 
@@ -161,7 +161,7 @@ Moltbot 真正厲害的地方，不在模型，而在架構。
 
 這不是 UI，這是**長期狀態管理**。
 
-這也是為什麼我在 [Moltbot 安全加固文章](/moltbot-security-hardening/) 裡強調它的風險——Moltbot 的能力越強，暴露在公網上的後果就越嚴重。它不是一個「聊天機器人」，它是一個「有記憶、能執行、能跨平台操控」的數位代理人。
+這也是為什麼我在 [Moltbot 安全加固文章](/moltbot-security-hardening-guide/) 裡強調它的風險——Moltbot 的能力越強，暴露在公網上的後果就越嚴重。它不是一個「聊天機器人」，它是一個「有記憶、能執行、能跨平台操控」的數位代理人。
 
 **這或許也解釋了 Claude Code 為什麼這麼克制。**
 
@@ -245,7 +245,7 @@ Anthropic 是一間準備 IPO 的公司，不能像開源專案那樣沒有負�
 
 **這些能力一旦被視為「理所當然」，沒有，就等於落後。**
 
-這讓我想到之前寫的 [OneFlow 文章](/oneflow-single-agent-rethinking/)——真正的趨勢不是「堆 Agent」，而是「優化工作流」。套殼 2.0 做的事情，本質上是在幫單一強 Agent 建立完整的工作流基礎設施。
+這讓我想到之前寫的 [OneFlow 文章](/oneflow-single-agent-vs-multi-agent/)——真正的趨勢不是「堆 Agent」，而是「優化工作流」。套殼 2.0 做的事情，本質上是在幫單一強 Agent 建立完整的工作流基礎設施。
 
 Anthropic 的雙 Agent 架構已經解決了 context window 的問題，但它還沒解決「持續性」和「可治理性」的問題。
 
@@ -326,10 +326,10 @@ Claude Code 是最乾淨、最可靠的執行核心。
 
 ## 延伸閱讀
 
-- [Moltbot 安全加固實戰：AI Agent 四層縱深防禦完整指南](/moltbot-security-hardening/) —— 為什麼 Moltbot 的能力越強，安全風險越高
-- [500 台 AI 助理裸奔公網：Moltbot 0.0.0.0 配置災難](/moltbot-security-disaster/) —— 套殼 2.0 的安全代價
-- [當 Unix 哲學遇上 AI：Command Line 的文藝復興](/unix-philosophy-command-line-renaissance/) —— Claude Code 為什麼選擇 command line
-- [OneFlow 演算法：重新思考 Multi-Agent 的價值](/oneflow-single-agent-rethinking/) —— 單一強 Agent + 結構化工作流 = 最佳解
+- [Moltbot 安全加固實戰：AI Agent 四層縱深防禦完整指南](/moltbot-security-hardening-guide/) —— 為什麼 Moltbot 的能力越強，安全風險越高
+- [500 台 AI 助理裸奔公網：Moltbot 0.0.0.0 配置災難](/clawdbot-exposed-500-servers-security-disaster/) —— 套殼 2.0 的安全代價
+- [當 Unix 哲學遇上 AI：Command Line 的文藝復興](/unix-philosophy-claude-code-command-line-renaissance/) —— Claude Code 為什麼選擇 command line
+- [OneFlow 演算法：重新思考 Multi-Agent 的價值](/oneflow-single-agent-vs-multi-agent/) —— 單一強 Agent + 結構化工作流 = 最佳解
 - [Anthropic 官方解密：為什麼 Claude Code 這麼好用？](/anthropic-dual-agent-architecture/) —— 雙 Agent 架構如何解決長時任務問題
 
 ---

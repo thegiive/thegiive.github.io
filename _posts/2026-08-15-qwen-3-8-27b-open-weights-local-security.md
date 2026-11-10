@@ -100,7 +100,7 @@ model_type 仍然是 `qwen3_5`。64 層 decoder、5120 hidden size、17408 FFN�
 
 但不能神化——那 16 層 full attention 的 KV cache 還是在的。BF16 下每個 token 約 64 KiB，[262K 全開約 16 GiB，1M context 約 61 GiB](https://kingy.ai/blog/qwen3-8-27b-specs-benchmarks-local-hardware/)。二次複雜度從 64 層降到 16 層，不是消除了二次複雜度。
 
-資安日系列的老讀者知道，我七月[借 RTX Pro 6000 跑過一週 Tier 1 地端實驗](https://ai-coding.wiselychen.com/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/)：GLM 5.2 那種 744B 級的模型，96GB VRAM 塞不下，得靠 MoE offload 到系統 RAM，天花板釘死在每秒十個 token 上下，互動式 agent 用起來是煎熬。
+資安日系列的老讀者知道，我七月[借 RTX Pro 6000 跑過一週 Tier 1 地端實驗](/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/)：GLM 5.2 那種 744B 級的模型，96GB VRAM 塞不下，得靠 MoE offload 到系統 RAM，天花板釘死在每秒十個 token 上下，互動式 agent 用起來是煎熬。
 
 27B dense + hybrid cache 完全是另一個世界：
 
@@ -284,5 +284,5 @@ API 參數：
 
 - [5090 三個月從 10 萬變 17 萬：五條技術路徑壓低地端 AI 的硬體門檻](https://ai-coding.wiselychen.com/memory-price-surge-local-ai-five-paths/) — 兩天前的「先選模型再買硬體」，本篇補上關鍵一塊
 - [Bonsai 27B：55.6GB → 3.9GB 保留 90% 智力](https://ai-coding.wiselychen.com/bonsai-27b-qwen36-compression-local-inference/) — 量化損失不均勻、tool calling 最先受傷的證據
-- [單機跑 Tier 1 地端 Model 一週實驗完賽](https://ai-coding.wiselychen.com/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/) — 大模型 offload 的速度天花板，對照 27B dense 的部署差異
-- [AI Coding On-Prem 的三條路](https://ai-coding.wiselychen.com/ai-coding-on-prem-three-paths/) — 核心不是模型多聰明，而是工具鏈多穩定
+- [單機跑 Tier 1 地端 Model 一週實驗完賽](/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/) — 大模型 offload 的速度天花板，對照 27B dense 的部署差異
+- [AI Coding On-Prem 的三條路](/ai-coding-on-prem-three-paths/) — 核心不是模型多聰明，而是工具鏈多穩定

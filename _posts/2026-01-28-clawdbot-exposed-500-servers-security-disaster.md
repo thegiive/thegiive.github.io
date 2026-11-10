@@ -401,4 +401,4 @@ Tailscale 是一個零配置的 VPN 服務，可以讓你的設備建立安全�
 ## 延伸閱讀
 
 - [AI Coding 的第一個風險，不是模型——是你一直按「Yes」](/ai-coding-tool-security-risk-prompt-injection-rce/)
-- [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+- [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)

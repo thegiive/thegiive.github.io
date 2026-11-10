@@ -5,6 +5,8 @@ date: 2026-07-24 18:00:00 +0800
 permalink: /rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/
 image: /assets/images/rtx-pro-6000-week-final-cover.png
 description: "限期一週的 RTX Pro 6000 實驗到期結算：三個開源旗艦 MoE 全部部署成功。GLM 5.2 證明 753B 塞進單卡機器絕對可行，但 CPU 記憶體頻寬把天花板釘死在 10 tok/s；DeepSeek 同樣 offload 模式下快了一倍以上；Qwen VL 122B 把機械廠工程圖判讀從 74% 推到 96%；vLLM 折騰整套 WSL2 環境換到 3.2 tok/s，比 llama.cpp 慢 16 倍。還有一課：AI 分析地端部署頭頭是道，實跑翻車連連——不是幻覺，是這個場景太新，沒有歷史資料給它參考。"
+categories: [AI 前沿技術]
+author: Wisely Chen
 ---
 
 限期一週的實驗今天到期。

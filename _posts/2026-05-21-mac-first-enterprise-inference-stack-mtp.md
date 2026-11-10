@@ -101,7 +101,7 @@ Mac Studio 的優勢非常具體：**整顆 Qwen3.6-27B FP16（54GB）能直接�
 - ❌ Release cadence 比 llama.cpp 還慢（要等 upstream 更新後再 bump）
 
 **4. Rapid-MLX（社群專案，相容 OpenAI API）**
-- ✅ 在 [Qwen3.6-27B 跑出 36.5 t/s @ M3 Ultra](https://ai-coding.wiselychen.com/qwen-3-6-27b-gb10-home-inference-sonnet-level/)（4-bit）
+- ✅ 在 [Qwen3.6-27B 跑出 36.5 t/s @ M3 Ultra](/qwen-3-6-27b-sonnet-level-home-inference/)（4-bit）
 - ❌ 還是沒 MTP
 
 把這四條路擺在一起，會發現一個尷尬的事實：**Mac 用戶過去一年想用 MTP，沒有任何一條路走得通**。不是「麻煩但能用」，是「根本沒這條路」。
@@ -257,7 +257,7 @@ PR #22673 對大多數人來說是「llama.cpp 又更新一個 feature」，但�
 **相關文章：**
 - [llama.cpp 終於合併 MTP：你的 DeepSeek / Qwen3.6 一直少跑了 30-60% 的速度](https://ai-coding.wiselychen.com/llama-cpp-mtp-merged-local-llm-2x-speedup/)
 - [Qwen 3.6-27B 在 RTX 5090 上的 inference engine benchmark](https://ai-coding.wiselychen.com/qwen-3-6-27b-rtx-5090-inference-engine-benchmark/)
-- [Qwen 3.6-27B 在 DGX Spark 跑出 Sonnet 4.6 等級](https://ai-coding.wiselychen.com/qwen-3-6-27b-gb10-home-inference-sonnet-level/)
+- [Qwen 3.6-27B 在 DGX Spark 跑出 Sonnet 4.6 等級](/qwen-3-6-27b-sonnet-level-home-inference/)
 
 **參考資料：**
 - [llama.cpp PR #22673: llama + spec: MTP Support](https://github.com/ggml-org/llama.cpp/pull/22673)

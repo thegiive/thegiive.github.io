@@ -741,7 +741,7 @@ jobs:
 
 ### 對照真實事件
 
-我之前在 [AI 刪掉資料庫：Replit、PocketOS 的三起事件](ai-delete-database-replit-pocketos-harness-engineering.md) 寫過幾起事件，每一起的共同模式都是「destructive action 被藏起來」：
+我之前在 [AI 刪掉資料庫：Replit、PocketOS 的三起事件](/ai-delete-database-harness-engineering/) 寫過幾起事件，每一起的共同模式都是「destructive action 被藏起來」：
 
 - **Replit：** agent 沒問就 `git reset --hard`，使用者一週的工作沒了
 - **PocketOS：** agent 直接 drop 整個資料庫，沒有 dry-run 階段
@@ -1248,17 +1248,17 @@ git diff --cached --name-only | grep -E '\.env(\.local|\.production|\.staging)?$
 
 - **Harness Engineering 系列：**
   - [Harness Engineering 的四個 Demo：Prompt 是建議，機制才是規則](/agent-harness-three-migrations-mechanism/) — least-privilege 與 L0–L4 的入門版，附四個可直接跑的 hook demo
-  - [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](harness-engineering-architecture-overview-ai-code-production-guardrails.md)
-  - [Harness Engineering Control Plane Pattern：Agent Review Loop 八步拆解](harness-engineering-control-plane-pattern-agent-review-loop.md)
-  - [Lecture 04 拆解：指令檔模組化的工程做法](harness-engineering-l04-instruction-file-modular-split.md)
+  - [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](/harness-engineering-architecture-overview-ai-code-production-guardrails/)
+  - [Harness Engineering Control Plane Pattern：Agent Review Loop 八步拆解](/harness-engineering-control-plane-pattern-agent-review-loop/)
+  - [Lecture 04 拆解：指令檔模組化的工程做法](/harness-engineering-l04-instruction-file-modular-split/)
 
 - **資安相關（更深入威脅模型）：**
   - [Prompt Injection 在 Tool-Using Agents 的真實威脅](prompt-injection-harness-engineering-tool-using-agents.md)
-  - [Agent Security 遊戲規則已經改變](ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian.md)
-  - [AI Coding 工具的資安風險：Prompt Injection 到 RCE](ai-coding-tool-security-risk-prompt-injection-rce.md)
+  - [Agent Security 遊戲規則已經改變](/ai-agent-security-game-changed/)
+  - [AI Coding 工具的資安風險：Prompt Injection 到 RCE](/ai-coding-tool-security-risk-prompt-injection-rce/)
 
 - **真實事件分析：**
-  - [AI 刪掉資料庫：Replit、PocketOS 的三起事件](ai-delete-database-replit-pocketos-harness-engineering.md)
+  - [AI 刪掉資料庫：Replit、PocketOS 的三起事件](/ai-delete-database-harness-engineering/)
 
 ---
 

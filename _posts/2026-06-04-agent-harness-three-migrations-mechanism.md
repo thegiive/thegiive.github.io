@@ -218,7 +218,7 @@ hook 當場 **deny**——注意不是「問你」，是**直接拒絕**：
 - [AI Coding 資安的真正防線：為什麼 Harness Engineering 比模型聰明更重要](/prompt-injection-harness-engineering-tool-using-agents/)——Demo 3 那種 injection 為什麼用 if/else policy engine 擋得住、用 prompt 擋不住
 - [當 AI 把資料庫刪光：兩個真實案例與 Harness Engineering 的反擊](/ai-delete-database-harness-engineering/)——最小權限與人類閘門的真實事故版
 - [Harness Engineering 的 7 條資安實踐](/harness-engineering-security-best-practices/)——least-privilege、SECURITY.md 的落地清單
-- [當代碼量暴增 10 倍後，到底誰來做 Review？](/coders-who-stopped-coding-harness-context-spec-engineering/)——四層防禦的 coding agent 視角
+- [當代碼量暴增 10 倍後，到底誰來做 Review？](/ai-coding-framework-deterministic-tools-control-ai/)——四層防禦的 coding agent 視角
 - [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](/harness-engineering-architecture-overview-ai-code-production-guardrails/)——七元件參考架構
 - [Agent 也需要「及時反饋」：Effective Feedback Compute](/agent-harness-effective-feedback-compute/)——回饋迴路的 scaling law
 

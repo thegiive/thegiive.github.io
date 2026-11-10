@@ -367,4 +367,4 @@ Anthropic 這次的回應速度和態度是好的——4 天修復，作者親�
 - [搞懂快取機制，從 Gemma4 到 Claude Code 省 80% Token](/kv-cache-gemma4-claude-code-save-80-percent-token/) — 完整拆解 KV Cache 和 Prompt Cache 的運作原理
 - [Claude Code 資安最佳實踐：14 條建議，每條都有原始碼撐腰](/claude-code-security-best-practices-source-code-verified/) — 翻 source code 發現 Anthropic 可以遠端關掉你的 bypass mode、auto mode、agent swarms，experiment gate 只是冰山一角
 - [AI Coding 的第一個風險，不是模型——是你一直按「Yes」](/ai-coding-tool-security-risk-prompt-injection-rce/)
-- [AI Agent Security：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+- [AI Agent Security：遊戲規則已經改變](/ai-agent-security-game-changed/)

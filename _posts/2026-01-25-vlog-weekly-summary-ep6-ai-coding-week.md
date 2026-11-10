@@ -225,11 +225,11 @@ description: "AI Coding 真的沒有想像中那麼簡單。這週深入探討�
 
 | # | 日期 | 標題 | 系列 |
 |---|------|------|------|
-| 1 | 01/19 | [AI Coding 半年回顧：開發並沒有變快](/ai-coding-half-year-review/) | ATPM |
+| 1 | 01/19 | [AI Coding 半年回顧：開發並沒有變快](/ai-coding-half-year-review-demand-transformation-tool-evolution/) | ATPM |
 | 2 | 01/19 | [MIT RLM：讓 AI 不再忘記](/recursive-language-models-rlm-context-rot-solution/) | 論文解讀 |
-| 3 | 01/21 | [Meta AI-Enabled Coding 面試](/meta-ai-enabled-coding-interview/) | AI Coding |
+| 3 | 01/21 | [Meta AI-Enabled Coding 面試](/meta-ai-enabled-coding-interview-what-they-really-test/) | AI Coding |
 | 4 | 01/22 | [AI Coding On-Prem 的三條路](/ai-coding-on-prem-three-paths/) | IT 架構 |
-| 5 | 01/24 | [AI Coding 的第一個風險：你一直按 Yes](/ai-coding-tool-security-risk/) | AI 資訊安全 |
+| 5 | 01/24 | [AI Coding 的第一個風險：你一直按 Yes](/ai-coding-tool-security-risk-prompt-injection-rce/) | AI 資訊安全 |
 
 ---
 

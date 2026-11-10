@@ -12,7 +12,7 @@ description: "ATPM 是經過生產環境驗證的 Vibe Coding 流程框架，以
 
 章節
 
-  1. [ATPM 介紹](https://ai-coding.wiselychen.com/atpm-a-real-production-vibe-coding-process/)
+  1. [ATPM 介紹](/atpm-a-real-production-vibe-coding-process/)
   2. [PRD 的重要性](https://ai-coding.wiselychen.com/atpm-prdde-zhong-yao-xing/)
   3. [AI 時代, 對PM的加速](https://ai-coding.wiselychen.com/atpm-ai-dui-pm-de-jia-su/)
   4. [Dev 的演進](https://ai-coding.wiselychen.com/atpm-kai-fa-zhe-dev-de-shui-bian-cong-gong-du-sheng-ma-nong-dao-ai-zhi-hui-jia/)

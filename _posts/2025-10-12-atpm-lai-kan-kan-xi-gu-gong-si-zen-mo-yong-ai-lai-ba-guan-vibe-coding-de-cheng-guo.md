@@ -65,7 +65,7 @@ AI Code Review 的部分很有趣，用 [CodeRabbit ](https://www.coderabbit.ai/
 
 整個觀念很棒 , 而且很 practical 。應該是真的實戰派出來寫的。而且不像 SDD 學院派一樣強調太多冗長的環節。
 
-最後，他說這套流程大概加速的 40% 的時間，怎麼跟我的 [ATPM 最後測出來的感覺一模一樣](https://ai-coding.wiselychen.com/atpm-a-real-production-vibe-coding-process/)....XD
+最後，他說這套流程大概加速的 40% 的時間，怎麼跟我的 [ATPM 最後測出來的感覺一模一樣](/atpm-a-real-production-vibe-coding-process/)....XD
 
 ![](/assets/images/image-19-1.png)
 

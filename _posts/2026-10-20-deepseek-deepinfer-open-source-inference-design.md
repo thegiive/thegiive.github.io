@@ -204,4 +204,4 @@ DeepSeek 在 2026 年 10 月 20 日以 Apache-2.0 開源的推理框架（Infere
 - [DeepSeek V4.1 Flash 大規模推理部署實踐（知乎，需登入）](https://zhuanlan.zhihu.com/p/2095560295930508953)
 - [susun 的 DeepInfer 推理側銳評（X）](https://x.com/SuJinYan123/status/2112485918527590435)
 - [DeepSeek V4 Flash 0731 為何那麼強：disk KV cache 與 50 倍價差（本 blog）](/deepseek-v4-flash-disk-kv-cache-50x-economics/) — 本文修正的那篇
-- [DeepSeek V4.1-Flash-1017：官方說是小更新（本 blog）](/deepseek-v41-flash-1017-open-source/)
+- [DeepSeek V4.1-Flash-1017：官方說是小更新（本 blog）](/deepseek-v41-flash-1017-minor-version-major-upgrade-two-spark/)

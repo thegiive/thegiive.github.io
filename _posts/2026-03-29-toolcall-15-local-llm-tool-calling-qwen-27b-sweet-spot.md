@@ -264,5 +264,5 @@ stevibe 把 ToolCall-15 開源了。158 顆星、MIT License、跑在 localhost:
 
 - [越級打怪的「神級小模型」：帶你認識 Qwen 3.5 與爆紅的 9B 架構](/qwen-3-5-9b-small-model-god-tier-architecture/) — 9B 的架構創新，但 tool calling 是它的天花板
 - [On-Premise Enterprise LLM Deployment：企業級地端 LLM 架構完整藍圖](/local-llm-enterprise-architecture/) — 本地部署的完整架構，現在多了 tool calling 選型的考量
-- [AI Agent Security 遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/) — Agent 的 tool calling 能力越強，安全邊界的設計越重要
+- [AI Agent Security 遊戲規則已經改變](/ai-agent-security-game-changed/) — Agent 的 tool calling 能力越強，安全邊界的設計越重要
 - [把 LLM 直接燒進晶片：Taalas 的瘋狂賭注](/taalas-asic-burn-llm-into-silicon-local-inference-future/) — 如果推理成本歸零，27B 本地部署的經濟模型更有吸引力

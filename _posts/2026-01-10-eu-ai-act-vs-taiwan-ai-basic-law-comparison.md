@@ -274,7 +274,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ### Q: EU AI Act 對企業影響最大的部分是什麼？
 
-對多數企業來說，**高風險 AI 的合規要求**會直接影響 IT 架構與開發流程。包括：強制建立 [Audit Trail](https://ai-coding.wiselychen.com/postgresql-vector-store-pragmatic-choice/)、風險管理系統、人工監督機制、技術文件等。這些不是選項，是強制要求。
+對多數企業來說，**高風險 AI 的合規要求**會直接影響 IT 架構與開發流程。包括：強制建立 [Audit Trail](/postgresql-ai-memory-store/)、風險管理系統、人工監督機制、技術文件等。這些不是選項，是強制要求。
 
 ### Q: EU AI Act 什麼時候生效？
 

@@ -5,6 +5,8 @@ date: 2026-07-21 09:00:00 +0800
 permalink: /agents-a1-35b-agent-horizon-scaling/
 image: /assets/images/agents-a1-35b-horizon-scaling-cover.png
 description: "Shanghai AI Lab 的 Agents-A1 是一顆 35B MoE，在 SEAL-0 拿 56.4，贏過 1T 級的 DeepSeek-V4-pro（55.0）和 Kimi-K2.6（50.5）；IFBench 80.6、FrontierScience-Olympiad 79.0 也領先全場。方法不是加參數，是把 scaling 的軸換掉：45K token 的長軌跡資料、通過驗證才寫回的 Knowledge-Action Graph、四類 RL teacher、再用 top-k 詞彙對齊把六個 domain 蒸餾進一個 student。這篇拆解 agent-horizon scaling 的三段配方，也看清楚它的邊界——MLE-bench 43.9 對 GPT-5.5 的 72.7，長程工程任務還是大模型的地盤。昨天寫的是推理端的 harness，今天這篇是訓練端的同一個故事。"
+categories: [AI Agent]
+author: Wisely Chen
 ---
 
 一顆 35B 的 MoE 模型，在 SEAL-0 這個長程搜尋 benchmark 上拿了 56.4 分。同場的 DeepSeek-V4-pro 是 55.0，Kimi-K2.6 是 50.5——[論文摘要](https://arxiv.org/abs/2606.30616)直接把這兩顆叫做「1T-parameter model」。參數量差了快 30 倍，分數反過來。

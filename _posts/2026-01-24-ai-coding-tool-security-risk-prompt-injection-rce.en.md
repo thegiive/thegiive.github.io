@@ -37,7 +37,7 @@ lang: en
 
 ---
 
-In the previous post, [AI Agent Security: the rules of the game have changed](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/), I discussed risks in enterprise agents (Salesforce Agentforce, Microsoft Copilot). This time, I want to talk about something closer to developers—**the AI coding tools you use every day**.
+In the previous post, [AI Agent Security: the rules of the game have changed](/ai-agent-security-game-changed/), I discussed risks in enterprise agents (Salesforce Agentforce, Microsoft Copilot). This time, I want to talk about something closer to developers—**the AI coding tools you use every day**.
 
 Cursor, Claude Code, GitHub Copilot, Windsurf—these are no longer “IDEs that autocomplete code.” They are **agents** that can read files, write files, run shells, and call APIs.
 
@@ -766,9 +766,9 @@ These are real cases with CVEs and security-firm research behind them. Not every
 - [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/) — OWASP GenAI
 
 ### Related posts (this site)
-- [CaMeL: Google DeepMind’s prompt-injection defense architecture](/camel-privileged-vs-quarantined-agent-which-needs-stronger-llm/)
+- [CaMeL: Google DeepMind’s prompt-injection defense architecture](/camel-privileged-quarantined-agent/)
 - [Why AI guardrails are doomed to fail](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/)
-- [AI Agent Security: the rules of the game have changed](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+- [AI Agent Security: the rules of the game have changed](/ai-agent-security-game-changed/)
 
 ---
 

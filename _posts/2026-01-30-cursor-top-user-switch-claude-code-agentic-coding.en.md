@@ -104,7 +104,7 @@ From “reviewing code” to “verifying behavior” might sound like mere word
 | Understand all implementation details | Understand interface contracts |
 | Humans are code reviewers | Humans are behavior verifiers |
 
-This reminds me of the [ATPM framework](/atpm-real-production-vibe-coding/) I wrote about earlier—the core value of PRD as a Single Source of Truth is precisely letting AI work at the requirements level, rather than getting stuck at the code level.
+This reminds me of the [ATPM framework](/atpm-a-real-production-vibe-coding-process/) I wrote about earlier—the core value of PRD as a Single Source of Truth is precisely letting AI work at the requirements level, rather than getting stuck at the code level.
 
 ---
 
@@ -285,11 +285,11 @@ Silen’s five pillars strongly match what our team validated over the past year
 
 **1. Context Management → working-memory management**
 
-This echoes the “text as state” idea I mentioned in the [Unix philosophy post](/unix-philosophy-command-line-renaissance/). Context management is about keeping the agent’s “working memory” clean. Claude Code’s 200k limit is real, but continual CLAUDE.md updates and task splitting can mitigate it.
+This echoes the “text as state” idea I mentioned in the [Unix philosophy post](/unix-philosophy-claude-code-command-line-renaissance/). Context management is about keeping the agent’s “working memory” clean. Claude Code’s 200k limit is real, but continual CLAUDE.md updates and task splitting can mitigate it.
 
 **2. Planning → PRD as Single Source of Truth**
 
-This fully validates the core of the [ATPM framework](/atpm-real-production-vibe-coding/): PRD isn’t documentation; it’s investment. Our data: “PRD iterated 6–7 times” and “PRD:Code ratio 1:1.4” (9,211 lines of PRD → 13,022 lines of code). The leverage of planning only increases as models get stronger.
+This fully validates the core of the [ATPM framework](/atpm-a-real-production-vibe-coding-process/): PRD isn’t documentation; it’s investment. Our data: “PRD iterated 6–7 times” and “PRD:Code ratio 1:1.4” (9,211 lines of PRD → 13,022 lines of code). The leverage of planning only increases as models get stronger.
 
 **3. Closing the Loop → crystallizing knowledge**
 
@@ -297,7 +297,7 @@ This is the most easily overlooked pillar. Many people treat AI as a “disposab
 
 **4. Verifiability → QA acceptance workflow**
 
-This matches what I emphasized in the [QA acceptance post](/atpm-qa-ai-coding/). You don’t guarantee AI code quality by “reading”; you guarantee it by “testing.” We expected QA to speed things up by 80%, but saw only 20% in reality—still worth it, because it establishes a repeatable verification baseline.
+This matches what I emphasized in the [QA acceptance post](/atpm-qa-ru-he-yan-shou-ai-coding-de-cheng-shi/). You don’t guarantee AI code quality by “reading”; you guarantee it by “testing.” We expected QA to speed things up by 80%, but saw only 20% in reality—still worth it, because it establishes a repeatable verification baseline.
 
 **5. Debugging → redefining human value**
 
@@ -324,8 +324,8 @@ And this evolution is only just beginning.
 - [Silen Naihin original post](https://blog.silennai.com/claude-code) — the full long-form transition notes
 - [Hacker News discussion](https://news.ycombinator.com/item?id=46676554) — community doubts and debate
 - [From “Shell wrapper 1.0” to “Shell wrapper 2.0”](/shell-wrapper-2-anthropic-real-threat/) — why Anthropic is the real thing to worry about
-- [ATPM: a Vibe Coding process that actually shipped to production](/atpm-real-production-vibe-coding/) — our team’s framework
-- [When Unix philosophy meets AI](/unix-philosophy-command-line-renaissance/) — why command line is the perfect interface for the AI era
+- [ATPM: a Vibe Coding process that actually shipped to production](/atpm-a-real-production-vibe-coding-process/) — our team’s framework
+- [When Unix philosophy meets AI](/unix-philosophy-claude-code-command-line-renaissance/) — why command line is the perfect interface for the AI era
 
 ---
 

@@ -175,6 +175,6 @@ UCSB 剛發了一篇論文叫《Your Agent Is Mine》。他們對 428 個 LLM �
 ## 延伸閱讀
 
 - [LLM 亂降智不是都市傳說——StupidMeter 監控與企業 IT 該怎麼辦](https://ai-coding.wiselychen.com/llm-silent-degradation-enterprise-it-harm-stupidmeter-monitoring/)
-- [LLM 中轉安全測試：Your Agent Is Mine 完整分析](https://ai-coding.wiselychen.com/llm-proxy-relay-security-your-agent-is-mine-ucsb/)
+- [LLM 中轉安全測試：Your Agent Is Mine 完整分析](/llm-proxy-relay-security-your-agent-is-mine-ucsb/)
 - [Local LLM 企業架構](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)
 - 論文原文：https://arxiv.org/abs/2604.08407

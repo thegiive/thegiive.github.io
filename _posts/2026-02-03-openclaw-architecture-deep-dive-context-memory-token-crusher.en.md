@@ -411,7 +411,7 @@ Frankly, not yet. Reasons: unpredictable costs (token burn depends heavily on us
 - [From $116M retirement to Agentic Engineering: Peter Steinberger and the legendary development philosophy behind OpenClaw](/peter-steinberger-agentic-engineering-just-talk-to-it/) — the person and philosophy behind OpenClaw
 - [From “wrapper 1.0” to “wrapper 2.0”: why Anthropic should be the one sweating](/shell-wrapper-2-anthropic-real-threat/) — the full analysis of the wrapper-2.0 ecosystem
 - [OpenClaw four-layer defense-in-depth hardening guide](/moltbot-security-hardening-guide/) — must-read if you want to run OpenClaw
-- [OneFlow: rethinking Single Agent vs Multi-Agent](/oneflow-single-agent-vs-multi-agent-rethinking/) — why context management matters more than stacking agents
+- [OneFlow: rethinking Single Agent vs Multi-Agent](/oneflow-single-agent-vs-multi-agent/) — why context management matters more than stacking agents
 - [Personal AI Assistant Showdown Week: Claude Code vs OpenClaw — different paths, same destination](/personal-ai-agent-future-claude-code-vs-openclaw/) — comparing the two routes
 
 ---

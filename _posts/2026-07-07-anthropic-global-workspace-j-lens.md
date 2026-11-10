@@ -5,6 +5,8 @@ date: 2026-07-07 09:00:00 +0800
 permalink: /anthropic-global-workspace-j-lens/
 image: /assets/images/anthropic-global-workspace-cover.png
 description: "兩篇論文合著看。一篇是 2025 年的 survey，梳理了 70 多種讓 LLM 不寫 chain-of-thought、直接在內部推理的方法——推理正在變沉默，省 token、省時間，但你再也看不到模型在想什麼。另一篇是 Anthropic 7 月 6 日發表的 global workspace 論文：他們用一個叫 J-lens 的工具，讀出 Claude 內部一小組正在被拿來推理、但還沒說出口的『內心詞彙』。替換其中一個，模型回報的想法就跟著變，成功率 59 到 88%。推理正在往黑箱走，而 J-lens 是目前唯一一面能照進去的鏡子。"
+categories: [AI 前沿技術]
+author: Wisely Chen
 ---
 
 ## 為什麼我們越來越看不到 AI 的想法

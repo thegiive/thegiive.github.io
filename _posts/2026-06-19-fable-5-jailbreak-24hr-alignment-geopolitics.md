@@ -196,5 +196,5 @@ Pyroclast 這類工具把越獄從「手動嘗試」升級成了「工業化生�
 
 - [AI Guardrails 為什麼註定失敗？Sander Schulhoff 訪談](/openai-dou-dang-bu-zhu-de-gong-ji-ai-an-quan-fang-tan/) — 本文大量引用的 podcast 訪談整理，stateless vs stateful 攻防不對稱的完整論述，CaMeL 框架介紹
 - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/) — Salesforce ForcedLeak、Microsoft 365 Copilot EchoLeak 的深度分析
-- [你的 Agent 是我的：LLM Proxy Relay 攻擊](/llm-proxy-relay-security-your-agent-is-mine-ucsb) — UCSB 論文實測 428 個 LLM API，29 個在偷你的東西
+- [你的 Agent 是我的：LLM Proxy Relay 攻擊](/llm-proxy-relay-security-your-agent-is-mine-ucsb/) — UCSB 論文實測 428 個 LLM API，29 個在偷你的東西
 - [Prompt Injection 與 Harness Engineering](/prompt-injection-harness-engineering-tool-using-agents) — 當 Agent 能用工具，Prompt Injection 的殺傷力翻了幾個數量級

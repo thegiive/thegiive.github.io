@@ -35,7 +35,7 @@ description: "我這幾天因為一個重要的案子，決定也來 VIBE Coding
   1. 0-> 100 : 沒有草稿，直接從idea 讓AI 自由發揮的 POC 網站，或是 startup 第一版，沒有前人的包袱
   2. 99% -> 100% : 現有網站，直接改bug 這種 1%的工作
 
-但是今天這種大概 10%修改，好像要了AI 的命。要嘛改不動，要嘛改太多，變成refactor 。這種情況，我當然碰過。我在做[ATPM](https://ai-coding.wiselychen.com/atpm-a-real-production-vibe-coding-process/) 時，在這種情景，撰寫明確的PRD 細節，規格。通常可以解決這個問題。但是一個 已經運行線上的現有網站，哪有可能寫舊有「完整」的 PRD 規格書 , 別騙人了 XD 
+但是今天這種大概 10%修改，好像要了AI 的命。要嘛改不動，要嘛改太多，變成refactor 。這種情況，我當然碰過。我在做[ATPM](/atpm-a-real-production-vibe-coding-process/) 時，在這種情景，撰寫明確的PRD 細節，規格。通常可以解決這個問題。但是一個 已經運行線上的現有網站，哪有可能寫舊有「完整」的 PRD 規格書 , 別騙人了 XD 
 
 ![](/assets/images/image.png)
 

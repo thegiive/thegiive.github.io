@@ -5,6 +5,8 @@ date: 2026-07-15 09:00:00 +0800
 permalink: /bonsai-27b-qwen36-compression-local-inference/
 image: /assets/images/bonsai-27b-prismml-announcement-cover.png
 description: "PrismML 7/14 發布 Bonsai 27B，把 Qwen 3.6 27B 從 55.6GB 壓到 5.9GB（ternary）和 3.9GB（1-bit），在 iPhone 17 Pro 上跑。Apple 正在跟 PrismML 洽談，Vinod Khosla 稱之為 mathematical breakthrough。AnythingLLM 創辦人說「比 Fable + Mythos + GPT 5.6 加起來都重要」。但 benchmark 拆開看：MATH 500 從 99.4 只掉到 98，TauBench（tool calling）卻從 82.9 掉到 61.3——壓縮後的智力損失不均勻。這篇拆解為什麼「本地能跑 27B」和「本地 Agent 可用」之間還有一道鴻溝。"
+categories: [AI 前沿技術]
+author: Wisely Chen
 ---
 
 [The Information](https://www.theinformation.com/articles/khosla-backed-startup-claims-breakthrough-largest-ever-ai-model-iphone) 和 [CNBC](https://www.cnbc.com/2026/07/14/apple-prismml-ai-compression-iphone.html) 在 7 月 9-10 日報導，**Apple 正在跟 PrismML 進行早期洽談**，探索用後者的壓縮技術在 iPhone 上跑更大的 AI 模型。幾天後的 7/14，PrismML 把底牌攤出來了：[Bonsai 27B](https://prismml.com/news/bonsai-27b)。

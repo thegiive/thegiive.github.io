@@ -331,8 +331,8 @@ cp -a ~/ /Volumes/External/home_backup_$(date +%Y%m%d)/
 
 ## 延伸閱讀
 
-- [用 Claude Code 做 Linux 系統管理](./ai-ops-yong-agent-claude-code-linux.md)
-- [ATPM：真實的 Vibe Coding 流程](./atpm-a-real-production-vibe-coding-process.md)
+- [用 Claude Code 做 Linux 系統管理](/ai-ops-yong-agent-claude-code-zuo-linux-xi-tong-guan-li-you-mei-you-gao-tou-xiang-de-hen/)
+- [ATPM：真實的 Vibe Coding 流程](/atpm-a-real-production-vibe-coding-process/)
 - [慢跑開會都能寫 code？Claude Code 讓我一天當 1.5 天用](./claude-code-yi-bu-xie-zuo-man-pao-kai-hui-dou-neng-xie-code.md)
 
 ---

@@ -305,4 +305,4 @@ Reddit 這兩天的風向是：**純聊天、推理、單輪 coding 很強，但
 - [OpenClaw 架構深度解析：Context、Memory、Token Crusher](https://ai-coding.wiselychen.com/openclaw-architecture-deep-dive-context-memory-token-crusher/)
 - [OpenClaw vs Claude Code：個人 AI Agent 的未來](https://ai-coding.wiselychen.com/personal-ai-agent-future-claude-code-vs-openclaw/)
 - [OpenClaw 成本優化指南：97% 降幅](https://ai-coding.wiselychen.com/openclaw-cost-optimization-guide-97-percent-reduction/)
-- [OpenClaw Channel 戰爭：誰掌控 AI Agent 的未來](https://ai-coding.wiselychen.com/openclaw-anthropic-channel-war-who-controls-ai-agent-future/)
+- [OpenClaw Channel 戰爭：誰掌控 AI Agent 的未來](/openclaw-anthropic-channel-war/)

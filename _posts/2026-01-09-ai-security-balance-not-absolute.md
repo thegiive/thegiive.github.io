@@ -64,5 +64,5 @@ AI 太新了。其中有大量內部機制，目前人類其實還無法完全�
 ---
 
 **相關文章：**
-- [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/)
+- [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)
 - [AI Coding 工具的資安風險：從 Prompt Injection 到 RCE](/ai-coding-tool-security-risk-prompt-injection-rce/)

@@ -152,6 +152,6 @@ Karp 自稱是最公開支持以色列的 CEO，同時也可能是私下最有�
 
 ## 延伸閱讀
 
-- [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](harness-engineering-architecture-overview-ai-code-production-guardrails.md)
-- [AI 企業轉型不是導入工具，而是治理問題](ai-enterprise-transformation-governance-pillar.md)
-- [AI Coding On-Prem 的三條路](ai-coding-on-prem-three-paths.md)
+- [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](/harness-engineering-architecture-overview-ai-code-production-guardrails/)
+- [AI 企業轉型不是導入工具，而是治理問題](/ai-enterprise-transformation-governance/)
+- [AI Coding On-Prem 的三條路](/ai-coding-on-prem-three-paths/)

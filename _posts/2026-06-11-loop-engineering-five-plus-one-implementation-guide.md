@@ -406,4 +406,4 @@ Loop 改變工作方式，但它不會把你從工作中移除。設計 Loop 的
 - [Loop Engineering：不再 Prompt Agent，改設計 Loop 讓 Agent Prompt Agent](/loop-engineering-from-prompt-to-loop-paradigm-shift/)——上一篇，拆解三個來源的定義差異和邊界
 - [Harness Engineering 完整拆解](/harness-engineering-control-plane-pattern-agent-review-loop/)——Loop 的基礎：Control Plane Pattern
 - [Agent Harness 三次中心遷移](/agent-harness-three-migrations-mechanism/)——Prompt 是建議，機制才是規則
-- [Effective Feedback Compute](/agent-harness-efc-deliberate-practice/)——Loop 的效率取決於反饋信號的品質
+- [Effective Feedback Compute](/agent-harness-effective-feedback-compute/)——Loop 的效率取決於反饋信號的品質

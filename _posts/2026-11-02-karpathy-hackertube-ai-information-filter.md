@@ -168,7 +168,7 @@ HackerTube 也有偏見，它把排序權交給 HN 的品味。發布當天就�
 
 - [Marc Andreessen 的四分法資訊攝取](https://ai-coding.wiselychen.com/andreessen-information-diet-ai-era-quarter-rule/)
 - [Cognitive Surrender：AI 讓你想得變少](https://ai-coding.wiselychen.com/cognitive-surrender-ai-coding-comprehension-debt/)
-- [Harness Engineering：Prompt 是建議，機制才是規則](https://ai-coding.wiselychen.com/agent-harness-three-migrations-mechanism/)
+- [Harness Engineering：Prompt 是建議，機制才是規則](/agent-harness-three-migrations-mechanism/)
 
 ## 參考資料
 

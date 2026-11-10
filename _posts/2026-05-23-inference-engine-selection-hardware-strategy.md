@@ -312,7 +312,7 @@ KV cache 會變成主要瓶頸。一定要 PagedAttention 等級的管理。在 
 - [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/) — 引擎外圍的 Auth / Log / Sandbox 設計
 - [Mac-First Enterprise Inference Stack](/mac-first-enterprise-inference-stack-mtp/) — Apple Silicon 推論細節
 - [llama.cpp MTP merged](/llama-cpp-mtp-merged-local-llm-2x-speedup/) — llama.cpp 最新效能進展
-- [Qwen 3.6 27B on GB10](/qwen-3-6-27b-gb10-home-inference-sonnet-level/) — 家用推論硬體實測
+- [Qwen 3.6 27B on GB10](/qwen-3-6-27b-sonnet-level-home-inference/) — 家用推論硬體實測
 
 ---
 

@@ -182,7 +182,7 @@ const TOOL_DEFAULTS = {
 
 ![Fail-Closed：不信任工程師的預設防線](/assets/images/claude-code-slides/slide-07.png)
 
-> **💬 我的感想：** 這個 fail-closed 設計跟我在 [AI Agent Security](/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/) 講的是同一件事——AI 工具的安全設計必須是「預設禁止」而不是「預設允許」。但 Anthropic 做得更狠：他們不信任自己的工程師。假設你新寫一個 tool，忘了標注安全屬性，系統會自動假設最壞情況。這比「提醒工程師記得標注」有效多了。
+> **💬 我的感想：** 這個 fail-closed 設計跟我在 [AI Agent Security](/ai-agent-security-game-changed/) 講的是同一件事——AI 工具的安全設計必須是「預設禁止」而不是「預設允許」。但 Anthropic 做得更狠：他們不信任自己的工程師。假設你新寫一個 tool，忘了標注安全屬性，系統會自動假設最壞情況。這比「提醒工程師記得標注」有效多了。
 >
 > 另外 `CLAUDE_CODE_SIMPLE=true` 只剩三個工具（Bash、Read、Edit）這個後門也很有意思。我在 [Shell Wrapper 那篇](/shell-wrapper-2-anthropic-real-threat/) 分析過 Claude Code 的極簡主義基因——它骨子裡就是 terminal + LLM。現在原始碼證實了，最核心的操作確實只需要三個工具。其他 39 個都是「增值服務」。
 
@@ -240,7 +240,7 @@ MEMORY.md 是一個索引檔，每行約 150 字，永遠載入 context。
 >
 > 這讓我重新思考一個問題：我們是不是太執著於「記住所有東西」了？大多數 Agent 框架（包括我之前設計的）都想盡辦法保留更多歷史。但 Claude Code 的態度是——歷史不重要，重要的是**現在**。你的 codebase、你的 git status、你的 CLAUDE.md，這些才是「活的」context。歷史對話是「死的」，grep 能找到就夠了。
 >
-> 用另一個 AI 來做記憶檢索也是我沒想到的。不是 embedding + 向量搜尋，而是直接讓一個小模型「讀」所有記憶的標題來選。粗暴但有效。這跟我在 [PostgreSQL Vector Store](/postgresql-vector-store-pragmatic-choice/) 那篇文章的結論方向一致——有時候「夠用的笨方法」比「精緻的聰明方法」更適合 production。
+> 用另一個 AI 來做記憶檢索也是我沒想到的。不是 embedding + 向量搜尋，而是直接讓一個小模型「讀」所有記憶的標題來選。粗暴但有效。這跟我在 [PostgreSQL Vector Store](/postgresql-ai-memory-store/) 那篇文章的結論方向一致——有時候「夠用的笨方法」比「精緻的聰明方法」更適合 production。
 
 ---
 

@@ -53,7 +53,7 @@ author: Wisely Chen
 
 - **文字 coding agent**：[Qwen 3.6 27B](https://ai-coding.wiselychen.com/qwen-3-6-27b-sonnet-level-home-inference/) 在 DGX Spark 上跑 136 tok/s，benchmark 打贏 Opus 4.5。4-bit 量化約 16-17GB。一張 24GB 的上一代消費卡就收工。
 - **影片生成**：MiniMax H3 是 33B dense，第三方在單卡上跑起來了。不用 A100。
-- **企業級 agentic 任務**：DeepSeek V4 Flash，284B MoE，但激活只有 13B。IQ2 量化 85GB 可以塞進 96GB VRAM 的單卡。我七月[實測過](https://ai-coding.wiselychen.com/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/)，58 tok/s，五題基準跟 Q8 同分。
+- **企業級 agentic 任務**：DeepSeek V4 Flash，284B MoE，但激活只有 13B。IQ2 量化 85GB 可以塞進 96GB VRAM 的單卡。我七月[實測過](/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/)，58 tok/s，五題基準跟 Q8 同分。
 - **輕量 agent 雜務**：Muse Glimmer 30B，4-bit 不到 20GB。Mac 就能跑。
 - **Agent 跑腿層**：NVIDIA Nemotron 3.5 Lightning，30B MoE 只激活 3B，Mamba-2 混合架構，NVFP4 量化約 18GB。吞吐量是同級 Qwen 的 4 倍，專門做 tool call、分類、格式化這類 agent 執行步驟。
 
@@ -155,7 +155,7 @@ Muse Glimmer 30B 也卡在這裡：Apache 2.0，agent 最佳化，20GB 以下。
 ### 我之前寫過的相關文章
 
 - [一張原價屋估價單，看懂 Token 經濟學如何把 DDR 打到天價](https://ai-coding.wiselychen.com/ddr-hbm-token-economics-nvidia-lock-supply-chain/) — 這波漲價的結構性成因
-- [單機跑 Tier 1 地端 Model 一週實驗完賽](https://ai-coding.wiselychen.com/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/) — offload 天花板與量化甜蜜點的第一手數據
+- [單機跑 Tier 1 地端 Model 一週實驗完賽](/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/) — offload 天花板與量化甜蜜點的第一手數據
 - [DeepSeek V4 Flash 為何那麼強：disk KV cache 的 50 倍經濟學](https://ai-coding.wiselychen.com/deepseek-v4-flash-disk-kv-cache-50x-economics/) — KV 落盤的完整拆解
 - [Bonsai 27B：55.6GB → 3.9GB 保留 90% 智力](https://ai-coding.wiselychen.com/bonsai-27b-qwen36-compression-local-inference/) — 量化損失不均勻的證據
 - [Qwen 3.6-27B 本地部署：跑出 Sonnet 4.6 等級](https://ai-coding.wiselychen.com/qwen-3-6-27b-sonnet-level-home-inference/) — 27B 級距能打的第一手驗證

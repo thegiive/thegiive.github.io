@@ -5,6 +5,8 @@ date: 2026-07-16 09:00:00 +0800
 permalink: /agent-memory-benchmark-rashomon-filesystem/
 image: /assets/images/agent-memory-benchmark-locomo-rashomon-cover.jpg
 description: "Agent memory 賽道已經有標準測評三件套：LoCoMo、LongMemEval、BEAM，每家框架都往上面報分數。但 Zep 這一個系統在 LoCoMo 上，Mem0 測出 65.99、Zep 自己測出 84、Mem0 修正成 58.44、Zep 再反修正成 75.14——同一個系統、同一個測評、四個數字。更有意思的是 Letta 用純檔案系統加 grep 拿到 74.0，打敗專業 memory 系統。這篇拆解三個標準測評各測什麼、為什麼分數會變成羅生門，以及檔案系統派——從 Letta 的實驗、ByteDance 的 OpenViking、到我自己手工維護的 llm-wiki——為什麼值得認真看。"
+categories: [AI Agent]
+author: Wisely Chen
 ---
 
 2025 年 Zep 發了一篇標題很嗆的 blog：[Lies, Damn Lies, & Statistics](https://blog.getzep.com/lies-damn-lies-statistics-is-mem0-really-sota-in-agent-memory/)，反擊 Mem0 論文把它測成 65.99 分，宣稱自己正確設定下是 84 分。Mem0 的工程師接著[開了一個 GitHub issue](https://github.com/getzep/zep-papers/issues/5)，指出 Zep 的算法把測評規範明文排除的 adversarial 題目也算了進去，修正後是 58.44 分。Zep 再反駁：Mem0 把我們的系統設定錯了，正確數字是 75.14。
@@ -86,7 +88,7 @@ LongMemEval 自己也有方法論問題：它的填充對話是從其他資料�
 
 第四，**表格裡的空格也是資訊。** 每一家都只報自己贏的那個測評：Mem0 三個都報（它三個都想贏），Hindsight 只報 BEAM（它的差異化是規模），OpenViking 只報 LoCoMo 加上自選的 RAG 和任務測評，Letta 做完檔案系統實驗後乾脆主張測評本身不重要。看到一個框架「沒報」某個標準測評的分數，合理的預設不是它沒測，是它測了但數字不好看。
 
-這個 blog [寫過 EFC 那篇論文](agent-harness-effective-feedback-compute.md)：raw compute 只能解釋 agent 表現的三四成，反饋品質才是主變數。memory 測評是同一個故事的另一面——**分數只能解釋 memory 系統價值的一部分，測法和 baseline 的選擇解釋了剩下的。**
+這個 blog [寫過 EFC 那篇論文](/agent-harness-effective-feedback-compute/)：raw compute 只能解釋 agent 表現的三四成，反饋品質才是主變數。memory 測評是同一個故事的另一面——**分數只能解釋 memory 系統價值的一部分，測法和 baseline 的選擇解釋了剩下的。**
 
 ---
 
@@ -102,7 +104,7 @@ LongMemEval 自己也有方法論問題：它的填充對話是從其他資料�
 
 **一個檔案櫃加一支手電筒，打敗了專業記憶系統。** Letta 自己的結論是：memory 的品質更多取決於 agent 管理 context 和呼叫工具的能力，而不是檢索機制本身。換句話說，這兩年大家在向量庫、知識圖譜、temporal graph 上堆的複雜度，在 LoCoMo 這個規模下，價值可能還不如「讓 agent 自己翻檔案」。
 
-這跟 [harness 三次中心遷移那篇](agent-harness-three-migrations-mechanism.md)的結論同構：能力的瓶頸經常不在你以為的那一層。Prompt 時代大家磨措辭，真正的槓桿在 harness；memory 賽道大家磨檢索演算法，Letta 的實驗暗示真正的槓桿在 agent 的 context 管理能力。
+這跟 [harness 三次中心遷移那篇](/agent-harness-three-migrations-mechanism/)的結論同構：能力的瓶頸經常不在你以為的那一層。Prompt 時代大家磨措辭，真正的槓桿在 harness；memory 賽道大家磨檢索演算法，Letta 的實驗暗示真正的槓桿在 agent 的 context 管理能力。
 
 ## OpenViking：把檔案系統派做成產品
 
@@ -118,7 +120,7 @@ Letta 的實驗是個 baseline 挑釁，ByteDance 火山引擎開源的 [OpenVik
 
 講到這裡可以攤牌了。我自己維護 blog 知識庫的方式，是一個叫 llm-wiki 的 skill：274 篇文章原文存成 markdown 檔、270 篇機器生成的摘要頁、13 個概念頁、12 個實體頁，全部用 wiki link 交叉連結，agent 用檔案工具在裡面導航和查詢。
 
-對照上一節，這就是手工版的 OpenViking：摘要頁是 L0/L1，原文是 L2，concept/entity 頁承擔 multi-hop 的角色——兩篇文章的關聯不靠向量相似度算出來，靠一條寫死的 `[[連結]]`。它也是 [Pinecone Nexus 那篇](pinecone-nexus-agentic-rag-knowledge-layer.md)講的 Knowledge Layer 趨勢的個人實作。
+對照上一節，這就是手工版的 OpenViking：摘要頁是 L0/L1，原文是 L2，concept/entity 頁承擔 multi-hop 的角色——兩篇文章的關聯不靠向量相似度算出來，靠一條寫死的 `[[連結]]`。它也是 [Pinecone Nexus 那篇](/pinecone-nexus-agentic-rag-knowledge-layer/)講的 Knowledge Layer 趨勢的個人實作。
 
 ![知識管理與對話記憶考的是不同的東西](/assets/images/agent-memory-benchmark-llm-wiki-knowledge.jpg)
 

@@ -50,7 +50,7 @@ author: Wisely Chen
 
 這兩點目前都是推測，OpenAI 沒有公開 Codex 和 ChatGPT Pro 的算力分配差異或 harness 架構細節。但從使用體驗來看，這套解釋是合理的：**同一家的模型，在不同產品裡跑出不同品質，通常不是模型的問題，是基礎設施和工程架構的問題。**
 
-而且這個分工模式，恰好吻合我之前在 [AgentOpt 論文拆解](https://ai-coding.wiselychen.com/agentopt-expensive-model-wrong-position-pipeline-optimization/) 裡提到的核心發現：**Planning 用小模型，複雜任務用大模型。** Codex 在這套工作流裡扮演的角色——串接、拆任務、跑測試、追問糾錯——全部是 orchestration 性質的工作，需要的是反應快、tool use 穩定，不需要深度推理。這些正好適合算力較低但速度快的模型來做。而真正需要深度思考的複雜編程——架構設計、大量代碼生成、邊界條件處理——交給算力充裕的 ChatGPT Pro。
+而且這個分工模式，恰好吻合我之前在 [AgentOpt 論文拆解](/agentopt-expensive-model-wrong-position-pipeline-optimization/) 裡提到的核心發現：**Planning 用小模型，複雜任務用大模型。** Codex 在這套工作流裡扮演的角色——串接、拆任務、跑測試、追問糾錯——全部是 orchestration 性質的工作，需要的是反應快、tool use 穩定，不需要深度推理。這些正好適合算力較低但速度快的模型來做。而真正需要深度思考的複雜編程——架構設計、大量代碼生成、邊界條件處理——交給算力充裕的 ChatGPT Pro。
 
 Columbia 大學 AgentOpt 的實驗結果是：Ministral 8B 當 Planner + Opus 當 Solver，準確率 74.27%；反過來 Opus 當 Planner 只有 31%。這套 Codex + ChatGPT Pro 的工作流，本質上就是同一個邏輯的實踐版：**讓快的歸快的、深的歸深的，不要讓一個模型兩邊都扛。**
 
@@ -99,7 +99,7 @@ ChatGPT 的「Pro」模式底層是 GPT-5.6 Sol Pro——GPT-5.6 家族中最高
 
 Anthropic 的架構解決了長時任務的上下文繼承問題。Codex + ChatGPT Pro 解決的是另一個問題：**消除自我驗證的偏見**。
 
-這跟前面提到的 [AgentOpt 論文](https://ai-coding.wiselychen.com/agentopt-expensive-model-wrong-position-pipeline-optimization/) 結論一致：Codex 不是最強的 coding model，但它當 orchestrator 恰好合適——它不會搶著自己寫，而是老老實實把任務交給 ChatGPT Pro。
+這跟前面提到的 [AgentOpt 論文](/agentopt-expensive-model-wrong-position-pipeline-optimization/) 結論一致：Codex 不是最強的 coding model，但它當 orchestrator 恰好合適——它不會搶著自己寫，而是老老實實把任務交給 ChatGPT Pro。
 
 ---
 
@@ -216,7 +216,7 @@ Anthropic 的架構解決了長時任務的上下文繼承問題。Codex + ChatG
 - OpenAI, *Using Codex with your ChatGPT plan* — [help.openai.com](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan)
 - Anthropic, *Effective harnesses for long-running agents* — [anthropic.com/engineering](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
 - 延伸閱讀：[Anthropic 官方解密：為什麼 Claude Code 這麼好用？](https://ai-coding.wiselychen.com/anthropic-dual-agent-architecture-claude-code/)
-- 延伸閱讀：[「Opus 太聰明，所以它不該做 Planning」——AgentOpt 論文拆解](https://ai-coding.wiselychen.com/agentopt-expensive-model-wrong-position-pipeline-optimization/)
+- 延伸閱讀：[「Opus 太聰明，所以它不該做 Planning」——AgentOpt 論文拆解](/agentopt-expensive-model-wrong-position-pipeline-optimization/)
 
 ---
 

@@ -139,7 +139,7 @@ OpenAI 發言人對 [Newsweek](https://www.newsweek.com/outages-openai-chatgpt-g
 
 **個人開發者。** 之前的 fallback 路徑是 Claude 掛了切 Codex、Codex 掛了切 Grok。這次這三條路同時斷了約三個小時。
 
-真正有效的 fallback 只剩兩種：一台跑得動的地端機器，或是一段離線也能繼續的工作型態（讀 code、寫規格、跑測試）。我在 [RTX Pro 6000 一週實驗](/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm)裡測地端模型的時候，動機是隱私和成本。9 月 3 日之後多了第三個理由：**地端的故障域跟雲端不重疊**。這也是[《AI Coding On-Prem 的三條路》](/ai-coding-on-prem-three-paths)裡沒有展開的一條。
+真正有效的 fallback 只剩兩種：一台跑得動的地端機器，或是一段離線也能繼續的工作型態（讀 code、寫規格、跑測試）。我在 [RTX Pro 6000 一週實驗](/rtx-pro-6000-tier1-week-final-offload-qwen-vl-vllm/)裡測地端模型的時候，動機是隱私和成本。9 月 3 日之後多了第三個理由：**地端的故障域跟雲端不重疊**。這也是[《AI Coding On-Prem 的三條路》](/ai-coding-on-prem-three-paths/)裡沒有展開的一條。
 
 ## 坦白說
 

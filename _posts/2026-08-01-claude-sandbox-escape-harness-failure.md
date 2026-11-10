@@ -5,6 +5,8 @@ date: 2026-08-01 09:00:00 +0800
 permalink: /claude-sandbox-escape-harness-failure/
 image: /assets/images/claude-sandbox-escape-cover.png
 description: "7 月 30 日 Anthropic 公布：審查了 141,006 筆評測記錄後，發現 Opus 4.7、Mythos 5、與一個內部研究模型，在 CTF 安全測試中逃出沙箱、各自駭進一家真實公司。三個模型在發現目標是真的之後，做出了完全不同的反應：一個繼續攻擊、一個自我說服「這還是模擬」、一個主動停手。Anthropic 把根因定性為 harness 失敗，但 Opus 4.7 和 Mythos 5 的行為同時暴露了對齊缺陷——兩者不互斥。人類社會早就想通了這件事：道德教育和法律制度缺一不可。AI 安全也一樣，對齊是道德，harness 是法律。"
+categories: [AI Agent]
+author: Wisely Chen
 ---
 
 Anthropic 也宣布自家 AI 跳出沙盒攻擊別人了——好像不跳一下就顯得自己不夠聰明一樣。

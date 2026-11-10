@@ -5,6 +5,8 @@ date: 2026-07-18 09:00:00 +0800
 permalink: /glm-52-single-machine-rtx-pro-6000-tier1-local/
 image: /assets/images/glm-52-llamacpp-single-machine-cover.png
 description: "兩週前我寫說，希望哪一天功成名就，可以在自己腳下跑 GLM 5.2。沒想到幸福來得太突然，今天就跑起來了。從朋友那借到一台裝 RTX Pro 6000 的桌機，接下來要測 GLM 5.2 量化版、DeepSeek V4 Flash、Kimi K2.5 2bit、Qwen3-VL-235B、MiniMax M3——探索一個資安繞不開的問題：如何用高性價比的單機，架出 Tier 1 等級的地端 AI model。"
+categories: [AI 前沿技術]
+author: Wisely Chen
 ---
 
 各位觀眾，單機跑 GLM 5.2 成功。

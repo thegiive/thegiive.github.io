@@ -133,7 +133,7 @@ Peter 對瀏覽器型 agent 有很直接的批評。他試過 Devin、Cursor web
 
 相比之下，MCP（Model Context Protocol）會吃掉大量 context token。他舉例：GitHub 的 MCP 一次吃 23,000+ tokens，但用 `gh` CLI 可以做到一樣的事，而且 token 成本幾乎是零。
 
-這跟我之前寫的 [Unix 哲學文章](/unix-philosophy-command-line-renaissance/) 的觀點一致——Command Line 之所以是最佳介面，是因為它把整台電腦變成一個可被查詢、可被組合、可被推理的狀態空間。
+這跟我之前寫的 [Unix 哲學文章](/unix-philosophy-claude-code-command-line-renaissance/) 的觀點一致——Command Line 之所以是最佳介面，是因為它把整台電腦變成一個可被查詢、可被組合、可被推理的狀態空間。
 
 Peter 的 OpenClaw 也是這樣設計的：記憶存成本地 Markdown、偏好存成本地文字檔、所有狀態都用人類可讀的格式保存。
 
@@ -285,7 +285,7 @@ Peter 自己也承認：這個專案「unsafe by design」。它讓 AI 完全存
 
 他現在正在組建團隊來處理安全問題。但在那之前，這東西本質上是一個「你願意承擔多少風險」的選擇。
 
-這也是為什麼我之前寫了 [Moltbot 安全加固指南](/moltbot-security-hardening/)——套殼 2.0 的能力越強，安全工程就越關鍵。
+這也是為什麼我之前寫了 [Moltbot 安全加固指南](/moltbot-security-hardening-guide/)——套殼 2.0 的能力越強，安全工程就越關鍵。
 
 ---
 
@@ -302,9 +302,9 @@ Peter 自己也承認：這個專案「unsafe by design」。它讓 AI 完全存
 ## 延伸閱讀
 
 - [從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic](/shell-wrapper-2-anthropic-real-threat/) —— 分析 OpenClaw/Moltbot 對 Claude Code 生態的衝擊
-- [Moltbot 安全加固實戰：AI Agent 四層縱深防禦完整指南](/moltbot-security-hardening/) —— 如果你要跑 OpenClaw，這篇必讀
-- [當 Unix 哲學遇上 AI：Command Line 的文藝復興](/unix-philosophy-command-line-renaissance/) —— 為什麼 CLI 是 AI 的最佳介面
-- [500 台 AI 助理裸奔公網：Moltbot 0.0.0.0 配置災難](/moltbot-security-disaster/) —— 套殼 2.0 的安全代價
+- [Moltbot 安全加固實戰：AI Agent 四層縱深防禦完整指南](/moltbot-security-hardening-guide/) —— 如果你要跑 OpenClaw，這篇必讀
+- [當 Unix 哲學遇上 AI：Command Line 的文藝復興](/unix-philosophy-claude-code-command-line-renaissance/) —— 為什麼 CLI 是 AI 的最佳介面
+- [500 台 AI 助理裸奔公網：Moltbot 0.0.0.0 配置災難](/clawdbot-exposed-500-servers-security-disaster/) —— 套殼 2.0 的安全代價
 - [Peter Steinberger: Just Talk To It - the no-bs Way of Agentic Engineering](https://steipete.me/posts/just-talk-to-it) —— Peter 本人的原文
 
 ---

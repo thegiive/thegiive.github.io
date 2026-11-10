@@ -237,10 +237,10 @@ MiniMax 自己說：「$1 可以持續運行模型一小時，速度 100 tokens/
 ## 延伸閱讀
 
 - [從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic](/shell-wrapper-2-anthropic-real-threat/)
-- [OpenClaw 架構深度拆解：Context、Memory 和 Token Crusher 的設計哲學](/openclaw-architecture-deep-dive/)
-- [OpenClaw 成本優化實戰：從 $200/天到 $6/天的 97% 降幅](/openclaw-cost-optimization-guide/)
+- [OpenClaw 架構深度拆解：Context、Memory 和 Token Crusher 的設計哲學](/openclaw-architecture-deep-dive-context-memory-token-crusher/)
+- [OpenClaw 成本優化實戰：從 $200/天到 $6/天的 97% 降幅](/openclaw-cost-optimization-guide-97-percent-reduction/)
 - [OpenClaw 安全隔離：Gmail Sandbox 與最小權限原則](/openclaw-security-isolation-gmail-sandbox/)
-- [Peter Steinberger 的 Agentic Engineering 哲學：Just Talk to It](/peter-steinberger-agentic-engineering-philosophy/)
+- [Peter Steinberger 的 Agentic Engineering 哲學：Just Talk to It](/peter-steinberger-agentic-engineering-just-talk-to-it/)
 
 ---
 

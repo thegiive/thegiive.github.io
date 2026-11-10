@@ -5,6 +5,8 @@ date: 2026-07-25 09:00:00 +0800
 permalink: /open-weights-new-era-nvidia-letter-liang-wenfeng/
 image: /assets/images/open-weights-new-era-cover.png
 description: "太平洋兩岸在同一週攤開兩張海圖，指向同一條航道。7 月 24 日，Jensen Huang 用人生第一則 X 貼文發出 25 家機構連署的公開信「Open Weights and American AI Leadership」，Meta、Microsoft、a16z、Hugging Face 都在名單上，缺席的是 OpenAI 和 Anthropic。兩天前，梁文鋒 5 月投資人閉門會的 42 頁逐字稿在中國財經圈流出：API 定價 10 個月回本約等於 6 倍利潤、落後美國 12-18 個月但只用 1/20 算力、TileLang 正在拆 CUDA 的護城河。這篇對讀兩份文件：一邊用國家安全框架、一邊用賽局框架，卻推出同一個結論——想獨占 AI 的人會輸給願意分享的人。"
+categories: [AI 產業分析]
+author: Wisely Chen
 ---
 
 大航海時代的開端，不是哪一艘船先下水，是所有人突然指向同一片海。

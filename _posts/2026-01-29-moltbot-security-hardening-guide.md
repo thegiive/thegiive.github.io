@@ -44,7 +44,7 @@ keywords: "AI Agent Security, Prompt Injection, LLM Agent Security, Agentic Secu
 
 ## 背景：為什麼 Moltbot 需要 Security Hardening？
 
-前篇文章 [500 台 AI 助理裸奔公網：Moltbot Security Disaster 與預設安全風險](/moltbot-security-disaster/) 揭露了 Moltbot 的預設配置災難。這篇是續集 — 從問題到解決方案。
+前篇文章 [500 台 AI 助理裸奔公網：Moltbot Security Disaster 與預設安全風險](/clawdbot-exposed-500-servers-security-disaster/) 揭露了 Moltbot 的預設配置災難。這篇是續集 — 從問題到解決方案。
 
 這篇文章整理自 Moltbot 社群的實戰經驗。有趣的是：**你可以讓 Moltbot 幫你加固 Moltbot 的安全**。
 
@@ -398,11 +398,11 @@ brew install --cask lulu
 
 ## 延伸閱讀
 
-- [500 台 AI 助理裸奔公網：Moltbot 0.0.0.0 配置災難](/moltbot-security-disaster/)
+- [500 台 AI 助理裸奔公網：Moltbot 0.0.0.0 配置災難](/clawdbot-exposed-500-servers-security-disaster/)
 - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)
-- [AI Coding 的第一個風險：你一直按 Yes](/ai-coding-security-risk/)
+- [AI Coding 的第一個風險：你一直按 Yes](/ai-coding-tool-security-risk-prompt-injection-rce/)
 - [CaMeL：Google DeepMind 提出的 Prompt Injection 防禦架構](/camel-privileged-quarantined-agent/) — 本文第二層「內容隔離」的理論基礎
-- [CaMeL Agent 架構落地 PostgreSQL：用 RLS 設計不可繞過的 AI Memory](/camel-postgresql-implementation/) — 把隔離層建在資料庫的實作方案
+- [CaMeL Agent 架構落地 PostgreSQL：用 RLS 設計不可繞過的 AI Memory](/camel-postgresql-implementation-memory-permission-db-layer/) — 把隔離層建在資料庫的實作方案
 
 ---
 

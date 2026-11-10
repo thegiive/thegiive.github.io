@@ -52,7 +52,7 @@ description: "網路上關於 Claude Code 安全配置的建議很多，但有�
 
 ## 為什麼要做這件事
 
-上一篇 [AI Coding 的第一個風險，不是模型——是你一直按「Yes」](https://ai-coding.wiselychen.com/ai-coding-tool-security-risk-prompt-injection-rce/)，我從攻擊者的角度談了 AI Coding 工具的風險：Prompt Injection、RCE、供應鏈攻擊。
+上一篇 [AI Coding 的第一個風險，不是模型——是你一直按「Yes」](/ai-coding-tool-security-risk-prompt-injection-rce/)，我從攻擊者的角度談了 AI Coding 工具的風險：Prompt Injection、RCE、供應鏈攻擊。
 
 但攻擊面講完了，接下來就是：**那防禦面呢？具體能做什麼？**
 
@@ -869,7 +869,7 @@ Anthropic 的做法是典型的縱深防禦（Defense in Depth）：
 
 ## 延伸閱讀
 
-- [AI Coding 的第一個風險，不是模型——是你一直按「Yes」](https://ai-coding.wiselychen.com/ai-coding-tool-security-risk-prompt-injection-rce/) — 攻擊面分析
-- [AI Agent Security：遊戲規則已經改變](https://ai-coding.wiselychen.com/ai-agent-security-you-xi-gui-ze-yi-jing-gai-bian/) — 企業級 Agent 安全
+- [AI Coding 的第一個風險，不是模型——是你一直按「Yes」](/ai-coding-tool-security-risk-prompt-injection-rce/) — 攻擊面分析
+- [AI Agent Security：遊戲規則已經改變](/ai-agent-security-game-changed/) — 企業級 Agent 安全
 - [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) — 本文參考的 Best Practice Repo
 - [Claude Code 教你怎麼寫提示詞的四大原則](https://ai-coding.wiselychen.com/claude-code-system-prompt-source-code-analysis/) — System Prompt 架構分析

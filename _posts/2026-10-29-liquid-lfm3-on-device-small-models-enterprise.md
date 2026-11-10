@@ -89,7 +89,7 @@ d1-Omni-2B 多了語音。官方說用語音問同一組問題時，精度幾乎
 
 官方的微調案例值得看清楚：拿 3,000 張公開的風機葉片照片微調，花數小時、用一張 A100，同一批題目上分類準確率到 67%，偵測 F1 從 0.003 提到 0.11（GPT-6 Luna 是 0.01）。小模型的價值在這裡：它可以在你家固定的題目上被重新訓練。
 
-**三、單卡微調：改變的是導入的商業模式。** 如果微調要一整組 GPU 才做得動，只有大客戶做得到；如果一張 GPU 加幾小時就夠，中小企業也能談。我在 [On-Prem 小模型爆發時代來了](https://ai-coding.wiselychen.com/on-prem-small-model-explosion-2026-shift/) 那篇提過三步分流：先用雲端跑通場景；把高頻 workload（分類、抽取、摘要、對話路由，該文估計佔 70-80% Token 消耗）搬到地端小模型；機敏 workload 直接地端。d1-2B 這種決策模型，正好站在第二步。
+**三、單卡微調：改變的是導入的商業模式。** 如果微調要一整組 GPU 才做得動，只有大客戶做得到；如果一張 GPU 加幾小時就夠，中小企業也能談。我在 [On-Prem 小模型爆發時代來了](/on-prem-small-model-explosion-2026-shift/) 那篇提過三步分流：先用雲端跑通場景；把高頻 workload（分類、抽取、摘要、對話路由，該文估計佔 70-80% Token 消耗）搬到地端小模型；機敏 workload 直接地端。d1-2B 這種決策模型，正好站在第二步。
 
 ---
 
@@ -188,7 +188,7 @@ d1-Omni-2B 多了語音。官方說用語音問同一組問題時，精度幾乎
 2. 挑一個題目固定、量大、資料敏感的流程，用 d1-2B 跑 500 筆歷史資料，算準確率與校準，跟現行做法比。
 3. 把授權丟給法務與採購，這一題比 POC 優先：公司年營收是否超過門檻、超過之後怎麼授權、微調後的權重能不能交付客戶。
 4. 建立繁中測試集，用台灣用語，至少 50 題，涵蓋合約、請款、客訴、資安通報。這份測試集不會因為模型換代而作廢。
-5. 設計「小模型 + 大模型」的分流規則：高頻、固定、機敏的交給裝置端，需要知識、寫程式、長文的交給雲端或更大的地端模型。分流的方向，我在 [On-Prem 小模型爆發時代來了](https://ai-coding.wiselychen.com/on-prem-small-model-explosion-2026-shift/) 寫過：地端不能完全取代雲端，deep reasoning、複雜 agent、長 context 仍是雲端的強項，重點是分流。上線前的架構配置，可以看 [企業級地端 LLM 系統架構藍圖](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)。想知道地端能解掉哪些以前做不到的需求，可以先看 [地端模型的三個新用途](https://ai-coding.wiselychen.com/youtube-local-model-use-cases-transcript/)。
+5. 設計「小模型 + 大模型」的分流規則：高頻、固定、機敏的交給裝置端，需要知識、寫程式、長文的交給雲端或更大的地端模型。分流的方向，我在 [On-Prem 小模型爆發時代來了](/on-prem-small-model-explosion-2026-shift/) 寫過：地端不能完全取代雲端，deep reasoning、複雜 agent、長 context 仍是雲端的強項，重點是分流。上線前的架構配置，可以看 [企業級地端 LLM 系統架構藍圖](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)。想知道地端能解掉哪些以前做不到的需求，可以先看 [地端模型的三個新用途](https://ai-coding.wiselychen.com/youtube-local-model-use-cases-transcript/)。
 
 ---
 

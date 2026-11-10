@@ -248,7 +248,7 @@ TurboQuant 的技術信號是：KV cache 壓縮快到天花板了，下一個突
 
 - [把 LLM 直接燒進晶片：Taalas 的瘋狂賭注](/taalas-asic-burn-llm-into-silicon-local-inference-future/) — 硬體路線：消除記憶體頻寬瓶頸
 - [MSA：4B 模型打贏 235B RAG 系統](/msa-memory-sparse-attention-100m-end-to-end-memory/) — 架構路線：把記憶長進注意力機制
-- [Gemini 3.0 Flash 不講理霸榜的真相](/flash-model-evolution-path/) — Google 的推理效率策略脈絡
+- [Gemini 3.0 Flash 不講理霸榜的真相](/gemini-flash-evolution-path/) — Google 的推理效率策略脈絡
 
 ---
 

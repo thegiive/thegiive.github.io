@@ -113,4 +113,4 @@ description: "身為架構師，你的架構可以成交嗎？成交後可以落
 ## 延伸閱讀
 
 - [AI 時代的殘酷進化：別再賣能力，請開始提供 RaaS](/ai-era-raas-results-as-a-service/) — 市場只買結果，不買過程
-- [FDE：AI Agent 落地新模式](/fde-ai-agent-new-model/) — 駐場才能理解客戶真正需要什麼結果
+- [FDE：AI Agent 落地新模式](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/) — 駐場才能理解客戶真正需要什麼結果
