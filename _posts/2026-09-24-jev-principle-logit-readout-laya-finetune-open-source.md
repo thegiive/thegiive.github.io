@@ -27,7 +27,7 @@ faq:
 
 然後我拿 180 筆合成的 RCA 事故資料去微調它，在 RTX 5090 上跑。合成測試集從 0.496 升到 0.921。同一個模型，出廠和微調後像兩個東西。
 
-上一篇[〈Jev 把一次 AI 判斷賣成零件〉](/jev-typesafe-decision-model-judgment-as-component/)講的是商業面：判斷被定價成零件之後，錢流到哪裡。這篇回頭拆原理：Jev 怎麼做到不寫字只給機率、開源版走哪幾條路、我自己微調 Laya 看到什麼。最後講兩個判斷，一個關於 frontier lab，一個關於開源。
+上一篇〈Jev 把一次 AI 判斷賣成零件〉講的是商業面：判斷被定價成零件之後，錢流到哪裡。這篇回頭拆原理：Jev 怎麼做到不寫字只給機率、開源版走哪幾條路、我自己微調 Laya 看到什麼。最後講兩個判斷，一個關於 frontier lab，一個關於開源。
 
 ## 30 秒定位
 
@@ -277,5 +277,5 @@ Laya 是 Convai Innovations 放出的開源判斷模型，ModernBERT-large 底�
 
 ## 相關文章
 
-- [Jev 把一次 AI 判斷賣成零件：190 次財報實測，滿分不是重點，10 次全錯那題才是](/jev-typesafe-decision-model-judgment-as-component/)
+- Jev 把一次 AI 判斷賣成零件：190 次財報實測，滿分不是重點，10 次全錯那題才是
 - [Bonsai 27B 把 Qwen 3.6 壓到手機上跑，但本地 Agent 的瓶頸不在模型大小](/bonsai-27b-qwen36-compression-local-inference/)

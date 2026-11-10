@@ -111,7 +111,7 @@ input 和 output 單價沒動。cache read 從 $1 降到 $0.25 per million token
 
 為什麼這很重要？因為 Agent 真正燒錢的地方，就是不停讀 context、跑工具、回頭確認、繼續執行——每一個 loop 都在做 cache read。[aiposthub 的觀察](https://www.threads.com/@aiposthub)：「現在連讓 Agent 長時間工作的成本也開始被壓下來了。」
 
-數字對得上。[我 8 月拆自己帳單的時候](/ai-coding-token-cost-calculation-cache-read/)，17.2 億 token 裡 95.6% 是 cache read，cache read 佔帳單的 53-56%。帳單裡最大的一塊，被砍了 75%。
+數字對得上。我 8 月拆自己帳單的時候，17.2 億 token 裡 95.6% 是 cache read，cache read 佔帳單的 53-56%。帳單裡最大的一塊，被砍了 75%。
 
 Anthropic 自己的估算：典型工作流省約 25%，重度 agent 工作流省到 45%。
 
@@ -145,7 +145,7 @@ API 用戶看帳單，訂閱用戶看配額。1.7 倍的 output token 在訂閱�
 
 有用戶一次小調查就燒掉 5 小時限額的 13%、週限額的 3%，這是在 [$100/月的 Max 訂閱上](https://x.com/vkryukov/status/2094926884333355070)。另一位用戶試著部署 Vercel，[整個 5 小時限額直接燒完](https://x.com/MisterDoodahh/status/2094926651360477332)。
 
-這和[同日的 20x 爭議](/claude-pricing-20x-weekly-limit-trust-crisis/)接在一起看：用戶才剛發現 20x 只掛在 5 小時窗口上、週限額只多約 1.7 倍，現在模型本身又變得更話多——同樣的配額，能做的事變少了。
+這和同日的 20x 爭議接在一起看：用戶才剛發現 20x 只掛在 5 小時窗口上、週限額只多約 1.7 倍，現在模型本身又變得更話多——同樣的配額，能做的事變少了。
 
 API 用戶得到更強的模型和更便宜的 cache，訂閱用戶得到更強的模型和更快的撞牆。同一個模型更新，兩群人的感受完全不同。
 
@@ -277,8 +277,8 @@ Anthropic 強制所有 Fable / Mythos 級模型的使用數據保留 30 天，�
 - [@vkryukov 配額消耗回報](https://x.com/vkryukov/status/2094926884333355070)
 - [@MisterDoodahh 配額消耗回報](https://x.com/MisterDoodahh/status/2094926651360477332)
 - [@connect24h 防蒸餾評論](https://x.com/connect24h/status/2094926674823639528)
-- [本 blog：兩個月 17 億 token——AI coding 的雲端帳單](/ai-coding-token-cost-calculation-cache-read/)
-- [本 blog：20x 是什麼的 20 倍](/claude-pricing-20x-weekly-limit-trust-crisis/)
+- 本 blog：兩個月 17 億 token——AI coding 的雲端帳單
+- 本 blog：20x 是什麼的 20 倍
 - [@notjazii X 三日風向整理](https://x.com/notjazii/status/2094906574703882530)
 - [@jumperz X 實測評論](https://x.com/jumperz/status/2094912752837894645)
 - [METR：Mythos 5.1 safety evaluation（via @AndrewCurran_）](https://x.com/AndrewCurran_/status/2094858938760204642)

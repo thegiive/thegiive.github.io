@@ -266,4 +266,4 @@ Model 掉了斧頭，我們河神撈起一把金斧頭問「這是你的嗎？�
 
 **相關閱讀：**
 - [AI Agent 可解釋性：從資安合規到營運信任的關鍵工程設計](/ai-agent-explainability-operational-trust/)
-- [Prompt Injection 與 Harness Engineering：當 Tool-using Agent 遇到對抗式壓力](/prompt-injection-harness-engineering-tool-using-agents/)
+- Prompt Injection 與 Harness Engineering：當 Tool-using Agent 遇到對抗式壓力

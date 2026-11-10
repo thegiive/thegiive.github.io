@@ -1253,7 +1253,7 @@ git diff --cached --name-only | grep -E '\.env(\.local|\.production|\.staging)?$
   - [Lecture 04 拆解：指令檔模組化的工程做法](/harness-engineering-l04-instruction-file-modular-split/)
 
 - **資安相關（更深入威脅模型）：**
-  - [Prompt Injection 在 Tool-Using Agents 的真實威脅](prompt-injection-harness-engineering-tool-using-agents.md)
+  - Prompt Injection 在 Tool-Using Agents 的真實威脅
   - [Agent Security 遊戲規則已經改變](/ai-agent-security-game-changed/)
   - [AI Coding 工具的資安風險：Prompt Injection 到 RCE](/ai-coding-tool-security-risk-prompt-injection-rce/)
 

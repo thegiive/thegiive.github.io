@@ -255,6 +255,6 @@ Microsoft 也一樣。Teams 錄影直接存進 OneDrive，它有 Azure 的語音
 
 ## 延伸閱讀
 
-- [企業知識庫：FDE 如何讓 AI 會議記錄 Agent 從玩具變成生產工具](/fde-qiye-knowledge-base-meeting-agent/)
+- 企業知識庫：FDE 如何讓 AI 會議記錄 Agent 從玩具變成生產工具
 - [ATPM：PRD 的重要性](/atpm-prdde-zhong-yao-xing/)
 - [AI PM 實戰：告別專案文件迷宮](/ai-pm-shi-zhan-gao-bie-zhuan-an-wen-jian-mi-gong-yong-claude-code-agent-kuai-su-xiao-hua-qian-ren-liu-xia-de-hai-liang-zi-liao/)

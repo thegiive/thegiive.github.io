@@ -158,7 +158,7 @@ description: "**作者：** Wisely Chen **日期：** 2026 年 6 月 **系列：
 - [Fable 5 發布 24 小時就被扒穿：當對齊技術撞上結構化攻擊](/fable-5-jailbreak-alignment-geopolitics/)
 - [Fable 5 後面不是模型，是一個 Harness 系統](https://ai-coding.wiselychen.com/claude-fable-5-system-prompt-leak-harness-architecture-exposed/)
 - [Fable 5 把 Harness 吃進去了——SWE-bench 95% 的背後](https://ai-coding.wiselychen.com/fable-5-harness-internalization-orchestrator-model-routing/)
-- [GLM-5.2：華為晶片訓練的 744B 開源模型，1M Context 直接挑戰 Claude Code](https://ai-coding.wiselychen.com/glm-5-2-zhipu-1m-context-agentic-coding-huawei-ascend/)
-- [智譜 GLM-5.2：1M Context、全華為晶片訓練、MIT 開源](https://ai-coding.wiselychen.com/glm-5-2-zhipu-1m-context-no-benchmark-open-source/)
+- GLM-5.2：華為晶片訓練的 744B 開源模型，1M Context 直接挑戰 Claude Code
+- 智譜 GLM-5.2：1M Context、全華為晶片訓練、MIT 開源
 - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)
 - [AI Coding On-Prem 的三條路](/ai-coding-on-prem-three-paths/)

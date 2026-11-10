@@ -113,7 +113,7 @@ Pat 的時間軸很乾淨，三個點：
 - **另一家同類公司**：200 萬到 5,000 萬
 - **Jev**：過去七天從零成長到一億美元營收
 
-後三個都沒有公開數字可以對。Jev 可以，因為 [Jev 的定價是公開的](/jev-typesafe-decision-model-judgment-as-component/)：每百萬輸入 token 0.042 美元，輸出不收費。
+後三個都沒有公開數字可以對。Jev 可以，因為 Jev 的定價是公開的：每百萬輸入 token 0.042 美元，輸出不收費。
 
 拿這個價格反推，七天一億美元營收需要約 2,380 兆個輸入 token，平均每天約 340 兆。
 
@@ -249,5 +249,5 @@ Pat Grady 描述實驗室派出一整批顧問進入財星 500 大企業，打�
 ## 相關文章
 
 - [Sovereign AI 不是口號：Sequoia 的四級路徑、開源 60 vs 封閉 62 的算術](/not-your-weights-not-your-product/)
-- [Jev 把一次 AI 判斷賣成零件：190 次財報實測](/jev-typesafe-decision-model-judgment-as-component/)
+- Jev 把一次 AI 判斷賣成零件：190 次財報實測
 - [FDE 模式全解析：為何 95% 企業 AI Agent 導入失敗？](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/)

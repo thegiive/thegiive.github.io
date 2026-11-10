@@ -167,7 +167,7 @@ you are confident that the URLs are for helping the user with programming.`
 
 `CYBER_RISK_INSTRUCTION` 是一個從外部檔案 import 的常數。改一個檔案，所有引用的地方同步更新——這是軟體工程的 single source of truth 原則。
 
-這種多層防禦的思路，我在「[Harness Engineering 比模型聰明更重要](https://ai-coding.wiselychen.com/prompt-injection-harness-engineering-tool-using-agents/)」裡有更完整的拆解。
+這種多層防禦的思路，我在「Harness Engineering 比模型聰明更重要」裡有更完整的拆解。
 
 ### 合成訊息防護仍然存在
 
@@ -312,7 +312,7 @@ export async function enhanceSystemPromptWithEnvDetails(
 }
 ```
 
-這印證了我之前在「[Prompt 負責引導，工程負責約束](https://ai-coding.wiselychen.com/prompt-guides-engineering-constrains-agent-principle/)」那篇文章裡的觀點：**約束不應該在每一層都重複，而是放在架構的正確位置**。Agent Prompt 不放安全聲明，不是因為安全不重要，而是因為安全已經在外層處理了。關於 Claude Code 更完整的六層架構（上下文層、控制層、工具層、執行層、快取層、驗證層），可以看「[你不知道的 Claude Code：架構、治理與工程實踐](https://ai-coding.wiselychen.com/claude-code-architecture-governance-engineering-practice/)」。而 Anthropic 官方怎麼把主 Agent 和子 Agent 的職責切開（Initializer Agent vs Coding Agent），我在「[Anthropic 官方解密：Claude Code 雙 Agent 架構](https://ai-coding.wiselychen.com/anthropic-dual-agent-architecture-claude-code/)」有詳細拆解。
+這印證了我之前在「[Prompt 負責引導，工程負責約束](https://ai-coding.wiselychen.com/prompt-guides-engineering-constrains-agent-principle/)」那篇文章裡的觀點：**約束不應該在每一層都重複，而是放在架構的正確位置**。Agent Prompt 不放安全聲明，不是因為安全不重要，而是因為安全已經在外層處理了。關於 Claude Code 更完整的六層架構（上下文層、控制層、工具層、執行層、快取層、驗證層），可以看「你不知道的 Claude Code：架構、治理與工程實踐」。而 Anthropic 官方怎麼把主 Agent 和子 Agent 的職責切開（Initializer Agent vs Coding Agent），我在「[Anthropic 官方解密：Claude Code 雙 Agent 架構](https://ai-coding.wiselychen.com/anthropic-dual-agent-architecture-claude-code/)」有詳細拆解。
 
 ---
 
@@ -504,9 +504,9 @@ systemPromptSection('memory', () => loadMemoryPrompt()),
 | Anthropic 怎麼做 | 我們之前怎麼寫 |
 |------------------|----------------|
 | 多種措辭分散在不同 section 重複同一意圖 | [重複一次 Prompt 就能讓大模型更準？Google 的「免費午餐」](/google-prompt-repetition-free-lunch/) |
-| CYBER_RISK_INSTRUCTION 集中管理 + 多層防禦 | [Harness Engineering 比模型聰明更重要](https://ai-coding.wiselychen.com/prompt-injection-harness-engineering-tool-using-agents/) |
+| CYBER_RISK_INSTRUCTION 集中管理 + 多層防禦 | Harness Engineering 比模型聰明更重要 |
 | getActionsSection() 高風險操作分級控制 | [Prompt 負責引導，工程負責約束](https://ai-coding.wiselychen.com/prompt-guides-engineering-constrains-agent-principle/) |
-| Agent Prompt 退化成常數，安全由外層控制 | [Claude Code 架構、治理與工程實踐（六層架構）](https://ai-coding.wiselychen.com/claude-code-architecture-governance-engineering-practice/) |
+| Agent Prompt 退化成常數，安全由外層控制 | Claude Code 架構、治理與工程實踐（六層架構） |
 | 主 Agent / 子 Agent 職責分離 + enhanceSystemPromptWithEnvDetails | [Anthropic 官方解密：Claude Code 雙 Agent 架構](https://ai-coding.wiselychen.com/anthropic-dual-agent-architecture-claude-code/) |
 | XML tag + computeEnvInfo() 隔離動態資料 | [CaMeL：Google DeepMind 的 Prompt Injection 防禦架構](/camel-privileged-quarantined-agent/) |
 | 結構化隔離落地到工程層 | [CaMeL 落地 PostgreSQL：三層記憶架構](https://ai-coding.wiselychen.com/camel-postgresql-implementation-memory-permission-db-layer/) |

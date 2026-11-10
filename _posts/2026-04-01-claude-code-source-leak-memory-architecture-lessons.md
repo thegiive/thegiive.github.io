@@ -462,7 +462,7 @@ Do NOT call any tools.
 
 > **💬 我的感想：** 「用自己的產品來開發自己的產品」——Dogfooding 到這個程度，難怪迭代速度那麼快。每個 Anthropic 工程師每天都在測試 Claude Code，每個 bug 都是即時回報。這比任何 QA 流程都有效。
 >
-> 但 false claims rate 從 16.7% 上升到 29-30% 這個數據很值得玩味。模型越新不一定越好——可能是為了讓 output 更「有用」（更主動提供建議），犧牲了準確性。這跟我在 [Stanford AI Sycophancy](/stanford-ai-sycophancy-science-your-ai-only-says-youre-right/) 那篇討論的迎合效應是同一個問題的不同面向。
+> 但 false claims rate 從 16.7% 上升到 29-30% 這個數據很值得玩味。模型越新不一定越好——可能是為了讓 output 更「有用」（更主動提供建議），犧牲了準確性。這跟我在 Stanford AI Sycophancy 那篇討論的迎合效應是同一個問題的不同面向。
 
 ---
 

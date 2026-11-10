@@ -138,7 +138,7 @@ description: "Anthropic 拒絕五角大廈、被列為供應鏈風險，催化�
 
 1. [當代碼量暴增 10 倍後，到底誰來做 Review？Make CI/CD Great Again](https://ai-coding.wiselychen.com/ai-coding-framework-deterministic-tools-control-ai/)
 2. [GLM-5 技術報告深度解讀：從 Vibe Coding 到 Agentic Engineering，中國開源的「Opus 時刻」](https://ai-coding.wiselychen.com/glm-5-vibe-coding-to-agentic-engineering-technical-report/)
-3. [Anthropic 指控中國 AI 蒸餾攻擊：但等等，大家不是都在「偷」？](https://ai-coding.wiselychen.com/anthropic-distillation-war-everyone-steals-from-everyone/)
+3. Anthropic 指控中國 AI 蒸餾攻擊：但等等，大家不是都在「偷」？
 4. [Token 出海：中國 AI 不再賣商品，開始賣 Token](https://ai-coding.wiselychen.com/china-token-export-new-trade-model-selling-intelligence/)
 5. [OpenClaw 的五種上網方式：從搜尋 API 到接管你的瀏覽器](https://ai-coding.wiselychen.com/openclaw-browser-five-modes-from-search-api-to-personal-browser/)
 6. [Deloitte 廢除傳統職稱，Block 大規模裁員——它們指向同一個趨勢](https://ai-coding.wiselychen.com/deloitte-talent-restructuring-ai-diamond-model/)

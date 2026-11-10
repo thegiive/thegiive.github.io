@@ -174,4 +174,4 @@ Harness Engineering 講的是**個人開發者層級**：你的 agent 的 permis
 - [WorkOS: The tools that caught shadow IT can't see MCP sprawl](https://workos.com/blog/mcp-sprawl-invisible-to-shadow-it-tools)
 - [Qualys: MCP Servers — The New Shadow IT](https://blog.qualys.com/product-tech/2026/03/19/mcp-servers-shadow-it-ai-qualys-totalai-2026)
 - [Bluebear Security 的 MCP bypass 案例（X）](https://x.com/Bluebear_sec/status/2099928286973296904)
-- 本 blog 相關文章：[Harness Engineering 安全實踐](/harness-engineering-security-best-practices/)、[Claude sandbox escape](/claude-sandbox-escape-harness-failure/)、[Prompt Injection + Harness Engineering](/prompt-injection-harness-engineering-tool-using-agents/)
+- 本 blog 相關文章：[Harness Engineering 安全實踐](/harness-engineering-security-best-practices/)、[Claude sandbox escape](/claude-sandbox-escape-harness-failure/)、Prompt Injection + Harness Engineering

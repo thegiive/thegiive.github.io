@@ -103,7 +103,7 @@ AI 天生就帶著海量的跨領域專家知識——它讀過你公司沒有�
 
 但這個賦能，只有在你「願意重新定義任務」的時候才會打開。如果你只是叫它「幫我把這份 PPT 改漂亮」，那它海量的跨界知識完全用不上——你只是在用一台超級電腦煮泡麵。
 
-我自己在帶團隊看 [Claude Code 的 onboarding](https://ai-coding.wiselychen.com/cong-wen-jian-ku-dao-agent-zhi-shi-ku/) 也看得很清楚：那些把 AI 當「更快的 Stack Overflow」的人，產出的提升大概是 1.2 倍。那些把 AI 當「我可以重新設計這個 workflow」的人，是 3-5 倍。差別不在 prompt 寫得多漂亮，差別在腦袋是不是「執行模式」。
+我自己在帶團隊看 Claude Code 的 onboarding 也看得很清楚：那些把 AI 當「更快的 Stack Overflow」的人，產出的提升大概是 1.2 倍。那些把 AI 當「我可以重新設計這個 workflow」的人，是 3-5 倍。差別不在 prompt 寫得多漂亮，差別在腦袋是不是「執行模式」。
 
 執行模式不是缺點，是你被訓練出來、用來保住工作的生存策略。但這個策略放到 AI 時代，就是天花板。
 

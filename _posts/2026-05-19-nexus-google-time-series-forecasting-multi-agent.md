@@ -172,5 +172,5 @@ Nexus 提供了一個值得參考的架構藍圖。不是最終答案，但可�
 
 **延伸閱讀：**
 - [AgentOpt：貴模型放錯位置，反而比便宜模型差](/agentopt-expensive-model-wrong-position-pipeline-optimization/)
-- [Agent 模式 Part 3：Deep Research 架構探討](/agent-mo-shi-part-3-deep-research-architecture/)
+- Agent 模式 Part 3：Deep Research 架構探討
 - [多 Agent 的結構性不穩定性](/agents-of-chaos-multi-agent-structural-instability/)

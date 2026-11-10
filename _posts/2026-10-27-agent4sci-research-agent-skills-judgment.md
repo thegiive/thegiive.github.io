@@ -136,7 +136,7 @@ Claude Code 有一個機制叫 hook：每做一個動作之前，會先跑你掛
 
 前兩份 skill 其實也是同一個思路。科研構思是在文獻回顧跑完之前，禁止 agent 碰 codebase；實驗管理是直接列出不准做的實驗。三份的效果都來自**拿掉選項**，不是多加一句「請你更有創意」。
 
-這跟我六月寫的 [從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/) 是同一件事：你在 prompt 裡拜託 agent「記得每小時反省一下」，它會忘；用 hook 把其他動作擋掉，它就只能反省。上週拆的 [Harness²](/harness2-recursive-agent-harnessing-open-world/) 也是這個方向，拿掉 skills 和 scripts 掉的分數，比拿掉 prompt 類元件多。
+這跟我六月寫的 [從 Prompt 到 Harness 的三次中心遷移](/agent-harness-three-migrations-mechanism/) 是同一件事：你在 prompt 裡拜託 agent「記得每小時反省一下」，它會忘；用 hook 把其他動作擋掉，它就只能反省。上週拆的 Harness² 也是這個方向，拿掉 skills 和 scripts 掉的分數，比拿掉 prompt 類元件多。
 
 ---
 

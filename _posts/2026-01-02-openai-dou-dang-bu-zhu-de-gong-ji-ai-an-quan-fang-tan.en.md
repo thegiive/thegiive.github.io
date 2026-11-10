@@ -353,7 +353,7 @@ Yes—but not by filtering language. It’s by constraining permissions. The cor
 
 - **AI agent security series:** [AI Agent Security: the rules of the game have changed](/ai-agent-security-game-changed/)
 - **AI memory-layer architecture:** [Why I started treating PostgreSQL as AI’s “home memory store”](/postgresql-ai-memory-store/)
-- **RAG in practice:** [From document repository to agent knowledge base: the final-mile RAG transformation](/cong-wen-jian-ku-dao-agent-zhi-shi-ku/)
+- **RAG in practice:** From document repository to agent knowledge base: the final-mile RAG transformation
 - **AI memory breakthrough:** [Beyond “goldfish brain” AI? Google introduces Nested Learning](/nested-learning-ai-memory/)
 - **AI regulation:** [Taiwan’s “AI Basic Act”: what IT folks should know](/taiwan-ai-basic-act-engineering-perspective/)
 

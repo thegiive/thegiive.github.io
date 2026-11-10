@@ -153,7 +153,7 @@ Over the past year, that's exactly what they did.
 
 Barclays' numbers are a 2026 snapshot. At least five forces push against this being the new normal:
 
-**One: Open-source is closing on the frontier.** [Kimi K3 and GLM-5.3 score 60 on the Artificial Analysis Intelligence Index; Fable 5 scores 62](/not-your-weights-not-your-product-en/). The gap is 2 points. When open-source models approach closed-model capability, enterprise CTOs get alternatives. The day alternatives appear, pricing power starts eroding.
+**One: Open-source is closing on the frontier.** Kimi K3 and GLM-5.3 score 60 on the Artificial Analysis Intelligence Index; Fable 5 scores 62. The gap is 2 points. When open-source models approach closed-model capability, enterprise CTOs get alternatives. The day alternatives appear, pricing power starts eroding.
 
 **Two: Chinese models' loss-leader pricing won't last forever, but it'll lower global price expectations before it ends.** DeepSeek V4 Flash's $0.28/M tokens has already anchored agent and coding pricing. Even if Chinese models raise prices later, the market's expectation of "fair token pricing" has been permanently pulled down.
 

@@ -129,5 +129,5 @@ GLM-5.2 確實強。但更值得關注的不是它多強——**是這個飛輪�
 - [GLM-5.2 Goes Fully Open: 753B Parameters Beat GPT-5.5 at 1/6 the Cost（StableLearn）](https://stablelearn.com/en/glm-5-2-open-source-release/)
 
 **作者相關文章**
-- [五天前的懷疑判決：智譜 GLM-5.2——1M Context、全華為晶片、MIT 開源，但跑分表呢？](https://ai-coding.wiselychen.com/glm-5-2-zhipu-1m-context-no-benchmark-open-source/)
-- [GLM-5.2：華為晶片訓練的 744B 開源模型，1M Context 直接挑戰 Claude Code](https://ai-coding.wiselychen.com/glm-5-2-zhipu-1m-context-agentic-coding-huawei-ascend/)
+- 五天前的懷疑判決：智譜 GLM-5.2——1M Context、全華為晶片、MIT 開源，但跑分表呢？
+- GLM-5.2：華為晶片訓練的 744B 開源模型，1M Context 直接挑戰 Claude Code

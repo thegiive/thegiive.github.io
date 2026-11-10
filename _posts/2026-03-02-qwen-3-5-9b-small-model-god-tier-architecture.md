@@ -42,7 +42,7 @@ description: "9B 參數打贏上一代 80B，甚至越級挑戰 OpenAI 的 120B 
 
 VentureBeat 的標題寫得很直白：「Alibaba's small, open source Qwen3.5-9B beats OpenAI's GPT-OSS-120B and can run on standard laptops。」
 
-我之前寫過[企業級地端 LLM 系統架構](/local-llm-enterprise-architecture/)，也在[本地 LLM 處理 Excel](/local-llm-excel-code-interpreter/) 那篇文章裡實際跑過 Gemma 3 的小模型。所以我對「小模型到底能做到什麼程度」這個題目，算是有一些實戰經驗。
+我之前寫過[企業級地端 LLM 系統架構](/local-llm-enterprise-architecture/)，也在本地 LLM 處理 Excel 那篇文章裡實際跑過 Gemma 3 的小模型。所以我對「小模型到底能做到什麼程度」這個題目，算是有一些實戰經驗。
 
 今天就來拆解一下，Qwen 3.5-9B 到底在技術上做了什麼，才能越級打怪。
 
@@ -253,7 +253,7 @@ Benchmark 是廠商自己跑的。評測方法、prompt 格式、溫度設定、
 
 ### 2. 跑起來了，但還沒跑原本的場景實測
 
-9B 我已經用 Ollama 拉下來跑起來了，基本的對話和推理確實很流暢。但之前在[本地 LLM 處理 Excel](/local-llm-excel-code-interpreter/) 那篇文章裡用 Gemma 3 跑的那些場景——Excel 解析、結構化資料提取、多步驟推理——這些我還沒有拿 Qwen 3.5-9B 重新跑過。
+9B 我已經用 Ollama 拉下來跑起來了，基本的對話和推理確實很流暢。但之前在本地 LLM 處理 Excel 那篇文章裡用 Gemma 3 跑的那些場景——Excel 解析、結構化資料提取、多步驟推理——這些我還沒有拿 Qwen 3.5-9B 重新跑過。
 
 所以這篇文章的架構分析是基於官方公布的技術資訊和 benchmark 數據，實際場景的對比實測等我跑完會另外寫一篇。
 
@@ -280,9 +280,9 @@ Benchmark 是廠商自己跑的。評測方法、prompt 格式、溫度設定、
 ## 延伸閱讀
 
 - [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/) — 為什麼企業要本地部署，以及怎麼建
-- [本地 LLM 處理 Excel 的正確姿勢](/local-llm-excel-code-interpreter/) — 用 Gemma 3 小模型做 Excel 解析的實戰
+- 本地 LLM 處理 Excel 的正確姿勢 — 用 Gemma 3 小模型做 Excel 解析的實戰
 - [2026 農曆新年，中國開源大模型集體爆發](/china-ai-models-2026-lunar-new-year-comparison/) — Kimi、Qwen、GLM、MiniMax 怎麼選
-- [2026 AI 模型怎麼選？7 大場景 × 9 個模型的實戰選型指南](/ai-industry-paradigm-shift-2025-2026-model-to-agent-swarm/) — 不同場景的模型選型建議
+- 2026 AI 模型怎麼選？7 大場景 × 9 個模型的實戰選型指南 — 不同場景的模型選型建議
 - [本地模型的 Tool Calling 到底行不行？ToolCall-15 揭示的殘酷真相](/toolcall-15-local-llm-tool-calling-qwen-27b-sweet-spot/) — 9B 的 tool calling 是天花板，27B dense 才是甜蜜點
 - [把 LLM 直接燒進晶片：Taalas 的瘋狂賭注](/taalas-asic-burn-llm-into-silicon-local-inference-future/) — 如果推理成本歸零，本地小模型的遊戲規則會改變
 - [Qwen 3.5 Official Blog](https://qwen.ai/blog?id=qwen3.5) — 官方技術報告

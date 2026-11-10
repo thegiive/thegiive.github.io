@@ -96,7 +96,7 @@ Qwen 團隊覺得「在 Hugging Face 上成為最受歡迎的開源模型」是�
 - [越級打怪的「神級小模型」：Qwen 3.5 與 9B 架構拆解](/qwen-3-5-9b-small-model-god-tier-architecture/) — 兩天前寫的技術分析，現在讀來別有一番滋味
 - [企業級地端 LLM 系統架構藍圖](/local-llm-enterprise-architecture/) — 企業選用開源模型的架構考量
 - [2026 農曆新年，中國開源大模型集體爆發](/china-ai-models-2026-lunar-new-year-comparison/) — Qwen 在中國 AI 生態中的位置
-- [Anthropic 指控中國 AI 蒸餾攻擊：但等等，大家不是都在「偷」？](/anthropic-distillation-war-everyone-steals-from-everyone/) — AI 產業的結構性矛盾
+- Anthropic 指控中國 AI 蒸餾攻擊：但等等，大家不是都在「偷」？ — AI 產業的結構性矛盾
 
 ---
 

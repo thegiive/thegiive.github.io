@@ -144,7 +144,7 @@ Figure 5 的例子：GPT-5.2 Codex 在被要求清理 repo 準備公開時，推
 
 這是四個裡面最陰的。
 
-Prompt injection 的傳統防線是監控可見文字——system prompt、user turn、tool output。這篇 blog 之前寫過 [Harness Engineering 對 prompt injection 的處理](/prompt-injection-harness-engineering-tool-using-agents/)，核心思路都是在 context 組裝時區分「資料」與「指令」。
+Prompt injection 的傳統防線是監控可見文字——system prompt、user turn、tool output。這篇 blog 之前寫過 Harness Engineering 對 prompt injection 的處理，核心思路都是在 context 組裝時區分「資料」與「指令」。
 
 但如果 payload 藏在加密推理塊裡呢？
 

@@ -301,7 +301,7 @@ Agent A (低權限)  →  Agent B (中權限)  →  Agent C (高權限)  →  �
 
 **這不是笑話，這是警鐘。**
 
-> 👉 完整案例分析，請見：[當 AI 主播慘遭指令注入：「學貓叫」一百次](/ai-digital-anchor-prompt-injection-meow/)
+> 👉 完整案例分析，請見：當 AI 主播慘遭指令注入：「學貓叫」一百次
 
 ---
 

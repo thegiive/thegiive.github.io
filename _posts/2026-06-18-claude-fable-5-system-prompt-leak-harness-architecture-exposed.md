@@ -84,7 +84,7 @@ AY Automate 做了一份量化分析。120,040 個字符，大約 30,000 tokens�
 
 而 Claude Cowork 可以調用上面這些子工具當自己的手腳。
 
-這是什麼？這是 [Anthropic 的 Super App 戰略](/anthropic-pauses-agent-sdk-credit-infrastructure-vs-superapp/)。不是一個模型，是一整套 Agent 基礎設施。系統提示詞不只是在配置 Fable 5 這個模型，是在配置 Fable 5 在這個基礎設施裡的角色。
+這是什麼？這是 Anthropic 的 Super App 戰略。不是一個模型，是一整套 Agent 基礎設施。系統提示詞不只是在配置 Fable 5 這個模型，是在配置 Fable 5 在這個基礎設施裡的角色。
 
 ---
 
@@ -138,7 +138,7 @@ benchmark 分數只告訴你系統的輸出品質，不告訴你系統的組成�
 
 12 萬字符的系統提示詞裡包含了：完整的工具 schema、安全分類器的觸發邏輯、模型路由規則、內部產品路線圖。這些都是你的 AI 系統的攻擊面。
 
-我們在 [Harness 安全最佳實踐](/harness-engineering-security-best-practices/) 裡講過：[prompt injection 的攻擊面是整個 harness，不只是模型](/prompt-injection-harness-engineering-tool-using-agents/)。Fable 5 的洩漏證明了另一個面向——**你的系統提示詞本身就是可被提取的情報。** 如果你的 harness 裡有業務敏感的邏輯（定價規則、合規判斷、客戶分類標準），被提取出來就是一個資安事件。
+我們在 [Harness 安全最佳實踐](/harness-engineering-security-best-practices/) 裡講過：prompt injection 的攻擊面是整個 harness，不只是模型。Fable 5 的洩漏證明了另一個面向——**你的系統提示詞本身就是可被提取的情報。** 如果你的 harness 裡有業務敏感的邏輯（定價規則、合規判斷、客戶分類標準），被提取出來就是一個資安事件。
 
 ---
 

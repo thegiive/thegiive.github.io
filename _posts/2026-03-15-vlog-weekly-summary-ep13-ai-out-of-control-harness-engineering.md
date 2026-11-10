@@ -177,4 +177,4 @@ Harness Engineering 裡面有很多相關的範疇，但基本上不超過這幾
 3. [亞馬遜 AI 事故啟示：科技巨頭一邊賣 AI 未來，一邊在自己家裡給 AI 上鎖](https://ai-coding.wiselychen.com/amazon-ai-code-incident-tech-giants-quietly-locking-ai/)
 4. [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](/harness-engineering-architecture-overview-ai-code-production-guardrails/)
 5. [AI 供應鏈攻擊全景：從 Codex 賭博廣告到 Hugging Face 惡意模型](https://ai-coding.wiselychen.com/ai-supply-chain-attack-codex-gambling-huggingface-malicious-models/)
-6. [AI Coding 資安的真正防線：為什麼 Harness Engineering 比模型聰明更重要](https://ai-coding.wiselychen.com/prompt-injection-harness-engineering-tool-using-agents/)
+6. AI Coding 資安的真正防線：為什麼 Harness Engineering 比模型聰明更重要

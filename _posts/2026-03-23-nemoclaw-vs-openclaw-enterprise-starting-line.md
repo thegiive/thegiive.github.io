@@ -66,7 +66,7 @@ OpenClaw 告訴大家，當解開 ChatBot 封印的 LLM 可以做出多誇張的
 
 一進企業就會出現問題：資料直接經過外部 LLM API、沒有集中 policy、audit trail 不完整。所以很多公司不是不想用，而是**不敢大規模用**。
 
-我自己寫了[好幾篇 OpenClaw 的文章](/openclaw-architecture-deep-dive-context-memory-token-crusher/)，從架構拆解、[成本優化](/openclaw-cost-optimization-guide-97-percent-reduction/)到[安全隔離](/openclaw-security-isolation-gmail-sandbox-setup/)都做過深入分析。OpenClaw 做對了很多事——File-first 的記憶設計、極低的入門門檻、社群驅動的快速迭代。但它的天花板也很明確：**它是為「一個人用一隻龍蝦」設計的。**
+我自己寫了[好幾篇 OpenClaw 的文章](/openclaw-architecture-deep-dive-context-memory-token-crusher/)，從架構拆解、[成本優化](/openclaw-cost-optimization-guide-97-percent-reduction/)到安全隔離都做過深入分析。OpenClaw 做對了很多事——File-first 的記憶設計、極低的入門門檻、社群驅動的快速迭代。但它的天花板也很明確：**它是為「一個人用一隻龍蝦」設計的。**
 
 | 維度 | OpenClaw | NemoClaw |
 |------|----------|----------|
@@ -193,6 +193,6 @@ NemoClaw 給了一個方向：**用 infra + policy 來約束 AI agent。**
 
 - [NemoClaw 架構拆解：K3s、seccomp、Landlock 三層縱深防禦](/nemoclaw-architecture-deep-dive/)
 - [OpenClaw 架構拆解：Context、Memory、Token 壓縮機](/openclaw-architecture-deep-dive-context-memory-token-crusher/)
-- [OpenClaw 安全隔離：Gmail Sandbox 到底怎麼設定](/openclaw-security-isolation-gmail-sandbox-setup/)
+- OpenClaw 安全隔離：Gmail Sandbox 到底怎麼設定
 - [Channel 的戰爭：OpenClaw、Anthropic 和誰能決定 AI Agent 的未來](/openclaw-anthropic-channel-war/)
 - [從「套殼 1.0」到「套殼 2.0」：為什麼真正該緊張的是 Anthropic](/shell-wrapper-2-anthropic-real-threat/)

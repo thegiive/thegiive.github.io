@@ -100,7 +100,7 @@ Q4_K_XL 是 17.6GB，24GB 的卡放得下，32GB 的 5090 還有空間開並行�
 但八月更重要的變化在模型發布之後。
 
 - 開源三天之內，社群做出[至少五個無護欄版](/qwen38-27b-abliteration-three-days-safety-paradox/)
-- 9 月 17 日 PrismML 發布 [Ternary Bonsai 2 27B](/ternary-bonsai-2-27b-ternary-quantization/)，把同一個模型壓到 5.93GB，自測保留 98.2%
+- 9 月 17 日 PrismML 發布 Ternary Bonsai 2 27B，把同一個模型壓到 5.93GB，自測保留 98.2%
 - 有人把 MTP head 嫁接回三值模型，RTX 3060 12GB 上從 26 拉到 50 tok/s
 
 「誰能跑 27B」這個問題，8 月的答案是 24GB，9 月變成 12GB。
@@ -180,7 +180,7 @@ GitHub star 的速度也說明了有多少人在等這個東西：10 月 1 日�
 
 那則貼文的結尾是一個預測：4 到 8GB 的顯卡、16GB 記憶體的旗艦手機，會因為 Jev 這一類模型的普及而加入戰場，開始大量吞吐「decision token」。
 
-這條線我寫過。[Jev](/jev-typesafe-decision-model-judgment-as-component/) 是 9 月 15 日 TypeSafe 發布的模型，不寫字，只在選項裡勾一個。開源社群用 Qwen3.6-35B-A3B 復刻，JevBench 上 95.5% 對 Jev 的 96.3%。更小的那條路是 4.21 億參數的 Laya，我[在 5090 上微調](/jev-principle-logit-readout-laya-finetune-open-source/)，合成測試集從 0.496 升到 0.921。
+這條線我寫過。Jev 是 9 月 15 日 TypeSafe 發布的模型，不寫字，只在選項裡勾一個。開源社群用 Qwen3.6-35B-A3B 復刻，JevBench 上 95.5% 對 Jev 的 96.3%。更小的那條路是 4.21 億參數的 Laya，我[在 5090 上微調](/jev-principle-logit-readout-laya-finetune-open-source/)，合成測試集從 0.496 升到 0.921。
 
 技術上，這個預測的方向跟前三個月一致：模型不生成，只判斷，參數量可以再往下縮。
 
@@ -261,7 +261,7 @@ Strata 是 GitHub 使用者 Niko1221 在 2026 年 9 月 24 日開源的推理引
 - [5090 三個月從 10 萬變 17 萬：五條技術路徑壓低地端 AI 的硬體門檻](/memory-price-surge-local-ai-five-paths/)
 - [北京一家酒吧免費請你用 DeepSeek V4 Flash：兩台地端 DGX Spark，token 無限量](/agi-bar-free-token-dgx-spark-inference-infrastructure/)
 - [Qwen3.8-27B 開源：SWE-bench Pro 61.7 贏過 Opus 4.6 Max](/qwen-3-8-27b-open-weights-local-security/)
-- [Ternary Bonsai 2 27B：三值量化到底是什麼](/ternary-bonsai-2-27b-ternary-quantization/)
+- Ternary Bonsai 2 27B：三值量化到底是什麼
 - [Qwen3.8-Flash-Next 跑在 RTX 5090 + 64GB：Strata 實測 IQ3_XXS vs IQ3_S](/strata-qwen38-flash-next-rtx5090-1m-context/)
 - [一張原價屋估價單，看懂 Token 經濟學如何把 DDR 打到天價](/ddr-hbm-token-economics-nvidia-lock-supply-chain/)
 

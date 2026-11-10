@@ -72,7 +72,7 @@ Pro 500 的倍數，多篇整理寫 25 倍 Plus。用這組數字算每一倍用
 
 ### 講白了，還是被罵
 
-9 月 2 日我寫 [Claude 的 20x 爭議](/claude-pricing-20x-weekly-limit-trust-crisis/)時，用戶對 Anthropic 的要求是「Just tell us plainly」——直接講壞消息，我們受得了。
+9 月 2 日我寫 Claude 的 20x 爭議時，用戶對 Anthropic 的要求是「Just tell us plainly」——直接講壞消息，我們受得了。
 
 Tibo 這次第一則就寫了「half」，沒有包裝成調漲。結果[底下的回覆](https://x.com/bridgemindai/status/2104952608242774458)（2,158 個讚）是：「Translation: "You just got rug pulled"」。
 

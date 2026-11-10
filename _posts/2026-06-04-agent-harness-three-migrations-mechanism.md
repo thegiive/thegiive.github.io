@@ -215,7 +215,7 @@ hook 當場 **deny**——注意不是「問你」，是**直接拒絕**：
 如果你想接著往下挖，這幾篇跟本文是同一條主線、不同切面：
 
 - [做 Agent 的一個體會：Prompt 負責引導，工程負責約束](/prompt-guides-engineering-constrains-agent-principle/)——本文「Prompt 是建議、機制才是規則」的姊妹篇，講為什麼約束要放對地方
-- [AI Coding 資安的真正防線：為什麼 Harness Engineering 比模型聰明更重要](/prompt-injection-harness-engineering-tool-using-agents/)——Demo 3 那種 injection 為什麼用 if/else policy engine 擋得住、用 prompt 擋不住
+- AI Coding 資安的真正防線：為什麼 Harness Engineering 比模型聰明更重要——Demo 3 那種 injection 為什麼用 if/else policy engine 擋得住、用 prompt 擋不住
 - [當 AI 把資料庫刪光：兩個真實案例與 Harness Engineering 的反擊](/ai-delete-database-harness-engineering/)——最小權限與人類閘門的真實事故版
 - [Harness Engineering 的 7 條資安實踐](/harness-engineering-security-best-practices/)——least-privilege、SECURITY.md 的落地清單
 - [當代碼量暴增 10 倍後，到底誰來做 Review？](/ai-coding-framework-deterministic-tools-control-ai/)——四層防禦的 coding agent 視角

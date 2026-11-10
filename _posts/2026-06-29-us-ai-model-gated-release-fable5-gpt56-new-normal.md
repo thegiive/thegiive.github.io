@@ -249,7 +249,7 @@ Sakana Fugu 是日本 Sakana AI 在 2026 年 6 月發布的多模型編排系統
 ## 延伸閱讀
 
 - [上線三天就被「政府下架」：Fable 5 事件的真正重點不是 Fable 5](/fable-5-takedown-ai-export-control-precedent/)
-- [智譜 GLM-5.2：1M Context、全華為晶片訓練、MIT 開源——但跑分表呢？](/glm-5-2-zhipu-1m-context-no-benchmark-open-source/)
+- 智譜 GLM-5.2：1M Context、全華為晶片訓練、MIT 開源——但跑分表呢？
 - [鉅亨網：AI監管升級！繼Anthropic事件後 傳川普政府要求OpenAI分階段發布GPT-5.6](https://news.cnyes.com/news/id/6512724)
 - [鉅亨網：Anthropic Fable 5最快「下週」恢復開放！《Axios》：川普政府擬解除限制](https://news.cnyes.com/news/id/6515080)
 - [Sakana AI Fugu 官方頁面](https://sakana.ai/fugu/)

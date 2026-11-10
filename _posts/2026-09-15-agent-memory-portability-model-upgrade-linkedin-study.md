@@ -155,7 +155,7 @@ faq:
 
 ## 跟本 blog 之前幾篇的關係
 
-這是記憶系列的第四篇。[羅生門](/agent-memory-benchmark-rashomon-filesystem/)講標準測評測的是「記不記得」；[MemHarness](/agent-memory-reconstruction-memharness/)講用的時候要重構；[LifeMem](/lifemem-lifelong-experience-reuse-workflow-clustering/)講存的時候要分群。這篇補的一格是「換模型後還記不記得」，而且它跟 MemHarness 有一個直接的張力：MemHarness 的重構是在讀的時候判斷哪些記憶還適用，但這篇說筆記格式八成的損失在寫入時就發生。讀的時候再聰明，也重構不出當初沒寫進去的東西。兩篇合起來的順序是：先保證寫入時證據有留，讀的時候的重構才有材料。
+這是記憶系列的第四篇。[羅生門](/agent-memory-benchmark-rashomon-filesystem/)講標準測評測的是「記不記得」；[MemHarness](/agent-memory-reconstruction-memharness/)講用的時候要重構；LifeMem講存的時候要分群。這篇補的一格是「換模型後還記不記得」，而且它跟 MemHarness 有一個直接的張力：MemHarness 的重構是在讀的時候判斷哪些記憶還適用，但這篇說筆記格式八成的損失在寫入時就發生。讀的時候再聰明，也重構不出當初沒寫進去的東西。兩篇合起來的順序是：先保證寫入時證據有留，讀的時候的重構才有材料。
 
 還有一個看起來不相關的呼應。[NVIDIA 跨模型 KV cache 那篇](/cross-model-kv-cache-transfer-nvidia-ridge-regression/)處理的是同一類問題的另一層：KV cache 是模型自己的表徵，換模型就作廢，NVIDIA 用一條線性映射把 KV cache 轉過去，保留 73 到 98% 的準確度。那是「表徵不相容」，可以用映射解。這篇的 NOTES 問題不是表徵不相容，論文測過改寫風格沒用，是內容在寫入時就被丟掉了。同樣是「跟模型綁死」，KV cache 那種可以轉換，筆記那種只能重建。分清楚是哪一種，決定你該找映射還是該留原始資料。
 
@@ -247,4 +247,4 @@ RAG 那段的 40% 檢索失誤率，是刻意用最陽春的設定量出來的�
 ## 來源
 
 - 論文：[Does Your Agent's Memory Survive a Model Upgrade? A Controlled Study of Memory Portability](https://arxiv.org/abs/2609.05339)，arXiv 2609.05339，2026-09-04
-- 本 blog 相關文章：[Agent Memory 測評羅生門](/agent-memory-benchmark-rashomon-filesystem/)、[MemHarness 記憶重構](/agent-memory-reconstruction-memharness/)、[LifeMem 先分群再蒸餾](/lifemem-lifelong-experience-reuse-workflow-clustering/)、[NVIDIA 跨模型 KV cache 映射](/cross-model-kv-cache-transfer-nvidia-ridge-regression/)
+- 本 blog 相關文章：[Agent Memory 測評羅生門](/agent-memory-benchmark-rashomon-filesystem/)、[MemHarness 記憶重構](/agent-memory-reconstruction-memharness/)、LifeMem 先分群再蒸餾、[NVIDIA 跨模型 KV cache 映射](/cross-model-kv-cache-transfer-nvidia-ridge-regression/)

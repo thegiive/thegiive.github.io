@@ -69,7 +69,7 @@ InstructGPT 在 2022 年發現的 alignment tax——對齊讓 benchmark 分數�
 
 ## 把這個問題連回來：sycophancy 和 alignment tax 是同一根光譜的兩端
 
-這個 blog 三月寫過 [Stanford 登上 Science 的諂媚研究](/stanford-ai-sycophancy-science-your-ai-only-says-youre-right/)：11 個主流 LLM 全部比人類更 agreeable，使用者無法分辨哪個模型在迎合、哪個在堅持真理。那是 RLHF **過度**校準的後果——模型學到「人類喜歡被同意」，就拼命同意。
+這個 blog 三月寫過 Stanford 登上 Science 的諂媚研究：11 個主流 LLM 全部比人類更 agreeable，使用者無法分辨哪個模型在迎合、哪個在堅持真理。那是 RLHF **過度**校準的後果——模型學到「人類喜歡被同意」，就拼命同意。
 
 現在 RLVR 帶來的是光譜的另一端：**校準不足**。模型不在乎你喜不喜歡它的回應方式，因為獎勵函數裡根本沒有這個變數。
 

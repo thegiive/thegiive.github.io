@@ -29,7 +29,7 @@ description: "可解釋性不只是治理需求，更是建立現場信任的關
 
 ## 披薩指數：FDE 落地的最佳詮釋
 
-> 📖 延伸閱讀：[披薩指數：為什麼 FDE 模式 50 年後依然有效](/fde-pizza-index-2026-update/)
+> 📖 延伸閱讀：披薩指數：為什麼 FDE 模式 50 年後依然有效
 
 在 2026 年剛開始，美國五角大廈有兩次軍事活動——一次對葉門、一次對伊朗。
 
@@ -243,7 +243,7 @@ description: "可解釋性不只是治理需求，更是建立現場信任的關
 ## 本週相關文章
 
 - [AI Agent 可解釋性：三層工程鏈路設計](/ai-agent-explainability-operational-trust/)
-- [披薩指數：為什麼 FDE 模式 50 年後依然有效](/fde-pizza-index-2026-update/)
+- 披薩指數：為什麼 FDE 模式 50 年後依然有效
 - [Kalman Filter × Transformer：可解釋 AI 的工程突破](/kalman-filter-transformer-state-estimation/)
 - [Langfuse V3 架構分析：PostgreSQL 與 RLS 的治理取捨](/langfuse-postgresql-clickhouse-rls-tradeoff/)
 

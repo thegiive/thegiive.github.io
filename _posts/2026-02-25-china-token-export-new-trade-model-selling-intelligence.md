@@ -9,7 +9,7 @@ image: /assets/images/china-token-export-electricity-cover.jpg
 description: "中國 AI 出海正在發生質變——從賣商品變成賣 Token。2026 年 2 月，中國模型（MiniMax、Kimi、GLM）在生產型 Token 呼叫量首次超越美國。GLM-5 在蒸餾指控中全身而退、SWE-bench 打贏 GPT-5.2、全華為晶片訓練、API 便宜 5-8 倍。當你把中國電價（$0.08/kWh）對比美國（$0.18/kWh）、開源人才密度、國產硬體自主這三張牌疊在一起，你會看到一個新的貿易形態正在成形：用可計量、可計價的方式，向全球輸出 SOTA 90% 等級的推理能力。這不是科技競賽的故事，這是成本結構的故事。"
 ---
 
-上週我寫了兩篇文章——一篇是 [GLM-5 技術報告解讀](/glm-5-vibe-coding-to-agentic-engineering-technical-report/)，一篇是 [Anthropic 蒸餾戰爭](/anthropic-distillation-war-everyone-steals-from-everyone/)。
+上週我寫了兩篇文章——一篇是 [GLM-5 技術報告解讀](/glm-5-vibe-coding-to-agentic-engineering-technical-report/)，一篇是 Anthropic 蒸餾戰爭。
 
 寫完之後，我一直在想一件事：**如果 GLM-5 真的沒有蒸餾，而且全華為晶片訓練，而且 API 價格只有 Opus 的五分之一——那這代表什麼？**
 

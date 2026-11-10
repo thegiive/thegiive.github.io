@@ -76,7 +76,7 @@ description: "這是我在 DigiTimes 場子那段 Harness Engineering 短講的�
 
 - [Harness Engineering 的四個 Demo：Prompt 是建議，機制才是規則](/agent-harness-three-migrations-mechanism/)——這支影片對應的完整文字版，把四個 demo 講到能跑
 - [做 Agent 的一個體會：Prompt 負責引導，工程負責約束](/prompt-guides-engineering-constrains-agent-principle/)
-- [AI Coding 資安的真正防線：為什麼 Harness Engineering 比模型聰明更重要](/prompt-injection-harness-engineering-tool-using-agents/)
+- AI Coding 資安的真正防線：為什麼 Harness Engineering 比模型聰明更重要
 - [當 AI 把資料庫刪光：兩個真實案例與 Harness Engineering 的反擊](/ai-delete-database-harness-engineering/)
 - [Harness Engineering 架構全景：AI 可以寫 Code，但不能自己上 Production](/harness-engineering-architecture-overview-ai-code-production-guardrails/)
 

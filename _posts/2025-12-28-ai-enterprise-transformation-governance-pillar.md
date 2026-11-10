@@ -276,4 +276,4 @@ Agent 的「解釋」也是一樣。它只是在事後合理化，不是真的�
 
 - [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/) — 詳細的攻擊案例和數據
 - [FDE：AI Agent 落地新模式](/fde-ai-agent-luo-di-xin-mo-shi-ju-ran-shi-chuan-tong-de-zhu-chang-gong-cheng-shi-part-1/) — 為什麼駐場工程師模式能降低風險
-- [流程是一個濾光片](/fde-liu-cheng-shi-yi-ge-lu-guang-pian/) — 沒有領域知識，數據就是雜訊
+- 流程是一個濾光片 — 沒有領域知識，數據就是雜訊

@@ -131,7 +131,7 @@ Pi 沒有什麼黑魔法，它的強是「少」。工具少、prompt 薄、cont
 
 **第二，「省 token」是最常見的優化陷阱。** qwen-code 加了一個工具動態載入的功能——只在模型需要某個工具時才送工具說明。在沒有快取的思維裡這聽起來很合理：少送字，少付錢。結果每個 request 的前綴長得都不一樣了，hit rate 從 97.5% 瞬間雪崩到 81.5%。表面數據：每個 request 的 token 總量少了 46%；實際帳單：原本一次 $1.05 的任務飆到 $3.30。成本翻了三倍多。任何號稱能省 token、卻需要頻繁變動前綴的奇技淫巧，最後都會在 API 帳單上狠狠教訓你。
 
-所以真正的結論只有一句：**前綴穩定是當今所有 harness 都該守的鐵律，Pi 只是目前守得最徹底的那個。** 選 agent 的時候，把 cache hit rate 跟模型智力分並列——這個數字不寫在 leaderboard 上，要自己拉 log 算：Pi 的 footer 直接給（cache read / write / 當次 hit rate），Claude Code 的 log 在 `~/.claude/projects/` 底下，我之前那篇 [17 億 token 成本拆解](/ai-coding-token-cost-calculation-cache-read/) 有方法。不要盲信別人的測試數據，包括這篇。
+所以真正的結論只有一句：**前綴穩定是當今所有 harness 都該守的鐵律，Pi 只是目前守得最徹底的那個。** 選 agent 的時候，把 cache hit rate 跟模型智力分並列——這個數字不寫在 leaderboard 上，要自己拉 log 算：Pi 的 footer 直接給（cache read / write / 當次 hit rate），Claude Code 的 log 在 `~/.claude/projects/` 底下，我之前那篇 17 億 token 成本拆解 有方法。不要盲信別人的測試數據，包括這篇。
 
 ## 最前沿的科技，需要最基礎的知識
 

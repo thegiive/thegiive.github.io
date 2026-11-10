@@ -372,7 +372,7 @@ Jailbreak 是「內容風險」——讓模型說出不該說的話（如製造�
 
 - **AI Agent 安全系列：** [AI Agent 安全性：遊戲規則已經改變](/ai-agent-security-game-changed/)
 - **AI 記憶層架構：** [為什麼我開始把 PostgreSQL 當成 AI 的「自家記憶庫」](/postgresql-ai-memory-store/)
-- **RAG 實戰：** [從文件庫到 Agent 知識庫：臨門一腳的 RAG 轉換實戰](/cong-wen-jian-ku-dao-agent-zhi-shi-ku/)
+- **RAG 實戰：** 從文件庫到 Agent 知識庫：臨門一腳的 RAG 轉換實戰
 - **AI 記憶突破：** [告別「金魚腦」AI？Google 重磅發表 Nested Learning](/nested-learning-ai-memory/)
 - **AI 法規：** [台灣《人工智慧基本法》：IT 人該知道的事](/taiwan-ai-basic-act-engineering-perspective/)
 
