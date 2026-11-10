@@ -9,7 +9,7 @@ description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭
 
 
 
-# ATPM : PRD的重要性
+## ATPM : PRD的重要性
 
 
 
@@ -21,7 +21,7 @@ description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭
 
 一開始所有訪談的資料必須都落地到 PRD ，不能留在你的腦中。工程師開發到一半，發現有 PRD 寫錯了，就直接回 Feedback 回去 PRD ，QA 到發現真實流程跟合約不同，跟現場營運人員確認無誤後，也直接 feedback 回去 PRD 
 
-![](/assets/images/image-5.png)
+![](/assets/images/image-5.webp)
 
 ## 實務上 PRD 迭代的頻率
 
@@ -34,7 +34,7 @@ description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭
 
 舉一個極端的例子，根據 git log , 某個上市日用品的運輸業務計價的 PRD，在一開始撰寫前，我們就已經跟財務跟前線計價同事開了 8 次會議（每個會議都是 1hr 起跳) ，才弄出第一版 PRD 。就算已經那麼努力了​在開發跟QA期間，PRD 一共改了 24 次，幾乎每個團隊成員都有​過。​
 
-![](/assets/images/image-7-1.png)
+![](/assets/images/image-7-1.webp)
 
 所以很多時候，我們 QA 幾乎才是最了解前線記帳邏輯的人，因為我們用大量的時間去測試真實記帳資料有沒有跟所有的文件 aligned , 所以也變成現行系統的糾錯者。這麼複雜的商務場景，一定要寫下來，不會有任何一個人可以腦袋記下來的。
 
@@ -46,7 +46,7 @@ description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭
 
 唯一可以確保 PRD 是所有人資訊中心可能性，就是每個業務的每個環節，都是不同人，而且我瘋狂的輪替每個人
 
-![](/assets/images/image-4.png)每個業務都是不同人做不同的事情。nano banana 生出的圖
+![](/assets/images/image-4.webp)每個業務都是不同人做不同的事情。nano banana 生出的圖
 
 以那張圖為例，你是河馬，你昨天做業務 B 的Dev ，但是你今天就要做業務 C 的 QA ，當你幾乎每天遇到的合作上下游都是不同夥伴時，你唯一也只能信任 PRD 了，這時候 PRD 的正確性跟填寫的積極性就可以保證了，因為你一但偷懶不 update PRD，上下游會幹譙過來。
 
@@ -54,7 +54,7 @@ description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭
 
 這裡有一個我團隊組織上的優勢，大家可能知道我被商周採訪的原因是因為我大量啟用 AI + 工讀生
 
-![](/assets/images/image-8.png)很害羞的照片
+![](/assets/images/image-8.webp)很害羞的照片
 
 我們團隊一開始建立就是一堆工讀生的前提下。因為工讀生一週來的時間不固定，所以每天處理某個業務的人都會換來換去的，時間一久大家都習慣了這樣的快速換手。在做這個帳務系統的當下，不論大家的興趣跟意願如何，我都要求每個人都是 PM + Engineer + QA ，唯一的差別只有工作的比例差別，舉例
 
@@ -75,7 +75,7 @@ description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭
 
 維護一個統一的 PRD 章節框架很重要，不然大家自己用自己的 template ，大家換手的時候就暈了。這是一個虛擬 PRD 供大家參考
 
-![](/assets/images/image-23.png)
+![](/assets/images/image-23.webp)
 
 基本上就是一個簡單的專案背景，角色跟責任，流程描述，範圍 (In / Out) ，user story ，功能需求 ，data source ，milestone ，驗收標準...etc 。在實際 Dev 開發時，流程描述 , 計價邏輯, data source 是最重要，因為我們 dev 也會做初步的 QA ，這時候驗收標準也會需要
 
@@ -89,7 +89,7 @@ description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭
 
 但是為了寫我上面說的改 24次的複雜業務，我們進化到 PRD V2.0 ，才搞定
 
-![](/assets/images/image-24.png)PRD V2.0 虛擬業務
+![](/assets/images/image-24.webp)PRD V2.0 虛擬業務
 
 上面依舊是虛擬業務，但是用 PRD V2.0 標準來寫，這裡 PRD 顆粒度已經有一點點介於 PRD 跟 Pseudo Code 中間了，裡面連寫入的 table 或是 join 的 key 都提供了。簡單來說，寫的人需要懂一點點程式了。通常這樣等級的 PRD 產出的 Dev or QA 代碼，就算複雜業務，也 85% 接近正確SQL 。
 
@@ -110,7 +110,7 @@ description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭
 
 但是5分鐘之後，​我收到一個超過 10頁的報告，裡面文之有物，並且每個環節都有大量的本專案資訊佐證，用到技術細節跟業務用詞都很貼近我們，幾乎沒有人看出來不是人寫的
 
-![](/assets/images/image-14-1-1-1-1.png)
+![](/assets/images/image-14-1-1-1-1.webp)
 
 我就問她「我知道是 AI寫的，但是你怎麼做到那麼精確的用詞？」
 
@@ -124,7 +124,7 @@ description: "ATPM 以 PRD 為中心，不是以人為中心。實務上 PRD 迭
 
 人類的學習，如果可以將一個一個課程從扁平的文字，變成知識結晶體，那人腦等於學會並且不會忘記！
 
-![](/assets/images/image-16-1.png)用 nano banana 生成的知識結晶體圖
+![](/assets/images/image-16-1.webp)用 nano banana 生成的知識結晶體圖
 
 我發現到這些經過大量 QA驗證過的 PRD ，就是所謂的 **"知識結晶體"** ，沒有太多贅字，都是真正的業務邏輯跟知識。既然可以用 PRD 寫出沒有錯誤的 Code ，PRD 也可以寫出幾乎沒有錯誤的結案報告。
 

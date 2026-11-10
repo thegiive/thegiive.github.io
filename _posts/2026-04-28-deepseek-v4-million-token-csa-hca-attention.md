@@ -7,7 +7,7 @@ image: /assets/images/deepseek-v4-paper-cover.png
 description: "DeepSeek V4 論文的真正題眼不是「百萬 token」，而是「低成本、高保真度」。透過 CSA（抓重點）+ HCA（看全域）兩個互補的 attention 模組，V4 把 KV Cache 砍到傳統方案的 2%，計算量降到 V3.2 的 10%，同時在百萬 token 評測上超越 Gemini 3.1。這篇文章從工程師視角，把這套機制的設計思路、跟 MLA / NSA 的傳承關係、以及實際工程意義拆給你看。"
 ---
 
-![DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence — 論文封面](/assets/images/deepseek-v4-paper-cover.png)
+![DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence — 論文封面](/assets/images/deepseek-v4-paper-cover.webp)
 
 > DeepSeek V4 論文的真正題眼不是「百萬 token」，而是「低成本、高保真度」。透過 CSA（抓重點）+ HCA（看全域）兩個互補的 attention 模組，V4 把 KV Cache 砍到傳統方案的 2%，計算量降到 V3.2 的 10%，同時在百萬 token 評測上超越 Gemini 3.1。這篇文章從工程師視角，把這套機制的設計思路、跟 MLA / NSA 的傳承關係、以及實際工程意義拆給你看。
 
@@ -97,7 +97,7 @@ NVIDIA 在 2024 年發了 [RULER（What's the Real Context Size of Your Long-Con
 
 [Stanford 在 2023 年發的 Lost in the Middle](https://arxiv.org/abs/2307.03172) 是另一個讓人坐不住的結果。論文做了個漂亮的實驗：把同一個關鍵資訊放在文件的不同位置，量化問答準確率。
 
-![Lost in the Middle (Liu et al., 2023) — 答案位置 vs 準確率的 U 形曲線：首尾準確率高，中間段落跌到接近 closed-book baseline](/assets/images/lost-in-the-middle-u-curve.png)
+![Lost in the Middle (Liu et al., 2023) — 答案位置 vs 準確率的 U 形曲線：首尾準確率高，中間段落跌到接近 closed-book baseline](/assets/images/lost-in-the-middle-u-curve.webp)
 
 結果是經典的 **U 形曲線**——首尾位置準確率高，中間掉到接近隨機猜的水準（圖中虛線是 closed-book baseline，等於模型完全沒看文件的表現）。
 

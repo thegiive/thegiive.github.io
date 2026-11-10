@@ -8,7 +8,7 @@ image: /assets/images/unix-philosophy-claude-code-cover.png
 description: "When I was a kid I read a book called Unix Power Tools. There was a line I remembered for almost twenty years: ‘Command line pipeline is the best UI interface in the world.’ Back then I had no idea what it meant. But after Claude Code burst onto the scene in April 2025, I finally understood: a brain that understands the world through text plugged into an interface that exposes the world’s state through text. This isn’t retro—it’s structurally the most reasonable choice."
 ---
 
-![Unix Philosophy Claude Code](/assets/images/unix-philosophy-claude-code-cover.png)
+![Unix Philosophy Claude Code](/assets/images/unix-philosophy-claude-code-cover.webp)
 
 When I was a kid, I read a book called *Unix Power Tools*. There was a sentence in it that I remembered for almost twenty years:
 

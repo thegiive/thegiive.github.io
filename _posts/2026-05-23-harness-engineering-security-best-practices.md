@@ -42,7 +42,7 @@ description: "做 AI agent 不出事，靠的不是運氣，是把資安觀念�
 
 這篇要做的事就一件：**把這些散落的資安知識點整理成 7 條 checklist，每條附原則、量化數據、和具體落地方法。**
 
-![AI 不出事不能靠運氣，必須轉化為工程問題](/assets/images/harness-security-overview.png)
+![AI 不出事不能靠運氣，必須轉化為工程問題](/assets/images/harness-security-overview.webp)
 
 下面開始。
 
@@ -50,7 +50,7 @@ description: "做 AI agent 不出事，靠的不是運氣，是把資安觀念�
 
 ## 實踐 1：Least-Privilege Tool Access
 
-![執行層：最小權限工具存取（Read-only / Write / Destructive 三分法）](/assets/images/harness-security-least-privilege.png)
+![執行層：最小權限工具存取（Read-only / Write / Destructive 三分法）](/assets/images/harness-security-least-privilege.webp)
 
 **核心原則：**
 > Don't disable shell for "security" — if the agent can't even run `pip install`, how is it supposed to work? But don't open everything either — follow least-privilege principles.
@@ -135,7 +135,7 @@ If user requests forbidden actions, explain why and ask for explicit override.
 
 ## 實踐 2：Security Rule 不能埋在指令檔中段
 
-![Lost in the Middle：security constraint 遵守率從 60% 提升到 95%](/assets/images/harness-security-lost-in-middle.png)
+![Lost in the Middle：security constraint 遵守率從 60% 提升到 95%](/assets/images/harness-security-lost-in-middle.webp)
 
 ### 核心案例
 
@@ -248,7 +248,7 @@ fi
 
 ## 實踐 3：用 SECURITY.md 把規則寫死
 
-![SECURITY.md 的 4 大類規則：Secrets、Untrusted Input、External Actions、Dependencies](/assets/images/harness-security-security-md-four-categories.png)
+![SECURITY.md 的 4 大類規則：Secrets、Untrusted Input、External Actions、Dependencies](/assets/images/harness-security-security-md-four-categories.webp)
 
 **這份檔案的定位語：**
 > This file defines the security and safety rules that agents must not guess at.
@@ -354,7 +354,7 @@ For debugging or verification, prefer:
 
 ## 實踐 4：Sandbox 隔離不可繞，是設計不是限制
 
-![驗證層：Review Comment 變成自動化防禦的 4 步驟流程](/assets/images/harness-security-review-promotion.png)
+![驗證層：Review Comment 變成自動化防禦的 4 步驟流程](/assets/images/harness-security-review-promotion.webp)
 
 ### 知識點
 
@@ -496,7 +496,7 @@ gh api repos/:owner/:repo/pulls/comments --paginate \
 
 ## 實踐 5：把資安寫進 Benchmark，不要只在 Review 看
 
-![將資安底線寫入 Benchmark 與 Cleanup Scanner](/assets/images/harness-security-benchmark-scanner.png)
+![將資安底線寫入 Benchmark 與 Cleanup Scanner](/assets/images/harness-security-benchmark-scanner.webp)
 
 ### 標準寫法
 
@@ -723,7 +723,7 @@ jobs:
 
 ## 實踐 6：Hidden Destructive Actions 列為產品紅線
 
-![隱藏的破壞性動作是產品紅線：Replit / PocketOS 事件模式 vs 正確流程](/assets/images/harness-security-destructive-actions.png)
+![隱藏的破壞性動作是產品紅線：Replit / PocketOS 事件模式 vs 正確流程](/assets/images/harness-security-destructive-actions.webp)
 
 ### 核心原則
 
@@ -863,7 +863,7 @@ alias terraform='scripts/safe-exec.sh terraform'
 
 ## 實踐 7：Tool Safety 是生產級必備能力
 
-![Tool Safety = Tool Registry + Dry-run Wrapper + 失敗隔離](/assets/images/harness-security-tool-safety.png)
+![Tool Safety = Tool Registry + Dry-run Wrapper + 失敗隔離](/assets/images/harness-security-tool-safety.webp)
 
 ### 核心觀念
 
@@ -1074,7 +1074,7 @@ yq '.tools[] | select(.type == "destructive" and .requires_approval != true) | .
 
 ## 坦白說：這套方法論看不到的東西
 
-![Defender-as-Developer 視角的 4 個盲區](/assets/images/harness-security-blindspots.png)
+![Defender-as-Developer 視角的 4 個盲區](/assets/images/harness-security-blindspots.webp)
 
 要對得起讀者，這篇不能只講優點。
 
@@ -1187,7 +1187,7 @@ SECURITY.md 寫「不要 hardcode secret」、「log 要 redact」——這是�
 
 ## 你明天可以做的三件事（如果 30 天太多）
 
-![落地指南：明天就能動手的三件事](/assets/images/harness-security-three-actions.png)
+![落地指南：明天就能動手的三件事](/assets/images/harness-security-three-actions.webp)
 
 不是「下季規劃」、不是「跟老闆 align 後啟動」，是**明天就可以動手**的三件事：
 

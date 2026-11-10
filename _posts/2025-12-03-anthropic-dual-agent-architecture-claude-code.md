@@ -3,11 +3,13 @@ layout: post
 title: "Anthropic 官方解密：為什麼 Claude Code 這麼好用？"
 date: 2025-12-03 09:00:00 +0800
 permalink: /anthropic-dual-agent-architecture-claude-code/
+canonical_url: "https://ai-coding.wiselychen.com/anthropic-dual-agent-architecture/"
+sitemap: false
 image: /assets/images/dual-agent-architecture-logo.png
 description: "Anthropic 揭露雙 Agent 架構：Initializer Agent + Coding Agent，讓長時任務不靠模型硬撐，而是用工程化工作流設計。"
 ---
 
-![Initializer Agent + Coding Agent 雙 Agent 架構](/assets/images/dual-agent-architecture-logo.png)
+![Initializer Agent + Coding Agent 雙 Agent 架構](/assets/images/dual-agent-architecture-logo.webp)
 
 Anthropic 的 Blog 發布了一套針對[長時任務的工程方案](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)。這不是靠更大模型或更長上下文來硬撐，而是用工程化的工作流設計，讓 Agent 即使在「失憶」的多窗口條件下，也能像人類工程師一樣一步步推進任務。我看過一些 Claude Code 的反組譯文章，基本上就跟這個架構很類似。加上這篇文章後面也寫了是 Anthropic RL team 跟 Claude Code Team 的集體努力，我們就當這是 Claude Code 的設計思路。
 
@@ -100,7 +102,7 @@ Anthropic 的解法是把長時任務拆成兩種角色。
 差別在於我們用人做，他們讓 AI 自己做。但核心洞察一樣：**長時任務的成功不在模型多強，而在有沒有結構化工作流來傳承上下文。**
 
 
-![The Workflow Loop：Coding Agent 的迭代流程](/assets/images/workflow-loop-diagram.png)
+![The Workflow Loop：Coding Agent 的迭代流程](/assets/images/workflow-loop-diagram.webp)
 
 1. 長時任務瓶頸在工作流設計，不在模型能力
 2. 雙 Agent 本質是「分工」：一個奠基，一個迭代

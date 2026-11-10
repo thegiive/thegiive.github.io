@@ -29,7 +29,7 @@ Anthropic 10 月 20 日放上 arXiv 的 [Agent4Sci](https://arxiv.org/abs/2610.2
 
 但是要先打上一層科研專屬的 Harness。
 
-![Automating ML for Science: Can Frontier Agents Climb Scientific Hills in the Wild? 論文首頁](/assets/images/agent4sci-logo.png)
+![Automating ML for Science: Can Frontier Agents Climb Scientific Hills in the Wild? 論文首頁](/assets/images/agent4sci-logo.webp)
 
 <nav class="post-toc" markdown="1">
 **目錄**

@@ -7,7 +7,7 @@ image: /assets/images/openai-beneficial-rl-paper-cover.png
 description: "OpenAI 這篇論文做了一件值得認真看的事：只用 5% 的訓練算力去獎勵「有益行為」，結果在 53 個沒見過的對齊 benchmark 上贏了 44 個。而且只在「健康」一個 domain 訓練，竟然連程式 reward hacking、chain-of-thought 欺騙都一起改善了。這是 Emergent Misalignment 的正向鏡像。"
 ---
 
-![OpenAI Beneficial Trait RL 論文首頁](/assets/images/openai-beneficial-rl-paper-cover.png)
+![OpenAI Beneficial Trait RL 論文首頁](/assets/images/openai-beneficial-rl-paper-cover.webp)
 
 先講一個過去半年對齊研究圈裡最讓人不安的發現：Emergent Misalignment（湧現式失調）。
 

@@ -219,7 +219,7 @@ CaMeL 的描述是：
 
 ## 例子一：Email Agent ？
 
-![CaMeL Email Agent Example](/assets/images/camel-email-agent-example.png)
+![CaMeL Email Agent Example](/assets/images/camel-email-agent-example.webp)
 
 ### 問題背景
 
@@ -292,7 +292,7 @@ Email 內容 → LLM → 判斷要不要轉寄 → 執行動作
 
 ## 例子二：OCR + ERP Agent 為什麼不能「看完就做」？
 
-![CaMeL OCR ERP Example](/assets/images/camel-ocr-erp-example.png)
+![CaMeL OCR ERP Example](/assets/images/camel-ocr-erp-example.webp)
 
 ### 問題背景
 

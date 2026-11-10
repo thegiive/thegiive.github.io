@@ -9,7 +9,7 @@ author: Wisely Chen
 categories: [AI Agent, IT 架構, 論文解讀]
 ---
 
-![RLM vs 傳統 LLM：從死背百科全書到像研究員一樣查資料](/assets/images/rlm-llm-vs-rlm-comparison.png)
+![RLM vs 傳統 LLM：從死背百科全書到像研究員一樣查資料](/assets/images/rlm-llm-vs-rlm-comparison.webp)
 
 昨天我才寫了一篇「[AI Coding 半年回顧](/ai-coding-half-year-review-demand-transformation-tool-evolution/)」，核心觀點是：AI Model 進步對效率影響有限，真正的瓶頸是需求收集跟 QA 驗收。
 
@@ -28,7 +28,7 @@ MIT CSAIL 團隊在 2025 年 12 月 31 日發布了 **[Recursive Language Models
 1. **中間資訊會被忘記**：塞進去 50 頁文件，問中間第 23 頁的細節，AI 經常答不出來
 2. **成本貴到爆**：把整本技術手冊塞進 prompt，一次 query 可能燒掉好幾美金
 
-![Context Rot 與高昂成本：當前 AI 處理長文本的兩大瓶頸](/assets/images/rlm-context-rot-cost-problem.png)
+![Context Rot 與高昂成本：當前 AI 處理長文本的兩大瓶頸](/assets/images/rlm-context-rot-cost-problem.webp)
 
 這就是 Context Rot——模型的「有效記憶」遠比「聲稱的 context window」短。
 
@@ -42,7 +42,7 @@ RLM 的做法完全不同：
 - AI 可以寫 Python 程式來「切片」、「檢索」、「跳轉」
 - 最關鍵的：AI 可以**遞歸調用自己**來處理子問題
 
-![RLM 的運作機制：儲存、執行、遞歸](/assets/images/rlm-mechanism-storage-execution-recursion.png)
+![RLM 的運作機制：儲存、執行、遞歸](/assets/images/rlm-mechanism-storage-execution-recursion.webp)
 
 簡單講，傳統 LLM 是死背整本百科全書再回答問題；RLM 是一個會查目錄、翻到特定章節、把子問題分派給助手的研究員。
 
@@ -70,7 +70,7 @@ RLM 不一樣——它靠對超長上下文的遞歸式理解，同時對程式�
 3. 遞歸追蹤函數調用鏈，深入到 database schema、甚至 10 年前的 SQL migration
 4. 生成**差異報告**：「文件說 \`calculate_tax\` 用 5% 稅率，但 \`patch_2023.py\` 的裝飾器已經覆寫成動態稅率了。」
 
-![自動化 Spec 驗證：理論文件與程式碼真相的交叉比對](/assets/images/rlm-spec-verification-diff-report.png)
+![自動化 Spec 驗證：理論文件與程式碼真相的交叉比對](/assets/images/rlm-spec-verification-diff-report.webp)
 
 連 magic number 也能挖出來——\`if (type == 7)\` 是什麼意思？RLM 會去翻 commit log 告訴你：「7 代表『已凍結帳戶』，建議重構為常數。」人類工程師要做這件事，得花幾週翻遍整個 codebase；RLM 幾分鐘就能交出差異報告。
 
@@ -84,7 +84,7 @@ RLM 對 QA 的幫助很大——它可以靠超長上下文的遞歸讀取能力
 
 當你要修改一個核心函數時，RLM 可以遞歸追蹤所有 Call Graph：
 
-![QA 革命：跨檔案依賴追蹤與 Call Graph 分析](/assets/images/rlm-qa-call-graph-dependency.png)
+![QA 革命：跨檔案依賴追蹤與 Call Graph 分析](/assets/images/rlm-qa-call-graph-dependency.webp)
 
 \`\`\`
 RLM: 我發現 login() 被 50 個檔案呼叫。

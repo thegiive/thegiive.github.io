@@ -9,12 +9,12 @@ description: "Vibe Coding 帶來大量「新朋友」進入軟體開發世界。
 
 
 
-# VIBE Coding最棒的事情就是把新朋友帶軟體開發的世界
+## VIBE Coding最棒的事情就是把新朋友帶軟體開發的世界
 
 
 
 
-![VIBE  Coding最棒的事情就是把新朋友帶軟體開發的世界](/assets/images/OHUFc_3kQtKONOdt6oSbZ.png) Prompt : 工程師跟麻瓜手牽手
+![VIBE  Coding最棒的事情就是把新朋友帶軟體開發的世界](/assets/images/OHUFc_3kQtKONOdt6oSbZ.webp) Prompt : 工程師跟麻瓜手牽手
 
 昨天看到 VIBE Coding / Google AI Studio 某篇文章瘋傳，看到社群朋友們給予相關的「指導」。心裡想說啥，又不知道要怎講。
 
@@ -30,7 +30,7 @@ Code 寫不好，教就是了我們不也是整天都commit security key 進git 
 
 今年開始，因為商周的採訪關係，我受邀很多場子講 AI ，也有一些上市公司請我過去講 AI轉型的經驗，經過幾次摸爬滾打，我有兩次場子邀請了 [JLMS-珍妮的華語教學筆記 的 Jenny](https://www.jlmsjennylin.com/?ref=ai-coding.wiselychen.com) 跟我一起來講課，一開始Jenny 講個人生產力提升跟對個人工作的加速，我講最新技術發展跟數位轉型經驗，結果效果都很棒！！！
 
-![](/assets/images/image-36.png)我跟 Jenny 三月在 ALP 的演講，有了 Jenny 幫忙很成功
+![](/assets/images/image-36.webp)我跟 Jenny 三月在 ALP 的演講，有了 Jenny 幫忙很成功
 
 因為 Jenny 就是口條的比我好，投影片製作精美，案例也很 solid 。我的風格已經太過嚴肅跟老氣...XD，但是有了 Jenny 前面的抓眼球並且從個人角度出發，我再用企業角度，適度傳播轉型經驗，不容易造成大家的審美疲勞，我反而可以輕鬆地把技術深度帶進來。上週五，在 Inside 場子，也是跟 Vivi 這樣類似的合作方式，我自己也覺得獲得很高的滿意度。
 
@@ -54,7 +54,7 @@ Code 寫不好，教就是了我們不也是整天都commit security key 進git 
 
 > 剛剛跟某 IT 開會，我搞砸了，請問 SQL Server 是啥？我只知道 BigQuery ....
 
-![](/assets/images/image-37-1.png)Nano Banaba : 一個年輕人抓著頭問另一個工程師 "SQL Server是啥“
+![](/assets/images/image-37-1.webp)Nano Banaba : 一個年輕人抓著頭問另一個工程師 "SQL Server是啥“
 
 我聽完狀況，只說「下次多看 agenda ，提前問 AI查技術代表的意義，然後你們如果判斷下次需要我到場，你們就強迫我到會議」。
 
@@ -83,6 +83,6 @@ IT 可以生氣，但是他理解的原因是因為，他跟我合作很久了�
 
 看到他們突然之間，從一個矇懂無知的小弟弟妹妹，變成可以一起作戰的戰友，滿滿的自豪。人都有菜的時候，但是麻瓜也會長成大南瓜
 
-![](/assets/images/IMG_9870-2-1.jpg)我們真的就是一個老工程師+一堆麻瓜創造的團隊
+![](/assets/images/IMG_9870-2-1.webp)我們真的就是一個老工程師+一堆麻瓜創造的團隊
 
 我能做的就是站在他們背後，當犯了好笑的錯誤，偷偷拉到旁邊指導一下，然後繼續給他們拍拍手就好

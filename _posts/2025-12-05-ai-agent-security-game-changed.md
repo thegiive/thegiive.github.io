@@ -33,7 +33,7 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 Copilot EchoLeak，揭
 
 AI Agent Security 的第一步，是搞清楚 AI Agent 到底是什麼。先講清楚一件事：AI Agent 不是「比較聰明的 Chatbot」，它們是完全不同的物種。
 
-![AI Agent vs Chatbot 比較](/assets/images/ai-agent-vs-chatbot-comparison.png)
+![AI Agent vs Chatbot 比較](/assets/images/ai-agent-vs-chatbot-comparison.webp)
 
 **為什麼「能動手」= 資安風險倍增？**
 

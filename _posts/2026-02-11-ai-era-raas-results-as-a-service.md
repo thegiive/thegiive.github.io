@@ -9,7 +9,7 @@ image: /assets/images/ai-era-raas-cover.png
 description: "市場不再為你的「過程」買單，只為你的「交付」付費。當人人都能透過 AI 獲得 80 分的技能，真正稀缺的，是敢把混亂的過程封裝成確定性結果的人。"
 ---
 
-![AI 時代 RaaS 結果交付](/assets/images/ai-era-raas-cover.png)
+![AI 時代 RaaS 結果交付](/assets/images/ai-era-raas-cover.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 2 月

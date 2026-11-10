@@ -7,7 +7,7 @@ image: /assets/images/dspark-speculative-decoding-semi-autoregressive.png
 description: "DeepSeek 剛開源 DSpark，一套新的推理加速方法，在 V4-Flash 上實測提速 85%、V4-Pro 提速 78%。更關鍵的是：這套方法不綁 DeepSeek 自家模型，Qwen3、Gemma4 都能用，而且整套訓練框架 DeepSpec 以 MIT 授權開源。這篇用最簡單的方式解釋 DSpark 做了什麼、為什麼重要、對開源生態有什麼影響。"
 ---
 
-# DSpark——DeepSeek 把推理速度再拉高 85%，而且方法開源、跨模型通用
+## DSpark——DeepSeek 把推理速度再拉高 85%，而且方法開源、跨模型通用
 
 ---
 

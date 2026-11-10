@@ -25,7 +25,7 @@ faq:
 
 {% include youtube.html id="YBtuqlbWxdg" %}
 
-![直式短版裡「事故分流層」架構圖的四個時間點：資料點沿著箭頭流動，最後蓋上失敗的紅章](/assets/images/opus-55-article-to-video-rca-diagram-frames.png)
+![直式短版裡「事故分流層」架構圖的四個時間點：資料點沿著箭頭流動，最後蓋上失敗的紅章](/assets/images/opus-55-article-to-video-rca-diagram-frames.webp)
 
 ## 30 秒定位
 

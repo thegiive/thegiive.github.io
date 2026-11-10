@@ -9,7 +9,7 @@ description: "AI Workflow 按固定流程走，遇到資料庫掛掉就停住；
 
 
 
-# [Agent 模式 part 1] - Workflow 型和 ReAct 型，誰更像你？
+## [Agent 模式 part 1] - Workflow 型和 ReAct 型，誰更像你？
 
 
 
@@ -53,7 +53,7 @@ Agent : 系統回答客戶：「由於我們的主資料庫正在維護，我從
 
 Workflow 通常都是會在 make.com or N8N 畫出一個 DAG 流程圖，來做特定的事情。為了解決一些外部系統不可空的意外，這裡 N8N or Make.com 通常會用很多可以做很多 Error Handling 的處理，
 
-![](/assets/images/image-56-1.png)
+![](/assets/images/image-56-1.webp)
 
 但是有運營過的都知道，Workflow 就算竭盡所能地窮舉，也會出現很可怕無法維運的 DAG 圖，像是上面那張。我之前在做數位回單，的確用 make.com 為了 Error handling ，也畫出類似密度的 DAG 圖，那時候的經驗是除非作者，其他人根本就無法維運，最後出問題還是得打電話給作者。
 
@@ -69,7 +69,7 @@ Workflow 通常都是會在 make.com or N8N 畫出一個 DAG 流程圖，來做�
 
 ReAct （Reason + Act）讓語言模型在單一循環中交替產生**推理（Thought）** 與**行動（Action）** 。具體而言，代理首先觀察到用戶問題，接著產生一段內部推理內容（如思考下一步該搜尋什麼），然後發出一個行動指令（如執行 Tool 或查詢資料庫）。環境執行該行動並返回**觀察結果（Observation）** 給代理。隨後模型根據新的資訊再進行推理、決定下個行動，以此迭代，直到產生最後答案。
 
-![](/assets/images/image-57-1.png)
+![](/assets/images/image-57-1.webp)
 
 ReAct 的設計想法並不難,它就源自於你我日常解決問題的方法。舉個例子:
 
@@ -96,7 +96,7 @@ ReAct 的設計想法並不難,它就源自於你我日常解決問題的方法�
 
 當然很多人都試著提出很多模式來優化 ReAct 的問題。這個文章系列，接下來會講其他 Agent 模型的優缺點，像是 Plan & Exec ，REWООO，LLM Compiler ，Basic Reflection，LATS (Language Agent Tree Search)。
 
-![](/assets/images/image-58.png)我比較喜歡的 Plan & Exec 
+![](/assets/images/image-58.webp)我比較喜歡的 Plan & Exec 
 
 當然太學術的我會略過。不過這些東西基本上大部分就是 ReAct 跟 Workflow concept 的優化跟組合。
 
@@ -106,7 +106,7 @@ ReAct 的設計想法並不難,它就源自於你我日常解決問題的方法�
 
 Claude Code 在小任務上通常可以自我除錯，不需要人來介入。但是在關鍵節點，或是邊際狀況上，他會主動的提示人這裡有問題，要跟人對齊。
 
-![](/assets/images/image-59-1.png)
+![](/assets/images/image-59-1.webp)
 
 這裡 Claude Code 就一直在「自主性」和「人類對齊」之間找平衡
 

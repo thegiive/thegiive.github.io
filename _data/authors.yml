@@ -1,0 +1,5 @@
+# jekyll-seo-tag 依 page.author 查這張表，輸出 author.url 等結構化資料
+"Wisely Chen":
+  name: Wisely Chen
+  url: https://ai-coding.wiselychen.com/about/
+  twitter: wiselychen

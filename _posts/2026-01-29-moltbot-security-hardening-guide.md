@@ -54,7 +54,7 @@ keywords: "AI Agent Security, Prompt Injection, LLM Agent Security, Agentic Secu
 
 在開始實作之前，先理解整體防禦思路。AI Agent Security 不是單點防護，而是**四層縱深防禦**：
 
-![AI Agent Security 四層縱深防禦架構](/assets/images/ai-agent-security-slide-02.png)
+![AI Agent Security 四層縱深防禦架構](/assets/images/ai-agent-security-slide-02.webp)
 
 | 層次 | 目標 | 核心問題 |
 |------|------|---------|
@@ -71,7 +71,7 @@ keywords: "AI Agent Security, Prompt Injection, LLM Agent Security, Agentic Secu
 
 ## 第一層 Isolation：限制 AI Agent 被入侵時的爆炸半徑
 
-![AI Agent Isolation 與爆炸半徑控制示意圖](/assets/images/ai-agent-security-slide-09.png)
+![AI Agent Isolation 與爆炸半徑控制示意圖](/assets/images/ai-agent-security-slide-09.webp)
 
 **核心問題：如果被攻破，損失多大？**
 
@@ -138,7 +138,7 @@ mkdir ~/.secrets && chmod 700 ~/.secrets
 
 ## 第二層 Quarantine：Prompt Injection Defense 與內容隔離
 
-![Prompt Injection 與內容隔離防禦流程](/assets/images/ai-agent-security-slide-03.png)
+![Prompt Injection 與內容隔離防禦流程](/assets/images/ai-agent-security-slide-03.webp)
 
 **核心問題：外部輸入能做什麼？**
 
@@ -208,7 +208,7 @@ Prompt Injection Defense 的核心是建立明確的信任邊界。在工作目�
 
 ## 第三層 Rollback：AI Agent 出事後的損害復原機制
 
-![AI Agent Rollback 回滾能力示意圖](/assets/images/ai-agent-security-slide-05.png)
+![AI Agent Rollback 回滾能力示意圖](/assets/images/ai-agent-security-slide-05.webp)
 
 **核心問題：出事後能復原嗎？**
 
@@ -278,7 +278,7 @@ bw lock
 
 ## 第四層 Transparency：LLM Agent Security 的早期預警系統
 
-![AI Agent Transparency 透明告知與早期預警](/assets/images/ai-agent-security-slide-07.png)
+![AI Agent Transparency 透明告知與早期預警](/assets/images/ai-agent-security-slide-07.webp)
 
 **核心問題：能及早發現問題嗎？**
 

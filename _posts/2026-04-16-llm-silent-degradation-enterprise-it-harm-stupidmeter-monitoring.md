@@ -7,7 +7,7 @@ image: /assets/images/stupidmeter-leaderboard-all-warn-2026-04.png
 description: "昨天 Claude 全線降級，我的三個任務全部延誤。StupidMeter 24/7 監控 22 個模型，結果只有 GLM 是 OK，其他全部 WARN。Opus 4.5 排第一、Opus 4.6 掉到第五。貴的不穩定，便宜的也不穩定——價格跟穩定性完全無關。企業 IT 該用雲地混合開源模型架構，前面掛 LLM Proxy，Agent 層做品質 fallback。LLM 已經是水電，就該用水電等級的基建去管。"
 ---
 
-![StupidMeter Leaderboard：22 個模型的即時監控，GPT、Claude、Gemini、Grok、DeepSeek 全部處於 WARN 狀態](/assets/images/stupidmeter-leaderboard-all-warn-2026-04.png)
+![StupidMeter Leaderboard：22 個模型的即時監控，GPT、Claude、Gemini、Grok、DeepSeek 全部處於 WARN 狀態](/assets/images/stupidmeter-leaderboard-all-warn-2026-04.webp)
 
 ## 目錄
 

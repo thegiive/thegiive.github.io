@@ -7,7 +7,7 @@ image: /assets/images/ai-interview-headset-logo.png
 description: "AI 時代面試不考 HackerRank。我問：為什麼用這個？比較過哪些選項？答案不重要，產生答案的邏輯最重要。AI 不會失敗、永遠有答案，所以我要找有失敗經驗並且能吸取教訓的人。"
 ---
 
-![機場面試裝備：全罩式耳機](/assets/images/ai-interview-headset-logo.png)
+![機場面試裝備：全罩式耳機](/assets/images/ai-interview-headset-logo.webp)
 
 這陣子我一直在面試新的 Jr FDE 團隊成員。台灣、海外都有。當然我常常在外地跑行程，所以 remote interview 幾乎變成日常。
 

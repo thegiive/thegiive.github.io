@@ -7,7 +7,7 @@ image: /assets/images/agent-ts-vs-python-slide-09.png
 description: "做 Agent 到底用 TypeScript 還是 Python？這題在推特吵翻，但 GitHub Octoverse 2025 已經給答案：TypeScript 年增 66%、十年來最大語言移動，超車 Python 與 JavaScript。這篇從一位頂尖 Agent 團隊朋友的觀點出發，拆三個技術理由（型別打穿全端、JSON 滿天飛的事件流、系統工程母語），再帶到 AI 時代的語言「馬太效應」，以及 OpenAI 把 Codex 從 TS 重寫成 Rust 的反例——最後給出 TypeScript / Python / Rust 三語言的分層決策矩陣。"
 ---
 
-![AI Agent 時代的語言之爭：語言的馬太效應，bash、TypeScript、Python 站在 AI 加速的贏家一方](/assets/images/agent-ts-vs-python-slide-09.png)
+![AI Agent 時代的語言之爭：語言的馬太效應，bash、TypeScript、Python 站在 AI 加速的贏家一方](/assets/images/agent-ts-vs-python-slide-09.webp)
 
 這兩天推特上有一題吵得很兇：做 Agent 專案，到底要不要用 Python。
 
@@ -21,7 +21,7 @@ description: "做 Agent 到底用 TypeScript 還是 Python？這題在推特吵�
 
 **你做的 Agent，是研究工程，還是產品工程？**
 
-![研究工程 vs 產品工程的分水嶺：研究工程主導語言是 Python，產品工程主導語言是 TypeScript](/assets/images/agent-ts-vs-python-slide-02.png)
+![研究工程 vs 產品工程的分水嶺：研究工程主導語言是 Python，產品工程主導語言是 TypeScript](/assets/images/agent-ts-vs-python-slide-02.webp)
 
 
 ## 先看數據：TypeScript 已經悄悄超車 Python 了
@@ -30,7 +30,7 @@ description: "做 Agent 到底用 TypeScript 還是 Python？這題在推特吵�
 
 **TypeScript 在 2025 年超車 JavaScript 和 Python，成為 GitHub 上使用量第一的語言。年增 66%，是十年來最大的單一語言移動。**
 
-![GitHub Octoverse 2025：TypeScript 年增 66%，超車 JavaScript 與 Python 成為使用量第一的語言](/assets/images/agent-ts-vs-python-slide-03.png)
+![GitHub Octoverse 2025：TypeScript 年增 66%，超車 JavaScript 與 Python 成為使用量第一的語言](/assets/images/agent-ts-vs-python-slide-03.webp)
 
 注意，不是「成長最快的前幾名之一」這種模糊話，是「十年來最大的一次語言版圖移動」。
 
@@ -44,7 +44,7 @@ description: "做 Agent 到底用 TypeScript 還是 Python？這題在推特吵�
 
 語言選擇，正在變成一個「AI 相容性」的決策。
 
-![AI 回饋循環：型別當護欄、模型更聰明、開發者靠攏，三者互相強化的自我循環](/assets/images/agent-ts-vs-python-slide-04.png)
+![AI 回饋循環：型別當護欄、模型更聰明、開發者靠攏，三者互相強化的自我循環](/assets/images/agent-ts-vs-python-slide-04.webp)
 
 順帶一提同一份報告還有個彩蛋：Bash 在 AI 生成專案裡年增 206%——這又是另一篇文章的故事（Agent 在大量寫 shell 來操作系統）。
 
@@ -68,13 +68,13 @@ Agent 最終會長在哪裡？Chat 介面、工作流面板、瀏覽器插件、
 
 一套型別打穿全端，和一份 schema 維護三份——這個差距在原型階段感覺不出來，在產品階段會要你的命。
 
-![傳統架構維護三份 schema 的死亡陷阱（userId vs userid 大小寫錯誤）vs 現代 Agent 架構一套型別貫穿全端](/assets/images/agent-ts-vs-python-slide-05.png)
+![傳統架構維護三份 schema 的死亡陷阱（userId vs userid 大小寫錯誤）vs 現代 Agent 架構一套型別貫穿全端](/assets/images/agent-ts-vs-python-slide-05.webp)
 
 ## 理由二：Agent 的工程本質——滿天飛的 JSON 加長鏈路事件流，正好是 TS 的主場
 
 進了產品之後，Agent 在工程上到底長什麼樣子？兩個特徵：一是**大量 JSON 物件在到處飛**，二是它不是「一問一答」，而是**長鏈路的事件流**。這兩件事，剛好都是 TS / Node 的主場。
 
-![Agent 的本質：滿天飛的 JSON 物件加上長鏈路事件流，告別一問一答，是 event-driven 的主場](/assets/images/agent-ts-vs-python-slide-06.png)
+![Agent 的本質：滿天飛的 JSON 物件加上長鏈路事件流，告別一問一答，是 event-driven 的主場](/assets/images/agent-ts-vs-python-slide-06.webp)
 
 先講事件流。Agent 不是「一次請求、一次回答」這麼簡單——它要邊想邊輸出（streaming）、邊調用工具、邊等使用者確認、邊更新 UI、邊處理取消、重試、超時、恢復。這是一個典型的事件驅動、長連線、串流的場景。TS / Node 在 event-driven、stream、WebSocket、Server-Sent Events 這些場景裡非常順——因為 Node 整個 runtime 從第一天就是為這種非阻塞 I/O 長出來的。Python 當然也能做（asyncio、FastAPI 的 streaming 都有），但你會更容易感覺到一件事：**這東西本來不是為這種 Web 產品的長鏈路長出來的。**
 
@@ -88,7 +88,7 @@ Agent 最終會長在哪裡？Chat 介面、工作流面板、瀏覽器插件、
 
 TS 可以把這些東西在編譯期就卡住：tool input/output、agent state、message format、UI event、workflow node、permission object、external API response——全部都能上型別。這不是潔癖，是在一個「JSON 滿天飛」的系統裡，把一整類 bug 提前擋掉。Python 的 type hint + Pydantic 也能做到不少（這點要公道講，PydanticAI 就是靠這個），但 TS 的型別是強制的、是編譯期的、是和前端共用的——強度和覆蓋範圍不是一個量級。
 
-![隱形的護欄：TS 把致命錯誤擋在編譯期，涵蓋 tool I/O、agent state、message format、context 物件、外部 API 回傳結構](/assets/images/agent-ts-vs-python-slide-07.png)
+![隱形的護欄：TS 把致命錯誤擋在編譯期，涵蓋 tool I/O、agent state、message format、context 物件、外部 API 回傳結構](/assets/images/agent-ts-vs-python-slide-07.webp)
 
 ## 理由三：從單一應用到 runtime，AI 拼的是系統工程，而系統工程的母語是 TS
 
@@ -105,7 +105,7 @@ TS 可以把這些東西在編譯期就卡住：tool input/output、agent state�
 
 這些團隊選 TS，不是因為 Python 不行，是因為他們要服務的對象——Web 開發者和產品團隊——本來就活在 TS 的世界裡。
 
-![2026 年頂尖 Agent Infra 的一致選擇：Claude Agent SDK、Vercel AI SDK 6、Mastra、LangGraph 都圍繞 Web 開發者](/assets/images/agent-ts-vs-python-slide-08.png)
+![2026 年頂尖 Agent Infra 的一致選擇：Claude Agent SDK、Vercel AI SDK 6、Mastra、LangGraph 都圍繞 Web 開發者](/assets/images/agent-ts-vs-python-slide-08.webp)
 
 而這指向一個更大的轉變。早期大家用 Python，是因為那時候 **AI = 模型**，工作主體就是調模型、跑實驗、處理資料，這些 Python 無敵。但現在的 AI 產品已經演化成一個完整的系統：LLM API、tool calling、database、vector store、browser automation、workflow、UI、billing、auth、analytics……這已經不是研究工程了，這是**產品工程**。而網際網路產品工程的主語，長期以來就是 JS/TS。
 
@@ -141,7 +141,7 @@ AI 寫程式這件事，正在製造一種語言的「贏者全拿」。
 
 對，就是那個跟 Claude Code 打對台的 Codex。它原本的技術棧是 React + TypeScript + Node，2025 下半年 OpenAI 把核心重寫成 Rust（codex-rs），到 2026 初，Rust 已經佔了大約 95% 的程式碼。
 
-![AI 正在拆除 Rust 的天花板：OpenAI 把 Codex CLI 重寫成 Rust（95%），Agent 採用 Rust 換來極低記憶體、無 GC 停頓、單一 binary](/assets/images/agent-ts-vs-python-slide-10.png)
+![AI 正在拆除 Rust 的天花板：OpenAI 把 Codex CLI 重寫成 Rust（95%），Agent 採用 Rust 換來極低記憶體、無 GC 停頓、單一 binary](/assets/images/agent-ts-vs-python-slide-10.webp)
 
 為什麼？因為一個 agentic CLI 的核心，就是一個「在迴圈裡不斷呼叫模型」的長時間執行 harness。而「長時間執行」正好戳中 Node 的兩個痛點：
 
@@ -156,7 +156,7 @@ AI 寫程式這件事，正在製造一種語言的「贏者全拿」。
 
 所以這不是「Rust 完勝」，是一個**清楚的取捨**：Codex 用 Rust 換 throughput 和長跑穩定性；Claude Code 用 TS 換彈性和品質。
 
-![效能與彈性的取捨：OpenAI Codex（Rust）用於底層 runtime 與長跑 CLI，Claude Code（TS）用於跨前後端、頻繁修改、深度對接 UI 的產品](/assets/images/agent-ts-vs-python-slide-11.png)
+![效能與彈性的取捨：OpenAI Codex（Rust）用於底層 runtime 與長跑 CLI，Claude Code（TS）用於跨前後端、頻繁修改、深度對接 UI 的產品](/assets/images/agent-ts-vs-python-slide-11.webp)
 
 但這個案例真正的價值，是它把前面「runtime 用 TS」那句話，逼出一個更精準的版本：
 
@@ -185,7 +185,7 @@ AI 寫程式這件事，正在製造一種語言的「贏者全拿」。
 | 模型層 / 資料層 | **Python** | ML 生態無可取代 |
 | eval / embedding / 離線任務 / 實驗腳本 | **Python** | 研究工程的主場 |
 
-![AI 時代的語言分層矩陣：產品層/編排/SDK 用 TypeScript，底層 CLI/harness 核心用 Rust，模型層/離線任務用 Python](/assets/images/agent-ts-vs-python-slide-12.png)
+![AI 時代的語言分層矩陣：產品層/編排/SDK 用 TypeScript，底層 CLI/harness 核心用 Rust，模型層/離線任務用 Python](/assets/images/agent-ts-vs-python-slide-12.webp)
 
 ## 一句話的決策法則
 
@@ -193,7 +193,7 @@ AI 寫程式這件事，正在製造一種語言的「贏者全拿」。
 
 **MVP 的前端 + Agent orchestrator 先用 TS 把產品跑起來。等真的涉及模型訓練、複雜資料處理、進階檢索、評測系統，再把 Python 接進來做那一層。**
 
-![務實決策法則三階段：MVP 驗證期用全端 TS，深度智慧期引入 Python，效能瓶頸期才把底層 runtime 替換為 Rust](/assets/images/agent-ts-vs-python-slide-13.png)
+![務實決策法則三階段：MVP 驗證期用全端 TS，深度智慧期引入 Python，效能瓶頸期才把底層 runtime 替換為 Rust](/assets/images/agent-ts-vs-python-slide-13.webp)
 
 「SB 才用 Python」這句話本身是錯的、也太狂。但如果把它翻譯成務實版本，它想講的其實是：
 
@@ -223,7 +223,7 @@ AI 寫程式這件事，正在製造一種語言的「贏者全拿」。
 
 除非你做的是「性能關鍵、要長時間跑、要塞進 CI / edge / 單一 binary」的底層 runtime 或 CLI harness（像 Codex 那種），不然多數 Agent 產品的瓶頸根本不在 runtime 的記憶體，而在開發速度和跨前後端的整合——那 TS 還是比較划算。Rust 的甜蜜點是「底層、長跑、性能敏感」這一塊；AI 讓它變得比以前好寫，但它不是預設選項，是你確定卡在性能時才往下換的那張牌。
 
-![團隊實務痛點快問快答：純 Python 要不要重寫、Pydantic 夠不夠、只有 Python 工程師怎麼辦、該不該直接用 Rust](/assets/images/agent-ts-vs-python-slide-14.png)
+![團隊實務痛點快問快答：純 Python 要不要重寫、Pydantic 夠不夠、只有 Python 工程師怎麼辦、該不該直接用 Rust](/assets/images/agent-ts-vs-python-slide-14.webp)
 
 ---
 

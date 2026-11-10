@@ -10,7 +10,7 @@ layout: post
 description: "AI 提升生產力最有效的方式不是強化專長，而是填補短板。當你的弱項被補齊，整個人的能力圈瞬間擴大。這篇分享我如何用 AI 把不會的事情變成「勉強能做」，以及一邊超慢跑一邊寫 Code 的真實體驗。"
 ---
 
-# AI 生產力實戰：從填補短板到一邊超慢跑一邊寫 Code
+## AI 生產力實戰：從填補短板到一邊超慢跑一邊寫 Code
 
 **來源：** [小老闆充電站 YouTube](https://www.youtube.com/@littlebossfr)
 
@@ -32,7 +32,7 @@ description: "AI 提升生產力最有效的方式不是強化專長，而是填
 
 AI 已經被驗證是一個非常全能的存在。市面上有兩種做法：一種是把擅長的東西推得更精進，另一種是把不會的東西瞬間補齊——木桶效應，讓短板變長一點。
 
-![AI 能力木桶效應：填補短板比強化專長更有效](/assets/images/ai-barrel-effect-skills.png)
+![AI 能力木桶效應：填補短板比強化專長更有效](/assets/images/ai-barrel-effect-skills.webp)
 
 **我看到比較有效的方式都是後者。**
 
@@ -88,7 +88,7 @@ Note. 參考閱讀請看我之前 [[Agent Part 6] Storm：駕馭整個文章編�
 
 **現在的玩法就是：有 Claude Code 之後我也是超慢跑，但我一邊對著 Claude Code 超慢跑。**
 
-![超慢跑配 Claude Code：健康與生產力兼得](/assets/images/claude-code-slow-jogging.png)
+![超慢跑配 Claude Code：健康與生產力兼得](/assets/images/claude-code-slow-jogging.webp)
 
 Note. 請看我之前寫的[超慢跑也能 Coding：Claude Code 帶來的真正生產力](https://ai-coding.wiselychen.com/vibe-duo-ai-ru-he-zeng-jia-wo-de-sheng-chan-li/)
 
@@ -129,7 +129,7 @@ Note. 請看我之前寫的[超慢跑也能 Coding：Claude Code 帶來的真正
 
 就是我之前講的 agent 嘛。Agent 有很多是 workflow，有很多 agent 是它有錯會去看哪裡有錯，然後再去把這個問題解決——**這就是除錯的能力。**
 
-![Agent 的除錯能力：workflow vs ReAct](/assets/images/agent-debugging-ability.png)
+![Agent 的除錯能力：workflow vs ReAct](/assets/images/agent-debugging-ability.webp)
 
 Note. 請看我之前說的 [[Agent 模式 part 1] - Workflow 型和 ReAct 型，誰更像你？](https://ai-coding.wiselychen.com/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/)，裡面寫到 React 的除錯能力
 
@@ -144,7 +144,7 @@ Note. 請看我之前說的 [[Agent 模式 part 1] - Workflow 型和 ReAct 型�
 所以這個時候人在裡面扮演的就是幫你導正、或是真的不行的時候幫你除錯的角色。
 
 **如果你帶領一群很年輕很有衝勁的人，每個人都配給他 agent，這樣效率是奇高無比的。**
-![年輕很有衝勁的FDE團隊](/assets/images/dify-open-source-agent.png)
+![年輕很有衝勁的FDE團隊](/assets/images/dify-open-source-agent.webp)
 
 Note. 請看我寫的 [FDE：一個持續下去的實驗](https://ai-coding.wiselychen.com/fde-continuous-experiment/)
 

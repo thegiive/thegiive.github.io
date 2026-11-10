@@ -55,7 +55,7 @@ XX 金控的張副總整天忙著跟客戶交際，所有協辦單位要上呈�
 
 這就是「最小權限原則」最大的議題。原則本身沒錯，問題在於資安專家設計權限時都根據「官方組織圖」，而不是根據「真實組織圖」。
 
-![組織內存在的兩張地圖：官方 V.S. 真實](/assets/images/least-privilege-org-chart-real-vs-official.png)
+![組織內存在的兩張地圖：官方 V.S. 真實](/assets/images/least-privilege-org-chart-real-vs-official.webp)
 
 如果要用官方組織圖做事，要嘛是副總少跑一點客戶、多花時間親自做文書；要不然就是大家認清現實，根據「真實組織圖」設計一套可用的權限表——讓王姐的職位設計一個新的 role，簽更高層級的 NDA，然後給她足夠權限去讀檔案。
 

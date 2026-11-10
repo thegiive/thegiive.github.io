@@ -85,7 +85,7 @@ RAG 很擅長處理這類需求：
 
 它不只是 embedding 的存放地，而是要同時保存：
 
-![AI Memory Store 資料類型](/assets/images/ai-memory-store-data-types.png)
+![AI Memory Store 資料類型](/assets/images/ai-memory-store-data-types.webp)
 
 一句話總結：
 
@@ -208,7 +208,7 @@ LIMIT 5;
 
 如果你把 PostgreSQL 當成 AI 的 Memory Layer，那你會發現：
 
-![AI Memory 操作模式](/assets/images/ai-memory-operation-patterns.png)
+![AI Memory 操作模式](/assets/images/ai-memory-operation-patterns.webp)
 
 - **RAG（讀取記憶）**：查詢相關的歷史資訊
 - **Agent Reflection（寫入記憶）**：記錄決策過程與理由
@@ -271,7 +271,7 @@ LIMIT 5;
 
 一個成熟的架構可能是：
 
-![PostgreSQL Memory Control Plane](/assets/images/postgresql-memory-control-plane.png)
+![PostgreSQL Memory Control Plane](/assets/images/postgresql-memory-control-plane.webp)
 
 **關鍵原則：**
 - Redis：短期記憶 cache

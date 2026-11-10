@@ -10,7 +10,7 @@ lang: en
 
 ## The problem: hidden costs in the default configuration
 
-![默認配置的隱形成本](/assets/images/openclaw-cost-slide-02.png)
+![默認配置的隱形成本](/assets/images/openclaw-cost-slide-02.webp)
 
 A reader DM’d me last week:
 
@@ -34,7 +34,7 @@ Community benchmarks show **up to 97% reduction**. In my own tests, just the fir
 
 ## Five core optimization strategies
 
-![五大核心優化策略](/assets/images/openclaw-cost-slide-03.png)
+![五大核心優化策略](/assets/images/openclaw-cost-slide-03.webp)
 
 From my tests, OpenClaw cost optimization can be summarized into five strategies:
 
@@ -52,7 +52,7 @@ Let’s break them down.
 
 ## Strategy 1: session initialization — eliminate context bloat
 
-![消除上下文膨脹：會話初始化](/assets/images/openclaw-cost-slide-04.png)
+![消除上下文膨脹：會話初始化](/assets/images/openclaw-cost-slide-04.webp)
 
 This is the deepest, most hidden cost killer.
 
@@ -110,7 +110,7 @@ Do NOT auto-load:
 
 ## Strategy 2: tiered models and intelligent routing
 
-![智能模型分層與路由](/assets/images/openclaw-cost-slide-05.png)
+![智能模型分層與路由](/assets/images/openclaw-cost-slide-05.webp)
 
 Don’t use one model for everything. You need to assign different levels of “employees” based on task difficulty.
 
@@ -128,7 +128,7 @@ Don’t use one model for everything. You need to assign different levels of “
 
 ### Add routing rules to SOUL.md
 
-![系統提示詞優化：賦予 Agent「靈魂」](/assets/images/openclaw-cost-slide-10.png)
+![系統提示詞優化：賦予 Agent「靈魂」](/assets/images/openclaw-cost-slide-10.webp)
 
 ```markdown
 ## Model Selection
@@ -147,7 +147,7 @@ Don’t use one model for everything. You need to assign different levels of “
 
 ## Strategy 3: local heartbeats — zero-cost monitoring
 
-![本地化心跳檢測：零成本監控](/assets/images/openclaw-cost-slide-06.png)
+![本地化心跳檢測：零成本監控](/assets/images/openclaw-cost-slide-06.webp)
 
 By default, OpenClaw runs a “Heartbeat” check every 30 minutes. This isn’t just “is the system alive?”—it’s a full background monitoring loop.
 
@@ -192,7 +192,7 @@ If you don’t want to run Ollama locally, use very cheap hosted models:
 
 ## Strategy 4: prompt caching — 90% discount for static content
 
-![利用提示詞快取降低 90% 開銷](/assets/images/openclaw-cost-slide-07.png)
+![利用提示詞快取降低 90% 開銷](/assets/images/openclaw-cost-slide-07.webp)
 
 System prompts and static files like `SOUL.md` rarely change. With caching, reusing that content can get you a **90% price discount**.
 
@@ -366,7 +366,7 @@ Caching amplifies previous savings:
 
 ## Strategy 5: budget control and rate limiting
 
-![預算控制與速率限制](/assets/images/openclaw-cost-slide-08.png)
+![預算控制與速率限制](/assets/images/openclaw-cost-slide-08.webp)
 
 Prevent “runaway automation” from burning your budget overnight.
 
@@ -414,7 +414,7 @@ ALWAYS follow these limits:
 
 ## Key config: openclaw.json
 
-![關鍵配置：openclaw.json](/assets/images/openclaw-cost-slide-09.png)
+![關鍵配置：openclaw.json](/assets/images/openclaw-cost-slide-09.webp)
 
 Edit `~/.openclaw/openclaw.json` to enable multi-model routing:
 
@@ -454,7 +454,7 @@ Edit `~/.openclaw/openclaw.json` to enable multi-model routing:
 
 ## Real cases: savings by user type
 
-![真實案例：不同用戶類型的成本節省](/assets/images/openclaw-cost-slide-11.png)
+![真實案例：不同用戶類型的成本節省](/assets/images/openclaw-cost-slide-11.webp)
 
 | User type | Usage pattern | Before | After | Savings |
 |---------|--------------|--------|-------|---------|
@@ -466,7 +466,7 @@ Edit `~/.openclaw/openclaw.json` to enable multi-model routing:
 
 ## Validation & monitoring: ensure it’s working
 
-![驗證與監控：確保優化生效](/assets/images/openclaw-cost-slide-12.png)
+![驗證與監控：確保優化生效](/assets/images/openclaw-cost-slide-12.webp)
 
 Use `session_status` to check:
 
@@ -483,7 +483,7 @@ Use `session_status` to check:
 
 ## Optimization checklist
 
-![優化行動清單](/assets/images/openclaw-cost-slide-13.png)
+![優化行動清單](/assets/images/openclaw-cost-slide-13.webp)
 
 | Step | Action | Notes |
 |------|--------|------|
@@ -562,7 +562,7 @@ Partially. Concepts like model routing and budget monitoring transfer. But Claud
 
 ## Resources & tools
 
-![資源與工具](/assets/images/openclaw-cost-slide-15.png)
+![資源與工具](/assets/images/openclaw-cost-slide-15.webp)
 
 | Resource | Description |
 |---------|-------------|

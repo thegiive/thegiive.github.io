@@ -7,7 +7,7 @@ image: /assets/images/pocketos-website-cover.png
 description: "PocketOS 的 Cursor agent 9 秒清光 DB 加 backup、Replit 在 code freeze 期間刪光 production 資料庫——這兩個事件不是 AI 偶爾出包，而是幻覺在 production 環境的標準失敗腳本。Harness Engineering 六層防禦是這個產業欠下的功課。"
 ---
 
-![PocketOS website](/assets/images/pocketos-website-cover.png)
+![PocketOS website](/assets/images/pocketos-website-cover.webp)
 
 ## 兩個讓整個產業安靜下來的案例
 

@@ -89,7 +89,7 @@ NVIDIA H100、H200，交期動輒半年。企業級 GPU server 的供應鏈，�
 
 ## EP2：428 個 LLM 中轉，29 個在偷你的東西
 
-![YouTube Shorts EP2：428 個 LLM 中轉，29 個在偷你的東西——陽明山](/assets/images/youtube-llm-proxy-security-thumbnail.jpg)
+![YouTube Shorts EP2：428 個 LLM 中轉，29 個在偷你的東西——陽明山](/assets/images/youtube-llm-proxy-security-thumbnail.webp)
 
 **長度：** 5 分 30 秒
 **場景：** 陽明山

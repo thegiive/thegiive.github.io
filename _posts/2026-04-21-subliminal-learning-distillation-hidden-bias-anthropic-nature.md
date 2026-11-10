@@ -7,7 +7,7 @@ image: /assets/images/subliminal-learning-nature-paper.png
 description: "蒸餾（Distillation）是現在 AI 產業鏈的標準動作：把大模型的能力蒸餾到小模型，省成本、加快推理速度。Anthropic 團隊在 Nature 發了一篇論文，發現學生模型不只學到老師的答題能力，還會透過與 trait 完全無關的資料，偷偷學到老師的「隱藏行為特徵」。他們給了這現象一個名字：Subliminal Learning。更令人不安的是——現有的任何偵測方法都失敗了。"
 ---
 
-![Subliminal Learning: Language Models Transmit Behavioral Traits via Hidden Signals in Data](/assets/images/subliminal-learning-nature-paper.png)
+![Subliminal Learning: Language Models Transmit Behavioral Traits via Hidden Signals in Data](/assets/images/subliminal-learning-nature-paper.webp)
 
 蒸餾（Distillation）是現在 AI 產業鏈的標準動作：把大模型的能力蒸餾到小模型，省成本、加快推理速度。GPT-4.1 → GPT-4.1 nano，Claude 3.5 → Claude Haiku，都是這樣來的。
 

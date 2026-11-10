@@ -78,7 +78,7 @@ Claude Code 之所以能做到「讀 PRD → 寫 code → 啟 venv → ps 檢查
 
 **這才是真正的「套殼 1.5」——不只是包裝對話，而是用正確的介面連接真實世界。**
 
-![Claude Code 的震撼：Text as State](/assets/images/shell-wrapper-2-slide-text-as-state.png)
+![Claude Code 的震撼：Text as State](/assets/images/shell-wrapper-2-slide-text-as-state.webp)
 
 ---
 
@@ -105,7 +105,7 @@ Claude Code 之所以能做到「讀 PRD → 寫 code → 啟 venv → ps 檢查
 
 **一個簡單的判斷標準：如果你的 Agent 關掉終端機就等於失憶，那它本質上仍然停在 1.x。**
 
-![套殼 2.0：定義數位員工的新標準](/assets/images/shell-wrapper-2-slide-persistence-standard.png)
+![套殼 2.0：定義數位員工的新標準](/assets/images/shell-wrapper-2-slide-persistence-standard.webp)
 
 ---
 
@@ -173,7 +173,7 @@ Anthropic 是一間準備 IPO 的公司，不能像開源專案那樣沒有負�
 
 套殼 2.0 要走得遠，不能只有油門，還要有穩定的制動能力。
 
-![Moltbot 訊息中樞架構](/assets/images/shell-wrapper-2-slide-moltbot-architecture.png)
+![Moltbot 訊息中樞架構](/assets/images/shell-wrapper-2-slide-moltbot-architecture.webp)
 
 ---
 
@@ -228,7 +228,7 @@ Anthropic 是一間準備 IPO 的公司，不能像開源專案那樣沒有負�
 
 **這些工具沒有在複製 Claude Code，它們是在補完 Claude Code 沒打算做的外圍能力。**
 
-![Claude Code 生態系統](/assets/images/shell-wrapper-2-slide-ecosystem.png)
+![Claude Code 生態系統](/assets/images/shell-wrapper-2-slide-ecosystem.webp)
 
 ---
 
@@ -298,7 +298,7 @@ Claude Code 依然是一個非常優秀的執行核心。
 
 責任的歸屬，正在從模型提供者，轉移到系統整合者。
 
-![2026 趨勢預測：從能力轉向可控性](/assets/images/shell-wrapper-2-slide-2026-trend.png)
+![2026 趨勢預測：從能力轉向可控性](/assets/images/shell-wrapper-2-slide-2026-trend.webp)
 
 ---
 

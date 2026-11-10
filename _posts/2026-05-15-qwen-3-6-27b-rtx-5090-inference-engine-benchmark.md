@@ -15,7 +15,7 @@ tags:
   - IT 架構
 ---
 
-![RTX 5090 自組工作站：ROG 機殼 + 360 AIO 水冷 + TUF Gaming 主機板](/assets/images/qwen-3-6-27b-rtx-5090-build-cover.png)
+![RTX 5090 自組工作站：ROG 機殼 + 360 AIO 水冷 + TUF Gaming 主機板](/assets/images/qwen-3-6-27b-rtx-5090-build-cover.webp)
 
 ## TL;DR
 

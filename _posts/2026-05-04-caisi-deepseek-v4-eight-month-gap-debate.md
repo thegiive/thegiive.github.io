@@ -5,7 +5,7 @@ permalink: /caisi-deepseek-v4-eight-month-gap-debate/
 description: "美國 NIST 旗下的 CAISI 在 2026/5 發布報告：DeepSeek V4 Pro 落後美國 frontier 約 8 個月，DeepSeek 自己 paper 講的是 3 個月。兩邊都對，但都看錯重點——DeepSeek V4 真正贏的不是跑分，是 Vendor Agnostic（NVIDIA / 華為隨時抽換）+ KV Cache 降 7-10%，直接突破老黄的 HBM 供應鏈鎖喉。完整論述在 YouTube 影片，這篇文章只放關鍵論點跟 source。"
 ---
 
-# CAISI 說 DeepSeek V4 落後 8 個月——但你看錯重點了：跑分輸掉、方向贏了
+## CAISI 說 DeepSeek V4 落後 8 個月——但你看錯重點了：跑分輸掉、方向贏了
 
 [![YouTube Preview](https://img.youtube.com/vi/JViBJYx3WKw/maxresdefault.jpg)](https://youtu.be/JViBJYx3WKw)
 

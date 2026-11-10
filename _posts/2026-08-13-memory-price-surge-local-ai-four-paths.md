@@ -4,12 +4,12 @@ title: "5090 三個月從 10 萬變 17 萬：五條技術路徑壓低地端 AI �
 date: 2026-08-13 09:00:00 +0800
 permalink: /memory-price-surge-local-ai-five-paths/
 description: "五月估的地端推理機約 10 萬台幣，週二再問同配置變 17 萬。RTX 5090 從首發 MSRP $1,999 漲到官方商店 $4,929。同一時間開源模型密集釋出——DeepSeek V4 Flash、Qwen 3.8 Max/27B、MiniMax H3、Meta Muse Glimmer。硬體在漲，但軟體側的武器也在同步增加。這篇整理五條具體的技術路徑：選對模型、KV 落盤、量化壓縮、MoE offload、agent 編排搭配特化小模型。"
-image: images/memory-price-surge-local-ai-cover.png
+image: /assets/images/memory-price-surge-local-ai-cover.png
 categories: [AI 工具實測]
 author: Wisely Chen
 ---
 
-# 5090 三個月從 10 萬變 17 萬：五條技術路徑壓低地端 AI 的硬體門檻
+## 5090 三個月從 10 萬變 17 萬：五條技術路徑壓低地端 AI 的硬體門檻
 
 五月我估了一台跑地端推理的機器，大概 10 萬台幣出頭。
 

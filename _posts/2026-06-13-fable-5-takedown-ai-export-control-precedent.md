@@ -7,7 +7,7 @@ image: /assets/images/fable-5-takedown-logo.png
 description: "**作者：** Wisely Chen **日期：** 2026 年 6 月 13 日 **系列：** AI 治理觀察 **關鍵字：** Fable 5, Mythos 5, Anthropic, Export Control, Dual-Use AI, 出口管制, AI 治理"
 ---
 
-![Fable 5 Takedown](/assets/images/fable-5-takedown-logo.png)
+![Fable 5 Takedown](/assets/images/fable-5-takedown-logo.webp)
 
 > Fable 5 最大的「貢獻」，可能不是 benchmark 上那些數字，而是用三天壽命幫整個產業上了一堂課：出口管制的戰場，第一次從晶片延伸到已上線的商用模型。
 

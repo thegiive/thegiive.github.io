@@ -9,7 +9,7 @@ image: /assets/images/ai-iran-war-fake-analysis-cover.png
 description: "美伊戰爭開打後，各種「AI 如何主導斬首行動」的深度分析文滿天飛。問題是——仗還沒打完，你怎麼可能知道用了什麼模型、什麼平台？這不是分析，這是創作。七分真、三分編，是 AI 時代最高級的假訊息手法。"
 ---
 
-![AI 戰爭假分析文章截圖](/assets/images/ai-iran-war-fake-analysis-cover.png)
+![AI 戰爭假分析文章截圖](/assets/images/ai-iran-war-fake-analysis-cover.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 3 月 2 日

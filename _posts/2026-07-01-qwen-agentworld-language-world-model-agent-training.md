@@ -7,7 +7,7 @@ image: /assets/images/qwen-agentworld-cover.png
 description: "所有人都在訓練 LLM 當更好的 Agent——更會操作工具、更會寫程式、更會瀏覽網頁。但 Qwen 問了一個沒人問過的問題：如果我們不訓練它『行動』，而是訓練它『理解環境會怎麼回應』呢？結果是：用模擬環境訓練出來的 Agent，在真實環境的表現反而超過只在真實環境訓練的版本。這篇拆解 Qwen-AgentWorld 的兩條路線、三階段訓練管線、和五個讓我意外的發現。"
 ---
 
-![Qwen-AgentWorld](/assets/images/qwen-agentworld-cover.png)
+![Qwen-AgentWorld](/assets/images/qwen-agentworld-cover.webp)
 
 ## 一個所有人都忽略的問題
 

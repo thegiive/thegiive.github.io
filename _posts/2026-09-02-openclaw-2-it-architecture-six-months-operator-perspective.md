@@ -9,7 +9,7 @@ description: "OpenClaw 2.0 發布了。這是 AI 時代的頭部 Project，裡�
 
 > OpenClaw 2.0（v2026.8.1）發布了——16,977 個 PR、987 位貢獻者，專案史上最大改版。這篇從 IT 架構師角度拆主要變化，跟 Hermes Agent 做定位比較，最後講我對 OpenClaw 的期許。企業數位助手的根本問題是：一群人用一個助手，還是每個人有自己的助手？
 
-![OpenClaw 2.0 Gateway 架構圖](/assets/images/openclaw-2-detailed-architecture.png)
+![OpenClaw 2.0 Gateway 架構圖](/assets/images/openclaw-2-detailed-architecture.webp)
 
 ---
 

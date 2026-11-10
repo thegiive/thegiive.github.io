@@ -16,7 +16,7 @@ description: "OpenAI Codex 降智事件復盤：從「內外版本不一致」�
 
 雖然這是一個人類歷史上數一數二複雜IT系統，但是 OpenAI工程團隊決定將這個調查的過程[公諸於世](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit?tab=t.0&ref=ai-coding.wiselychen.com)，我非常喜歡[這個團隊leader面對問題](https://x.com/thsottiaux/status/1967996885500928459?utm_source=chatgpt.com)的解決方式「Transparency 」 
 
-![](/assets/images/image-8.png)
+![](/assets/images/image-8.webp)
 
 以下是報告簡單總結，你或許也可以學到很多
 
@@ -30,7 +30,7 @@ OpenAI 團隊發現到真正的問題來自「內部版本跟使用者版本不�
 
 在宣布調查的隔天，即刻於 **Codex CLI v0.50** 上推出新的 **`/feedback`** 通道。任何用戶都能直接回報異常，資料回流同一系統，讓整個除錯過程從「內部猜測」變成「開放共修」。
 
-![](/assets/images/image-4.png)Codex 0.5 : 外部 feedback 的數量從當天開始俱增
+![](/assets/images/image-4.webp)Codex 0.5 : 外部 feedback 的數量從當天開始俱增
 
 ### b. 內外一致 , 讓工程師成為用戶
 
@@ -54,7 +54,7 @@ OpenAI 團隊發現到真正的問題來自「內部版本跟使用者版本不�
 
 > 決定AI Agent 智商的，永遠是上下文怎麼處理
 
-![](/assets/images/image-6.png)Compact Frequency
+![](/assets/images/image-6.webp)Compact Frequency
 
 🧠 OpenAI 重新設計壓縮節奏與合併策略，並調整 timeout 與 I/O 流程。**結果** Throughput 提升約 **12%，** 錯誤率下降近 **47%**
 
@@ -75,7 +75,7 @@ OpenAI 團隊發現到真正的問題來自「內部版本跟使用者版本不�
 
 > “Codex 某個版本後，講著講者突然用韓文回答問題。” 🇰🇷
 
-![](/assets/images/image-7.png)KPop聽太多了嗎~~
+![](/assets/images/image-7.webp)KPop聽太多了嗎~~
 
 這正是多重干擾造成的語言漂移。模型沒有壞，只是接收了不同層的「不一致訊號」。
 

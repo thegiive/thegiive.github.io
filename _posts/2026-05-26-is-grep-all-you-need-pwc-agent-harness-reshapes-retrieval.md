@@ -7,7 +7,7 @@ image: /assets/images/is-grep-all-you-need-paper-cover.png
 description: "PwC 在 2026 年 5 月發了一篇論文「Is Grep All You Need? How Agent Harnesses Reshape Agentic Search」，在 LongMemEval 上用 116 題實測 grep vs vector retrieval，結論是 grep 普遍打贏 vector。但真正的暴擊是同樣 Claude Opus 4.6、同樣 grep，換個 harness 跑準確率差了 17 個百分點。Codex 從 inline 93.1% 換成 programmatic 直接掉到 55.2%。這不是「grep 比較強」的故事，是「Agent Harness 才是勝負手」的故事。"
 ---
 
-![Is Grep All You Need? 論文首頁](/assets/images/is-grep-all-you-need-paper-cover.png)
+![Is Grep All You Need? 論文首頁](/assets/images/is-grep-all-you-need-paper-cover.webp)
 
 **論文連結：** [arxiv.org/abs/2605.15184](https://arxiv.org/abs/2605.15184)
 

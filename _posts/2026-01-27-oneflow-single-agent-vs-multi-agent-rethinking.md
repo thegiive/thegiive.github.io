@@ -7,7 +7,7 @@ image: /assets/images/oneflow-cover.png
 description: "德克薩斯大學與 Amazon 的論文證明：單一 Agent 可達到 Multi-Agent 同等效果，推理成本更低。KV Cache 無法共享是 Multi-Agent 的致命限制。2026 趨勢：從「堆 Agent」轉向「優化工作流」。"
 ---
 
-![OneFlow Cover](/assets/images/oneflow-cover.png)
+![OneFlow Cover](/assets/images/oneflow-cover.webp)
 
 過去一年，Multi-Agent（多智能體）幾乎變成 AI 工作流的政治正確。
 
@@ -46,7 +46,7 @@ OneFlow 是一個**單一 Agent** 架構，但它的表現：
 
 ## 為什麼讓人不舒服？致命的技術限制：KV Cache
 
-![KV Cache 無法共享](/assets/images/oneflow-kv-cache-comparison.png)
+![KV Cache 無法共享](/assets/images/oneflow-kv-cache-comparison.webp)
 
 因為它挑戰了一個直覺假設：
 
@@ -79,7 +79,7 @@ OneFlow 是一個**單一 Agent** 架構，但它的表現：
 
 ## OneFlow 的解法：將外部協調轉為「內部推理」
 
-![OneFlow 內部推理架構](/assets/images/oneflow-internal-reasoning.png)
+![OneFlow 內部推理架構](/assets/images/oneflow-internal-reasoning.webp)
 
 研究團隊沒有堆 Agent 數量。他們重新設計了**單一 Agent 的內部結構與搜索策略**。
 
@@ -131,7 +131,7 @@ OneFlow 是一個**單一 Agent** 架構，但它的表現：
 
 **答案是：完全不一樣的東西。**
 
-![Multi-Agent vs Dual-Agent](/assets/images/oneflow-multiagent-vs-dualagent.png)
+![Multi-Agent vs Dual-Agent](/assets/images/oneflow-multiagent-vs-dualagent.webp)
 
 ### OneFlow 批評的 Multi-Agent vs Anthropic 的 Dual-Agent
 
@@ -226,7 +226,7 @@ Anthropic 的雙 Agent 架構和 OneFlow 的結論其實是**殊途同歸**：
 
 ## 決策框架：你該選哪種架構？
 
-![決策框架](/assets/images/oneflow-decision-framework.png)
+![決策框架](/assets/images/oneflow-decision-framework.webp)
 
 把這篇文章的分析整理成一個簡單的決策框架：
 

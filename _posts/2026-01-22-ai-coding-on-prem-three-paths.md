@@ -10,7 +10,7 @@ image: /assets/images/ai-coding-onprem-decision-framework.png
 
 > 問題不是「能不能做」，而是「出事誰負責」
 
-![AI Coding On-Prem 決策框架](/assets/images/ai-coding-onprem-decision-framework.png)
+![AI Coding On-Prem 決策框架](/assets/images/ai-coding-onprem-decision-framework.webp)
 
 ---
 
@@ -134,7 +134,7 @@ Opus 4.5 很強，但 Llama 3、Qwen、DeepSeek 也在快速追趕。模型層�
 
 ### 架構
 
-![Path 1: Cloud-Internalized Architecture](/assets/images/ai-coding-onprem-path1-cloud-internalized.png)
+![Path 1: Cloud-Internalized Architecture](/assets/images/ai-coding-onprem-path1-cloud-internalized.webp)
 
 ### 為什麼這是「可防禦」的選擇
 
@@ -181,7 +181,7 @@ Agent 讀取檔案、執行 bash 指令、編輯程式碼的能力，是針對 C
 
 ### 架構
 
-![Path 2: True On-Prem Architecture](/assets/images/ai-coding-onprem-path2-true-onprem.png)
+![Path 2: True On-Prem Architecture](/assets/images/ai-coding-onprem-path2-true-onprem.webp)
 
 ### 主權的代價：你失去什麼
 
@@ -218,7 +218,7 @@ Agent 讀取檔案、執行 bash 指令、編輯程式碼的能力，是針對 C
 
 ### 架構
 
-![Path 3: The Grey Compromise Architecture](/assets/images/ai-coding-onprem-path3-grey-compromise.png)
+![Path 3: The Grey Compromise Architecture](/assets/images/ai-coding-onprem-path3-grey-compromise.webp)
 
 ### 「兩全其美」的假象
 
@@ -256,7 +256,7 @@ Claude Code 的 agentic 邏輯（規劃、編輯）是為 Claude 調校的。強
 
 AI Coding 不只是聊天，而是 Agentic Workflow。
 
-![Tool Calling Risk Comparison](/assets/images/ai-coding-onprem-tool-calling-risk.png)
+![Tool Calling Risk Comparison](/assets/images/ai-coding-onprem-tool-calling-risk.webp)
 
 **Claude + Claude（原生優化）：** 原生優化，高成功率。
 
@@ -266,7 +266,7 @@ AI Coding 不只是聊天，而是 Agentic Workflow。
 
 ## 決策框架
 
-![Strategic Decision Framework](/assets/images/ai-coding-onprem-decision-framework.png)
+![Strategic Decision Framework](/assets/images/ai-coding-onprem-decision-framework.webp)
 
 ---
 

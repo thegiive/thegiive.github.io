@@ -7,7 +7,7 @@ image: /assets/images/ai-agent-security-logo.png
 description: "Anthropic 發佈 Opus-4.8 後 7 分鐘，一個 Opus-4.7 的 agent 自主越獄了它。重點不是新模型被破，而是『破它的是另一個模型』。聊聊模型互相越獄這個質變，以及企業該怎麼防。"
 ---
 
-![AI Agent Security](/assets/images/ai-agent-security-logo.png)
+![AI Agent Security](/assets/images/ai-agent-security-logo.webp)
 
 先講結論：這幾天最該注意的資安新聞，不是「Opus-4.8 被越獄了」。
 

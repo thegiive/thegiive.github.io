@@ -7,7 +7,7 @@ image: /assets/images/palantir-karp-cnbc-interview.png
 description: "**作者：** Wisely Chen **日期：** 2026 年 7 月 **系列：** AI 產業觀察 **關鍵字：** Palantir, Ontology, Application Layer, Alex Karp, NVIDIA, Enterprise AI, OpenAI, Anthropic, Dario Amodei"
 ---
 
-![Palantir CEO Alex Karp CNBC 專訪](/assets/images/palantir-karp-cnbc-interview.png)
+![Palantir CEO Alex Karp CNBC 專訪](/assets/images/palantir-karp-cnbc-interview.webp)
 
 > Palantir CEO Alex Karp 在 CNBC 專訪中，用了「livid」（暴怒）來形容美國企業對 OpenAI、Anthropic 等 frontier labs 的態度。他的核心論點：企業花大錢買 token，拿不到對應的業務價值，還擔心 IP 被拿走。他認為真正的 AI 落地公式是「Model + Application Layer + Compute」三者缺一不可，而不是只買 token。
 

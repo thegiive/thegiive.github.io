@@ -91,7 +91,7 @@ keywords: "AI Agent, AI Agent 架構, 企業 AI Agent, AI Agent 安全, Workflow
 
 ## 什麼是 AI Agent？
 
-![AI Agent vs Chatbot](/assets/images/ai-agent-vs-chatbot-comparison.png)
+![AI Agent vs Chatbot](/assets/images/ai-agent-vs-chatbot-comparison.webp)
 
 AI Agent 和 Chatbot 是完全不同的物種。
 
@@ -101,7 +101,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 我認為真正的 Agent 需要滿足三個條件：
 
-![構成真正 Agent 的三個基石](/assets/images/ai-agent-three-pillars.png)
+![構成真正 Agent 的三個基石](/assets/images/ai-agent-three-pillars.webp)
 
 1. **知識庫提取能力**
 2. **工具調用能力**
@@ -117,7 +117,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ### Workflow vs ReAct：兩種基本思維
 
-![Workflow vs ReAct](/assets/images/workflow-vs-react-comparison.png)
+![Workflow vs ReAct](/assets/images/workflow-vs-react-comparison.webp)
 
 
 **Workflow** 的假設是「我能預測所有情況」，但現實世界不是預定好的。
@@ -128,7 +128,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ### Plan & Execute：讀著路書跑
 
-![Plan & Execute](/assets/images/plan-execute-architecture.png)
+![Plan & Execute](/assets/images/plan-execute-architecture.webp)
 
 如果 ReAct 是「摸著石頭過河」，[Plan & Execute](https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/#planning) 就是「先畫好地圖再出發」。
 
@@ -143,7 +143,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ### Dual-Agent 架構：Claude Code 的秘密
 
-![Dual-Agent Architecture](/assets/images/dual-agent-architecture-logo.png)
+![Dual-Agent Architecture](/assets/images/dual-agent-architecture-logo.webp)
 
 [Anthropic 官方](https://www.anthropic.com/engineering/claude-code-best-practices)揭露了 Claude Code 為什麼這麼好用的內部架構——Dual-Agent 設計：
 
@@ -156,7 +156,7 @@ AI Agent 和 Chatbot 是完全不同的物種。
 
 ### Multi-Agent 協作：當 AI 學會「會診」
 
-![Multi-Agent 協作](/assets/images/multi-agent-collaboration.png)
+![Multi-Agent 協作](/assets/images/multi-agent-collaboration.webp)
 
 單一 Agent 有其極限。[Multi-Agent 系統](https://langchain-ai.github.io/langgraph/concepts/multi_agent/)讓多個專業 Agent 協作：
 
@@ -181,7 +181,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 
 ### Plan, Exec, Critic：System 2 思維
 
-![Plan Exec Critic](/assets/images/plan-exec-critic-system2.png)
+![Plan Exec Critic](/assets/images/plan-exec-critic-system2.webp)
 
 加入 Critic 角色讓 Agent 具備「自我反思」能力：
 
@@ -195,7 +195,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 
 ### LATS：讓 Agent 學會「三思而後行」
 
-![LATS Tree Search](/assets/images/lats-decision-brain.png)
+![LATS Tree Search](/assets/images/lats-decision-brain.webp)
 
 [LATS（Language Agent Tree Search）](https://arxiv.org/abs/2310.04406)是終極決策大腦，結合了：
 
@@ -209,7 +209,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 
 ### Storm：駕馭整個編輯團隊
 
-![Storm AI Agent](/assets/images/storm-ai-agent-diagram-20251207.png)
+![Storm AI Agent](/assets/images/storm-ai-agent-diagram-20251207.webp)
 
 [Storm](https://github.com/stanford-oval/storm) 是 Stanford 開源的 Multi-Agent 系統，用於長文寫作。它的架構是真正的「編輯團隊」：
 
@@ -226,7 +226,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 
 ### Nested Learning：告別「金魚腦」AI
 
-![Nested Learning](/assets/images/nested-learning-brain-memory.png)
+![Nested Learning](/assets/images/nested-learning-brain-memory.webp)
 
 2025 年 [Google 發表的 Nested Learning](https://arxiv.org/abs/2506.08071)，讓模型擁有大腦般的長期記憶：
 
@@ -242,7 +242,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 
 ## 企業 AI Agent 安全與風險
 
-![AI Agent Security](/assets/images/ai-agent-security-threat.png)
+![AI Agent Security](/assets/images/ai-agent-security-threat.webp)
 
 ### 為什麼 Agent 比 Chatbot 危險 100 倍？
 
@@ -275,7 +275,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 
 ## 企業 AI Agent 落地實戰案例
 
-![企業 AI Agent 落地](/assets/images/xiaolaoban-part2-ai-agent-cover.png)
+![企業 AI Agent 落地](/assets/images/xiaolaoban-part2-ai-agent-cover.webp)
 
 ### AI Agent 能不能落地？看人
 
@@ -293,7 +293,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 
 不是炫技，而是證明 Agent 在「重複但需要客製化」的任務上有真正價值。
 
-> 實戰案例：[10 分鐘完成 10 個學校推薦函：推薦信 AI Agent 實戰](/shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan)
+> 實戰案例：[10 分鐘完成 10 個學校推薦函：推薦信 AI Agent 實戰](/shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan/)
 
 ---
 
@@ -319,7 +319,7 @@ Agent 落地最大的挑戰是「穩定性」。[Interleaved Thinking](https://d
 
 ### 實戰案例
 
-- **推薦信** [10 分鐘完成 10 封信](/shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan) — 效率提升
+- **推薦信** [10 分鐘完成 10 封信](/shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan/) — 效率提升
 - **系統管理** [Claude Code 做 Linux 管理](/ai-ops-yong-agent-claude-code-zuo-linux-xi-tong-guan-li-you-mei-you-gao-tou-xiang-de-hen/) — AI Ops 實戰
 
 ---

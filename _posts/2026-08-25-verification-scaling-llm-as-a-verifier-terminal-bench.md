@@ -33,7 +33,7 @@ DeepSeek V4 Flash 單次跑 Terminal-Bench 2.1 只有 79%。五次 + self-verify
 
 ## 數字攤開來
 
-![Terminal-Bench 2.1 成本效率比較](/assets/images/verification-scaling-terminal-bench-2-1.png)
+![Terminal-Bench 2.1 成本效率比較](/assets/images/verification-scaling-terminal-bench-2-1.webp)
 
 | 方案 | 成功率 | 每任務成本 | Agent 框架 |
 |------|:------:|:---------:|:----------:|

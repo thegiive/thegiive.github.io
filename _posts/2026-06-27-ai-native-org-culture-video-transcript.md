@@ -7,7 +7,7 @@ image: /assets/images/ai-native-org-culture-cover.jpg
 description: "這是我在生成式 AI 年會 2026 現場、上台前隨手錄的一段話。今年我講的題目是怎麼用 AI 技術加上組織調整，打造一個 AI Native Organization——把人重新定義成 Builder 跟 System Expert，把流程重新設計成人機協作，再把原生 Agent 全面導入營運，每天的 task 量成長了數十倍。但講到最後我必須坦白：技術其實不是最難的部分，最難的是文化——怎麼讓團隊由衷地喜歡這個組織、願意一起走下去。"
 ---
 
-![AI Native Organization 的最大問題，是文化](/assets/images/ai-native-org-culture-cover.jpg)
+![AI Native Organization 的最大問題，是文化](/assets/images/ai-native-org-culture-cover.webp)
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:30px 0;border-radius:8px;">
   <iframe src="https://www.youtube.com/embed/Ssy47fi8cQk" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

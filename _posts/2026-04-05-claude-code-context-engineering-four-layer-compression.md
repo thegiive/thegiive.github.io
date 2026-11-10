@@ -7,7 +7,7 @@ image: /assets/images/claude-code-context-engineering-cover.png
 description: "Claude Code 的上下文管理不是一個功能，是一個完整的子系統。compact/ 目錄下 11 個 TypeScript 文件、3,960 行代碼，拆成四層壓縮：零成本的 Micro Compact、結構化事實提取的 Session Memory Compact、調用模型做 9 維度摘要的 Full Compact、以及帶熔斷器的 Auto Compact。源碼註釋裡的生產數據顯示每天浪費 25 萬次 API 調用——修復方案只有三行代碼。這是「Claude Code 開源設計細節」系列第三篇。"
 ---
 
-![Claude Code 開源設計細節：上下文工程](/assets/images/claude-code-context-engineering-cover.png)
+![Claude Code 開源設計細節：上下文工程](/assets/images/claude-code-context-engineering-cover.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026年4月
@@ -30,11 +30,11 @@ description: "Claude Code 的上下文管理不是一個功能，是一個完整
 
 這個細節告訴我一件事：上下文管理不是設計好就完事的系統，它是一個在生產環境中持續踩坑、持續修補的戰場。
 
-![一個代價高昂的生產級教訓](/assets/images/context-eng-slide-02.png)
+![一個代價高昂的生產級教訓](/assets/images/context-eng-slide-02.webp)
 
 ## 四層壓縮架構總覽
 
-![上下文管理是一個完整的子系統](/assets/images/context-eng-slide-03.png)
+![上下文管理是一個完整的子系統](/assets/images/context-eng-slide-03.webp)
 
 Claude Code 的上下文壓縮分成四層，從輕到重：
 
@@ -47,11 +47,11 @@ Claude Code 的上下文壓縮分成四層，從輕到重：
 
 每一層都假設上一層可能不夠用。每一層都有自己的成本和適用場景。
 
-![四層降級策略：從零成本到極限保護](/assets/images/context-eng-slide-04.png)
+![四層降級策略：從零成本到極限保護](/assets/images/context-eng-slide-04.webp)
 
 ## 第一層：Micro Compact — 零成本的規則清理
 
-![第一層：Micro Compact（零成本的精細清理）](/assets/images/context-eng-slide-05.png)
+![第一層：Micro Compact（零成本的精細清理）](/assets/images/context-eng-slide-05.webp)
 
 微壓縮是成本最低的一層。不調用模型，純規則驅動。
 
@@ -134,7 +134,7 @@ function isMainThreadSource(querySource: QuerySource | undefined): boolean {
 
 ## 第二層：Session Memory Compact — 提煉而非摘要
 
-![第二層：Session Memory（提煉而非摘要）](/assets/images/context-eng-slide-06.png)
+![第二層：Session Memory（提煉而非摘要）](/assets/images/context-eng-slide-06.webp)
 
 這一層和微壓縮有本質區別：微壓縮是**刪東西**，會話記憶壓縮是**提煉東西**。
 
@@ -202,7 +202,7 @@ export function adjustIndexToPreserveAPIInvariants(
 
 ## 第三層：Full Compact — 模型調用的 9 維度摘要
 
-![第三層：Full Compact（9 維度與隱藏的 CoT）](/assets/images/context-eng-slide-07.png)
+![第三層：Full Compact（9 維度與隱藏的 CoT）](/assets/images/context-eng-slide-07.webp)
 
 當會話記憶壓縮不可用或不夠用的時候，系統回退到完整壓縮。這一層需要調用模型。
 
@@ -277,7 +277,7 @@ const PTL_RETRY_MARKER = '[earlier conversation truncated for compaction retry]'
 
 解法是按 API 輪次分組，從最早的組開始丟棄，最多重試三次。如果精確的 token 差距無法確定，就丟掉最老的 20%。
 
-![完整壓縮的代價：遞迴重試與精準恢復](/assets/images/context-eng-slide-08.png)
+![完整壓縮的代價：遞迴重試與精準恢復](/assets/images/context-eng-slide-08.webp)
 
 ### 壓縮後的善後工作
 
@@ -296,7 +296,7 @@ export const POST_COMPACT_MAX_TOKENS_PER_FILE = 5_000
 
 ## 第四層：Auto Compact — 熔斷保護
 
-![第四層：Auto Compact（自動守門員）](/assets/images/context-eng-slide-09.png)
+![第四層：Auto Compact（自動守門員）](/assets/images/context-eng-slide-09.webp)
 
 前面三層都是「怎麼壓」，這一層解決「什麼時候壓」。
 
@@ -330,7 +330,7 @@ const MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES = 3
 
 就是開頭提到的那個修復。連續失敗超過 3 次，停止重試。避免在上下文不可恢復的情況下反覆浪費 API 調用。
 
-![生產級救命索：熔斷器（Circuit Breaker）](/assets/images/context-eng-slide-10.png)
+![生產級救命索：熔斷器（Circuit Breaker）](/assets/images/context-eng-slide-10.webp)
 
 ### 排除邏輯：防止死鎖
 
@@ -410,7 +410,7 @@ if (querySource === 'session_memory' || querySource === 'compact') {
 
 ---
 
-![洞察與收斂：給開發者的 200 行架構藍圖](/assets/images/context-eng-slide-11.png)
+![洞察與收斂：給開發者的 200 行架構藍圖](/assets/images/context-eng-slide-11.webp)
 
 ## 總結：上下文管理是 Agent 工程最被低估的子系統
 

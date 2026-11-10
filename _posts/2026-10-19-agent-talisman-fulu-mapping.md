@@ -22,7 +22,7 @@ faq:
 
 原作者我查不到。但第一眼看完，我笑了，第二眼看完，我覺得這張圖比很多 Agent 架構圖都準。
 
-![把一張符籙拆成 Agent 的十個部位](/assets/images/agent-talisman-fulu-mapping-1.png)
+![把一張符籙拆成 Agent 的十個部位](/assets/images/agent-talisman-fulu-mapping-1.webp)
 
 <nav class="post-toc" markdown="1">
 **目錄**

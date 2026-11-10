@@ -32,7 +32,7 @@ author: Wisely Chen
 
 ---
 
-![架構決定成本：知識的儲存與調用分離](/assets/images/goldman-sachs-china-ai-moe-architecture.png)
+![架構決定成本：知識的儲存與調用分離](/assets/images/goldman-sachs-china-ai-moe-architecture.webp)
 
 ## 架構決定成本：不是 MoE vs Dense，是激活比例的差距
 
@@ -111,7 +111,7 @@ GS 的模型預測，這些虧損到 2030 年分別轉正至 +14% 和 +22%。邏
 
 ---
 
-![定價決定歸屬：單任務成本觸發的市場翻轉](/assets/images/goldman-sachs-china-ai-market-share.png)
+![定價決定歸屬：單任務成本觸發的市場翻轉](/assets/images/goldman-sachs-china-ai-market-share.webp)
 
 ## 定價決定場景歸屬：Agent 和 Coding 已經被拿下
 
@@ -129,7 +129,7 @@ Agent 和 coding 恰好是這種場景。一個 coding agent 跑一個任務動�
 
 ---
 
-![實務決策：能力不等於最佳位置](/assets/images/goldman-sachs-china-ai-pipeline.png)
+![實務決策：能力不等於最佳位置](/assets/images/goldman-sachs-china-ai-pipeline.webp)
 
 ## 這跟 AgentOpt 論文的交叉驗證
 

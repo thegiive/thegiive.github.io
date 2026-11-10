@@ -9,7 +9,7 @@ categories: [AI Coding, Agent Engineering, 企業 AI 轉型]
 image: /assets/images/ai-native-org-slide-watermark.png
 ---
 
-# AI Native 工程團隊的三個轉折點：Harness Engineering、非同步管理、AI 當老師
+## AI Native 工程團隊的三個轉折點：Harness Engineering、非同步管理、AI 當老師
 
 我昨天寫了一篇 [如何打造 AI Native Org](https://ai-coding.wiselychen.com/anthropic-fiona-fung-claude-code-eng-management-ai-era/)，拆解了 Anthropic 內部工程團隊的完整管理方法論。但寫完之後我一直在想一個問題：**具體對 IT 團隊來說，要怎麼開始？**
 
@@ -72,7 +72,7 @@ AI 寫測試 → 測試失敗 → AI 生成修復 → **人類專注架構驗證
 
 ### 實際怎麼落地
 
-![落地實踐：從哪裡搭建護欄](/assets/images/ai-native-org-slide-harness-landing.png)
+![落地實踐：從哪裡搭建護欄](/assets/images/ai-native-org-slide-harness-landing.webp)
 
 我們的做法很簡單：**專注在 PRD 跟 Testing Plan 上。** 但這其實是擇一專注——你不需要兩個都從頭寫，因為 AI 可以幫你從一個轉出另一個。
 
@@ -86,7 +86,7 @@ AI 寫測試 → 測試失敗 → AI 生成修復 → **人類專注架構驗證
 
 至於測試代碼本身的生成和執行，用 Codex 來做 Automation 即可。寫測試、跑測試、根據測試結果修復代碼——這些重複性的苦工，AI 做得比人快，而且不會抱怨。
 
-![實戰案例：三層護欄防護網](/assets/images/ai-native-org-slide-three-guardrails.png)
+![實戰案例：三層護欄防護網](/assets/images/ai-native-org-slide-three-guardrails.webp)
 
 舉我自己的例子。我現在用 Claude Code 寫 code，整個流程是這樣的：寫完之後，我會先用 Codex 透過 PRD 做第一層 source code review——它會對照 PRD 的需求規格，檢查實作有沒有漏掉什麼、有沒有偏離原始需求。然後再請 Claude Code 利用 Automation 來跑 testing，自動生成測試、自動執行、自動修復。最後人還是會介入進行 code review，但這時候我看的不是語法對不對，而是架構合不合理、有沒有安全疑慮、效能會不會有問題。**三層護欄：AI review PRD 合規 → AI 跑測試 → 人審架構。**
 
@@ -94,7 +94,7 @@ AI 寫測試 → 測試失敗 → AI 生成修復 → **人類專注架構驗證
 
 ## 非同步管理：數據追蹤交給 AI 數位助手，人去做該做的事
 
-![非同步管理：AI 數位助手信號流](/assets/images/ai-native-org-slide-async-management.png)
+![非同步管理：AI 數位助手信號流](/assets/images/ai-native-org-slide-async-management.webp)
 
 ### 管理者的時間都花在哪
 
@@ -210,7 +210,7 @@ AI 把學習的門檻降到史上最低。以前你想學一個新技術要花�
 
 ## 三件事的交會點：釋放的是同一種資源
 
-![三件事的交會點：釋放人類注意力](/assets/images/ai-native-org-slide-convergence.png)
+![三件事的交會點：釋放人類注意力](/assets/images/ai-native-org-slide-convergence.webp)
 
 回過頭看，Harness Engineering 釋放的是工程師的注意力——從「寫語法」轉移到「審架構」。非同步管理釋放的是主管的注意力——從「追進度」轉移到「帶人」。AI 當老師釋放的是團隊的學習瓶頸——從「等人教」轉移到「自己探索」。
 

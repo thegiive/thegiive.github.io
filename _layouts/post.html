@@ -18,7 +18,7 @@ layout: default
 
     {% if page.image %}
     <div class="post-image">
-      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" title="{{ page.image_alt | default: page.title }}">
+      {% assign cover_alt = page.image_alt | default: page.title %}{% include cover-image.html src=page.image alt=cover_alt eager=true %}
     </div>
     {% endif %}
 
@@ -30,7 +30,7 @@ layout: default
   </header>
 
   <div class="post-content">
-    {{ content }}
+    {{ content | replace: '<img src=', '<img loading="lazy" src=' }}
   </div>
 
   <footer class="post-footer">

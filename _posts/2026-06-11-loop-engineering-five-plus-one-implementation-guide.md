@@ -7,7 +7,7 @@ image: /assets/images/loop-engineering-five-components.png
 description: "上一篇我們拆解了 Loop Engineering 的概念和邊界。這篇講實作。我把 Codex 和 Claude Code 都跑過一輪之後，歸納出一個 Loop 真正需要的五個結構性組件——Loop/Goal、Worktrees、Skills、Connectors、Sub-agents——加上最容易被低估的東西：Memory。逐個拆解哪些能直接用、哪些需要改造、哪些看起來很美但你的場景可能不需要。Loop 改變工作方式，但它不會把你從工作中移除。設計 Loop 的人，比寫 Prompt 的人需要更多判斷力，不是更少。"
 ---
 
-![Loop Engineering 實作指南](/assets/images/loop-engineering-five-components.png)
+![Loop Engineering 實作指南](/assets/images/loop-engineering-five-components.webp)
 
 [上一篇](/loop-engineering-from-prompt-to-loop-paradigm-shift/)我們拆解了 Loop Engineering 的三個來源定義，劃了一條邊界線：哪些工作該 Loop 化，哪些不該。
 
@@ -15,7 +15,7 @@ description: "上一篇我們拆解了 Loop Engineering 的概念和邊界。這
 
 上一篇寫完之後，我把 Codex 和 Claude Code 的 Loop 相關功能都實際跑了一輪。概念不難，但「能跑起來的 Loop」和「看起來像 Loop 的一次性腳本」之間的差距，全在細節裡。
 
-![概念與實作的距離](/assets/images/loop-eng-slide-02.png)
+![概念與實作的距離](/assets/images/loop-eng-slide-02.webp)
 
 所以這篇不談理論，逐個組件拆解：它是什麼、怎麼設、我自己的使用經驗裡哪些有效哪些踩了坑。
 
@@ -36,13 +36,13 @@ description: "上一篇我們拆解了 Loop Engineering 的概念和邊界。這
 
 每一個組件的「能用」和「好用」之間，都有一段距離。
 
-![打造自治 Loop 的 5+1 藍圖](/assets/images/loop-eng-slide-03.png)
+![打造自治 Loop 的 5+1 藍圖](/assets/images/loop-eng-slide-03.webp)
 
 ---
 
 ## 組件 1：Loop / Goal——迴圈怎麼跑、什麼時候停
 
-![Loop 與 Goal 的本質差異](/assets/images/loop-eng-slide-04.png)
+![Loop 與 Goal 的本質差異](/assets/images/loop-eng-slide-04.webp)
 
 Loop Engineering 之所以叫 Loop，是因為 agent 不只跑一次。但「重複跑」有兩種本質不同的模式，搞混了會出事。
 
@@ -102,7 +102,7 @@ Codex 和 Claude Code 都有這兩個 primitive，行為一致。Codex 的 `/goa
 
 ## 組件 2：Worktrees——平行 Agent 不互踩的基礎
 
-![平行隔離：解決機械衝突，但不解決認知衝突](/assets/images/loop-eng-slide-05.png)
+![平行隔離：解決機械衝突，但不解決認知衝突](/assets/images/loop-eng-slide-05.webp)
 
 只要你同時跑不止一個 agent，檔案就會開始衝突。
 
@@ -135,7 +135,7 @@ claude --worktree
 
 ## 組件 3：Skills——讓 Agent 不再每次冷啟動
 
-![專案技能：消除 Agent 的金魚腦](/assets/images/loop-eng-slide-06.png)
+![專案技能：消除 Agent 的金魚腦](/assets/images/loop-eng-slide-06.webp)
 
 Skill 的作用是讓你不用每次 session 都像金魚一樣重新解釋同一個專案上下文。
 
@@ -165,7 +165,7 @@ Codex 是這樣，Claude Code 也是這樣。
 
 ## 組件 4：Connectors——讓 Loop 看見 Filesystem 之外的世界
 
-![外部連接器：讓 Loop 走出檔案系統](/assets/images/loop-eng-slide-07.png)
+![外部連接器：讓 Loop 走出檔案系統](/assets/images/loop-eng-slide-07.webp)
 
 一個只能看見 filesystem 的 Loop，是一個很小的 Loop。
 
@@ -195,7 +195,7 @@ Plugins 還可以把 connectors 和 skills 打包在一起。這樣你的隊友�
 
 ## 組件 5：Sub-agents——寫的人和檢查的人必須拆開
 
-![角色拆分：實作者與驗證者必須分離](/assets/images/loop-eng-slide-08.png)
+![角色拆分：實作者與驗證者必須分離](/assets/images/loop-eng-slide-08.webp)
 
 在一個 Loop 中，最有用的結構性設計是把「寫的人」和「檢查的人」拆開。
 
@@ -231,7 +231,7 @@ Sub-agents 會消耗更多 tokens，因為每一個都要進行自己的 model �
 
 ## +1：Memory——最容易被低估的組件
 
-![狀態記憶：最被低估的 Loop 脊柱](/assets/images/loop-eng-slide-09.png)
+![狀態記憶：最被低估的 Loop 脊柱](/assets/images/loop-eng-slide-09.webp)
 
 Memory 聽起來簡單到不像重要的東西。但它其實是每個 long-running agent 都依賴的同一個技巧。
 
@@ -267,7 +267,7 @@ Memory 可以是一個 markdown 文件、一個 state file、或者任何存在�
 
 ## 五個組件的映射表：Codex vs. Claude Code
 
-![工具趨同性：核心需求決定功能樣貌](/assets/images/loop-eng-slide-10.png)
+![工具趨同性：核心需求決定功能樣貌](/assets/images/loop-eng-slide-10.webp)
 
 把兩個工具的能力名稱對齊之後，你會發現名字不同，但能力本質上一樣。
 
@@ -286,7 +286,7 @@ Memory 可以是一個 markdown 文件、一個 state file、或者任何存在�
 
 ## 組合起來：一個可以照抄的模板
 
-![完整運作：自動修復 Loop 的生命週期](/assets/images/loop-eng-slide-11.png)
+![完整運作：自動修復 Loop 的生命週期](/assets/images/loop-eng-slide-11.webp)
 
 概念講完了，來一個實際能跑的組合。
 
@@ -346,7 +346,7 @@ Action：通過 → 觸發 publish skill 部署到 GitHub Pages
 
 ## 三個設計 Loop 時容易犯的錯
 
-![設計 Loop 最常犯的三個錯誤](/assets/images/loop-eng-slide-12.png)
+![設計 Loop 最常犯的三個錯誤](/assets/images/loop-eng-slide-12.webp)
 
 ### 錯誤 1：沒有停止條件的 Loop
 
@@ -379,7 +379,7 @@ Loop 不知道這兩者的區別。但你知道。
 
 ## 坦白說
 
-![你的工作環節適合 Loop 化嗎？](/assets/images/loop-eng-slide-13.png)
+![你的工作環節適合 Loop 化嗎？](/assets/images/loop-eng-slide-13.webp)
 
 我現在的狀態，大概用了五個組件裡的三個半：Loop/Goal（`/goal` 修 bug 到測試過常用，`/loop` 做定期檢查偶爾用）、Skills（寫得很完整）、Connectors（MCP 在用）、Sub-agents（code review 時有在用 maker/checker 分離）。
 
@@ -397,7 +397,7 @@ Worktree 我還在摸索。主要原因不是技術門檻，而是我的工作�
 
 Loop 改變工作方式，但它不會把你從工作中移除。設計 Loop 的那個人，需要比寫 Prompt 的人更多的判斷力，不是更少。
 
-![判斷力，是自動化時代最稀缺的資源](/assets/images/loop-eng-slide-14.png)
+![判斷力，是自動化時代最稀缺的資源](/assets/images/loop-eng-slide-14.webp)
 
 ---
 

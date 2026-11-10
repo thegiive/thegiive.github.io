@@ -15,7 +15,7 @@ author: Wisely Chen
 
 第一張海圖攤在華府。7 月 24 日，Jensen Huang 註冊 X 十幾年後發出人生第一則貼文，內容不是新晶片，是一封信：[Open Weights and American AI Leadership](https://images.nvidia.com/pdf/Open-Weights-and-American-AI-Leadership.pdf)，25 家機構連署——Meta、Microsoft、IBM、Dell、a16z、Y Combinator、Hugging Face、Mistral、Palantir、CrowdStrike、Linux Foundation 都在名單上。
 
-![Jensen Huang 的第一則 X 貼文：分享 NVIDIA 連署的開放權重公開信](/assets/images/open-weights-jensen-first-x-post.png)
+![Jensen Huang 的第一則 X 貼文：分享 NVIDIA 連署的開放權重公開信](/assets/images/open-weights-jensen-first-x-post.webp)
 
 名單上找不到的兩家公司：OpenAI 和 Anthropic。
 
@@ -126,7 +126,7 @@ NVIDIA 的算盤其實對得起來：開放模型讓全世界每個組織都需�
 
 ## 關鍵洞察
 
-![兩套推導框架，同一個終極結論：美國用國家安全框架、中國用賽局理論框架，都推出「試圖獨占本身就是最確定的輸法」](/assets/images/open-weights-two-frameworks-one-conclusion.png)
+![兩套推導框架，同一個終極結論：美國用國家安全框架、中國用賽局理論框架，都推出「試圖獨占本身就是最確定的輸法」](/assets/images/open-weights-two-frameworks-one-conclusion.webp)
 
 **看開源陣營，從看理念改成看毛利結構。** 梁文鋒把話講穿了：6 倍利潤的公司開源無傷，100 倍利潤的公司開源致命。判斷一家公司會不會真心維持開源，不要聽宣言，去算它的 API 定價離硬體成本多遠。
 

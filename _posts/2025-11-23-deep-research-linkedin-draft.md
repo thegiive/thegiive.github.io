@@ -35,7 +35,7 @@ excerpt: "探討如何用 System 2 思維為 Agent 加入自我檢查能力，�
 
 諾貝爾獎得主 Daniel Kahneman 在《快思慢想》中提出:人類有兩種思維系統。
 
-![System 1 vs System 2 對比圖](/assets/images/system-1-vs-2-comparison.png)
+![System 1 vs System 2 對比圖](/assets/images/system-1-vs-2-comparison.webp)
 
 **⚡ System 1(快思):** 直覺、快速、無意識的反應
 - **對應 Agent:** 生成文本、進行簡單的工具調用
@@ -70,7 +70,7 @@ Plan, Exec, Critic 架構的核心洞察:
 - Critic/Reflector Node: 一致性檢查、完整性檢查、幻覺檢測
 - 使用強推理模型
 
-![Plan, Exec, Critic 控制流架構](/assets/images/deep-research-control-flow.png)
+![Plan, Exec, Critic 控制流架構](/assets/images/deep-research-control-flow.webp)
 
 這個解耦帶來兩個關鍵好處:
 1. **成本效率**: 不需要用昂貴的模型做所有事情
@@ -102,7 +102,7 @@ Plan, Exec, Critic 則是循環圖（Cyclic Graph）：在 Executor 之後，加
 
 2023 年時，類似的循環架構嘗試大多失敗了。核心原因：**缺乏強推理模型。**
 
-![強推理模型對比](/assets/images/strong-reasoning-models-comparison.png)
+![強推理模型對比](/assets/images/strong-reasoning-models-comparison.webp)
 
 當時主流的模型（如 GPT-3.5、早期的 Gemini）在擔任 Critic 角色時，會表現出「橡皮圖章」特性——無論檢索結果多麼不相關，都傾向於「通過」，完全沒有起到審查作用。
 
@@ -135,9 +135,9 @@ Plan, Exec, Critic 則是循環圖（Cyclic Graph）：在 Executor 之後，加
 
 但是 ChatGPT 5.1 就不觸發 web search ，直接拿模型內的資料回覆（回了 OpenAI-4o ，Sonnet 3.7) 
 
-![深度研究 Demo 1](/assets/images/deep-research-demo-1.png)
+![深度研究 Demo 1](/assets/images/deep-research-demo-1.webp)
 
-![深度研究 Demo 2](/assets/images/deep-research-demo-2.png)
+![深度研究 Demo 2](/assets/images/deep-research-demo-2.webp)
 ---
 
 ## 使用場景

@@ -9,7 +9,7 @@ tags: ["AI Security", "Supply Chain Attack", "LiteLLM", "Vibe Coding", "Harness 
 categories: ["AI 資訊安全"]
 ---
 
-# Vibe Coding 最大的風險不是 AI 寫爛 Code，而是你根本不知道它幫你裝了什麼
+## Vibe Coding 最大的風險不是 AI 寫爛 Code，而是你根本不知道它幫你裝了什麼
 
 ## Karpathy 說：這是現代軟體最可怕的事
 
@@ -17,7 +17,7 @@ categories: ["AI 資訊安全"]
 
 Karpathy 是誰不用多介紹 — 前 Tesla AI 總監、OpenAI 創始成員。當這個等級的人用「horror」來形容一個事件的時候，你知道事情不小。
 
-![Andrej Karpathy 推文：LiteLLM 供應鏈攻擊是現代軟體最恐怖的事](/assets/images/litellm-supply-chain-karpathy-tweet.png)
+![Andrej Karpathy 推文：LiteLLM 供應鏈攻擊是現代軟體最恐怖的事](/assets/images/litellm-supply-chain-karpathy-tweet.webp)
 
 他的原話：
 
@@ -51,7 +51,7 @@ X 用戶（@MinLiBuilds）也遇到了類似的情況：
 
 > 「昨天裝了 browser-use，上午裝的，一打開就有無數 python 進程啟動電腦卡死。claude 一啟動就自動加載 mcp 就會啟動無限個 python。」
 
-![实践哥MinLi 推特截圖：browser-use 安裝後觸發 LiteLLM 惡意版本](/assets/images/litellm-supply-chain-minli-tweet.png)
+![实践哥MinLi 推特截圖：browser-use 安裝後觸發 LiteLLM 惡意版本](/assets/images/litellm-supply-chain-minli-tweet.webp)
 
 他後來去看了 browser-use 的源碼，發現他們用了 `litellm>=1.82.2`。browser-use 官方後來緊急修復，在 GitHub commit 中把版本鎖定為 `litellm==1.82.2`。
 
@@ -139,7 +139,7 @@ LiteLLM 事件不是孤例。往前看幾個月，整個 AI 開發生態系統�
 
 **Amazon 內部事故趨勢：** 根據 Financial Times 的報導，Amazon 的電商業務召集了大量工程師開「深度檢討」會議，因為近月來出現了「一連串的事故趨勢」，其中一個 contributing factor 就是「GenAI assisted changes」的使用。報告用了一個詞：「high blast radius」（高爆炸半徑）。
 
-![Amazon AI Coding 事故報導](/assets/images/litellm-supply-chain-amazon-ai-outage.jpeg)
+![Amazon AI Coding 事故報導](/assets/images/litellm-supply-chain-amazon-ai-outage.webp)
 
 當連 Amazon 這種等級的公司都因為 AI Coding 導致 production outage 趨勢上升，我們這些中小團隊該怎麼想？
 

@@ -7,7 +7,7 @@ image: /assets/images/claudedevs-postmortem-announcement.png
 description: "Anthropic 4/23 發 post-mortem，承認過去一個月 Claude Code 品質退化的三個 bug 全在 harness 層：reasoning effort 默認降級、thinking clear 快取 bug、verbosity system prompt 反噬。模型本身沒退化，API 也沒受影響。但同時間中國 AI coding 訂閱市場也在收緊——智譜 GLM 漲價 30%、阿里 Qwen Code Lite 停售——代表一個趨勢：token 越來越貴，吃到飽方案正在被廠商一個個收回去。你現在付的 MAX 月費，可能是 AI coding 歷史上最便宜的一段時間。"
 ---
 
-![ClaudeDevs 官方帳號 2026/4/24 承認 Claude Code 品質退化 post-mortem 公告](/assets/images/claudedevs-postmortem-announcement.png)
+![ClaudeDevs 官方帳號 2026/4/24 承認 Claude Code 品質退化 post-mortem 公告](/assets/images/claudedevs-postmortem-announcement.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 4 月

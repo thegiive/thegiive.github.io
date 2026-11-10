@@ -9,7 +9,7 @@ categories: [AI 產業分析]
 author: Wisely Chen
 ---
 
-# Qwen3.8-27B 開源：SWE-bench Pro 61.7 贏過 Opus 4.6 Max，「那就用地端」第一次不是妥協
+## Qwen3.8-27B 開源：SWE-bench Pro 61.7 贏過 Opus 4.6 Max，「那就用地端」第一次不是妥協
 
 這是我看過大家敲碗最久的小模型。
 
@@ -19,7 +19,7 @@ author: Wisely Chen
 
 官方 benchmark 表裡最顯眼的一行：SWE-bench Pro 61.7。Claude Opus 4.6 Max 是 53.4。
 
-![SWE-bench Pro：Qwen3.8-27B 61.7 vs Claude Opus 4.6 Max 53.4](/assets/images/qwen-3-8-27b-briefing-2.png)
+![SWE-bench Pro：Qwen3.8-27B 61.7 vs Claude Opus 4.6 Max 53.4](/assets/images/qwen-3-8-27b-briefing-2.webp)
 
 一個跑在自己腳下的 local AI，能力直逼我最喜歡的 Opus 4.6。天上掉餡餅。
 
@@ -64,7 +64,7 @@ author: Wisely Chen
 
 分布不是隨機的。**贏的全是 agentic workflow 類：改 code、跑流程、操作電腦和手機、聽懂指令。輸的全是知識和推理天花板類：科學推理、跨領域難題、從零生成整個 repo。**
 
-![贏輸分布：Agentic 任務全贏，知識天花板任務全輸](/assets/images/qwen-3-8-27b-briefing-4.png)
+![贏輸分布：Agentic 任務全贏，知識天花板任務全輸](/assets/images/qwen-3-8-27b-briefing-4.webp)
 
 這個分布恰好對到企業內部部署的需求清單。企業 agent 的日常是「讀 ticket、改三個檔案、跑測試、填表單、操作內部系統」，不是解 GPQA 等級的科學題。天花板類能力輸 Opus 幾分，對這類 workload 的影響有限；agentic 類能力贏，才是每天都用得到的差異。
 
@@ -82,7 +82,7 @@ model_type 仍然是 `qwen3_5`。64 層 decoder、5120 hidden size、17408 FFN�
 
 **Qwen3.8 不是「架構上的 3.8」，是「agent 行為上的 3.8」。**
 
-![底層架構 0 變化，飛躍的進步來自後訓練](/assets/images/qwen-3-8-27b-briefing-5.png)
+![底層架構 0 變化，飛躍的進步來自後訓練](/assets/images/qwen-3-8-27b-briefing-5.webp)
 
 這也解釋了為什麼 GPQA Diamond 只進步 1.4 分、HLE 幾乎沒動，而 OSWorld 跳了 20.4 分、DeepSWE 跳了 28.9 分——前者靠的是模型容量和預訓練知識，後者靠的是後訓練和環境交互數據。架構不變、後訓練集中火力，跳的自然是後者。
 
@@ -94,7 +94,7 @@ model_type 仍然是 `qwen3_5`。64 層 decoder、5120 hidden size、17408 FFN�
 
 前面講了架構沒變，但這套 hybrid 架構本身對地端部署有一個很實際的好處：**64 層裡只有 16 層需要存隨 context 線性增長的 KV cache。**
 
-![混合架構記憶體優勢：48 Gated DeltaNet + 16 Full Attention](/assets/images/qwen-3-8-27b-briefing-6.png)
+![混合架構記憶體優勢：48 Gated DeltaNet + 16 Full Attention](/assets/images/qwen-3-8-27b-briefing-6.webp)
 
 48 層 Gated DeltaNet 維護的是固定大小的遞迴狀態矩陣，不管 context 多長，記憶體佔用不變。傳統純 Transformer 的 64 層每層都要存 KV cache，Qwen3.8 只有 16 層要。這讓它比同規模的純 Transformer 天生更適合長會話、coding agent、多輪 tool calling 這類 context 越跑越長的場景。
 
@@ -232,7 +232,7 @@ API 參數：
 
 但地端**沒有**解掉 agent 行為風險。一個能改 code、跑指令、操作內部系統的 agent，跑在你自己的機器上，prompt injection 一樣打得進來，權限給太大一樣刪得掉資料庫。這一類風險跟模型放在哪裡無關，跟 harness 怎麼設計有關。
 
-![資安邊界：地端解決資料出境，但 agent 行為風險仍在](/assets/images/qwen-3-8-27b-briefing-8.png)
+![資安邊界：地端解決資料出境，但 agent 行為風險仍在](/assets/images/qwen-3-8-27b-briefing-8.webp)
 
 所以誠實版本是：**地端解掉的是「資料流向誰」的問題，不是「agent 會做什麼」的問題。** 前者是採購和合規層級，後者是工程層級。「地端比較安全」這句話成立，但只成立一半——權限收斂和工具鏈隔離的工還是一樣多。
 

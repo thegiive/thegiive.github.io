@@ -7,7 +7,7 @@ image: /assets/images/msa-slide-04.png
 description: "MSA 的核心問題很簡單：當知識量變得非常大時，模型到底怎麼「找資料並推理」？它的答案不是做一個更快的 RAG，而是把「找資料」變成模型思考的一部分。檢索不再是前處理，而是推理的一部分。"
 ---
 
-# MSA：4B 模型打贏 235B RAG 系統，記憶力不靠外掛的時代來了？
+## MSA：4B 模型打贏 235B RAG 系統，記憶力不靠外掛的時代來了？
 
 > EverMind AI 的 [Memory Sparse Attention（MSA）](https://github.com/EverMind-AI/MSA)論文，把「記憶」直接長進注意力機制裡，100M tokens、O(L) 複雜度、2 張 A800 就能跑。聽起來太好了，我們來拆開看看到底怎麼回事。
 
@@ -34,7 +34,7 @@ MSA 的做法是把這件事直接改掉：把 retriever 內建進 attention 裡
 
 結果是：**檢索不再是前處理，而是推理的一部分。**
 
-![傳統 RAG 架構 vs MSA 原生架構](/assets/images/msa-slide-04.png)
+![傳統 RAG 架構 vs MSA 原生架構](/assets/images/msa-slide-04.webp)
 
 ### 這個差異帶來的影響其實很大
 
@@ -86,7 +86,7 @@ MSA 的做法是把這件事直接改掉：把 retriever 內建進 attention 裡
 
 MSA 的野心是同時做到：**線性複雜度 + 1 億 token 容量 + 高精度**。
 
-![LLM 記憶系統的不可能三角](/assets/images/msa-slide-03.png)
+![LLM 記憶系統的不可能三角](/assets/images/msa-slide-03.webp)
 
 ---
 
@@ -103,7 +103,7 @@ MSA 的野心是同時做到：**線性複雜度 + 1 億 token 容量 + 高精�
 
 關鍵差異：**整個檢索過程是可微分的、端到端訓練的**。RAG 的 retriever 是凍結的，檢索錯了模型也學不到教訓。MSA 的路由器跟語言模型一起訓練，檢索品質會隨訓練改善。
 
-![機制一：從全盤皆看到精準挑重點](/assets/images/msa-slide-05.png)
+![機制一：從全盤皆看到精準挑重點](/assets/images/msa-slide-05.webp)
 
 ### 2. Document-wise RoPE：64K 訓練，100M 推論
 
@@ -118,7 +118,7 @@ MSA 用了兩層位置編碼：
 
 結果：**64K 訓練長度外推到 100M，是 1500 倍的外推能力**。從 32K 到 1M tokens，NIAH（大海撈針）準確率只掉了 3.93 個百分點。
 
-![機制二：Document-wise RoPE 雙層位置編碼](/assets/images/msa-slide-06.png)
+![機制二：Document-wise RoPE 雙層位置編碼](/assets/images/msa-slide-06.webp)
 
 ### 3. KV Cache 分層儲存：GPU 搜、CPU 存
 
@@ -135,7 +135,7 @@ MSA 用了兩層位置編碼：
 
 硬體需求：**100M tokens 推論只需 2 張 A800 GPU**。
 
-![機制三：KV Cache 分層儲存架構](/assets/images/msa-slide-07.png)
+![機制三：KV Cache 分層儲存架構](/assets/images/msa-slide-07.webp)
 
 ### 4. Memory Interleave：碎片化資訊也能串起來
 
@@ -147,7 +147,7 @@ MSA 的 Memory Interleave 機制：
 
 模型自主決定需要幾輪檢索。消融實驗顯示，拿掉 Memory Interleave，平均分數掉 5.3%，但在 HotpotQA（多跳推理基準）上掉了 **19.2%**。
 
-![機制四：內建多跳推理 Memory Interleave](/assets/images/msa-slide-08.png)
+![機制四：內建多跳推理 Memory Interleave](/assets/images/msa-slide-08.webp)
 
 ---
 
@@ -183,7 +183,7 @@ NIAH（大海撈針）1M tokens：
 - MSA：**94.84%**
 - 原始 Qwen3-4B：**24.69%**（直接崩潰）
 
-![數據會說話：跨越量級的降維打擊](/assets/images/msa-slide-09.png)
+![數據會說話：跨越量級的降維打擊](/assets/images/msa-slide-09.webp)
 
 ---
 
@@ -216,7 +216,7 @@ NIAH（大海撈針）1M tokens：
 | 資訊損失 | 壓縮累積，越長越糊 | 選擇性保留，不壓縮 |
 | 1M tokens 準確率 | 顯著衰退 | 94.84% |
 
-![企業級架構選型對比](/assets/images/msa-slide-10.png)
+![企業級架構選型對比](/assets/images/msa-slide-10.webp)
 
 ---
 
@@ -244,7 +244,7 @@ RAG 的一個優勢是語料更新只需重建索引。MSA 的離線編碼階段
 
 MSA 在 4B 模型上效果驚人，但在 7B、14B、70B 上表現如何？規模效應是否線性？這些問題還沒有答案。
 
-![坦白說：企業部署前必須冷靜評估的四大現實](/assets/images/msa-slide-11.png)
+![坦白說：企業部署前必須冷靜評估的四大現實](/assets/images/msa-slide-11.webp)
 
 ---
 

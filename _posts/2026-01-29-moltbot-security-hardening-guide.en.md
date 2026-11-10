@@ -55,7 +55,7 @@ This article is compiled from Moltbot community hands-on experience. The fun par
 
 Before implementing anything, understand the overall defensive mindset. AI Agent Security isn’t a single control; it’s **four layers of defense in depth**:
 
-![AI Agent Security four-layer defense-in-depth architecture](/assets/images/ai-agent-security-slide-02.png)
+![AI Agent Security four-layer defense-in-depth architecture](/assets/images/ai-agent-security-slide-02.webp)
 
 | Layer | Goal | Core question |
 |------|------|---------|
@@ -72,7 +72,7 @@ Below, we go through each layer and the concrete implementation steps.
 
 ## Layer 1 — Isolation: limit the blast radius
 
-![AI Agent isolation and blast radius control diagram](/assets/images/ai-agent-security-slide-09.png)
+![AI Agent isolation and blast radius control diagram](/assets/images/ai-agent-security-slide-09.webp)
 
 **Core question: If compromised, how big is the loss?**
 
@@ -139,7 +139,7 @@ The point of secret management isn’t only “protecting secrets,” but **limi
 
 ## Layer 2 — Quarantine: prompt injection defense
 
-![Prompt injection and content isolation defense flow](/assets/images/ai-agent-security-slide-03.png)
+![Prompt injection and content isolation defense flow](/assets/images/ai-agent-security-slide-03.webp)
 
 **Core question: What can external input do?**
 
@@ -209,7 +209,7 @@ Before executing the following operations, pause and confirm:
 
 ## Layer 3 — Rollback: damage recovery
 
-![AI Agent rollback capability diagram](/assets/images/ai-agent-security-slide-05.png)
+![AI Agent rollback capability diagram](/assets/images/ai-agent-security-slide-05.webp)
 
 **Core question: Can we recover after an incident?**
 
@@ -279,7 +279,7 @@ bw lock
 
 ## Layer 4 — Transparency: early warning
 
-![AI Agent transparency and early warning](/assets/images/ai-agent-security-slide-07.png)
+![AI Agent transparency and early warning](/assets/images/ai-agent-security-slide-07.webp)
 
 **Core question: Can we detect issues early?**
 

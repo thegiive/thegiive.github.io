@@ -7,7 +7,7 @@ image: /assets/images/ai-writing-decline-cover.png
 description: "如果你要用 AI 寫東西——寫文章、寫報告、做文案——越老的模型越好用。過去半年全世界的新模型在 coding 上越來越強，但在『寫人話』這件事上一路退步，從有特色、到中庸、到現在的油膩。這篇講三個原因（RLHF 的 house style、訓練數據崩塌、廠商只卷 coding 不卷寫作），附一個 Opus 4.6 vs 4.8 的盲測實驗，以及我為什麼決定把寫作搬到地端。"
 ---
 
-![越新的模型，寫作越油](/assets/images/ai-writing-decline-cover.png)
+![越新的模型，寫作越油](/assets/images/ai-writing-decline-cover.webp)
 
 > 「我現在就給你最直白、最直接、最不繞彎、最干脆、最不墨跡、最實在、最通透、最有效、最硬核的回答——」
 

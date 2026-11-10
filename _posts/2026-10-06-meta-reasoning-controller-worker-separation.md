@@ -77,7 +77,7 @@ Meta Superintelligence Labs 9 月 29 日的論文〈[Thinking Before Thinking: S
 
 ## 二、新做法：一個 controller 指揮、一群 worker 做事
 
-![Agentic Meta-Reasoning 架構圖：左欄是現有 Agent 的四個問題，中間是 controller 的四階段迴圈與它操作的精簡狀態、持久記憶、平行 worker，右欄是對應的四個改善](/assets/images/meta-reasoning-figure1-architecture.png)
+![Agentic Meta-Reasoning 架構圖：左欄是現有 Agent 的四個問題，中間是 controller 的四階段迴圈與它操作的精簡狀態、持久記憶、平行 worker，右欄是對應的四個改善](/assets/images/meta-reasoning-figure1-architecture.webp)
 
 *圖：論文 Figure 1。來源：[arXiv 2609.38147](https://arxiv.org/abs/2609.38147)*
 

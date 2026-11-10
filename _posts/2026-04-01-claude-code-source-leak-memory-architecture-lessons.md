@@ -7,7 +7,7 @@ description: "Anthropic 工程師發 npm package 時忘了排除 source map，60
 image: /assets/images/claude-code-source-leak.png
 ---
 
-![Claude Code 被迫開源的設計心得](/assets/images/claude-code-source-leak.png)
+![Claude Code 被迫開源的設計心得](/assets/images/claude-code-source-leak.webp)
 
 {% include youtube.html id="LSN7MqXR5Kg" %}
 

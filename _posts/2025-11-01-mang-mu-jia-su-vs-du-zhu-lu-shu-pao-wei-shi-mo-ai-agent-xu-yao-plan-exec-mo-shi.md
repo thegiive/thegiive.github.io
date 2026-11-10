@@ -14,7 +14,7 @@ WRC 賽車最經典的場面就是除了賽車手開著市售車款飛天遁地�
 
 原因很簡單，WRC的賽道都是非常複雜，路況多變的越野賽到，他們經驗發現「規劃者搞清楚計劃，執行者全力執行然後隨機應變最有效率」
 
-![](/assets/images/image-3.png)
+![](/assets/images/image-3.webp)
 
 回到 AI Agenrt ，你有沒有想過當一個 AI 被指派一個複雜任務，它的腦子裡是怎麼想的？ [上一篇](https://ai-coding.wiselychen.com/agent-mo-shi-part-1-workflow-xing-he-react-xing-shui-geng-xiang-ni/)我們比較 AI Workflow 跟經典的 ReAct Agent， 我們看到 ReAct Agent 最後解決了客戶問題。但你有沒有想過，在 ReAct Agent 的彈性的優點下有沒有哪個致命的問題。今天來介紹一下一個新的 Agent 模型，或許是現在大家最常看的 Plan & Exec 模型。
 
@@ -25,7 +25,7 @@ Plan-and-Execute（計畫與執行）架構的出現，其實是對 ReAct 高成
   * 第一階段是「規劃」。這裡交給最強大的 LLM 做一件事：一次性思考清楚，生成一個詳細的、多步驟的完整計畫。不著急執行，就是想清楚。
   * 第二階段是「執行」。計畫已經定好了，執行器就按照計畫逐一完成每個步驟。這裡不需要每次都調用大型 LLM來做決策。可以用更輕量級的模型，甚至簡單的規則來執行。
 
-![](/assets/images/image-60.png)
+![](/assets/images/image-60.webp)
 
 為什麼這樣更好？ ReAct 的問題是每一步都要 LLM 思考，所以成本高、速度慢。Plan-and-Execute 的優勢是思考集中在規劃階段，執行階段使用輕鬆便宜的 LLM。 WRC的車手也說，因為 WRC 路線實在太過複雜，一個人真的記不住路書又要靈機應變，所以真的需要副駕駛，基本上車手就是遇到 token 爆炸的問題。
 
@@ -55,7 +55,7 @@ Plan & Exec 更適合是「旅遊規劃」聊天機器人，或是 Coding Agent�
 
 像是我故意問ChatGPT 5 Thinking：「對比 Claude 5、GPT-6、Gemini 最新版本在推理、代碼生成、多語言方面的表現，給出具體測試數據」。有沒有注意到，我故意問錯的問題( 2025/11/1 時間，Claude公開只出到 4.5 ，GPT只出到 6），要考驗他們除錯都能力。
 
-![](/assets/images/image-1.png)
+![](/assets/images/image-1.webp)
 
 ChatGpt：思考 → 搜尋多個來源（新聞、技術論壇、官方公告）→ 觀察結果 → 再思考「我找到的夠完整嗎」→ 可能再搜尋補充 → 最後綜合回答。你能看到它的思考過程，它在即時調整搜尋策略。
 
@@ -63,7 +63,6 @@ ChatGpt：思考 → 搜尋多個來源（新聞、技術論壇、官方公告�
 
 同比 Plan & Exec 最直觀的例子就是 Deep Research 了，尤其是 Gemini 的 Deep Research 在 UI 設計上根本就是教科書級別 Plan & Research 介紹
 
-![](/assets/images/image-2-1.png)
 
 當我問到 Gemini 「幫我解釋 react 跟plan and exec 在ai agent 模式的不同 」，他會先給你一個研究大綱，等你確認後，再去每一步搜尋，調整，每一步都有可能找錯資料，但是會在每一步的範疇內微調。
 

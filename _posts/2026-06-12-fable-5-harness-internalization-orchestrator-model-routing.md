@@ -9,7 +9,7 @@ categories: [AI Coding, Harness Engineering]
 image: /assets/images/fable5-maxlv-tweet-workflow.png
 ---
 
-![Max Lv 推文：Fable 5 的正確打開方式是 run a workflow，choose agent's model wisely](/assets/images/fable5-maxlv-tweet-workflow.png)
+![Max Lv 推文：Fable 5 的正確打開方式是 run a workflow，choose agent's model wisely](/assets/images/fable5-maxlv-tweet-workflow.webp)
 
 Fable 5 到底強在哪？
 

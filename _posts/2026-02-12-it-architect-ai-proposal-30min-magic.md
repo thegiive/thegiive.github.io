@@ -9,7 +9,7 @@ image: /assets/images/it-architect-ai-proposal-cover.png
 description: "身為架構師，你的架構可以成交嗎？成交後可以落地嗎？這才是人類架構師的最大價值，也是魔術真正發生的地方。"
 ---
 
-![剛從深圳/香港回來，喝到心心念念的霸王茶姬](/assets/images/it-architect-ai-proposal-cover.png)
+![剛從深圳/香港回來，喝到心心念念的霸王茶姬](/assets/images/it-architect-ai-proposal-cover.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 2 月

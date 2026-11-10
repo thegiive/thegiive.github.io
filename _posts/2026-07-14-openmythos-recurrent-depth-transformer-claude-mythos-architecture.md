@@ -32,7 +32,7 @@ Anthropic 從不公開 Mythos 的架構細節。但 2026 年 4 月，一個叫 [
 
 ## 傳統做法 vs 迴圈做法
 
-![範式對決：從空間堆疊轉向時間迴圈](/assets/images/openmythos-traditional-vs-rdt.png)
+![範式對決：從空間堆疊轉向時間迴圈](/assets/images/openmythos-traditional-vs-rdt.webp)
 
 先把直覺建立起來。
 
@@ -66,7 +66,7 @@ T 是一個變數，可以根據問題難度調整。OpenMythos 的預設上限�
 
 ## 迴圈提供深度，MoE 提供廣度
 
-![能力矩陣：知識廣度與推理深度的正交](/assets/images/openmythos-moe-recurrence-matrix.png)
+![能力矩陣：知識廣度與推理深度的正交](/assets/images/openmythos-moe-recurrence-matrix.webp)
 
 光有迴圈只解決了深度的問題。要讓模型擁有足夠多的知識，還需要廣度。OpenMythos 在每一層的 FFN（前饋網路）裡用了 DeepSeek 風格的 fine-grained Mixture of Experts：
 
@@ -113,7 +113,7 @@ Gomez 和多位研究者並不是憑空猜測。他們的推論基於 Mythos 的
 
 ## 跟 Agent 架構的平行：這不是巧合
 
-![終極收斂：模型架構與 Agent 框架的殊途同歸](/assets/images/openmythos-rdt-agent-convergence.png)
+![終極收斂：模型架構與 Agent 框架的殊途同歸](/assets/images/openmythos-rdt-agent-convergence.webp)
 
 這是讀完整個 OpenMythos 專案之後，我覺得最值得寫的一個連接。
 

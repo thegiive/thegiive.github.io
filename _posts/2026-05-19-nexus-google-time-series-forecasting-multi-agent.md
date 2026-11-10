@@ -7,7 +7,7 @@ image: /assets/images/nexus-google-time-series-forecasting.png
 description: "Google 跟 Penn State 的 Nexus 論文用四個專職 Agent — Event Extractor、Macro Regime Reader、Local Shock Tracker、Synthesizer — 把時間序列預測拆成可解釋的多 Agent 流程，在 Zillow 房地產資料集把 MAPE 比直接 CoT prompting 砍掉 86.6%。但測試樣本窄、單次評估、沒有成本分析，這是值得偷學架構但不是可以直接搬去生產的配方。"
 ---
 
-![Nexus: An Agentic Framework for Time Series Forecasting](/assets/images/nexus-google-time-series-forecasting.png)
+![Nexus: An Agentic Framework for Time Series Forecasting](/assets/images/nexus-google-time-series-forecasting.webp)
 
 我一直覺得，時間序列預測是一個被低估的「AI Agent 戰場」。
 

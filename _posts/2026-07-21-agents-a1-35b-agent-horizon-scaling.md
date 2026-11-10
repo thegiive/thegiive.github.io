@@ -44,7 +44,7 @@ Agents-A1 的路線不一樣。它不壓縮既有能力，它直接對著「agen
 
 這兩個方向合起來，論文叫它 agent-horizon scaling。參數不動，動的是模型「看過多長的過程、多寬的領域」。
 
-![Scaling 的兩個軸：參數量 vs 任務軌跡長度](/assets/images/agents-a1-scaling-axis-slide.png)
+![Scaling 的兩個軸：參數量 vs 任務軌跡長度](/assets/images/agents-a1-scaling-axis-slide.webp)
 
 ---
 
@@ -63,7 +63,7 @@ Agents-A1 的解法可以想成一個學生同時補六科：
 
 ## 三段配方拆解
 
-![Agents-A1 的三段式訓練配方：全域 SFT、RL Teachers、多 Teacher 蒸餾](/assets/images/agents-a1-three-stage-recipe-slide.png)
+![Agents-A1 的三段式訓練配方：全域 SFT、RL Teachers、多 Teacher 蒸餾](/assets/images/agents-a1-three-stage-recipe-slide.webp)
 
 ### 第一段：全域 SFT
 
@@ -81,7 +81,7 @@ domain-routed：什麼領域的樣本就路由給什麼 teacher，配上前面�
 
 支撐這整套流程的底層是資料工程。他們把每一步形式化成四元組——(Corpus, Action, Observation, Verifier)——組成 Knowledge-Action Graph，**動作要通過驗證才寫回圖裡**。訓練資料不是爬來的，是這套基礎設施「生產」出來的，而且每一條都帶著驗證結果。
 
-![KAG 驗證閘門：每一步動作通過 Verifier 才寫回圖中](/assets/images/agents-a1-kag-verifier-gate-slide.png)
+![KAG 驗證閘門：每一步動作通過 Verifier 才寫回圖中](/assets/images/agents-a1-kag-verifier-gate-slide.webp)
 
 昨天 Maka 團隊的做法是「跑分、看 trace、改進、重跑，分數不掉才合併」——那是推理端的驗證紀律。KAG 是同一個紀律搬到訓練資料的生產線上：沒過驗證的軌跡不進訓練集。兩邊的共同點是把「驗證」放在流程的閘門位置，而不是事後抽查。
 

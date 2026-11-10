@@ -21,7 +21,7 @@ description: "stevibe 用 15 個場景、12 個工具測了 Qwen 3.5 全系列�
 
 結果讓人意外：**全部通過的只有兩個模型——27B dense 和它的蒸餾版。** 不是最大的那個。
 
-![ToolCall-15 Qwen 3.5 全系列測試結果：只有 27B 和蒸餾版全綠](/assets/images/toolcall-15-qwen35-family-results.png)
+![ToolCall-15 Qwen 3.5 全系列測試結果：只有 27B 和蒸餾版全綠](/assets/images/toolcall-15-qwen35-family-results.webp)
 
 ---
 

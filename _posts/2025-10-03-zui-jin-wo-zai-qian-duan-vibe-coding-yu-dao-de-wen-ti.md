@@ -20,7 +20,7 @@ description: "我這幾天因為一個重要的案子，決定也來 VIBE Coding
 
 當我將 Claude code 去讀 Figma設計圖，然後加feature 。居然連 Claude 4.5 Sonnet 都顯得左支右著 , 非常狼狽。
 
-![](/assets/images/Generated-Image-October-03--2025---10_57PM-1.png)
+![](/assets/images/Generated-Image-October-03--2025---10_57PM-1.webp)
 
 要嘛就是
 
@@ -37,7 +37,7 @@ description: "我這幾天因為一個重要的案子，決定也來 VIBE Coding
 
 但是今天這種大概 10%修改，好像要了AI 的命。要嘛改不動，要嘛改太多，變成refactor 。這種情況，我當然碰過。我在做[ATPM](/atpm-a-real-production-vibe-coding-process/) 時，在這種情景，撰寫明確的PRD 細節，規格。通常可以解決這個問題。但是一個 已經運行線上的現有網站，哪有可能寫舊有「完整」的 PRD 規格書 , 別騙人了 XD 
 
-![](/assets/images/image.png)
+![](/assets/images/image.webp)
 
 在我今天的情況，我有的就是「新增規格書」，而且還是接近FIGMA 的圖形規格書。我有試過 Claude Code ，請 AI 根據現有網站弄出 PRD , 但是現行 UI 幾乎都是 VUE or React 框架元件，加一堆商用UI lib render 出來的頁面。AI Coding 都是看 Code ，也很難AI 自己腦中render 出來原本長哪樣。然後新規格書又是圖片 ，如果我們要比差距，似乎一定要就有UI render 出來才能比對。
 

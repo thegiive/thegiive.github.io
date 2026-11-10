@@ -123,7 +123,7 @@ OpenAI 發言人對 [Newsweek](https://www.newsweek.com/outages-openai-chatgpt-g
 
 ## 這修正了我之前寫過的一篇文章
 
-2025 年 11 月 Cloudflare 大當機的時候，我寫過[《用 AI Coding 當 BCP 另外一個方案有沒有搞頭？》](/ai-coding-dang-bcp-cloudflare-da-dang-ji-de-ling-lei-jie-fang)。那篇的論點是：Andrew Ng 的團隊用 AI Coding 快速搭出 Cloudflare 的最小備援組件，撐過了那次故障，所以 AI Coding 可以當成一種新的 BCP 手段。
+2025 年 11 月 Cloudflare 大當機的時候，我寫過[《用 AI Coding 當 BCP 另外一個方案有沒有搞頭？》](/ai-coding-dang-bcp-cloudflare-da-dang-ji-de-ling-lei-jie-fang/)。那篇的論點是：Andrew Ng 的團隊用 AI Coding 快速搭出 Cloudflare 的最小備援組件，撐過了那次故障，所以 AI Coding 可以當成一種新的 BCP 手段。
 
 那篇有一個沒有寫出來的假設：**AI 是永遠在線的搶修工具**。
 

@@ -7,7 +7,7 @@ image: /assets/images/inference-engine-selection-logo.png
 description: "你不應該先選 inference engine，你應該先選硬體策略、workload 形狀、serving 模式。引擎只是這三個答案的函數輸出。這篇拆解 8 個主流引擎在不同硬體 / workload 下的定位，跟一份決策清單。"
 ---
 
-![Inference Engine 選型地圖：硬體輸入到 8 個主流引擎](/assets/images/inference-engine-selection-logo.png)
+![Inference Engine 選型地圖：硬體輸入到 8 個主流引擎](/assets/images/inference-engine-selection-logo.webp)
 
 > 你不應該先選 inference engine，你應該先選硬體策略、workload 形狀、serving 模式。引擎只是這三個答案的函數輸出。
 

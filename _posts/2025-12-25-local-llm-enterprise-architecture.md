@@ -36,7 +36,7 @@ Enterprise local LLM architecture（企業級地端 LLM 架構）不只是「把
 
 這篇文章就是在講這些「無聊但必要」的基礎建設。正如 [SaM Solutions 的定義](https://www.sam-solutions.com/blog/enterprise-llm/)：企業級 LLM 架構是「讓大公司以安全、高效且符合業務目標的方式使用、管理和擴展大型語言模型的結構化框架」——重點不在模型本身，而在圍繞模型的完整技術堆疊。
 
-![企業 LLM 架構圖](/assets/images/local-llm-enterprise-architecture.png)
+![企業 LLM 架構圖](/assets/images/local-llm-enterprise-architecture.webp)
 
 這張藍圖是我們接下來的導覽地圖。先看整體流程：
 
@@ -90,7 +90,7 @@ On-premise LLM architecture 的核心價值是資料主權。每個客戶都在�
 
 企業 LLM 系統的第一道防線就是 Auth Gateway。
 
-![Auth Gateway 架構圖](/assets/images/auth-gateway-diagram.png)
+![Auth Gateway 架構圖](/assets/images/auth-gateway-diagram.webp)
 
 ### 為什麼需要 Auth Gateway？
 
@@ -128,7 +128,7 @@ Auth Gateway 就是解決這些問題的第一道防線。為什麼我們需要�
 
 當 LLM 從「單一問答」進化到「多步驟任務」，就需要 Orchestrator 來協調。
 
-![Orchestrator 架構圖](/assets/images/orchestrator-diagram.png)
+![Orchestrator 架構圖](/assets/images/orchestrator-diagram.webp)
 
 ### 為什麼需要 Orchestrator？
 
@@ -160,7 +160,7 @@ Auth Gateway 就是解決這些問題的第一道防線。為什麼我們需要�
 
 Python 沙盒是企業 LLM 系統的安全關鍵——讓 AI 生成的程式碼跑得動，又不會搞壞系統。
 
-![Python 沙盒架構圖](/assets/images/python-sandbox-diagram.png)
+![Python 沙盒架構圖](/assets/images/python-sandbox-diagram.webp)
 
 ### 為什麼用 Python 而不是直接讓 LLM 分析？
 
@@ -247,7 +247,7 @@ Python 沙盒是企業 LLM 系統的安全關鍵——讓 AI 生成的程式碼�
 
 LLM Router 的核心價值是讓對的模型做對的事，同時節省 GPU 資源。
 
-![LLM Router 架構圖](/assets/images/llm-router-diagram.png)
+![LLM Router 架構圖](/assets/images/llm-router-diagram.webp)
 
 ### 為什麼需要 LLM Router？
 
@@ -294,7 +294,7 @@ LLM Router 的核心價值是**讓對的模型做對的事**。
 
 企業 LLM 系統需要完整的觀測能力，才能持續優化和除錯。
 
-![Log 系統架構圖](/assets/images/log-system-diagram.png)
+![Log 系統架構圖](/assets/images/log-system-diagram.webp)
 
 ### 為什麼推薦 Langfuse？
 
@@ -313,7 +313,7 @@ LLM Router 的核心價值是**讓對的模型做對的事**。
 
 當 AI Agent 開始處理複雜的多步驟任務，光有 Log 系統是不夠的。
 
-![AI 記憶層操作模式](/assets/images/ai-memory-operation-patterns.png)
+![AI 記憶層操作模式](/assets/images/ai-memory-operation-patterns.webp)
 
 ### Log vs 記憶：給人看 vs 給 AI 用
 

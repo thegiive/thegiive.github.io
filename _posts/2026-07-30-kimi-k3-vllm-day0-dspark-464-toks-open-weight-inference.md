@@ -9,7 +9,7 @@ categories: [AI 前沿技術]
 author: Wisely Chen
 ---
 
-![vLLM Kimi K3 464 tok/s](/assets/images/kimi-k3-vllm-464-toks-cover.png)
+![vLLM Kimi K3 464 tok/s](/assets/images/kimi-k3-vllm-464-toks-cover.webp)
 
 ## 3T 的怪物，誰跑得起？
 

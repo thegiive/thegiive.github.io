@@ -7,7 +7,7 @@ image: /assets/images/ai-dagongren-yong-bu-hao-cover.png
 description: "你拼了老命學 AI、買 Max 5x，效率真的提升了一些，但薪水沒漲、時間反而更忙——因為老闆一句『AI 時代每個人都要快 5 倍』，把你的任務變成 5 倍。這不是你的問題，是位置的問題。我把打工人的三層結構性困境（激勵、思維、資訊）跟老闆的五層降維打擊（重構、全局、低成本試錯、改流程權限、激勵對齊）拆開講清楚，最後分享我自己離開 Google、加入創業團隊、用 blog 建立『工作所有權』的親身回應。"
 ---
 
-![商周 AI 創新百強 2026 趨勢年會現場](/assets/images/ai-dagongren-yong-bu-hao-cover.png)
+![商周 AI 創新百強 2026 趨勢年會現場](/assets/images/ai-dagongren-yong-bu-hao-cover.webp)
 
 [![YouTube Preview](https://img.youtube.com/vi/dPtBqPhU3To/maxresdefault.jpg)](https://youtu.be/dPtBqPhU3To)
 

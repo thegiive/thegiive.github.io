@@ -5,8 +5,10 @@ date: 2026-02-16 09:00:00 +0800
 categories: [ai-agent]
 tags: [kimi-k2.5, moonshot-ai, agent-swarm, multimodal, open-source, benchmark, cost-analysis]
 permalink: /kimi-k2-5-agent-swarm-deep-dive-technical-assessment/
+canonical_url: "https://ai-coding.wiselychen.com/kimi-k2.5-agent-swarm-deep-dive-technical-assessment/"
+sitemap: false
 description: "月之暗面 Kimi K2.5 不是又一個追 GPT 的中國模型。100 個子代理並行的 Agent Swarm、原生多模態視覺理解、開源加上輸入成本只有 Claude 的九分之一。這篇聚焦三大優勢，附 Benchmark 和成本數據，告訴你什麼場景該用它、什麼場景別碰它。"
-image: /assets/images/kimi-k2-5-agent-swarm-cover.png
+image: /assets/images/kimi-k2.5-logo.png
 ---
 
 **作者：** Wisely Chen

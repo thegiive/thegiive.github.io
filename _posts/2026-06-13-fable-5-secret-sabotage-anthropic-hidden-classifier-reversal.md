@@ -9,7 +9,7 @@ categories: [AI Coding, Harness Engineering]
 image: /assets/images/fable5-secret-sabotage-decrypt-cover.png
 ---
 
-![Anthropic Apologizes for Claude Fable 5 Secret Censorship — But the Fix Has a Catch (Decrypt, 2026-06-12)](/assets/images/fable5-secret-sabotage-decrypt-cover.png)
+![Anthropic Apologizes for Claude Fable 5 Secret Censorship — But the Fix Has a Catch (Decrypt, 2026-06-12)](/assets/images/fable5-secret-sabotage-decrypt-cover.webp)
 
 6 月 9 日 Fable 5 上線當天，就有開發者在 Claude Code 裡打了一句 "hi"，模型正常回了問候——然後自己觸發了安全分類器，對話被強制降級到 Opus 4.8。
 

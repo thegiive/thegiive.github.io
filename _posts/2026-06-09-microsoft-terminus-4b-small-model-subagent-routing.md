@@ -14,7 +14,7 @@ description: "**作者：** Wisely Chen **日期：** 2026年6月 **系列：** 
 
 ---
 
-![Terminus-4B 論文：用 4B 小模型替代 Frontier LLM 處理終端執行任務](/assets/images/terminus-4b-cover.png)
+![Terminus-4B 論文：用 4B 小模型替代 Frontier LLM 處理終端執行任務](/assets/images/terminus-4b-cover.webp)
 
 我之前寫過一篇 [AgentOpt](/agentopt-expensive-model-wrong-position-pipeline-optimization/) 的文章，核心結論是：**最貴的模型不一定要放在最重要的位置**。Columbia 大學的數據顯示，8B 小模型當 Planner、Opus 當 Executor，準確率比反過來高了一倍。
 

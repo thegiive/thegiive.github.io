@@ -35,7 +35,7 @@ For this agent work I chose Claude Code. I started with Sonnet 4.5, and later, b
   3. Extract the technical “lines”/tech stacks across all projects
   4. Analyze the folder/file naming rules and organization; provide suggestions
 
-![](/assets/images/Generated-Image-October-19--2025---5_41PM--1--1.png)
+![](/assets/images/Generated-Image-October-19--2025---5_41PM--1--1.webp)
 
 Based on prior experience, for a handover of this scale, it would already be “lucky” if the new owner could achieve #1 within a few weeks. But with AI, #2–#4 suddenly felt possible.
 
@@ -55,11 +55,11 @@ Google Drive MCP worked, but Step 2 was *much* slower. Later I switched to downl
 
 Another reason to download locally: Claude Code often uses the Unix toolchain natively—`find` / `head` / `tail` / `wc` / `grep`—to do lots of basic operations, and it works really well. MCPs backed by APIs tend to be slower and can be finicky. After deciding to pull everything down first, the overall analysis speed was **100× faster**.
 
-![](/assets/images/image-27-1.png)Claude Code using lots of Unix commands
+![](/assets/images/image-27-1.webp)Claude Code using lots of Unix commands
 
 The summary output was excellent: every file had actually been “read” by AI (something humans basically can’t do at this scale), and it produced a clear summary.
 
-![](/assets/images/image-29-1.png)
+![](/assets/images/image-29-1.webp)
 
 Bonus: I also tried Gemini from the Google Drive side-panel UI. Sadly, Gemini’s native results were poor—its folder counts were way off, let alone the summary quality.
 
@@ -69,19 +69,19 @@ As I said, this is a huge client with documentation for 50+ projects. I asked Cl
 
 A human *can* do this, but you’d need someone who deeply understands the projects. For someone newly taking over, a timeline is incredibly helpful for building understanding.
 
-![](/assets/images/image-30-1-1.png)
+![](/assets/images/image-30-1-1.webp)
 
 ### Scenario 3: A master technical “line” / tech-stack summary
 
 This is also straightforward with Claude Code. The prompt is basically: “List the tech stacks used in each project, by project, then summarize for this client.” It helps us quickly see what technologies are in play if something breaks.
 
-![](/assets/images/image-32-1.png)
+![](/assets/images/image-32-1.webp)
 
 ### Scenario 4: A summary of folder naming conventions across projects
 
 As a PM you already know: different PMs, different naming rules. I used this chance to aggregate and analyze the inconsistencies. Once we fully take over and clarify ownership, we can ask Claude Code to use Google Drive MCP to adjust folder structure / naming.
 
-![](/assets/images/image-31-1.png)
+![](/assets/images/image-31-1.webp)
 
 ### Final thoughts: AI isn’t here to take your job—it’s here to level you up
 

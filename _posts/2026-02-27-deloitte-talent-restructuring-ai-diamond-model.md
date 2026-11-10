@@ -9,7 +9,7 @@ image: /assets/images/deloitte-ai-smallest-combat-unit.png
 description: "Deloitte 廢除傳統職稱，Block 裁掉 4,000 人——接近一半的員工。這不是巧合——它們其實指向同一個趨勢：金字塔型組織，正在失去效率優勢。當 AI 能處理 60% 的入門級工作時，組織的底座就不再穩固。未來的 AI 組織，很可能長這樣：15 人左右團隊 + AI Agent 的 Hybrid 模型。"
 ---
 
-![AI 時代的最小作戰單位](/assets/images/deloitte-ai-smallest-combat-unit.png)
+![AI 時代的最小作戰單位](/assets/images/deloitte-ai-smallest-combat-unit.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026-02-28
@@ -145,7 +145,7 @@ Deloitte 的鑽石模型很漂亮，但我認為這仍是大公司的舊思維�
 
 重點來了。這些小三角形不是孤立的，它們以**契約關係**組合成生態系：
 
-![生態系契約模式：小三角形之間的對等合作](/assets/images/deloitte-ai-ecosystem-contract-model.png)
+![生態系契約模式：小三角形之間的對等合作](/assets/images/deloitte-ai-ecosystem-contract-model.webp)
 
 每個小三角形是一個獨立的作戰單位，有自己的願景領袖、Full Stack 團隊、AI Agent。它們之間不是層級關係，而是**對等的契約合作**——按專案、按成果、按時間週期組合。
 

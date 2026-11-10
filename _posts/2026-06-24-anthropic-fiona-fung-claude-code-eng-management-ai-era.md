@@ -7,7 +7,7 @@ image: /assets/images/ai-native-engineering-org-blog-cover.png
 description: "我之所以寫這個題目，其實是我最近這半年來所做的一些實踐，也是在努力將我們團隊打造為 AI Native Organization。這過程中有非常多的「坑」跟「雷」，我們都親自踩過，也因此產生了一些相關的想法與方向。但我個人認為，這不見得每個東西都得百分之百照做，我也不是對每一點都百分之百贊成，不過這確實是世界頂尖團隊相關的 Best Practice，所以我"
 ---
 
-![Running an AI-native engineering org](/assets/images/ai-native-engineering-org-blog-cover.png)
+![Running an AI-native engineering org](/assets/images/ai-native-engineering-org-blog-cover.webp)
 
 ---
 title: "當程式碼不再是瓶頸：Anthropic 視角下的 AI 原生工程與團隊管理藍圖"
@@ -43,9 +43,9 @@ Podcast 有故事和人味，Blog 有框架和數據。合在一起看，這可�
 
 ---
 
-# 支柱一：無懼的建造者（The Builder）
+## 支柱一：無懼的建造者（The Builder）
 
-![AI 時代的兩種核心人才畫像](/assets/images/ai-native-blueprint-builder-talent.png)
+![AI 時代的兩種核心人才畫像](/assets/images/ai-native-blueprint-builder-talent.webp)
 
 ## 數字會說話：8 倍產出的現實
 
@@ -138,9 +138,9 @@ PM 可以提交 code 這件事，本身就證明了寫程式的技術門檻正�
 
 ---
 
-# 支柱二：非同步的管理（The Manager）
+## 支柱二：非同步的管理（The Manager）
 
-![重新定義品質：Bad vs. Sad 框架](/assets/images/ai-native-blueprint-bad-vs-sad.png)
+![重新定義品質：Bad vs. Sad 框架](/assets/images/ai-native-blueprint-bad-vs-sad.webp)
 
 ## 新管理範式：讓 AI 擔任管理副駕
 
@@ -220,9 +220,9 @@ Dashboard 會告訴你「crash rate 是 0.3%」，但它不會告訴你「用戶
 
 ---
 
-# 支柱三：連結的文化（The Culture）
+## 支柱三：連結的文化（The Culture）
 
-![孤獨感悖論與平行遊玩 Parallel Play](/assets/images/ai-native-blueprint-parallel-play.png)
+![孤獨感悖論與平行遊玩 Parallel Play](/assets/images/ai-native-blueprint-parallel-play.webp)
 
 ## 怎麼在 AI 時代建立團隊文化？
 

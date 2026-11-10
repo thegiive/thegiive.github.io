@@ -9,7 +9,7 @@ description: "真正的智能不在於為最昂貴的模型付費，而在於精
 
 ## 問題：默認配置的隱形成本
 
-![默認配置的隱形成本](/assets/images/openclaw-cost-slide-02.png)
+![默認配置的隱形成本](/assets/images/openclaw-cost-slide-02.webp)
 
 上週有讀者私訊我：
 
@@ -33,7 +33,7 @@ description: "真正的智能不在於為最昂貴的模型付費，而在於精
 
 ## 五大核心優化策略
 
-![五大核心優化策略](/assets/images/openclaw-cost-slide-03.png)
+![五大核心優化策略](/assets/images/openclaw-cost-slide-03.webp)
 
 根據我的實測，OpenClaw 成本優化可以歸納為五大核心策略：
 
@@ -51,7 +51,7 @@ description: "真正的智能不在於為最昂貴的模型付費，而在於精
 
 ## 策略一：會話初始化——消除上下文膨脹
 
-![消除上下文膨脹：會話初始化](/assets/images/openclaw-cost-slide-04.png)
+![消除上下文膨脹：會話初始化](/assets/images/openclaw-cost-slide-04.webp)
 
 這是隱藏最深的成本殺手。
 
@@ -109,7 +109,7 @@ Do NOT auto-load:
 
 ## 策略二：智能模型分層與路由
 
-![智能模型分層與路由](/assets/images/openclaw-cost-slide-05.png)
+![智能模型分層與路由](/assets/images/openclaw-cost-slide-05.webp)
 
 不要讓同一個模型做所有事情。你需要根據任務難度，指派不同等級的「員工」。
 
@@ -127,7 +127,7 @@ Do NOT auto-load:
 
 ### 在 SOUL.md 加入路由規則
 
-![系統提示詞優化：賦予 Agent「靈魂」](/assets/images/openclaw-cost-slide-10.png)
+![系統提示詞優化：賦予 Agent「靈魂」](/assets/images/openclaw-cost-slide-10.webp)
 
 ```markdown
 ## Model Selection
@@ -146,7 +146,7 @@ Do NOT auto-load:
 
 ## 策略三：本地心跳檢測——零成本監控
 
-![本地化心跳檢測：零成本監控](/assets/images/openclaw-cost-slide-06.png)
+![本地化心跳檢測：零成本監控](/assets/images/openclaw-cost-slide-06.webp)
 
 OpenClaw 預設每 30 分鐘執行一次「Heartbeat」檢查。這不只是單純的「系統是否存活」確認，而是一套完整的背景監控機制。
 
@@ -191,7 +191,7 @@ System Heartbeat → Route: Ollama (Local Host) → Model: llama3.2:3b → Cost:
 
 ## 策略四：提示詞快取——靜態內容 90% 折扣
 
-![利用提示詞快取降低 90% 開銷](/assets/images/openclaw-cost-slide-07.png)
+![利用提示詞快取降低 90% 開銷](/assets/images/openclaw-cost-slide-07.webp)
 
 系統提示詞與 `SOUL.md` 等靜態文件極少變更。透過 Caching 技術，重複使用這些內容可享受 **90% 的價格折扣**。
 
@@ -365,7 +365,7 @@ curl https://api.anthropic.com/v1/usage \
 
 ## 策略五：預算控制與速率限制
 
-![預算控制與速率限制](/assets/images/openclaw-cost-slide-08.png)
+![預算控制與速率限制](/assets/images/openclaw-cost-slide-08.webp)
 
 防止「失控自動化」在一夜之間燒光預算。
 
@@ -413,7 +413,7 @@ ALWAYS follow these limits:
 
 ## 關鍵配置：openclaw.json
 
-![關鍵配置：openclaw.json](/assets/images/openclaw-cost-slide-09.png)
+![關鍵配置：openclaw.json](/assets/images/openclaw-cost-slide-09.webp)
 
 編輯 `~/.openclaw/openclaw.json` 以啟用多模型路由：
 
@@ -453,7 +453,7 @@ ALWAYS follow these limits:
 
 ## 真實案例：不同用戶類型的成本節省
 
-![真實案例：不同用戶類型的成本節省](/assets/images/openclaw-cost-slide-11.png)
+![真實案例：不同用戶類型的成本節省](/assets/images/openclaw-cost-slide-11.webp)
 
 | 用戶類型 | 使用模式 | 優化前 | 優化後 | 節省 |
 |---------|---------|--------|--------|------|
@@ -465,7 +465,7 @@ ALWAYS follow these limits:
 
 ## 驗證與監控：確保優化生效
 
-![驗證與監控：確保優化生效](/assets/images/openclaw-cost-slide-12.png)
+![驗證與監控：確保優化生效](/assets/images/openclaw-cost-slide-12.webp)
 
 使用終端機命令 `session_status` 進行檢查：
 
@@ -482,7 +482,7 @@ ALWAYS follow these limits:
 
 ## 優化行動清單
 
-![優化行動清單](/assets/images/openclaw-cost-slide-13.png)
+![優化行動清單](/assets/images/openclaw-cost-slide-13.webp)
 
 | 步驟 | 行動 | 說明 |
 |------|------|------|
@@ -561,7 +561,7 @@ OpenClaw 會更新，Anthropic 的定價會變，新模型會出現。
 
 ## 資源與工具
 
-![資源與工具](/assets/images/openclaw-cost-slide-15.png)
+![資源與工具](/assets/images/openclaw-cost-slide-15.webp)
 
 | 資源 | 說明 |
 |------|------|

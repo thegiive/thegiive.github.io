@@ -7,7 +7,7 @@ image: /assets/images/claude-code-telemetry-cache-gate-issue-45381.png
 description: "社群炸鍋說 Anthropic 懲罰關掉遙測的使用者，cache TTL 從 1 小時降到 5 分鐘，號稱 12 倍效能懲罰。Claude Code 作者 Boris Cherny 親自回應：這是 experiment gate 和 telemetry 共用開關的 bug，不是刻意設計。4 天內修復（v2.1.108）。但這個 bug 暴露了更深的問題：閉源工具的 feature flag 遠端控制權、遙測與功能配置的 coupling、以及我們對 AI coding 工具信任的脆弱基礎。順便整理了 Claude Code 省 Token 的實戰規則——cache 還熱就繼續聊，別動不動 /clear。"
 ---
 
-![Claude Code Telemetry Cache Gate - GitHub Issue #45381](/assets/images/claude-code-telemetry-cache-gate-issue-45381.png)
+![Claude Code Telemetry Cache Gate - GitHub Issue #45381](/assets/images/claude-code-telemetry-cache-gate-issue-45381.webp)
 
 ## 事件經過：一個 GitHub Issue 引爆社群
 

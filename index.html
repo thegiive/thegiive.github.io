@@ -153,12 +153,12 @@ description: 企業 AI 落地實戰經驗，涵蓋 AI Agent 架構設計、地�
     <h2>最新文章</h2>
 
     <div class="post-list">
-      {% for post in site.posts limit:3 %}
+      {% for post in site.posts limit:12 %}
       <article class="post-item">
         {% if post.image %}
         <div class="post-thumbnail">
           <a href="{{ post.url | relative_url }}">
-            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+            {% include cover-image.html src=post.image alt=post.title eager=forloop.first %}
           </a>
         </div>
         {% endif %}
@@ -184,7 +184,7 @@ description: 企業 AI 落地實戰經驗，涵蓋 AI Agent 架構設計、地�
           </div>
           {% endif %}
 
-          <a href="{{ post.url | relative_url }}" class="read-more">繼續閱讀 →</a>
+          <a href="{{ post.url | relative_url }}" class="read-more" aria-label="繼續閱讀：{{ post.title | escape }}">繼續閱讀 →</a>
         </div>
       </article>
       {% endfor %}

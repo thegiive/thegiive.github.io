@@ -7,7 +7,7 @@ image: /assets/images/replication-engineering-moat-logo.png
 description: "Anthropic 在 6 月 9 日發布了 Claude Fable 5——第一個「Mythos 級」模型，SWE-Bench Pro 自報 80.3%，比 Opus 4.8 高了 11 個百分點。"
 ---
 
-![Fable 5 Path Validation](/assets/images/replication-engineering-moat-logo.png)
+![Fable 5 Path Validation](/assets/images/replication-engineering-moat-logo.webp)
 
 ## 6 月 9 日，Fable 5 上線。6 月 13 日，全球下架。
 

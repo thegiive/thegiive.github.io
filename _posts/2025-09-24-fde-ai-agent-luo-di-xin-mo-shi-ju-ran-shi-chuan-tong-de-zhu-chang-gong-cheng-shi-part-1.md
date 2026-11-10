@@ -161,7 +161,7 @@ Palantir 早期旨在為情報界構建軟體。由於一般人很難直接了�
 
 ### FDE vs. 傳統 SaaS：為什麼 AI 時代賣的不是「功能」而是「成果」？
 
-![FDE 模式 vs 傳統 SaaS](/assets/images/fde-vs-saas-comparison.png)
+![FDE 模式 vs 傳統 SaaS](/assets/images/fde-vs-saas-comparison.webp)
 
 | 項目 | FDE 模式 | 傳統 SaaS |
 |------|---------|----------|
@@ -199,7 +199,7 @@ Bob 提到，這種 FDE 訓練與**新創公司創始人**的訓練非常相似�
 
 講了這麼多 FDE，為什麼說它是 AI 落地的解藥？因為「流程領域知識」才是 AI 落地的關鍵——而這個知識只有駐場FDE可以做到高效萃取。
 
-![流程是濾光片](/assets/images/Generated-Image-October-18--2025---8_14AM-1.png)
+![流程是濾光片](/assets/images/Generated-Image-October-18--2025---8_14AM-1.webp)
 
 還記得小時候玩的盜版防護嗎？中華職棒二會附一個混淆過的密碼本，你必須用紅色或藍色濾光片才能看到正確的密碼。
 
@@ -236,7 +236,7 @@ FDE 在客戶現場的工作，就像在現有產品與用戶需求之間鋪設�
 
 總部的產品和工程團隊的職責，則是觀察和通用化這些碎石路，將最有價值的經驗提煉出來，轉變為一條適用於未來五到十個客戶的「高速公路」，並將其沉澱到核心產品中。
 
-![FDE Roadmap](/assets/images/fde-roadmap.png)
+![FDE Roadmap](/assets/images/fde-roadmap.webp)
 
 在 2024 全盛時期，我們團隊做到了這樣的流水線：
 
@@ -289,7 +289,7 @@ FDE 在客戶現場的工作，就像在現有產品與用戶需求之間鋪設�
 
 > 「我寧願你用慢的工具，但讓我打開公式一個一個驗算。我要對結論負責任。」
 
-![Excel 公式驗算：客戶要求每個參數都可追蹤](/assets/images/excel-formula-verification.png)
+![Excel 公式驗算：客戶要求每個參數都可追蹤](/assets/images/excel-formula-verification.webp)
 
 ### 成功案例：100 天的站會換取信任
 
@@ -317,7 +317,7 @@ FDE 在客戶現場的工作，就像在現有產品與用戶需求之間鋪設�
 
 要衡量 FDE 是否走在對的路上，有三個關鍵指標：
 
-![FDE 成功的三個關鍵指標](/assets/images/fde-success-metrics.png)
+![FDE 成功的三個關鍵指標](/assets/images/fde-success-metrics.webp)
 
 ### 1. 成本與利潤率的變化
 

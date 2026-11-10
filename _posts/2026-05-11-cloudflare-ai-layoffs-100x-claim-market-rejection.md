@@ -6,7 +6,7 @@ image: /assets/images/cloudflare-ai-layoffs-cover.png
 description: "Cloudflare 5/7 公告砍 1,100 人（20%），CEO Matthew Prince 喊「AI 帶來 2x、10x、even 100x 生產力」，「就像從手動螺絲起子換到電動的」。隔天股價跌 23%。但弔詭的是：2026 上半年同樣劇本天天有——Block 2 月砍 40%、Oracle 3 月砍 30,000、Meta 4 月砍 8,000——而且 Block 公告當日股價 +24%、Oracle 也只是微跌。同一個 AI 故事 template，Block +24% vs Cloudflare −23%，差了 50 個百分點，差在哪？答案是：市場不是反 AI 裁員，是在挑哪家故事對得起來。Block 故事配 EBITDA 改善、Oracle 故事配 $156B capex，兩家數字對齊；Cloudflare 講 100x productivity 卻保留所有 sales、Q1 record high 卻砍 20%，三條都不一致。我自己跑 ATPM 在 production 拿到 40% 加速、QA 階段預期 80% 結果只有 20%——有單位、有 caveat 的 40% 比沒單位的 100x 可靠 100 倍。本文用 2026 全球裁員時間線拆解三個訊號：100x claim 的數據破綻、sales 倖存的結構矛盾、以及為什麼市場現在會挑魚而不是反潮。"
 ---
 
-# Cloudflare 砍 20% 人喊 AI 100x 生產力，股價跌 23%——市場第一次 punish「AI 取代人」這個故事
+## Cloudflare 砍 20% 人喊 AI 100x 生產力，股價跌 23%——市場第一次 punish「AI 取代人」這個故事
 
 ## 一封很漂亮的內部信，跌掉 23%
 

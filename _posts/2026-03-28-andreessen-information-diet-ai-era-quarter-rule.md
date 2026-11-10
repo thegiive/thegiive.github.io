@@ -11,7 +11,7 @@ description: "Marc Andreessen 公開了他現在的資訊攝取配比：1/4 X、
 
 ## Marc Andreessen 的資訊攝取方式
 
-![Marc Andreessen 推文，Elon Musk 轉發](/assets/images/andreessen-information-diet-musk-this-is-the-way.png)
+![Marc Andreessen 推文，Elon Musk 轉發](/assets/images/andreessen-information-diet-musk-this-is-the-way.webp)
 
 Marc Andreessen 最近分享他的資訊攝取方式，很值得大家參考：
 

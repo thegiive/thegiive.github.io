@@ -161,7 +161,7 @@ DevDay 推出了 $500 的 Pro 500，多篇整理寫是 25 倍 Plus 用量，外�
 
 把時間拉長，這不是 OpenAI 一家的事。
 
-![新模型很強、驚艷大家、湧入、算力不夠、能力變弱、下一個新模型、使用者遷移，接著再推一個新模型把舊模型的算力搬走——這個循環一個半月內轉了一圈](/assets/images/codex-nerf-cycle-compute-intelligence-cover.png)
+![新模型很強、驚艷大家、湧入、算力不夠、能力變弱、下一個新模型、使用者遷移，接著再推一個新模型把舊模型的算力搬走——這個循環一個半月內轉了一圈](/assets/images/codex-nerf-cycle-compute-intelligence-cover.webp)
 
 9 月 7 日我寫 [Anthropic vs OpenAI 算力對決](/anthropic-pre-ipo-gamesmanship-five-moves-wall-street/)的時候，開場講的是 Fable 5：剛出來多強，用了一陣子很多人覺得變弱了，很有可能不是模型降級，是推理需求暴增，電跟不上。Anthropic 過去十一個月簽了至少 14.8 GW，是在補這個洞。
 

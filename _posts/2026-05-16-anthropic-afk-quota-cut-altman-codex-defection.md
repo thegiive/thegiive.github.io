@@ -17,7 +17,7 @@ tags:
   - 地端模型
 ---
 
-![ClaudeDevs 5/14 公告：Claude 訂閱拆出 AFK 專用 credit](/assets/images/anthropic-afk-quota-cut-claudedevs-tweet.png)
+![ClaudeDevs 5/14 公告：Claude 訂閱拆出 AFK 專用 credit](/assets/images/anthropic-afk-quota-cut-claudedevs-tweet.webp)
 
 Anthropic 上週宣布，6/15 起訂閱額度切成兩塊：
 

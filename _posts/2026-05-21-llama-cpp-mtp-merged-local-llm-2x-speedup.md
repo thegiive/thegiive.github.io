@@ -7,7 +7,7 @@ image: /assets/images/llama-cpp-mtp-merged-cover.png
 description: "2026 年 5 月 16 日，llama.cpp 合併了等了快一年的 PR #22673：Multi-Token Prediction（MTP）支援。Reddit 上 776 個讚的慶祝畫面背後，是一個比較尷尬的事實——你手上那顆 DeepSeek-V3 GGUF，過去整整一年都在 single-token 模式下硬跑，模型內建的加速器一直沒有被按下去。"
 ---
 
-![llama.cpp merges MTP: local LLM 2.5x speedup unlocked](/assets/images/llama-cpp-mtp-merged-cover.png)
+![llama.cpp merges MTP: local LLM 2.5x speedup unlocked](/assets/images/llama-cpp-mtp-merged-cover.webp)
 
 ## 目錄
 

@@ -38,7 +38,7 @@ faq:
     answer: "不會。Opus 4.6 / Opus 4.7 仍是最強的 coding model，關鍵任務仍會跑在商業 API。但 Anthropic 失去了「你別無選擇」的定價權，這是結構性改變。未來 API 定價壓力會加大，或商業模型必須在 agentic workflow / tool ecosystem / enterprise features 建立更深護城河。對企業 IT 來講這是好事：多了一個可以算 TCO 的選項，原本 API 訂閱變成可以議價的成本。"
 ---
 
-![Qwen 3.6-27B 本地部署示意圖：Run the new 27B model locally](/assets/images/qwen-3-6-27b-run-locally-cover.png)
+![Qwen 3.6-27B 本地部署示意圖：Run the new 27B model locally](/assets/images/qwen-3-6-27b-run-locally-cover.webp)
 
 ## 目錄
 

@@ -49,7 +49,7 @@ This is a pile of basic steps every ops person knows. Claude Code should be fine
 
 Even though I was mentally prepared, I still got impressed by how detailed CC was. It even explained crontab jobs—which means it actually went in and looked at the code.
 
-![](/assets/images/image-41-1.png)
+![](/assets/images/image-41-1.webp)
 
 ### Case: Find non-system daemons
 
@@ -59,7 +59,7 @@ Since system daemons can be noisy and confusing, I asked it to filter them out a
 
 The most magical part: how did Claude Code know this server is a transit hub? Did it read through each codebase inside?
 
-![](/assets/images/image-42-1.png)
+![](/assets/images/image-42-1.webp)
 
 ### Case: Explain what each daemon does
 
@@ -71,17 +71,17 @@ But today we discovered:
 
 Of course, my guess is it works best when the code is plain text, like bash or python.
 
-![](/assets/images/image-43-1-1.png)
+![](/assets/images/image-43-1-1.webp)
 
 ### Bonus case: Find old scripts so Claude Code helps me leave early
 
 I originally SSH’d into this VM to write a monitor script. But as Claude Code kept exploring, it found an old script from two years ago whose logic was *exactly* what I needed.
 
-![](/assets/images/image-45-1-1.png)
+![](/assets/images/image-45-1-1.webp)
 
 Sadly, whoever owned it before seems to have forgotten it, and it wasn’t running anymore. But that’s fine—Claude Code dug it out of the dirt and polished it back up. I can leave work early.
 
-![](/assets/images/ChatGPT-Image-2025---10---24----------09_40_08-1.png)I really like this picture
+![](/assets/images/ChatGPT-Image-2025---10---24----------09_40_08-1.webp)I really like this picture
 
 ### Final case: Enjoy the boss-life moment
 
@@ -89,7 +89,7 @@ In the end, the best emotional value Claude Code gave me was: I could transform 
 
 > Prompt: Is everything running smoothly on the machine today?
 
-![](/assets/images/image-44-1.png)
+![](/assets/images/image-44-1.webp)
 
 ### The joy of switching from workhorse to boss
 

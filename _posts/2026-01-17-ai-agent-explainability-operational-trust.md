@@ -8,7 +8,7 @@ categories: ["AI治理"]
 permalink: /ai-agent-explainability-operational-trust/
 ---
 
-![AI Agent 可解釋性：法規導向 vs 落地導向](/assets/images/ai-agent-explainability-trust-bridge.png)
+![AI Agent 可解釋性：法規導向 vs 落地導向](/assets/images/ai-agent-explainability-trust-bridge.webp)
 
 試想一下你的工作現場：
 
@@ -46,7 +46,7 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 
 在實務上，可解釋性必須是一整條工程鏈路，至少包含三個責任邊界清楚的層次。
 
-![實務藍圖：三層可解釋性工程鏈路](/assets/images/ai-agent-explainability-three-layers.png)
+![實務藍圖：三層可解釋性工程鏈路](/assets/images/ai-agent-explainability-three-layers.webp)
 
 ### 第一層：流程可解釋性
 
@@ -58,7 +58,7 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 
 工具面上，可以用 Agent Framework 來記錄（例如 N8N 的 execution log）。這類工具的好處是，流程本身就是視覺化的 DAG，每個節點的執行狀態、耗時、錯誤訊息都一目瞭然。對於營運團隊來說，這是最直覺的「發生了什麼事」的答案。
 
-![第一層：流程層 Workflow](/assets/images/ai-agent-explainability-layer1-workflow.png)
+![第一層：流程層 Workflow](/assets/images/ai-agent-explainability-layer1-workflow.webp)
 
 ### 第二層：決策可解釋性
 
@@ -74,7 +74,7 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 
 工具面上，這是 Langfuse 的範疇。它可以記錄每一次 LLM 呼叫的 prompt、completion、token 用量，更重要的是可以把多次呼叫串成一條完整的 trace，讓你看到 Agent 的思考脈絡。
 
-![第二層：Agent Log 層 Decision Log](/assets/images/ai-agent-explainability-layer2-decision.png)
+![第二層：Agent Log 層 Decision Log](/assets/images/ai-agent-explainability-layer2-decision.webp)
 
 ### 第三層：長期記錄與觀測
 
@@ -90,7 +90,7 @@ AI Agent 的本質不是靜態模型，而是一個會持續查資料、呼叫�
 
 工具面上，是傳統 BI 範疇。你可以把 Langfuse 的資料匯出到 Data Warehouse，用 Metabase 或 Looker 做 dashboard，追蹤 KPI 如成功率、平均回應時間、token 成本、使用者回饋分數等。這些指標才是營運團隊決定「要不要繼續用這個 Agent」的依據。
 
-![第三層：記錄與觀測層 Tracing](/assets/images/ai-agent-explainability-layer3-tracing.png)
+![第三層：記錄與觀測層 Tracing](/assets/images/ai-agent-explainability-layer3-tracing.webp)
 
 ---
 

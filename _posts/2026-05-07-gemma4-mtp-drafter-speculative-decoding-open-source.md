@@ -6,7 +6,7 @@ image: /assets/images/gemma4-mtp-drafter-cover.png
 description: "Google 釋出 Gemma 4 全家族的 Multi-Token Prediction (MTP) drafter，宣稱 token-per-second 最高 3x、26B 模型在 RTX PRO 6000 上生成時間砍半。但 Speculative decoding 不是新東西——Medusa、EAGLE、DeepSeek V3 早在做。這次真正值得注意的是：drafter 跟主模型對齊、共享 KV cache、Apache 2.0 釋出，而且配齊 31B Dense / 26B MoE / E2B / E4B 邊緣版。本文拆解 3x 是怎麼來的、什麼情況拿不到 3x、以及為什麼這對「想繞過 Nvidia/HBM 鎖喉自主推理」的人才是真正的好消息。"
 ---
 
-# Gemma 4 加速 3x：Speculative Decoding 不是新玩意，但 Google 這次把 drafter 整套 Apache 2.0 送出來
+## Gemma 4 加速 3x：Speculative Decoding 不是新玩意，但 Google 這次把 drafter 整套 Apache 2.0 送出來
 
 ## 「3x faster」這個標題我看了三秒就想關掉
 

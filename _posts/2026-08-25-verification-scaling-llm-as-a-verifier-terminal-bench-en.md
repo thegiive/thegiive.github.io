@@ -22,7 +22,7 @@ DeepSeek V4 Flash scores 79% on Terminal-Bench 2.1 in a single pass. With five p
 
 ## The Numbers
 
-![Terminal-Bench 2.1 cost-efficiency comparison](/assets/images/verification-scaling-terminal-bench-2-1.png)
+![Terminal-Bench 2.1 cost-efficiency comparison](/assets/images/verification-scaling-terminal-bench-2-1.webp)
 
 | Setup | Success Rate | Cost / Task | Agent Harness |
 |-------|:------:|:---------:|:----------:|

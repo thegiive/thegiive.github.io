@@ -10,7 +10,7 @@ tags: [Qwen3.8-27B, RTX 3090, RTX 4090, RTX 5090, RTX PRO 6000, DGX Spark, Apple
 author: Wisely Chen
 ---
 
-# Qwen3.8-27B 實測：RTX 3090／4090／5090／PRO 6000／DGX Spark／Mac tok/s 整理
+## Qwen3.8-27B 實測：RTX 3090／4090／5090／PRO 6000／DGX Spark／Mac tok/s 整理
 
 這兩天我的 X timeline 被 Qwen3.8-27B 洗版。每個人都在曬自己的 tok/s，問題是——同一個模型，數字從 6 到 400 都有人喊。
 

@@ -9,7 +9,7 @@ image: /assets/images/amazon-ai-incident-ft-report.jpeg
 description: "AWS 工程師讓 AI 修一個小 bug，AI 的解法是刪掉整個生產環境再重建，恢復花了 13 小時。電商部門的 AI 變更導致數百萬筆訂單丟失。DataTalks.Club 創辦人被 AI 刪掉整個資料庫。三起事件，同一個模式。現在亞馬遜的補救措施是：禁止初中級工程師提交 AI 生成的程式碼。這不是 AI 不行——是沒有護欄的 AI 不行。"
 ---
 
-![Financial Times 報導：亞馬遜電商部門因 AI coding 工具引發連串事故，緊急召集工程師開會](/assets/images/amazon-ai-incident-ft-report.jpeg)
+![Financial Times 報導：亞馬遜電商部門因 AI coding 工具引發連串事故，緊急召集工程師開會](/assets/images/amazon-ai-incident-ft-report.webp)
 
 ## 發生了什麼事
 

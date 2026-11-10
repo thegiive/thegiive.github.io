@@ -15,7 +15,7 @@ description: "用 NotebookLM + Gemini 做簡報，追求的不是加速，而是
 
 後來在 Threads 上看到一些被點名的「問題簡報」，老實說也能理解為什麼會被罵：文字有 NotebookLM 的渲染錯誤、背景一看就知道是 NotebookLM 預設淡棕色風格。
 
-![NotebookLM 預設風格範例](/assets/images/notebooklm-default-style-example.png)
+![NotebookLM 預設風格範例](/assets/images/notebooklm-default-style-example.webp)
 
 這兩年，從 Gamma.app 到現在的 NotebookLM，我大概用 AI 做過 100+ 場簡報（約 90% 內部、10% 對外）。
 
@@ -52,9 +52,9 @@ description: "用 NotebookLM + Gemini 做簡報，追求的不是加速，而是
 以下是一個範例，可以看到底色是很類似的企業主體色
 但是 NotebookLM 很棒的地方就是他連底圖 , 還會有些許小變化 
 
-![客製化簡報範例 1](/assets/images/customer-first-example-1.png)
+![客製化簡報範例 1](/assets/images/customer-first-example-1.webp)
 
-![客製化簡報範例 2](/assets/images/customer-first-example-2.png)
+![客製化簡報範例 2](/assets/images/customer-first-example-2.webp)
 
 當你色調、用字遣詞都符合提案中心概念，並且把客戶放在最中心，客戶是超級滿意的。
 
@@ -67,11 +67,11 @@ description: "用 NotebookLM + Gemini 做簡報，追求的不是加速，而是
 
 *附圖為：因為網路上無法展現我的千人千色的成品簡報，我用技術文章當例子吧。我請 NotebookLM 去把 O'Reilly 的某本我的 Data 書轉成 O'Reilly 風的簡報（黑白風、動物截圖、紅色字）。想想這樣等級的簡報居然可以在 5 分鐘完成，真的很 amazing。*
 
-![O'Reilly 風格簡報範例 - 封面](/assets/images/ai-slide-notebooklm-customer-first-cover.png)
+![O'Reilly 風格簡報範例 - 封面](/assets/images/ai-slide-notebooklm-customer-first-cover.webp)
 
-![O'Reilly 風格簡報範例 - 複製模型](/assets/images/ai-slide-oreilly-example-2.png)
+![O'Reilly 風格簡報範例 - 複製模型](/assets/images/ai-slide-oreilly-example-2.webp)
 
-![O'Reilly 風格簡報範例 - 三大核心目標](/assets/images/ai-slide-oreilly-example-3.png)
+![O'Reilly 風格簡報範例 - 三大核心目標](/assets/images/ai-slide-oreilly-example-3.webp)
 
 ---
 

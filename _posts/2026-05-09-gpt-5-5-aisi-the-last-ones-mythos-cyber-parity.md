@@ -6,13 +6,13 @@ image: /assets/images/gpt-5-5-aisi-the-last-ones-cover.png
 description: "英國 AI Safety Institute 公布 GPT-5.5 網安能力評估：Expert 通過率 71.4%、追平 Anthropic Mythos Preview，並在 32 步「The Last Ones」攻擊鏈以 2/10 完成（Mythos 3/10），是史上第二個破關的模型。但 OpenAI 走完全相反的路線——照常發布、開放 API。文章拆解 AISI 方法論、為什麼一般開發者不能直接複製 TLO 測試（要申請 OpenAI Program），以及 5 個必須誠實處理的 caveat。"
 ---
 
-# GPT-5.5 AISI 安全測試：網安能力追平 Mythos，但 OpenAI 選擇照常發布
+## GPT-5.5 AISI 安全測試：網安能力追平 Mythos，但 OpenAI 選擇照常發布
 
 **作者：** Wisely Chen
 **發布日期：** 2026-05-09
 **閱讀時間：** 5 分鐘
 
-![AISI 評估：GPT-5.5 與 Mythos Preview 在 The Last Ones 攻擊鏈完成步驟對 token 消耗量的對比](/assets/images/gpt-5-5-aisi-the-last-ones-cover.png)
+![AISI 評估：GPT-5.5 與 Mythos Preview 在 The Last Ones 攻擊鏈完成步驟對 token 消耗量的對比](/assets/images/gpt-5-5-aisi-the-last-ones-cover.webp)
 
 > 圖：UK AISI 公布的 The Last Ones 完整攻擊鏈進展對比。橫軸是累計 token 消耗量（log scale），縱軸是完成的攻擊步驟（M1 初步偵察 → M9 完整網路接管）。**GPT-5.5 跟 Mythos Preview 是唯二跑到 M9 的模型**，其他模型在 M3-M5 之間就停下。
 

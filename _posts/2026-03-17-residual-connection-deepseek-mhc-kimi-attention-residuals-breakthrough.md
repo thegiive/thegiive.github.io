@@ -7,9 +7,9 @@ image: /assets/images/attention-residuals-architecture.png
 description: "Transformer 架構裡有個零件叫「殘差連接」，從 2015 年 ResNet 發明以來，所有人都覺得不需要改。2026 年第一季，DeepSeek 的 mHC 用數學約束讓權重可學習；Kimi 的 Attention Residuals 更激進——直接用注意力機制重構層與層之間的資訊流。同樣的算力，白賺 25% 性能。這篇文章用最白話的方式，帶你看懂這兩篇論文到底在做什麼。"
 ---
 
-# 殘差連接被動刀了：DeepSeek 和 Kimi 先後改掉 Transformer 用了十年的「默認設定」
+## 殘差連接被動刀了：DeepSeek 和 Kimi 先後改掉 Transformer 用了十年的「默認設定」
 
-![Attention Residuals 架構對比：Standard Residuals vs Full Attention Residuals vs Block Attention Residuals](/assets/images/attention-residuals-architecture.png)
+![Attention Residuals 架構對比：Standard Residuals vs Full Attention Residuals vs Block Attention Residuals](/assets/images/attention-residuals-architecture.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 3 月

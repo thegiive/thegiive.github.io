@@ -7,7 +7,7 @@ image: /assets/images/business-weekly-ai-innovation-100-award-2025.png
 description: "創智動能以 AI Coding 流程導入與 AI Pocket 語音助手，榮獲 2025 商業周刊 AI 創新百強。從 ATPM 方法論到工程治理能力，這是對 AI Coding 必須走向工程化、制度化這條路的確認。"
 ---
 
-![商業周刊 AI 創新百強](/assets/images/business-weekly-ai-innovation-100-award-2025.png)
+![商業周刊 AI 創新百強](/assets/images/business-weekly-ai-innovation-100-award-2025.webp)
 
 賀！我所屬的公司 創智動能，以 AI Coding 流程導入 與 AI Pocket 語音助手，榮獲[2025 "商業周刊" AI 創新百強](https://www.businessweekly.com.tw/focus/indep/6021335)
 
@@ -18,13 +18,13 @@ description: "創智動能以 AI Coding 流程導入與 AI Pocket 語音助手�
 我們真的非常驕傲
 我們這樣的 startup 靠自己的 AI 能力站在台灣最大的舞臺上
 
-![AI 創新百強榜單](/assets/images/business-weekly-ai-innovation-100-award-2025-2.png)
+![AI 創新百強榜單](/assets/images/business-weekly-ai-innovation-100-award-2025-2.webp)
 
 ---
 
 在加入創智之前，我在物流產業與夥伴們，實際落地過一套結構化、流程化的 AI Coding 機制（我們內部稱為 [ATPM](/atpm-a-real-production-vibe-coding-process/)）
 
-![ATPM AI Coding 流程](/assets/images/business-weekly-ai-innovation-100-award-2025-3.png)
+![ATPM AI Coding 流程](/assets/images/business-weekly-ai-innovation-100-award-2025-3.webp)
 
 那不是單點工具，而是一整套能在真實組織中運作的工程方法。
 
@@ -44,7 +44,7 @@ description: "創智動能以 AI Coding 流程導入與 AI Pocket 語音助手�
 最後，還有一個很重要的角色——
 [Argon Pocket 硬體](https://news.taiwannet.com.tw/c2/168484/%E8%88%87%E8%B6%A8%E5%8B%A2%E5%85%B1%E6%8C%AF%EF%BC%9AArgon-Pocket-%E7%9C%8B%E8%A6%8B%E4%BC%81%E6%A5%AD-AI-%E8%A3%9D%E7%BD%AE%E7%9A%84%E6%9C%AA%E4%BE%86%E5%AE%9A%E4%BD%8D.html)，讓我能隨時以語音掌握專案進度，把決策與行動的時間差壓到最低
 
-![Argon Pocket 語音助手](/assets/images/business-weekly-ai-innovation-100-award-2025-4.png)
+![Argon Pocket 語音助手](/assets/images/business-weekly-ai-innovation-100-award-2025-4.webp)
 
 這次獲獎，不只是對產品的肯定，
 更是對「AI Coding 必須走向工程化、制度化」這條路的確認。

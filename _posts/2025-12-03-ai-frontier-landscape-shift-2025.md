@@ -7,7 +7,7 @@ image: /assets/images/ai-frontier-shift-2025-logo.png
 description: "OpenAI 人才流失、Claude Opus 4.5 崛起、Gemini 3 Pro 追趕——2025 AI 格局大洗牌背後，真正的護城河是「人」，不是算力。"
 ---
 
-![AI Frontier Shift 2025](/assets/images/ai-frontier-shift-2025-logo.png)
+![AI Frontier Shift 2025](/assets/images/ai-frontier-shift-2025-logo.webp)
 
 ## GPT-5 可能仍是建立在 4o 的架構上。
 
@@ -78,7 +78,7 @@ Anthropic： 幾乎是 Gemini 3 同一個月，Claude Opus 4.5 發布，根據 W
 
 Claude 4.5 的表現(21% 性能提升 + 2/3 成本下降)不是簡單的微調能做到的。這暗示 Anthropic 已經找到了一條新的、能有效 Scale 的訓練路徑。
 
-![Claude Opus 4.5 Benchmark](/assets/images/claude-opus-4.5-benchmark.png)
+![Claude Opus 4.5 Benchmark](/assets/images/claude-opus-4.5-benchmark.webp)
 
 ### Google：TPU 軟硬整合的長期佈局
 

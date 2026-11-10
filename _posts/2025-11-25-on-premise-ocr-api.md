@@ -9,7 +9,6 @@ author: "Wisely Chen"
 categories: ["AI Agent", "Infrastructure", "OCR", "Enterprise AI"]
 tags: ["OCR", "On-Premise", "PDF Processing", "AI Infrastructure", "Enterprise Architecture", "Dead Letter Queue", "System Design", "Docker", "技術品味", "基礎建設優化"]
 excerpt: "我這個人還滿享受『基礎建設優化』這件事情的，就像雙十一，我是真的會跑去倉庫現場檢貨，體驗電商的基礎建設。當 60-70% 的企業資料躺在 PDF 裡，地端 OCR API 成為 AI Agent 落地的關鍵基礎建設。"
-canonical_url: "https://thegiive.github.io/on-premise-ocr-api/"
 og_image: "/assets/images/warehouse-infrastructure-experience.jpg"
 og_type: "article"
 twitter_card: "summary_large_image"
@@ -25,7 +24,7 @@ twitter_card: "summary_large_image"
 
 我這個人還滿享受「基礎建設優化」這件事情的，就像雙十一，大家都想到電商如何行銷策略，但是我一個 IT 人，我是真的雙十一會跑去倉庫現場檢貨，體驗電商的基礎建設。
 
-![在倉庫現場體驗基礎建設](/assets/images/warehouse-infrastructure-experience.jpg)
+![在倉庫現場體驗基礎建設](/assets/images/warehouse-infrastructure-experience.webp)
 
 這幾天大家談 AI Agent、Gemini 3.0 Pro、Nano Banana Pro，但很少人談地端 OCR API 這個「無聊的基礎建設」。沒有它，企業的 AI Agent 根本看不見 60–70% 躺在 PDF 裡的資料（合約、發票、規格書、掃描檔）。因為很多 enterprise 又不能上雲，地端 Agent 沒用。
 
@@ -35,7 +34,7 @@ twitter_card: "summary_large_image"
 
 最近看到一個挺 solid 的 "Bare Metal" 架構：https://github.com/markuskuehnle/credit-ocr-system
 
-![OCR System Architecture](/assets/images/ocr-system-architecture.png)
+![OCR System Architecture](/assets/images/ocr-system-architecture.webp)
 
 為什麼好？
 

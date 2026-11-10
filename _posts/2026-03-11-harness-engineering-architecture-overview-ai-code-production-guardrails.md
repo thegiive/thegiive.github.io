@@ -66,7 +66,7 @@ description: "亞馬遜讓 AI 修 bug，AI 刪掉整個生產環境。DataTalks.
 
 模式是 **reset → rebuild → clean state**。
 
-![AI 的乾淨狀態偏見：三起事件同一個模式](/assets/images/harness-engineering-slide-02.png)
+![AI 的乾淨狀態偏見：三起事件同一個模式](/assets/images/harness-engineering-slide-02.webp)
 
 AI 模型在訓練過程中學到了大量「乾淨狀態」的概念。當它遇到一個複雜的修復問題時，「刪掉重來」在它的邏輯裡是一個合理的解法——乾淨、確定、沒有殘留問題。
 
@@ -113,7 +113,7 @@ OpenAI 工程團隊走了完全不同的路。3 個人、5 個月、100 萬行�
 
 **禁令是用人去擋。Harness Engineering 是用系統去接。**
 
-![兩種防禦哲學的對決：人為禁令 vs. 系統框架](/assets/images/harness-engineering-slide-03.png)
+![兩種防禦哲學的對決：人為禁令 vs. 系統框架](/assets/images/harness-engineering-slide-03.webp)
 
 ---
 
@@ -144,7 +144,7 @@ Martin Fowler 網站上，Thoughtworks 傑出工程師 Birgitta Böckeler 把 Op
 
 簡單講：Prompt Engineering 是「每次跟 AI 說話的技巧」。Harness Engineering 是「建構一個系統，讓 AI 不需要你每次都盯著，也能可靠地產出」。
 
-![從對話技巧走向工程體系：Prompt Engineering vs Harness Engineering](/assets/images/harness-engineering-slide-04.png)
+![從對話技巧走向工程體系：Prompt Engineering vs Harness Engineering](/assets/images/harness-engineering-slide-04.webp)
 
 ### 人的角色轉變：從 in the loop 到 on the loop
 
@@ -176,7 +176,7 @@ OpenAI 自己也明確說過：早期進度慢，多半源於環境規格不足�
 
 一個成熟的 Harness Engineering 系統包含七個核心元件：
 
-![駕馭工程參考架構：三層防禦與七大元件](/assets/images/harness-engineering-slide-05.png)
+![駕馭工程參考架構：三層防禦與七大元件](/assets/images/harness-engineering-slide-05.webp)
 
 | 元件 | 名稱 | 關鍵能力 |
 |------|------|----------|
@@ -229,7 +229,7 @@ OpenAI 試過在一個巨大的 AGENTS.md 裡塞所有指令，失敗了。原�
 - Lint 規則定義在 .eslintrc.js / .dependency-cruiser.js
 ```
 
-![元件 1 & 2：系統化上下文與架構護欄](/assets/images/harness-engineering-slide-09.png)
+![元件 1 & 2：系統化上下文與架構護欄](/assets/images/harness-engineering-slide-09.webp)
 
 ### 2. Architecture Guardrails（架構護欄）
 
@@ -241,7 +241,7 @@ OpenAI 以固定 layers（Types → Config → Repo → Service → Runtime → 
 
 這跟 Martin Fowler 文章中的觀察一致：為了讓 AI 在規模下可維護，必須收斂 solution space、犧牲部分自由度換取可控性。
 
-![元件 3 & 4：高吞吐量 CI/PR 與測試評估](/assets/images/harness-engineering-slide-10.png)
+![元件 3 & 4：高吞吐量 CI/PR 與測試評估](/assets/images/harness-engineering-slide-10.webp)
 
 ### 3. Eval & Test Harness（評估與測試框架）
 
@@ -261,7 +261,7 @@ OpenAI 描述的高度自動化 PR 閉環：人類用 prompt 描述任務 → ag
 
 他們也指出：agent 吞吐量遠大於人類注意力時，「等待」的成本高於「修正」。因此採用最小化阻塞 gate、短生命週期 PR，對 flake 測試傾向用後續修正而非無限期阻塞。
 
-![元件 5, 6, 7：安全、觀測與持續回饋](/assets/images/harness-engineering-slide-11.png)
+![元件 5, 6, 7：安全、觀測與持續回饋](/assets/images/harness-engineering-slide-11.webp)
 
 ### 5. Safety & Policy（安全與策略）
 
@@ -487,7 +487,7 @@ jobs:
 
 **關鍵原則：根據變更的「爆炸半徑」來決定審查強度，而不是根據提交者的職級。**
 
-![第一層防禦：基於爆炸半徑的風險契約](/assets/images/harness-engineering-slide-06.png)
+![第一層防禦：基於爆炸半徑的風險契約](/assets/images/harness-engineering-slide-06.webp)
 
 ### 第二層：四層防禦——用確定性的工具框住不確定性的 AI
 
@@ -506,7 +506,7 @@ jobs:
 
 **AI 生成代碼的質量 = 80% 你的測試覆蓋率 + 20% prompt 寫得好不好。**
 
-![第二層防禦：用確定性工具框住不確定性的 AI](/assets/images/harness-engineering-slide-07.png)
+![第二層防禦：用確定性工具框住不確定性的 AI](/assets/images/harness-engineering-slide-07.webp)
 
 > 詳細的四層防禦設計和實作經驗，我寫在[〈Make CI/CD Great Again〉](/ai-coding-framework-deterministic-tools-control-ai/)裡。
 
@@ -576,7 +576,7 @@ esac
 echo "✅ Preflight gate passed ($RISK_LEVEL)"
 ```
 
-![第三層防禦：控制平面 Control-Plane Pattern](/assets/images/harness-engineering-slide-08.png)
+![第三層防禦：控制平面 Control-Plane Pattern](/assets/images/harness-engineering-slide-08.webp)
 
 > 完整的八步拆解和代碼範例，我寫在[〈Harness Engineering 完整拆解：Control-Plane Pattern〉](/harness-engineering-control-plane-pattern-agent-review-loop/)裡。
 
@@ -602,7 +602,7 @@ echo "✅ Preflight gate passed ($RISK_LEVEL)"
 
 講完「怎麼建」，更重要的是「怎麼會壞」。知道失效模式，才能設計防線。
 
-![系統失效模式與對策（一）：上下文與架構](/assets/images/harness-engineering-slide-12.png)
+![系統失效模式與對策（一）：上下文與架構](/assets/images/harness-engineering-slide-12.webp)
 
 ### 失效模式一：上下文腐壞（Context Rot）
 
@@ -659,7 +659,7 @@ jobs:
 
 **對策：** 用 structural tests 和 linters 把「能否新增某種耦合」直接變成 CI 失敗，而不是等 code review 才發現。設立 golden principles 與背景垃圾回收任務（掃描偏差、更新品質分級、開重構 PR），像垃圾回收一樣持續清理。
 
-![系統失效模式與對策（二）：測試、安全與供應鏈](/assets/images/harness-engineering-slide-13.png)
+![系統失效模式與對策（二）：測試、安全與供應鏈](/assets/images/harness-engineering-slide-13.webp)
 
 ### 失效模式三：測試 Flake 與錯誤合併策略
 
@@ -689,7 +689,7 @@ jobs:
 
 講完模式，來看具體能用什麼工具。重點不是工具本身，而是**把約束做成能在 CI 中跑的工程體**。
 
-![落地實踐：架構護欄與觀測工具矩陣](/assets/images/harness-engineering-slide-14.png)
+![落地實踐：架構護欄與觀測工具矩陣](/assets/images/harness-engineering-slide-14.webp)
 
 ### 結構化依賴檢查
 
@@ -816,7 +816,7 @@ npx promptfoo eval --config promptfooconfig.yaml --ci  # CI 模式，失敗會 e
 
 不同規模的團隊，導入的深度和節奏應該不一樣。
 
-![導入路線圖：不同規模團隊的落地策略](/assets/images/harness-engineering-slide-15.png)
+![導入路線圖：不同規模團隊的落地策略](/assets/images/harness-engineering-slide-15.webp)
 
 ### 規模對比總覽
 
@@ -838,7 +838,7 @@ repo 模板化（knowledge store + rules）、結構測試擴展、多層 eval�
 
 多租戶 agent 平台、policy-as-code（OPA 等）整合、權限與審批矩陣、集中化 eval 與 leaderboard、事件稽核與留存策略、與既有 SDLC/變更管理整合、企業級供應鏈與合規。
 
-![系統演進：12 個月建置里程碑](/assets/images/harness-engineering-slide-16.png)
+![系統演進：12 個月建置里程碑](/assets/images/harness-engineering-slide-16.webp)
 
 ### 12 個月路線圖（里程碑）
 
@@ -858,7 +858,7 @@ repo 模板化（knowledge store + rules）、結構測試擴展、多層 eval�
 
 不需要搭完整套架構。明天就可以開始的三件事：
 
-![明天就能開始的三個具體行動](/assets/images/harness-engineering-slide-17.png)
+![明天就能開始的三個具體行動](/assets/images/harness-engineering-slide-17.webp)
 
 ### 1. 寫一份 Risk Contract（30 分鐘）
 

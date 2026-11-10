@@ -92,7 +92,7 @@ Anthropic 整體表現不差——七月 ARR 達 $65B，企業採用率 43.5% �
 
 Opus 5 分數比 Fable 5 還高一分（63 vs 62），價格卻便宜一半——Fable 5 是整張表裡最貴的，而且不是最聰明的。GPT-5.6 Luna 用 $0.20/$1.20 拿到 52 分，而 Haiku 4.5 花 $1/$5 只拿到 30 分——Luna 便宜五倍，分數高了 73%。
 
-![雲端 API 輸出定價比較](/assets/images/fable-5-cloud-api-output-price.png)
+![雲端 API 輸出定價比較](/assets/images/fable-5-cloud-api-output-price.webp)
 
 ### 開源模型：每 B 多少智能
 
@@ -126,11 +126,11 @@ Opus 5 分數比 Fable 5 還高一分（63 vs 62），價格卻便宜一半—�
 
 **第一張：II vs II / Total B（記憶體效率）。** Y 軸是每十億總參數擠出多少智能分數。越高代表用越少顯存就能拿到同樣的分數。右上角是最理想的位置——聰明而且記憶體效率高。Qwen3.8 27B（Q38_27）和 Qwen3.6 27B（Q36_27）兩個 dense 小模型在這個指標上遙遙領先，因為它們整顆模型就是 27B，單卡就能跑。大模型（K3 的 2,800B、Q38_2.4T 的 2,400B）分數高但記憶體效率低，擠在圖的底部。
 
-![開源模型 II vs 記憶體效率](/assets/images/fable-5-open-weight-memory-efficiency.png)
+![開源模型 II vs 記憶體效率](/assets/images/fable-5-open-weight-memory-efficiency.webp)
 
 **第二張：II vs II / Active B（算力效率）。** Y 軸是每十億活躍參數擠出多少智能分數。MoE 模型在這裡有結構性優勢——Qwen3.6 35B A3B 只用 3B active 就拿到 43 分，II / Active B 高達 14.33，遠離其他所有點。Gemma 4 26B A4B 也因為 4B active 衝到 7.75。但要注意，這個指標對 dense 模型（active = total）天然不利，所以兩張圖要一起看才完整。
 
-![開源模型 II vs 算力效率](/assets/images/fable-5-open-weight-compute-efficiency.png)
+![開源模型 II vs 算力效率](/assets/images/fable-5-open-weight-compute-efficiency.webp)
 
 這些數字指向同一個結論：智能正在被壓進越來越小的空間。Kimi K3 和 GLM-5.3 都拿到 60 分，只差 Fable 5 兩分。DeepSeek V4 Flash 和 Qwen3.8 27B 拿到 52 分，跟 Sonnet 5 的 55 分差距不大，但一個只用 13B active，一個單卡就能跑。Fable 5 不只被自家的 Opus 5 和 Sonnet 5 從上面和中間夾擊，還被開源模型從下面逼近。Frontier 的護城河，在 Intelligence Index 上只剩兩三分。
 

@@ -2,7 +2,9 @@
 layout: post
 title: "10 分鐘完成 10 個學校推薦函：推薦信 AI Agent 實戰"
 date: 2025-11-22 09:00:00 +0800
-permalink: /shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan
+permalink: /shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan/
+redirect_from:
+  - /shi-fen-zhong-wan-cheng-shi-ge-xue-xiao-tui-jian-han-ai-agent-shi-zhan
 image: /assets/images/recommendation-letter-ai-agent.png
 description: "用 Claude Code + ChatGPT Atlas 建立「限時快閃」推薦人 Agent：5 分鐘口述評價、注入個人語氣風格，生成針對學生的完整 md 檔。10 個學校推薦函從每校 20-40 分鐘，變成 10 分鐘全部搞定。"
 ---

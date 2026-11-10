@@ -7,7 +7,7 @@ image: /assets/images/kv-cache-prompt-cache-paper-figure2.png
 description: "早上打開 Claude Code，敲第一句話，2%～10% 的套餐額度沒了。我在本地用 Gemma4 做實驗，發現 prompt 處理從 31 秒降到 0.25 秒——100 倍加速。再翻 Claude Code 源碼，拆解 Anthropic 的多層快取架構：DYNAMIC_BOUNDARY 切分、兩檔 TTL、快取斷裂偵測。從 Transformer 的 KV 快取原理，到 MLSys 2024 論文 Prompt Cache，到你每天該養成的省錢習慣——理解這套機制，同樣的套餐能多撐 3-5 倍。"
 ---
 
-![Prompt Cache: Modular Attention Reuse for Low-Latency Inference — Figure 2](/assets/images/kv-cache-prompt-cache-paper-figure2.png)
+![Prompt Cache: Modular Attention Reuse for Low-Latency Inference — Figure 2](/assets/images/kv-cache-prompt-cache-paper-figure2.webp)
 
 ## 為什麼這篇文章很重要
 

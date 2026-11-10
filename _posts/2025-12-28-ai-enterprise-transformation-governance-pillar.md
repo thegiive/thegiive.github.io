@@ -83,7 +83,7 @@ description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），
 
 最重要的是：**讓高層和團隊看到 AI 真的能解決問題。** 這是推動後續投資的關鍵。舉例，像是我在艾立運能做的AI數位回單，就在一個多月就直接上線，因為成效很好，還獲得2024年未來商務展的管理獎。
 
-![AI 數位回單獲獎](/assets/images/ai-digital-receipt-award.png)
+![AI 數位回單獲獎](/assets/images/ai-digital-receipt-award.webp)
 
 ### 階段三：Agent 化
 
@@ -101,7 +101,7 @@ description: "AI 企業轉型常被簡化成 PPT（People、Process、Tech），
 
 我在國內數家商業銀行，就做過 Governance 專案和 Security Health Check，才深刻體會：沒有治理框架，Agent 根本不可能進入核心業務流程。
 
-![AI 企業轉型三階段：對齊目標、Quick Win、Agent 化](/assets/images/ai-transformation-three-phases.png)
+![AI 企業轉型三階段：對齊目標、Quick Win、Agent 化](/assets/images/ai-transformation-three-phases.webp)
 
 ---
 
@@ -208,7 +208,7 @@ Agent 的「解釋」也是一樣。它只是在事後合理化，不是真的�
 
 這是「幾乎所有 Agent 都有漏洞」。
 
-![Agent 攻擊：偽裝成對話的攻擊與資料外洩](/assets/images/agent-attack-conversation-data-spills.png)
+![Agent 攻擊：偽裝成對話的攻擊與資料外洩](/assets/images/agent-attack-conversation-data-spills.webp)
 
 而根據 Gartner 預測，到 2028 年，33% 的企業軟體將包含 Agentic AI。相比 2024 年的 <1%，這是 **33 倍的成長**。
 

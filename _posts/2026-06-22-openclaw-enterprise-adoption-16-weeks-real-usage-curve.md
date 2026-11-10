@@ -7,7 +7,7 @@ image: /assets/images/openclaw-enterprise-16-weeks-usage-curve.png
 description: "最近這段時間大家都在講，OpenClaw 已經不紅了，Hermes 也沒有人在講了。之前叫 Hermes，現在叫 Loop，但這些東西到底與我何干呢？"
 ---
 
-![OpenClaw 企業使用曲線](/assets/images/openclaw-enterprise-16-weeks-usage-curve.png)
+![OpenClaw 企業使用曲線](/assets/images/openclaw-enterprise-16-weeks-usage-curve.webp)
 
 最近這段時間大家都在講，OpenClaw 已經不紅了，Hermes 也沒有人在講了。之前叫 Hermes，現在叫 Loop，但這些東西到底與我何干呢？
 

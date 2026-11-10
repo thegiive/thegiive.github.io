@@ -7,7 +7,7 @@ image: /assets/images/mythos-discord-breach-bloomberg.jpeg
 description: "Anthropic 那個「太危險不能公開發布」的 Mythos 模型，發布當天就被一個 Discord 小群摸進去，安靜用了整整兩週才被彭博爆出來。攻擊三步：從 Mercor 洩漏挖出內部命名規則、猜出 endpoint、借用承包商 shared credential。沒有零日、沒有 jailbreak，純粹社交工程。這告訴我們：跟人比資安，AI 可能還太嫩了；最高級的攻擊從來不是 AI 找到的零日，永遠是社交工程。"
 ---
 
-![Bloomberg 彭博社報導：Anthropic's Mythos Model Is Being Accessed by Unauthorized Users](/assets/images/mythos-discord-breach-bloomberg.jpeg)
+![Bloomberg 彭博社報導：Anthropic's Mythos Model Is Being Accessed by Unauthorized Users](/assets/images/mythos-discord-breach-bloomberg.webp)
 
 ## 發生了什麼事
 

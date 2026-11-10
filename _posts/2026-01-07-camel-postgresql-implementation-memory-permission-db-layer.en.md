@@ -20,7 +20,7 @@ lang: en
 
 In the previous post, I covered [CaMeL’s two-layer agent architecture](/camel-privileged-quarantined-agent/), based on Google DeepMind’s [CaMeL paper](https://arxiv.org/abs/2503.18813). The core idea is to separate “reading data” from “taking actions”—the Quarantined LLM can only read untrusted data, and the Privileged LLM can only receive structured, cleaned information.
 
-![The real core of CaMeL: two permission domains that must not be crossed](/assets/images/camel-core-two-domains.png)
+![The real core of CaMeL: two permission domains that must not be crossed](/assets/images/camel-core-two-domains.webp)
 
 After reading the paper, I realized many people only get halfway.
 
@@ -78,7 +78,7 @@ If you already have an [enterprise on-prem LLM architecture](/local-llm-enterpri
 
 The original CaMeL paper describes two layers (Quarantined vs Privileged). In real implementation, I found you need an explicit **Sanitize** layer in between.
 
-![CaMeL three-layer memory architecture](/assets/images/camel-three-layer-memory-architecture.png)
+![CaMeL three-layer memory architecture](/assets/images/camel-three-layer-memory-architecture.webp)
 
 The reason is simple:
 
@@ -167,7 +167,7 @@ The benefit: **authorization happens in the DB engine, not the app layer**.
 
 Row-Level Security (RLS) is the “security gate” of this architecture.
 
-![RLS: an unbypassable system-level security gate](/assets/images/camel-rls-security-gate.png)
+![RLS: an unbypassable system-level security gate](/assets/images/camel-rls-security-gate.webp)
 
 RLS enforces access rules in the database engine, so application code cannot circumvent them.
 
@@ -179,7 +179,7 @@ No matter how SQL is written, the engine automatically applies permission filter
 
 This agent can write to `quarantine.raw_memory` only for itself, and can only read what it wrote.
 
-![agent_quarantined permission view](/assets/images/camel-agent-quarantined-view.png)
+![agent_quarantined permission view](/assets/images/camel-agent-quarantined-view.webp)
 
 Key constraints:
 - ✅ read/write: `quarantine.raw_memory` (only its own)
@@ -198,7 +198,7 @@ REVOKE ALL ON SCHEMA quarantine
 FROM agent_privileged;
 ```
 
-![agent_privileged permission view: forbidden from contamination source](/assets/images/camel-agent-privileged-view.png)
+![agent_privileged permission view: forbidden from contamination source](/assets/images/camel-agent-privileged-view.webp)
 
 Key constraints:
 - ❌ totally forbidden: `quarantine.raw_memory` (can’t even access the schema)
@@ -235,7 +235,7 @@ Sanitize is not “making text prettier.” It is:
 
 **Ingest** → **Detect** → **Transform** → **Approve**
 
-![Sanitize four-stage pipeline](/assets/images/camel-sanitize-pipeline.png)
+![Sanitize four-stage pipeline](/assets/images/camel-sanitize-pipeline.webp)
 
 1. **Ingest:** write raw data into quarantine
 2. **Detect:** assess risk and compute `risk_score`
@@ -292,7 +292,7 @@ That’s the difference: application filters are “ask the model to behave,” 
 
 ## 12) The complete architecture: a defense-in-depth system
 
-![CaMeL PostgreSQL complete architecture: defense in depth](/assets/images/camel-postgresql-complete-architecture.png)
+![CaMeL PostgreSQL complete architecture: defense in depth](/assets/images/camel-postgresql-complete-architecture.webp)
 
 ---
 

@@ -7,7 +7,7 @@ image: /assets/images/on-prem-small-model-explosion-cover.jpg
 description: "2026 Q1/Q2 三個工程突破——27B Dense 衝到 Sonnet 等級、vLLM 底層改寫、Google TurboQuant 把 KV Cache 砍一個量級——疊上 Anthropic 降智 + Token 漲價 + Mac Studio 統一記憶體方案因 DDR 暴漲死掉，讓「30 萬桌機把高頻 workload 搬回地端」從輔助選項變成主力選項。本文整理我對客戶建議邏輯這幾個月的反轉。"
 ---
 
-![On-Prem 小模型爆發時代來了](/assets/images/on-prem-small-model-explosion-cover.jpg)
+![On-Prem 小模型爆發時代來了](/assets/images/on-prem-small-model-explosion-cover.webp)
 
 <div class="video-container">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pEOwg1V_YDk" title="On-Prem 小模型爆發時代來了 — 為什麼我這週訂了 RTX 5090 桌機" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

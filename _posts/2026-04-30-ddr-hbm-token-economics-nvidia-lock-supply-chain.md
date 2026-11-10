@@ -6,7 +6,7 @@ image: /assets/images/ddr-price-quote-cover.png
 description: "2026/4/23 一張原價屋估價單：128GB DDR5 漲到 5.2 萬，比 CPU 加主機板還貴 2.7 倍。背後是 Token 經濟學第一性原理把 GPU 的天花板物理鎖定在 HBM 上，再加上老黄把 HBM 御三家 + Groq LPU 全部供應鏈鎖喉的雙重結果。本文拆解 DDR 漲價的真正原因、老黄的供應鏈整合棋局、以及華為 + DeepSeek V4、Google + TurboQuant 兩條繞道。"
 ---
 
-# 一張原價屋估價單，看懂 Token 經濟學如何把 DDR 打到天價——還有老黄怎麼把所有路都鎖死
+## 一張原價屋估價單，看懂 Token 經濟學如何把 DDR 打到天價——還有老黄怎麼把所有路都鎖死
 
 ## 19 萬的電腦，記憶體比 CPU 加主機板還貴 2.7 倍
 

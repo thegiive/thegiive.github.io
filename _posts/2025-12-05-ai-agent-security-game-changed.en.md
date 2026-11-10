@@ -32,7 +32,7 @@ But before we get into cases, we need to clarify one critical question—many pe
 
 Step zero in AI Agent Security is getting clear on what an AI agent is. Let’s make one thing explicit: an AI agent is **not** “a smarter chatbot.” It’s a different species.
 
-![AI Agent vs Chatbot comparison](/assets/images/ai-agent-vs-chatbot-comparison.png)
+![AI Agent vs Chatbot comparison](/assets/images/ai-agent-vs-chatbot-comparison.webp)
 
 **Why does “being able to take actions” multiply security risk?**
 

@@ -85,7 +85,7 @@ OpenClaw 最激進的設計選擇是：**所有認知狀態都存成純文字 Ma
 
 壞處？**每次對話都要重新讀這一整疊。**
 
-![File-First 設計：把大腦攤在硬碟上](/assets/images/openclaw-slide-05.png)
+![File-First 設計：把大腦攤在硬碟上](/assets/images/openclaw-slide-05.webp)
 
 ---
 
@@ -149,7 +149,7 @@ Read them. Update them. They're how you persist.
 
 SOUL.md 的設計理念是：犧牲一點一開始讀取的成本，換取整體對話更精煉，同時建立跨對話的記憶連續性。
 
-![SOUL.md：省下的不只是客套](/assets/images/openclaw-slide-06.png)
+![SOUL.md：省下的不只是客套](/assets/images/openclaw-slide-06.webp)
 
 ---
 
@@ -214,7 +214,7 @@ OpenClaw 的設計是每次都「重新認識自己」——而且是主動調�
 
 **這是它能維持跨對話記憶的關鍵機制，但也是 Token 粉碎機的第一個來源。**
 
-![AGENTS.md：每次啟動的強制儀式](/assets/images/openclaw-slide-07.png)
+![AGENTS.md：每次啟動的強制儀式](/assets/images/openclaw-slide-07.webp)
 
 ---
 
@@ -267,7 +267,7 @@ AGENTS.md 定義了 Heartbeat 機制——Agent 會定期被喚醒，檢查信�
 
 **這是功能換成本的 trade-off，不是設計失誤。**
 
-![Token 粉碎的真正來源](/assets/images/openclaw-slide-08.png)
+![Token 粉碎的真正來源](/assets/images/openclaw-slide-08.webp)
 
 ---
 
@@ -304,7 +304,7 @@ OpenClaw 的做法是：
 
 這是 Claude Code 沒有的成本。Claude Code 不做跨對話記憶，所以不需要這個機制。
 
-![記憶刷新：對抗遺忘的代價](/assets/images/openclaw-slide-09.png)
+![記憶刷新：對抗遺忘的代價](/assets/images/openclaw-slide-09.webp)
 
 ---
 
@@ -340,7 +340,7 @@ Task 1 (讀取) → 完成 → 寫入日誌 → Task 2 (寫入) → 完成 → �
 
 所有操作都有 JSONL 記錄，可以精確重現錯誤發生的順序。
 
-![通道隊列：為什麼不能並行？](/assets/images/openclaw-slide-10.png)
+![通道隊列：為什麼不能並行？](/assets/images/openclaw-slide-10.webp)
 
 ---
 

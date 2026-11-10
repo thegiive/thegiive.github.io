@@ -9,7 +9,7 @@ image: /assets/images/harness-engineering-peter-steinberger-workstation.png
 description: "OpenAI 3 個工程師用 Codex 在 5 個月產出 100 萬行代碼、0 行人寫。他們把這套方法叫 Harness Engineering——不是寫代碼的工程，而是建構約束和反饋迴路的工程。Ryan Carson 受此啟發，公開了一套完整的 Control-Plane Pattern：從 risk tier contract、preflight gate、SHA discipline、到 remediation loop。上次我們談了四層防禦，這次我們看完整的控制平面怎麼接住 Agent 的高速產出。"
 ---
 
-![Peter Steinberger 的工作站：多螢幕同時監控 Agent 產出](/assets/images/harness-engineering-peter-steinberger-workstation.png)
+![Peter Steinberger 的工作站：多螢幕同時監控 Agent 產出](/assets/images/harness-engineering-peter-steinberger-workstation.webp)
 
 ## 先講源頭：OpenAI 的 Harness Engineering 到底是什麼？
 

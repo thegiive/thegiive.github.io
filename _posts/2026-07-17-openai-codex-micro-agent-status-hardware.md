@@ -44,7 +44,7 @@ OpenAI 講了一年多的硬體野心，大家都在等 Jony Ive 的 io 做出�
 
 **第三，旋鈕調 reasoning effort：推理強度變成手上的實體控制。** 簡單任務轉低、難題轉高。這個設計對讀過[這篇 AgentOpt 解析](/agentopt-expensive-model-wrong-position-pipeline-optimization/)的讀者應該很有感：「多少推理算力該花在哪」本來就是資源分配問題，現在 OpenAI 直接把這個分配權做成一顆旋鈕放到你手上。
 
-![Codex Micro 的 32 個自訂圖示鍵帽](/assets/images/codex-micro-agent-keys.png)
+![Codex Micro 的 32 個自訂圖示鍵帽](/assets/images/codex-micro-agent-keys.webp)
 
 鍵帽組裡藏了兩顆彩蛋：「yolo」和「yeet」。對，全自動模式在 OpenAI 的官方鍵帽上叫 yolo，這大概是整個產品最誠實的地方。
 

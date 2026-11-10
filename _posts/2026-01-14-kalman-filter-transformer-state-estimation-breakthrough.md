@@ -9,7 +9,7 @@ image: /assets/images/kalman-transformer-architecture.png
 description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」。Kalman Filter 很穩，但遇到非線性就慢半拍。2024-2025 年學術界最熱的一條線，就是把這兩者「結婚」——用 Transformer 學經驗，用 Kalman 保證不亂來。這篇文章用工程師能懂的方式，拆解這個登上 Nature 級期刊的研究方向。"
 ---
 
-# Kalman Filter × Transformer：當「物理直覺」遇上「深度學習」
+## Kalman Filter × Transformer：當「物理直覺」遇上「深度學習」
 
 ## 這篇文章在講什麼
 
@@ -141,7 +141,7 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 
 代表作：**KalmanFormer**（2024, Frontiers in Neurorobotics）
 
-![KalmanFormer 架構：Transformer 學習 Kalman Gain](/assets/images/kalmanformer-architecture.png)
+![KalmanFormer 架構：Transformer 學習 Kalman Gain](/assets/images/kalmanformer-architecture.webp)
 
 做法：
 
@@ -163,7 +163,7 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 
 代表作：**A-KIT: Adaptive Kalman-Informed Transformer**（2024, arXiv）
 
-![A-KIT vs 傳統 EKF：位置估計誤差降低約 49.5%](/assets/images/a-kit-architecture.png)
+![A-KIT vs 傳統 EKF：位置估計誤差降低約 49.5%](/assets/images/a-kit-architecture.webp)
 
 這類做法是：
 
@@ -203,7 +203,7 @@ description: "Transformer 很會看趨勢，但它不知道「車不能瞬移」
 
 讓我用一個更接地氣的例子來說明。
 
-![純 AI 誤判 vs Kalman 校正：GPS 漂移的處理差異](/assets/images/logistics-eta-prediction.png)
+![純 AI 誤判 vs Kalman 校正：GPS 漂移的處理差異](/assets/images/logistics-eta-prediction.webp)
 
 一家物流公司想做兩件事：
 
@@ -274,7 +274,7 @@ Kalman 永遠堅守幾件事：
 
 ## 工程觀點：為什麼這是「安全」的技術投資？
 
-![工程觀點：可審計性、可解釋性、安全性](/assets/images/kalman-engineering-safety-perspective.png)
+![工程觀點：可審計性、可解釋性、安全性](/assets/images/kalman-engineering-safety-perspective.webp)
 
 這個組合的價值，不是讓 AI 更強，而是讓 AI 更可控。
 

@@ -74,7 +74,7 @@ AI 做健康是一個大家都想做的賽道。因為很多錢，而且大家�
 
 AI 現在的視覺理解能力已經很強了。截一張體重計的畫面，丟給 Claude 或 GPT-4，它直接告訴你「體重 84.1kg、體脂 23.5%、內臟脂肪 12」。
 
-![小米體脂秤 App 廣告截圖](/assets/images/xiaomi-body-scale-screenshot.png)
+![小米體脂秤 App 廣告截圖](/assets/images/xiaomi-body-scale-screenshot.webp)
 
 比你研究怎麼串 API 快 100 倍。
 
@@ -154,7 +154,7 @@ AppleScript 只是讓我少做重複勞動，不用一張一張手動拖。你�
 
 健康 App 裡只有步數、心率這些基礎數據，但「今天跑了 5 公里、配速多少、心率區間分佈」這些運動細節，只存在體能訓練 App 裡。
 
-![Apple Watch 體能訓練 App 截圖](/assets/images/apple-fitness-workout-screenshot.png)
+![Apple Watch 體能訓練 App 截圖](/assets/images/apple-fitness-workout-screenshot.webp)
 
 我研究了一下怎麼匯出，發現超麻煩，最後直接放棄——反正截圖丟給 AI 更快。
 
@@ -214,7 +214,7 @@ AI 分析完之後，我會請它輸出成 Excel：
 
 - 「我今天的運動方式對我的健康狀況(我的毛病1, 我的毛病2, 我的毛病3)好嗎？」
 
-![AI 運動方案評估截圖](/assets/images/ai-exercise-health-evaluation.png)
+![AI 運動方案評估截圖](/assets/images/ai-exercise-health-evaluation.webp)
 
 這個問題看起來簡單，但其實橫跨了三個完全不同的數據來源：運動紀錄（體能訓練 App）和健康紀錄（健康 App / 手動輸入），健康檢查資料。傳統做法要自己串起來看，但 AI 可以直接幫你對照分析。AI 是基於我自己的歷史資料回答，不是泛泛而談。
 
@@ -224,7 +224,7 @@ AI 分析完之後，我會請它輸出成 Excel：
 
 我當初選擇時，本來想用 [Gemini](/gemini-flash-evolution-path/) ，後來發現 Gemini 每一次 Live 語音會一直提醒「我不是醫生，以上不是醫療建議....」。連問個「黑木耳有什麼營養」都要跳這段，真的太扯了。
 
-![Gemini 的醫療免責聲明提醒](/assets/images/gemini-health-disclaimer.jpg)
+![Gemini 的醫療免責聲明提醒](/assets/images/gemini-health-disclaimer.webp)
 
 所以我會改用 ChatGPT 語音模式，不會那麼煩。
 我把它當作：**一個永遠不累、會看大量資料的健康助理**。

@@ -16,7 +16,7 @@ description: "現在有了 AI ，Coding 的東西可以又快又完整，但是�
 
 來看看矽谷公司現在怎麼搞的？看看 [Reddit 這一篇](https://www.reddit.com/r/vibecoding/comments/1nnl19h/how_a_senior_engineer_at_a_140m_startup_actually/?ref=ai-coding.wiselychen.com)
 
-![](/assets/images/image-18.png)
+![](/assets/images/image-18.webp)
 
 這是一個 最近剛 raise 140M 的 startup 裡面 Sr 工程師在reddit 上發表他的做法
 
@@ -25,7 +25,7 @@ description: "現在有了 AI ，Coding 的東西可以又快又完整，但是�
   3. 再來就是請 AI Code Review ，他說用 AI 做 Code Review 跟人一起 Code Review 雖然看起來重複，其實**「AI 可以幫忙 catch 不同的的 issue」** ，他們最後用的是 coderabbit ，一開始 commit 前先 local 快速 check ，等到 PR 時候，再用一個 github app 來做 detail analysis 
   4. Testing pipeline 完全是由人來控制的，所有的東西都會在 staging 環境做詳細的自動化/人工測試， AI 在裡面會幫忙寫 automation test script ，但是 deploy 與否的決策主導權完全在人
 
-![](/assets/images/image-20.png)
+![](/assets/images/image-20.webp)
 
 ###   
 人跟機器做 Code Review 的差別
@@ -45,7 +45,7 @@ description: "現在有了 AI ，Coding 的東西可以又快又完整，但是�
 。  
 看看每個技術選型都有很多 context 需要 align , AI 很難完全 align tech lead 的決策
 
-![](/assets/images/Generated-Image-October-13--2025---6_31AM-1.png)
+![](/assets/images/Generated-Image-October-13--2025---6_31AM-1.webp)
 
 再來就是對業務的理解通常比 AI 好，但是很多時候其實不一定為真 XD ，還是要寫好 PRD Spec ，讓 AI 跟 人都 on the same page 才比較好。
 
@@ -59,7 +59,7 @@ Code Review 前期，強調產生 Code 的過程當下就用UI做「人力的即
 
 AI Code Review 的部分很有趣，用 [CodeRabbit ](https://www.coderabbit.ai/?ref=ai-coding.wiselychen.com)來做，我用的大多數是之前時代的 code review 工具，主要針對一些 security，還有 syntax check，我還真的沒用過新時代的 AI Code Review SaaS Service 。看來要看看一下了，但是我的問題是我感覺 Claude Code / Codex 應該很容易做到類似的功能，這個 SaaS 網站的差異化在哪呢？
 
-![](/assets/images/image-21.png)
+![](/assets/images/image-21.webp)
 
 最後 QA 的決策環節，還是人力為主，你要對自己的 Code 負責而不是丟給 AI 。
 
@@ -67,6 +67,6 @@ AI Code Review 的部分很有趣，用 [CodeRabbit ](https://www.coderabbit.ai/
 
 最後，他說這套流程大概加速的 40% 的時間，怎麼跟我的 [ATPM 最後測出來的感覺一模一樣](/atpm-a-real-production-vibe-coding-process/)....XD
 
-![](/assets/images/image-19-1.png)
+![](/assets/images/image-19-1.webp)
 
 明天跟團隊討論這個流程一下看了那麼多 SDD , ATPM 終於可以升級了趕快來線上實測新流程

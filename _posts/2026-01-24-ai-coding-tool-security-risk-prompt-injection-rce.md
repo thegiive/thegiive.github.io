@@ -11,7 +11,7 @@ description: "AI Coding 工具最大的風險不是模型太笨，而是你把�
 
 > 當你把「判斷」也一起自動化，你就失去了最後一道防線。
 
-![AI Coding Security Risk](/assets/images/ai-coding-security-risk-cover.png)
+![AI Coding Security Risk](/assets/images/ai-coding-security-risk-cover.webp)
 
 ## 目錄
 
@@ -51,7 +51,7 @@ Yes，merge 吧。
 
 問題是——**你什麼時候開始，把「判斷」也一起自動化了？**
 
-![我們正在把「判斷」也一起自動化](/assets/images/ai-coding-security-slide-judgment-automation.png)
+![我們正在把「判斷」也一起自動化](/assets/images/ai-coding-security-slide-judgment-automation.webp)
 
 ---
 
@@ -71,7 +71,7 @@ README、issue、PR comment、error log、commit message——這些全部會進
 
 對 AI 來說，**文字就是文字，全部都是輸入**。
 
-![核心漏洞：文字即指令](/assets/images/ai-coding-security-slide-text-as-instruction.png)
+![核心漏洞：文字即指令](/assets/images/ai-coding-security-slide-text-as-instruction.webp)
 
 ---
 
@@ -101,7 +101,7 @@ README、issue、PR comment、error log、commit message——這些全部會進
 
 [研究顯示這類攻擊成功率高達 84%](https://arxiv.org/html/2509.22040v1)。
 
-![案例一：看不見的指令](/assets/images/ai-coding-security-slide-case1-hidden-command.png)
+![案例一：看不見的指令](/assets/images/ai-coding-security-slide-case1-hidden-command.webp)
 
 ---
 
@@ -143,7 +143,7 @@ def fetched_additional_data():
 
 是 **prompt 藏在設定檔裡，最後變成 code**。
 
-![案例二：供應鏈毒化](/assets/images/ai-coding-security-slide-case2-supply-chain.png)
+![案例二：供應鏈毒化](/assets/images/ai-coding-security-slide-case2-supply-chain.webp)
 
 ---
 
@@ -176,7 +176,7 @@ Google 在 Aikido 負責任揭露後的**四天內修補了漏洞**。
 
 這不只是 Gemini CLI 的問題。[InfoWorld 指出](https://www.infoworld.com/article/4101743/ai-in-ci-cd-pipelines-can-be-tricked-into-behaving-badly.html)，GitHub Copilot、Claude Code Actions、OpenAI Codex、以及任何 LLM-based release bot 都需要同樣的審查。
 
-![案例三：CI/CD 毀滅](/assets/images/ai-coding-security-slide-case3-cicd.png)
+![案例三：CI/CD 毀滅](/assets/images/ai-coding-security-slide-case3-cicd.webp)
 
 ### 這些案例的共通點
 
@@ -196,7 +196,7 @@ Google 在 Aikido 負責任揭露後的**四天內修補了漏洞**。
 
 上一節講的是「按 Yes」造成的事故。這一節講的是**系統設計缺陷**——被正式編號的 CVE。
 
-![IDEsaster：這不是理論，是現在進行式](/assets/images/ai-coding-security-slide-idesaster.png)
+![IDEsaster：這不是理論，是現在進行式](/assets/images/ai-coding-security-slide-idesaster.webp)
 
 ---
 
@@ -283,7 +283,7 @@ Cursor 的行為邏輯：
 
 根據 [GitHub Security Advisory](https://github.com/cursor/cursor/security/advisories/GHSA-4cxx-hrm3-49rm)，Cursor 在 1.3.9 版本中修復了此漏洞，現在 Agent 被禁止在沒有批准的情況下寫入 MCP 敏感檔案。
 
-![解剖 CVE-2025-54135：被授權的攻擊](/assets/images/ai-coding-security-slide-cve-rce-chain.png)
+![解剖 CVE-2025-54135：被授權的攻擊](/assets/images/ai-coding-security-slide-cve-rce-chain.webp)
 
 ---
 
@@ -358,7 +358,7 @@ Skill 不是「功能擴展」，而是「權限擴展」。一個 Skill 可能�
 
 是 **AI 行為層被植入後門**。
 
-![隱形後門：設定檔污染](/assets/images/ai-coding-security-slide-config-pollution.png)
+![隱形後門：設定檔污染](/assets/images/ai-coding-security-slide-config-pollution.webp)
 
 ### 檢查你的 Skill 授權
 
@@ -376,7 +376,7 @@ Skill 不是「功能擴展」，而是「權限擴展」。一個 Skill 可能�
 
 如果答案是「不知道」，那就是風險。
 
-![Skill 不是功能的延伸，是權限的延伸](/assets/images/ai-coding-security-slide-skill-permission.png)
+![Skill 不是功能的延伸，是權限的延伸](/assets/images/ai-coding-security-slide-skill-permission.webp)
 
 ### Skill 影響的不只是本機
 
@@ -422,7 +422,7 @@ Skill 產生內容 → 你信了 → 貼到 Slack / Email / GitHub
 
 這就是為什麼傳統 WAF、APM、防毒軟體都沒用——因為攻擊不是從外部滲透，而是**利用你給 AI 的信任，讓 AI 代表你做決策**。
 
-![為什麼傳統資安防不住？](/assets/images/ai-coding-security-slide-why-waf-fails.png)
+![為什麼傳統資安防不住？](/assets/images/ai-coding-security-slide-why-waf-fails.webp)
 
 ---
 
@@ -441,7 +441,7 @@ Skill 產生內容 → 你信了 → 貼到 Slack / Email / GitHub
    - 短 TTL
    - ❌ 絕對不要用 admin token
 
-![防禦策略一：砍權限到骨頭](/assets/images/ai-coding-security-slide-defense1-permission.png)
+![防禦策略一：砍權限到骨頭](/assets/images/ai-coding-security-slide-defense1-permission.webp)
 
 ### 第二道防線：把文字當攻擊面
 
@@ -455,7 +455,7 @@ Skill 產生內容 → 你信了 → 貼到 Slack / Email / GitHub
    - 關掉 auto-fix without diff
    - **一定要人確認**
 
-![防禦策略二：視文字為敵](/assets/images/ai-coding-security-slide-defense2-zero-trust.png)
+![防禦策略二：視文字為敵](/assets/images/ai-coding-security-slide-defense2-zero-trust.webp)
 
 ### 第三道防線：流程上把 Agent 當實習生
 
@@ -601,7 +601,7 @@ Security takes priority over task completion.
 2. **把「不能做什麼」寫死**：Agent 不能自己合理化行為
 3. **強制人類確認**：砍掉「自動化 × 權限」這條事故鏈
 
-![防禦策略三：CLAUDE.md 防火牆](/assets/images/ai-coding-security-slide-defense3-claudemd.png)
+![防禦策略三：CLAUDE.md 防火牆](/assets/images/ai-coding-security-slide-defense3-claudemd.webp)
 
 ---
 
@@ -674,7 +674,7 @@ AI agent 出事 = 權限 × 自動化 × 信任
 
 事故機率直接掉一個數量級。
 
-![AI 資安風險公式](/assets/images/ai-coding-security-slide-risk-formula.png)
+![AI 資安風險公式](/assets/images/ai-coding-security-slide-risk-formula.webp)
 
 記住這句話：
 

@@ -7,7 +7,7 @@ image: /assets/images/cursor-vs-claude-code-agentic-coding-cover.png
 description: "當一個被 Cursor 官方認證的全球頂尖用戶，選擇放棄熟悉的工具轉投 Claude Code，這不只是換工具——這是一場關於「AI 程式設計該怎麼做」的典範轉移。Silen Naihin 的萬字長文詳解 Agentic Coding 五大支柱：Context Management、Planning、Closing the Loop、Verifiability、Debugging。"
 ---
 
-![Cursor vs Claude Code](/assets/images/cursor-vs-claude-code-agentic-coding-cover.png)
+![Cursor vs Claude Code](/assets/images/cursor-vs-claude-code-agentic-coding-cover.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 1 月

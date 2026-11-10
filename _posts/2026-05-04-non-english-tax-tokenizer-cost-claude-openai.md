@@ -6,7 +6,7 @@ image: /assets/images/non-english-tax-tokenizer-cover.png
 description: "同一篇文章翻成不同語言丟給 LLM，Anthropic 處理中文比英文多吃 1.71 倍 token，印地語直接 3.24 倍；OpenAI 比較克制但中文也要 1.15 倍。這個被叫做「非英語稅」的隱藏成本，正在悄悄拉開亞洲企業跟美國公司的 API 帳單差距。本文拆解 tokenizer 為什麼歧視非英語、算給你看一個典型台灣企業 case 的真實成本差距、以及為什麼我自己仍然主要用 Claude——但會在哪些場景切換到 OpenAI 或 DeepSeek。注意：1.71x 是 Claude 中文相對 Claude 英文的倍數（同一家內部基準），不是相對 OpenAI 英文的倍數。Opus 4.7 已換 tokenizer，但官方反而提醒同樣輸入可能多吃 1.0-1.35x token，是否改善中文稅需要實測，不能用廠商公告直接推論。"
 ---
 
-# 非英語稅：用 Claude 寫中文，同樣內容 token 比英文版多 71%
+## 非英語稅：用 Claude 寫中文，同樣內容 token 比英文版多 71%
 
 ## 一張對比表，看懂為什麼你的 API 帳單比 SF 同事貴
 

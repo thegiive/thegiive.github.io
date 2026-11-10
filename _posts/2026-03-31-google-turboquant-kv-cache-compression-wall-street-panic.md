@@ -17,7 +17,7 @@ TurboQuant 的技術是真的。社群實作驗證了它的效果。但圍繞它
 
 ## TurboQuant 到底是什麼？
 
-![Google Research TurboQuant 官方 Blog](/assets/images/google-turboquant-research-blog-cover.png)
+![Google Research TurboQuant 官方 Blog](/assets/images/google-turboquant-research-blog-cover.webp)
 
 先把技術講清楚。
 

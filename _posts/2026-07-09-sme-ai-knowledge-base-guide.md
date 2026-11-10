@@ -53,7 +53,7 @@ AI 知識庫，本質上是在給 AI 補上下文。什麼叫上下文？就是 
 
 這些東西合在一起，就是 AI 的上下文。
 
-![知識庫的本質是為 AI 提供專屬上下文](/assets/images/sme-kb-context-formula-03.png)
+![知識庫的本質是為 AI 提供專屬上下文](/assets/images/sme-kb-context-formula-03.webp)
 
 AI 最終的輸出品質，由三件事共同決定：**模型本身的能力、你給它的上下文品質、你對它下的任務約束**。
 
@@ -77,7 +77,7 @@ AI 最終的輸出品質，由三件事共同決定：**模型本身的能力、
 
 目前常見的實現方式有五種。它們不是五個並列選項，更像是從輕到重的五個階段。你在哪個階段，就選對應方案。
 
-![知識庫落地的五個階梯](/assets/images/sme-kb-five-stages-05.png)
+![知識庫落地的五個階梯](/assets/images/sme-kb-five-stages-05.webp)
 
 ### 第一種：直接投餵
 
@@ -297,7 +297,7 @@ RAG 的做法是，提前把你的資料按片段處理好，AI 來檢索的時�
 
 搭起來只是第一步。後面更有價值的是持續回饋。
 
-![持續反饋循環](/assets/images/sme-kb-feedback-loop-11.png)
+![持續反饋循環](/assets/images/sme-kb-feedback-loop-11.webp)
 
 AI 回答錯了，你要記錄錯在哪裡。不是罵一句「AI 真蠢」就完了，而是把這次錯誤寫回規則文件裡，讓 AI 下次不再犯。
 
@@ -325,7 +325,7 @@ AI 寫出來的東西不像人說話，就是常說的 AI 味。怎麼辦？把�
 
 ## 你的 15 分鐘行動挑戰
 
-![15 分鐘行動挑戰](/assets/images/sme-kb-15min-challenge-13.png)
+![15 分鐘行動挑戰](/assets/images/sme-kb-15min-challenge-13.webp)
 
 **第一，先建目錄，別急著買系統。** 90% 的中小企業在知識庫這件事上卡住，不是因為沒有工具，而是因為資料還沒有整理到 AI 能用的狀態。先分類、先放進去、先跑一個場景，比挑選一個月工具更有用。
 

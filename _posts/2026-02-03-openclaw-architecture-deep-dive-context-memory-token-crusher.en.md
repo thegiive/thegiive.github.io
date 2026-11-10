@@ -86,7 +86,7 @@ The upside is transparency: you can edit these files directly and immediately ch
 
 The downside? **Every new session has to reread the whole stack.**
 
-![File-First 設計：把大腦攤在硬碟上](/assets/images/openclaw-slide-05.png)
+![File-First 設計：把大腦攤在硬碟上](/assets/images/openclaw-slide-05.webp)
 
 ---
 
@@ -150,7 +150,7 @@ Read them. Update them. They're how you persist.
 
 SOUL.md’s design says: accept some startup reading cost to get tighter conversations, plus cross-session memory continuity.
 
-![SOUL.md：省下的不只是客套](/assets/images/openclaw-slide-06.png)
+![SOUL.md：省下的不只是客套](/assets/images/openclaw-slide-06.webp)
 
 ---
 
@@ -215,7 +215,7 @@ OpenClaw “re-learns itself” every session—and does so by actively calling 
 
 **That’s the mechanism enabling cross-session memory—and the first source of its token-crushing cost structure.**
 
-![AGENTS.md：每次啟動的強制儀式](/assets/images/openclaw-slide-07.png)
+![AGENTS.md：每次啟動的強制儀式](/assets/images/openclaw-slide-07.webp)
 
 ---
 
@@ -268,7 +268,7 @@ And OpenClaw encourages proactivity—proactive action, memory, and checks—all
 
 **This is a capability-vs-cost trade-off, not a design mistake.**
 
-![Token 粉碎的真正來源](/assets/images/openclaw-slide-08.png)
+![Token 粉碎的真正來源](/assets/images/openclaw-slide-08.webp)
 
 ---
 
@@ -306,7 +306,7 @@ Each flush:
 
 Claude Code doesn’t pay this cost: it doesn’t do cross-session memory, so it doesn’t need this mechanism.
 
-![記憶刷新：對抗遺忘的代價](/assets/images/openclaw-slide-09.png)
+![記憶刷新：對抗遺忘的代價](/assets/images/openclaw-slide-09.webp)
 
 ---
 
@@ -343,7 +343,7 @@ Task 1 (read) → done → write log → Task 2 (write) → done → write log �
 
 Every operation is recorded in JSONL; you can reconstruct the exact ordering of events.
 
-![通道隊列：為什麼不能並行？](/assets/images/openclaw-slide-10.png)
+![通道隊列：為什麼不能並行？](/assets/images/openclaw-slide-10.webp)
 
 ---
 

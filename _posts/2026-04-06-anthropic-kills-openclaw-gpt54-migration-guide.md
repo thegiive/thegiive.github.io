@@ -7,7 +7,7 @@ image: /assets/images/anthropic-kills-openclaw-email.png
 description: "Anthropic 正式封殺 OpenClaw，但你需要的不是一個模型，而是一套 Agent Infra。三層替代方案：入口層換供應來源（GPT-5.4 改提示詞達 80% Claude 體驗、或接 GitHub Copilot）、雲端 API 層按複雜度分流（Opus 到 Haiku 成本砍九成）、地端層用 Qwen 3.5 27B 蒸餾版處理敏感和高頻任務（零成本零隱私風險）。附完整分流提示詞配置，沒有任何一層是不可替換的。OpenClaw, Claude Code, OpenRouter, model routing, local LLM 實戰指南。"
 ---
 
-![Anthropic 封殺 OpenClaw 官方通知](/assets/images/anthropic-kills-openclaw-email.png)
+![Anthropic 封殺 OpenClaw 官方通知](/assets/images/anthropic-kills-openclaw-email.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 4 月

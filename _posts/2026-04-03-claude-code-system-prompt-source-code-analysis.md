@@ -7,7 +7,7 @@ image: /assets/images/claude-code-system-prompt-cover.png
 description: "大家都在學 prompt engineering，但你有沒有想過，Anthropic 自己的 prompt 長什麼樣子？Claude Code 的核心 prompt 藏在 prompts.ts 裡面，914 行 TypeScript，15+ 個模組化 section builder，還有一條看不見的邊界線把 prompt 切成「可快取」和「不可快取」兩半。拆開來看，最大的發現是：這不是一份 prompt，這是一個 prompt 作業系統。"
 ---
 
-# 拆解 Claude Code 的 System Prompt 源碼：Anthropic 怎麼馴服自己的模型
+## 拆解 Claude Code 的 System Prompt 源碼：Anthropic 怎麼馴服自己的模型
 
 **作者：** Wisely Chen
 **日期：** 2026 年 4 月

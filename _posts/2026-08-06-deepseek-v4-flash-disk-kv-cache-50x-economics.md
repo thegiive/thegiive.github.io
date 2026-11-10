@@ -9,7 +9,7 @@ categories: [AI 前沿技術]
 author: Wisely Chen
 ---
 
-# DeepSeek V4 Flash 0731 為何那麼強：這是一個超過兩年以上的架構革命
+## DeepSeek V4 Flash 0731 為何那麼強：這是一個超過兩年以上的架構革命
 
 V4 Flash 0731 在 7 月 31 日上線後一週，中文科技圈開始流傳一個詞：「斬殺線」。
 

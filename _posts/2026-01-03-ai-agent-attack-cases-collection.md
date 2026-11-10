@@ -157,7 +157,7 @@ description: "從 Salesforce ForcedLeak 到 Microsoft 365 EchoLeak，從 ChatGPT
 
 **最可怕的是：你完全不需要做任何動作。只要 Copilot 「看到」這封郵件，攻擊就成功了。**
 
-![EchoLeak Attack Flow](/assets/images/echoleak-attack-flow.jpg)
+![EchoLeak Attack Flow](/assets/images/echoleak-attack-flow.webp)
 
 > 這類攻擊之所以成立，原因不是 prompt，而是 Agent 被設計成「可以理解 + 可以行動 + 可以外傳」。
 > 👉 架構層的完整分析，請見：[AI Agent Security：遊戲規則已經改變](/ai-agent-security-game-changed/)
@@ -274,7 +274,7 @@ Agent A (低權限)  →  Agent B (中權限)  →  Agent C (高權限)  →  �
 
 ### 實際截圖
 
-![AI 數字人主播學貓叫](/assets/images/ai-digital-anchor-meow-screenshot.png)
+![AI 數字人主播學貓叫](/assets/images/ai-digital-anchor-meow-screenshot.webp)
 
 ### 為什麼這個案例特別有趣？
 

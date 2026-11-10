@@ -9,7 +9,7 @@ categories: [AI 前沿技術]
 author: Wisely Chen
 ---
 
-# MoE Offload 完全拆解：為什麼 671B 模型只吃 17GB VRAM 還能跑
+## MoE Offload 完全拆解：為什麼 671B 模型只吃 17GB VRAM 還能跑
 
 先講一件聽起來不太合理的事。
 
@@ -40,7 +40,7 @@ MoE 的改動只有一個：**把 FFN 拆成很多份，每份叫一個 expert�
 
 算一下：256 個裡面只用 8 個，**97% 的 expert 權重在每個 token 的推理過程中是完全閒置的。**
 
-![Dense 模型 vs MoE 模型：97% 的常態閒置](/assets/images/moe-offload-dense-vs-moe.png)
+![Dense 模型 vs MoE 模型：97% 的常態閒置](/assets/images/moe-offload-dense-vs-moe.webp)
 
 這就是 MoE 天生適合 offload 的原因——閒置的權重不需要待在 GPU 上。
 
@@ -87,7 +87,7 @@ Expert 權重從 CPU RAM 傳到 GPU，走的是 PCIe 匯流排。PCIe 4.0 x16 �
 
 這就是為什麼 MoE 全放 CPU 只有 7 tok/s——不是 GPU 算不動，是等資料等到天荒地老。
 
-![核心瓶頸：GPU 85% 時間在等 PCIe 傳輸](/assets/images/moe-offload-pcie-bottleneck.png)
+![核心瓶頸：GPU 85% 時間在等 PCIe 傳輸](/assets/images/moe-offload-pcie-bottleneck.webp)
 
 問題的本質是：每生成一個 token，router 選中 8 個 expert（V3 的情況），這 8 個 expert 的權重要從 CPU RAM 搬到 GPU，GPU 算完再搬下一批。搬的次數 x 每次搬的量 / PCIe 頻寬 = 你的等待時間。
 
@@ -123,7 +123,7 @@ Linux 上可以用 `numactl --membind=0` 強制分配到指定 NUMA node。Windo
 
 DeepSeek 的 MoE 架構從 V2 開始迭代了三代。從 offload 效率的角度看，V3 到 V4 的核心改進可以歸結為三件事，**每一件都在降低 PCIe 搬運壓力。**
 
-![DeepSeek V4：三個維度同時降低 PCIe 搬運壓力](/assets/images/moe-offload-deepseek-v4-optimization.png)
+![DeepSeek V4：三個維度同時降低 PCIe 搬運壓力](/assets/images/moe-offload-deepseek-v4-optimization.webp)
 
 ### 4.1 激活比例持續壓低——每次搬更少
 

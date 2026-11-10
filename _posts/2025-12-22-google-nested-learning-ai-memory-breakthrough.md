@@ -9,7 +9,7 @@ permalink: /nested-learning-ai-memory/
 description: "「擴大 context window 解決記憶問題？那就像用更大的筆記本來治療失憶症。」Google 在 NeurIPS 2025 發表的 Nested Learning，試圖讓 LLM 像大腦一樣擁有多層記憶系統。這不是漸進式改進，而是重新定義「什麼是模型」的嘗試。"
 ---
 
-# Google Nested Learning：AI 終於可以「記住」東西了？
+## Google Nested Learning：AI 終於可以「記住」東西了？
 
 **副標題：** 當 Google 說「架構和訓練是同一件事」，他們到底在搞什麼？
 
@@ -129,7 +129,7 @@ CMS 把模型的記憶分成多個「bank」，每個 bank 以不同速率更新
 | 長期記憶 | 慢速層 |
 | 海馬迴（記憶整合）| Self-modifying loop |
 
-![Continuum Memory System](/assets/images/nested-learning-cms.png)
+![Continuum Memory System](/assets/images/nested-learning-cms.webp)
 
 ### 2. Deep Momentum Gradient Descent — 深度動量梯度下降
 
@@ -141,7 +141,7 @@ CMS 把模型的記憶分成多個「bank」，每個 bank 以不同速率更新
 
 基於這個洞察，Google 設計了更深、更有表達力的「記憶優化器」，讓模型在推理過程中可以持續學習。
 
-![Deep Momentum Gradient Descent](/assets/images/nested-learning-deep-momentum.png)
+![Deep Momentum Gradient Descent](/assets/images/nested-learning-deep-momentum.webp)
 
 ### 3. Hope Architecture — 自我修改架構
 
@@ -155,7 +155,7 @@ Hope = Titans 架構 + CMS
 
 這有點像大腦的「後設認知」——你不只在思考，你還在思考「怎麼思考」。
 
-![Hope Architecture](/assets/images/nested-learning-hope.png)
+![Hope Architecture](/assets/images/nested-learning-hope.webp)
 
 ---
 

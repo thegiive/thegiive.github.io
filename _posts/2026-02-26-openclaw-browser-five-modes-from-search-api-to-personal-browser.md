@@ -9,7 +9,7 @@ image: /assets/images/openclaw-browser-five-modes-cover.png
 description: "AI Agent 的「上網」不是一件事，而是五件事。選錯模式，輕則功能受限，重則帳號被盜。OpenClaw 的五種上網架構——Search API、Web Fetch、Managed Browser、Remote CDP、Extension Relay——每一種的能力範圍、安全風險、適用場景都天差地別。本文從最安全的搜尋 API 到最危險的瀏覽器接管，逐層拆解技術架構與安全風險，包含 Accessibility Tree vs 截圖的效率差異、Managed Browser 手動登入的甜蜜點、以及 WebMCP 的未來展望。"
 ---
 
-![OpenClaw Browser Relay 實際操作畫面](/assets/images/openclaw-browser-five-modes-cover.png)
+![OpenClaw Browser Relay 實際操作畫面](/assets/images/openclaw-browser-five-modes-cover.webp)
 
 ## 為什麼要搞清楚 AI 怎麼上網？
 

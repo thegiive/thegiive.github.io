@@ -7,9 +7,9 @@ image: /assets/images/opus-vs-sonnet-benchmark-gap-cover.png
 description: "過去一個多月，我一直在 OpenClaw 和 Claude Code 上來回切換 Opus 跟 Sonnet。網路上一堆比較文章講什麼「全密計算架構」、「Dynamic Sparsity」——兩邊都是編的。這篇只講實際體驗到的、可驗證的差距，以及怎麼用工程手段讓便宜模型也夠用。"
 ---
 
-# Opus vs Sonnet：Benchmark 看不太出來的體感差距
+## Opus vs Sonnet：Benchmark 看不太出來的體感差距
 
-![Claude Opus 4.6 官網截圖](/assets/images/opus-vs-sonnet-benchmark-gap-cover.png)
+![Claude Opus 4.6 官網截圖](/assets/images/opus-vs-sonnet-benchmark-gap-cover.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 3 月

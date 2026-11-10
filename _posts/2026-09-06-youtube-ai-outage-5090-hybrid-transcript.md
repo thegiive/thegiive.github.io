@@ -59,7 +59,7 @@ author: Wisely Chen
 
 那我們現在就講的就是一個推測，雖然已經是沒有人證實，但是是一個推測又很有可能的原因。基本上大家就是在今年 5 月的時候大家都知道說，就是 SpaceX 他們把他們原本給 Grok 的 Colossus 1 然後租給 Claude。那原因是因為就是他們之後就是已經都有 Colossus 2 了，那 Colossus 1 的話就是利用率沒那麼高，所以租給那時候算力極缺的就是 Anthropic。
 
-![Anthropic rents Colossus 1 for $1.25 billion/month](/assets/images/ai-triple-outage-shared-failure-domain-cover.png)
+![Anthropic rents Colossus 1 for $1.25 billion/month](/assets/images/ai-triple-outage-shared-failure-domain-cover.webp)
 
 那所以說我們可以知道說，基本上那個 Anthropic 跟 SpaceX 他們在 infra 層其實有一部分應該是重疊的。然後在當下的那個時間點，也的確最後 SpaceX 他們也跳出來說，在當下其實他們在孟菲斯的 Colossus 1 有一些問題。他們也在 X 上面說為受影響的算力夥伴致歉。
 

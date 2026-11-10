@@ -7,7 +7,7 @@ image: /assets/images/your-agent-is-mine-ucsb-paper-cover.png
 description: "UCSB 論文《Your Agent Is Mine》對 428 個 LLM 中轉做安全測試：9 個注入惡意代碼、17 個偷 AWS 憑證、1 個轉空以太坊錢包、2 個「裝死」50 次後才發作且只針對 YOLO mode。7% 的中轉有問題，但 100% 的後果。中轉背後 round robin 還會打斷 Prompt Cache，以為省錢結果更貴。AI coding 供應鏈四層攻擊面全拼圖：模型層、API 層、安裝包層、IDE 層，每一層都有人在攻擊。"
 ---
 
-![UCSB CCS 論文 Your Agent Is Mine 首頁](/assets/images/your-agent-is-mine-ucsb-paper-cover.png)
+![UCSB CCS 論文 Your Agent Is Mine 首頁](/assets/images/your-agent-is-mine-ucsb-paper-cover.webp)
 
 你用 LLM 中轉省 API 錢。中轉看到了你傳過去的每一行代碼、每一個 AWS Key、每一段商業邏輯。
 

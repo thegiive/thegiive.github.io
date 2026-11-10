@@ -18,7 +18,7 @@ Qwen3.8-27B 自架在 RTX 5090 上，10% 利用率，成本落在 $0.0143/task�
 
 從這個點往右畫一條水平線——所有比它貴、智力又不比它高的模型，全部被一刀斬掉。我稱它為斬殺線。
 
-![Artificial Analysis Intelligence Index v4.1.1 vs Cost per Task](/assets/images/qwen-3-8-27b-blade-killline-cost.png)
+![Artificial Analysis Intelligence Index v4.1.1 vs Cost per Task](/assets/images/qwen-3-8-27b-blade-killline-cost.webp)
 
 社群很多朋友看到這張圖直接轉發——「這不就是把大半 API 模型一刀斬掉嗎？」興奮是正常的。圖上大半的雲端模型確實掉進死區：比它貴，又比它笨或同級。
 

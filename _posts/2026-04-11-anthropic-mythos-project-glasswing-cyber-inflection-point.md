@@ -7,7 +7,7 @@ image: /assets/images/mythos-project-glasswing-announcement.png
 description: "Anthropic 新模型 Mythos 據稱強到讓美國財政部長和 Fed 主席同時召見六大行 CEO。Cyber Gym 83%、OpenBSD 27 年老洞、FFmpeg 500 萬次 fuzzing miss——但仔細看，Anthropic 公布的戰績全部都是白箱攻擊。這篇文章做三件事：一、把恐慌從無意義的等級拉回可以具體行動的等級；二、提出「白箱 vs 黑箱」「激勵機制 vs 技術能力」兩個冷靜視角；三、用「Mythos 不是核武，是一把 AK 送給路人」這個比喻，定調真正該擔心的時間點是 6-15 個月後的開源複製品。"
 ---
 
-![Anthropic 官方宣布 Project Glasswing：搭載最新 frontier 模型 Claude Mythos Preview](/assets/images/mythos-project-glasswing-announcement.png)
+![Anthropic 官方宣布 Project Glasswing：搭載最新 frontier 模型 Claude Mythos Preview](/assets/images/mythos-project-glasswing-announcement.webp)
 
 ## 發生了什麼事
 

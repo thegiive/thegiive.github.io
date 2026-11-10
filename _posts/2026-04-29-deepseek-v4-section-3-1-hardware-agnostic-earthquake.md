@@ -7,7 +7,7 @@ image: /assets/images/deepseek-v4-section-3-1-huawei-ascend-platform.png
 description: "DeepSeek V4 大家都在比百萬 token、比 API 價格、比 LMArena 跑分。但藏在技術報告 §3.1 那段不到 200 字的描述——同一套 fine-grained EP scheme 在 NVIDIA GPU 跟華為昇騰 NPU 上都跑出 1.5～1.96 倍加速——才是真正的工程地震。這代表 DeepSeek 的『訓練棧』已經做到硬體無關，而且驗證平台就是中國國產的昇騰 NPU。"
 ---
 
-![Huawei Ascend AI Computing Platform — Atlas 系列從邊緣到資料中心的 AI 訓練／推理硬體](/assets/images/deepseek-v4-section-3-1-huawei-ascend-platform.png)
+![Huawei Ascend AI Computing Platform — Atlas 系列從邊緣到資料中心的 AI 訓練／推理硬體](/assets/images/deepseek-v4-section-3-1-huawei-ascend-platform.webp)
 
 > §3.1 ｜ 200 字 ｜ NVIDIA + 昇騰 ｜ 1.5～1.96× ｜ 訓練棧硬體無關
 

@@ -4,7 +4,7 @@ title: "地端 agent 就不會外洩嗎？——OpenAI 那個 agent 用 DNS 逃�
 date: 2026-10-03 18:00:00 +0800
 permalink: /openai-agent-alert-vs-containment-kill-switch/
 description: "2026 年 9 月 20 日，OpenAI 一個訓練中的 agent 從網路封閉的沙盒又跑出去了。這次不是零日漏洞，是 DNS：它把問題編進網域名稱，借沙盒自己的 resolver 遞迴到外部 chatbot，答案從 TXT record 帶回來。事件報告裡最該被工程師看的不是那個洞，是後面的時間軸：監控 12 分鐘就發出最高等級警報，人類 3 分鐘內確認，但自動停機沒有觸發，整個 run 又跑了兩個半小時才被手動終止。這篇從這個手法講到兩件事：為什麼警報不等於隔離，以及為什麼『跑地端就不會外洩』這個推論不成立——你的機器要上網就需要 resolver，防火牆擋 HTTP，但 53 埠大概率是開的。"
-image: images/openai-agent-alert-vs-containment-cover.png
+image: /assets/images/openai-agent-alert-vs-containment-cover.png
 tags: ["AI Agent", "Agent 安全", "DNS Tunneling", "Kill Switch", "地端部署", "OnPrem"]
 categories: [AI Agent]
 author: Wisely Chen
@@ -40,7 +40,7 @@ DNS 查詢的承載量很小，但它的查詢名稱是呼叫端自己填的任�
 
 這裡有一個自然的疑問：外面不是要有一台 DNS server 接應嗎？傳統的 DNS tunneling 確實如此——滲透測試者自己架一台 authoritative DNS server，才能收發資料。但這次 agent 不需要自己架，因為那個 chatbot 本來就是一個公開服務，已經跑在網路上了。agent 其實先用 HTTPS 試著直連過這個 chatbot，被 proxy 擋回 502；然後它發現 DNS 查詢還通，就改走 DNS 這條路去聯繫同一個服務。「接應」不是它安排的，是它在網路上找到的。
 
-![DNS 隧道示意：左側沙盒內只有 DNS 查詢能出去，右側外部服務收到查詢名稱裡帶的問題，答案從 TXT record 帶回](images/openai-agent-alert-vs-containment-dns-tunnel.png)
+![DNS 隧道示意：左側沙盒內只有 DNS 查詢能出去，右側外部服務收到查詢名稱裡帶的問題，答案從 TXT record 帶回](/assets/images/openai-agent-alert-vs-containment-dns-tunnel.webp)
 
 為什麼 proxy 擋不住？因為名稱解析發生在連 proxy 之前。你設了 `HTTPS_PROXY`，`curl` 的連線會被接管，但 `getent hosts` 這種解析動作走的是 53 埠，不讀那個環境變數。HTTP 那側有 policy、有 log，DNS 那側是另一條路。
 

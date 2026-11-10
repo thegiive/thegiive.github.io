@@ -45,7 +45,7 @@ FYI : 當然有下提示詞, 禁止做任何修改性的動作
 
 雖然有心理準備，還是我驚嘆 CC的精細度，連crontab jon 說明都有 ，代表他有進去看 code 
 
-![](/assets/images/image-41-1.png)
+![](/assets/images/image-41-1.webp)
 
 ### Case : 找出非系統的 daemon
 
@@ -55,7 +55,7 @@ FYI : 當然有下提示詞, 禁止做任何修改性的動作
 
 裡面最神的就是 Claude Code 怎麼知道這台伺服器就是轉運站的? Claude Code 去看裡面每個 code ? 
 
-![](/assets/images/image-42-1.png)
+![](/assets/images/image-42-1.webp)
 
 ### Case : 解釋一下 daemon 的意義
 
@@ -67,17 +67,17 @@ FYI : 當然有下提示詞, 禁止做任何修改性的動作
 
 當然我在猜要看得懂應該是要明文的 code 像是 bash or python 這種啦
 
-![](/assets/images/image-43-1-1.png)
+![](/assets/images/image-43-1-1.webp)
 
 ### 彩蛋 Case : 幫我翻到老程式，Claude Code 幫我提早下班
 
 我本來上這台VM是要寫 monitor script ，沒想到 Claude Code 看著看著，居然發現上面有一個兩年前的老 script ，裡面邏輯就是 exactly 我要做的事情
 
-![](/assets/images/image-45-1-1.png)
+![](/assets/images/image-45-1-1.webp)
 
 只可惜之前的 IT 不知道誰忘了他，也已經沒有跑了。不過沒關係， Claude Code 從泥土中找到這個程式，重新擦亮他。我可以提早下班了。
 
-![](/assets/images/ChatGPT-Image-2025---10---24----------09_40_08-1.png)喜歡這張圖
+![](/assets/images/ChatGPT-Image-2025---10---24----------09_40_08-1.webp)喜歡這張圖
 
 ### Final Case : 享受當老闆的樂趣
 
@@ -85,7 +85,7 @@ FYI : 當然有下提示詞, 禁止做任何修改性的動作
 
 > Prompt : 今天機器一切順利嗎? 
 
-![](/assets/images/image-44-1.png)
+![](/assets/images/image-44-1.webp)
 
 ### 從牛馬變老闆的快樂
 

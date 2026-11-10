@@ -167,7 +167,7 @@ AI 的產出品質，80% 取決於你給它的 input: [PRD](/atpm-prdde-zhong-ya
 
 Claude Code 已經不只是一個工具了。老實說，它已經很像是我的編程夥伴，或者是我管理工作中一個很好的副手。它就是有一點點呆板，不像以前(5.2以前) 的 ChatGPT 那麼會「Chatty」，但是它真的能做好我賦予它 70% 到 80% 的工作。老實說，就算換一個人來，也不見得那麼靠譜。
 
-![超慢跑配 Claude Code：健康與生產力兼得](/assets/images/claude-code-slow-jogging.png)
+![超慢跑配 Claude Code：健康與生產力兼得](/assets/images/claude-code-slow-jogging.webp)
 
 
 親愛的 Claude Code，新的一年也請你多多指教。

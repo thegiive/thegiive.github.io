@@ -42,7 +42,7 @@ Astra 這一代真正明顯的進步，不是在一般的 browser use，而是�
 
 以 OpenAI 公開的 OSWorld 2.0 為例，GPT-5.6 Sol 的分數是 65.7%，Astra 提升到 72.6%，增加 6.9 個百分點。代表 Computer Use 這個場景下有 73% 的成功率。更重要的是，模擬任務平均時間從約 75 分鐘降到 40 分鐘，快了接近一倍。搭配新版 Codex harness，Mind2Web 上的任務完成速度比 Sol 快 1.9 倍。
 
-![OSWorld 2.0 準確性 vs API 成本：Astra 在相同成本下準確性明顯高於 Sol，且所用 Token 大幅減少](/images/astra-computer-use-osworld-benchmark.png)
+![OSWorld 2.0 準確性 vs API 成本：Astra 在相同成本下準確性明顯高於 Sol，且所用 Token 大幅減少](/assets/images/astra-computer-use-osworld-benchmark.webp)
 
 這背後可能有一個很重要的基礎設施變化。
 

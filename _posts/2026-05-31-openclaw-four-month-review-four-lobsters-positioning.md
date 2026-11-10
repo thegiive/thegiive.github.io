@@ -7,7 +7,7 @@ image: /assets/images/openclaw-four-month-review-cover.jpg
 description: "用了四個月、常態同時跑 4 支 OpenClaw 之後的誠實復盤：四隻龍蝦各自的定位、為什麼大家追的 Hermes 我還沒碰、地端 RTX 5090 + Qwen 3.6 27B 與雲端 frontier 怎麼分工。"
 ---
 
-[![OpenClaw 四個月後復盤：我的四隻龍蝦的定位](/assets/images/openclaw-four-month-review-cover.jpg)](https://youtu.be/yMLO-pSavHg)
+[![OpenClaw 四個月後復盤：我的四隻龍蝦的定位](/assets/images/openclaw-four-month-review-cover.webp)](https://youtu.be/yMLO-pSavHg)
 
 我從今年 2 月開始用 OpenClaw，到現在 6 月，剛好四個多月。趁這個時間點，我想誠實跟大家做一個復盤：這四個月我到底有沒有「真的」在用它，以及它對我的工作跟生活造成了什麼影響。
 

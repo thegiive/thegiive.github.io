@@ -114,7 +114,7 @@ Peter 改名成 Moltbot（龍蝦脫殼的意思，蠻幽默的）。但改名過
 
 ### 第二刀：OAuth 封鎖（2026-01-09 執行）
 
-![Anthropic 官方文件明確禁止 OAuth 用於第三方產品](/assets/images/anthropic-oauth-ban-official-docs.png)
+![Anthropic 官方文件明確禁止 OAuth 用於第三方產品](/assets/images/anthropic-oauth-ban-official-docs.webp)
 
 Anthropic 在服務器端部署了防護措施，封鎖了訂閱制 OAuth token 在第三方產品的使用。
 

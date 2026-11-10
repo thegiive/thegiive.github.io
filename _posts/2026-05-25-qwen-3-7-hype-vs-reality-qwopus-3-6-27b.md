@@ -7,7 +7,7 @@ image: /assets/images/qwen-3-7-hype-vs-reality-cover.png
 description: "阿里巴巴在 2026/5/20 杭州雲棲大會正式發表 Qwen 3.7，多模態與推理能力全面超越 3.6，LM Arena 一上線就擠進前 15。與此同時，社群把 3.6-27B 拿去蒸餾 Claude 4.7 的神改版 Qwopus3.6-27B-v2 也同期釋出，單卡就能跑、推理 token 還少了 36%，讓大家對「3.7 27B 本地版」的期待直接衝到天際。"
 ---
 
-![Qwen 3.7 發表](/assets/images/qwen-3-7-hype-vs-reality-cover.png)
+![Qwen 3.7 發表](/assets/images/qwen-3-7-hype-vs-reality-cover.webp)
 
 ## 目錄
 

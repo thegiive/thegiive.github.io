@@ -12,7 +12,7 @@ description: "我上週回老家看了久違的第四台「緯來日本台」，
 
 我上週回老家看了久違的第四台「緯來日本台」，看一個日本節目「恐怖家庭醫學」，裡面講到一個年長者「最近常常心悸、手抖、睡不好」。因為是心臟的因素，所以患者直接找心臟科檢查後，拿到一疊厚厚的報告——結果心臟科醫生看完報告說：「你的心臟結構完全正常，心電圖也沒問題，可能是壓力太大，回去多休息就好。」患者心想：「可是我真的有心悸啊！難道是我自己想太多？」於是患者找了神經科說可能是自律神經失調，拿了藥物減壓，但症狀完全沒改善。
 
-![](/assets/images/image-33.png)
+![](/assets/images/image-33.webp)
 
 弄了很久一直兜兜轉轉。最後一個經驗豐富家醫科醫生，告知患者「這可能是甲狀腺的問題，要去看內科」才發現這是甲亢的症狀，調整好藥物很快就好了。很多時候人體很多時候是一個連動的生態系統，有些問題的表象跟真正的Root Cause是兩回事，所以患者很容易找錯醫生弄錯科目。
 
@@ -47,17 +47,17 @@ description: "我上週回老家看了久違的第四台「緯來日本台」，
 
 [LangChain 做了一個 Benchmark ](https://ai-coding.wiselychen.com/na-tian-wo-zai-chan-ye-yuan-qu-fen-xiang-ai-neng-bu-neng-zuo-qi-lai-qi-shi-kan-ren/), 他發現當越多不同領域的知識丟進來同一個 Workload ，Single Agent 的效率就明顯的下降，但是multi agent 卻可以保持一個較佳的 performance 
 
-![](/assets/images/image-30.png)
+![](/assets/images/image-30.webp)
 
 另外從成本上來看，越複雜的場景，single agent 的 使用 token 數也明顯上升 
 
-![](/assets/images/image-31.png)
+![](/assets/images/image-31.webp)
 
 ### 基本範式
 
 根據大家的說法，Multi Agent 基本範式大概就是幾個
 
-![](/assets/images/image-32.png)截圖來自 GCP 的 Video [https://www.youtube.com/watch?v=TGNScswE0kU](https://www.youtube.com/watch?v=TGNScswE0kU&ref=ai-coding.wiselychen.com)
+![](/assets/images/image-32.webp)截圖來自 GCP 的 Video [https://www.youtube.com/watch?v=TGNScswE0kU](https://www.youtube.com/watch?v=TGNScswE0kU&ref=ai-coding.wiselychen.com)
 
 Supervisor : 有點像是人的組織，有一個管理者，跟工作者。如果用管理團隊來舉例，經理就是 Supervisor ，下面有 EngA , EngB , EngC ... Agent 進行協作。剛剛舉的健康檢查醫療團比較像是這個，有很多科室進行會診，但是最後有一個 coordinator 主治醫生來做最後判斷。
 

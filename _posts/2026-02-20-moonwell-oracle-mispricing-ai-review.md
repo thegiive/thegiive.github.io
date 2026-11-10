@@ -95,7 +95,7 @@ Moonwell 通過了一個 governance proposal，更新 cbETH 的 Oracle 配置。
 
 Stripe 對外強調這些都是 **「human-reviewed」**。
 
-![Stripe 官方推文宣布每週 1,300+ AI PR，底下留言質疑 "Human-reviewed... How??"](/assets/images/stripe-minions-human-reviewed-how.png)
+![Stripe 官方推文宣布每週 1,300+ AI PR，底下留言質疑 "Human-reviewed... How??"](/assets/images/stripe-minions-human-reviewed-how.webp)
 
 Stripe 處理的是支付系統。Moonwell 處理的是借貸和清算。兩者的共通點是：**程式碼離錢非常近，錯誤的成本極高。**
 

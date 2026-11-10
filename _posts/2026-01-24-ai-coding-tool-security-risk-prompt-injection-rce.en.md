@@ -12,7 +12,7 @@ lang: en
 
 > When you automate “judgment” as well, you lose your last line of defense.
 
-![AI Coding Security Risk](/assets/images/ai-coding-security-risk-cover.png)
+![AI Coding Security Risk](/assets/images/ai-coding-security-risk-cover.webp)
 
 ## Table of contents
 
@@ -52,7 +52,7 @@ Yes, merge.
 
 The question is—**when did you start automating your own judgment too?**
 
-![We are automating “judgment” too](/assets/images/ai-coding-security-slide-judgment-automation.png)
+![We are automating “judgment” too](/assets/images/ai-coding-security-slide-judgment-automation.webp)
 
 ---
 
@@ -72,7 +72,7 @@ README, issues, PR comments, error logs, commit messages—these all enter conte
 
 To the AI, **text is text—everything is input**.
 
-![Core vulnerability: text becomes instruction](/assets/images/ai-coding-security-slide-text-as-instruction.png)
+![Core vulnerability: text becomes instruction](/assets/images/ai-coding-security-slide-text-as-instruction.webp)
 
 ---
 
@@ -102,7 +102,7 @@ When an engineer clones the repo with **Cursor Agent** and asks “How do I run 
 
 [Research shows this class of attack can succeed up to 84% of the time](https://arxiv.org/html/2509.22040v1).
 
-![Case 1: invisible instructions](/assets/images/ai-coding-security-slide-case1-hidden-command.png)
+![Case 1: invisible instructions](/assets/images/ai-coding-security-slide-case1-hidden-command.webp)
 
 ---
 
@@ -144,7 +144,7 @@ This isn’t “prompt injection in the code.”
 
 It’s: **the prompt is hidden in config, and eventually becomes code**.
 
-![Case 2: supply-chain poisoning](/assets/images/ai-coding-security-slide-case2-supply-chain.png)
+![Case 2: supply-chain poisoning](/assets/images/ai-coding-security-slide-case2-supply-chain.webp)
 
 ---
 
@@ -178,7 +178,7 @@ Untrusted Issue/PR content → injected into AI prompt → AI executes privilege
 
 This is not only a Gemini CLI problem. As [InfoWorld notes](https://www.infoworld.com/article/4101743/ai-in-ci-cd-pipelines-can-be-tricked-into-behaving-badly.html), GitHub Copilot, Claude Code Actions, OpenAI Codex, and any LLM-based release bot need the same scrutiny.
 
-![Case 3: CI/CD destruction](/assets/images/ai-coding-security-slide-case3-cicd.png)
+![Case 3: CI/CD destruction](/assets/images/ai-coding-security-slide-case3-cicd.webp)
 
 ### What these cases have in common
 
@@ -198,7 +198,7 @@ They happen because:
 
 The previous section was about “clicking Yes” incidents. This section is about **system design defects**—formally assigned CVEs.
 
-![IDEsaster: not theory—happening now](/assets/images/ai-coding-security-slide-idesaster.png)
+![IDEsaster: not theory—happening now](/assets/images/ai-coding-security-slide-idesaster.webp)
 
 ---
 
@@ -285,7 +285,7 @@ Together, this is a full **prompt injection → RCE** chain.
 
 According to the [GitHub Security Advisory](https://github.com/cursor/cursor/security/advisories/GHSA-4cxx-hrm3-49rm), Cursor fixed this in version 1.3.9: agents are now blocked from writing sensitive MCP files without approval.
 
-![Dissecting CVE-2025-54135: an “authorized” attack](/assets/images/ai-coding-security-slide-cve-rce-chain.png)
+![Dissecting CVE-2025-54135: an “authorized” attack](/assets/images/ai-coding-security-slide-cve-rce-chain.webp)
 
 ---
 
@@ -360,7 +360,7 @@ This isn’t a one-off bug.
 
 It’s a **behavior-layer backdoor**.
 
-![Invisible backdoor: config poisoning](/assets/images/ai-coding-security-slide-config-pollution.png)
+![Invisible backdoor: config poisoning](/assets/images/ai-coding-security-slide-config-pollution.webp)
 
 ### Check your Skill permissions
 
@@ -378,7 +378,7 @@ For each installed Skill, ask:
 
 If your answer is “I don’t know,” that’s risk.
 
-![A Skill is not an extension of features—it’s an extension of permissions](/assets/images/ai-coding-security-slide-skill-permission.png)
+![A Skill is not an extension of features—it’s an extension of permissions](/assets/images/ai-coding-security-slide-skill-permission.webp)
 
 ### Skills don’t only affect local machines
 
@@ -427,7 +427,7 @@ Skill output → you trust it → paste into Slack / Email / GitHub
 
 That’s why traditional WAFs, APMs, and antivirus don’t help—because the attack isn’t external intrusion. It’s **using the trust you gave the AI so the AI makes decisions on your behalf**.
 
-![Why can’t traditional security stop it?](/assets/images/ai-coding-security-slide-why-waf-fails.png)
+![Why can’t traditional security stop it?](/assets/images/ai-coding-security-slide-why-waf-fails.webp)
 
 ---
 
@@ -446,7 +446,7 @@ That’s why traditional WAFs, APMs, and antivirus don’t help—because the at
    - short TTL
    - ❌ never use admin tokens
 
-![Defense 1: cut permissions to the bone](/assets/images/ai-coding-security-slide-defense1-permission.png)
+![Defense 1: cut permissions to the bone](/assets/images/ai-coding-security-slide-defense1-permission.webp)
 
 ### Second line: treat text as an attack surface
 
@@ -460,7 +460,7 @@ That’s why traditional WAFs, APMs, and antivirus don’t help—because the at
    - turn off “auto-fix without diff”
    - **require human confirmation**
 
-![Defense 2: treat text as hostile](/assets/images/ai-coding-security-slide-defense2-zero-trust.png)
+![Defense 2: treat text as hostile](/assets/images/ai-coding-security-slide-defense2-zero-trust.webp)
 
 ### Third line: process-wise, treat the agent like an intern
 
@@ -606,7 +606,7 @@ Security takes priority over task completion.
 2. **Hard-codes “what you must not do”:** the agent can’t rationalize risky behavior
 3. **Forces human confirmation:** breaks the “automation × privilege” incident chain
 
-![Defense 3: CLAUDE.md firewall](/assets/images/ai-coding-security-slide-defense3-claudemd.png)
+![Defense 3: CLAUDE.md firewall](/assets/images/ai-coding-security-slide-defense3-claudemd.webp)
 
 ---
 
@@ -679,7 +679,7 @@ If you cut any one factor:
 
 the incident probability drops by an order of magnitude.
 
-![AI security risk formula](/assets/images/ai-coding-security-slide-risk-formula.png)
+![AI security risk formula](/assets/images/ai-coding-security-slide-risk-formula.webp)
 
 Remember:
 

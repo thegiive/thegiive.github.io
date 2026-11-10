@@ -116,7 +116,7 @@ O'Reilly 在這台伺服器上發現了一個 **Signal 設備配對 URI**。這�
 
 就在本文撰寫期間，Twitter 上出現了更令人心痛的案例：
 
-![Clawdbot 錢包被盜推文](/assets/images/clawdbot-wallet-drained-tweet.png)
+![Clawdbot 錢包被盜推文](/assets/images/clawdbot-wallet-drained-tweet.webp)
 
 這位使用者 @sanjaybuilds_ 在 2026 年 1 月 26 日發文：
 

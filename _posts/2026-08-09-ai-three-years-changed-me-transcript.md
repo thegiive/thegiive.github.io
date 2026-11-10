@@ -10,7 +10,7 @@ tags: [AI, 降本增效, 自媒體, 重訓, SEO, AEO, 刻意練習, No AI Time, 
 author: Wisely Chen
 ---
 
-![用 AI 三年，我變成了不一樣的人](/assets/images/ai-three-years-changed-me-cover.jpg)
+![用 AI 三年，我變成了不一樣的人](/assets/images/ai-three-years-changed-me-cover.webp)
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:30px 0"><iframe src="https://www.youtube.com/embed/L9NV8M5_x2g" style="position:absolute;top:0;left:0;width:100%;height:100%" frameborder="0" allowfullscreen></iframe></div>
 

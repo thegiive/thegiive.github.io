@@ -38,7 +38,7 @@ DeepSeek Harness 提出的「Super-agent」概念，試圖徹底打破「一個�
 
 這四個特質不可能只靠改寫 System Prompt 或套一個 ReAct 迴圈達成，必須仰賴扎實的系統工程分層。論文給出的五大核心模組，幾乎每一項都借鑒了經典作業系統與分散式架構的思想：
 
-![DeepSeek Harness Super-agent 系統架構圖](/assets/images/deepseek-harness-super-agent-logo.png)
+![DeepSeek Harness Super-agent 系統架構圖](/assets/images/deepseek-harness-super-agent-logo.webp)
 *圖：DeepSeek Harness Super-agent 架構總覽——雙層路由、事件直通、上下文引用圖與 BYOM 算力環境分離（以 Archify 繪製）*
 
 ---

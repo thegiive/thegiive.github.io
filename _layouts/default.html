@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'zh-TW' }}">
+<html lang="{{ page.lang | default: site.lang | default: 'zh-TW' }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,27 @@
 
   <!-- SEO（title=false：標題只由上面那一個 <title> 輸出，避免重複） -->
   {% seo title=false %}
+
+  {% comment %}hreflang：/en/<slug>/ 與 /<slug>/ 成對時互相標註{% endcomment %}
+  {% if page.collection == 'posts' %}
+    {% if page.lang == 'en' %}
+      {% assign zh_url = page.url | remove_first: '/en' %}
+      {% assign en_url = page.url %}
+    {% else %}
+      {% assign zh_url = page.url %}
+      {% assign en_url = page.url | prepend: '/en' %}
+    {% endif %}
+    {% assign zh_post = site.posts | where: 'url', zh_url | first %}
+    {% assign en_post = site.posts | where: 'url', en_url | first %}
+    {% if zh_post and en_post %}
+  <link rel="alternate" hreflang="zh-TW" href="{{ zh_url | absolute_url }}">
+  <link rel="alternate" hreflang="en" href="{{ en_url | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ zh_url | absolute_url }}">
+    {% endif %}
+  {% endif %}
+
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ '/assets/images/favicon-192.png' | relative_url }}" sizes="192x192">
 
   <!-- Feed -->
   {% feed_meta %}
@@ -34,7 +55,7 @@
       <p>{{ site.description }}</p>
       <nav>
         <a href="{{ '/' | relative_url }}">首頁</a>
-        <a href="https://www.linkedin.com/in/wisely-chen/" target="_blank">關於</a>
+        <a href="{{ '/about/' | relative_url }}">關於</a>
         <a href="{{ '/categories/' | relative_url }}">分類</a>
         <a href="{{ '/archive/' | relative_url }}">Archive</a>
         <a href="{{ '/faq/' | relative_url }}">Q&A</a>

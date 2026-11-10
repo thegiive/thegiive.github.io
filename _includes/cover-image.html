@@ -1,0 +1,10 @@
+{% comment %}
+  輸出封面圖。若 assets/images 內有同名 .webp（scripts/optimize_images.py 產生），
+  用 <picture> 優先載入 WebP，原圖當後備。
+  參數：src（必填）、alt、eager（true 時不延遲載入並提高優先權）
+{% endcomment %}
+{% assign cover_ext = include.src | split: '.' | last %}
+{% assign cover_dot_ext = '.' | append: cover_ext %}
+{% assign cover_webp = include.src | replace: cover_dot_ext, '.webp' %}
+{% assign cover_has_webp = site.static_files | where: 'path', cover_webp | first %}
+{% if cover_has_webp and cover_ext != 'webp' %}<picture><source srcset="{{ cover_webp | relative_url }}" type="image/webp">{% endif %}<img src="{{ include.src | relative_url }}" alt="{{ include.alt | escape }}"{% if include.eager %} fetchpriority="high"{% else %} loading="lazy"{% endif %}>{% if cover_has_webp and cover_ext != 'webp' %}</picture>{% endif %}

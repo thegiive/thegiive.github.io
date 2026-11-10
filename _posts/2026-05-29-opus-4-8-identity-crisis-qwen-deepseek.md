@@ -7,7 +7,7 @@ image: /assets/images/opus-4-8-identity-test.png
 description: "Opus 8 剛出來，問它你是什麼模型，它說它是通義千問。四次測試，Qwen 命中率 50%。"
 ---
 
-![Opus 4.8 自稱 Qwen](/assets/images/opus-4-8-identity-test.png)
+![Opus 4.8 自稱 Qwen](/assets/images/opus-4-8-identity-test.webp)
 
 今天早上 Anthropic 推 Opus 4.8（`claude-opus-4-8`），我第一件事不是測 coding benchmark，也不是丟 agentic task，是寫了個 shell script 跑最老土的那一題：
 

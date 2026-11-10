@@ -31,6 +31,12 @@ exclude:
   - .github
   - README.md
   - LICENSE
+  - CLAUDE.md
+  - markdown.md
+  - deploy.sh
+  - scripts
+  - blog
+  - blog-migration
 
 # Markdown 處理器設定
 kramdown:
@@ -73,6 +79,12 @@ defaults:
       type: "posts"
     values:
       image: /assets/images/default-og.png
+      author: "Wisely Chen"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      image: /assets/images/logo.png
       author: "Wisely Chen"
 
 # Logo 設定 (用於 Schema.org)

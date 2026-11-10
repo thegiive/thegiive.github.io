@@ -10,7 +10,7 @@ description: "Peter Steinberger 一條推文 3 百萬觀看：「你不該再 Pr
 > "You shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents."
 > —— Peter Steinberger，2026 年 6 月 8 日，3 百萬觀看
 
-![Peter Steinberger 推文：You should be designing loops that prompt your agents（3M Views）](/assets/images/loop-engineering-steinberger-tweet.png)
+![Peter Steinberger 推文：You should be designing loops that prompt your agents（3M Views）](/assets/images/loop-engineering-steinberger-tweet.webp)
 
 如果你不認識 Peter Steinberger，他是 OpenClaw 的作者，之前我們在 [Harness Engineering 系列](/harness-engineering-control-plane-pattern-agent-review-loop/) 裡提過他：開 50 個 Codex 並行審 3,000 個 PR，單日 627 次提交。他不是在講理論，他是在講他每天在做的事。
 

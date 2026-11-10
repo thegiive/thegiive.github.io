@@ -6,7 +6,7 @@ permalink: /claude-code-security-best-practices-source-code-verified/
 image: /assets/images/claude-code-security-best-practices-cover.png
 description: "網路上關於 Claude Code 安全配置的建議很多，但有多少是真的去翻過原始碼驗證的？我拿 best practice repo 一條一條對 Claude Code 的 TypeScript source code，14 條建議中每一條都能在原始碼裡找到對應實作。番外篇揭露了 Claude Code 的完整資料回傳行為——包括每條訊息的情緒偵測（is_negative regex）、對話 transcript 自動上傳（無法關閉）、以及 Anthropic 透過 GrowthBook 對你的 CLI 擁有的遠端控制能力。"
 ---
-![Claude Code 開源設計細節：從 source code 去看資安 best practice](/assets/images/claude-code-security-best-practices-cover.png)
+![Claude Code 開源設計細節：從 source code 去看資安 best practice](/assets/images/claude-code-security-best-practices-cover.webp)
 
 > 網路上的 best practices 很多，但有多少是作者真的去翻過原始碼驗證的？我翻了，這是結果。
 

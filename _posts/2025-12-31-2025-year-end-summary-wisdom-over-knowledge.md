@@ -15,7 +15,7 @@ description: "從永聯物流的ATPM實驗、FDE模式的挑戰，到創智動�
 
 2024年時，我用AI教導一些工讀生——這些非本科系的學生們學習AI工具。用ChatGPT做Google Sheet、寫公式、寫APP Script，這些嘗試獲得了商周的採訪。那時候我非常興奮，因為這充分展示了AI在教育上的潛力。我相信對年輕人的信心是對的，這也能夠鼓舞更多的年輕人。
 
-![商周報導：搶不贏科技廠、找不到工程師？他4步把中文系、哲學系變AI高手](/assets/images/2025-businessweekly-interview.png)
+![商周報導：搶不贏科技廠、找不到工程師？他4步把中文系、哲學系變AI高手](/assets/images/2025-businessweekly-interview.webp)
 
 ## AI Coding 的規模化
 
@@ -23,7 +23,7 @@ description: "從永聯物流的ATPM實驗、FDE模式的挑戰，到創智動�
 
 我發現它的潛力非常強，於是開始改進並設計一套流程，有點像現在講的SDD（SPEC Driven Development）。我們把它取名叫做**[ATPM](/atpm-a-real-production-vibe-coding-process/)**。
 
-![ATPM 流程：User → PM+AI → PRD → Dev+AI / QA+AI，Supervisor 監督，Feedback 回饋](/assets/images/2025-atpm-workflow.png)
+![ATPM 流程：User → PM+AI → PRD → Dev+AI / QA+AI，Supervisor 監督，Feedback 回饋](/assets/images/2025-atpm-workflow.webp)
 
 一開始推的時候很Struggle。因為團隊成員不全是資訊工程學系的人，有時候他們不知道這東西代表什麼。
 
@@ -49,7 +49,7 @@ description: "從永聯物流的ATPM實驗、FDE模式的挑戰，到創智動�
 
 我做了一個統計，[三個月寫了**63萬行**的程式碼](https://ai-coding.wiselychen.com/claude-code-630k-lines-three-months-reflection/)，用Claude Code來做。裡面絕大多數不是Production的程式碼，而是很多一次性的展示、跟客戶的討論，甚至一些管理分析的報表。這說明AI Coding對一個職場人到底有多大的變化和影響。
 
-![Claude Code 統計：實質自己寫的代碼大約是 63 萬行，不含 venv 的代碼行數 628,918 行](/assets/images/2025-claude-code-630k-stats.png)
+![Claude Code 統計：實質自己寫的代碼大約是 63 萬行，不含 venv 的代碼行數 628,918 行](/assets/images/2025-claude-code-630k-stats.webp)
 
 ## FDE實驗還沒結束：看年輕人的成長
 
@@ -59,7 +59,7 @@ AI改變這些FDE的過程，在AI 跟我的教導之下，[他們越來越進�
 
 另一位FDE是國貿系畢業的，現在負責我們公司最重要產品的研發工程師。蠻好笑的，他進公司是要做數據工程師，因為他之前在我永聯數據團隊擔任不錯的數據工程師。但進去之後，他做了蠻多網頁前端的，寫了很多Vue.js。這是一個非常意外的發現。
 
-![永聯物流 FDE 團隊合照](/assets/images/2025-ally-transport-team.png)
+![永聯物流 FDE 團隊合照](/assets/images/2025-ally-transport-team.webp)
 
 他們都獲得不錯的成長：
 - 一位加入台灣的護國神山
@@ -75,7 +75,7 @@ AI對年輕人的教育非常有幫助。有些人說AI時代只會絞殺年輕�
 
 ### Claude Code
 
-![用 Claude Code 工作的日常](/assets/images/2025-claude-code-workspace.png)
+![用 Claude Code 工作的日常](/assets/images/2025-claude-code-workspace.webp)
 
 Claude Code對我來說遠超過一個AI Coding的tool。
 
@@ -99,7 +99,7 @@ Claude Code不只能幫助我的performance，也能幫助我的生活。像健�
 
 自從Gemini 2.0 Flash出來後，它的簡報模式真的非常棒，讓我非常驚艷。[最大重點是能幫我把大量知識](https://ai-coding.wiselychen.com/notebooklm-digital-project-manager/)，快速用5-10頁圖表整理好。讓我在理解專案狀況時，能非常快速進入狀況。
 
-![NotebookLM 簡報模式：快速將大量知識整理成圖表](/assets/images/2025-notebooklm-slides.png)
+![NotebookLM 簡報模式：快速將大量知識整理成圖表](/assets/images/2025-notebooklm-slides.webp)
 
 這些工具讓我的**生產力提升了3到4倍**。就算非常忙，我每天都能做到日更。
 

@@ -7,7 +7,7 @@ image: /assets/images/loop-engineering-buzzword-cover.jpg
 description: "這是我從廣州南站搭高鐵去香港的路上，隨手錄的一段對 Loop Engineering 的看法。一句話定義：把 Plan、Execution、Verify 之後原本由人決定下一步的那一步，也交給 Agent。但它沒那麼簡單——要做之前先過三關：有沒有可量化的 metric、成本控不控得住、Stop Condition 設好了沒。Loop Engineering 是真趨勢，還是繼 Vibe Coding、Harness Engineering 之後又一個 buzzword？"
 ---
 
-![Loop Engineering 是真趨勢還是 Buzzword？該不該做的三個判斷](/assets/images/loop-engineering-buzzword-cover.jpg)
+![Loop Engineering 是真趨勢還是 Buzzword？該不該做的三個判斷](/assets/images/loop-engineering-buzzword-cover.webp)
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:30px 0;border-radius:8px;">
   <iframe src="https://www.youtube.com/embed/EJh6hC9qyn8" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

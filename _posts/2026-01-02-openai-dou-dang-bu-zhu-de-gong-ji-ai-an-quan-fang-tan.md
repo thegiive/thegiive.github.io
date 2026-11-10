@@ -105,7 +105,7 @@ PS. 我不喜歡寫訪談逐字稿的文章，這不是大家來看我 blog 的�
 > 「AI  Guardrails 機制沒有用。我再說一次：Guardrails 機制沒有用。如果有人決心要欺騙 GPT-5，他們處理那些監管機制將毫無問題。」
 > — Sander Schulhoff, HackAPrompt CEO
 
-![業界的標準答案：脆弱的防線](/assets/images/ai-guardrails-weak-defense.png)
+![業界的標準答案：脆弱的防線](/assets/images/ai-guardrails-weak-defense.webp)
 
 ### AI Guardrails 的運作機制
 
@@ -148,7 +148,7 @@ PS. 我不喜歡寫訪談逐字稿的文章，這不是大家來看我 blog 的�
 
 ## 六、你可以修補程式錯誤，但你無法修補一個大腦
 
-![傳統網路安全 vs AI 安全](/assets/images/ai-security-vs-traditional.png)
+![傳統網路安全 vs AI 安全](/assets/images/ai-security-vs-traditional.webp)
 
 > 這與傳統的網路安全（Classical Cyber Security）非常、非常不同。我一直在強調一個總結：你可以修補程式錯誤（Bug），但你無法修補大腦（Brain）。我的意思是，如果你在軟體中發現了一個 Bug，你去修補它，你可以有 99.99% 的把握確定這個 Bug 已經解決了，不再是個問題。但如果你試圖在 AI 系統（模型本身）中這樣做，你可以 99.99% 地確定問題依然存在，這基本上是無法解決的。」
 
@@ -159,7 +159,7 @@ PS. 我不喜歡寫訪談逐字稿的文章，這不是大家來看我 blog 的�
 
 ## 七、Stateless vs Stateful Security：攻防視野的根本不對稱
 
-![攻擊者視角 (Stateful) vs 防禦者視角 (Stateless)](/assets/images/stateless-vs-stateful-security.png)
+![攻擊者視角 (Stateful) vs 防禦者視角 (Stateless)](/assets/images/stateless-vs-stateful-security.webp)
 
 > 如果你以適當的方式拆分你的請求（Separate your requests），你就能非常有效地繞過防禦。我的意思是，如果你問：『嘿，AI，能不能去這個網址看看他們的後端是用什麼，然後寫一段程式碼來駭入它？』AI 可能會拒絕。
 > 但如果你分成兩次請求 .1.xxx 2.xxxx .... 現在這看起來也完全合法。所以許多繞過防禦的方法，其實只是將請求拆分成更小的、單獨看起來合法但在組合後卻不合法的請求
@@ -205,7 +205,7 @@ AI Agent 的 prompt injection，本質上也是一樣的事情。
 
 ## 九、對策一：Least Privilege for AI Agents——徹底的權限劃分
 
-![AI Agent 最小權限原則：核心原則與實踐清單](/assets/images/least-privilege-ai-agent.png)
+![AI Agent 最小權限原則：核心原則與實踐清單](/assets/images/least-privilege-ai-agent.webp)
 
 > 資安專業人士是短期內唯一能解決這個問題的人，主要做法是確保我們部署的是具備適當權限的系統（properly permissioned systems），並確保任何可能導致嚴重後果的功能在物理上都受到限制
 
@@ -228,7 +228,7 @@ AI Agent 的 prompt injection，本質上也是一樣的事情。
 
 Google DeepMind 在 2025 年發表的 [CaMeL](https://arxiv.org/abs/2503.18813)（Communicative Agents for Machine-learning-based Language Execution）正是這個思路的具體實現。
 
-![CaMeL Intent Analyzer 流程：根據使用者意圖預先限制權限](/assets/images/camel-intent-analyzer-flow.png)
+![CaMeL Intent Analyzer 流程：根據使用者意圖預先限制權限](/assets/images/camel-intent-analyzer-flow.webp)
 
 ### 核心思想
 

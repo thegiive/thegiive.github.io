@@ -4,11 +4,13 @@ title: "Anthropic Explains: Why Does Claude Code Feel So Good to Use?"
 date: 2025-12-03 09:00:00 +0800
 lang: en
 permalink: /en/anthropic-dual-agent-architecture-claude-code/
+canonical_url: "https://ai-coding.wiselychen.com/en/anthropic-dual-agent-architecture/"
+sitemap: false
 image: /assets/images/dual-agent-architecture-logo.png
 description: "Anthropic reveals a dual-agent architecture—Initializer Agent + Coding Agent—so long-running tasks don’t rely on brute model power, but on an engineered workflow."
 ---
 
-![Initializer Agent + Coding Agent Dual-Agent Architecture](/assets/images/dual-agent-architecture-logo.png)
+![Initializer Agent + Coding Agent Dual-Agent Architecture](/assets/images/dual-agent-architecture-logo.webp)
 
 Anthropic’s blog published an engineering approach for [long-running tasks](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents). This isn’t about brute-forcing with a bigger model or longer context. It’s about designing an engineered workflow so that even in multi-window conditions where the agent repeatedly “forgets,” it can still push forward like a human engineer.
 
@@ -105,7 +107,7 @@ The difference is we do it with humans, and they make the AI do it. But the core
 **Long-running task success isn’t about how strong the model is, but whether you have a structured workflow that can carry context forward.**
 
 
-![The Workflow Loop: the Coding Agent iteration process](/assets/images/workflow-loop-diagram.png)
+![The Workflow Loop: the Coding Agent iteration process](/assets/images/workflow-loop-diagram.webp)
 
 1. The bottleneck of long-running tasks is workflow design, not model capability
 2. Dual agents are division of labor: one lays foundations, one iterates

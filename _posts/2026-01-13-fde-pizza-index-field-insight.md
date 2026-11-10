@@ -83,6 +83,6 @@ FDE 的價值，就在這裡。
 
 我的 FDE 團隊，不只理解現場，他們基本上也現場工作才能真正理解「真實流程」。這是一位我的 FDE 去現場做數據分析，順便幫忙現場開小烏龜的畫面。
 
-![FDE 現場開小烏龜](/assets/images/fde-turtle-field-work.png)
+![FDE 現場開小烏龜](/assets/images/fde-turtle-field-work.webp)
 
 

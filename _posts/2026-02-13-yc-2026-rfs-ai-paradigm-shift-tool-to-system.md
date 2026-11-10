@@ -9,7 +9,7 @@ description: "當矽谷最聰明的錢不再追「更好的 chatbot」，而是�
 image: /assets/images/yc-2026-rfs-cover.png
 ---
 
-![YC 2026 Request for Startups](/assets/images/yc-2026-rfs-cover.png)
+![YC 2026 Request for Startups](/assets/images/yc-2026-rfs-cover.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 2 月

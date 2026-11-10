@@ -19,7 +19,7 @@ description: "本文示範如何將 Google DeepMind 提出的 CaMeL 雙層 Agent
 
 上一篇講 [CaMeL 的雙層 Agent 架構](/camel-privileged-quarantined-agent/)，這是基於 Google DeepMind 發表的 [CaMeL 論文](https://arxiv.org/abs/2503.18813)。核心概念是把「讀資料」和「做動作」分開——Quarantined LLM 只能讀不可信資料，Privileged LLM 只能接收已結構化的乾淨資訊。
 
-![CaMeL 的真正核心：建立兩個不可跨越的權限域](/assets/images/camel-core-two-domains.png)
+![CaMeL 的真正核心：建立兩個不可跨越的權限域](/assets/images/camel-core-two-domains.webp)
 
 但讀完論文後，我發現很多人只理解到一半。
 
@@ -77,7 +77,7 @@ def access_data(agent):
 
 CaMeL 原始論文講的是 Quarantined vs Privileged 兩層，但實際落地時我發現，中間必須有一個**顯式的 Sanitize 層**。
 
-![CaMeL 的三層記憶架構](/assets/images/camel-three-layer-memory-architecture.png)
+![CaMeL 的三層記憶架構](/assets/images/camel-three-layer-memory-architecture.webp)
 
 原因很簡單：
 
@@ -166,7 +166,7 @@ SET app.agent_id = 'agent_456';
 
 Row-Level Security (RLS) 是整個架構的「安全閘門」。
 
-![RLS：不可繞過的系統級安全閘門](/assets/images/camel-rls-security-gate.png)
+![RLS：不可繞過的系統級安全閘門](/assets/images/camel-rls-security-gate.webp)
 
 RLS 在資料庫引擎層面強制執行存取規則，使應用層程式碼完全無法規避。
 
@@ -178,7 +178,7 @@ RLS 在資料庫引擎層面強制執行存取規則，使應用層程式碼完�
 
 這個 Agent 只能向 `quarantine.raw_memory` 寫入屬於自己的資料，且只能讀取自己寫入的內容。
 
-![agent_quarantined 的權限視角](/assets/images/camel-agent-quarantined-view.png)
+![agent_quarantined 的權限視角](/assets/images/camel-agent-quarantined-view.webp)
 
 關鍵限制：
 - ✅ 可讀寫：`quarantine.raw_memory`（僅自己的）
@@ -197,7 +197,7 @@ REVOKE ALL ON SCHEMA quarantine
 FROM agent_privileged;
 ```
 
-![agent_privileged 的權限視角：完全禁止接觸污染源](/assets/images/camel-agent-privileged-view.png)
+![agent_privileged 的權限視角：完全禁止接觸污染源](/assets/images/camel-agent-privileged-view.webp)
 
 關鍵限制：
 - ❌ 完全禁止：`quarantine.raw_memory`（連 schema 都不能碰）
@@ -234,7 +234,7 @@ Sanitize 不是「把文字修漂亮」，而是：
 
 **接收 (Ingest)** → **偵測 (Detect)** → **轉換 (Transform)** → **批准 (Approve)**
 
-![Sanitize 四階段 Pipeline](/assets/images/camel-sanitize-pipeline.png)
+![Sanitize 四階段 Pipeline](/assets/images/camel-sanitize-pipeline.webp)
 
 1. **接收：** 原始資料寫入隔離區
 2. **偵測：** 評估風險，計算 risk_score
@@ -291,7 +291,7 @@ ERROR: permission denied for schema quarantine
 
 ## 十二、完整架構：一個縱深防禦體系
 
-![CaMeL PostgreSQL 完整架構：一個縱深防禦體系](/assets/images/camel-postgresql-complete-architecture.png)
+![CaMeL PostgreSQL 完整架構：一個縱深防禦體系](/assets/images/camel-postgresql-complete-architecture.webp)
 
 ---
 

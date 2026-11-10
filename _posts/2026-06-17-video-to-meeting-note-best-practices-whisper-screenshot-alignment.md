@@ -75,9 +75,9 @@ Microsoft 也一樣。Teams 錄影直接存進 OneDrive，它有 Azure 的語音
 
 下面是兩個實際產出的圖文時間軸。第一個是用 Holo 3.1 Agent 教學影片跑出來的，第二個是 Google 試算表教學：
 
-![Holo 3.1 Agent 教學影片的圖文時間軸產出](/assets/images/video-meeting-note-holo-agent-demo.png)
+![Holo 3.1 Agent 教學影片的圖文時間軸產出](/assets/images/video-meeting-note-holo-agent-demo.webp)
 
-![Google 試算表教學影片的圖文時間軸產出](/assets/images/video-meeting-note-timeline-demo.png)
+![Google 試算表教學影片的圖文時間軸產出](/assets/images/video-meeting-note-timeline-demo.webp)
 
 ---
 

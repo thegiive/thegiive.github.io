@@ -7,7 +7,7 @@ image: /assets/images/ace-agentic-context-engineering-paper.png
 description: "很多人還在問「要不要 fine-tune」，Stanford 這篇 ICLR 2026 論文直接給了答案：對 Agent 來說，把 context 當作會演化的操作手冊來經營，比急著去調模型權重更快、更便宜、也更有效。ACE 框架用較小的開源模型在 AppWorld leaderboard 追平頂級商用 Agent，在最難的 test-challenge split 上還超過對手。這篇文章拆解 ACE 的三步循環，對比 fine-tuning 的商業實戰踩坑（驗證地獄、base model 迭代太快、無法積累），分析為什麼要嘛做模型，要嘛 context engineering，沒有中間值。"
 ---
 
-![ACE: Agentic Context Engineering 論文首頁](/assets/images/ace-agentic-context-engineering-paper.png)
+![ACE: Agentic Context Engineering 論文首頁](/assets/images/ace-agentic-context-engineering-paper.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 4 月

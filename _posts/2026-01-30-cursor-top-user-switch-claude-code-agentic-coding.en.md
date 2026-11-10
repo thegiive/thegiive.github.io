@@ -8,7 +8,7 @@ image: /assets/images/cursor-vs-claude-code-agentic-coding-cover.png
 description: "When a globally top-tier user officially recognized by Cursor chooses to leave a familiar tool for Claude Code, it’s not just switching tools—it’s a paradigm shift in how ‘AI programming should be done.’ Silen Naihin’s long essay explains the five pillars of Agentic Coding: Context Management, Planning, Closing the Loop, Verifiability, Debugging."
 ---
 
-![Cursor vs Claude Code](/assets/images/cursor-vs-claude-code-agentic-coding-cover.png)
+![Cursor vs Claude Code](/assets/images/cursor-vs-claude-code-agentic-coding-cover.webp)
 
 **Author:** Wisely Chen
 **Date:** Jan 2026

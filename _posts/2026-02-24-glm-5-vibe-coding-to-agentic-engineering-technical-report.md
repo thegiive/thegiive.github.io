@@ -11,7 +11,7 @@ description: "智譜 AI 的 GLM-5 用 744B MoE 架構、28.5 兆 token 預訓練
 
 今天早上看到 Anthropic 發了一則聲明，指控 DeepSeek、Moonshot AI（Kimi）、MiniMax 對 Claude 進行工業規模的蒸餾攻擊——24,000 個假帳號、1,600 萬次對話。
 
-![Anthropic 蒸餾攻擊指控](/assets/images/anthropic-distillation-attack-no-glm.png)
+![Anthropic 蒸餾攻擊指控](/assets/images/anthropic-distillation-attack-no-glm.webp)
 
 我盯著這個名單看了一下。DeepSeek、Moonshot、MiniMax 都在上面。但有一家不在——**智譜（Zhipu AI）**。
 
@@ -43,7 +43,7 @@ description: "智譜 AI 的 GLM-5 用 744B MoE 架構、28.5 兆 token 預訓練
 
 ## Benchmark：打贏 GPT-5.2，追上 Opus 4.6
 
-![GLM-5 LLM Performance Evaluation: Agentic, Reasoning and Coding](/assets/images/glm-5-benchmark-performance.png)
+![GLM-5 LLM Performance Evaluation: Agentic, Reasoning and Coding](/assets/images/glm-5-benchmark-performance.webp)
 
 先看數字。Benchmark 有其局限性，但至少給我們一個錨點。Coding 方面，SWE-bench Verified 77.8%——一個中國開源模型打贏 GPT-5.2（76.2%），只輸 Opus 4.6 三個百分點，一年前不可想像。但 Terminal-Bench 2.0 差距就大了（56.2% vs 65.4%），說明在「持續跟系統互動、處理意外狀況」上還有一段路。推理方面，Humanity's Last Exam with tools 拿下 50.4，超過 Opus 4.6 的 43.4——有工具的場景下表現特別強，跟 Agentic 定位一致。Agent 相關 Benchmark 最亮眼：BrowseComp 75.9、MCP-Atlas 67.8、tau2-Bench 89.7%，測的都是真實環境中多工具長鏈路規劃。
 

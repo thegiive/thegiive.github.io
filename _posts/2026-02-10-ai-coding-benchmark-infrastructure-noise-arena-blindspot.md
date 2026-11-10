@@ -9,7 +9,7 @@ image: /assets/images/ai-coding-benchmark-infrastructure-noise-cover.png
 description: "你整天看的那些 SOTA 排名比較，很有可能不是模型比較厲害，而是 infra 比較厲害。至於開源模型看起來稍稍弱一點？很可能換一個 infra 環境，它就變 SOTA 了。Anthropic 實驗證實：同一模型在不同基礎設施配置下，成功率差距達 6 個百分點——而 leaderboard 上模型之間的差距往往只有 3～5%。"
 ---
 
-![Artificial Analysis Intelligence Evaluations - 四大 Agentic Benchmark 排名](/assets/images/ai-coding-benchmark-infrastructure-noise-cover.png)
+![Artificial Analysis Intelligence Evaluations - 四大 Agentic Benchmark 排名](/assets/images/ai-coding-benchmark-infrastructure-noise-cover.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 2 月

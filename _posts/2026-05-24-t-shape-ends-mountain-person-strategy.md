@@ -7,7 +7,7 @@ image: /assets/images/t-shape-ends-mountain-person-strategy-cover.jpg
 description: "AI 把每個人的基準線拉到 60 分，T 型人的底部正被開箱取代。真正贏的是 60 分底座加上 2-3 個 90 分高峰的「山型人」。用 Meta 裁員、Susan Zhang 的推文、跟我自己挑的三個高峰，講為什麼這個轉換非做不可。"
 ---
 
-![T 型人結束了，現在是山型人的時代](/assets/images/t-shape-ends-mountain-person-strategy-cover.jpg)
+![T 型人結束了，現在是山型人的時代](/assets/images/t-shape-ends-mountain-person-strategy-cover.webp)
 
 {% include youtube.html id="5Rz4OppEA94" %}
 

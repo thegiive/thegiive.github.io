@@ -7,7 +7,7 @@ image: /assets/images/agentopt-paper-cover.png
 description: "Columbia 大學 AgentOpt 論文用 9 個模型、81 種組合實驗證明：Ministral 8B 做 Planner + Opus 做 Solver 準確率 74.27%，完勝 Opus 做 Planner 的 31.71%。最貴的模型放在 Planner 位置反而最差——因為它太強，強到跳過工具使用直接裸答。Anthropic 自己推出的 Advisor Tool 也在修正這個方向：讓便宜模型跑主迴圈，Opus 退居顧問按需出場。Agent 管線優化的單位不是單一模型能力，而是模型組合在特定任務上的匹配度。"
 ---
 
-![AgentOpt 論文：Client-Side Optimization for LLM-Based Agent](/assets/images/agentopt-paper-cover.png)
+![AgentOpt 論文：Client-Side Optimization for LLM-Based Agent](/assets/images/agentopt-paper-cover.webp)
 
 {% include youtube.html id="i6bXmJM5MHI" %}
 

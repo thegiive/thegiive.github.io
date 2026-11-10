@@ -7,7 +7,7 @@ image: /assets/images/gated-release-overview.png
 description: "**作者：** Wisely Chen **日期：** 2026 年 6 月 29 日 **系列：** AI 治理觀察 **關鍵字：** Fable 5, GPT-5.6, AI Export Control, 分階段發布, AI 治理, OpenAI, Anthropic, 出口管制, 開源模型, GLM-5.2, DeepSeek V4, Qwen 3,"
 ---
 
-![美國 AI 模型閘門式發布](/assets/images/gated-release-overview.png)
+![美國 AI 模型閘門式發布](/assets/images/gated-release-overview.webp)
 
 > 兩週前政府一紙命令關掉 Fable 5，現在又準備放行。同一時間，GPT-5.6 被要求先給 20 家「可信夥伴」用，再開放大眾。這不是矛盾——這是一套正在成型的新規則：頂尖模型上線前，先過政府這關。
 
@@ -77,7 +77,7 @@ Anthropic 那邊是「先上線再被關」，OpenAI 這邊更直接——GPT-5.
 
 ## 正在成型的模式：政府閘門式發布
 
-![發布機制的結構性改變](/assets/images/gated-release-slide7.png)
+![發布機制的結構性改變](/assets/images/gated-release-slide7.webp)
 
 把這些碎片拼起來，一個模式正在浮現：
 
@@ -99,7 +99,7 @@ Anthropic 那邊是「先上線再被關」，OpenAI 這邊更直接——GPT-5.
 
 ## 當 AI 競爭變成國家競爭
 
-![軟體管制的困境：當 AI 變成國家戰略資源](/assets/images/gated-release-slide9.png)
+![軟體管制的困境：當 AI 變成國家戰略資源](/assets/images/gated-release-slide9.webp)
 
 這件事最大的影響，可能不在技術層面。
 
@@ -117,7 +117,7 @@ Anthropic 那邊是「先上線再被關」，OpenAI 這邊更直接——GPT-5.
 
 ## 中國的兩條路：跟進管制，或彎道超車
 
-![美國自建閘門，為中國開源模型打開市場大門](/assets/images/gated-release-slide10.png)
+![美國自建閘門，為中國開源模型打開市場大門](/assets/images/gated-release-slide10.webp)
 
 美國這套「閘門式發布」一旦成為常態，中國的反應會是什麼？
 
@@ -141,7 +141,7 @@ Anthropic 那邊是「先上線再被關」，OpenAI 這邊更直接——GPT-5.
 
 ## Access 本身就是護城河
 
-![產業洗牌：存取權本身就是護城河](/assets/images/gated-release-slide11.png)
+![產業洗牌：存取權本身就是護城河](/assets/images/gated-release-slide11.webp)
 
 對 AI Agent 的從業者來說，這件事帶來一個非常具體的產業結構變化：**「拿得到模型」本身變成了一種競爭優勢。**
 
@@ -161,7 +161,7 @@ Anthropic 那邊是「先上線再被關」，OpenAI 這邊更直接——GPT-5.
 
 ## 另一條路：強力開源 + 強力編排
 
-![繞過閘門的技術路徑：開源 + 強力編排](/assets/images/gated-release-slide13.png)
+![繞過閘門的技術路徑：開源 + 強力編排](/assets/images/gated-release-slide13.webp)
 
 講了這麼多閘門和壁壘，有沒有另一條路？
 
@@ -197,7 +197,7 @@ Sakana AI 的 Fugu 架構是一個值得關注的方向。Fugu 的核心思路�
 
 ## 別只看模型，看制度
 
-![面對不確定性的兩手準備：企業雙軌佈局](/assets/images/gated-release-slide14.png)
+![面對不確定性的兩手準備：企業雙軌佈局](/assets/images/gated-release-slide14.webp)
 
 兩週前我寫 Fable 5 事件時，最擔心的是「個案命令式管理」——沒有明確紅線、沒有標準程序、一封信就全球關機。
 

@@ -7,7 +7,7 @@ image: /assets/images/inside-sidechat-e397-cover.png
 description: "INSIDE 塞掐 Side Chat E397 專訪。AI 落地不是技術問題，是信任問題。物流業找不到工程師，溢價三倍都 hire 不到，所以我做了一個決定：不找工程師了，直接把工讀生訓練成 engineer 來用。百日物流優化專案的經驗告訴我——AI 能加速 99% 的分析工作，但那 1% 讓人願意行動的信任，還是要人去建立。"
 ---
 
-# 用 AI 在物流業打造「零工程師」團隊，轉型的關鍵在理解現場
+## 用 AI 在物流業打造「零工程師」團隊，轉型的關鍵在理解現場
 
 **來源：** [INSIDE 塞掐 Side Chat E397](https://www.youtube.com/watch?v=xUDpKAkkURQ)
 **系列：** INSIDE 硬塞的網路趨勢觀察

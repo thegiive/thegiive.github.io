@@ -14,7 +14,7 @@ Honestly, when you see such a powerful tool, it’s hard not to want to use it i
 
 But a company network contains customer data, internal documents, and all kinds of sensitive information. Letting an AI Agent access that directly? The security team would pin me to the wall.
 
-![A dilemma: powerful tools vs fragile security](/assets/images/openclaw-security-slide-02.png)
+![A dilemma: powerful tools vs fragile security](/assets/images/openclaw-security-slide-02.webp)
 
 Later, I switched to a different way of thinking:
 
@@ -26,7 +26,7 @@ Once I saw it that way, many design choices suddenly made sense.
 
 ## New hire onboarding: create an account first
 
-![New employee onboarding: build an independent digital identity](/assets/images/openclaw-security-slide-03.png)
+![New employee onboarding: build an independent digital identity](/assets/images/openclaw-security-slide-03.webp)
 
 What’s the first thing HR does for a new hire? A company email account.
 
@@ -46,7 +46,7 @@ This account is like the new hire’s company mailbox—it can do work, but it�
 
 ### 1) Google Workspace: if you need access, you request it
 
-![Permission design: request only what you need](/assets/images/openclaw-security-slide-04.png)
+![Permission design: request only what you need](/assets/images/openclaw-security-slide-04.webp)
 
 If a junior employee wants to view a document, the manager shares it with them first.
 
@@ -60,7 +60,7 @@ Need to send a calendar invite? It remembers the recipients and sends it using *
 
 ### 2) Internal systems: enforce guardrails in code, not in prompts
 
-![Code-level protection: don’t rely on prompts](/assets/images/openclaw-security-slide-06.png)
+![Code-level protection: don’t rely on prompts](/assets/images/openclaw-security-slide-06.webp)
 
 For internal system integrations, I use a written Skill.
 
@@ -83,7 +83,7 @@ Why? Because **prompt injection can bypass instructions, but it can’t bypass e
 
 ### 3) Model choice: choosing Gemini Pro isn’t only about capability
 
-![Model choice: risk & compliance considerations](/assets/images/openclaw-security-slide-07.png)
+![Model choice: risk & compliance considerations](/assets/images/openclaw-security-slide-07.webp)
 
 Model capability? All three major vendors are good enough.
 
@@ -99,7 +99,7 @@ This is risk management, not a pure technical benchmark.
 
 ### 4) Never give it a dashboard or SSH access
 
-![Connection control: no root privileges](/assets/images/openclaw-security-slide-05.png)
+![Connection control: no root privileges](/assets/images/openclaw-security-slide-05.webp)
 
 A new hire shouldn’t have root access. Neither should AI.
 
@@ -111,7 +111,7 @@ All operations should go through defined Skill interfaces.
 
 ### 5) Never install external Skills into OpenClaw
 
-![Skill extension: refuse external black boxes](/assets/images/openclaw-security-slide-08.png)
+![Skill extension: refuse external black boxes](/assets/images/openclaw-security-slide-08.webp)
 
 Skills are powerful—but they’re also a big security risk.
 
@@ -133,7 +133,7 @@ Benefits of writing your own Skills:
 
 ## Email: the highest risk, so the strictest rules
 
-![Email management: the highest-risk touchpoint](/assets/images/openclaw-security-slide-09.png)
+![Email management: the highest-risk touchpoint](/assets/images/openclaw-security-slide-09.webp)
 
 Email is the highest-risk component in the whole architecture.
 
@@ -160,7 +160,7 @@ Like an assistant, it waits for me to delegate—**I decide what should be handl
 
 ### Python middleware: sanitize in code, not in the LLM
 
-![Data sanitization: Python middleware](/assets/images/openclaw-security-slide-10.png)
+![Data sanitization: Python middleware](/assets/images/openclaw-security-slide-10.webp)
 
 OpenClaw reads email via a Skill, and the LLM doesn’t see raw messages directly.
 
@@ -202,7 +202,7 @@ Another important point: **avoid exposing the OpenClaw email address externally*
 
 ## Honestly: this is more annoying
 
-![Costs and benefits](/assets/images/openclaw-security-slide-11.png)
+![Costs and benefits](/assets/images/openclaw-security-slide-11.webp)
 
 Yes, I admit it.
 
@@ -219,7 +219,7 @@ But it buys you something extremely important:
 
 ## Conclusion: manage AI the way you manage a new hire
 
-![Conclusion: manage AI the way you manage a new hire](/assets/images/openclaw-security-slide-12.png)
+![Conclusion: manage AI the way you manage a new hire](/assets/images/openclaw-security-slide-12.webp)
 
 When a new employee joins, you gradually learn how to work together.
 

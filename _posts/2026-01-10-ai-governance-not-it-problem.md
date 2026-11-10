@@ -9,7 +9,7 @@ categories: [AI治理]
 tags: [AI治理, AI資安, 企業治理, 數位員工, AI問責]
 ---
 
-# AI 治理是什麼？企業在 AI 時代必須回答的 3 個責任問題
+## AI 治理是什麼？企業在 AI 時代必須回答的 3 個責任問題
 
 AI 治理（AI Governance）是指企業在使用 AI 系統時，如何設計責任歸屬、決策權與問責機制，而不只是資安或技術控制。
 
@@ -61,7 +61,7 @@ AI 會讀資料、會做判斷、會執行行為。而任何被授權行動的�
 
 因為 AI 不再只是「工具」，而是一個**數位員工**——能讀資料、能做判斷、能執行行為。
 
-![AI 數位員工概念：能讀資料、做判斷、執行行為的 AI Agent](/assets/images/ai-digital-employee-concept.png)
+![AI 數位員工概念：能讀資料、做判斷、執行行為的 AI Agent](/assets/images/ai-digital-employee-concept.webp)
 
 而對於員工，靠的從來不是 IT，而是治理。
 
@@ -127,7 +127,7 @@ AI 治理和 AI 資安常被混為一談，但本質完全不同。如果把視�
 >
 > AI 治理不是防止 AI 出錯，而是當 AI 合法行動卻造成影響時，企業能否清楚說明：誰授權、誰負責、誰承擔。
 
-![AI 治理三個核心問題：決策權、風險承擔、系統控制](/assets/images/ai-governance-three-questions.png)
+![AI 治理三個核心問題：決策權、風險承擔、系統控制](/assets/images/ai-governance-three-questions.webp)
 
 ### 哪些 AI 行為必須保留在人類決策層？
 
@@ -137,7 +137,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 這就是為什麼 [CaMeL 架構](/camel-postgresql-implementation-memory-permission-db-layer/) 要把「讀資料」和「做動作」徹底分開——因為有些事情，AI 可以建議，但不能執行。
 
-![CaMeL 架構讀寫分離：AI 可以讀資料但不能直接執行動作](/assets/images/ai-camel-read-write-separation.png)
+![CaMeL 架構讀寫分離：AI 可以讀資料但不能直接執行動作](/assets/images/ai-camel-read-write-separation.webp)
 
 ### 哪些 AI 錯誤是企業選擇承擔的？
 
@@ -145,7 +145,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 如果風險從來沒有被治理層承認，它就一定會以 [影子 AI](/least-privilege-fde-shadow-it-shadow-ai/) 或失控的形式出現。
 
-![影子 AI 風險：員工未經授權使用 AI 工具的治理挑戰](/assets/images/ai-shadow-ai-risk.png)
+![影子 AI 風險：員工未經授權使用 AI 工具的治理挑戰](/assets/images/ai-shadow-ai-risk.webp)
 
 如果連實驗都不允許，影子 AI 一定會出現；如果什麼都放行，那失控只是時間問題。
 
@@ -157,7 +157,7 @@ AI 到底是顧問，還是代理人？哪些行為只能建議，哪些才被�
 
 [CaMeL](/camel-postgresql-implementation-memory-permission-db-layer/)、PostgresSQL RLS、權限分層、審計設計，其實都不是在「防 AI」，而是在**具體化這三個治理決策**。
 
-![AI 控制與審計設計：PostgreSQL RLS 權限分層實作](/assets/images/ai-controls-rls-audit.png)
+![AI 控制與審計設計：PostgreSQL RLS 權限分層實作](/assets/images/ai-controls-rls-audit.webp)
 
 ---
 

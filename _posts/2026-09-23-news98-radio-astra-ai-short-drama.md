@@ -27,7 +27,7 @@ faq:
 
 老實說非常緊張。我準備了一整份逐字稿，還前一天開車時把稿子丟給 AI，叫它生一支影片帶去節目上放。
 
-![和主持人趙自強在九八新聞台《加油！強一點》錄音室](/assets/images/news98-radio-astra-studio-1.jpg)
+![和主持人趙自強在九八新聞台《加油！強一點》錄音室](/assets/images/news98-radio-astra-studio-1.webp)
 
 節目完整版在 [YouTube](https://www.youtube.com/watch?v=2eKaH7f3hLY)，大概五十分鐘。下面是我自己整理的重點，最後一段是更正——廣播講得快，回來對了一次來源，有幾個地方講錯了。
 

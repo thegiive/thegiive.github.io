@@ -7,7 +7,7 @@ image: /assets/images/jack-of-all-trades-ai-era-cover.png
 description: "Susan Zhang 的推文讓我想清楚一件事：jack of all trades 跟 master of one 在 AI 時代的就業市場裡，難度完全反過來了。終點都是 master of a few——但入場的路，你得自己選。"
 ---
 
-![AI 時代：Jack of All Trades, Master of a Few](/assets/images/jack-of-all-trades-ai-era-cover.png)
+![AI 時代：Jack of All Trades, Master of a Few](/assets/images/jack-of-all-trades-ai-era-cover.webp)
 
 上週 Susan Zhang 在 X 上發了一條推文，27 萬次查看：
 

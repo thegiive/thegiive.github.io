@@ -169,7 +169,7 @@ That’s why I emphasize the A (Assessment) and T (Testing) in the ATPM framewor
 
 Claude Code is no longer just a tool. Honestly, it’s become like a programming partner, or a great assistant in my management work. It’s a bit rigid and not as “chatty” as pre-5.2 ChatGPT, but it can truly do 70% to 80% of the work I assign. To be honest, even swapping in another person might not be as reliable.
 
-![Slow jogging with Claude Code: health and productivity at the same time](/assets/images/claude-code-slow-jogging.png)
+![Slow jogging with Claude Code: health and productivity at the same time](/assets/images/claude-code-slow-jogging.webp)
 
 Dear Claude Code—please take care of me in the new year too.
 

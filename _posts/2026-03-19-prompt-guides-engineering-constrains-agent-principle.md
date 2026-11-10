@@ -7,7 +7,7 @@ image: /assets/images/prompt-guides-engineering-constrains-cover.png
 description: "你的 CLAUDE.md 寫了 500 行規則，Agent 還是會刪掉你的資料庫。不是 Prompt 寫得不好，是你把約束放錯了地方。做 Agent 半年多，我歸納出一個最核心的原則：Prompt 負責引導，不負責約束；工程負責約束，不依賴模型自覺。這不是理論，是被打臉之後的體會。"
 ---
 
-# 做 Agent 的一個體會：Prompt 負責引導，工程負責約束
+## 做 Agent 的一個體會：Prompt 負責引導，工程負責約束
 
 **作者：** Wisely Chen
 **日期：** 2026 年 3 月
@@ -16,7 +16,7 @@ description: "你的 CLAUDE.md 寫了 500 行規則，Agent 還是會刪掉你�
 
 ---
 
-![Prompt 負責引導，工程負責約束：五層防線架構圖](/assets/images/prompt-guides-engineering-constrains-cover.png)
+![Prompt 負責引導，工程負責約束：五層防線架構圖](/assets/images/prompt-guides-engineering-constrains-cover.webp)
 
 ## 三句話，講完整篇文章的核心
 

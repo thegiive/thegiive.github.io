@@ -13,7 +13,7 @@ tags:
   - TanStack
 ---
 
-![Mini Shai-Hulud dead-man's switch 警告](/assets/images/npm-shai-hulud-deadman-switch.png)
+![Mini Shai-Hulud dead-man's switch 警告](/assets/images/npm-shai-hulud-deadman-switch.webp)
 
 > 安全研究員 carlini 在 [TanStack/router#7383 的留言](https://github.com/TanStack/router/issues/7383#issuecomment-4425225340) 點出最致命的一招：payload 會在 Linux 上掛 systemd user service、在 macOS 上掛 LaunchAgent（`com.user.gh-token-monitor`），每 60 秒去 poll `api.github.com/user` — token 一被 revoke，立刻 `rm -rf ~/`。
 

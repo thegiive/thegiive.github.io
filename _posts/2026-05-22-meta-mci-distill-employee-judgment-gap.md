@@ -8,7 +8,7 @@ tags: [Meta, 蒸餾, MCI, 員工監控, AI取代]
 image: /assets/images/meta-mci-distill-employee-cover.png
 ---
 
-![Meta 扎克伯格內部音檔外流，承認蒐集員工資料訓練 AI](/assets/images/meta-mci-distill-employee-cover.png)
+![Meta 扎克伯格內部音檔外流，承認蒐集員工資料訓練 AI](/assets/images/meta-mci-distill-employee-cover.webp)
 
 最近 Meta 內部一段扎克伯格全員會議的音檔外流，事情經過大致是這樣。
 

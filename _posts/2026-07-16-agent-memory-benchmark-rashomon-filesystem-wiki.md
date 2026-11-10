@@ -30,7 +30,7 @@ author: Wisely Chen
 
 三件套裡，LoCoMo 管「記不記得」，LongMemEval 管「哪種記憶能力弱」，BEAM 管「規模撐不撐得住」。MemBench 還在研究端，但它測的維度（記憶庫用久了會不會退化）是前三個都沒碰的。
 
-![三大標準測評各測什麼與各自的盲區](/assets/images/agent-memory-benchmark-three-benchmarks.jpg)
+![三大標準測評各測什麼與各自的盲區](/assets/images/agent-memory-benchmark-three-benchmarks.webp)
 
 ---
 
@@ -100,7 +100,7 @@ LongMemEval 自己也有方法論問題：它的填充對話是從其他資料�
 
 結果：74.0 分。同一場測試裡，Mem0 的 graph 變體拿 68.5。
 
-![Letta 檔案系統實驗：files + grep 74.0 分 vs Mem0 graph 變體 68.5 分](/assets/images/agent-memory-benchmark-letta-filesystem.jpg)
+![Letta 檔案系統實驗：files + grep 74.0 分 vs Mem0 graph 變體 68.5 分](/assets/images/agent-memory-benchmark-letta-filesystem.webp)
 
 **一個檔案櫃加一支手電筒，打敗了專業記憶系統。** Letta 自己的結論是：memory 的品質更多取決於 agent 管理 context 和呼叫工具的能力，而不是檢索機制本身。換句話說，這兩年大家在向量庫、知識圖譜、temporal graph 上堆的複雜度，在 LoCoMo 這個規模下，價值可能還不如「讓 agent 自己翻檔案」。
 
@@ -122,7 +122,7 @@ Letta 的實驗是個 baseline 挑釁，ByteDance 火山引擎開源的 [OpenVik
 
 對照上一節，這就是手工版的 OpenViking：摘要頁是 L0/L1，原文是 L2，concept/entity 頁承擔 multi-hop 的角色——兩篇文章的關聯不靠向量相似度算出來，靠一條寫死的 `[[連結]]`。它也是 [Pinecone Nexus 那篇](/pinecone-nexus-agentic-rag-knowledge-layer/)講的 Knowledge Layer 趨勢的個人實作。
 
-![知識管理與對話記憶考的是不同的東西](/assets/images/agent-memory-benchmark-llm-wiki-knowledge.jpg)
+![知識管理與對話記憶考的是不同的東西](/assets/images/agent-memory-benchmark-llm-wiki-knowledge.webp)
 
 那它在標準測評上幾分？
 

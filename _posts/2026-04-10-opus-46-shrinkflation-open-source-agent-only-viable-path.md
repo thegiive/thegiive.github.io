@@ -7,7 +7,7 @@ image: /assets/images/opus-46-shrinkflation-github-issue-42796.png
 description: "Opus 4.6 thinking 深度被砍 73%、Read:Edit 比率從 6.6 暴跌到 2.0、Stop Hook 違規從 0 飆到每天 10 次——這不是主觀感受，是 17,871 個 thinking blocks 和 234,760 次工具呼叫的硬數據。當閉源供應商的品質和額度同時縮水，企業唯一可行的路就是：雲地融合 + 開源閉源混搭。Open Source Agent 框架 + Open Source Model，才是你在 2026 年做 AI 工程的基本衛生習慣。"
 ---
 
-![GitHub Issue #42796: Claude Code is unusable for complex engineering tasks](/assets/images/opus-46-shrinkflation-github-issue-42796.png)
+![GitHub Issue #42796: Claude Code is unusable for complex engineering tasks](/assets/images/opus-46-shrinkflation-github-issue-42796.webp)
 
 ## 目錄
 

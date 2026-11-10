@@ -7,7 +7,7 @@ image: /assets/images/fable5-system-prompt-leak-cover.jpeg
 description: "**作者：** Wisely Chen **系列：** Harness Engineering **關鍵字：** Fable 5, System Prompt Leak, Agent Harness, Anthropic, Pliny the Liberator, 基準測試公平性, 模型路由"
 ---
 
-![Pliny the Liberator 在 X 上公開 Fable 5 的 120,000 字符系統提示詞](/assets/images/fable5-system-prompt-leak-cover.jpeg)
+![Pliny the Liberator 在 X 上公開 Fable 5 的 120,000 字符系統提示詞](/assets/images/fable5-system-prompt-leak-cover.webp)
 
 **作者：** Wisely Chen
 **系列：** Harness Engineering

@@ -32,7 +32,7 @@ description: "根據《Harvard Business Review》近期發表的〈Workers Don�
 
 只可惜這一波的 AI 轉型更加殘酷。大量矽谷公司，舉例 AWS 近期的裁員，正再次打破了這份脆弱的信任。這些公司明明在財報股價上維持強勁成長，卻仍選擇以[**人力成本來換取資本投入擴張的速度**](https://ai-coding.wiselychen.com/aws-cai-yuan-3wan-ren-de-bei-hou-yi-yi-geng-jia-zhui-zhu-suan-li-er-fei-ren-cai/)。
 
-![](/assets/images/image-27.png)AWS 在宣布跟OpenAI大單之後，股價大漲，但是很殘酷的是，幾天前AWS才宣布裁員
+![](/assets/images/image-27.webp)AWS 在宣布跟OpenAI大單之後，股價大漲，但是很殘酷的是，幾天前AWS才宣布裁員
 
 當員工看到「即便公司成功，也仍會被取代」的現象時，信任就徹底瓦解——AI 不再被視為夥伴，AI 是威脅。零和博弈更加的增強。
 

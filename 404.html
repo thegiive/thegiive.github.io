@@ -1,0 +1,34 @@
+---
+layout: default
+title: 找不到這個頁面
+permalink: /404.html
+sitemap: false
+---
+
+<div class="about-page">
+  <h1>找不到這個頁面（404）</h1>
+  <p>這個網址不存在，可能是文章改過網址，或連結打錯了。可以從下面找到你要的內容：</p>
+
+  <h2>主題入口</h2>
+  <ul>
+    <li><a href="/ai-agent/">AI Agent 完整指南</a></li>
+    <li><a href="/local-llm-enterprise-architecture/">企業級地端 LLM 架構藍圖</a></li>
+    <li><a href="/ai-agent-security-game-changed/">AI Agent Security</a></li>
+    <li><a href="/taiwan-ai-basic-act-engineering-perspective/">台灣 AI 基本法：工程視角</a></li>
+  </ul>
+
+  <h2>瀏覽全部文章</h2>
+  <ul>
+    <li><a href="/archive/">文章歸檔（依時間）</a></li>
+    <li><a href="/categories/">文章分類</a></li>
+    <li><a href="/tags/">文章標籤</a></li>
+    <li><a href="/faq/">常見問題</a></li>
+  </ul>
+
+  <h2>最新文章</h2>
+  <ul>
+    {% for post in site.posts limit:8 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>

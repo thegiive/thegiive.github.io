@@ -106,7 +106,7 @@ At the time I also wanted to see if it could add comments directly into Google D
 
 ## A weird use case: editing videos for me
 
-![Telegram conversation where OpenClaw edits my video](/assets/images/openclaw-video-editing-telegram.png)
+![Telegram conversation where OpenClaw edits my video](/assets/images/openclaw-video-editing-telegram.webp)
 
 This was actually the first scenario that made me obsessed with using OpenClaw.
 

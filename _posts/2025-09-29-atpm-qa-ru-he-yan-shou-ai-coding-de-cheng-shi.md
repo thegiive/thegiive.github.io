@@ -43,7 +43,7 @@ AI 生成程式碼的速度令人驚艷，但它的「幻覺」和「不穩定�
 
 其實我們做法跟現在的 QA/QE/DevOps 方法論沒啥差別，但是我們 ATPM 覺得用 AI 有機會做到「更嚴謹」而且「更高效」的 QA 流程。原因就是在我們整套流程追求正確的 PRD ，並且為此增加了大量的人工反饋機制。
 
-![](/assets/images/image-49.png)
+![](/assets/images/image-49.webp)
 
 理論很簡單：有了正確的 PRD ，AI 就對業務邏輯有正確的理解，那 AI 應該可以比人作為 QA ，瞬間撰寫更詳細的QA automation script。當我們發現 PRD 有錯，改就是了，QA的 automation script 再由 AI 產生就好了。
 
@@ -60,7 +60,7 @@ AI 生成程式碼的速度令人驚艷，但它的「幻覺」和「不穩定�
 
 但是 AI 呢，不好意思，他會根據 PRD 跟數據，看完 schema 長相後，直接對每個欄位進行很完整的 distinct count, sum, avg, percentile ...etc 
 
-![](/assets/images/image-46-1.png)
+![](/assets/images/image-46-1.webp)
 
 這種程度的驗證，用人根本做不到。基本上，QA因為是高重複度，高精準度要求的場景，很適合機械來做。所以只要用提示詞設定 QA 任務的框架，加上正確 PRD 的上下文， 在我經歷的場景下，AI其實 QA 效率遠高於人。
 
@@ -80,7 +80,7 @@ AI 生成程式碼的速度令人驚艷，但它的「幻覺」和「不穩定�
 
 在 AI 時代，就算 Dev 是工程師不是 QA 專長，只要有正確的 PRD 跟 QA 提示詞，要隨意啟動一次正常的 QA 也是很簡單的
 
-![](/assets/images/image-47.png)
+![](/assets/images/image-47.webp)
 
 另外一件事情就是之前提過的，有了 PRD ，我們根本就不挑QA的人，誰有空就誰上。 這些都是架構在有個 AI Driven 的 QA框架才能成行。
 
@@ -90,7 +90,7 @@ AI 生成程式碼的速度令人驚艷，但它的「幻覺」和「不穩定�
 
 就算剛剛講那麼多，到最後我們依舊還是一半 AI 自動QA，一半場景手工。原因很簡單，在我們的場景下，不只是 PRD 可能不是最新，甚至連 PROD 舊數據（我們稱之為 Golden Data）都可能不是最新的。
 
-![](/assets/images/image-50.png)
+![](/assets/images/image-50.webp)
 
 你可能會問，這樣不是算錯錢嗎？我只能說，有可能是算錢的合約沒更新到財務那，也可能是我們PM 找到合約不是最新版....etc 。總之，這些奇怪的事情都會發生。最後結果就是 Golden Data 很多時候不是最 Golden 的數據。
 
@@ -100,7 +100,7 @@ AI 生成程式碼的速度令人驚艷，但它的「幻覺」和「不穩定�
 
 最後一個重點，既然我們用那麼多不同人跟不同方式來 QA驗證，為了避免相關的觀看上的困擾，我們統一了 QA的報告格式，讓所有人/AI 都 follow 同一個驗證方式，避免最後品質或是標準不同步。
 
-![](/assets/images/image-48-1.png)
+![](/assets/images/image-48-1.webp)
 
 #### 結論：QA 在 AI 時代的新價值
 

@@ -19,7 +19,7 @@ description: "你的 AI Coding Agent 在寫程式途中突然吐出「天天中�
 
 夾在正常的程式碼指令之間。
 
-![Codex 輸出賭博廣告截圖](/assets/images/codex-gambling-ad-aaron-francis-tweet.png)
+![Codex 輸出賭博廣告截圖](/assets/images/codex-gambling-ad-aaron-francis-tweet.webp)
 
 Jam（@Arthur2807）在回覆中一語道破：
 

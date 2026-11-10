@@ -7,7 +7,7 @@ image: /assets/images/hermes-agent-evolver-cover.png
 description: "GitHub 8.5 萬 Star 的 Hermes Agent，被中國小團隊 EvoMap 實錘架構級抄袭：10 步主循環步步對應、12 組術語系統性替換、7 份公開材料零引用。被錘後回應：Delete your account。這件事揭示了一個新現實：AI 把「改寫」的成本壓到幾乎是零，代碼重疊率 0%、設計決策重疊率 100%，傳統查重工具全部失效。MIT、GPL、版權法的設計前提都是「你複製了代碼」——AI 精確繞過了所有防線。"
 ---
 
-![Hermes Agent vs Evolver 架構抄袭事件封面](/assets/images/hermes-agent-evolver-cover.png)
+![Hermes Agent vs Evolver 架構抄袭事件封面](/assets/images/hermes-agent-evolver-cover.webp)
 
 以前的抄袭，是 Ctrl+C、Ctrl+V。
 

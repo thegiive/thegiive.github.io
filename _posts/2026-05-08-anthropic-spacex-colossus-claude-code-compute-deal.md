@@ -6,9 +6,9 @@ image: /assets/images/anthropic-spacex-colossus-cover.png
 description: "Musk 把 SpaceX 旗下整座 Colossus 1 資料中心租給 Anthropic，1 個月內取得 300MW、22 萬顆 Nvidia GPU。Claude Code 5 小時上限直接加倍、降額取消、Opus API 速率提高。但這筆交易背後不只是算力買賣，是 Musk vs OpenAI 的恩怨、xAI Colossus 用不滿的 GPU、Google 兩面下注 400 億，以及 Anthropic 把所有雲端對手全部綁成股東兼供應商的算力陣營化布局。"
 ---
 
-# Musk 把 22 萬顆 GPU 租給對手 Anthropic：這條大新聞，是 Claude 降智、Max Plan 燒光、5 小時變 2 小時的解藥
+## Musk 把 22 萬顆 GPU 租給對手 Anthropic：這條大新聞，是 Claude 降智、Max Plan 燒光、5 小時變 2 小時的解藥
 
-![SpaceXAI 官網公告 New Compute Partnership with Anthropic](/assets/images/anthropic-spacex-colossus-cover.png)
+![SpaceXAI 官網公告 New Compute Partnership with Anthropic](/assets/images/anthropic-spacex-colossus-cover.webp)
 
 ## 先講這條 AI 戰國時代最戲劇性的大新聞
 

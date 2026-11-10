@@ -22,7 +22,7 @@ description: "AI 在傳產落地，先解決的永遠不是模型，而是人、
 
 我們創建了一個以 公司各部門的老前輩 + Intern 為主的種子團隊，深入一線流程、取得高層支持，建立真正的共識。 AI 不是空降，而是跟現場一起改。
 
-![](/assets/images/image-28.png)
+![](/assets/images/image-28.webp)
 
 ### 快速勝利：小範圍試點，讓大家看到成效
 
@@ -42,7 +42,7 @@ description: "AI 在傳產落地，先解決的永遠不是模型，而是人、
 
 他們很快就可以在其他 workload 做出不同的 AI workload 
 
-![](/assets/images/image-29.png)
+![](/assets/images/image-29.webp)
 
 這一套方法論當初沒有想太多
 

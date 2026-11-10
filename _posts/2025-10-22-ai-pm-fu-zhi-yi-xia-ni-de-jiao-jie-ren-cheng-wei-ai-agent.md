@@ -9,7 +9,7 @@ description: "把 50+ 專案 insights 轉成 237 組 QA 對，建立 RAG 知識�
 
 
 
-# [AI PM] 複製一下你的交接人成為AI Agent
+## [AI PM] 複製一下你的交接人成為AI Agent
 
 
 
@@ -29,13 +29,13 @@ description: "把 50+ 專案 insights 轉成 237 組 QA 對，建立 RAG 知識�
   2. 請他根據 RAG 的基本形式來做 Excel 等級的表格呈現
   3. 拿我們公司的 QA Excel 模板來 mapping 上面的基本 rag 
 
-![](/assets/images/image-33-1.png)Step 2 
+![](/assets/images/image-33-1.webp)Step 2 
 
 ### Step 1
 
 有趣的是，[上一篇](https://ai-coding.wiselychen.com/ai-pm-shi-zhan-gao-bie-zhuan-an-wen-jian-mi-gong-yong-claude-code-agent-kuai-su-xiao-hua-qian-ren-liu-xia-de-hai-liang-zi-liao/)的 Claude Code 去爬專案文件，最後結果不是 RAG ，他是產出一堆文件當作 inisght ，之後我要問 Claude Code問題 ，他會自己自動的基於那些 inisight grep 的關鍵字搜尋（他們稱之為「agentic search」）。
 
-![](/assets/images/image-34-1-1.png)上一步的最終產出結果，有了這些 file 就可以快速回答問題
+![](/assets/images/image-34-1-1.webp)上一步的最終產出結果，有了這些 file 就可以快速回答問題
 
 Claude Code 的設計很有趣，一位 Claude 工程師在 Hacker News 上承認 Claude Code 完全不使用 RAG，而是高/中/低三種層次逐行 grep 你的代碼庫。
 
@@ -53,15 +53,15 @@ Step 2 提示詞很簡單，但是其實是很難的工程， 因為我們[上�
 
 舉例假設原始技術文件片段
 
-![](/assets/images/image-38.png)
+![](/assets/images/image-38.webp)
 
 以下為錯誤的 QA 拆分方式
 
-![](/assets/images/image-39.png)
+![](/assets/images/image-39.webp)
 
 正確的拆分方式為
 
-![](/assets/images/image-40.png)
+![](/assets/images/image-40.webp)
 
 **關鍵差異：**
 
@@ -77,7 +77,7 @@ Step 3，就不提了，單純的資料轉換而已
 
 當然，只做上面的話超無聊的，Agent 最重要是有人性!!!!!，因為這幾天開了幾場交接會議，就將會議記錄的逐字稿拉出來，然後請 Claude Code 來分析他的用詞方式，最後產生人設。因為牽涉到對方的語氣，這裡就不太適合演示。我請 Claude Code 來分析我的 Blog吧 
 
-![](/assets/images/image-37.png)
+![](/assets/images/image-37.webp)
 
 嘖嘖，也太中肯了吧 , 看來 Claude Code 情緒價值給滿 😄
 
@@ -85,4 +85,4 @@ Step 3，就不提了，單純的資料轉換而已
 
 最後就建了一個同事 A agent ，跟我們團隊一起繼續努力！
 
-![](/assets/images/image-35-1-1.png)
+![](/assets/images/image-35-1-1.webp)

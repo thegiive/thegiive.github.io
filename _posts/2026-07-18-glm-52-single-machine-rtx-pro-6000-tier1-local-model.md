@@ -11,7 +11,7 @@ author: Wisely Chen
 
 各位觀眾，單機跑 GLM 5.2 成功。
 
-![llama.cpp 單機跑 GLM 5.2 UD-IQ2_M](/assets/images/glm-52-llamacpp-single-machine-cover.png)
+![llama.cpp 單機跑 GLM 5.2 UD-IQ2_M](/assets/images/glm-52-llamacpp-single-machine-cover.webp)
 
 我兩週前才寫說，希望哪一天功成名就，可以在自己腳下跑 GLM 5.2。沒想到幸福來得太突然，今天就跑起來了。
 

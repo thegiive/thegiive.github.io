@@ -7,7 +7,7 @@ image: /assets/images/self-guided-self-play-sgs-logo.png
 description: "又到了週二讀論文。"
 ---
 
-![Scaling Self-Play with Self-Guidance 論文首頁](/assets/images/self-guided-self-play-sgs-logo.png)
+![Scaling Self-Play with Self-Guidance 論文首頁](/assets/images/self-guided-self-play-sgs-logo.webp)
 
 又到了週二讀論文。
 

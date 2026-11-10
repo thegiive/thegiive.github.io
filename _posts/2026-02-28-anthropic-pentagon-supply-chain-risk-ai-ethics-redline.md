@@ -9,7 +9,7 @@ image: /assets/images/anthropic-pentagon-project-insight-cover.png
 description: "今天不只談技術資安，更要談人類的安全。Anthropic 拒絕移除 Claude 的兩條紅線——禁止大規模國內監控、禁止完全自主武器——被美國國防部列為「供應鏈風險」。這是 AI 產業史上第一次「模型提供者 vs 國家機器」的正面衝突。當年美國隊長 2 的 Project Insight 是科幻，2026 年它發生了。"
 ---
 
-![Project Insight 的現實翻版：Anthropic vs 五角大廈](/assets/images/anthropic-pentagon-project-insight-cover.png)
+![Project Insight 的現實翻版：Anthropic vs 五角大廈](/assets/images/anthropic-pentagon-project-insight-cover.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 2 月 28 日

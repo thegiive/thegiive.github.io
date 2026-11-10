@@ -41,7 +41,7 @@ LATS 的核心概念很簡單，但影響很大：**不要只讓 Agent 產生一
 
 這跟傳統 Agent 的差異是本質性的。傳統 Agent 在決策當下只看「當前這一步」，不會推演「接下來會發生什麼」。LATS 則是在行動之前，就已經在腦中模擬了多種可能的未來。
 
-![LATS 樹狀搜尋示意圖](/assets/images/lats-tree-search-diagram.png)
+![LATS 樹狀搜尋示意圖](/assets/images/lats-tree-search-diagram.webp)
 
 ---
 
@@ -53,15 +53,15 @@ LATS 的運作邏輯繼承自 AlphaGo 的 MCTS，但針對語言模型做了調�
 
 **擴展（Expansion）：** 到達選定節點後，Agent 會生成多個可能的下一步動作，這就在決策樹上長出了新的分枝。不是只想一個答案，而是同時考慮多種可能。
 
-![LATS 擴展步驟](/assets/images/lats-expansion.png)
+![LATS 擴展步驟](/assets/images/lats-expansion.webp)
 
 **評估與反思（Evaluation & Reflection）：** 這是 LATS 最獨特的地方。Agent 執行動作後，會觀察環境的反饋。如果失敗了，LATS 會生成一段「自我反思」，分析失敗原因、真正問題是什麼、下次應該怎麼做。這段反思會被記錄下來，幫助 Agent 在未來的搜尋中避開類似的錯誤。
 
-![LATS 評估與反思步驟](/assets/images/lats-evaluation-reflection.png)
+![LATS 評估與反思步驟](/assets/images/lats-evaluation-reflection.webp)
 
 **反向傳播（Backpropagation）：** 一旦得到結果，Agent 會將這個結果的「分數」反向傳遞回樹的根部。成功路徑上的節點勝率會增加，失敗路徑上的節點勝率會下降。下次遇到類似問題，Agent 就知道該往哪個方向走。
 
-![LATS 反向傳播步驟](/assets/images/lats-backpropagation.png)
+![LATS 反向傳播步驟](/assets/images/lats-backpropagation.webp)
 
 ---
 

@@ -7,7 +7,7 @@ image: /assets/images/youtube-fable5-glm52-planb-thumbnail.jpg
 description: "**作者：** Wisely Chen **日期：** 2026 年 6 月 **系列：** AI Coding 實戰觀察 — YouTube 逐字稿 **關鍵字：** Fable 5, 出口管制, GLM-5.2, 智譜, 開源模型, Plan B, Harness, AI 安全, stateful 攻擊, System Prompt"
 ---
 
-![Fable 5 封禁+被打穿，你的 AI 有 Plan B 嗎](/assets/images/youtube-fable5-glm52-planb-thumbnail.jpg)
+![Fable 5 封禁+被打穿，你的 AI 有 Plan B 嗎](/assets/images/youtube-fable5-glm52-planb-thumbnail.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 6 月

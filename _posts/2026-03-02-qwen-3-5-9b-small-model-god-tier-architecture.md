@@ -9,7 +9,7 @@ image: /assets/images/qwen-3-5-9b-benchmark-comparison.jpeg
 description: "9B 參數打贏上一代 80B，甚至越級挑戰 OpenAI 的 120B 開源模型。Qwen 3.5-9B 靠混合注意力機制（Gated Delta Network）、原生多模態早期融合、強化學習下放三大架構創新，把大模型才有的能力塞進一張 RTX 3060 就能跑的體積裡。"
 ---
 
-![Qwen 3.5-9B Benchmark 對比圖](/assets/images/qwen-3-5-9b-benchmark-comparison.jpeg)
+![Qwen 3.5-9B Benchmark 對比圖](/assets/images/qwen-3-5-9b-benchmark-comparison.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 3 月 2 日

@@ -43,7 +43,7 @@ description: "ATPM 是經過生產環境驗證的 Vibe Coding 流程框架，以
 
 當然，公司的大家都知道我用的 7成工讀生，所以當我們團隊遇到一些系統技術問題時，大家其實是比較寬容的。另外，我也大量使用 SaaS 服務來彌補 intern 之間知識的不足，而專注做真正的 business 
 
-![](/assets/images/image.png)
+![](/assets/images/image.webp)
 
 一直到 2025年的年初，隨著職務的調換，我們團隊從 intern 7成 轉成發展到正職 7成的正式團隊(也有數人從 intern 轉正），另外又來了兩個 intern 。隨著公司給我的 resource 增加，不管我選擇的是工讀生轉正還是直接 hire 外面的 engineer ，公司都會要求我做「真正的系統」，給出更高標準的技術要求
 
@@ -71,13 +71,13 @@ description: "ATPM 是經過生產環境驗證的 Vibe Coding 流程框架，以
 
 很幸運的是，當你注意到問題的時候，老天爺就給你解法了。我在2025年五月講生成式 AI時，前一個講者 Happy Lee 大大就直接給我講解法了，我們需要的是一套圍繞 PRD 為主的流程
 
-![](/assets/images/image-1.png)
+![](/assets/images/image-1.webp)
 
 看完這套流程，我當下就跟 Happy 以及他底下的人要投影片跟聯繫方式，再來就是要求團隊開始研究這個流程，並且拿這套帳務系統需求當作 POC，
 
 也因為如此，其實我們一開始在做這個帳務系統時，反而用傳統的流程跑，而非新的 PRD 為主的 開發。當一切入開發期(紅色的 bar) ，我們就陷入經驗不足的混亂，在下面 Week 19 ~ Week 22, 一直在泥沼內。當下其實我已經發現大家雖然都很 Jr , 但是已經有一定開發的範式了。（所以人的經驗牆是很容易出現的）
 
-![](/assets/images/image-2.png)
+![](/assets/images/image-2.webp)
 
 我印象中在 week 22 的那個週三，因為很多原因(當天因為其他原因被老闆念)，我少數會議中出現很激動地對大家說「現在就是拋棄你們所熟悉的一切的時候，我們沒有任何退路，直接擁抱 AI Coding 跟新的流程」
 
@@ -89,7 +89,7 @@ description: "ATPM 是經過生產環境驗證的 Vibe Coding 流程框架，以
 
 這套做法已經跟 Happy 的做法有一些差距了。在七月的時候我們的辦公室的風景突然變成這樣
 
-![](/assets/images/image-3.png)
+![](/assets/images/image-3.webp)
 
 從右到左，四台電腦三個人
 
@@ -104,7 +104,7 @@ description: "ATPM 是經過生產環境驗證的 Vibe Coding 流程框架，以
 
 ## ATPM 
 
-![](/assets/images/-------2025-09-17-------4.31.54.png)
+![](/assets/images/-------2025-09-17-------4.31.54.webp)
 
 他是一套以PRD為中心，用 AI 去強化 PM , Dev, QA 效率跟正確性的流程，裡面成功利用這個流程加速 40% 的時間，並且通過很嚴苛的 QA 驗證（畢竟是算上億元錢的系統）。
 

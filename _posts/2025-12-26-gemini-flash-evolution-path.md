@@ -20,7 +20,7 @@ OpenAI、Google、Anthropic 三家都是類似的定位。
 
 直到 2025/12/17 Google Gemini 3.0 Flash 剛出，一連串的評估霸榜，我們才驚覺 Google 似乎已經慢慢打破了這個範例
 
-![Gemini 3.0 Flash Benchmark 評測表](/assets/images/gemini-3-flash-benchmark.png)
+![Gemini 3.0 Flash Benchmark 評測表](/assets/images/gemini-3-flash-benchmark.webp)
 
 > 為何 Gemini 3.0 Flash 速度比較快、價錢比較低，居然很多測試贏過 Pro？Google 又再次掌握了什麼黑科技？
 
@@ -44,7 +44,7 @@ OpenAI、Google、Anthropic 三家都是類似的定位。
 
 知名 AI 研究員 @bycloudai 在深入評測後指出，Google 可能在模型架構研究上已處於「遙遙領先」的隱形地位。
 
-![bycloudai 推文：Google 在模型架構上遙遙領先](/assets/images/bycloudai-gemini3-flash-tweet.png)
+![bycloudai 推文：Google 在模型架構上遙遙領先](/assets/images/bycloudai-gemini3-flash-tweet.webp)
 
 這一表現打破了行業常規認知：它既沒有像標準注意力機制那樣產生高昂算力成本，也沒有像常見的線性注意力或 SSM 混合模型那樣導致知識推理能力下降。
 

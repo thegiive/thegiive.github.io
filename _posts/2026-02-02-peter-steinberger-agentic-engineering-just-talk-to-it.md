@@ -14,7 +14,7 @@ description: "「Don't waste your time on stuff like RAG, subagents, Agents 2.0 
 **系列：** AI Agent 實戰觀察
 **關鍵字：** OpenClaw, Moltbot, Clawdbot, Peter Steinberger, Agentic Engineering, AI Agent, Unix Philosophy
 
-![從 $1.16 億退休到 Agentic Engineering：Peter Steinberger 與 OpenClaw 的傳奇開發哲學](/assets/images/peter-steinberger-cover.png)
+![從 $1.16 億退休到 Agentic Engineering：Peter Steinberger 與 OpenClaw 的傳奇開發哲學](/assets/images/peter-steinberger-cover.webp)
 
 ---
 
@@ -111,7 +111,7 @@ Peter 不是那種會寫 20 頁架構文件的工程師。他的哲學可以用�
 
 **同時開 3-8 個 codex CLI 在終端機的 3x3 grid 裡跑，用 tmux 管理背景任務，每個 agent 做 atomic git commit。**
 
-![實戰工具：Unix 哲學的回歸](/assets/images/peter-steinberger-slides-06.png)
+![實戰工具：Unix 哲學的回歸](/assets/images/peter-steinberger-slides-06.webp)
 
 這不是框架，這是「直接動手」。
 
@@ -185,7 +185,7 @@ Agent 收到一個它不認識的檔案格式。於是它自己：
 
 Peter 說他當時「stunned」。這是他真正意識到 AI 能力已經跨過某個門檻的瞬間。
 
-![傳奇時刻：未經編程的語音處理](/assets/images/peter-steinberger-slides-09.png)
+![傳奇時刻：未經編程的語音處理](/assets/images/peter-steinberger-slides-09.webp)
 
 ---
 

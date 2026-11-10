@@ -9,7 +9,7 @@ categories: [AI 產業分析]
 author: Wisely Chen
 ---
 
-![AI 鎖國時代](/assets/images/ai-lockdown-era-cover.png)
+![AI 鎖國時代](/assets/images/ai-lockdown-era-cover.webp)
 
 Anthropic 上週宣佈，Fable 5 的免費使用期從 7 月 7 日延長到 7 月 12 日，多了五天。
 

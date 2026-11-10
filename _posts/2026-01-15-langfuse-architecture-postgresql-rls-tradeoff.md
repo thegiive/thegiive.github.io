@@ -21,7 +21,7 @@ tags: [PostgreSQL, ClickHouse, Langfuse, RLS, LLM Observability, 架構設計]
 
 簡單講，Langfuse 是一個 **開源的 LLM 可觀測性平台**，GitHub 上超過 19,000 顆星，MIT License 可以自由 self-host。
 
-![Langfuse Observability Dashboard](/assets/images/langfuse-observability-dashboard.png)
+![Langfuse Observability Dashboard](/assets/images/langfuse-observability-dashboard.webp)
 
 ### 為什麼需要 LLM Observability？
 
@@ -71,7 +71,7 @@ PostgreSQL 是 **row-based storage**，對於 OLTP（交易處理）場景非常
 
 Langfuse v3 的架構變成：
 
-![Langfuse v3 Hybrid Architecture](/assets/images/langfuse-v3-hybrid-architecture.png)
+![Langfuse v3 Hybrid Architecture](/assets/images/langfuse-v3-hybrid-architecture.webp)
 
 | 元件 | 用途 |
 |------|------|

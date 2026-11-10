@@ -13,7 +13,7 @@ description: "AI 會議記錄工具的準確度宣傳很美好，但實際到了
 
 2024 年末，AI 會議記錄工具滿天飛。Ottr、Plaud、各種標榜「自動轉寫、秒出紀要」的應用，都在宣傳自己的驚人準確度。
 
-![AI 會議記錄工具宣傳準確度](/assets/images/image-22-1.png)
+![AI 會議記錄工具宣傳準確度](/assets/images/image-22-1.webp)
 
 > 只是現實很殘酷，實際到了可以寄給客戶的會議紀要階段，90% 都需要人工修正
 
@@ -25,7 +25,7 @@ description: "AI 會議記錄工具的準確度宣傳很美好，但實際到了
 
 我目前負責管理台灣、香港跟東南亞的專案，中英文夾雜是常態。某些傳統企業甚至中英台語一起混。ASR 在判斷「到底這個同音字是哪個」時，完全沒有公司語境。例如：
 
-![多語言同音混淆範例：Outliner 被聽成奧拉雅](/assets/images/image-9.png)
+![多語言同音混淆範例：Outliner 被聽成奧拉雅](/assets/images/image-9.webp)
 
 「奧拉雅」→ 實際是「Outliner」
 「留一些 Rick」→ 實際是「留一些 Record」。
@@ -36,7 +36,7 @@ description: "AI 會議記錄工具的準確度宣傳很美好，但實際到了
 
 每間公司都有相關技術，內部黑話。客戶代號、Project Code Name。像是我之前工作整天在物流業，行業詞彙超級多的，例如 ASRS、棧板、全拖、回單等。我在講一些 data project 時，GCP 相關技術常常是重災區：
 
-![BigQuery 轉寫錯誤範例](/assets/images/ai-meeting-notes-knowledge-base.png)
+![BigQuery 轉寫錯誤範例](/assets/images/ai-meeting-notes-knowledge-base.webp)
 
 「手動按 BQR ROM」→ 實際應該是「手動按 BigQuery Run」。BigQuery 的發音有一百種聽錯的可能。除非你知道這家公司用 GCP 的 BigQuery，否則「比奎瑞」對 ASR 來說就是某個陌生詞彙。
 
@@ -48,11 +48,11 @@ description: "AI 會議記錄工具的準確度宣傳很美好，但實際到了
 
 供應商名字的混淆更誇張：
 
-![供應商名稱混淆範例：嘉里被聽成 Carry](/assets/images/image-13.png)
+![供應商名稱混淆範例：嘉里被聽成 Carry](/assets/images/image-13.webp)
 
 「新竹 Carry 與褲孔」→ 實際上是三間廠商：「新竹」、「嘉里」、「酷澎」
 
-![系統名稱被聽成人名：震旦雲變成鄭旦宇](/assets/images/image-12.png)
+![系統名稱被聽成人名：震旦雲變成鄭旦宇](/assets/images/image-12.webp)
 
 「鄭旦宇」→ 實際是「震旦雲」（打卡系統名稱被聽成人名）
 
@@ -80,7 +80,7 @@ description: "AI 會議記錄工具的準確度宣傳很美好，但實際到了
 
 如同此範例，有了相關的數據庫，之前提到的專業詞彙可以良好的解決
 
-![企業知識庫校正專業詞彙範例](/assets/images/image-16.png)
+![企業知識庫校正專業詞彙範例](/assets/images/image-16.webp)
 
 這樣就可以做到比較適合的轉寫，並且保留原文確保 AI 搞錯時可以追溯。同樣只需要 Prompt 加入相關人名跟供應商，剩下交給 LLM 來處理即可。
 
@@ -88,7 +88,7 @@ description: "AI 會議記錄工具的準確度宣傳很美好，但實際到了
 
 這個就很難了，這個也不是用企業資料庫來修正，這個需要的是會議錄影的圖片跟 OCR 抓取數字。因為我們開會如果是「純電話會議」通常也不會講一堆數字，人天生的構造就很難用聽的抓取全部的數字。
 
-![會議截圖搭配逐字稿的圖文記錄範例](/assets/images/image-19.png)
+![會議截圖搭配逐字稿的圖文記錄範例](/assets/images/image-19.webp)
 
 通常一堆數字的會議，都會將報表、Excel 或是 Dashboard 投影到螢幕上，這時候反而語音是輔助。我之前的做法是寫一個程式去掃螢幕的固定時間截圖（例如每 15 秒一次），然後將轉寫稿跟截圖放在一起變成圖文的會議記錄。這樣遠比去逐字稿猜數字來的更有用。
 

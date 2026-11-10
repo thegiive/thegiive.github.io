@@ -219,7 +219,7 @@ That means it needs not “more data,” but “better judgment under limited in
 
 ## Example 1: an email agent
 
-![CaMeL Email Agent Example](/assets/images/camel-email-agent-example.png)
+![CaMeL Email Agent Example](/assets/images/camel-email-agent-example.webp)
 
 ### The problem
 
@@ -290,7 +290,7 @@ All consequences exist only in the high-privilege layer, which never saw the mal
 
 ## Example 2: OCR + ERP agents can’t “read and do”
 
-![CaMeL OCR ERP Example](/assets/images/camel-ocr-erp-example.png)
+![CaMeL OCR ERP Example](/assets/images/camel-ocr-erp-example.webp)
 
 ### The problem
 

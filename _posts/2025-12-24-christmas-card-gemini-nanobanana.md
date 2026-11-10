@@ -17,7 +17,7 @@ description: "早上 6:00 想做一張聖誕賀卡，用 Gemini 寫提示詞 + N
 
 Gemini : " 一張時尚、現代的聖誕卡概念藝術作品。場景是台北夜晚的高科技頂層辦公室。一位休閒風的專業人士（代表 Wisely Chen）站在全景窗前，看著燈火通明的台北 101。全息介面漂浮在他周圍，顯示著建築藍圖和 AI 演算法，.... 氣氛精緻、富有遠見且充滿慶祝意涵。底部有優雅的字體寫著：「Season's Greetings. Innovate the Future. - Wisely Chen」。"
 
-![Gemini 產生的提示詞建議](/assets/images/christmas-card-2025-gemini-prompt.png)
+![Gemini 產生的提示詞建議](/assets/images/christmas-card-2025-gemini-prompt.webp)
 
 我：恩....聽起來很讚 ... Nano Banana 產圖
 
@@ -35,7 +35,7 @@ Gemini : .... 全息介面漂浮在他周圍，顯示著建築藍圖和 AI 演�
 
 NanoBanana : 出來一個幾乎全對，但是風格像是中二的電腦遊戲的畫面....
 
-![中二電腦遊戲風格版本](/assets/images/christmas-card-2025-game-style.png)
+![中二電腦遊戲風格版本](/assets/images/christmas-card-2025-game-style.webp)
 
 我：風格不能太銳利，請根據我 FDE / AI Transformation 文章（附上去) ，然後給予一點「人味」或是「溫馨味」, 給我新的提示詞
 
@@ -45,13 +45,13 @@ Gemini : ....一張吉卜力工作室風格的溫馨數位插畫....
 
 NanoBanana : 生出一個幾乎全對，但是有點皺紋吉普力的男性，要用很精確的話來說，就是「課長島根作」風格....XD
 
-![課長島根作風格版本](/assets/images/christmas-card-2025-shimane.png)
+![課長島根作風格版本](/assets/images/christmas-card-2025-shimane.webp)
 
 我：幫我年輕一點，不要那麼島根作
 
 NanoBanana : .......噹噹....成品如下....
 
-![2025 聖誕賀卡成品 - Gemini + NanoBanana](/assets/images/christmas-card-2025-final.png)
+![2025 聖誕賀卡成品 - Gemini + NanoBanana](/assets/images/christmas-card-2025-final.webp)
 
 謝謝大家收看我產生賀卡的全過程 XD
 歷時 10分鐘

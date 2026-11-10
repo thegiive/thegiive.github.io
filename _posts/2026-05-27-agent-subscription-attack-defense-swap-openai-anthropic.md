@@ -7,7 +7,7 @@ image: /assets/images/tibo-codex-pi-harness-opencode-tweet.png
 description: "OpenAI Codex 負責人 Tibo 這週兩則 X 貼文濃度極高：公開承認 10% production traffic 跑在 Pi harness 跟 OpenCode 上、認 Codex compaction bug 影響 cache hit rate 並重置全站額度。對應到 Anthropic 5/14 把 AFK credit 砍 96%、4 月封殺 OpenClaw，兩家對 Agent 訂閱制的態度已經完全相反。這篇拆 Tibo 兩則貼文背後的攻守易勢，以及 2026 上半年 token 跟訂閱制三條趨勢線——「無限暢用」已死、BYOK 大規模回潮、cache miss 才是真正的成本。"
 ---
 
-![Tibo（@thsottiaux）X 貼文：Codex 約 5% production traffic 在 Pi harness、另約 5% 在 OpenCode](/assets/images/tibo-codex-pi-harness-opencode-tweet.png)
+![Tibo（@thsottiaux）X 貼文：Codex 約 5% production traffic 在 Pi harness、另約 5% 在 OpenCode](/assets/images/tibo-codex-pi-harness-opencode-tweet.webp)
 
 這週 OpenAI Codex 負責人 Tibo（[@thsottiaux](https://x.com/thsottiaux)）發了兩則 X 貼文，連在一起看，**等於 OpenAI 把這半年的訂閱戰態度直接攤在桌上**。
 

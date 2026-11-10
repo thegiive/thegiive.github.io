@@ -7,7 +7,7 @@ image: /assets/images/agent-harness-four-demos-cover.jpg
 description: "這是我在 DigiTimes 場子那段 Harness Engineering 短講的逐字稿。一句話定義：Harness = Agent − Model。用四個可以直接跑的 Claude Code hook demo——審批、工具收斂、最小權限、稽核重播——示範怎麼把『規則』變成 agent 繞不過去的『機制』。"
 ---
 
-![Harness = Agent − Model：四個 hook demo](/assets/images/agent-harness-four-demos-cover.jpg)
+![Harness = Agent − Model：四個 hook demo](/assets/images/agent-harness-four-demos-cover.webp)
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:30px 0;border-radius:8px;">
   <iframe src="https://www.youtube.com/embed/2VAcNyc6bAc" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

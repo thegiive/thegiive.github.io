@@ -7,7 +7,7 @@ image: /assets/images/mac-enterprise-inference-mtp-cover.png
 description: "硬體上最適合跑大模型的家用機器是 Mac Studio M3 Ultra（256GB 統一記憶體連 RTX 5090 都比不上），但軟體棧上 Mac 用戶過去 16 個月一直被 lock out 於所有現代 LLM 推理加速技術——MTP、EAGLE、Medusa，通通跑不了。直到 2026 年 5 月 16 日，llama.cpp 合併了 PR #22673。這是 Mac 第一次能用上「企業級」的推理加速。"
 ---
 
-![Mac Studio M3 Ultra MTP unlocked: first time Apple Silicon gets enterprise-tier inference acceleration](/assets/images/mac-enterprise-inference-mtp-cover.png)
+![Mac Studio M3 Ultra MTP unlocked: first time Apple Silicon gets enterprise-tier inference acceleration](/assets/images/mac-enterprise-inference-mtp-cover.webp)
 
 ## 目錄
 

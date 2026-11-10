@@ -7,7 +7,7 @@ description: "現在的 Agent 普遍有「金魚腦」問題，根源在於傳�
 image: /assets/images/openviking-logo.png
 ---
 
-![OpenViking — A Context DataBase for AI Agents](/assets/images/openviking-logo.png)
+![OpenViking — A Context DataBase for AI Agents](/assets/images/openviking-logo.webp)
 
 ## 為什麼要寫這篇
 

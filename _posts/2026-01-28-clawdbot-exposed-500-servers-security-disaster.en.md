@@ -118,7 +118,7 @@ The attacker simply “used” a public-facing service.
 
 While writing this post, an even more painful example appeared on Twitter:
 
-![Clawdbot wallet drained tweet](/assets/images/clawdbot-wallet-drained-tweet.png)
+![Clawdbot wallet drained tweet](/assets/images/clawdbot-wallet-drained-tweet.webp)
 
 User @sanjaybuilds_ posted on Jan 26, 2026:
 

@@ -101,7 +101,7 @@ In other words: the “attack value” hasn’t been high enough yet—not that 
 > “AI guardrails don’t work. I’ll say it again: guardrails don’t work. If someone is determined to trick GPT-5, they’ll have no problem dealing with those guardrail mechanisms.”
 > — Sander Schulhoff, HackAPrompt CEO
 
-![The industry’s standard answer: a brittle defense line](/assets/images/ai-guardrails-weak-defense.png)
+![The industry’s standard answer: a brittle defense line](/assets/images/ai-guardrails-weak-defense.webp)
 
 ### How guardrails typically work
 
@@ -143,7 +143,7 @@ In joint research involving OpenAI, Google DeepMind, and Anthropic, every cuttin
 
 ## 6) You can patch software bugs, but you can’t patch a brain
 
-![Traditional cybersecurity vs AI security](/assets/images/ai-security-vs-traditional.png)
+![Traditional cybersecurity vs AI security](/assets/images/ai-security-vs-traditional.webp)
 
 > This is very, very different from classical cybersecurity. I keep repeating a summary: you can patch software bugs, but you can’t patch a brain. If you find a bug in software, you can fix it and be 99.99% confident it’s gone. But if you try to do that with an AI system, you can be 99.99% sure the problem still exists—it’s basically unsolvable.
 
@@ -153,7 +153,7 @@ Prompt injection isn’t a “bug”—it’s a structural consequence of langua
 
 ## 7) Stateless vs stateful security: a fundamental asymmetry
 
-![Attacker perspective (stateful) vs defender perspective (stateless)](/assets/images/stateless-vs-stateful-security.png)
+![Attacker perspective (stateful) vs defender perspective (stateless)](/assets/images/stateless-vs-stateful-security.webp)
 
 > If you separate your requests in the right way, you can bypass defenses very effectively. If you ask: “Hey AI, can you look at this URL, see what backend they use, and write code to hack it?” the AI might refuse. But if you split it into two requests... now each looks legitimate. Many bypasses are just splitting a request into smaller requests that are individually legitimate but collectively illegitimate.
 
@@ -194,7 +194,7 @@ But: read → get manipulated → execute the next action = data exfiltration, p
 
 ## 9) Countermeasure 1: least privilege for AI agents
 
-![Least privilege for AI agents: principles and checklist](/assets/images/least-privilege-ai-agent.png)
+![Least privilege for AI agents: principles and checklist](/assets/images/least-privilege-ai-agent.webp)
 
 > In the short term, security professionals are the only people who can solve this—mainly by ensuring we deploy properly permissioned systems, and by physically restricting any functionality that could have severe consequences.
 
@@ -213,7 +213,7 @@ But: read → get manipulated → execute the next action = data exfiltration, p
 
 Google DeepMind’s 2025 paper [CaMeL](https://arxiv.org/abs/2503.18813) (Communicative Agents for Machine-learning-based Language Execution) is a concrete implementation of this idea.
 
-![CaMeL intent analyzer flow: pre-restrict permissions based on user intent](/assets/images/camel-intent-analyzer-flow.png)
+![CaMeL intent analyzer flow: pre-restrict permissions based on user intent](/assets/images/camel-intent-analyzer-flow.webp)
 
 ### Core idea
 

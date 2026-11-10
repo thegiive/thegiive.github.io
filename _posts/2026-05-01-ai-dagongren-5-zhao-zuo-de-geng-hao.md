@@ -6,9 +6,9 @@ image: /assets/images/dagongren-5-zhao-cover.png
 description: "勞工節給打工人的 5 個 AI 妙招——不是用 AI 變更快，而是用 AI 變更好。從『無 AI 冥想時間』、兩個訓練路徑不同的模型互相監督、把關鍵節點人的 email 餵給 AI 當客製化模擬器、AI 是你 24/7 的 review 團隊（n8n / OpenClaw 自動化進階版）、到每天讀一篇非英非中內容跳出 worldview 同質化。因為老闆能吃走你省下的時間，但吃不走你累積的品質。"
 ---
 
-# 打工人 AI 工作小妙招——5 招讓你做得更「好」（不是更「快」）
+## 打工人 AI 工作小妙招——5 招讓你做得更「好」（不是更「快」）
 
-![向全國勞工致敬！你我相挺，作伙打拼](/assets/images/dagongren-5-zhao-cover.png)
+![向全國勞工致敬！你我相挺，作伙打拼](/assets/images/dagongren-5-zhao-cover.webp)
 
 [![YouTube Preview](https://img.youtube.com/vi/dPtBqPhU3To/maxresdefault.jpg)](https://youtu.be/dPtBqPhU3To)
 

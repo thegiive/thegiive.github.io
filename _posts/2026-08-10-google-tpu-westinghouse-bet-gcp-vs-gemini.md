@@ -23,7 +23,7 @@ description: "2026 年，三家擁有自己模型的公司同時做了同一個�
 
 三件事獨立發生，但指向同一個結論。
 
-![DeepMind 佔 GCP AI 總算力的比例，從 2025 Q1 的約 45% 一路下滑到 2027 Q4 預估的約 14%（圖片來源：SemiAnalysis）](/assets/images/google-tpu-westinghouse-bet-cover.png)
+![DeepMind 佔 GCP AI 總算力的比例，從 2025 Q1 的約 45% 一路下滑到 2027 Q4 預估的約 14%（圖片來源：SemiAnalysis）](/assets/images/google-tpu-westinghouse-bet-cover.webp)
 
 ---
 

@@ -35,7 +35,7 @@ description: "前任 PM 留下 50+ 專案文件、數百個檔案。用 Claude C
   3. 拉出所有專案的技術線
   4. 分析專案 folder / file naming rule 擺放, 提供相關建議
 
-![](/assets/images/Generated-Image-October-19--2025---5_41PM--1--1.png)
+![](/assets/images/Generated-Image-October-19--2025---5_41PM--1--1.webp)
 
 根據之前的經驗， 這種等級的交接，接手人來做用幾週內能做到 #1 就萬幸了，但是有了 AI ，我們 #2 ~ #4應該都有機會。
 
@@ -51,11 +51,11 @@ description: "前任 PM 留下 50+ 專案文件、數百個檔案。用 Claude C
 
 原本使用 Google Drive MCP ，是可以用，但是在 Step 2 下速度就慢非常多，後來改採用 Google Drive 原生 APP 去下載到 local disk 之後，再寫 python 分析檔案，會快非常多。會選擇下載下來的另外一個原因是，Claude Code 其實很多時候工具鏈原生使用 Unix 指令庫 find / head / tail / wc / grep 來做很多基本操作，而且效果很好，用 API 當 backend 的 MCP 速度會比較慢，也不少問題。後來決定還是全抓下來再做，整體分析速度快 100倍​。
 
-![](/assets/images/image-27-1.png)Claude Code 用很多 Unix Command 
+![](/assets/images/image-27-1.webp)Claude Code 用很多 Unix Command 
 
 最後出來的 Summary 很不錯，每個檔案都有 AI看過（這個人就很難做到），然後給出 Summary 
 
-![](/assets/images/image-29-1.png)
+![](/assets/images/image-29-1.webp)
 
 同場加映 : Gemini , 因為是 Google Drive ，我在這也試過 Google Drive 旁邊 UI 的 Gemini 來做，很可惜 Gemini原生效果很差，連 Summary 出來的 folder 數量都錯很多，更別說 Summary 的內容了。
 
@@ -63,19 +63,19 @@ description: "前任 PM 留下 50+ 專案文件、數百個檔案。用 Claude C
 
 如同我說的，這是一個大客戶, 50幾個專案的總文檔，我請 Claude Code 根據裡面所有有專案時間的檔案，匯總出一個超大的歷史時間線。這個當然人做得到，但是是要對專案很理解的人才能做，如果像我們這種剛接手的人來說，有時間線真的很幫助理解。
 
-![](/assets/images/image-30-1-1.png)
+![](/assets/images/image-30-1-1.webp)
 
 ### 場景 3 : 本客戶的所有專案的總技術線
 
 這個用 Claude Code 來做也不難，提示詞"將裡面專案所使用的技術棧都列出來 , by project ，最後就這個客戶做匯總即可" ，這可以幫助我們快速知道如果有問題，大概技術棧使用哪些技術
 
-![](/assets/images/image-32-1.png)
+![](/assets/images/image-32-1.webp)
 
 ### 場景 4 : 本客戶的所有專案的folder 命名規則匯總
 
 最後身為PM，想也知道裡面專案，每個 PM 都不同，命名規則一定有很多不同。借這個機會進行問題統整分析一下，等到明確專案接起來之後，再請 Claude Code 根據 Google Drive MCP 來進行 folder / naming 調整。
 
-![](/assets/images/image-31-1.png)
+![](/assets/images/image-31-1.webp)
 
 ### 寫在最後：AI 不是來搶你飯碗，真的是來幫你升級的
 

@@ -20,7 +20,7 @@ body {
 
 /* Header */
 header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4c5fd5 0%, #764ba2 100%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 40px 0;
   margin-bottom: 40px;
@@ -79,7 +79,7 @@ nav a.contact-btn {
 
 nav a.contact-btn:hover {
   background: #fff;
-  color: #667eea;
+  color: #4c5fd5;
   border-color: #fff;
   transform: translateY(-2px);
 }
@@ -131,7 +131,7 @@ main {
 }
 
 .post-meta {
-  color: #999;
+  color: #666;
   font-size: 14px;
   margin-bottom: 10px;
 }
@@ -179,8 +179,8 @@ main {
 
 /* Post Description (摘要色塊) */
 .post-description {
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-  border-left: 4px solid #667eea;
+  background: linear-gradient(135deg, #4c5fd515 0%, #764ba215 100%);
+  border-left: 4px solid #4c5fd5;
   padding: 20px 25px;
   margin: 30px 0 40px 0;
   border-radius: 8px;
@@ -222,7 +222,7 @@ main {
 }
 
 .post-toc a:hover {
-  color: #667eea;
+  color: #4c5fd5;
   text-decoration: underline;
   background: none;
   transform: none;
@@ -338,7 +338,7 @@ main {
 }
 
 .code-toggle:hover {
-  background: #667eea;
+  background: #4c5fd5;
   color: #fff;
 }
 
@@ -363,7 +363,7 @@ main {
 }
 
 .post-content table thead {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4c5fd5 0%, #764ba2 100%);
   color: #fff;
 }
 
@@ -443,7 +443,7 @@ main {
 footer {
   text-align: center;
   padding: 30px 0;
-  color: #999;
+  color: #666;
   font-size: 14px;
 }
 
@@ -492,13 +492,13 @@ footer a:hover {
   color: #333;
   margin: 50px 0 25px 0;
   padding-bottom: 10px;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 3px solid #4c5fd5;
 }
 
 /* Site Intro (TL;DR) */
 .site-intro {
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-  border-left: 4px solid #667eea;
+  background: linear-gradient(135deg, #4c5fd515 0%, #764ba215 100%);
+  border-left: 4px solid #4c5fd5;
   padding: 25px 30px;
   margin: 30px 0;
   border-radius: 8px;
@@ -531,7 +531,7 @@ footer a:hover {
 }
 
 .cluster-item:hover {
-  border-color: #667eea;
+  border-color: #4c5fd5;
   box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
   transform: translateY(-5px);
 }
@@ -563,7 +563,7 @@ footer a:hover {
   padding: 25px;
   margin-bottom: 15px;
   border-radius: 8px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #4c5fd5;
   transition: all 0.3s ease;
 }
 
@@ -589,7 +589,7 @@ footer a:hover {
 /* Author Section */
 .author-section {
   margin: 50px 0 30px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4c5fd5 0%, #764ba2 100%);
   padding: 40px 35px;
   border-radius: 12px;
   color: #fff;
@@ -651,7 +651,7 @@ footer a:hover {
   background: #fff;
   padding: 25px;
   border-radius: 8px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #4c5fd5;
   transition: all 0.3s ease;
 }
 
@@ -682,7 +682,7 @@ footer a:hover {
 .btn-faq {
   display: inline-block;
   padding: 15px 35px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4c5fd5 0%, #764ba2 100%);
   color: #fff;
   text-decoration: none;
   border-radius: 8px;
@@ -725,7 +725,7 @@ footer a:hover {
   color: #333;
   margin-bottom: 25px;
   padding-bottom: 10px;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 3px solid #4c5fd5;
 }
 
 .faq-page .faq-item {
@@ -734,7 +734,7 @@ footer a:hover {
   margin-bottom: 20px;
   border-radius: 8px;
   border: 1px solid #e1e1e1;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #4c5fd5;
 }
 
 .faq-page .faq-item h3 {
@@ -785,7 +785,7 @@ footer a:hover {
 }
 
 .faq-footer a {
-  color: #667eea;
+  color: #4c5fd5;
   text-decoration: none;
   font-weight: 600;
 }
@@ -798,7 +798,7 @@ footer a:hover {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 20px;
-  background: #667eea;
+  background: #4c5fd5;
   color: #fff !important;
   border-radius: 5px;
   text-decoration: none !important;
@@ -821,9 +821,9 @@ footer a:hover {
   display: inline-block;
   padding: 15px 35px;
   background: #fff;
-  color: #667eea;
+  color: #4c5fd5;
   text-decoration: none;
-  border: 2px solid #667eea;
+  border: 2px solid #4c5fd5;
   border-radius: 8px;
   font-weight: 600;
   font-size: 16px;
@@ -831,7 +831,7 @@ footer a:hover {
 }
 
 .btn-view-all:hover {
-  background: #667eea;
+  background: #4c5fd5;
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
@@ -850,7 +850,7 @@ footer a:hover {
 
 .archive-intro {
   font-size: 16px;
-  color: #999;
+  color: #666;
   margin-bottom: 40px;
   padding-bottom: 20px;
   border-bottom: 2px solid #e1e1e1;
@@ -881,7 +881,7 @@ footer a:hover {
 .archive-date time {
   display: inline-block;
   font-size: 14px;
-  color: #999;
+  color: #666;
   font-family: monospace;
 }
 
@@ -889,19 +889,19 @@ footer a:hover {
   flex: 1;
 }
 
-.archive-content h3 {
+.archive-content h2 {
   font-size: 20px;
   margin: 0 0 10px 0;
 }
 
-.archive-content h3 a {
+.archive-content h2 a {
   color: #333;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.archive-content h3 a:hover {
-  color: #667eea;
+.archive-content h2 a:hover {
+  color: #4c5fd5;
 }
 
 .archive-excerpt {
@@ -923,9 +923,9 @@ footer a:hover {
 .topic-cluster-highlight {
   margin: 35px 0;
   padding: 30px;
-  background: linear-gradient(135deg, #667eea08 0%, #764ba208 100%);
+  background: linear-gradient(135deg, #4c5fd508 0%, #764ba208 100%);
   border-radius: 12px;
-  border: 2px solid #667eea;
+  border: 2px solid #4c5fd5;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
 }
 
@@ -934,7 +934,7 @@ footer a:hover {
   color: #333;
   margin: 0 0 15px 0;
   padding-bottom: 12px;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 3px solid #4c5fd5;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -944,7 +944,7 @@ footer a:hover {
   display: inline-block;
   font-size: 12px;
   padding: 4px 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4c5fd5 0%, #764ba2 100%);
   color: #fff;
   border-radius: 15px;
   font-weight: 600;
@@ -964,11 +964,11 @@ footer a:hover {
   padding: 15px 20px;
   background: #fff;
   border-radius: 8px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #4c5fd5;
 }
 
 .pillar-link a {
-  color: #667eea;
+  color: #4c5fd5;
   font-weight: 600;
   text-decoration: none;
   font-size: 17px;
@@ -1012,7 +1012,7 @@ footer a:hover {
 }
 
 .topic-cluster-highlight li a:hover {
-  color: #667eea;
+  color: #4c5fd5;
 }
 
 /* Cluster Link in Homepage */
@@ -1021,7 +1021,7 @@ footer a:hover {
 }
 
 .cluster-link a {
-  color: #667eea;
+  color: #4c5fd5;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
@@ -1037,15 +1037,15 @@ footer a:hover {
 }
 
 .cluster-item h3 a:hover {
-  color: #667eea;
+  color: #4c5fd5;
 }
 
 /* Category Page */
 
 /* Table of Contents */
 .category-toc {
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-  border: 1px solid #667eea40;
+  background: linear-gradient(135deg, #4c5fd515 0%, #764ba215 100%);
+  border: 1px solid #4c5fd540;
   border-radius: 12px;
   padding: 20px 25px;
   margin-bottom: 30px;
@@ -1083,8 +1083,8 @@ footer a:hover {
 }
 
 .category-toc .toc-list a:hover {
-  background: #667eea;
-  border-color: #667eea;
+  background: #4c5fd5;
+  border-color: #4c5fd5;
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
@@ -1100,7 +1100,7 @@ footer a:hover {
 }
 
 .category-section:hover {
-  border-color: #667eea;
+  border-color: #4c5fd5;
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
 }
 
@@ -1109,7 +1109,7 @@ footer a:hover {
   color: #333;
   margin: 0 0 15px 0;
   padding-bottom: 10px;
-  border-bottom: 2px solid #667eea;
+  border-bottom: 2px solid #4c5fd5;
   font-weight: 600;
 }
 
@@ -1137,7 +1137,7 @@ footer a:hover {
 }
 
 .category-section a:hover {
-  color: #667eea;
+  color: #4c5fd5;
   padding-left: 10px;
 }
 
@@ -1177,7 +1177,7 @@ footer a:hover {
 }
 
 .topic-link:hover {
-  border-color: #667eea;
+  border-color: #4c5fd5;
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2);
   transform: translateY(-3px);
 }
@@ -1227,7 +1227,7 @@ footer a:hover {
 }
 
 .role-card:hover {
-  border-color: #667eea;
+  border-color: #4c5fd5;
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
   transform: translateY(-5px);
 }
@@ -1266,7 +1266,7 @@ footer a:hover {
 .role-links a {
   display: inline-block;
   padding: 8px 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4c5fd5 0%, #764ba2 100%);
   color: #fff;
   text-decoration: none;
   border-radius: 20px;
@@ -1294,7 +1294,7 @@ footer a:hover {
 .featured-item {
   background: #fff;
   border: 1px solid #e1e1e1;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #4c5fd5;
   border-radius: 8px;
   padding: 25px;
   transition: all 0.3s ease;
@@ -1309,8 +1309,8 @@ footer a:hover {
   display: inline-block;
   font-size: 12px;
   padding: 4px 12px;
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-  color: #667eea;
+  background: linear-gradient(135deg, #4c5fd515 0%, #764ba215 100%);
+  color: #4c5fd5;
   border-radius: 15px;
   font-weight: 600;
   margin-bottom: 12px;
@@ -1328,7 +1328,7 @@ footer a:hover {
 }
 
 .featured-item h3 a:hover {
-  color: #667eea;
+  color: #4c5fd5;
 }
 
 .featured-item p {
@@ -1535,7 +1535,7 @@ footer a:hover {
 }
 
 .related-posts a {
-  color: #667eea;
+  color: #4c5fd5;
   text-decoration: none;
   font-weight: 500;
   flex: 1;
@@ -1546,7 +1546,7 @@ footer a:hover {
 }
 
 .related-posts time {
-  color: #999;
+  color: #666;
   font-size: 14px;
   white-space: nowrap;
 }

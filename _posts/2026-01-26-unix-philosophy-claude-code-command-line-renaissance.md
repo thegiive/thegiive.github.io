@@ -7,7 +7,7 @@ image: /assets/images/unix-philosophy-claude-code-cover.png
 description: "我小時候看過一本書叫 Unix Power Tools，裡面有句話我記了快二十年：Command line pipeline is the best UI interface in the world。當時我完全不懂這是什麼意思。但在 2025 年 4 月 Claude Code 橫空出世後，我終於理解了——一個用文字理解世界的腦，接上了一個用文字暴露世界狀態的介面。這不是復古，這是結構上最合理的選擇。"
 ---
 
-![Unix Philosophy Claude Code](/assets/images/unix-philosophy-claude-code-cover.png)
+![Unix Philosophy Claude Code](/assets/images/unix-philosophy-claude-code-cover.webp)
 
 我小時候看過一本書叫 *Unix Power Tools*，裡面有句話我記了快二十年：
 

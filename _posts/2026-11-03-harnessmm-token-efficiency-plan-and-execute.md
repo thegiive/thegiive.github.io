@@ -28,7 +28,7 @@ faq:
 
 作者不修改底層模型權重，而是在模型與工具邊界插入控制器，讓已決定的步驟在符合守衛條件時直接派發執行。
 
-![HarnessMM 論文首頁](/assets/images/harnessmm-token-efficiency-cover.png)
+![HarnessMM 論文首頁](/assets/images/harnessmm-token-efficiency-cover.webp)
 
 社群在討論這篇論文時，最吸睛的標題往往是「快取已決定步驟，DeepSeek Harness 砍掉 87.93% Token，成功率從 71.43% 升至 85.71%（增加 14.28 個百分點）」。
 
@@ -44,7 +44,7 @@ faq:
 
 當大模型在前一步已經固定了動作與具體參數，語意不確定性就已經消除；剩下的執行不確定性，本質上只需要等待工具回傳結果（Receipt）來啟動決策。**這件事用確定性的程式碼或守衛來接管就好，根本不需要大模型陪跑。**
 
-![HarnessMM 系統架構與決策圖改良](/assets/images/harnessmm-edg-architecture.png)
+![HarnessMM 系統架構與決策圖改良](/assets/images/harnessmm-edg-architecture.webp)
 
 為此，HarnessMM 設計了三大組件：
 

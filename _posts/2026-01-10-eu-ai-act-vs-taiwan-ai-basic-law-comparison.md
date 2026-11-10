@@ -67,7 +67,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 歐盟把 AI 系統分成四個等級，每個等級有明確的合規要求：
 
-![EU AI Act 四級風險分類：企業 AI 合規的風險分級制度](/assets/images/eu-ai-act-risk-classification-comparison.png)
+![EU AI Act 四級風險分類：企業 AI 合規的風險分級制度](/assets/images/eu-ai-act-risk-classification-comparison.webp)
 
 - **Unacceptable（禁止）**：社會信用評分、操控性 AI、未經同意的生物辨識 → 直接禁止
 - **High（高風險）**：求職篩選、信用評估、醫療診斷 → 強制認證、風險評估、人工監督、[Audit Trail](https://ai-coding.wiselychen.com/local-llm-enterprise-architecture/)
@@ -94,7 +94,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## EU AI Act 罰則有多重？台灣人工智慧基本法會罰款嗎？
 
-![EU AI Act 罰則與台灣人工智慧基本法罰款規定比較](/assets/images/eu-ai-act-penalties-comparison.png)
+![EU AI Act 罰則與台灣人工智慧基本法罰款規定比較](/assets/images/eu-ai-act-penalties-comparison.webp)
 
 ### EU AI Act 的罰則結構
 
@@ -189,7 +189,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## AI 監管機構比較：誰負責執法？
 
-![EU AI Act 與台灣人工智慧基本法的監管機構與執法單位比較](/assets/images/eu-taiwan-ai-regulatory-bodies.png)
+![EU AI Act 與台灣人工智慧基本法的監管機構與執法單位比較](/assets/images/eu-taiwan-ai-regulatory-bodies.webp)
 
 ### EU AI Act 的雙層架構
 
@@ -214,7 +214,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 ## EU AI Act 什麼時候生效？台灣 AI 基本法時程表
 
-![EU AI Act 生效時程與台灣人工智慧基本法施行時間表比較](/assets/images/eu-ai-act-taiwan-timeline-comparison.png)
+![EU AI Act 生效時程與台灣人工智慧基本法施行時間表比較](/assets/images/eu-ai-act-taiwan-timeline-comparison.webp)
 
 **關鍵差異：** 歐盟已經在執行，台灣還在建構。
 
@@ -224,7 +224,7 @@ permalink: /eu-ai-act-vs-taiwan-ai-basic-law/
 
 不論是歐盟還是台灣的法規，企業 AI 治理的核心都是相同的。在開始實務工作前，建議先用[這三個問題檢查現況](https://ai-coding.wiselychen.com/ai-governance-not-it-problem/#給-cto--ciso--董事會如何用這三個問題檢查現況)。
 
-![企業 AI 合規三大核心要素：可追溯、可問責、風險管理](/assets/images/ai-compliance-convergence.png)
+![企業 AI 合規三大核心要素：可追溯、可問責、風險管理](/assets/images/ai-compliance-convergence.webp)
 
 ### 如果你的產品/服務會進入歐盟市場
 

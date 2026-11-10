@@ -7,9 +7,9 @@ image: /assets/images/nemoclaw-slide-cover.png
 description: "NemoClaw 不是「OpenClaw 外面包一層 Docker」。它是一整個 K3s Cluster，用 netns + HTTP CONNECT proxy + OPA Policy、seccomp BPF、Landlock LSM 三層安全機制，把 AI Agent 鎖進企業級沙箱裡。這篇拆解架構設計、Trust Boundary、Per-Binary Egress Control，以及代價與價值的取捨。"
 ---
 
-# NemoClaw 架構拆解
+## NemoClaw 架構拆解
 
-![NemoClaw 企業級 AI 代理架構解析](/assets/images/nemoclaw-slide-cover.png)
+![NemoClaw 企業級 AI 代理架構解析](/assets/images/nemoclaw-slide-cover.webp)
 
 > **相關資源：**
 > - [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw) — 主 repo（Apache 2.0）
@@ -24,7 +24,7 @@ description: "NemoClaw 不是「OpenClaw 外面包一層 Docker」。它是一�
 
 這跟你自己用 Docker 跑 OpenClaw 完全是兩回事。
 
-![Blueprint Runner 部署生命週期：迷思 vs 架構重構](/assets/images/nemoclaw-slide-blueprint.png)
+![Blueprint Runner 部署生命週期：迷思 vs 架構重構](/assets/images/nemoclaw-slide-blueprint.webp)
 
 ## 三個核心元件，完全隔離
 
@@ -38,7 +38,7 @@ K3s cluster 裡面跑三個核心元件：
 
 Agent 本身呢？跑在**獨立的 Sandbox Pod** 裡，跟這三個元件完全隔開。
 
-![空間拓撲：控制面與沙盒的徹底切割](/assets/images/nemoclaw-slide-topology.png)
+![空間拓撲：控制面與沙盒的徹底切割](/assets/images/nemoclaw-slide-topology.webp)
 
 這個設計很關鍵：Agent 看不到 Policy Engine 的資料，摸不到 Gateway API 的控制面。就算 Agent 被 prompt injection 攻破了，它能做的事情被三層安全機制鎖死。
 
@@ -56,7 +56,7 @@ Agent 層面完全感知不到，也沒有辦法繞過——因為 netns 本身�
 
 白話講：**Agent 以為自己在上網，其實每個請求都經過一個懂規則的安檢門。**
 
-![第一層防護：語意級網路隔離](/assets/images/nemoclaw-slide-network.png)
+![第一層防護：語意級網路隔離](/assets/images/nemoclaw-slide-network.webp)
 
 ### 第二層：系統呼叫封鎖（[seccomp BPF](https://docs.kernel.org/userspace-api/seccomp_filter.html)）
 
@@ -66,7 +66,7 @@ seccomp BPF filter 在 sandbox pod **建立時套用，之後直接鎖死**。�
 
 白話講：**Agent 能呼叫的作業系統功能被列清單管控，清單之外的一律拒絕。**
 
-![第二層防護：系統呼叫封鎖 seccomp BPF](/assets/images/nemoclaw-slide-seccomp.png)
+![第二層防護：系統呼叫封鎖 seccomp BPF](/assets/images/nemoclaw-slide-seccomp.webp)
 
 ### 第三層：檔案系統（[Landlock LSM](https://docs.kernel.org/security/landlock.html)）
 
@@ -76,7 +76,7 @@ seccomp BPF filter 在 sandbox pod **建立時套用，之後直接鎖死**。�
 
 白話講：**Agent 的世界被縮小到一個房間裡，其他房間的門不是鎖起來——是根本不存在。**
 
-![第三層防護：Landlock LSM 檔案系統隱形](/assets/images/nemoclaw-slide-landlock.png)
+![第三層防護：Landlock LSM 檔案系統隱形](/assets/images/nemoclaw-slide-landlock.webp)
 
 ## Trust Boundary 設計：Agent 連 Policy 都看不到
 
@@ -93,7 +93,7 @@ Policy Engine 的資料靠 mount namespace 對 Agent 完全不可見，再加上
 
 這就是我一直在講的：**Prompt 負責引導，工程負責約束。** NemoClaw 在這個層面做得很到位。
 
-![Trust Boundary：互不相見的隔離空間](/assets/images/nemoclaw-slide-trust-boundary.png)
+![Trust Boundary：互不相見的隔離空間](/assets/images/nemoclaw-slide-trust-boundary.webp)
 
 ## 跟 Docker / VM 最大的差異：Per-Binary Egress Control
 
@@ -107,7 +107,7 @@ NemoClaw 不一樣。它的 **Network Egress Policy 是 YAML 定義的 allowlist
 
 （補充：目前 port 8080 還沒有對應的 NetworkPolicy，這是一個已知的 gap。）
 
-![Per-Binary Egress Control](/assets/images/nemoclaw-slide-egress.png)
+![Per-Binary Egress Control](/assets/images/nemoclaw-slide-egress.webp)
 
 ## 代價：記憶體和複雜度
 
@@ -119,15 +119,15 @@ K3s cluster + 三層安全機制 + 獨立的 Policy Engine pod = **記憶體消�
 
 但如果你是企業，跑多個 Agent、處理敏感資料、需要合規——這個 overhead 完全值得。K3s 的好處是**天生支援 multi-tenant**，多加幾個 Agent 進去不需要動 infrastructure，對平行擴展很方便。Sandbox pod 是透過 [Kubernetes CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) 管理的，在 `agent-sandbox-system` namespace 底下，架構上就是為了多 Agent 而設計。
 
-![架構對決：傳統 Docker vs NemoClaw K3s](/assets/images/nemoclaw-slide-comparison.png)
+![架構對決：傳統 Docker vs NemoClaw K3s](/assets/images/nemoclaw-slide-comparison.webp)
 
-![代價與價值：企業基礎設施的必然抉擇](/assets/images/nemoclaw-slide-tradeoff.png)
+![代價與價值：企業基礎設施的必然抉擇](/assets/images/nemoclaw-slide-tradeoff.webp)
 
 ---
 
 ## 架構圖速讀
 
-![NemoClaw 縱深防禦全景圖](/assets/images/nemoclaw-slide-defense.png)
+![NemoClaw 縱深防禦全景圖](/assets/images/nemoclaw-slide-defense.webp)
 
-![NemoClaw 架構圖](/assets/images/nemoclaw-architecture-diagram.png)
+![NemoClaw 架構圖](/assets/images/nemoclaw-architecture-diagram.webp)
 

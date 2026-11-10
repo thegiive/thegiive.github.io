@@ -76,7 +76,7 @@ Gemini、GPT、Claude、DeepSeek 等主流模型的準確率，**全面上升**�
 
 > **在 NameIndex 任務中，Gemini 2.0 Flash-Lite 準確率從 21.33% → 97.33%**
 
-![Gemini 2.0 Flash-Lite 在 NameIndex 任務的準確率提升](/assets/images/prompt-repetition-nameindex-result.png)
+![Gemini 2.0 Flash-Lite 在 NameIndex 任務的準確率提升](/assets/images/prompt-repetition-nameindex-result.webp)
 
 這不是小幅提升，是直接起飛。76 個百分點的差距。
 
@@ -94,7 +94,7 @@ Gemini、GPT、Claude、DeepSeek 等主流模型的準確率，**全面上升**�
 
 我在幫小孩複習功課時，常常看到一個很真實的場景：題目背景又臭又長，半頁考卷都在鋪陳情境，小孩一路讀下來，根本不知道重點在哪裡。直到看到最後一行題目，才突然發現：「喔，原來是在問這個。」
 
-![小學中文閱讀測驗考卷範例](/assets/images/chinese-reading-test-example.png)
+![小學中文閱讀測驗考卷範例](/assets/images/chinese-reading-test-example.webp)
 
 接下來怎麼辦？只能回頭，從那一大段背景裡重新找線索、圈重點、再讀一次。
 
@@ -179,7 +179,7 @@ prompt = query + "\n\n" + query
 
 和 CoT、Agent、RAG 比起來：
 
-![各種技術的成本比較](/assets/images/prompt-repetition-cost-comparison.png)
+![各種技術的成本比較](/assets/images/prompt-repetition-cost-comparison.webp)
 
 重複的部分發生在 **prefill 階段**（模型讀取輸入），這是可以並行化的。生成階段完全不受影響。
 

@@ -9,7 +9,7 @@ image: /assets/images/gemini-overconfident-design-fiction.png
 description: "問題不是 Gemini 會不會幻覺。問題是它幻覺了，你連糾正的機會都沒有——因為 Google 把 Web Search 的開關藏起來了。當 AI 自己決定「不用查網路」，然後自信滿滿地告訴你真實產品是「虛構」的，這不是模型問題，是產品設計哲學的災難。"
 ---
 
-![Gemini 判定真實產品為「設計虛構」的截圖](/assets/images/gemini-overconfident-design-fiction.png)
+![Gemini 判定真實產品為「設計虛構」的截圖](/assets/images/gemini-overconfident-design-fiction.webp)
 
 **作者：** Wisely Chen
 **日期：** 2026 年 2 月
@@ -137,7 +137,7 @@ Gemini 內部有一套機制決定「這個問題需不需要聯網」。聽起�
 
 ### Perplexity：每個結論都有出處
 
-![Perplexity 事實查核結果：每個技術事實都有 ref 出處](/assets/images/gemini-overconfident-perplexity-factcheck.png)
+![Perplexity 事實查核結果：每個技術事實都有 ref 出處](/assets/images/gemini-overconfident-perplexity-factcheck.webp)
 
 我把報告丟進 Perplexity，發現**每一個結論都有 ref 出處**。
 

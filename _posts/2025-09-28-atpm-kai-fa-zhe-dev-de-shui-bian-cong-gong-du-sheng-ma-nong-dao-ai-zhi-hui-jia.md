@@ -14,7 +14,7 @@ description: "從 Embed（ChatGPT 當 Google）到 Copilot（Cursor + Claude）�
 
 還記得大約兩年前 ChatGPT 剛出的時候，我在中國網路上就看到一張關於「人與AI協同的三種模式」的圖，時至今日，我一直拿他出來講的原因是，不管這個世界工具怎麼演進，我們的模式都一直在這張圖的三個層次當中打轉
 
-![](/assets/images/image-38.png)這張圖我在 2023 年3月我就看過了，不確定出處，但是我真的很喜歡這張圖，而且這個比較像是一個預言，到現在還是無法脫離
+![](/assets/images/image-38.webp)這張圖我在 2023 年3月我就看過了，不確定出處，但是我真的很喜歡這張圖，而且這個比較像是一個預言，到現在還是無法脫離
 
 我認為它清晰地描繪了我們與 AI 協作的美好藍圖，如果從 Coding 這個場景來說，將協作模式分為三個層次，
 
@@ -34,7 +34,7 @@ Copilot mode 很多很好，就是沒有標準化，後來我們要做帳務系�
 
 就我們團隊建隊來說，我們幾乎2023/09 ~2025/01 都處於 embed 模式，基本上大量使用 ChatGPT , Google Sheet , Make.com , BigQuery , Google Chat Tasks來做事情，基本上傳遞訊息還是靠一般的軟體開發流程(Kaban,Scurm)，AI在這邊是一個助手，但是從來就不是一個獨立的單點。
 
-![](/assets/images/image-39.png)
+![](/assets/images/image-39.webp)
 
 ### 0 -> 1 的關鍵因素
 
@@ -56,7 +56,7 @@ Embed 這個模式那時候在我們團隊非常的成功，因為我那時候�
 
 只是當我們越來越成功，要解決問題越來越複雜，到ChatGPT 的 Context 就越來越多，甚至為了寫 BigQeury SQL ，還要先打一堆 BigQuery Schema 在前面，越來越煩，效率也低下
 
-![](/assets/images/image-41-1.png)每次都要截圖 BigQuery 有點煩
+![](/assets/images/image-41-1.webp)每次都要截圖 BigQuery 有點煩
 
 我曾經買了 1年的 Monica ，主要就是每次寫 BigQuery SQL 的時候，直接用側邊欄的 Monica 來截圖 BigQuery Schema 系統截圖，這樣方便 SQL 撰寫。不過基本上沒解決上下文的問題，很快的隨著工具快速演進，我們切到了 CoPilot 。
 
@@ -64,13 +64,13 @@ Embed 這個模式那時候在我們團隊非常的成功，因為我那時候�
 
 後來隨著 Cursor 的進步，我們很快就在嘗試 cursor 對寫程式的近一步加速。主要的 trigger point 是 Cursor + Claude Sonnet 3.5 + BigQuery MCP 可以用，我們幾乎是立馬就奔向 Copilot 模式。
 
-![](/assets/images/image-42-1.png)
+![](/assets/images/image-42-1.webp)
 
 沒辦法，有了 BigQuery MCP ，寫 SQL 有 BigQuery MCP，不用提供 Schema 了。另外 Claude Sonnet 3.5 有時候還會去查一下 BigQuery 的 table 前 100筆，看看長啥樣子，才會去寫相關的程式碼。對我們寫程式碼的提效大概 2~5倍左右吧。
 
 有一次在於我們某一次針對一個 excel 公式轉 SQL 場景，我們覺得 excel 裡面公式太多了，上百個，一個一個叫 Cursor 去轉加速能力不高，還不如人來手刻，因為我們知道邏輯。這時候我跟他們說，我們試試看叫 Claude 去直接看含幾百個公式的 excel 檔案，然後直接將裡面幾百個公式轉成 SQL 。
 
-![](/assets/images/image-43.png)
+![](/assets/images/image-43.webp)
 
 結果真的一次過，Claude 3.5 那時很強悍的，直接很勤勞的寫一堆 python ，把 fomula 印出來，然後把整個上百個公式一次搞定。看到這段，我們超 high 的，這簡直是把 3~5天的工作變成 5分鐘完成。
 
@@ -95,13 +95,13 @@ Embed 這個模式那時候在我們團隊非常的成功，因為我那時候�
 
 基於這個要求，我們根據那時候 91APP在年會分享的流程，做出了現在的 ATPM 
 
-![](/assets/images/image-44.png)
+![](/assets/images/image-44.webp)
 
 ATPM Dev是可以接 Agent mode 的，只是我們當下 Dev 主體是 Copilot Mode，( .cursorrule +Excel 改成 PRD) 。當時我們的工具以及團隊的積累，不是不能做 Agent Mode ，只是帳務系統需要大量驗證，如果 Agent mode 很難說服 BU 。另外當下 QA方式也在設計中，怕一次步子邁太大。
 
 另外為了這個帳務系統，我們除了 QA以外，還在 Dev 過程加入類似 Unit Test 機制，餵入相關部分驗證數據來請 AI 自動驗證部分 SQL 模組成果是否正確
 
-![](/assets/images/image-45-1-1.png)Cursor 的輸出
+![](/assets/images/image-45-1-1.webp)Cursor 的輸出
 
 就如同我說的，只要寫好 PRD 當作 South of Truth ，其實先期用 Copilot Mode ，後面再用 Agent Mode 也沒關係。我那時候也試著把一兩個小業務試著用 Agent Mode 加上 PRD 來撰寫，只是那時候 Claude Code 突然之間降了智，穩定性難以預測。我就先暫停 Agent Mode 的嘗試，避免造成專案 delay 。
 
