@@ -15,9 +15,11 @@ author: Wisely Chen
 
 11 月 12 日（台灣時間 11 月 13 日凌晨）開始的這場微軟全球大當機，前前後後折騰了超過 26 小時，很多朋友上班時遇到的怪象特別邪門。打開 Teams，和同事們語音開會、在老群裡發訊息都沒問題，但一旦想新建私密群，介面立刻報錯；打開 Power BI 線上看數據報表也沒問題，只要一點匯出 PDF 就卡死，微軟官方給的臨時辦法居然是讓大家手動把檔案上面的保密標籤（sensitivity label）刪掉再匯出。
 
-軟體的別扭迅速演變成現實世界裡的手忙腳亂。英國醫療協作網斷聯後，倫敦和曼徹斯特的多家公立醫院直接拿出紙筆，回歸手寫病歷和處方。金融城也陷入混亂，英格蘭銀行（Bank of England）、英國金融監管局（FCA）和泛歐交易所（Euronext）緊急暫停線上申報系統，要求各大機構改為電話口頭報數。
+軟體的別扭迅速演變成現實世界裡的手忙腳亂。英國醫療協作網斷聯後，倫敦和曼徹斯特的多家公立醫院直接拿出紙筆，回歸手寫病歷和處方；專注心理健康服務的 Lincolnshire Partnership NHS Foundation Trust 甚至發公告呼籲：需要轉診或正經歷危機的患者請直接打電話，不要寄電郵。金融城與企業界也陷入混亂，英格蘭銀行（Bank of England）、英國金融監管局（FCA）和泛歐交易所（Euronext）緊急暫停線上申報系統，要求各大機構改為電話口頭報數；美國眾議院、坦帕與路易斯維爾等多個市政府、洛杉磯縣法醫辦公室、航運巨頭馬士基（Maersk）也相繼受波及，底特律工業公司 Workhorse Group 甚至被迫延後第三季財報電話會議。
 
-沒有駭客攻擊，沒有海底電纜斷裂。全世界的混亂，純粹是因為微軟的雲端信箱掛了。
+IT 技術服務公司 Envision Technology Advisors 首席技術官 Stephen Rose 向《華爾街日報》形容，客戶因為無法發信全改打電話，「我們的服務台完全癱瘓」，最後只能希望消息靠電話口耳相傳。難怪佛州政治策略師 Steve Schale 會在 X 上調侃：「親愛的微軟——你關錯了。請把我們的電郵開回來，把 Teams 關掉。」
+
+沒有駭客攻擊，沒有海底電纜斷裂。全世界的混亂，純粹是因為微軟的雲端信箱掛了。網路公司 Infoblox 分析主管 Doug Madory 估算核心中斷約 19 小時，而從週四開始到全球各地與連接器陸續恢復，前前後後折騰了超過 26 小時。
 
 這篇不打算再重複新聞。我想談的是：企業花大錢導入 AI 之後，到底買到了多少韌性？
 
@@ -43,7 +45,7 @@ Teams 平時單聊和語音走另一條獨立通道，但新建私密群需要�
 
 **第三，房門從裡面反鎖了。**到了週五凌晨 3 點半，工程師想要撤銷前一天改錯的設定，卻發現後端伺服器已經卡死，連接收撤回指令的餘力都沒有——這就像房門從裡面反鎖，外面的人遞再多新鑰匙也塞不進去，上游路由還在瘋狂問路加劇擁堵。
 
-最後微軟只能用笨辦法：一邊緊急加機器、關小大門流量閥，一邊把伺服器一台台斷網重啟，像擰水龍頭一樣一滴一滴放人進來。這套慢工細活跑通的時候，剛好趕上亞洲時間週五傍晚，日本和亞太的上班族紛紛關電腦下班過週末，門口排隊的設備少了一大半，亞太區才最先喘過氣來；而正值週五上班高峰的歐美用戶，只能眼睜睜多熬了半天。
+最後微軟只能用笨辦法：一邊緊急加機器、關小大門流量閥，一邊把伺服器一台台斷網重啟，像擰水龍頭一樣一滴一滴放人進來。微軟發言人對《華爾街日報》的說法也很直接：「鑑於需求規模，我們逐步恢復服務，並在每個階段驗證穩定性。雖然耗時更長，但有助於確保穩定恢復。」這套慢工細活跑通的時候，剛好趕上亞洲時間週五傍晚，日本和亞太的上班族紛紛關電腦下班過週末，門口排隊的設備少了一大半，亞太區才最先喘過氣來；而正值週五上班高峰的歐美用戶，只能眼睜睜多熬了半天。
 
 ---
 
@@ -160,6 +162,7 @@ Uptime Institute 2026 年度停機分析報告給了很清楚的圖像：
 
 ## Sources
 
+- [The Wall Street Journal：The Chaos and Unexpected Joys of a 19-Hour Global Email Outage](https://www.wsj.com/business/telecom/the-chaos-and-unexpected-joys-of-a-19-hour-global-email-outage-37b7170c)
 - [MacRumors：Microsoft 365 Outage Resolving After Nearly 24 Hours](https://www.macrumors.com/2026/11/13/microsoft-365-outage-resolving/)
 - [Control Plane：What Caused the Microsoft 365 Outage of November 12, 2026](https://controlplane.com/blog/post/microsoft-365-outage-november-2026-cause)
 - [DEV Community：Microsoft 365 Outage (Nov 2026) timeline](https://dev.to/epifive/microsoft-365-outage-nov-2026-what-we-know-about-the-root-cause-and-what-it-admins-should-learn-4hld)
