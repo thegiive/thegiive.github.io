@@ -19,6 +19,14 @@ author: Wisely Chen
 
 ---
 
+## 影片解說
+
+[觀看本文的影片解說：Gemini 4 四兄弟怎麼選？Argon、Carbon、Hydrogen、Neon 一次看懂](https://www.youtube.com/watch?v=UFRz0Gljazs)
+
+影片依據本文整理，涵蓋：四款模型的定位與分數、Argon 12/1 漲價、Carbon 延遲、Hydrogen 低推理強度的幻覺風險、Neon 的成本優勢，以及三層選型建議。
+
+---
+
 ## 一、先搞懂 Gemini 4 四兄弟的定位
 
 Google 這次用化學元素命名四個定位截然不同的版本：
